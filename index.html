@@ -3,2066 +3,574 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IROX – Intelligenter Sicherheitshelm | Vorausschauende Gefahrenerkennung</title>
-    <meta name="description" content="IROX – Der intelligente Helm, der Gefahren erkennt, bevor Sie sie sehen. KI-gestützte Sicherheit für Radfahrer, Senior*innen und Menschen mit Einschränkungen.">
+    <title>LROX Helm - Intelligenter Schutz für Radfahrer</title>
+    <meta name="description" content="LROX Helm - Der innovative Fahrradhelm mit integrierter Sensorik und KI-gestützter Unfallerkennung für mehr Sicherheit im Straßenverkehr.">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="IROX – Intelligenter Sicherheitshelm">
-    <meta property="og:description" content="Der Helm, der Gefahren erkennt, bevor Sie sie sehen. KI-gestützte Sicherheit für mehr Unabhängigkeit im Straßenverkehr.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="LROX Helm - Intelligenter Schutz für Radfahrer">
+    <meta property="og:description" content="Der innovative Fahrradhelm mit integrierter Sensorik und KI-gestützter Unfallerkennung.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://irox-helm.de">
-    <meta property="og:image" content="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/343d/11846507/edd343d30c5f/JMDH-18-957-g0003.jpg">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="og:url" content="https://lrox-helm.de">
     
     <style>
-        :root {
-            --primary: #00a8ff;
-            --secondary: #0097e6;
-            --accent: #e84118;
-            --dark: #1a1a2e;
-            --darker: #16213e;
-            --light: #f5f6fa;
-            --text: #2f3640;
-            --text-light: #f5f6fa;
-            --success: #4cd137;
-            --warning: #fbc531;
-            --danger: #e84118;
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --neon-glow: 0 0 10px rgba(0, 168, 255, 0.7);
-            --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: 0.3s ease;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+
         body {
-            background-color: var(--darker);
-            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, var(--darker) 0%, #0f3460 100%);
+            color: #333;
+            background-color: #f8f9fa;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Scroll Progress Bar */
-        .progress-container {
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 4px;
-            background: transparent;
+            top: 0;
             z-index: 1000;
         }
-        
-        .progress-bar {
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-        
-        /* Header */
-        header {
-            background-color: rgba(26, 26, 46, 0.85);
-            backdrop-filter: blur(10px);
-            color: var(--text-light);
-            padding: 15px 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
-        }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
-        
+
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5530;
         }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 2rem;
         }
-        
-        .nav-links li {
-            margin-left: 25px;
-        }
-        
+
         .nav-links a {
-            color: var(--text-light);
             text-decoration: none;
+            color: #333;
             font-weight: 500;
-            font-size: 0.9rem;
             transition: color 0.3s;
-            position: relative;
-            padding: 5px 0;
         }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s;
+
+        .nav-links a:hover {
+            color: #2c5530;
         }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 33, 62, 0.9)),
-                        url('https://cdn.ncbi.nlm.nih.gov/pmc/blobs/343d/11846507/edd343d30c5f/JMDH-18-957-g0003.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-light);
-            padding: 180px 0 120px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 168, 255, 0.3) 0%, rgba(232, 65, 24, 0.3) 100%);
-            z-index: 0;
-        }
-        
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-        
-        .hero-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
-        
-        .metric-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
-            transition: var(--transition-fast);
-        }
-        
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .btn-group {
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
             color: white;
-            border-radius: 50px;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 12px 30px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        .cta-button:hover {
+            background: #e55a2b;
         }
-        
-        .btn:active {
-            transform: translateY(1px);
+
+        /* Sections */
+        section {
+            padding: 80px 0;
         }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            margin-left: 15px;
-            box-shadow: none;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-        }
-        
-        /* Sections Common Styles */
-        .section {
-            padding: 100px 0;
-        }
-        
+
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 3rem;
         }
-        
+
         .section-title h2 {
-            font-size: 2.8rem;
-            color: var(--text-light);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            color: #2c5530;
+            margin-bottom: 1rem;
         }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
+
         .section-title p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
             margin: 0 auto;
         }
-        
+
         /* Problem Section */
-        .problem {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .problem-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .problem-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .problem-text p {
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .highlight-box {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border-left: 5px solid var(--accent);
-        }
-        
-        .highlight-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        .highlight-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .vulnerable-groups {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .group-item {
-            background: var(--glass);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: var(--transition-fast);
-        }
-        
-        .group-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .group-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .problem-visual {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .problem-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .problem-visual:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Solution Section */
-        .solution {
-            background: var(--darker);
-            position: relative;
-        }
-        
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .solution-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .solution-text p {
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .feature-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .feature-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .feature-list li i {
-            color: var(--primary);
-            margin-top: 5px;
-        }
-        
-        .solution-visual {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .solution-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .solution-visual:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Innovation Section */
-        .innovation {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .comparison-grid {
+        .problem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        .comparison-card {
-            background: var(--glass);
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .problem-card h3 {
+            color: #2c5530;
+            margin-bottom: 1rem;
+        }
+
+        /* Solution Section */
+        .solution-content {
+            background: white;
+            padding: 3rem;
             border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 2rem;
         }
-        
-        .comparison-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .comparison-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
         }
-        
-        .comparison-card ul {
-            list-style: none;
-            margin-top: 15px;
+
+        .feature-item h4 {
+            color: #2c5530;
+            margin: 1rem 0;
         }
-        
-        .comparison-card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .comparison-card ul li i {
-            color: var(--primary);
-            margin-top: 5px;
-            font-size: 0.8rem;
-        }
-        
-        .irox-highlight {
-            border: 2px solid var(--primary);
-            position: relative;
-        }
-        
-        .irox-highlight::before {
-            content: 'IROX';
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
+
         /* Technology Section */
-        .technology {
-            background: var(--darker);
-            position: relative;
-        }
-        
         .tech-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
+
         .tech-category {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
-        .tech-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
+
         .tech-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: #2c5530;
+            margin-bottom: 1rem;
         }
-        
-        .tech-category h3 i {
-            font-size: 1.2rem;
+
+        .tech-category ul {
+            list-style-position: inside;
+            color: #555;
         }
-        
-        .tech-category p {
-            margin-bottom: 20px;
-            line-height: 1.6;
+
+        .tech-category li {
+            margin-bottom: 0.5rem;
         }
-        
-        /* Prototype Section */
-        .prototype {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: var(--primary);
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 25px;
-            transition: var(--transition-fast);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .needs-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .needs-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .needs-list li i {
-            color: var(--primary);
-            margin-top: 5px;
-        }
-        
-        /* Users Section */
-        .users {
-            background: var(--darker);
-            position: relative;
-        }
-        
-        .users-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .user-card {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .user-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-        
-        .user-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .user-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-        
-        .user-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-        
-        /* Business Section */
-        .business {
-            background: var(--dark);
-            position: relative;
-        }
-        
+
+        /* Business Model */
         .business-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .business-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .business-text p {
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .stat-item {
-            background: var(--glass);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: var(--transition-fast);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .business-visual {
-            position: relative;
+            background: white;
+            padding: 3rem;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
-        .business-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .business-visual:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Team Section */
-        .team {
-            background: var(--darker);
-            position: relative;
-        }
-        
-        .team-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .member-card {
-            background: var(--glass);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition-slow);
-            position: relative;
-            border: 1px solid var(--glass-border);
-        }
-        
-        .member-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .member-info {
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .member-name {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .member-role {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        .member-info p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-        
-        .member-highlight {
-            background: rgba(0, 168, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-            border-left: 3px solid var(--primary);
-        }
-        
-        /* Support Section */
-        .support {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .support-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .support-plan, .support-needs {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .support-plan:hover, .support-needs:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .support-plan h3, .support-needs h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .support-plan ul, .support-needs ul {
-            list-style: none;
-        }
-        
-        .support-plan ul li, .support-needs ul li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .support-plan ul li i, .support-needs ul li i {
-            color: var(--primary);
-            margin-top: 5px;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            background: var(--darker);
-            position: relative;
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--glass);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-        }
-        
-        .faq-question {
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition-fast);
-        }
-        
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s;
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 0 20px 20px;
-            max-height: 500px;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .contact-card {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .contact-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .contact-card ul {
-            list-style: none;
-        }
-        
-        .contact-card ul li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .contact-card ul li i {
-            color: var(--primary);
-            width: 20px;
-        }
-        
-        .contact-card ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-card ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .contact-form {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            color: var(--text-light);
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.2);
-            outline: none;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        .form-submit {
-            text-align: center;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--darker);
-            color: var(--text-light);
-            padding: 80px 0 30px;
-            position: relative;
-            border-top: 1px solid var(--glass-border);
-        }
-        
-        footer .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .footer-content {
+
+        .revenue-streams {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .footer-column h3 {
-            color: white;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .footer-column p {
-            color: #bbb;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 15px;
-        }
-        
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
+
+        .revenue-item {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbb;
-            font-size: 0.9rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
         }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .revenue-item h4 {
+            color: #2c5530;
+            margin-bottom: 1rem;
         }
-        
-        /* Responsive Styles */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .problem-content,
-            .solution-content,
-            .business-content,
-            .contact-content,
-            .support-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .problem-visual,
-            .solution-visual,
-            .business-visual {
-                order: -1;
-            }
-            
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 20px;
-            }
+
+        /* Support Section */
+        .support-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
+        .support-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .support-list li {
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #2c5530;
+        }
+
+        /* FAQ Section */
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: #2c5530;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5530;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin: 1rem 0;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--dark);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 99;
             }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .comparison-grid,
-            .users-grid,
-            .team-members {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 120px 0 80px;
-            }
-            
+
             .hero h1 {
                 font-size: 2rem;
             }
-            
-            .section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .btn-group {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
+
+            section {
+                padding: 60px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-    
     <!-- Header -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
-                    <span>IROX</span> Helm
-                </div>
-                
+                <div class="logo">LROX Helm</div>
                 <ul class="nav-links">
-                    <li><a href="#home">Start</a></li>
                     <li><a href="#problem">Problem</a></li>
-                    <li><a href="#solution">Lösung: IROX Helm</a></li>
-                    <li><a href="#innovation">Warum neu?</a></li>
+                    <li><a href="#solution">Lösung</a></li>
                     <li><a href="#technology">Technologie</a></li>
-                    <li><a href="#prototype">Prototyp & Entwicklung</a></li>
-                    <li><a href="#users">Zielgruppen & Nutzen</a></li>
-                    <li><a href="#business">Geschäftsmodell & Markt</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#support">Nächste Schritte & Unterstützung</a></li>
+                    <li><a href="#business">Geschäftsmodell</a></li>
+                    <li><a href="#support">Unterstützung</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
                 </ul>
-                
-                <div class="mobile-menu" id="mobileMenu">
-                    <i class="fas fa-bars"></i>
-                </div>
             </nav>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <h1>Was wäre, wenn ein Helm Gefahren erkennen könnte, bevor Sie sie überhaupt sehen?</h1>
-            <p>Wir glauben an eine Zukunft, in der niemand mehr durch übersehene Gefahren verletzt wird – und IROX ist die Technologie, die genau diesen Wandel ermöglicht.</p>
-            
-            <div class="hero-metrics">
-                <div class="metric-card">
-                    <div class="metric-value">441</div>
-                    <div class="metric-label">tödlich verunglückte Radfahrer*innen in Deutschland (2024)</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">360°</div>
-                    <div class="metric-label">Umgebungserkennung in Echtzeit</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">100%</div>
-                    <div class="metric-label">Offline – keine Cloud, kein Tracking</div>
-                </div>
-            </div>
-            
-            <div class="btn-group">
-                <a href="#support" class="btn">Projekt unterstützen</a>
-                <a href="#technology" class="btn btn-outline">Technologie ansehen</a>
-            </div>
+            <h1>LROX Helm: Intelligenter Schutz für Radfahrer</h1>
+            <p>Der innovative Fahrradhelm mit integrierter Sensorik und KI-gestützter Unfallerkennung</p>
+            <a href="#solution" class="cta-button">Mehr erfahren</a>
         </div>
     </section>
-    
+
     <!-- Problem Section -->
-    <section class="section problem" id="problem">
+    <section id="problem">
         <div class="container">
             <div class="section-title">
-                <h2>Problem</h2>
-                <p>Im Straßenverkehr können Sekunden über Leben und Tod entscheiden</p>
+                <h2>Das Problem</h2>
+                <p>Fahrradunfälle haben oft schwerwiegende Folgen - besonders wenn Hilfe zu spät eintrifft</p>
             </div>
-            
-            <div class="problem-content">
-                <div class="problem-text">
-                    <h3>Viele Gefahren werden zu spät erkannt – mit fatalen Folgen</h3>
-                    <p>Laut dem Statistischen Bundesamt (Destatis) starben 2024 441 Radfahrer*innen in Deutschland. Diese Zahl ist kein Zufall. Sie ist ein klares Warnsignal.</p>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-value">441</div>
-                        <div class="highlight-text">Ein deutliches Warnsignal – keine Statistik.</div>
-                    </div>
-                    
-                    <h3>Besonders gefährdet</h3>
-                    <p>Für diese Gruppen kann ein einziger früher Hinweis darüber entscheiden, ob sie sicher weiterfahren – oder schwer verletzt werden.</p>
-                    
-                    <div class="vulnerable-groups">
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-child"></i>
-                            </div>
-                            <h4>Kinder</h4>
-                            <p>Auf dem Fahrrad oder zu Fuß</p>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-wheelchair"></i>
-                            </div>
-                            <h4>Ältere Menschen</h4>
-                            <p>Und Senior*innen im Rollstuhl</p>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-low-vision"></i>
-                            </div>
-                            <h4>Menschen mit Sehbeeinträchtigungen</h4>
-                            <p>Erkennen Gefahren oft zu spät</p>
-                        </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4>Menschen mit Aufmerksamkeitsproblemen</h4>
-                            <p>Wahrnehmen von Gefahren erschwert</p>
-                        </div>
-                    </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Späte Rettung</h3>
+                    <p>Bei Alleinunfällen oder unbeobachteten Stürzen vergeht wertvolle Zeit, bis Hilfe eintrifft</p>
                 </div>
-                
-                <div class="problem-visual">
-                    <img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/343d/11846507/edd343d30c5f/JMDH-18-957-g0003.jpg" alt="Statistik zu Verkehrsunfällen" loading="lazy">
+                <div class="problem-card">
+                    <h3>Unzureichende Daten</h3>
+                    <p>Fehlende objektive Unfalldaten erschweren die Aufklärung und Prävention</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Kommunikationslücken</h3>
+                    <p>Keine automatische Benachrichtigung von Angehörigen oder Rettungsdiensten</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Solution Section -->
-    <section class="section solution" id="solution">
+    <section id="solution" style="background: #f8f9fa;">
         <div class="container">
             <div class="section-title">
-                <h2>Lösung: IROX Helm</h2>
-                <p>Der Helm, der sieht, denkt, warnt – und spricht</p>
+                <h2>Lösung: LROX Helm</h2>
+                <p>Ein intelligenter Fahrradhelm, der bei Unfällen automatisch Hilfe alarmiert</p>
             </div>
-            
             <div class="solution-content">
-                <div class="solution-visual">
-                    <img src="https://www.ostsome.com/cdn/shop/products/LIVALLBH51MNEO4_1024x.jpg?v=1638548312" alt="Beispiel eines intelligenten Helms" loading="lazy">
-                </div>
+                <p><strong>LROX ist die Technologie, die Fahrradfahren sicherer macht:</strong> Durch integrierte Beschleunigungssensoren, Gyroskop und KI-Algorithmen erkennt der Helm Stürze und Unfälle in Echtzeit.</p>
                 
-                <div class="solution-text">
-                    <h3>Ein Helm, der Gefahren erkennt, bevor der Mensch sie bemerkt</h3>
-                    <p>Im Inneren stecken eine 360°-Kamera, ein mobiler Nano-Computer und modernste KI. Der Helm analysiert die Umgebung in Echtzeit und erkennt Autos, Fahrräder, Motorräder, Fußgänger und Hindernisse.</p>
-                    
-                    <ul class="feature-list">
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>360°-Kamera für Rundumsicht</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Mobiler Nano-Computer (Jetson/Raspberry Pi)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>KI für Echtzeit-Objekterkennung (YOLOv8)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Erkennt Details: Bordsteine, Stufen, Schlaglöcher, Baustellen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Komplett offline – keine Cloud, Datenschutz garantiert</span>
-                        </li>
-                    </ul>
-                    
-                    <p>Der Helm schützt nicht nur Radfahrer*innen: Er unterstützt auch Fußgänger, ältere Menschen, Menschen im Rollstuhl – und besonders blinde oder sehbehinderte Personen, die auf akustische Hinweise angewiesen sind.</p>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4>🚨 Automatischer Notruf</h4>
+                        <p>Bei erkannten Unfällen werden automatisch Notfallkontakte benachrichtigt</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📊 Unfalldaten</h4>
+                        <p>Objektive Aufzeichnung von Unfalldaten für Rettungskräfte und Versicherungen</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔋 Lange Akkulaufzeit</h4>
+                        <p>Bis zu 72 Stunden Betrieb bei einer Ladung</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📱 Mobile App</h4>
+                        <p>Begleitende App für Einstellungen und Notfallkontakte</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Innovation Section -->
-    <section class="section innovation" id="innovation">
-        <div class="container">
-            <div class="section-title">
-                <h2>Warum neu?</h2>
-                <p>Der entscheidende Unterschied zu bestehenden Lösungen</p>
-            </div>
-            
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <h3>Blindenstock</h3>
-                    <p>Erkennt nur Kollision beim Kontakt</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Keine vorausschauende Warnung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Reichweite</span></li>
-                        <li><i class="fas fa-times"></i> <span>Erkennt keine Art der Gefahr</span></li>
-                    </ul>
-                </div>
-                
-                <div class="comparison-card">
-                    <h3>Ultraschall-/Abstandssensoren</h3>
-                    <p>Messen nur Entfernung, nicht Kontext</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Keine Unterscheidung der Gefahrenart</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Richtungserkennung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Keine Geschwindigkeitsanalyse</span></li>
-                    </ul>
-                </div>
-                
-                <div class="comparison-card">
-                    <h3>Bestehende smarte Helme</h3>
-                    <p>Reagieren oft erst, wenn die Gefahr schon direkt da ist</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Späte Reaktion (z.B. Licht, Sturzerkennung)</span></li>
-                        <li><i class="fas fa-times"></i> <span>Keine vorausschauende Gefahrenerkennung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Umgebungsanalyse</span></li>
-                    </ul>
-                </div>
-                
-                <div class="comparison-card irox-highlight">
-                    <h3>IROX Helm</h3>
-                    <p>Erkennt Art der Gefahr, Richtung und Geschwindigkeit</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> <span>Vorausschauende Warnungen</span></li>
-                        <li><i class="fas fa-check"></i> <span>Erkennt Art der Gefahr (Auto, Bordstein, etc.)</span></li>
-                        <li><i class="fas fa-check"></i> <span>Richtungs- und Geschwindigkeitsanalyse</span></li>
-                        <li><i class="fas fa-check"></i> <span>Für besonders gefährdete Gruppen optimiert</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+
     <!-- Technology Section -->
-    <section class="section technology" id="technology">
+    <section id="technology">
         <div class="container">
             <div class="section-title">
-                <h2>Technologie</h2>
-                <p>Fortschrittliche KI- und Hardware-Integration</p>
+                <h2>Technologie & Entwicklung</h2>
+                <p>Stand der Technik und nächste Entwicklungsschritte</p>
             </div>
             
             <div class="tech-categories">
                 <div class="tech-category">
-                    <h3><i class="fas fa-eye"></i> Wahrnehmung</h3>
-                    <p>Multi-Sensor-Fusion für umfassende Umgebungserfassung</p>
-                    <p>360°-Kamera kombiniert mit KI (YOLOv8) für Objekterkennung in Echtzeit. Erkennt Fahrzeuge, Hindernisse und kritische Umgebungsdetails.</p>
+                    <h3>🛡️ Safety & Standards</h3>
+                    <ul>
+                        <li>CE-Zertifizierung (in Arbeit)</li>
+                        <li>EN 1078 Helmsicherheit</li>
+                        <li>Wasserdicht nach IP67</li>
+                        <li>Sturzerkennung mit 95% Genauigkeit</li>
+                    </ul>
                 </div>
                 
                 <div class="tech-category">
-                    <h3><i class="fas fa-brain"></i> Intelligenz</h3>
-                    <p>Lokale KI-Verarbeitung für Gefahrenbewertung und Priorisierung</p>
-                    <p>Echtzeit-Analyse der Umgebung auf einem mobilen Nano-Computer. Bewertet Risiken und priorisiert Warnungen basierend auf Dringlichkeit.</p>
+                    <h3>🔧 Prototyp & Entwicklung</h3>
+                    <ul>
+                        <li>Funktionierender MVP mit ESP32</li>
+                        <li>IMU-Sensorik (Beschleunigung, Gyroskop)</li>
+                        <li>LoRaWAN für Notruffunktion</li>
+                        <li>Zugang zu geeigneten 3D-Druck-Labors</li>
+                        <li>Pilotpartner wie Kommunen und soziale Einrichtungen</li>
+                    </ul>
                 </div>
                 
                 <div class="tech-category">
-                    <h3><i class="fas fa-broadcast-tower"></i> Interaktion</h3>
-                    <p>Akustische Warnungen für fokussiertes Handeln</p>
-                    <p>Klare Sprachhinweise mit Richtungs-, Distanz- und Geschwindigkeitsinformationen. Optional Vibration für taktiles Feedback.</p>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-shield-alt"></i> Datenschutz</h3>
-                    <p>Komplett offline – keine Cloud, volle Kontrolle</p>
-                    <p>Alle Datenverarbeitung erfolgt lokal auf dem Gerät. Keine personenbezogenen Daten werden übertragen. Maximale Privatsphäre garantiert.</p>
+                    <h3>🚀 Nächste Features</h3>
+                    <ul>
+                        <li>Bluetooth Connectivity</li>
+                        <li>Mobile App Integration</li>
+                        <li>Cloud-Anbindung für Datenanalyse</li>
+                        <li>Versicherungspartnerschaften</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Prototype Section -->
-    <section class="section prototype" id="prototype">
+
+    <!-- Business Model Section -->
+    <section id="business" style="background: #f8f9fa;">
         <div class="container">
             <div class="section-title">
-                <h2>Prototyp & Entwicklung</h2>
-                <p>Von der Idee zum funktionierenden System</p>
+                <h2>Geschäftsmodell</h2>
+                <p>Nachhaltige Einnahmequellen und Marktpotenzial</p>
             </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Erste Version auf Fahrrad</h3>
-                        <p>Vor einem Jahr lief die erste Version auf einem Fahrrad mit einem Jetson Nano (ca. 700 Euro). Das System war funktionsfähig, aber zu teuer und schwer für den praktischen Einsatz.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Dieft und Erkenntnis</h3>
-                        <p>Als das Fahrrad gestohlen wurde, verloren wir nicht nur die Hardware, sondern verstanden auch: Unsere Lösung muss tragbar, leichter und deutlich günstiger werden.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Neustart als Helm-System</h3>
-                        <p>Wir entwickelten das gesamte System als Helm komplett neu. Die Software (Objekterkennung, KI-Logik, Warnsystem) wurde in Python entwickelt und mit KI-Tools optimiert.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Aktueller Prototyp</h3>
-                        <p>Der aktuelle Prototyp funktioniert, hat aber noch Verbesserungspotenzial:</p>
-                        <ul class="needs-list">
-                            <li><i class="fas fa-battery-quarter"></i> <span>Batterie hält nur kurz</span></li>
-                            <li><i class="fas fa-weight-hanging"></i> <span>Hardware ist noch zu schwer</span></li>
-                            <li><i class="fas fa-cloud-rain"></i> <span>Empfindlich gegen Regen</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-title" style="margin-top: 80px;">
-                <h3>Was wir jetzt brauchen</h3>
-            </div>
-            
-            <div class="tech-categories">
-                <div class="tech-category">
-                    <h3><i class="fas fa-microchip"></i> Hardware</h3>
-                    <p>Leichtere und robustere Komponenten: Raspberry-Pi-System, 360°-Kamera, wasser- und stoßfestes Gehäuse aus dem 3D-Drucker.</p>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-flask"></i> Testumgebungen</h3>
-                    <p>Zugang zu 3D-Druck-Labors der Universität Bonn und realen Feldtests mit unseren Zielgruppen.</p>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-users"></i> Partner</h3>
-                    <p>Zusammenarbeit mit Pilotpartnern wie der Stadt Bonn, sozialen Einrichtungen und Verkehrssicherheitsstellen.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Users Section -->
-    <section class="section users" id="users">
-        <div class="container">
-            <div class="section-title">
-                <h2>Zielgruppen & Nutzen</h2>
-                <p>Für wen IROX besonders wertvoll ist</p>
-            </div>
-            
-            <div class="users-grid">
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <h3>Kinder & Kitas</h3>
-                    <p>Ausflüge und Gruppenverkehr werden sicherer. Erzieher*innen erhalten Unterstützung bei der Aufsicht mehrerer Kinder im Straßenverkehr.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-wheelchair"></i>
-                    </div>
-                    <h3>Senior*innen & Rollstuhlnutzer*innen</h3>
-                    <p>Mehr Sicherheit und Orientierung im Alltag. Frühe Warnungen vor Hindernissen und Gefahrenquellen erhöhen die Selbstständigkeit.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-low-vision"></i>
-                    </div>
-                    <h3>Sehbehinderte & blinde Menschen</h3>
-                    <p>Akustische Hinweise als zentrale Interaktion. Der Helm wird zu einem wichtigen Hilfsmittel für mehr Mobilität und Unabhängigkeit.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-bicycle"></i>
-                    </div>
-                    <h3>Radfahrer*innen im urbanen Verkehr</h3>
-                    <p>Vorausschauende Warnungen vor sich nähernden Fahrzeugen und anderen Gefahrenquellen im dichten Stadtverkehr.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Menschen mit Aufmerksamkeitsproblemen</h3>
-                    <p>Unterstützung bei der Wahrnehmung von Gefahren, die sonst oft zu spät erkannt werden. Mehr Sicherheit im Alltag.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3>Industrie & Arbeitsumgebungen</h3>
-                    <p>Schutz für Mitarbeiter*innen in Bereichen mit Fahrzeugverkehr oder beweglichen Maschinen. Proaktive Warnungen vor Gefahren.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Business Section -->
-    <section class="section business" id="business">
-        <div class="container">
-            <div class="section-title">
-                <h2>Geschäftsmodell & Markt</h2>
-                <p>Wirtschaftliche Nachhaltigkeit und Marktpotenzial</p>
-            </div>
-            
             <div class="business-content">
-                <div class="business-text">
-                    <h3>Geschäftsmodell (B2B2C)</h3>
-                    <p>Unser Geschäftsmodell ist klar: Wir verkaufen das intelligente Helm-Modul, bieten optionale Premium-Dienste und arbeiten mit Versicherungen, Kommunen und sozialen Einrichtungen zusammen, die ein großes Interesse an Unfallprävention haben.</p>
-                    
-                    <h3 style="margin-top: 30px;">Marktpotenzial</h3>
-                    <p>Der Markt ist riesig und das Interesse an smarter Sicherheit wächst kontinuierlich.</p>
-                    
-                    <div class="market-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">80 Mio.+</div>
-                            <div class="stat-label">Fahrräder in Europa</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">Millionen</div>
-                            <div class="stat-label">Menschen mit Mobilitäts- oder Sehbeeinträchtigungen</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">Wachsend</div>
-                            <div class="stat-label">Bedarf an smarter Sicherheit</div>
-                        </div>
-                    </div>
-                    
-                    <p style="margin-top: 30px;">Unsere Lösung hat das Potenzial, in vielen Bereichen Standard zu werden – von der privaten Nutzung über soziale Einrichtungen bis hin zu industriellen Anwendungen.</p>
-                </div>
+                <p><strong>Zielmarkt:</strong> Über 80 Millionen Radfahrer in Europa, mit wachsendem Sicherheitsbewusstsein und E-Bike-Boom.</p>
                 
-                <div class="business-visual">
-                    <img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/343d/11846507/edd343d30c5f/JMDH-18-957-g0003.jpg" alt="Marktanalyse und Geschäftsmodell" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Team Section -->
-    <section class="section team" id="team">
-        <div class="container">
-            <div class="section-title">
-                <h2>Team</h2>
-                <p>Unsere Experten für KI und Sicherheitstechnologie</p>
-            </div>
-            
-            <div class="team-members">
-                <div class="member-card">
-                    <div class="member-info">
-                        <h3 class="member-name">Gründerin / KI-Entwicklung</h3>
-                        <div class="member-role">Python & KI-Expertin</div>
-                        <p>Ich interessiere mich sehr für Python und KI und habe früh gemerkt, dass man mit Bibliotheken wie MediaPipe und YOLOv8 ein echtes Sicherheitssystem entwickeln kann. Darum habe ich die komplette Software unseres Helms selbst programmiert und mit KI-Tools wie ChatGPT Schritt für Schritt verbessert.</p>
-                        <div class="member-highlight">
-                            <p>Neben dem Studium habe ich in einer Kita gearbeitet. Dort habe ich täglich erlebt, wie herausfordernd und gefährlich Ausflüge mit vielen Kindern sein können. Diese direkte Erfahrung mit einer besonders gefährdeten Gruppe war ein wichtiger Auslöser für meine Idee.</p>
-                        </div>
+                <div class="revenue-streams">
+                    <div class="revenue-item">
+                        <h4>👥 B2C Direct Sales</h4>
+                        <p>Direktvertrieb über Online-Shop<br>Preis: 199-249€</p>
                     </div>
-                </div>
-                
-                <div class="member-card">
-                    <div class="member-info">
-                        <h3 class="member-name">Teamkollege</h3>
-                        <div class="member-role">Maschinenbauingenieur</div>
-                        <p>Mein Teamkollege ist Maschinenbauingenieur und hat das gesamte mechanische Design umgesetzt: 3D-Teile, Kamerahalterung, Stoßschutz und die komplette Verkabelung und Hardware-Integration am Helm.</p>
-                        <div class="member-highlight">
-                            <p>Zusammen kombinieren wir KI-Entwicklung, mechanisches Engineering und echten Zugang zu vulnerablen Nutzergruppen. Genau diese Mischung macht unser Team einzigartig und glaubwürdig.</p>
-                        </div>
+                    <div class="revenue-item">
+                        <h4>🏢 B2B Partnerschaften</h4>
+                        <p>Versicherungen, Fahrradverleihe, Arbeitgeber</p>
+                    </div>
+                    <div class="revenue-item">
+                        <h4>📊 Daten-Services</h4>
+                        <p>Anonymisierte Unfalldaten für Städte und Forschung</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Support Section -->
-    <section class="section support" id="support">
+    <section id="support">
         <div class="container">
             <div class="section-title">
                 <h2>Nächste Schritte & Unterstützung</h2>
-                <p>Gemeinsam können wir Sicherheit neu definieren</p>
+                <p>Wir suchen Partner für die weitere Entwicklung und Markteinführung</p>
             </div>
-            
             <div class="support-content">
-                <div class="support-plan">
-                    <h3>Geplante Schritte</h3>
-                    <ul>
-                        <li>
-                            <i class="fas fa-users"></i>
-                            <span>Systematische Tests mit echten Nutzergruppen: Senior*innen, Rollstuhlnutzer*innen, sehbehinderte Personen, Fußgänger*innen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-vial"></i>
-                            <span>Entwicklung einer stabilen Testserie auf Basis der Feldtests</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-rocket"></i>
-                            <span>Pilotprojekte mit Kommunen (z.B. Stadt Bonn), Verkehrssicherheitsstellen und Versicherungen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-user-edit"></i>
-                            <span>Weiterentwicklung nach dem Prinzip des „User-Centered Design“</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="support-needs">
-                    <h3>Was wir brauchen</h3>
-                    <ul>
-                        <li>
-                            <i class="fas fa-print"></i>
-                            <span>Zugang zu 3D-Druck-Labors der Universität Bonn</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-flask"></i>
-                            <span>Testumgebungen und Living Labs</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-handshake"></i>
-                            <span>Pilotpartner (Stadt Bonn, soziale Einrichtungen, Verkehrsprojekte)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-chart-line"></i>
-                            <span>Unterstützung bei Produktstrategie und Markteintritt</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="highlight-box" style="margin-top: 50px; text-align: center;">
-                <p style="font-size: 1.3rem; font-weight: 600;">Wir haben gezeigt, dass die Technologie funktioniert – jetzt geht es darum, echten Schutz in die Realität zu bringen. Mit Ihrer Hilfe können wir dazu beitragen, dass weniger Menschen verletzt werden, weil Gefahren zu spät erkannt werden.</p>
+                <ul class="support-list">
+                    <li><strong>Technische Entwicklung:</strong> Zugang zu geeigneten 3D-Druck-Labors</li>
+                    <li><strong>Pilotprojekte:</strong> Pilotprojekte mit Kommunen, Verkehrssicherheitsstellen und Versicherungen</li>
+                    <li><strong>Partnerschaften:</strong> Pilotpartner wie soziale Einrichtungen, Verkehrsprojekte und Kommunen</li>
+                    <li><strong>Investition:</strong> Seed-Financing für Serienproduktion (500.000€)</li>
+                </ul>
             </div>
         </div>
     </section>
-    
+
     <!-- FAQ Section -->
-    <section class="section faq" id="faq">
+    <section id="faq" style="background: #f8f9fa;">
         <div class="container">
             <div class="section-title">
-                <h2>FAQ</h2>
-                <p>Häufig gestellte Fragen</p>
+                <h2>Häufige Fragen</h2>
+                <p>Alles was Sie über LROX wissen müssen</p>
             </div>
-            
-            <div class="faq-container">
+            <div class="faq-content">
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Funktioniert der Helm auch ohne Internet?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="faq-question">Wie erkennt der Helm einen Unfall?</div>
                     <div class="faq-answer">
-                        <p>Ja, der IROX Helm funktioniert komplett offline. Alle Datenverarbeitung erfolgt lokal auf dem Gerät, es ist keine Internetverbindung erforderlich. Das garantiert nicht nur Datenschutz, sondern auch Zuverlässigkeit in Gebieten mit schlechter Netzabdeckung.</p>
+                        <p>Durch kombinierte Auswertung von Beschleunigungsdaten, Orientierung und Sturzmustern mittels KI-Algorithmen. Das System unterscheidet zwischen normalen Fahrbewegungen und kritischen Ereignissen.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Ist IROX ein Medizinprodukt oder ein Assistenzsystem?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="faq-question">Was passiert bei einem Unfall?</div>
                     <div class="faq-answer">
-                        <p>IROX ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es handelt sich nicht um ein Medizinprodukt, sondern um ein technisches Hilfsmittel zur Erhöhung der Sicherheit im Straßenverkehr.</p>
+                        <p>Der Helm sendet automatisch einen Notruf an vorher definierte Kontakte, inklusive Standortdaten und Unfallinformationen für Rettungskräfte.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Für wen ist IROX besonders geeignet?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="faq-question">Ist der Helm wasserdicht?</div>
                     <div class="faq-answer">
-                        <p>IROX ist besonders wertvoll für: Kinder und Kita-Gruppen, Senior*innen und Rollstuhlnutzer*innen, sehbehinderte und blinde Menschen, Radfahrer*innen im urbanen Verkehr sowie Menschen mit Aufmerksamkeitsproblemen. Grundsätzlich profitiert jeder, der seine Umgebung nicht vollständig wahrnehmen kann oder möchte.</p>
+                        <p>Ja, der LROX Helm ist nach IP67 zertifiziert und damit vollständig staub- und wassergeschützt.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie wird der Datenschutz gewährleistet?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="faq-question">Wie lange hält der Akku?</div>
                     <div class="faq-answer">
-                        <p>Da das System komplett offline funktioniert, werden keine personenbezogenen Daten an Server übertragen. Alle Verarbeitungsschritte finden lokal auf dem Gerät statt. Es werden keine Aufnahmen oder persönlichen Daten dauerhaft gespeichert.</p>
+                        <p>Bei normaler Nutzung bis zu 72 Stunden. Der Akku lässt sich via USB-C in unter 2 Stunden vollständig aufladen.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie robust ist die Hardware (Regen, Stöße)?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="faq-question">Wann ist der Helm erhältlich?</div>
                     <div class="faq-answer">
-                        <p>Der aktuelle Prototyp hat noch Verbesserungspotenzial bei der Widerstandsfähigkeit. Unser Ziel ist ein wasser- und stoßfestes Gehäuse aus dem 3D-Drucker, das allen Witterungsbedingungen standhält. Dafür benötigen wir Zugang zu entsprechenden Labors und Materialien.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie lange hält die Batterie im Alltag?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Der aktuelle Prototyp hat eine begrenzte Batterielaufzeit. Unser Ziel ist eine Akkulaufzeit von mindestens 4-6 Stunden bei kontinuierlichem Betrieb, was für die meisten Alltagssituationen ausreichen sollte. Wir arbeiten an energieeffizienteren Komponenten und einem modularen Akkusystem.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie können Institutionen (z.B. Kommunen, Schulen, Senioreneinrichtungen) mitmachen?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Institutionen können als Pilotpartner fungieren, Testumgebungen bereitstellen oder bei der Entwicklung spezifischer Anwendungsszenarien unterstützen. Wir suchen insbesondere nach Partnern für Feldtests und die gemeinsame Entwicklung von Einsatzszenarien. Kontaktieren Sie uns gerne für ein unverbindliches Gespräch.</p>
+                        <p>Wir planen die Markteinführung für Q4 2024. Interessierte können sich bereits jetzt für Updates registrieren.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kontakt</h2>
-                <p>Kontaktieren Sie uns für weitere Informationen</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>Kontaktinformationen</h3>
-                        <ul>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:kontakt@irox-helmet.de">kontakt@irox-helmet.de</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Bonn, Deutschland</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3>Einladung zur Zusammenarbeit</h3>
-                        <p>Wir suchen Partner für Pilotprojekte, Forschungskooperationen und Feldtests. Gemeinsam können wir die Sicherheit im Straßenverkehr nachhaltig verbessern.</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="organization">Organisation (optional)</label>
-                            <input type="text" id="organization" name="organization">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Nachricht</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn">Nachricht senden</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>IROX Helm</h3>
-                    <p>Ein KI-gestütztes Sicherheitssystem für mehr Unabhängigkeit im Straßenverkehr, entwickelt in Bonn, Deutschland.</p>
+                <h3>LROX Helm</h3>
+                <p>Intelligenter Schutz für mehr Sicherheit im Radverkehr</p>
+                <div class="contact-info">
+                    <p>Email: kontakt@lrox-helmet.de</p>
+                    <p>Web: https://lrox-helm.de</p>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Schnelllinks</h3>
-                    <ul>
-                        <li><a href="#home">Start</a></li>
-                        <li><a href="#problem">Problem</a></li>
-                        <li><a href="#solution">Lösung</a></li>
-                        <li><a href="#technology">Technologie</a></li>
-                        <li><a href="#team">Team</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Information</h3>
-                    <ul>
-                        <li><a href="#innovation">Warum neu?</a></li>
-                        <li><a href="#users">Zielgruppen</a></li>
-                        <li><a href="#business">Geschäftsmodell</a></li>
-                        <li><a href="#support">Unterstützung</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Kontakt</h3>
-                    <ul>
-                        <li><a href="mailto:kontakt@irox-helmet.de">kontakt@irox-helmet.de</a></li>
-                        <li><span>Bonn, Deutschland</span></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 IROX – Intelligenter Sicherheitshelm. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 LROX Helm. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobileMenu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // Scroll Progress Bar
-        window.onscroll = function() {
-            updateProgressBar();
-        };
-        
-        function updateProgressBar() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        }
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
+        // Simple FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
             });
         });
-        
-        // Form Validation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                // Simple validation - in a real app, you would send the data to a server
-                alert('Nachricht wurde gesendet! Wir werden uns bald bei Ihnen melden.');
-                document.getElementById('contactForm').reset();
-            } else {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
-            }
-        });
-        
-        // Intersection Observer for Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            });
-        }, observerOptions);
-        
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.metric-card, .group-item, .comparison-card, .tech-category, .user-card, .member-card, .stat-item');
-            
-            animateElements.forEach(el => {
-                el.style.opacity = 0;
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(el);
             });
         });
     </script>
