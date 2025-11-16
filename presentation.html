@@ -508,75 +508,90 @@
 }
 
 }
-/* -------------------------------------------------- */
-/*               SLIDE 4 – SMART HELMETS             */
-/* -------------------------------------------------- */
+/* ---------- SLIDE 4 FIXED LAYOUT ---------- */
 
 .slide-4 .slide-inner {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 34px;
-  align-items: center;
+  gap: 32px;
+  align-items: start;
 }
 
-/* عنوان */
-.slide-4 h1 {
+/* Left text column */
+.slide-4 .content-left h1 {
   font-size: 28px;
   margin-bottom: 16px;
 }
 
-/* لیست سمت چپ */
-.slide-4 ul {
+.slide-4 .feature-list {
   list-style: none;
-  padding: 0;
-  margin: 14px 0;
+  padding-left: 0;
 }
 
-.slide-4 li {
-  position: relative;
-  padding-left: 18px;
+.slide-4 .feature-list li {
   margin-bottom: 10px;
   font-size: 16px;
-  color: var(--text);
+  position: relative;
+  padding-left: 18px;
 }
 
-.slide-4 li::before {
+.slide-4 .feature-list li::before {
   content: "•";
   position: absolute;
   left: 0;
   top: 0;
   color: var(--accent);
-  font-size: 20px;
 }
 
-/* گالری تصاویر */
-.image-grid {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 14px;
-  padding: 6px;
-}
-
-.image-grid img {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
+.slide-4 .highlight-orange {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 10px;
   display: block;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
 }
 
-/* واکنش‌گرا */
+/* Right column with images */
+.slide-4 .comparison-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each image box */
+.slide-4 .comparison-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  backdrop-filter: blur(6px);
+}
+
+/* FIX: images now always fit */
+.slide-4 .comparison-item img {
+  width: 100%;
+  height: 200px;           /* 👈 محدودیت ارتفاع */
+  object-fit: cover;        /* 👈 تصویر همیشه کامل و مرتب */
+  border-radius: 10px;
+}
+
+/* Caption */
+.slide-4 .comparison-item p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.slide-4 .comparison-item strong {
+  color: var(--text);
+}
+
+/* MOBILE FIX */
 @media (max-width: 900px) {
   .slide-4 .slide-inner {
     grid-template-columns: 1fr;
   }
-
-  .image-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
 }
+
 
   </style>
 </head>
@@ -680,68 +695,52 @@
           </div>
         </section>
               <!-- Slide 4 -->
-      <section class="slide slide-4" data-slide="4">
-        <div class="slide-inner">
-          <div class="two-columns">
-            <!-- متن سمت چپ -->
-            <div class="content-left">
-              <h1>Was macht unsere Lösung wirklich innovativ?</h1>
+        <!-- Slide 4 -->
+<section class="slide slide-4" data-slide="4">
+  <div class="slide-inner">
+    
+    <!-- LEFT COLUMN -->
+    <div class="content-left">
+      <h1>Was macht unsere Lösung wirklich innovativ?</h1>
 
-              <ul class="feature-list">
-                <li>
-                  <strong>Es gibt bereits smarte Helme</strong> – aber sie reagieren meist erst,
-                  wenn die Gefahr unmittelbar bevorsteht.
-                </li>
-                <li>
-                  <strong>Unsere Innovation geht einen Schritt weiter:</strong>
-                  Wir sagen Gefahren vorher, bevor sie entstehen.
-                </li>
-                <li>
-                  <strong>Blindenstöcke</strong> erkennen nur Kollisionen.
-                </li>
-                <li>
-                  <strong>Ultraschallsensoren</strong> messen nur Abstände.
-                </li>
-                <li>
-                  <strong>Unser Helm</strong> analysiert Art, Richtung und Geschwindigkeit einer Gefahr –
-                  und gibt frühzeitige, situationsabhängige Warnungen.
-                </li>
-              </ul>
+      <ul class="feature-list">
+        <li><strong>Es gibt bereits smarte Helme</strong> – aber sie reagieren meist erst, wenn die Gefahr unmittelbar bevorsteht.</li>
 
-              <p class="closing-highlight">
-                → Frühwarnung statt Reaktion. Genau das macht LROX einzigartig.
-              </p>
-            </div>
+        <li><strong>Unsere Innovation geht einen Schritt weiter:</strong> Wir sagen Gefahren vorher, bevor sie entstehen.</li>
 
-            <!-- سه تصویر مقایسه‌ای سمت راست -->
-            <div class="comparison-right">
-              <div class="comparison-item">
-                <img src="assets/imghelm-research-1.jpg" alt="Forschungsprototyp eines smarten Helms" />
-                <p>
-                  <strong>Forschungsprototyp:</strong>
-                  Sensoren, aber nur einfache Abstandsmessung.
-                </p>
-              </div>
+        <li><strong>Blindenstöcke</strong> erkennen nur Kollisionen.</li>
 
-              <div class="comparison-item">
-                <img src="assets/imghelm-research-2.jpg" alt="Weiterer Prototyp mit Ultraschallsensoren" />
-                <p>
-                  <strong>Ultraschallsensoren:</strong>
-                  erkennen Distanzen, aber keine Richtung oder Art der Gefahr.
-                </p>
-              </div>
+        <li><strong>Ultraschallsensoren</strong> messen nur Abstände.</li>
 
-              <div class="comparison-item">
-                <img src="assets/imghelm-market-1.jpg" alt="Kommerzieller smarter Fahrradhelm" />
-                <p>
-                  <strong>Kommerzieller smarter Helm:</strong>
-                  Licht &amp; Bremswarnung – jedoch ohne vorausschauende KI-Analyse.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <li><strong>Unser Helm</strong> analysiert Art, Richtung und Geschwindigkeit einer Gefahr – und gibt frühzeitige, situationsabhängige Warnungen.</li>
+      </ul>
+
+      <span class="highlight-orange">→ Frühwarnung statt Reaktion. Genau das macht LROX einzigartig.</span>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="comparison-right">
+
+      <div class="comparison-item">
+        <img src="assets/imghelm-market-1.jpg" alt="Kommerzieller smarter Helm">
+        <p><strong>Kommerzieller smarter Helm:</strong> Licht & Bremswarnung – jedoch ohne vorausschauende KI-Analyse.</p>
+      </div>
+
+      <div class="comparison-item">
+        <img src="assets/imghelm-research-1.jpg" alt="Forschungsprototyp">
+        <p><strong>Forschungsprototyp:</strong> Sensoren, aber nur einfache Abstandsmessung.</p>
+      </div>
+
+      <div class="comparison-item">
+        <img src="assets/imghelm-research-2.jpg" alt="Ultraschallsensor-Prototyp">
+        <p><strong>Ultraschallsensoren:</strong> erkennen Distanzen, aber keine Richtung oder Art der Gefahr.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 
               
 
