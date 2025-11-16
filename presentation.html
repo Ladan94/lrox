@@ -4,66 +4,7 @@
   <meta charset="UTF-8" />
   <title>LROX – Presentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  /* Slide 3 layout */
-.two-columns {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.content-left h1 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.feature-list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 0 18px;
-}
-
-.feature-list li {
-  font-size: 16px;
-  margin-bottom: 8px;
-  padding-left: 18px;
-  position: relative;
-}
-
-.feature-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-.closing-impact {
-  font-size: 18px;
-  color: var(--accent);
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-/* Video placeholder */
-.video-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-placeholder {
-  width: 100%;
-  height: 260px;
-  border-radius: 18px;
-  border: 1px dashed rgba(255, 122, 0, 0.6);
-  color: var(--accent);
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(6px);
-  background: rgba(255, 122, 0, 0.08);
-}
+ 
 
   <style>
     :root {
@@ -438,6 +379,86 @@
         font-size: 16px;
       }
     }
+        /* Slide 3 layout */
+    .slide-3 .slide-inner {
+      padding: 6px 4px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .content-left h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0 0 18px;
+    }
+
+    .feature-list li {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .closing-impact {
+      margin-top: 4px;
+      font-size: 18px;
+      color: var(--accent); /* این خط باعث نارنجی شدن می‌شود */
+      font-weight: 600;
+    }
+
+    .video-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      max-width: 420px;
+      height: 260px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 122, 0, 0.7);
+      color: var(--accent);
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 12px;
+      backdrop-filter: blur(6px);
+      background: rgba(255, 122, 0, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .two-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .video-box {
+        order: -1; /* روی موبایل، ویدیو می‌آید بالا */
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -511,36 +532,35 @@
   </div>
 </section>
 
-<!-- Slide 3 -->
-<section class="slide slide-3" data-slide="3">
-  <div class="slide-inner two-columns">
+        <!-- Slide 3 -->
+        <section class="slide slide-3" data-slide="3">
+          <div class="slide-inner">
+            <div class="two-columns">
+              <div class="content-left">
+                <h1>Ein Helm, der mehr kann.</h1>
+                <ul class="feature-list">
+                  <li>360°-Kamera + Nano-Computer + KI</li>
+                  <li>Erkennt Fahrzeuge, Hindernisse &amp; Umgebung in Echtzeit</li>
+                  <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
+                  <li>Funktioniert vollständig offline</li>
+                  <li>Für Radfahrerinnen, Fußgänger, Seniorinnen, Rollstuhlnutzer –
+                    besonders für blinde &amp; sehbehinderte Personen</li>
+                </ul>
+                <div class="closing-impact">
+                  → Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.
+                </div>
+              </div>
 
-    <!-- LEFT SIDE -->
-    <div class="content-left">
-      <h1>Ein Helm, der mehr kann.</h1>
+              <div class="video-box">
+                <div class="video-placeholder">
+                  Video wird hier eingefügt<br />
+                  (Demovideo des LROX-Helms)
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <ul class="feature-list">
-        <li>360°-Kamera + Nano-Computer + KI</li>
-        <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
-        <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
-        <li>Funktioniert vollständig offline</li>
-        <li>Für Radfahrerinnen, Fußgänger, Seniorinnen & sehbehinderte Personen</li>
-      </ul>
-
-      <p class="closing-impact">
-        → Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.
-      </p>
-    </div>
-
-    <!-- RIGHT SIDE — VIDEO PLACEHOLDER -->
-    <div class="content-right video-box">
-      <div class="video-placeholder">
-        Video wird hier eingefügt
-      </div>
-    </div>
-
-  </div>
-</section>
 
 
       </div>
