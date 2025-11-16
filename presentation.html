@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>LROX – Presentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #03040a;
+      --accent: #ff7a00;
+      --accent-soft: rgba(255, 122, 0, 0.16);
+      --accent-soft-strong: rgba(255, 122, 0, 0.32);
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --border-soft: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(circle at top, #1d2540 0, #050814 55%),
+        radial-gradient(circle at bottom, #130d06 0, #050509 40%);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .presentation-wrapper {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 40px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .bg-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .bg-glow::before,
+    .bg-glow::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      opacity: 0.65;
+    }
+
+    .bg-glow::before {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, var(--accent-soft-strong), transparent 70%);
+      top: -120px;
+      left: -80px;
+    }
+
+    .bg-glow::after {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(52, 84, 214, 0.4), transparent 70%);
+      bottom: -160px;
+      right: -120px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg,
+          rgba(255, 122, 0, 0.12),
+          rgba(9, 11, 24, 0.65));
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+    }
+
+    header .brand span {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    header .brand img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+
+    header .meta {
+      text-align: right;
+    }
+
+    header .meta div:first-child {
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slides {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .slide {
+      display: none;
+      background:
+        radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
+      border-radius: 28px;
+      padding: 28px 32px 26px;
+      border: 1px solid var(--border-soft);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.85),
+        0 0 46px rgba(255, 122, 0, 0.26);
+      backdrop-filter: blur(22px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 18% 0%,
+        rgba(255, 255, 255, 0.05),
+        transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    /* Slide 1 */
+    .slide-1 .slide-inner {
+      text-align: center;
+    }
+
+    .logo-hero {
+      margin-bottom: 22px;
+    }
+
+    .logo-hero img {
+      max-width: 240px;
+      height: auto;
+      filter:
+        drop-shadow(0 0 18px rgba(255, 122, 0, 0.55))
+        drop-shadow(0 0 6px rgba(255, 122, 0, 0.35));
+    }
+
+    .slide-1 h1 {
+      font-size: 32px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .slide-1 .tagline {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 10px auto 0;
+    }
+
+    .slide-1 .tagline span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .slide-1 .names {
+      margin-top: 22px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .slide-1 .names span {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Slide 2 */
+    .slide-2 .slide-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .text-block h1 {
+      font-size: 28px;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .highlight-number {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .highlight-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .text-block p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .text-block ul {
+      list-style: none;
+      margin: 10px 0 10px;
+      padding-left: 0;
+    }
+
+    .text-block li {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .text-block li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .text-block .closing {
+      margin-top: 12px;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .chart-block {
+      background: rgba(3, 5, 18, 0.8);
+      border-radius: 20px;
+      padding: 14px 14px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.8),
+        0 0 24px rgba(10, 12, 26, 0.9);
+    }
+
+    .chart-block img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .chart-caption {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-hint {
+      opacity: 0.9;
+    }
+
+    footer .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 122, 0, 0.9);
+    }
+
+    @media (max-width: 900px) {
+      .presentation-wrapper {
+        padding: 14px 14px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      header .meta {
+        text-align: left;
+      }
+
+      .slide {
+        padding: 22px 18px 18px;
+        border-radius: 22px;
+      }
+
+      .slide-2 .slide-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .chart-block {
+        order: -1;
+      }
+
+      .text-block h1 {
+        font-size: 22px;
+      }
+
+      .slide-1 h1 {
+        font-size: 26px;
+      }
+
+      .slide-1 .tagline {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="presentation-wrapper">
+    <div class="bg-glow"></div>
+
+    <header>
+      <div class="brand">
+        <img src="ChatGPT Image Nov 15, 2025, 04_22_41 PM.png" alt="LROX Logo klein" />
+        <span>LROX</span>
+      </div>
+      <div class="meta">
+        <div>Ideenwettbewerb 2025 · LROX</div>
+        <div>Ladan Seddighi · Amir Mobasheraghdam</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="slides">
+        <!-- Slide 1 -->
+        <section class="slide slide-1 active" data-slide="1">
+          <div class="slide-inner">
+            <div class="logo-hero">
+              <img src="ChatGPT Image Nov 15, 2025, 04_22_41 PM.png" alt="LROX Logo" />
+            </div>
+            <h1>
+              Was wäre, wenn ein Helm Gefahren erkennen könnte,<br />
+              bevor Sie sie überhaupt sehen?
+            </h1>
+            <p class="tagline">
+              Wir glauben an eine Zukunft, in der niemand mehr durch übersehene Gefahren verletzt wird –
+              und <span>LROX</span> ist die Technologie, die genau diesen Wandel ermöglicht.
+            </p>
+            <div class="names">
+              Präsentiert von <span>Ladan Seddighi</span> &middot;
+              <span>Amir Mobasheraghdam</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 2 -->
+        <section class="slide slide-2" data-slide="2">
+          <div class="slide-inner">
+            <div class="text-block">
+              <h1>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</h1>
+
+              <div class="highlight-number">
+                441 getötete Radfahrer*innen in Deutschland im Jahr 2024.
+              </div>
+              <div class="highlight-source">
+                Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.
+              </div>
+
+              <p>
+                Viele dieser Unfälle passieren, weil Gefahren zu spät erkannt werden –
+                oft mit schweren, irreversiblen Folgen.
+              </p>
+
+              <p>Besonders gefährdet sind Menschen, die ihre Umgebung nicht immer vollständig wahrnehmen können:</p>
+
+              <ul>
+                <li>Kinder im Straßenverkehr</li>
+                <li>Ältere Menschen und Personen im Rollstuhl</li>
+                <li>Menschen mit eingeschränkter Mobilität</li>
+                <li>Menschen mit Sehbeeinträchtigungen</li>
+              </ul>
+
+              <p class="closing">
+                Für genau diese Gruppen kann ein einziger früher Hinweis den Unterschied machen –
+                zwischen sicher ankommen und einem schweren Unfall.
+              </p>
+            </div>
+
+            <div class="chart-block">
+              <img src="fahrradunfaelle.png" alt="Getötete Radfahrer*innen nach Jahr (Destatis)" />
+              <div class="chart-caption">
+                Quelle: Statistisches Bundesamt (Destatis), 2025 –
+                getötete Fahrradfahrer*innen 2014–2024 (vorläufige Werte für 2024).
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="nav-hint" id="nav-hint">
+        Slide 1 / 2 · Mit der rechten Pfeiltaste zur nächsten Folie
+      </div>
+      <div class="right">
+        <div class="dot"></div>
+        <div>lrox.de</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    let currentSlide = 0;
+
+    const navHint = document.getElementById("nav-hint");
+    const totalSlides = slides.length;
+
+    function updateSlides() {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === currentSlide);
+      });
+
+      const nr = currentSlide + 1;
+      if (nr === 1) {
+        navHint.textContent = `Slide ${nr} / ${totalSlides} · Mit der rechten Pfeiltaste zur nächsten Folie`;
+      } else if (nr === totalSlides) {
+        navHint.textContent = `Slide ${nr} / ${totalSlides} · Mit der linken Pfeiltaste zur vorherigen Folie`;
+      } else {
+        navHint.textContent = `Slide ${nr} / ${totalSlides} · Pfeiltasten: vor/zurück`;
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      const nextKeys = ["ArrowRight", "PageDown", " ", "Enter"];
+      const prevKeys = ["ArrowLeft", "PageUp", "Escape", "Backspace"];
+
+      if (nextKeys.includes(e.key)) {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          updateSlides();
+        }
+      }
+
+      if (prevKeys.includes(e.key)) {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlides();
+        }
+      }
+    });
+
+    updateSlides();
+  </script>
+</body>
+</html>
