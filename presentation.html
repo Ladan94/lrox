@@ -581,34 +581,79 @@
 }
 
 /* --------------------------------------------- */
-/*               SLIDE 4 – SMART HELMETS         */
+/*          NEUE VERSION: SLIDE 4 – INNOVATION   */
 /* --------------------------------------------- */
 
-/* Fix: image grid for slide 4 */
-.slide-4 .comparison-right {
-    display: grid;
+.slide-4-innov .slide-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ستون متن */
+.slide-4-innov .helmet-text h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.slide-4-innov .helmet-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding-left: 0;
+}
+
+.slide-4-innov .helmet-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.slide-4-innov .helmet-list li strong {
+  color: var(--text);
+}
+
+.slide-4-innov .closing-important {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* ستون عکس‌ها: سه کارت کوچک زیر هم */
+.slide-4-innov .helmet-images {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slide-4-innov .helmet-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.slide-4-innov .helmet-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slide-4-innov .helmet-card p {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* موبایل: متن بالا، عکس‌ها زیرش */
+@media (max-width: 900px) {
+  .slide-4-innov .slide-inner {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
 }
 
-.slide-4 .comparison-item {
-    background: rgba(255, 255, 255, 0.04);
-    padding: 10px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.slide-4 .comparison-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.slide-4 .comparison-item p {
-    margin-top: 6px;
-    font-size: 14px;
-}
 
   </style>
 </head>
@@ -713,12 +758,13 @@
         </section>
               <!-- Slide 4 -->
        <!-- Slide 4 -->
-<section class="slide slide-4" data-slide="4">
+<!-- Slide 4 – Innovation -->
+<section class="slide slide-4-innov" data-slide="4">
   <div class="slide-inner">
-    <div class="content-left">
+    <div class="helmet-text">
       <h1>Was macht unsere Lösung wirklich innovativ?</h1>
 
-      <ul class="feature-list">
+      <ul class="helmet-list">
         <li><strong>Es gibt bereits smarte Helme</strong> – aber sie reagieren meist erst, wenn die Gefahr unmittelbar bevorsteht.</li>
         <li><strong>Unsere Innovation geht einen Schritt weiter:</strong> Wir sagen Gefahren vorher, bevor sie entstehen.</li>
         <li><strong>Blindenstöcke</strong> erkennen nur Kollisionen.</li>
@@ -731,24 +777,25 @@
       </p>
     </div>
 
-    <div class="comparison-right">
-      <div class="comparison-item">
+    <div class="helmet-images">
+      <div class="helmet-card">
         <img src="assets/imghelm-research-1.jpg" alt="Forschungsprototyp eines smarten Helms" />
         <p><strong>Forschungsprototyp:</strong> Sensoren, aber nur einfache Abstandsmessung.</p>
       </div>
 
-      <div class="comparison-item">
+      <div class="helmet-card">
         <img src="assets/imghelm-research-2.jpg" alt="Prototyp mit Ultraschallsensoren" />
         <p><strong>Ultraschallsensoren:</strong> erkennen Distanzen, aber keine Richtung oder Art der Gefahr.</p>
       </div>
 
-      <div class="comparison-item">
+      <div class="helmet-card">
         <img src="assets/imghelm-market-1.jpg" alt="Kommerzieller smarter Helm" />
         <p><strong>Kommerzieller smarter Helm:</strong> Licht &amp; Bremswarnung – jedoch ohne vorausschauende KI-Analyse.</p>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
