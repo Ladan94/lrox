@@ -633,7 +633,75 @@
     gap: 18px;
   }
 }
+/* --------------------------------------------- */
+/*                SLIDE 5 – RESOURCES            */
+/* --------------------------------------------- */
 
+.slide-5 .two-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.slide-5 h1 {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+.slide-5 .intro-line {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--accent-soft);
+}
+
+.slide-5 .feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 18px;
+}
+
+.slide-5 .feature-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.slide-5 .section-title {
+  margin-top: 22px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Video Placeholder */
+.slide-5 .video-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 330px;
+  text-align: center;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.slide-5 .video-placeholder span {
+  opacity: 0.7;
+}
+
+
+/* Mobile */
+@media (max-width: 900px) {
+  .slide-5 .two-columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .slide-5 .video-box {
+    height: 260px;
+  }
+}
 
   </style>
 </head>
@@ -727,16 +795,7 @@
                 </div>
               </div>
 
-              <div class="video-box">
-                <div class="video-placeholder">
-                  Video wird hier eingefügt<br />
-                  (Demovideo des LROX-Helms)
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-              <!-- Slide 4 -->
+             
        <!-- Slide 4 -->
 <!-- Slide 4 – Innovation -->
 <section class="slide slide-4-innov" data-slide="4">
@@ -775,6 +834,67 @@
     </div>
   </div>
 </section>
+        <!-- Slide 5 -->
+        <section class="slide slide-5" data-slide="5">
+          <div class="slide-inner">
+            <div class="two-columns">
+              <div class="content-left">
+                <h1>Umsetzung, Ressourcen, Kompetenzen</h1>
+                <p class="intro-line">
+                  Was zeigt, dass wir es wirklich umsetzen können?
+                </p>
+
+                <p><strong>✔ Wir haben bereits einen funktionierenden Prototyp entwickelt.</strong></p>
+                <p>
+                  Die erste Version lief auf einem Fahrrad mit einem Jetson Nano (700 €).
+                  Nach dem Diebstahl des Fahrrads wurde klar:
+                  Unsere Lösung muss tragbar, leichter und deutlich günstiger werden.
+                </p>
+
+                <p><strong>✔ Deshalb haben wir das gesamte System als Helm neu konstruiert.</strong></p>
+                <ul class="feature-list">
+                  <li>
+                    Objekterkennung, KI-Logik und Warnsystem → komplett selbst in Python entwickelt.
+                  </li>
+                  <li>
+                    Das gesamte mechanische Design, die 3D-Teile, die Kamerahalterung
+                    und die komplette Verkabelung &amp; Integration der Hardware am Helm
+                    → wurden von meinem Teamkollegen umgesetzt.
+                  </li>
+                </ul>
+
+                <p><strong>✔ Der aktuelle Prototyp funktioniert – aber wir kennen die Schwachstellen:</strong></p>
+                <ul class="feature-list">
+                  <li>Batterie hält zu kurz.</li>
+                  <li>Hardware noch zu schwer.</li>
+                  <li>Mini-Computer wurde beim letzten Test durch Regen beschädigt.</li>
+                </ul>
+
+                <p class="section-title">
+                  Was wir jetzt brauchen, um Version&nbsp;2 stabil zu machen:
+                </p>
+                <ul class="feature-list">
+                  <li>Raspberry-Pi-System oder eine leichtere Recheneinheit.</li>
+                  <li>360°-Kamera.</li>
+                  <li>Wasser- &amp; stoßfestes 3D-gedrucktes Gehäuse.</li>
+                  <li>Zugang zu 3D-Druck-Laboren.</li>
+                  <li>Feldtests mit realen Nutzergruppen.</li>
+                </ul>
+              </div>
+
+              <div class="video-box">
+                <div class="video-placeholder">
+                  <span>
+                    Hier wird später das Video<br />
+                    unseres Fahrrad-Prototyps eingefügt.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+ 
 
 
 
