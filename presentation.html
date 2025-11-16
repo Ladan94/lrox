@@ -447,6 +447,73 @@
       backdrop-filter: blur(6px);
       background: rgba(255, 122, 0, 0.08);
     }
+/* Slide 4 layout */
+.slide-4 .slide-inner {
+  padding: 10px 6px;
+}
+
+.slide-4 .content-left h1 {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.slide-4 .feature-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding-left: 0;
+}
+
+.slide-4 .feature-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 4px;
+  padding-left: 16px;
+  position: relative;
+  color: var(--text);
+}
+
+.slide-4 .feature-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+}
+
+.slide-4 .closing-highlight {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* راست اسلاید ۴: سه عکس مقایسه‌ای */
+.comparison-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comparison-item {
+  background: rgba(3, 5, 18, 0.8);
+  border-radius: 16px;
+  padding: 8px 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.comparison-item img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.comparison-item p strong {
+  color: var(--text);
+}
 
     @media (max-width: 900px) {
       .two-columns {
@@ -457,7 +524,11 @@
       .video-box {
         order: -1; /* روی موبایل، ویدیو می‌آید بالا */
       }
-    }
+    
+      .slide-4 .comparison-right {
+       order: -1; /* اسلاید ۴، عکس‌ها روی موبایل بالا می‌آیند */
+  }
+}
 /* -------------------------------------------------- */
 /*               SLIDE 4 – SMART HELMETS             */
 /* -------------------------------------------------- */
@@ -629,16 +700,18 @@
             </div>
           </div>
         </section>
-               <!-- Slide 4 -->
-        <section class="slide slide-4" data-slide="4">
-          <div class="slide-inner">
+              <!-- Slide 4 -->
+      <section class="slide slide-4" data-slide="4">
+        <div class="slide-inner">
+          <div class="two-columns">
+            <!-- متن سمت چپ -->
             <div class="content-left">
               <h1>Was macht unsere Lösung wirklich innovativ?</h1>
 
               <ul class="feature-list">
                 <li>
-                  <strong>Es gibt bereits smarte Helme –</strong>
-                  doch sie reagieren meist erst, wenn die Gefahr unmittelbar bevorsteht.
+                  <strong>Es gibt bereits smarte Helme</strong> – aber sie reagieren meist erst,
+                  wenn die Gefahr unmittelbar bevorsteht.
                 </li>
                 <li>
                   <strong>Unsere Innovation geht einen Schritt weiter:</strong>
@@ -651,41 +724,49 @@
                   <strong>Ultraschallsensoren</strong> messen nur Abstände.
                 </li>
                 <li>
-                  <strong>Unser Helm</strong> analysiert Art, Richtung und Geschwindigkeit einer Gefahr
-                  – und gibt frühzeitige, situationsabhängige Warnungen.
+                  <strong>Unser Helm</strong> analysiert Art, Richtung und Geschwindigkeit einer Gefahr –
+                  und gibt frühzeitige, situationsabhängige Warnungen.
                 </li>
               </ul>
 
-              <p class="closing-impact">
+              <p class="closing-highlight">
                 → Frühwarnung statt Reaktion. Genau das macht LROX einzigartig.
               </p>
             </div>
 
-           <div class="comparison-right">
+            <!-- سه تصویر مقایسه‌ای سمت راست -->
+            <div class="comparison-right">
+              <div class="comparison-item">
+                <img src="assets/imghelm-research-1.jpg" alt="Forschungsprototyp eines smarten Helms" />
+                <p>
+                  <strong>Forschungsprototyp:</strong>
+                  Sensoren, aber nur einfache Abstandsmessung.
+                </p>
+              </div>
 
-  <div class="comparison-item">
-    <img src="assets/imghelm-research-1.jpg" alt="Forschungsprototyp Helm" />
-    <p><strong>Forschungsprototyp:</strong> Sensoren, aber nur einfache Abstandsmessung.</p>
-  </div>
+              <div class="comparison-item">
+                <img src="assets/imghelm-research-2.jpg" alt="Weiterer Prototyp mit Ultraschallsensoren" />
+                <p>
+                  <strong>Ultraschallsensoren:</strong>
+                  erkennen Distanzen, aber keine Richtung oder Art der Gefahr.
+                </p>
+              </div>
 
-  <div class="comparison-item">
-    <img src="assets/imghelm-research-2.jpg" alt="Prototyp mit Ultraschallsensoren" />
-    <p><strong>Ultraschallsensoren:</strong> erkennen Distanzen, aber keine Richtung oder Art der Gefahr.</p>
-  </div>
-
-  <div class="comparison-item">
-    <img src="assets/imghelm-market-1.jpg" alt="Kommerzieller smarter Helm" />
-    <p><strong>Kommerzieller smarter Helm:</strong> Licht & Bremswarnung – jedoch ohne vorausschauende KI-Analyse.</p>
-  </div>
-
-</div>
-
+              <div class="comparison-item">
+                <img src="assets/imghelm-market-1.jpg" alt="Kommerzieller smarter Fahrradhelm" />
+                <p>
+                  <strong>Kommerzieller smarter Helm:</strong>
+                  Licht &amp; Bremswarnung – jedoch ohne vorausschauende KI-Analyse.
+                </p>
+              </div>
+            </div>
           </div>
-        </section>
- 
+        </div>
+      </section>
 
+              
 
-
+    
       </div>
     </main>
 
