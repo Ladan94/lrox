@@ -458,6 +458,75 @@
         order: -1; /* روی موبایل، ویدیو می‌آید بالا */
       }
     }
+/* -------------------------------------------------- */
+/*               SLIDE 4 – SMART HELMETS             */
+/* -------------------------------------------------- */
+
+.slide-4 .slide-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 34px;
+  align-items: center;
+}
+
+/* عنوان */
+.slide-4 h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+/* لیست سمت چپ */
+.slide-4 ul {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+}
+
+.slide-4 li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.slide-4 li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 20px;
+}
+
+/* گالری تصاویر */
+.image-grid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 14px;
+  padding: 6px;
+}
+
+.image-grid img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+/* واکنش‌گرا */
+@media (max-width: 900px) {
+  .slide-4 .slide-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}
 
   </style>
 </head>
@@ -560,6 +629,57 @@
             </div>
           </div>
         </section>
+               <!-- Slide 4 -->
+        <section class="slide slide-4" data-slide="4">
+          <div class="slide-inner">
+            <div class="content-left">
+              <h1>Was macht unsere Lösung wirklich innovativ?</h1>
+
+              <ul class="feature-list">
+                <li>
+                  <strong>Es gibt bereits smarte Helme –</strong>
+                  doch sie reagieren meist erst, wenn die Gefahr unmittelbar bevorsteht.
+                </li>
+                <li>
+                  <strong>Unsere Innovation geht einen Schritt weiter:</strong>
+                  Wir sagen Gefahren vorher, bevor sie entstehen.
+                </li>
+                <li>
+                  <strong>Blindenstöcke</strong> erkennen nur Kollisionen.
+                </li>
+                <li>
+                  <strong>Ultraschallsensoren</strong> messen nur Abstände.
+                </li>
+                <li>
+                  <strong>Unser Helm</strong> analysiert Art, Richtung und Geschwindigkeit einer Gefahr
+                  – und gibt frühzeitige, situationsabhängige Warnungen.
+                </li>
+              </ul>
+
+              <p class="closing-impact">
+                → Frühwarnung statt Reaktion. Genau das macht LROX einzigartig.
+              </p>
+            </div>
+
+            <div class="content-right">
+              <div class="comp-helmets">
+                <figure>
+                  <img src="img/helm-research-1.jpg" alt="Forschungsprototyp eines smarten Helms" />
+                  <figcaption>Forschungsprototyp: Sensoren, aber nur einfache Abstandsmessung.</figcaption>
+                </figure>
+                <figure>
+                  <img src="img/helm-research-2.jpg" alt="Weiterer Prototyp mit Ultraschallsensoren" />
+                  <figcaption>Ultraschallsensoren: erkennen Distanzen, aber keine Richtung oder Art der Gefahr.</figcaption>
+                </figure>
+                <figure>
+                  <img src="img/helm-market-1.jpg" alt="Kommerzieller smarter Fahrradhelm" />
+                  <figcaption>Kommerzieller smarter Helm: Licht & Bremswarnung – jedoch ohne vorausschauende KI-Analyse.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
 
 
 
