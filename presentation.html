@@ -843,13 +843,14 @@
 /*      SLIDE 5 – UMSETZUNG & RESSOURCEN        */
 /* --------------------------------------------- */
 
-/* SLIDE 5 – Layout & Typo */
+/* Slide 5: Mehr Platz für Text, Video rechts */
 .slide-5 .slide-inner {
   display: grid;
-  grid-template-columns: 1.8fr 0.9fr;  /* متن پهن‌تر، ویدیو باریک‌تر */
-  gap: 28px;
-  padding: 6px 8px 10px;
+  grid-template-columns: 1.6fr 1.1fr;  /* متن خیلی پهن‌تر، باکس ویدیو کمی باریک‌تر */
+  gap: 40px;
+  padding: 20px 16px;
 }
+
 
 .slide-5 .content-left h1 {
   font-size: 26px;
@@ -890,10 +891,26 @@
 /* باکس ویدیو – همین بمونه که راست و جمع‌وجور باشه */
 .slide-5 .video-box {
   display: flex;
+  justify-content: flex-end;   /* کارت بچسبه به راست */
+  align-items: center;
+}
+.slide-5 .video-placeholder {
+  width: 100%;
+  max-width: 430px;
+  min-height: 260px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  background: rgba(3, 5, 18, 0.9);
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 260px;
+  text-align: center;
+  padding: 18px;
+  font-size: 15px;
+  color: var(--muted);
+  backdrop-filter: blur(10px);
 }
+
 
 
   </style>
