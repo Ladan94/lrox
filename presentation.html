@@ -775,12 +775,16 @@
 /*   SLIDE 5 – UMSETZUNG & RESSOURCEN */
 /* ------------------------------ */
 
+.slide-5 {
+  padding-top: 12px;         /* کل اسلاید کمی بالاتر می‌آید */
+  padding-bottom: 18px;
+}
+
 .slide-5 .slide-inner {
   display: grid;
-  grid-template-columns: 1.8fr 0.9fr; /* متن پهن‌تر، ویدیو چسبیده‌تر به راست */
-  gap: 32px;
-  align-items: flex-start;
-  padding: 18px 22px 18px 22px;
+  grid-template-columns: 2fr 0.9fr;   /* ستون متن پهن‌تر، ویدیو ستون باریک‌تر سمت راست */
+  gap: 28px;
+  align-items: flex-start;            /* متن و ویدیو هر دو از بالا شروع شوند */
 }
 
 /* متن سمت چپ */
@@ -790,7 +794,7 @@
 }
 
 .slide-5 .section-title {
-  margin-top: 12px;
+  margin-top: 10px;
   margin-bottom: 4px;
   font-weight: 600;
   color: var(--accent);
@@ -805,9 +809,9 @@
 .slide-5 .feature-list li {
   position: relative;
   padding-left: 16px;
-  margin-bottom: 4px;
-  font-size: 15px;
-  line-height: 1.5;
+  margin-bottom: 3px;
+  font-size: 14px;     /* کمی کوچک‌تر که همه چیز جا بشود */
+  line-height: 1.4;
 }
 
 .slide-5 .feature-list li::before {
@@ -818,17 +822,17 @@
   color: var(--accent);
 }
 
-/* باکس ویدیو سمت راست */
+/* ویدیو سمت راست */
 .slide-5 .video-box {
   display: flex;
-  justify-content: flex-end;   /* کاملاً بره سمت راست */
-  align-items: flex-start;
+  justify-content: flex-end;   /* تا جایی که می‌شود برود سمت راست */
+  align-items: flex-start;     /* از بالا شروع شود */
 }
 
 .slide-5 .video-placeholder {
   width: 100%;
-  max-width: 420px;            /* کمی بزرگ‌تر، اما نه خیلی */
-  min-height: 250px;
+  max-width: 380px;           /* کمی بزرگ‌تر از قبل، ولی نه غول‌آسا */
+  min-height: 230px;
   border-radius: 22px;
   border: 1px dashed rgba(255, 255, 255, 0.35);
   background: rgba(3, 5, 18, 0.85);
