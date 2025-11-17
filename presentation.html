@@ -633,85 +633,7 @@
     gap: 18px;
   }
 }
-/* --------------------------------------------- */
-/*                SLIDE 5 – RESOURCES            */
-/* --------------------------------------------- */
 
-.slide-5 .two-columns {
-  display: grid;
-  grid-template-columns: 1.9fr 0.8fr;  /* متن عریض‌تر، ویدیو بیشتر میره راست */
-  gap: 34px;
-}
-
-
-.slide-5 h1 {
-  font-size: 32px;
-  margin-bottom: 18px;
-}
-
-.slide-5 .intro-line {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: var(--accent-soft);
-}
-
-.slide-5 .feature-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 18px;
-}
-
-.slide-5 .feature-list li {
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.slide-5 .section-title {
-  margin-top: 22px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.slide-5 .video-box {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;   /* وسط عمودی، قشنگ‌تر */
-}
-
-
-.slide-5 .video-placeholder {
-  width: 100%;
-  max-width: 280px;
-  min-height: 220px;
-  border-radius: 18px;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  background: rgba(3, 5, 18, 0.9);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 18px;
-  font-size: 15px;
-  color: var(--muted);
-  backdrop-filter: blur(10px);
-
-  margin-left: auto;   /* این دو تا مهم‌اند */
-  margin-right: 0;
-}
-
-
-/* Mobile */
-@media (max-width: 900px) {
-  .slide-5 .two-columns {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .slide-5 .video-box {
-    height: 260px;
-  }
-}
 /* --------------------------------------------- */
 /*      SLIDE 3 – UNSERE LÖSUNG (HELM)          */
 /* --------------------------------------------- */
@@ -849,47 +771,43 @@
   color: var(--muted);
 }
 
-/* --------------------------------------------- */
-/*           SLIDE 5 – UMSETZUNG & RESSOURCEN    */
-/* --------------------------------------------- */
+/* ------------------------------ */
+/*   SLIDE 5 – UMSETZUNG & RESSOURCEN */
+/* ------------------------------ */
 
 .slide-5 .slide-inner {
   display: grid;
-  grid-template-columns: 1.9fr 0.8fr;   /* متن خیلی پهن‌تر، ویدیو باریک‌تر */
+  grid-template-columns: 1.8fr 0.9fr; /* متن پهن‌تر، ویدیو چسبیده‌تر به راست */
   gap: 32px;
-  align-items: start;
-  padding: 20px 8px 20px 32px;         /* راست کم، چپ بیشتر → ویدیو می‌چسبه به راست */
+  align-items: flex-start;
+  padding: 18px 22px 18px 22px;
 }
 
-
-
-
+/* متن سمت چپ */
 .slide-5 .content-left h1 {
-  font-size: 26px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
-
-/* اگر .intro-line داری، همونی که هست بمونه – لازم نیست عوضش کنی */
 
 .slide-5 .section-title {
   margin-top: 12px;
   margin-bottom: 4px;
-  color: var(--accent);
   font-weight: 600;
+  color: var(--accent);
 }
 
 .slide-5 .feature-list {
   list-style: none;
-  margin: 2px 0 6px;
+  margin: 4px 0;
   padding-left: 0;
 }
 
 .slide-5 .feature-list li {
-  padding-left: 16px;
   position: relative;
-  margin-bottom: 3px;
+  padding-left: 16px;
+  margin-bottom: 4px;
   font-size: 15px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .slide-5 .feature-list li::before {
@@ -900,22 +818,20 @@
   color: var(--accent);
 }
 
-/* باکس ویدیو – همین بمونه که راست و جمع‌وجور باشه */
+/* باکس ویدیو سمت راست */
 .slide-5 .video-box {
   display: flex;
-  justify-content: flex-end;  /* محتوا در ستون، سمت راست */
-  align-items: center;        /* وسط عمودی */
+  justify-content: flex-end;   /* کاملاً بره سمت راست */
+  align-items: flex-start;
 }
-
 
 .slide-5 .video-placeholder {
   width: 100%;
-  max-width: 280px;                 /* کوچیک‌تر، شبیه اسلاید ۳ */
-  min-height: 220px;
-  border-radius: 18px;
+  max-width: 420px;            /* کمی بزرگ‌تر، اما نه خیلی */
+  min-height: 250px;
+  border-radius: 22px;
   border: 1px dashed rgba(255, 255, 255, 0.35);
-  background: rgba(3, 5, 18, 0.9);
-
+  background: rgba(3, 5, 18, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -923,12 +839,20 @@
   padding: 18px;
   font-size: 15px;
   color: var(--muted);
-  backdrop-filter: blur(10px);
-
-  margin-left: auto;                /* این دو تا مهم‌ترین خط‌ها هستن */
-  margin-right: 0;                  /* تا کارت بچسبه به راست ستون */
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
 }
 
+/* موبایل: متن بالا، ویدیو زیرش */
+@media (max-width: 900px) {
+  .slide-5 .slide-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .slide-5 .video-box {
+    justify-content: center;
+  }
+}
 
 
 
