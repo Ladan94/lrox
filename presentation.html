@@ -843,32 +843,27 @@
 /*      SLIDE 5 – UMSETZUNG & RESSOURCEN        */
 /* --------------------------------------------- */
 
+/* SLIDE 5 – Layout & Typo */
 .slide-5 .slide-inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  padding: 20px 10px;
+  grid-template-columns: 1.8fr 0.9fr;  /* متن پهن‌تر، ویدیو باریک‌تر */
+  gap: 28px;
+  padding: 6px 8px 10px;
 }
 
 .slide-5 .content-left h1 {
-  font-size: 30px;
-  margin-bottom: 12px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
-.slide-5 .intro-line {
-  font-size: 16px;
-  margin-bottom: 14px;
-  color: var(--muted);
-}
+/* اگر .intro-line داری، همونی که هست بمونه – لازم نیست عوضش کنی */
 
 .slide-5 .section-title {
-  margin-top: 8px;
+  margin-top: 12px;
   margin-bottom: 4px;
   color: var(--accent);
   font-weight: 600;
-  font-size: 15px;
 }
-
 
 .slide-5 .feature-list {
   list-style: none;
@@ -876,15 +871,13 @@
   padding-left: 0;
 }
 
-
 .slide-5 .feature-list li {
   padding-left: 16px;
   position: relative;
   margin-bottom: 3px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.45;
 }
-
 
 .slide-5 .feature-list li::before {
   content: "•";
@@ -894,35 +887,14 @@
   color: var(--accent);
 }
 
-/* باکس خالی ویدیو در اسلاید ۵ */
+/* باکس ویدیو – همین بمونه که راست و جمع‌وجور باشه */
 .slide-5 .video-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 260px;
 }
 
-.slide-5 .video-placeholder {
-  width: 100%;
-  min-height: 260px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.03);
-  border: 1px dashed rgba(255,255,255,0.25);
-  padding: 20px;
-  text-align: center;
-  font-size: 15px;
-  color: var(--muted);
-  backdrop-filter: blur(10px);
-}
-
-/* موبایل: همه تک‌ستونی */
-@media (max-width: 900px) {
-  .slide-3 .slide-inner,
-  .slide-4-innov .slide-inner,
-  .slide-5 .slide-inner {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
 
   </style>
 </head>
