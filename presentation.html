@@ -639,10 +639,10 @@
 
 .slide-5 .two-columns {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 40px;
-  align-items: start;
+  grid-template-columns: 1.9fr 0.8fr;  /* متن عریض‌تر، ویدیو بیشتر میره راست */
+  gap: 34px;
 }
+
 
 .slide-5 h1 {
   font-size: 32px;
@@ -672,22 +672,32 @@
   color: var(--accent);
 }
 
-/* Video Placeholder */
 .slide-5 .video-box {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;   /* وسط عمودی، قشنگ‌تر */
+}
+
+
+.slide-5 .video-placeholder {
+  width: 100%;
+  max-width: 280px;
+  min-height: 220px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  background: rgba(3, 5, 18, 0.9);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 330px;
   text-align: center;
-  color: var(--text);
-  font-size: 18px;
-}
+  padding: 18px;
+  font-size: 15px;
+  color: var(--muted);
+  backdrop-filter: blur(10px);
 
-.slide-5 .video-placeholder span {
-  opacity: 0.7;
+  margin-left: auto;   /* این دو تا مهم‌اند */
+  margin-right: 0;
 }
 
 
