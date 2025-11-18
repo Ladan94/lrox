@@ -100,31 +100,17 @@
       backdrop-filter: blur(16px);
     }
 
- /* Header – Logo + Tagline oben links */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-name {
+ header .brand span {
+  font-size: 18px;
   font-weight: 600;
-  font-size: 14px;          /* اگر بزرگ/کوچک بود، این را تنظیم کن */
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: var(--accent);
 }
 
-.brand-tagline {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);      /* خاکستری ملایم */
+header .brand img {
+  height: 30px;
+  width: auto;
 }
 
 
