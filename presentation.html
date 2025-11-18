@@ -462,6 +462,61 @@ header .brand img {
       backdrop-filter: blur(6px);
       background: rgba(255, 122, 0, 0.08);
     }
+
+  /* --------------------------------------------- */
+/*      SLIDE 7 – Gefährdete Gruppen            */
+/* --------------------------------------------- */
+
+.slide-7 .slide-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* متن پهن‌تر از عکس */
+  gap: 32px;
+  align-items: center;
+}
+
+.slide-7 h1 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.slide-7 .risk-intro {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.slide-7 .risk-list {
+  margin-top: 6px;
+}
+
+/* ستون تصویر سمت راست */
+.slide-7 .image-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-7 .image-panel img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.75),
+    0 0 28px rgba(5, 8, 25, 0.9);
+}
+
+/* موبایل: متن بالا، عکس پایین یا برعکس؟ اینجا عکس می‌آد پایین‌تر */
+@media (max-width: 900px) {
+  .slide-7 .slide-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .slide-7 .image-panel {
+    order: -1; /* عکس روی موبایل می‌آد بالای متن */
+  }
+}
+
 /* Slide 4 – layout & images */
 .slide-4 .innovation-layout {
   display: grid;
@@ -988,6 +1043,39 @@ header .brand img {
 
       </div>
     </section>
+        <!-- Slide 3 – Wer ist besonders gefährdet? -->
+<section class="slide slide-7" data-slide="3">
+  <div class="slide-inner">
+    
+    <!-- متن سمت چپ -->
+    <div class="content-left">
+      <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
+
+      <p class="risk-intro">
+        Unser System richtet sich nicht nur an eine Gruppe, sondern an alle,
+        die im Alltag besonders wenig Fehlertoleranz haben:
+      </p>
+
+      <ul class="feature-list risk-list">
+        <li>Fahrradfahrerinnen und Fahrradfahrer</li>
+        <li>Kinder – besonders auf dem Schulweg</li>
+        <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
+        <li>Personen mit eingeschränkter Mobilität</li>
+        <li>Menschen mit Sehbeeinträchtigungen</li>
+      </ul>
+    </div>
+
+    <!-- تصویر سمت راست -->
+    <div class="image-panel">
+      <img
+        src="assets/risk-groups-collage.jpg"
+        alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung"
+      />
+    </div>
+
+  </div>
+</section>
+
 
             <!-- Slide 3 – Unsere Lösung -->
       <section class="slide slide-3" data-slide="3">
