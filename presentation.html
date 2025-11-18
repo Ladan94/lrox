@@ -505,7 +505,7 @@ header .brand img {
     0 0 28px rgba(5, 8, 25, 0.9);
 }
 
-/* موبایل: متن بالا، عکس پایین یا برعکس؟ اینجا عکس می‌آد پایین‌تر */
+/* موبایل: تک‌ستونه شود */
 @media (max-width: 900px) {
   .slide-7 .slide-inner {
     grid-template-columns: 1fr;
@@ -515,8 +515,12 @@ header .brand img {
   .slide-7 .image-panel {
     order: -1; /* عکس روی موبایل می‌آد بالای متن */
   }
+}   /* 👈 این کروشه‌ی بسته قبلاً نداشتـی! */
 
-/* Slide 3 – bullet styling */
+/* --------------------------------------------- */
+/*      SLIDE 3 – bullet styling                */
+/* --------------------------------------------- */
+
 .slide-users ul {
   list-style: none;
   margin: 18px 0 0 0;
@@ -538,10 +542,11 @@ header .brand img {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--accent);
+  color: var(--accent);   /* نارنجی */
   font-size: 20px;
   line-height: 1;
 }
+  
 /* Slide 4 – layout & images */
 .slide-4 .innovation-layout {
   display: grid;
@@ -1069,14 +1074,12 @@ header .brand img {
       </div>
     </section>
         <!-- Slide 3 – Wer ist besonders gefährdet? -->
-<section class="slide slide-7" data-slide="3">
-  <div class="slide-inner">
-    
-    <!-- متن سمت چپ -->
-    <div class="content-left">
+<section class="slide slide-3" data-slide="3">
+  <div class="slide-inner slide-users">
+    <div class="risk-text">
       <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
 
-      <ul class="feature-list risk-list">
+      <ul>
         <li>Fahrradfahrerinnen und Fahrradfahrer</li>
         <li>Kinder – besonders auf dem Schulweg</li>
         <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
@@ -1084,14 +1087,10 @@ header .brand img {
       </ul>
     </div>
 
-    <!-- تصویر سمت راست -->
     <div class="image-panel">
-      <img
-        src="assets/risk-groups-collage.jpg"
-        alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung"
-      />
+      <img src="assetsrisk-groups.jpg"
+           alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung" />
     </div>
-
   </div>
 </section>
 
