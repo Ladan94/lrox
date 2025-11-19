@@ -547,16 +547,21 @@ header .brand img {
   line-height: 1;
 }
 
-  /* Slide 3 – image sizing */
-.slide-3 .image-panel {
-  display: flex;
-  justify-content: center;
+ /* --------------------------------------------- */
+/*      SLIDE 3 – layout to match Slide 2        */
+/* --------------------------------------------- */
+
+.slide-3 .slide-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 32px;
   align-items: center;
 }
 
 .slide-3 .image-panel img {
   width: 100%;
-  max-width: 420px;   /* دقیقا مثل نمودار اسلاید 2 */
+  max-width: 380px; /* سایز درست دقیقا مثل دیاگرام */
+  object-fit: contain;
   border-radius: 18px;
   box-shadow:
     0 18px 45px rgba(0, 0, 0, 0.75),
