@@ -1064,29 +1064,54 @@ header .brand img {
     </section>
        <!-- Slide 3 – Wer ist besonders gefährdet? -->
 <section class="slide slide-users" data-slide="3">
-  <div class="slide-inner users-inner">
-    
+  <div class="slide-inner"
+       style="display:grid;
+              grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr);
+              gap:32px;
+              align-items:center;">
+
     <!-- ستون چپ: متن -->
-    <div class="users-text">
+    <div>
       <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
 
-      <ul>
-        <li>Fahrradfahrerinnen und Fahrradfahrer</li>
-        <li>Kinder – besonders auf dem Schulweg</li>
-        <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
-        <li>Menschen mit Sehbeeinträchtigungen</li>
+      <ul style="list-style:none; margin:18px 0 0 0; padding:0;">
+        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
+          <span style="position:absolute; left:0; top:0;
+                       color:var(--accent); font-size:20px; line-height:1;">•</span>
+          Fahrradfahrerinnen und Fahrradfahrer
+        </li>
+        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
+          <span style="position:absolute; left:0; top:0;
+                       color:var(--accent); font-size:20px; line-height:1;">•</span>
+          Kinder – besonders auf dem Schulweg
+        </li>
+        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
+          <span style="position:absolute; left:0; top:0;
+                       color:var(--accent); font-size:20px; line-height:1;">•</span>
+          Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl
+        </li>
+        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
+          <span style="position:absolute; left:0; top:0;
+                       color:var(--accent); font-size:20px; line-height:1;">•</span>
+          Menschen mit Sehbeeinträchtigungen
+        </li>
       </ul>
     </div>
 
     <!-- ستون راست: عکس -->
-    <div class="users-image">
+    <div style="display:flex; justify-content:center; align-items:center;">
       <img src="assets/assetsrisk-groups.jpg"
-           alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung" />
+           alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung"
+           style="width:100%;
+                  max-width:380px;
+                  object-fit:contain;
+                  border-radius:18px;
+                  box-shadow:0 18px 45px rgba(0,0,0,0.75),
+                             0 0 28px rgba(5,8,25,0.9);" />
     </div>
 
   </div>
 </section>
-
 
             <!-- Slide 3 – Unsere Lösung -->
       <section class="slide slide-3" data-slide="4">
