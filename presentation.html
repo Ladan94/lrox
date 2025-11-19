@@ -546,7 +546,40 @@ header .brand img {
   font-size: 20px;
   line-height: 1;
 }
+/* --------------------------------------------- */
+/*   SLIDE USERS – layout & image size          */
+/* --------------------------------------------- */
 
+/* دو ستون کنار هم: چپ متن، راست عکس */
+.slide-users .slide-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 32px;
+  align-items: center;
+}
+
+/* اندازه و استایل عکس کولاج */
+.slide-users .image-panel img {
+  width: 100%;
+  max-width: 380px;      /* مثل دیاگرام اسلاید 2 */
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.75),
+    0 0 28px rgba(5, 8, 25, 0.9);
+}
+
+/* روی موبایل: تک‌ستونه شود و عکس برود بالا یا پایین */
+@media (max-width: 900px) {
+  .slide-users .slide-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .slide-users .image-panel {
+    order: -1;  /* اگر بخواهی عکس روی موبایل بالای متن باشد */
+  }
+}
 
   
 /* Slide 4 – layout & images */
