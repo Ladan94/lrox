@@ -1,27 +1,52 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LROX – Intelligenter Sicherheitshelm | Vorausschauende Gefahrenerkennung</title>
-    <meta name="description" content="LROX – Der intelligente Helm, der Gefahren erkennt, bevor Sie sie sehen. KI-gestützte Sicherheit für Radfahrer, Senior*innen und Menschen mit Einschränkungen.">
+    <title>SmartBike AI & Smart Helmet — AI-driven Bicycle Safety</title>
+    <meta name="description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="LROX – Intelligenter Sicherheitshelm">
-    <meta property="og:description" content="Der Helm, der Gefahren erkennt, bevor Sie sie sehen. KI-gestützte Sicherheit für mehr Unabhängigkeit im Straßenverkehr.">
+    <meta property="og:title" content="SmartBike AI & Smart Helmet">
+    <meta property="og:description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lrox-helm.de">
+    <meta property="og:url" content="https://aikiw.com">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(4).png">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SmartBike AI & Smart Helmet">
+    <meta name="twitter:description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(4).png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SmartBike AI",
+      "url": "https://aikiw.com",
+      "logo": "https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(4).png",
+      "sameAs": [
+        "https://github.com/amirmobash",
+        "https://www.linkedin.com/in/amirmobasher",
+        "https://www.instagram.com/amirmobasher.ir/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bonn",
+        "addressCountry": "Germany"
+      }
+    }
+    </script>
     
     <style>
         :root {
-            --primary: #00a8ff;
-            --secondary: #0097e6;
-            --accent: #e84118;
+            --primary: #FF7A00;
+            --secondary: #FF9A3D;
+            --accent: #FF5C00;
             --dark: #1a1a2e;
-            --darker: #16213e;
+            --darker: #121212;
             --light: #f5f6fa;
             --text: #2f3640;
             --text-light: #f5f6fa;
@@ -30,7 +55,7 @@
             --danger: #e84118;
             --glass: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --neon-glow: 0 0 10px rgba(0, 168, 255, 0.7);
+            --neon-glow: 0 0 10px rgba(255, 122, 0, 0.7);
             --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-fast: 0.3s ease;
         }
@@ -51,7 +76,7 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, var(--darker) 0%, #0f3460 100%);
+            background: linear-gradient(135deg, var(--darker) 0%, #1a1a2e 100%);
         }
         
         .container {
@@ -80,7 +105,7 @@
         
         /* Header */
         header {
-            background-color: rgba(26, 26, 46, 0.85);
+            background-color: rgba(18, 18, 18, 0.95);
             backdrop-filter: blur(10px);
             color: var(--text-light);
             padding: 15px 0;
@@ -144,6 +169,41 @@
             width: 100%;
         }
         
+        .nav-utils {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .lang-toggle {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255, 122, 0, 0.2);
+        }
+        
+        .back-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-link:hover {
+            color: var(--primary);
+        }
+        
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
@@ -152,7 +212,8 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 33, 62, 0.9));
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(26, 26, 46, 0.9)),
+                        url('https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(4).png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -170,7 +231,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 168, 255, 0.3) 0%, rgba(232, 65, 24, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(255, 122, 0, 0.3) 0%, rgba(255, 92, 0, 0.3) 100%);
             z-index: 0;
         }
         
@@ -184,6 +245,9 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .hero p {
@@ -249,7 +313,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
         }
         
         .btn:hover {
@@ -311,114 +375,100 @@
             margin: 0 auto;
         }
         
-        /* Problem Section */
-        .problem {
+        /* SmartBike Section */
+        .smartbike {
             background: var(--dark);
             position: relative;
         }
         
-        .problem-content {
+        .smartbike-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
         
-        .problem-text h3 {
+        .smartbike-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
-        .problem-text p {
+        .smartbike-text p {
             margin-bottom: 25px;
             line-height: 1.7;
         }
         
-        .highlight-box {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border-left: 5px solid var(--accent);
-        }
-        
-        .highlight-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        .highlight-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .vulnerable-groups {
+        .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
         
-        .group-item {
+        .kpi-item {
             background: var(--glass);
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             transition: var(--transition-fast);
         }
         
-        .group-item:hover {
+        .kpi-item:hover {
             transform: translateY(-5px);
             box-shadow: var(--neon-glow);
         }
         
-        .group-icon {
-            font-size: 2.5rem;
+        .kpi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
         
-        .problem-visual {
+        .kpi-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .smartbike-visual {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .problem-visual img {
+        .smartbike-visual img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s;
         }
         
-        .problem-visual:hover img {
+        .smartbike-visual:hover img {
             transform: scale(1.05);
         }
         
-        /* Solution Section */
-        .solution {
+        /* SmartHelmet Section */
+        .smarthelmet {
             background: var(--darker);
             position: relative;
         }
         
-        .solution-content {
+        .smarthelmet-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
         
-        .solution-text h3 {
+        .smarthelmet-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
-        .solution-text p {
+        .smarthelmet-text p {
             margin-bottom: 25px;
             line-height: 1.7;
         }
@@ -440,94 +490,231 @@
             margin-top: 5px;
         }
         
-        .solution-visual {
+        .smarthelmet-visual {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .solution-visual img {
+        .smarthelmet-visual img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s;
         }
         
-        .solution-visual:hover img {
+        .smarthelmet-visual:hover img {
             transform: scale(1.05);
         }
         
-        /* Innovation Section */
-        .innovation {
+        /* Features Section */
+        .features {
             background: var(--dark);
             position: relative;
         }
         
-        .comparison-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
         
-        .comparison-card {
+        .feature-card {
             background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 35px 30px;
+            transition: var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
-        .comparison-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
-        .comparison-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover .feature-icon {
+            color: white;
+        }
+        
+        .feature-card:hover h3,
+        .feature-card:hover p,
+        .feature-card:hover .feature-bullets li {
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
             color: var(--primary);
+            margin-bottom: 25px;
+            transition: all 0.3s;
         }
         
-        .comparison-card ul {
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        
+        .feature-bullets {
             list-style: none;
-            margin-top: 15px;
         }
         
-        .comparison-card ul li {
-            margin-bottom: 10px;
+        .feature-bullets li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 8px;
         }
         
-        .comparison-card ul li i {
+        .feature-bullets li i {
             color: var(--primary);
             margin-top: 5px;
             font-size: 0.8rem;
         }
         
-        .lrox-highlight {
-            border: 2px solid var(--primary);
+        /* Demo Section */
+        .demo {
+            background: var(--darker);
             position: relative;
+            overflow: hidden;
         }
         
-        .lrox-highlight::before {
-            content: 'LROX';
+        .demo::before {
+            content: '';
             position: absolute;
-            top: -15px;
-            left: 20px;
-            background: var(--primary);
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 122, 0, 0.1);
+            border-radius: 50%;
+        }
+        
+        .demo::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 92, 0, 0.1);
+            border-radius: 50%;
+        }
+        
+        .demo .section-title h2 {
+            color: var(--text-light);
+        }
+        
+        .demo .section-title h2::after {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .demo .section-title p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition-fast);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .gallery-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-item p {
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
         }
         
         /* Technology Section */
         .technology {
-            background: var(--darker);
+            background: var(--dark);
             position: relative;
         }
         
@@ -568,211 +755,71 @@
             line-height: 1.6;
         }
         
-        /* Prototype Section */
-        .prototype {
-            background: var(--dark);
-            position: relative;
+        .code-snippet {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 15px;
+            overflow-x: auto;
         }
         
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: var(--primary);
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 25px;
-            transition: var(--transition-fast);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .needs-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .needs-list li {
-            margin-bottom: 10px;
+        .tech-stack {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
         }
         
-        .needs-list li i {
-            color: var(--primary);
-            margin-top: 5px;
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            transition: transform 0.3s;
         }
         
-        /* Users Section */
-        .users {
-            background: var(--darker);
-            position: relative;
+        .tech-item:hover {
+            transform: translateY(-10px);
         }
         
-        .users-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .user-card {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
+        .tech-icon {
+            width: 100px;
+            height: 100px;
+            background-color: var(--glass);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            transition: all 0.3s;
             border: 1px solid var(--glass-border);
         }
         
-        .user-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        .tech-item:hover .tech-icon {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            background-color: var(--primary);
         }
         
-        .user-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .tech-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: filter 0.3s;
         }
         
-        .user-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
+        .tech-item:hover .tech-icon img {
+            filter: brightness(0) invert(1);
         }
         
-        .user-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-        
-        /* Business Section */
-        .business {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .business-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .business-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .business-text p {
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .stat-item {
-            background: var(--glass);
-            border-radius: 10px;
-            padding: 20px;
+        .tech-item span {
+            font-weight: 600;
+            font-size: 1.1rem;
             text-align: center;
-            transition: var(--transition-fast);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .business-visual {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .business-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .business-visual:hover img {
-            transform: scale(1.05);
         }
         
         /* Team Section */
@@ -783,7 +830,7 @@
         
         .team-members {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
         }
         
@@ -800,6 +847,17 @@
         .member-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .member-card:hover .member-photo {
+            transform: scale(1.05);
         }
         
         .member-info {
@@ -825,64 +883,35 @@
             margin-bottom: 20px;
         }
         
-        .member-highlight {
-            background: rgba(0, 168, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-            border-left: 3px solid var(--primary);
-        }
-        
-        /* Support Section */
-        .support {
-            background: var(--dark);
-            position: relative;
-        }
-        
-        .support-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .support-plan, .support-needs {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .support-plan:hover, .support-needs:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .support-plan h3, .support-needs h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .support-plan ul, .support-needs ul {
-            list-style: none;
-        }
-        
-        .support-plan ul li, .support-needs ul li {
-            margin-bottom: 15px;
+        .member-social {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        .support-plan ul li i, .support-needs ul li i {
-            color: var(--primary);
-            margin-top: 5px;
+        .member-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .member-social a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
         }
         
         /* FAQ Section */
         .faq {
-            background: var(--darker);
+            background: var(--dark);
             position: relative;
         }
         
@@ -932,6 +961,79 @@
         
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
+        }
+        
+        /* Downloads Section */
+        .downloads {
+            background: var(--darker);
+            position: relative;
+        }
+        
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .download-card {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition-fast);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .download-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .download-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .download-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .chatbot-promo {
+            background: linear-gradient(135deg, #FF7A00, #FF9A3D);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chatbot-promo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .chatbot-promo p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .chatbot-promo .btn {
+            background: white;
+            color: #FF7A00;
+        }
+        
+        .chatbot-promo .btn:hover {
+            background: #f0f0f0;
         }
         
         /* Contact Section */
@@ -1031,7 +1133,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.2);
             outline: none;
         }
         
@@ -1042,6 +1144,39 @@
         
         .form-submit {
             text-align: center;
+        }
+        
+        /* Hashtags Section */
+        .hashtags {
+            background: var(--darker);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hashtag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hashtag {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--glass);
+            border-radius: 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .hashtag:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
         /* Footer */
@@ -1095,6 +1230,13 @@
         
         .footer-column ul li {
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li i {
+            color: var(--primary);
         }
         
         .footer-column ul li a {
@@ -1151,43 +1293,34 @@
             }
         }
         
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 122, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0);
+            }
+        }
+        
         /* Responsive Styles */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3rem;
             }
             
-            .problem-content,
-            .solution-content,
-            .business-content,
-            .contact-content,
-            .support-content {
+            .smartbike-content,
+            .smarthelmet-content,
+            .contact-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
             
-            .problem-visual,
-            .solution-visual,
-            .business-visual {
+            .smartbike-visual,
+            .smarthelmet-visual {
                 order: -1;
-            }
-            
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 20px;
             }
         }
         
@@ -1229,9 +1362,11 @@
                 font-size: 2.2rem;
             }
             
-            .comparison-grid,
-            .users-grid,
-            .team-members {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-categories {
                 grid-template-columns: 1fr;
             }
             
@@ -1281,26 +1416,31 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span>LROX</span> Helm
+                    <span>SmartBike</span> AI
                 </div>
                 
                 <ul class="nav-links">
-                    <li><a href="#home">Start</a></li>
-                    <li><a href="#problem">Problem</a></li>
-                    <li><a href="#solution">Lösung: LROX Helm</a></li>
-                    <li><a href="#innovation">Warum neu?</a></li>
-                    <li><a href="#technology">Technologie</a></li>
-                    <li><a href="#prototype">Prototyp & Entwicklung</a></li>
-                    <li><a href="#users">Zielgruppen & Nutzen</a></li>
-                    <li><a href="#business">Geschäftsmodell & Markt</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#smartbike">SmartBike</a></li>
+                    <li><a href="#smarthelmet">SmartHelmet</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#technology">Technology</a></li>
                     <li><a href="#team">Team</a></li>
-                    <li><a href="#support">Nächste Schritte & Unterstützung</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#downloads">Downloads</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#hashtags">Hashtags</a></li>
                 </ul>
                 
-                <div class="mobile-menu" id="mobileMenu">
-                    <i class="fas fa-bars"></i>
+                <div class="nav-utils">
+                    <button class="lang-toggle" id="langToggle">DE</button>
+                    <a href="https://www.aikiw.com" class="back-link">
+                        <i class="fas fa-arrow-left"></i> <span>Back to Main Site</span>
+                    </a>
+                    <div class="mobile-menu" id="mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -1309,189 +1449,315 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Was wäre, wenn ein Helm Gefahren erkennen könnte, bevor Sie sie überhaupt sehen?</h1>
-            <p>Wir glauben an eine Zukunft, in der niemand mehr durch übersehene Gefahren verletzt wird – und LROX ist die Technologie, die genau diesen Wandel ermöglicht.</p>
+            <h1>SmartBike AI & Smart Helmet — AI-driven Bicycle Safety</h1>
+            <p>A revolutionary AI system for real-time hazard detection and intelligent safety alerts for cyclists.</p>
             
             <div class="hero-metrics">
                 <div class="metric-card">
-                    <div class="metric-value">441</div>
-                    <div class="metric-label">tödlich verunglückte Radfahrer*innen in Deutschland (2024)</div>
+                    <div class="metric-value">&lt;80 ms</div>
+                    <div class="metric-label">End-to-End Latency</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">360°</div>
-                    <div class="metric-label">Umgebungserkennung in Echtzeit</div>
+                    <div class="metric-value">30 FPS</div>
+                    <div class="metric-label">@ 720p on Edge Device</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-value">100%</div>
-                    <div class="metric-label">Offline – keine Cloud, kein Tracking</div>
+                    <div class="metric-value">0.95</div>
+                    <div class="metric-label">mAP50 (Test Set)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5W</div>
+                    <div class="metric-label">Power Budget</div>
                 </div>
             </div>
             
             <div class="btn-group">
-                <a href="#support" class="btn">Projekt unterstützen</a>
-                <a href="#technology" class="btn btn-outline">Technologie ansehen</a>
+                <a href="#demo" class="btn">Watch Demo</a>
+                <a href="#downloads" class="btn btn-outline">Downloads</a>
             </div>
         </div>
     </section>
     
-    <!-- Problem Section -->
-    <section class="section problem" id="problem">
+    <!-- SmartBike Section -->
+    <section class="section smartbike" id="smartbike">
         <div class="container">
             <div class="section-title">
-                <h2>Problem</h2>
-                <p>Im Straßenverkehr können Sekunden über Leben und Tod entscheiden</p>
+                <h2>SmartBike AI</h2>
+                <p>Real-time hazard detection for urban cyclists</p>
             </div>
             
-            <div class="problem-content">
-                <div class="problem-text">
-                    <h3>Viele Gefahren werden zu spät erkannt – mit fatalen Folgen</h3>
-                    <p>Laut dem Statistischen Bundesamt (Destatis) starben 2024 441 Radfahrer*innen in Deutschland. Diese Zahl ist kein Zufall. Sie ist ein klares Warnsignal.</p>
+            <div class="smartbike-content">
+                <div class="smartbike-text">
+                    <h3>On-Device Computer Vision Pipeline</h3>
+                    <p>Our AI-powered SmartBike solution detects and warns of potential road hazards in real-time – without cloud connectivity. Privacy by design through on-device inference.</p>
                     
-                    <div class="highlight-box">
-                        <div class="highlight-value">441</div>
-                        <div class="highlight-text">Ein deutliches Warnsignal – keine Statistik.</div>
-                    </div>
-                    
-                    <h3>Besonders gefährdet</h3>
-                    <p>Für diese Gruppen kann ein einziger früher Hinweis darüber entscheiden, ob sie sicher weiterfahren – oder schwer verletzt werden.</p>
-                    
-                    <div class="vulnerable-groups">
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-child"></i>
-                            </div>
-                            <h4>Kinder</h4>
-                            <p>Auf dem Fahrrad oder zu Fuß</p>
+                    <div class="kpi-grid">
+                        <div class="kpi-item">
+                            <div class="kpi-value">0.95</div>
+                            <div class="kpi-label">mAP@50</div>
                         </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-wheelchair"></i>
-                            </div>
-                            <h4>Ältere Menschen</h4>
-                            <p>Und Senior*innen im Rollstuhl</p>
+                        <div class="kpi-item">
+                            <div class="kpi-value">30 FPS</div>
+                            <div class="kpi-label">@720p</div>
                         </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-low-vision"></i>
-                            </div>
-                            <h4>Menschen mit Sehbeeinträchtigungen</h4>
-                            <p>Erkennen Gefahren oft zu spät</p>
+                        <div class="kpi-item">
+                            <div class="kpi-value">98%</div>
+                            <div class="kpi-label">Alert TPR</div>
                         </div>
-                        <div class="group-item">
-                            <div class="group-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4>Menschen mit Aufmerksamkeitsproblemen</h4>
-                            <p>Wahrnehmen von Gefahren erschwert</p>
+                        <div class="kpi-item">
+                            <div class="kpi-value">&lt;2%</div>
+                            <div class="kpi-label">Alert FPR</div>
+                        </div>
+                        <div class="kpi-item">
+                            <div class="kpi-value">&lt;80 ms</div>
+                            <div class="kpi-label">E2E Latency</div>
+                        </div>
+                        <div class="kpi-item">
+                            <div class="kpi-value">5W</div>
+                            <div class="kpi-label">Power</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="problem-visual">
-                    
+                <div class="smartbike-visual">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(2).png" alt="LROX SmartBike with front display" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Solution Section -->
-    <section class="section solution" id="solution">
+    <!-- SmartHelmet Section -->
+    <section class="section smarthelmet" id="smarthelmet">
         <div class="container">
             <div class="section-title">
-                <h2>Lösung: LROX Helm</h2>
-                <p>Der Helm, der sieht, denkt, warnt – und spricht</p>
+                <h2>Smart Helmet</h2>
+                <p>Intelligent protection with advanced sensors</p>
             </div>
             
-            <div class="solution-content">
-                <div class="solution-visual">
-                    
+            <div class="smarthelmet-content">
+                <div class="smarthelmet-visual">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(9).png" alt="LROX Smart Helmet with LED safety ring" loading="lazy">
                 </div>
                 
-                <div class="solution-text">
-                    <h3>Ein Helm, der Gefahren erkennt, bevor der Mensch sie bemerkt</h3>
-                    <p>Im Inneren stecken eine 360°-Kamera, ein mobiler Nano-Computer und modernste KI. Der Helm analysiert die Umgebung in Echtzeit und erkennt Autos, Fahrräder, Motorräder, Fußgänger und Hindernisse.</p>
+                <div class="smarthelmet-text">
+                    <h3>Docharkhe Hoshmand & Smart Cycling Helmet</h3>
+                    <p>Our smart cycling helmet provides comprehensive safety through advanced sensors and AI-powered warning systems.</p>
                     
                     <ul class="feature-list">
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>360°-Kamera für Rundumsicht</span>
+                            <span>Rear vision/radar for blind spots</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>Mobiler Nano-Computer (Jetson/Raspberry Pi)</span>
+                            <span>Bone-conduction audio for alerts</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>KI für Echtzeit-Objekterkennung (YOLOv8)</span>
+                            <span>IMU fall detection</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>Erkennt Details: Bordsteine, Stufen, Schlaglöcher, Baustellen</span>
+                            <span>Night assistance system</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</span>
+                            <span>Modular battery</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle"></i>
-                            <span>Komplett offline – keine Cloud, Datenschutz garantiert</span>
+                            <span>Ergonomic design</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>IP67 rating</span>
                         </li>
                     </ul>
-                    
-                    <p>Der Helm schützt nicht nur Radfahrer*innen: Er unterstützt auch Fußgänger, ältere Menschen, Menschen im Rollstuhl – und besonders blinde oder sehbehinderte Personen, die auf akustische Hinweise angewiesen sind.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Innovation Section -->
-    <section class="section innovation" id="innovation">
+    <!-- Features Section -->
+    <section class="section features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Warum neu?</h2>
-                <p>Der entscheidende Unterschied zu bestehenden Lösungen</p>
+                <h2>Features</h2>
+                <p>Comprehensive AI-powered safety features</p>
             </div>
             
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <h3>Blindenstock</h3>
-                    <p>Erkennt nur Kollision beim Kontakt</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Keine vorausschauende Warnung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Reichweite</span></li>
-                        <li><i class="fas fa-times"></i> <span>Erkennt keine Art der Gefahr</span></li>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>YOLOv8 Object Detection</h3>
+                    <p>Real-time detection of vehicles, pedestrians, and obstacles</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-bullseye"></i>
+                            <span>mAP50 = 0.95 (test set)</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>30 FPS @ 720p on edge device</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>End-to-end latency &lt; 80 ms</span>
+                        </li>
                     </ul>
                 </div>
                 
-                <div class="comparison-card">
-                    <h3>Ultraschall-/Abstandssensoren</h3>
-                    <p>Messen nur Entfernung, nicht Kontext</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Keine Unterscheidung der Gefahrenart</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Richtungserkennung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Keine Geschwindigkeitsanalyse</span></li>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>MediaPipe Gesture Control</h3>
+                    <p>Intuitive hand gestures for system interaction without distraction</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-bullseye"></i>
+                            <span>98% gesture recognition accuracy</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Latency &lt; 50 ms</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-cloud-moon"></i>
+                            <span>Robust in various lighting conditions</span>
+                        </li>
                     </ul>
                 </div>
                 
-                <div class="comparison-card">
-                    <h3>Bestehende smarte Helme</h3>
-                    <p>Reagieren oft erst, wenn die Gefahr schon direkt da ist</p>
-                    <ul>
-                        <li><i class="fas fa-times"></i> <span>Späte Reaktion (z.B. Licht, Sturzerkennung)</span></li>
-                        <li><i class="fas fa-times"></i> <span>Keine vorausschauende Gefahrenerkennung</span></li>
-                        <li><i class="fas fa-times"></i> <span>Begrenzte Umgebungsanalyse</span></li>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>TTS Alerts</h3>
+                    <p>Voice alerts for critical warnings without visual distraction</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-language"></i>
+                            <span>Multilingual support</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-volume-up"></i>
+                            <span>Adaptive volume based on ambient noise</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-bolt"></i>
+                            <span>Prioritized alerts</span>
+                        </li>
                     </ul>
                 </div>
                 
-                <div class="comparison-card lrox-highlight">
-                    <h3>LROX Helm</h3>
-                    <p>Erkennt Art der Gefahr, Richtung und Geschwindigkeit</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> <span>Vorausschauende Warnungen</span></li>
-                        <li><i class="fas fa-check"></i> <span>Erkennt Art der Gefahr (Auto, Bordstein, etc.)</span></li>
-                        <li><i class="fas fa-check"></i> <span>Richtungs- und Geschwindigkeitsanalyse</span></li>
-                        <li><i class="fas fa-check"></i> <span>Für besonders gefährdete Gruppen optimiert</span></li>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Speed & Relative Velocity Analysis</h3>
+                    <p>Precise speed measurement and collision risk assessment</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-bullseye"></i>
+                            <span>±2% speed accuracy</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-radar"></i>
+                            <span>Relative velocity calculation to detected objects</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Collision prediction algorithm</span>
+                        </li>
                     </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>GPS Risk Heatmap</h3>
+                    <p>Dynamic risk mapping based on historical accident data</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-database"></i>
+                            <span>Real-time heatmap updates</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-route"></i>
+                            <span>Alternative route suggestions for safer paths</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line"></i>
+                            <span>Predictive risk modeling</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Ride Analytics</h3>
+                    <p>Detailed analytics to improve riding habits</p>
+                    <ul class="feature-bullets">
+                        <li>
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Risk score per ride</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-history"></i>
+                            <span>Historical trend analysis</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-award"></i>
+                            <span>Improvement suggestions based on AI analysis</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Section -->
+    <section class="section demo" id="demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Demo</h2>
+                <p>See the system in action</p>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/8jOE7y8nCiI" title="SmartBike AI Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/auivtCOWpOg" title="Smart Helmet Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(3).png" alt="LROX Smart Helmet 5G system diagram" loading="lazy">
+                    <p>5G-enabled Smart Helmet architecture</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(10).png" alt="Orange LROX smart helmet with camera and antenna" loading="lazy">
+                    <p>Smart Helmet with integrated camera & antenna</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(7).png" alt="Black LROX smart helmet studio photo" loading="lazy">
+                    <p>Studio shot of the LROX Smart Helmet</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://raw.githubusercontent.com/Amirmobash/Irox/main/Ai%20bike%20Amir1%20(8).png" alt="Cyclist wearing LROX smart helmet" loading="lazy">
+                    <p>Real-world use: rider wearing the LROX Smart Helmet</p>
                 </div>
             </div>
         </div>
@@ -1501,200 +1767,104 @@
     <section class="section technology" id="technology">
         <div class="container">
             <div class="section-title">
-                <h2>Technologie</h2>
-                <p>Fortschrittliche KI- und Hardware-Integration</p>
+                <h2>Technology</h2>
+                <p>Advanced AI and hardware integration</p>
             </div>
             
             <div class="tech-categories">
                 <div class="tech-category">
-                    <h3><i class="fas fa-eye"></i> Wahrnehmung</h3>
-                    <p>Multi-Sensor-Fusion für umfassende Umgebungserfassung</p>
-                    <p>360°-Kamera kombiniert mit KI (YOLOv8) für Objekterkennung in Echtzeit. Erkennt Fahrzeuge, Hindernisse und kritische Umgebungsdetails.</p>
+                    <h3><i class="fas fa-eye"></i> Perception</h3>
+                    <p>Multi-sensor fusion for comprehensive environment perception</p>
+                    <div class="code-snippet">
+                        <pre># YOLOv8 Object Detection
+model = YOLO('yolov8n.pt')
+results = model(frame, conf=0.7)
+
+# MediaPipe Gesture Recognition
+with mp_hands.Hands(...) as hands:
+    results = hands.process(frame)</pre>
+                    </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3><i class="fas fa-brain"></i> Intelligenz</h3>
-                    <p>Lokale KI-Verarbeitung für Gefahrenbewertung und Priorisierung</p>
-                    <p>Echtzeit-Analyse der Umgebung auf einem mobilen Nano-Computer. Bewertet Risiken und priorisiert Warnungen basierend auf Dringlichkeit.</p>
+                    <h3><i class="fas fa-hand-pointer"></i> Interaction</h3>
+                    <p>Intuitive human-machine interfaces for focused riding</p>
+                    <div class="code-snippet">
+                        <pre># Gesture Control
+def process_gesture(landmarks):
+    if is_thumbs_up(landmarks):
+        activate_navigation()
+    elif is_stop_sign(landmarks):
+        emergency_stop()</pre>
+                    </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3><i class="fas fa-broadcast-tower"></i> Interaktion</h3>
-                    <p>Akustische Warnungen für fokussiertes Handeln</p>
-                    <p>Klare Sprachhinweise mit Richtungs-, Distanz- und Geschwindigkeitsinformationen. Optional Vibration für taktiles Feedback.</p>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-shield-alt"></i> Datenschutz</h3>
-                    <p>Komplett offline – keine Cloud, volle Kontrolle</p>
-                    <p>Alle Datenverarbeitung erfolgt lokal auf dem Gerät. Keine personenbezogenen Daten werden übertragen. Maximale Privatsphäre garantiert.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Prototype Section -->
-    <section class="section prototype" id="prototype">
-        <div class="container">
-            <div class="section-title">
-                <h2>Prototyp & Entwicklung</h2>
-                <p>Von der Idee zum funktionierenden System</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Erste Version auf Fahrrad</h3>
-                        <p>Vor einem Jahr lief die erste Version auf einem Fahrrad mit einem Jetson Nano (ca. 700 Euro). Das System war funktionsfähig, aber zu teuer und schwer für den praktischen Einsatz.</p>
+                    <h3><i class="fas fa-satellite"></i> Telemetry</h3>
+                    <p>Real-time data collection and analysis for predictive safety</p>
+                    <div class="code-snippet">
+                        <pre># GPS & IMU Data Fusion
+def fuse_sensor_data(gps, imu, camera):
+    position = kalman_filter(gps, imu)
+    risk_score = calculate_risk(position, camera_objects)
+    return position, risk_score</pre>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Dieft und Erkenntnis</h3>
-                        <p>Als das Fahrrad gestohlen wurde, verloren wir nicht nur die Hardware, sondern verstanden auch: Unsere Lösung muss tragbar, leichter und deutlich günstiger werden.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Neustart als Helm-System</h3>
-                        <p>Wir entwickelten das gesamte System als Helm komplett neu. Die Software (Objekterkennung, KI-Logik, Warnsystem) wurde in Python entwickelt und mit KI-Tools optimiert.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Aktueller Prototyp</h3>
-                        <p>Der aktuelle Prototyp funktioniert, hat aber noch Verbesserungspotenzial:</p>
-                        <ul class="needs-list">
-                            <li><i class="fas fa-battery-quarter"></i> <span>Batterie hält nur kurz</span></li>
-                            <li><i class="fas fa-weight-hanging"></i> <span>Hardware ist noch zu schwer</span></li>
-                            <li><i class="fas fa-cloud-rain"></i> <span>Empfindlich gegen Regen</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-title" style="margin-top: 80px;">
-                <h3>Was wir jetzt brauchen</h3>
-            </div>
-            
-            <div class="tech-categories">
                 <div class="tech-category">
                     <h3><i class="fas fa-microchip"></i> Hardware</h3>
-                    <p>Leichtere und robustere Komponenten: Raspberry-Pi-System, 360°-Kamera, wasser- und stoßfestes Gehäuse.</p>
+                    <p>Optimized edge computing architecture for low latency</p>
+                    <div class="code-snippet">
+                        <pre># Hardware Abstraction
+class EdgeDevice:
+    def __init__(self):
+        self.camera = Camera(resolution=(1280, 720))
+        self.processor = NPU()
+        self.sensors = [GPS(), IMU(), LIDAR()]</pre>
+                    </div>
                 </div>
                 
                 <div class="tech-category">
-                    <h3><i class="fas fa-flask"></i> Testumgebungen</h3>
-                    <p>Zugang zu Testumgebungen und realen Feldtests mit unseren Zielgruppen.</p>
+                    <h3><i class="fas fa-code"></i> Software</h3>
+                    <p>Modular software architecture for easy maintenance and updates</p>
+                    <div class="code-snippet">
+                        <pre># Main Pipeline
+pipeline = Pipeline([
+    DataCapture(),
+    ObjectDetection(),
+    RiskAssessment(),
+    AlertGeneration(),
+    UserFeedback()
+])
+pipeline.run()</pre>
+                    </div>
                 </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-users"></i> Partner</h3>
-                    <p>Zusammenarbeit mit Pilotpartnern wie Kommunen, sozialen Einrichtungen und Verkehrssicherheitsstellen.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Users Section -->
-    <section class="section users" id="users">
-        <div class="container">
-            <div class="section-title">
-                <h2>Zielgruppen & Nutzen</h2>
-                <p>Für wen LROX besonders wertvoll ist</p>
             </div>
             
-            <div class="users-grid">
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-child"></i>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="../img/256x256bb.jpg" alt="YOLOv8 Logo" loading="lazy">
                     </div>
-                    <h3>Kinder & Kitas</h3>
-                    <p>Ausflüge und Gruppenverkehr werden sicherer. Erzieher*innen erhalten Unterstützung bei der Aufsicht mehrerer Kinder im Straßenverkehr.</p>
+                    <span>YOLOv8</span>
                 </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-wheelchair"></i>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="../img/mediapipe.jpg" alt="MediaPipe Logo" loading="lazy">
                     </div>
-                    <h3>Senior*innen & Rollstuhlnutzer*innen</h3>
-                    <p>Mehr Sicherheit und Orientierung im Alltag. Frühe Warnungen vor Hindernissen und Gefahrenquellen erhöhen die Selbstständigkeit.</p>
+                    <span>MediaPipe</span>
                 </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-low-vision"></i>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="../img/Python-logo-notext.svg.png" alt="Python Logo" loading="lazy">
                     </div>
-                    <h3>Sehbehinderte & blinde Menschen</h3>
-                    <p>Akustische Hinweise als zentrale Interaktion. Der Helm wird zu einem wichtigen Hilfsmittel für mehr Mobilität und Unabhängigkeit.</p>
+                    <span>Python</span>
                 </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-bicycle"></i>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <img src="../img/Jupyter_logo.svg.png" alt="Jupyter Logo" loading="lazy">
                     </div>
-                    <h3>Radfahrer*innen im urbanen Verkehr</h3>
-                    <p>Vorausschauende Warnungen vor sich nähernden Fahrzeugen und anderen Gefahrenquellen im dichten Stadtverkehr.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Menschen mit Aufmerksamkeitsproblemen</h3>
-                    <p>Unterstützung bei der Wahrnehmung von Gefahren, die sonst oft zu spät erkannt werden. Mehr Sicherheit im Alltag.</p>
-                </div>
-                
-                <div class="user-card">
-                    <div class="user-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h3>Industrie & Arbeitsumgebungen</h3>
-                    <p>Schutz für Mitarbeiter*innen in Bereichen mit Fahrzeugverkehr oder beweglichen Maschinen. Proaktive Warnungen vor Gefahren.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Business Section -->
-    <section class="section business" id="business">
-        <div class="container">
-            <div class="section-title">
-                <h2>Geschäftsmodell & Markt</h2>
-                <p>Wirtschaftliche Nachhaltigkeit und Marktpotenzial</p>
-            </div>
-            
-            <div class="business-content">
-                <div class="business-text">
-                    <h3>Geschäftsmodell (B2B2C)</h3>
-                    <p>Unser Geschäftsmodell ist klar: Wir verkaufen das intelligente Helm-Modul, bieten optionale Premium-Dienste und arbeiten mit Versicherungen, Kommunen und sozialen Einrichtungen zusammen, die ein großes Interesse an Unfallprävention haben.</p>
-                    
-                    <h3 style="margin-top: 30px;">Marktpotenzial</h3>
-                    <p>Der Markt ist riesig und das Interesse an smarter Sicherheit wächst kontinuierlich.</p>
-                    
-                    <div class="market-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">80 Mio.+</div>
-                            <div class="stat-label">Fahrräder in Europa</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">Millionen</div>
-                            <div class="stat-label">Menschen mit Mobilitäts- oder Sehbeeinträchtigungen</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">Wachsend</div>
-                            <div class="stat-label">Bedarf an smarter Sicherheit</div>
-                        </div>
-                    </div>
-                    
-                    <p style="margin-top: 30px;">Unsere Lösung hat das Potenzial, in vielen Bereichen Standard zu werden – von der privaten Nutzung über soziale Einrichtungen bis hin zu industriellen Anwendungen.</p>
-                </div>
-                
-                <div class="business-visual">
-                    
+                    <span>Jupyter</span>
                 </div>
             </div>
         </div>
@@ -1705,91 +1875,50 @@
         <div class="container">
             <div class="section-title">
                 <h2>Team</h2>
-                <p>Unsere Experten für KI und Sicherheitstechnologie</p>
+                <p>Our experts in AI and bicycle safety</p>
             </div>
             
             <div class="team-members">
                 <div class="member-card">
+                    <img src="../img/bKN6P.jpg" alt="Amir Mobasheraghdam" class="member-photo" loading="lazy">
                     <div class="member-info">
-                        <h3 class="member-name">Gründerin / KI-Entwicklung</h3>
-                        <div class="member-role">Python & KI-Expertin</div>
-                        <p>Ich interessiere mich sehr für Python und KI und habe früh gemerkt, dass man mit Bibliotheken wie MediaPipe und YOLOv8 ein echtes Sicherheitssystem entwickeln kann. Darum habe ich die komplette Software unseres Helms selbst programmiert und mit KI-Tools wie ChatGPT Schritt für Schritt verbessert.</p>
-                        <div class="member-highlight">
-                            <p>Neben dem Studium habe ich in einer Kita gearbeitet. Dort habe ich täglich erlebt, wie herausfordernd und gefährlich Ausflüge mit vielen Kindern sein können. Diese direkte Erfahrung mit einer besonders gefährdeten Gruppe war ein wichtiger Auslöser für meine Idee.</p>
+                        <h3 class="member-name">Amir Mobasheraghdam</h3>
+                        <div class="member-role">Lead AI Engineer & Project Manager</div>
+                        <p>Expert in Computer Vision and Edge AI with 5+ years of experience developing real-time AI systems.</p>
+                        <div class="member-social">
+                            <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="mailto:amirmobash@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="member-card">
+                    <img src="../img/6030742101085505296.jpg" alt="Sarah J" class="member-photo" loading="lazy">
                     <div class="member-info">
-                        <h3 class="member-name">Teamkollege</h3>
-                        <div class="member-role">Maschinenbauingenieur</div>
-                        <p>Mein Teamkollege ist Maschinenbauingenieur und hat das gesamte mechanische Design umgesetzt: 3D-Teile, Kamerahalterung, Stoßschutz und die komplette Verkabelung und Hardware-Integration am Helm.</p>
-                        <div class="member-highlight">
-                            <p>Zusammen kombinieren wir KI-Entwicklung, mechanisches Engineering und echten Zugang zu vulnerablen Nutzergruppen. Genau diese Mischung macht unser Team einzigartig und glaubwürdig.</p>
+                        <h3 class="member-name">Sarah J</h3>
+                        <div class="member-role">Hardware Engineer</div>
+                        <p>Specialized in embedded systems and sensor integration for edge devices.</p>
+                        <div class="member-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Support Section -->
-    <section class="section support" id="support">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nächste Schritte & Unterstützung</h2>
-                <p>Gemeinsam können wir Sicherheit neu definieren</p>
-            </div>
-            
-            <div class="support-content">
-                <div class="support-plan">
-                    <h3>Geplante Schritte</h3>
-                    <ul>
-                        <li>
-                            <i class="fas fa-users"></i>
-                            <span>Systematische Tests mit echten Nutzergruppen: Senior*innen, Rollstuhlnutzer*innen, sehbehinderte Personen, Fußgänger*innen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-vial"></i>
-                            <span>Entwicklung einer stabilen Testserie auf Basis der Feldtests</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-rocket"></i>
-                            <span>Pilotprojekte mit Kommunen (z.B. Stadt Bonn), Verkehrssicherheitsstellen und Versicherungen</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-user-edit"></i>
-                            <span>Weiterentwicklung nach dem Prinzip des „User-Centered Design“</span>
-                        </li>
-                    </ul>
-                </div>
                 
-                <div class="support-needs">
-                    <h3>Was wir brauchen</h3>
-                    <ul>
-                        <li>
-                            <i class="fas fa-print"></i>
-                            <span>Zugang zu 3D-Druck-Labors</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-flask"></i>
-                            <span>Testumgebungen und Living Labs</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-handshake"></i>
-                            <span>Pilotpartner (Kommunen, soziale Einrichtungen, Verkehrsprojekte)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-chart-line"></i>
-                            <span>Unterstützung bei Produktstrategie und Markteintritt</span>
-                        </li>
-                    </ul>
+                <div class="member-card">
+                    <img src="../img/6030742101085505297.jpg" alt="Ladan S" class="member-photo" loading="lazy">
+                    <div class="member-info">
+                        <h3 class="member-name">Ladan S</h3>
+                        <div class="member-role">UX/UI Designer</div>
+                        <p>Responsible for user-friendly design of interaction concepts and visual feedback systems.</p>
+                        <div class="member-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="highlight-box" style="margin-top: 50px; text-align: center;">
-                <p style="font-size: 1.3rem; font-weight: 600;">Wir haben gezeigt, dass die Technologie funktioniert – jetzt geht es darum, echten Schutz in die Realität zu bringen. Mit Ihrer Hilfe können wir dazu beitragen, dass weniger Menschen verletzt werden, weil Gefahren zu spät erkannt werden.</p>
             </div>
         </div>
     </section>
@@ -1799,79 +1928,143 @@
         <div class="container">
             <div class="section-title">
                 <h2>FAQ</h2>
-                <p>Häufig gestellte Fragen</p>
+                <p>Frequently Asked Questions</p>
             </div>
             
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Funktioniert der Helm auch ohne Internet?</span>
+                        <span>Which sensors are used?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Ja, der LROX Helm funktioniert komplett offline. Alle Datenverarbeitung erfolgt lokal auf dem Gerät, es ist keine Internetverbindung erforderlich. Das garantiert nicht nur Datenschutz, sondern auch Zuverlässigkeit in Gebieten mit schlechter Netzabdeckung.</p>
+                        <p>The system uses a combination of camera, GPS, IMU (Inertial Measurement Unit) and optional LIDAR for comprehensive environment perception.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Ist LROX ein Medizinprodukt oder ein Assistenzsystem?</span>
+                        <span>Is calibration required?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>LROX ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es handelt sich nicht um ein Medizinprodukt, sondern um ein technisches Hilfsmittel zur Erhöhung der Sicherheit im Straßenverkehr.</p>
+                        <p>The system calibrates automatically on first startup. Recalibration is recommended after hardware changes.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Für wen ist LROX besonders geeignet?</span>
+                        <span>How is my data protected?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>LROX ist besonders wertvoll für: Kinder und Kita-Gruppen, Senior*innen und Rollstuhlnutzer*innen, sehbehinderte und blinde Menschen, Radfahrer*innen im urbanen Verkehr sowie Menschen mit Aufmerksamkeitsproblemen. Grundsätzlich profitiert jeder, der seine Umgebung nicht vollständig wahrnehmen kann oder möchte.</p>
+                        <p>All data processing happens on-device. No personal data is transmitted to cloud servers.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Wie wird der Datenschutz gewährleistet?</span>
+                        <span>Is the Smart Helmet compatible with all bicycle helmets?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Da das System komplett offline funktioniert, werden keine personenbezogenen Daten an Server übertragen. Alle Verarbeitungsschritte finden lokal auf dem Gerät statt. Es werden keine Aufnahmen oder persönlichen Daten dauerhaft gespeichert.</p>
+                        <p>Our Smart Helmet is a complete system. For existing helmets, we offer a retrofit kit.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Wie robust ist die Hardware (Regen, Stöße)?</span>
+                        <span>Are there legal requirements for road approval?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Der aktuelle Prototyp hat noch Verbesserungspotenzial bei der Widerstandsfähigkeit. Unser Ziel ist ein wasser- und stoßfestes Gehäuse aus dem 3D-Drucker, das allen Witterungsbedingungen standhält. Dafür benötigen wir Zugang zu entsprechenden Labors und Materialien.</p>
+                        <p>The system is designed as an assistance system and does not replace rider attention. It complies with relevant EU directives.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Wie lange hält die Batterie im Alltag?</span>
+                        <span>How are software updates performed?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Der aktuelle Prototyp hat eine begrenzte Batterielaufzeit. Unser Ziel ist eine Akkulaufzeit von mindestens 4-6 Stunden bei kontinuierlichem Betrieb, was für die meisten Alltagssituationen ausreichen sollte. Wir arbeiten an energieeffizienteren Komponenten und einem modularen Akkusystem.</p>
+                        <p>Updates are provided through a mobile app that establishes a secure connection to the device.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Wie können Institutionen (z.B. Kommunen, Schulen, Senioreneinrichtungen) mitmachen?</span>
+                        <span>What happens in case of system failure?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Institutionen können als Pilotpartner fungieren, Testumgebungen bereitstellen oder bei der Entwicklung spezifischer Anwendungsszenarien unterstützen. Wir suchen insbesondere nach Partnern für Feldtests und die gemeinsame Entwicklung von Einsatzszenarien. Kontaktieren Sie uns gerne für ein unverbindliches Gespräch.</p>
+                        <p>In case of critical errors, the system warns the user and switches to a safe mode. The basic functions of the bicycle remain fully usable.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long is data stored?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ride data is stored locally for a maximum of 24 hours, unless the user explicitly exports it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Downloads Section -->
+    <section class="section downloads" id="downloads">
+        <div class="container">
+            <div class="section-title">
+                <h2>Downloads</h2>
+                <p>Technical documentation and resources</p>
+            </div>
+            
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Technical Documentation</h3>
+                    <p>Detailed specifications and architecture overview</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Installation Guide</h3>
+                    <p>Step-by-step setup guide</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Dataset Information</h3>
+                    <p>Details on training dataset and annotations</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Research Paper</h3>
+                    <p>Academic publication about the project</p>
+                    <a href="#" class="btn">Download</a>
+                </div>
+            </div>
+            
+            <div class="chatbot-promo">
+                <h3>Have questions? Our AI chatbot can help!</h3>
+                <p>Ask questions about technology, installation, or features and get instant answers.</p>
+                <a href="https://aikiw.com/chatbot" class="btn">Start Chatbot</a>
             </div>
         </div>
     </section>
@@ -1880,33 +2073,37 @@
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Kontakt</h2>
-                <p>Kontaktieren Sie uns für weitere Informationen</p>
+                <h2>Contact</h2>
+                <p>Contact us for more information</p>
             </div>
             
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-card">
-                        <h3>Kontaktinformationen</h3>
+                        <h3>Contact Information</h3>
                         <ul>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:ladansediqi@gmail.com">ladansediqi@gmail.com</a>
+                                <a href="mailto:amirmobash@gmail.com">amirmobash@gmail.com</a>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Bonn, Deutschland</span>
+                                <span>Bonn, Germany</span>
                             </li>
                             <li>
-                                <i class="fab fa-github"></i>
-                                <a href="https://github.com/Ladan94">GitHub: Ladan94</a>
+                                <i class="fas fa-globe"></i>
+                                <a href="http://www.aikiw.com">www.aikiw.com</a>
                             </li>
                         </ul>
                     </div>
                     
                     <div class="contact-card">
-                        <h3>Einladung zur Zusammenarbeit</h3>
-                        <p>Wir suchen Partner für Pilotprojekte, Forschungskooperationen und Feldtests. Gemeinsam können wir die Sicherheit im Straßenverkehr nachhaltig verbessern.</p>
+                        <h3>Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
                 
@@ -1918,25 +2115,43 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">E-Mail</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="organization">Organisation (optional)</label>
-                            <input type="text" id="organization" name="organization">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Nachricht</label>
+                            <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         
                         <div class="form-submit">
-                            <button type="submit" class="btn">Nachricht senden</button>
+                            <button type="submit" class="btn">Send Message</button>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Hashtags Section -->
+    <section class="hashtags" id="hashtags">
+        <div class="container">
+            <div class="hashtag-cloud">
+                <a href="#smartbike" class="hashtag">#SmartBike</a>
+                <a href="#smarthelmet" class="hashtag">#SmartHelmet</a>
+                <a href="#technology" class="hashtag">#ComputerVision</a>
+                <a href="#technology" class="hashtag">#YOLOv8</a>
+                <a href="#features" class="hashtag">#MediaPipe</a>
+                <a href="#home" class="hashtag">#CyclingSafety</a>
+                <a href="#technology" class="hashtag">#EdgeAI</a>
+                <a href="#features" class="hashtag">#GPS</a>
+                <a href="#features" class="hashtag">#TTS</a>
+                <a href="#features" class="hashtag">#GestureControl</a>
+                <a href="#home" class="hashtag">#Docharkhe</a>
+                <a href="#smarthelmet" class="hashtag">#Hoshmand</a>
+                <a href="#home" class="hashtag">#BicycleSafety</a>
+                <a href="#technology" class="hashtag">#AI</a>
+                <a href="#features" class="hashtag">#RealTimeDetection</a>
             </div>
         </div>
     </section>
@@ -1946,48 +2161,55 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>LROX Helm</h3>
-                    <p>Ein KI-gestütztes Sicherheitssystem für mehr Unabhängigkeit im Straßenverkehr, entwickelt in Bonn, Deutschland.</p>
+                    <h3>SmartBike AI</h3>
+                    <p>An AI-powered safety system for cyclists, developed in Bonn, Germany.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Schnelllinks</h3>
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Start</a></li>
-                        <li><a href="#problem">Problem</a></li>
-                        <li><a href="#solution">Lösung</a></li>
-                        <li><a href="#technology">Technologie</a></li>
-                        <li><a href="#team">Team</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#smartbike">SmartBike</a></li>
+                        <li><a href="#smarthelmet">SmartHelmet</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">Demo</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Information</h3>
+                    <h3>Technology</h3>
                     <ul>
-                        <li><a href="#innovation">Warum neu?</a></li>
-                        <li><a href="#users">Zielgruppen</a></li>
-                        <li><a href="#business">Geschäftsmodell</a></li>
-                        <li><a href="#support">Unterstützung</a></li>
+                        <li><a href="#technology">Technology Stack</a></li>
+                        <li><a href="#downloads">Downloads</a></li>
                         <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://aikiw.com/chatbot">AI Chatbot</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Kontakt</h3>
+                    <h3>Contact</h3>
                     <ul>
-                        <li><a href="mailto:ladansediqi@gmail.com">ladansediqi@gmail.com</a></li>
-                        <li><span>Bonn, Deutschland</span></li>
-                        <li><a href="https://github.com/Ladan94">GitHub: Ladan94</a></li>
+                        <li><i class="fas fa-envelope"></i><a href="mailto:amirmobash@gmail.com">amirmobash@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Bonn, Germany</span></li>
+                        <li><i class="fas fa-globe"></i><a href="http://www.aikiw.com">www.aikiw.com</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 LROX – Intelligenter Sicherheitshelm. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2023 SmartBike AI. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
     <script>
         // Mobile Menu Toggle
         document.getElementById('mobileMenu').addEventListener('click', function() {
@@ -2025,6 +2247,20 @@
             });
         });
         
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
+        
+        langToggle.addEventListener('click', function() {
+            if (currentLang === 'en') {
+                // Redirect to German version
+                window.location.href = 'index_de.html';
+            } else {
+                // Already on English version
+                window.location.href = 'index.html';
+            }
+        });
+        
         // Form Validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -2035,10 +2271,10 @@
             
             if (name && email && message) {
                 // Simple validation - in a real app, you would send the data to a server
-                alert('Nachricht wurde gesendet! Wir werden uns bald bei Ihnen melden.');
+                alert('Message sent! We will get back to you soon.');
                 document.getElementById('contactForm').reset();
             } else {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
+                alert('Please fill in all fields.');
             }
         });
         
@@ -2051,3 +2287,23 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.feature-card, .tech-category, .member-card, .download-card');
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
