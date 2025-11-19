@@ -463,31 +463,31 @@ header .brand img {
       background: rgba(255, 122, 0, 0.08);
     }
 /* --------------------------------------------- */
-/*      RISK GROUPS – slide-users (Slide 3)      */
+/*   SLIDE USERS (Slide 3) – layout & bullets   */
 /* --------------------------------------------- */
 
-/* دو ستون: چپ متن، راست عکس؛ شبیه اسلاید 2 */
-.slide-users .slide-inner {
+.slide-users .users-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);  /* شبیه اسلاید 2 */
   gap: 32px;
   align-items: center;
 }
 
-/* تیتر اسلاید */
-.slide-users h1 {
+/* تیتر */
+.slide-users .users-text h1 {
   font-size: 28px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-/* لیست گروه‌ها */
-.slide-users ul {
+/* لیست بلافاصله زیر تیتر */
+.slide-users .users-text ul {
   list-style: none;
-  margin: 0;
+  margin: 18px 0 0 0;
   padding: 0;
 }
 
-.slide-users li {
+/* متن آیتم‌ها */
+.slide-users .users-text li {
   font-size: 16px;
   color: var(--text);
   line-height: 1.7;
@@ -496,28 +496,27 @@ header .brand img {
   padding-left: 18px;
 }
 
-/* نقطه‌ی بولت نارنجی */
-.slide-users li::before {
+/* بولت نارنجی */
+.slide-users .users-text li::before {
   content: "•";
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--accent);
+  color: var(--accent);       /* نارنجی */
   font-size: 20px;
   line-height: 1;
 }
 
-/* ستون تصویر سمت راست */
-.slide-users .image-panel {
+/* ستون راست: عکس */
+.slide-users .users-image {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.slide-users .image-panel img {
+.slide-users .users-image img {
   width: 100%;
-  max-width: 380px; /* تقریباً مثل دیاگرام اسلاید 2 */
-  height: auto;
+  max-width: 380px;           /* حدوداً هم‌اندازه دیاگرام اسلاید 2 */
   object-fit: contain;
   border-radius: 18px;
   box-shadow:
@@ -525,18 +524,17 @@ header .brand img {
     0 0 28px rgba(5, 8, 25, 0.9);
 }
 
-/* موبایل: تک‌ستونه شود */
+/* موبایل: تک‌ستونه + عکس بالا */
 @media (max-width: 900px) {
-  .slide-users .slide-inner {
+  .slide-users .users-inner {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .slide-users .image-panel {
-    order: -1;
+  .slide-users .users-image {
+    order: -1;  /* روی موبایل عکس می‌آد بالای متن */
   }
 }
-
   
 /* Slide 4 – layout & images */
 .slide-4 .innovation-layout {
@@ -1064,10 +1062,12 @@ header .brand img {
 
       </div>
     </section>
-        <!-- Slide 3 – Wer ist besonders gefährdet? -->
+       <!-- Slide 3 – Wer ist besonders gefährdet? -->
 <section class="slide slide-users" data-slide="3">
-  <div class="slide-inner">
-    <div class="text-column">
+  <div class="slide-inner users-inner">
+    
+    <!-- ستون چپ: متن -->
+    <div class="users-text">
       <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
 
       <ul>
@@ -1077,10 +1077,13 @@ header .brand img {
         <li>Menschen mit Sehbeeinträchtigungen</li>
       </ul>
     </div>
-    <div class="image-panel">
+
+    <!-- ستون راست: عکس -->
+    <div class="users-image">
       <img src="assets/assetsrisk-groups.jpg"
            alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung" />
     </div>
+
   </div>
 </section>
 
