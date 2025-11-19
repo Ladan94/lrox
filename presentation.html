@@ -462,80 +462,7 @@ header .brand img {
       backdrop-filter: blur(6px);
       background: rgba(255, 122, 0, 0.08);
     }
-/* --------------------------------------------- */
-/*   SLIDE USERS (Slide 3) – layout & bullets   */
-/* --------------------------------------------- */
 
-.slide-users .users-inner {
-  display: grid !important;  /* حتماً گراید بشه */
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-  gap: 32px;
-  align-items: center;
-}
-
-/* تیتر */
-.slide-users .users-text h1 {
-  font-size: 28px;
-  margin-bottom: 14px;
-}
-
-/* لیست بلافاصله زیر تیتر */
-.slide-users .users-text ul {
-  list-style: none !important;   /* بولت پیش‌فرض رو خاموش کن */
-  margin: 18px 0 0 0;
-  padding: 0;
-}
-
-/* متن آیتم‌ها */
-.slide-users .users-text li {
-  font-size: 16px;
-  color: var(--text);
-  line-height: 1.7;
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 18px;
-}
-
-/* بولت نارنجی */
-.slide-users .users-text li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent) !important;   /* حتماً نارنجی */
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* ستون راست: عکس */
-.slide-users .users-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slide-users .users-image img {
-  width: 100%;
-  max-width: 380px;
-  object-fit: contain;
-  border-radius: 18px;
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.75),
-    0 0 28px rgba(5, 8, 25, 0.9);
-}
-
-/* موبایل: تک‌ستونه + عکس بالا */
-@media (max-width: 900px) {
-  .slide-users .users-inner {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .slide-users .users-image {
-    order: -1;
-  }
-}
-  
 /* Slide 4 – layout & images */
 .slide-4 .innovation-layout {
   display: grid;
@@ -997,7 +924,80 @@ header .brand img {
   font-weight: 600;
   color: var(--accent);  /* نارنجی */
 }
+/* --------------------------------------------- */
+/*   SLIDE USERS (Slide 3) – layout & bullets   */
+/* --------------------------------------------- */
 
+.slide-users .users-inner {
+  display: grid !important;  /* حتماً گراید بشه */
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 32px;
+  align-items: center;
+}
+
+/* تیتر */
+.slide-users .users-text h1 {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+/* لیست بلافاصله زیر تیتر */
+.slide-users .users-text ul {
+  list-style: none !important;   /* بولت پیش‌فرض رو خاموش کن */
+  margin: 18px 0 0 0;
+  padding: 0;
+}
+
+/* متن آیتم‌ها */
+.slide-users .users-text li {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 18px;
+}
+
+/* بولت نارنجی */
+.slide-users .users-text li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent) !important;   /* حتماً نارنجی */
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ستون راست: عکس */
+.slide-users .users-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-users .users-image img {
+  width: 100%;
+  max-width: 380px;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.75),
+    0 0 28px rgba(5, 8, 25, 0.9);
+}
+
+/* موبایل: تک‌ستونه + عکس بالا */
+@media (max-width: 900px) {
+  .slide-users .users-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .slide-users .users-image {
+    order: -1;
+  }
+}
+  
   </style>
 </head>
 <body>
