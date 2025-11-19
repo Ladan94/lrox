@@ -5,7 +5,6 @@
   <title>LROX – Presentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  
-
   <style>
     :root {
       --bg: #03040a;
@@ -100,34 +99,29 @@
       backdrop-filter: blur(16px);
     }
 
-/* فقط روی LROX اثر دارد */
-header .brand-name {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+    header .brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
 
-/* فقط روی tagline اثر دارد */
-header .brand-tagline {
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: -4px;
-  margin-left: 0px;
-  display: block;
-}
+    header .brand-tagline {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: -4px;
+      margin-left: 0px;
+      display: block;
+    }
 
-
-
-header .brand img {
-  height: 30px;
-  width: auto;
-}
-
+    header .brand img {
+      height: 30px;
+      width: auto;
+    }
 
     header .meta {
       text-align: right;
@@ -238,89 +232,493 @@ header .brand img {
       color: var(--text);
       font-weight: 500;
     }
-/* Slide 2 */
-.slide-2 .slide-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-  gap: 32px;
-  align-items: center;
-}
 
-.text-block h1 {
-  font-size: 28px;
-  line-height: 1.35;
-  margin-bottom: 14px;
-}
+    /* Slide 2 */
+    .slide-2 .slide-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+    }
 
-.highlight-number {
-  font-size: 23px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
+    .text-block h1 {
+      font-size: 28px;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
 
-.highlight-source {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
+    .highlight-number {
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
 
-.text-block p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
- /* جمله‌ی مهم نارنجی و کمی بزرگ‌تر */
-.text-block .highlight-number {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-top: 8px;
-  margin-bottom: 8px;
-}   
+    .highlight-source {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
 
-/* باکس تصویر سمت راست */
-.slide-2 .chart-block {
-  justify-self: end;
-  background: rgba(3, 5, 18, 0.85);
-  border-radius: 20px;
-  padding: 14px 14px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.8),
-    0 0 24px rgba(10, 12, 26, 0.9);
-}
+    .text-block p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
 
-.slide-2 .chart-block img {
-  width: 95%;
-  max-width: 450px;
-  margin: 0 auto;
-  border-radius: 14px;
-  display: block;
-}
+    .text-block .highlight-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }   
 
-.slide-2 .chart-caption {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--muted);
-  text-align: center;
-}
+    .slide-2 .chart-block {
+      justify-self: end;
+      background: rgba(3, 5, 18, 0.85);
+      border-radius: 20px;
+      padding: 14px 14px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.8),
+        0 0 24px rgba(10, 12, 26, 0.9);
+    }
 
-/* موبایل */
-@media (max-width: 900px) {
-  .slide-2 .slide-inner {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-  }
+    .slide-2 .chart-block img {
+      width: 95%;
+      max-width: 450px;
+      margin: 0 auto;
+      border-radius: 14px;
+      display: block;
+    }
 
-  .slide-2 .chart-block {
-    order: -1;           /* روی موبایل تصویر بیاد بالا */
-  }
+    .slide-2 .chart-caption {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
 
-  .text-block h1 {
-    font-size: 22px;
-  }
+    /* Slide 3 */
+    .slide-users .users-inner {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .slide-users .users-text h1 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .slide-users .users-text ul {
+      list-style: none !important;
+      margin: 18px 0 0 0;
+      padding: 0;
+    }
+
+    .slide-users .users-text li {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .slide-users .users-text li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent) !important;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .slide-users .users-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-users .users-image img {
+      width: 100%;
+      max-width: 380px;
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.75),
+        0 0 28px rgba(5, 8, 25, 0.9);
+    }
+
+    /* Slide 4 */
+    .slide-3 .slide-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      padding: 20px 10px;
+    }
+
+    .slide-3 .content-left h1 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .slide-3 .closing-line {
+      margin-top: 10px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .slide-3 .video-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-3 .video-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      background: rgba(3, 5, 18, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 15px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Slide 5 */
+    .slide-4-innov .slide-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      padding: 20px 10px;
+    }
+
+    .slide-4-innov .helmet-text h1 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .slide-4-innov .helmet-list {
+      list-style: none;
+      margin: 8px 0;
+      padding-left: 0;
+    }
+
+    .slide-4-innov .helmet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 4px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .slide-4-innov .helmet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .slide-4-innov .closing-important {
+      margin-top: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .slide-4-innov .comparison-right {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .slide-4-innov .comparison-item {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .slide-4-innov .comparison-item img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .slide-4-innov .comparison-item p {
+      font-size: 12px;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    /* Slide 6 */
+    .slide-5 .slide-inner {
+      display: grid;
+      grid-template-columns: 2fr 0.9fr;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .slide-5 .content-left h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .slide-5 .section-title {
+      margin-top: 10px;
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .slide-5 .feature-list {
+      list-style: none;
+      margin: 4px 0;
+      padding-left: 0;
+    }
+
+    .slide-5 .feature-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 3px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .slide-5 .feature-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .slide-5 .video-box {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .slide-5 .video-placeholder {
+      width: 100%;
+      max-width: 380px;
+      min-height: 230px;
+      border-radius: 22px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      background: rgba(3, 5, 18, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 15px;
+      color: var(--muted);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Slide 7 */
+    .slide-6 .slide-inner {
+      padding: 26px 30px;
+    }
+
+    .slide-6 h1 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .slide-6 .subtitle-6 {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .slide-6 .points-6 {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .slide-6 .points-6 li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .slide-6 .points-6 li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .slide-6 .points-6 strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .slide-6 .closing-6 {
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Slide 8 */
+    .slide-7 .slide-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .slide-7 .content-left h1 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .slide-7 .feature-list li {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .slide-7 .content-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-7 .image-placeholder {
+      width: 100%;
+      max-width: 380px;
+      height: 260px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      background: rgba(3, 5, 18, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 15px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Slide 9 */
+    .slide-8 .slide-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .slide-8 .content-left h1 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .slide-8 .content-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-8 .timeline-placeholder {
+      width: 100%;
+      max-width: 380px;
+      height: 260px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      background: rgba(3, 5, 18, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 15px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Slide 10 */
+    .slide-9 .slide-inner {
+      text-align: center;
+    }
+
+    .slide-9 h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .slide-9 .contact-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .slide-9 .contact-item {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 16px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .slide-9 .contact-item h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .slide-9 .contact-item p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .slide-9 .final-message {
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 30px;
+    }
 
     footer {
       display: flex;
@@ -349,10 +747,12 @@ header .brand img {
       background: var(--accent);
       box-shadow: 0 0 10px rgba(255, 122, 0, 0.9);
     }
-  footer .site-link {
-  color: var(--accent) !important; /* نارنجی */
-}
 
+    footer .site-link {
+      color: var(--accent) !important;
+    }
+
+    /* Responsive Styles */
     @media (max-width: 900px) {
       .presentation-wrapper {
         padding: 14px 14px;
@@ -373,17 +773,24 @@ header .brand img {
         border-radius: 22px;
       }
 
-      .slide-2 .slide-inner {
-        grid-template-columns: minmax(0, 1fr);
+      .slide-2 .slide-inner,
+      .slide-users .users-inner,
+      .slide-3 .slide-inner,
+      .slide-4-innov .slide-inner,
+      .slide-5 .slide-inner,
+      .slide-7 .slide-inner,
+      .slide-8 .slide-inner,
+      .slide-9 .contact-info {
+        grid-template-columns: 1fr;
         gap: 18px;
       }
 
-      .chart-block {
+      .slide-2 .chart-block,
+      .slide-users .users-image,
+      .slide-5 .video-box,
+      .slide-7 .content-right,
+      .slide-8 .content-right {
         order: -1;
-      }
-
-      .text-block h1 {
-        font-size: 22px;
       }
 
       .slide-1 h1 {
@@ -393,663 +800,19 @@ header .brand img {
       .slide-1 .tagline {
         font-size: 16px;
       }
+
+      .text-block h1,
+      .slide-users .users-text h1,
+      .slide-3 .content-left h1,
+      .slide-4-innov .helmet-text h1,
+      .slide-5 .content-left h1,
+      .slide-6 h1,
+      .slide-7 .content-left h1,
+      .slide-8 .content-left h1,
+      .slide-9 h1 {
+        font-size: 22px;
+      }
     }
-        /* Slide 3 layout */
-    .slide-3 .slide-inner {
-      padding: 6px 4px;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .content-left h1 {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0 0 18px;
-    }
-
-    .feature-list li {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 6px;
-      padding-left: 18px;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-    }
-
-    .closing-impact {
-      margin-top: 4px;
-      font-size: 18px;
-      color: var(--accent); /* این خط باعث نارنجی شدن می‌شود */
-      font-weight: 600;
-    }
-
-    .video-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .video-placeholder {
-      width: 100%;
-      max-width: 420px;
-      height: 260px;
-      border-radius: 18px;
-      border: 1px dashed rgba(255, 122, 0, 0.7);
-      color: var(--accent);
-      font-size: 18px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 12px;
-      backdrop-filter: blur(6px);
-      background: rgba(255, 122, 0, 0.08);
-    }
-
-/* Slide 4 – layout & images */
-.slide-4 .innovation-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 28px;
-  align-items: flex-start;
-}
-
-.slide-4 .content-left h1 {
-  font-size: 26px;
-  margin-bottom: 14px;
-}
-
-.slide-4 .content-left .feature-list li {
-  font-size: 15px;
-  line-height: 1.5;
-  margin-bottom: 4px;
-}
-
-.slide-4 .content-right {
-  display: flex;
-  justify-content: center;
-}
-
-.slide-4 .comp-helmets {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.slide-4 .comparison-item {
-  background: rgba(3, 5, 18, 0.85);
-  border-radius: 16px;
-  padding: 8px 10px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
-}
-
-.slide-4 .comparison-item img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.slide-4 .comparison-item figcaption {
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--muted);
-}
-
-.slide-4 .closing-important {
-  color: var(--accent);
-  font-weight: 600;
-  margin-top: 12px;
-}
-/* --------------------------------------------- */
-/*               SLIDE 4 – SMART HELMETS         */
-/* --------------------------------------------- */
-
-.slide-4 .slide-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr); /* متن چپ، عکس‌ها راست */
-  gap: 28px;
-  align-items: flex-start;
-}
-
-/* ستون متن چپ همون بمونه – فقط لیست و تیتر قبلی‌ات خوب بود */
-
-.slide-4 .comparison-right {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.slide-4 .comparison-item {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 8px 10px 10px;
-  border-radius: 14px;
-  text-align: left;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-}
-
-.slide-4 .comparison-item img {
-  width: 100%;
-  height: auto;
-  max-height: 130px;      /* این باعث می‌شه سه‌تا عکس کامل جا بشن */
-  border-radius: 10px;
-  display: block;
-}
-
-.slide-4 .comparison-item p {
-  margin-top: 6px;
-  font-size: 13px;
-}
-
-/* موبایل: متن بالا، عکس‌ها زیرش */
-@media (max-width: 900px) {
-  .slide-4 .slide-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .slide-4 .comparison-right {
-    margin-top: 10px;
-  }
-}
-
-
-/* --------------------------------------------- */
-/*          NEUE VERSION: SLIDE 4 – INNOVATION   */
-/* --------------------------------------------- */
-
-.slide-4-innov .slide-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 24px;
-  align-items: flex-start;
-}
-
-/* ستون متن */
-.slide-4-innov .helmet-text h1 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-/* لیست مقایسه: سایز و فاصله‌ها و بولت نارنجی */
-.slide-4-innov .comparison-list {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.slide-4-innov .comparison-list li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 10px;
-}
-
-/* بولت نارنجی */
-.slide-4-innov .comparison-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);   /* نارنجی مثل بقیه اسلایدها */
-  font-size: 22px;
-  line-height: 1;
-}
-.slide-4-innov .helmet-list {
-  list-style: none;
-  margin: 0 0 8px;
-  padding-left: 0;
-}
-
-.slide-4-innov .helmet-list li {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 4px;
-}
-
-.slide-4-innov .helmet-list li strong {
-  color: var(--text);
-}
-
-.slide-4-innov .closing-important {
-  color: var(--accent);
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-/* ستون عکس‌ها: سه کارت کوچک زیر هم */
-.slide-4-innov .helmet-images {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.slide-4-innov .helmet-card {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 8px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-.slide-4-innov .helmet-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.slide-4-innov .helmet-card p {
-  margin-top: 6px;
-  font-size: 13px;
-}
-
-/* موبایل: متن بالا، عکس‌ها زیرش */
-@media (max-width: 900px) {
-  .slide-4-innov .slide-inner {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-}
-
-/* --------------------------------------------- */
-/*      SLIDE 3 – UNSERE LÖSUNG (HELM)          */
-/* --------------------------------------------- */
-
-.slide-3 .slide-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  padding: 20px 10px;
-}
-
-.slide-3 .content-left h1 {
-  font-size: 30px;
-  margin-bottom: 14px;
-}
-
-.slide-3 .feature-list {
-  list-style: none;
-  margin: 8px 0 8px;
-  padding-left: 0;
-}
-
-.slide-3 .feature-list li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 4px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.slide-3 .feature-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-}
-
-.slide-3 .closing-line {
-  margin-top: 10px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* باکس ویدیو در اسلاید ۳ */
-.slide-3 .video-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slide-3 .video-placeholder {
-  width: 100%;
-  min-height: 220px;
-  border-radius: 18px;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  background: rgba(3, 5, 18, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 18px;
-  font-size: 15px;
-  color: var(--muted);
-  backdrop-filter: blur(10px);
-}
-
-/* --------------------------------------------- */
-/*      SLIDE 4 – INNOVATION & VERGLEICH        */
-/* --------------------------------------------- */
-
-.slide-4-innov .slide-inner {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 32px;
-  padding: 20px 10px;
-}
-
-.slide-4-innov .helmet-text h1 {
-  font-size: 30px;
-  margin-bottom: 14px;
-}
-
-.slide-4-innov .helmet-list {
-  list-style: none;
-  margin: 8px 0;
-  padding-left: 0;
-}
-
-.slide-4-innov .helmet-list li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 4px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.slide-4-innov .helmet-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-}
-
-.slide-4-innov .closing-important {
-  margin-top: 12px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* گرید عکس‌های سمت راست */
-.slide-4-innov .comparison-right {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.slide-4-innov .comparison-item {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 14px;
-  padding: 8px;
-  text-align: center;
-}
-
-.slide-4-innov .comparison-item img {
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-}
-
-.slide-4-innov .comparison-item p {
-  font-size: 12px;
-  margin-top: 4px;
-  color: var(--muted);
-}
-
-/* ------------------------------ */
-/*   SLIDE 5 – UMSETZUNG & RESSOURCEN */
-/* ------------------------------ */
-
-.slide-5 {
-  padding-top: 12px;         /* کل اسلاید کمی بالاتر می‌آید */
-  padding-bottom: 18px;
-}
-
-.slide-5 .slide-inner {
-  display: grid;
-  grid-template-columns: 2fr 0.9fr;   /* ستون متن پهن‌تر، ویدیو ستون باریک‌تر سمت راست */
-  gap: 28px;
-  align-items: flex-start;            /* متن و ویدیو هر دو از بالا شروع شوند */
-}
-
-/* متن سمت چپ */
-.slide-5 .content-left h1 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.slide-5 .section-title {
-  margin-top: 10px;
-  margin-bottom: 4px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.slide-5 .feature-list {
-  list-style: none;
-  margin: 4px 0;
-  padding-left: 0;
-}
-
-.slide-5 .feature-list li {
-  position: relative;
-  padding-left: 16px;
-  margin-bottom: 3px;
-  font-size: 14px;     /* کمی کوچک‌تر که همه چیز جا بشود */
-  line-height: 1.4;
-}
-
-.slide-5 .feature-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-}
-
-/* ویدیو سمت راست */
-.slide-5 .video-box {
-  display: flex;
-  justify-content: flex-end;   /* تا جایی که می‌شود برود سمت راست */
-  align-items: flex-start;     /* از بالا شروع شود */
-}
-
-.slide-5 .video-placeholder {
-  width: 100%;
-  max-width: 380px;           /* کمی بزرگ‌تر از قبل، ولی نه غول‌آسا */
-  min-height: 230px;
-  border-radius: 22px;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  background: rgba(3, 5, 18, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 18px;
-  font-size: 15px;
-  color: var(--muted);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
-}
-
-/* موبایل: متن بالا، ویدیو زیرش */
-@media (max-width: 900px) {
-  .slide-5 .slide-inner {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .slide-5 .video-box {
-    justify-content: center;
-  }
-/* --------------------------------------------- */
-/*           SLIDE 6 – BUSINESS & MARKET         */
-/* --------------------------------------------- */
-
-.slide-6 .slide-inner {
-  padding: 26px 30px;
-}
-
-.slide-6 h1 {
-  font-size: 30px;
-  margin-bottom: 14px;
-}
-
-.slide-6 .subtitle-6 {
-  font-size: 16px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-.slide-6 .points-6 {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
-
-.slide-6 .points-6 li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.slide-6 .points-6 li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);  /* نارنجی */
-}
-
-.slide-6 .points-6 strong {
-    color: var(--accent);   /* نارنجی */
-    font-weight: 600;
-}
-
-
-.slide-6 .closing-6 {
-  margin-top: 16px;
-  font-weight: 600;
-  color: var(--accent);  /* نارنجی */
-}
-/* --------------------------------------------- */
-/*   SLIDE USERS (Slide 3) – layout & bullets   */
-/* --------------------------------------------- */
-
-.slide-users .users-inner {
-  display: grid !important;  /* حتماً گراید بشه */
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-  gap: 32px;
-  align-items: center;
-}
-
-/* تیتر */
-.slide-users .users-text h1 {
-  font-size: 28px;
-  margin-bottom: 14px;
-}
-
-/* لیست بلافاصله زیر تیتر */
-.slide-users .users-text ul {
-  list-style: none !important;   /* بولت پیش‌فرض رو خاموش کن */
-  margin: 18px 0 0 0;
-  padding: 0;
-}
-
-/* متن آیتم‌ها */
-.slide-users .users-text li {
-  font-size: 16px;
-  color: var(--text);
-  line-height: 1.7;
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 18px;
-}
-
-/* بولت نارنجی */
-.slide-users .users-text li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent) !important;   /* حتماً نارنجی */
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* ستون راست: عکس */
-.slide-users .users-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slide-users .users-image img {
-  width: 100%;
-  max-width: 380px;
-  object-fit: contain;
-  border-radius: 18px;
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.75),
-    0 0 28px rgba(5, 8, 25, 0.9);
-}
-
-/* موبایل: تک‌ستونه + عکس بالا */
-@media (max-width: 900px) {
-  .slide-users .users-inner {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .slide-users .users-image {
-    order: -1;
-  }
-}
-/* Slide 4 – Ein Helm, der sieht, denkt, warnt …  */
-.slide[data-slide="4"] .slide-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr); /* متن چپ، ویدیو راست */
-  gap: 32px;
-  align-items: center;
-}
-  /* عمومی: بولت‌های نارنجی برای لیست‌های feature-list */
-.feature-list {
-  list-style: none;
-  margin: 18px 0 0;
-  padding: 0;
-}
-
-.feature-list li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 6px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.feature-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);   /* همون نارنجی قبلی */
-  font-size: 20px;
-  line-height: 1;
-}
   </style>
 </head>
 <body>
@@ -1057,14 +820,13 @@ header .brand img {
     <div class="bg-glow"></div>
 
     <header>
-     <div class="brand">
-  <img src="logo.png" alt="LROX Logo klein" />
-  <div class="brand-text">
-    <span class="brand-name">LROX</span>
-    <span class="brand-tagline">Live · Risk · Observation · eXpert</span>
-  </div>
-</div>
-
+      <div class="brand">
+        <img src="logo.png" alt="LROX Logo klein" />
+        <div class="brand-text">
+          <span class="brand-name">LROX</span>
+          <span class="brand-tagline">Live · Risk · Observation · eXpert</span>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -1087,160 +849,114 @@ header .brand img {
           </div>
         </section>
 
-     <!-- Slide 2 - Problem & Zahlen -->
-    <section class="slide slide-2" data-slide="2">
-      <div class="slide-inner">
-        
-        <!-- متن سمت چپ -->
-        <div class="text-block">
-          <h1>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</h1>
+        <!-- Slide 2 - Problem & Zahlen -->
+        <section class="slide slide-2" data-slide="2">
+          <div class="slide-inner">
+            <div class="text-block">
+              <h1>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</h1>
+              <p class="highlight-number">
+                Durchschnittlich 8 Tote und fast 1&nbsp;000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024
+              </p>
+              <div class="highlight-source">
+                Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.
+              </div>
+            </div>
 
-          <p class="highlight-number">
-              Durchschnittlich 8 Tote und fast 1&nbsp;000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024
-          </p>
-          <div class="highlight-source">
-            Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.
-          </div>
-        </div>
-
-        <!-- نمودار / تصویر سمت راست -->
-        <div class="chart-block">
-          <img src="assets/diagramm2.jpg"
-               alt="Im Straßenverkehr Getötete 2024 nach ausgewählter Verkehrs­beteiligungsart und Ortslagen" />
-          <div class="chart-caption">
-              Quelle: Statistisches Bundesamt (Destatis), 2025 – Werte 2024.
-          </div>
-        </div>
-
-      </div>
-    </section>
-       <!-- Slide 3 – Wer ist besonders gefährdet? -->
-<section class="slide slide-users" data-slide="3">
-  <div class="slide-inner"
-       style="display:grid;
-              grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr);
-              gap:32px;
-              align-items:center;">
-
-    <!-- ستون چپ: متن -->
-    <div>
-      <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
-
-      <ul style="list-style:none; margin:18px 0 0 0; padding:0;">
-        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
-          <span style="position:absolute; left:0; top:0;
-                       color:var(--accent); font-size:20px; line-height:1;">•</span>
-          Fahrradfahrerinnen und Fahrradfahrer
-        </li>
-        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
-          <span style="position:absolute; left:0; top:0;
-                       color:var(--accent); font-size:20px; line-height:1;">•</span>
-          Kinder – besonders auf dem Schulweg
-        </li>
-        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
-          <span style="position:absolute; left:0; top:0;
-                       color:var(--accent); font-size:20px; line-height:1;">•</span>
-          Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl
-        </li>
-        <li style="position:relative; padding-left:18px; margin-bottom:8px; line-height:1.7;">
-          <span style="position:absolute; left:0; top:0;
-                       color:var(--accent); font-size:20px; line-height:1;">•</span>
-          Menschen mit Sehbeeinträchtigungen
-        </li>
-      </ul>
-    </div>
-
-    <!-- ستون راست: عکس -->
-    <div style="display:flex; justify-content:center; align-items:center;">
-      <img src="assets/assetsrisk-groups.jpg"
-           alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung"
-           style="width:100%;
-                  max-width:380px;
-                  object-fit:contain;
-                  border-radius:18px;
-                  box-shadow:0 18px 45px rgba(0,0,0,0.75),
-                             0 0 28px rgba(5,8,25,0.9);" />
-    </div>
-
-  </div>
-</section>
-
-            <!-- Slide 4 – Unsere Lösung -->
-      <section class="slide slide-3" data-slide="4">
-        <div class="slide-inner">
-          <div class="content-left">
-            <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht.</h1>
-
-            <ul class="feature-list">
-              <li>Kamera + Nano-Computer + KI</li>
-              <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
-              <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
-              <li>Funktioniert vollständig offline</li>
-              <li>Für Radfahrer:innen, Fußgänger:innen, Senior:innen, Rollstuhlnutzer –
-                  besonders für blinde & sehbehinderte Personen</li>
-            </ul>
-
-            <p class="closing-line">
-              → Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.
-            </p>
-          </div>
-
-          <div class="video-box">
-            <div class="video-placeholder">
-              Video wird hier eingefügt<br />
-              (Demovideo des LROX-Helms)
+            <div class="chart-block">
+              <img src="assets/diagramm2.jpg"
+                   alt="Im Straßenverkehr Getötete 2024 nach ausgewählter Verkehrs­beteiligungsart und Ortslagen" />
+              <div class="chart-caption">
+                Quelle: Statistisches Bundesamt (Destatis), 2025 – Werte 2024.
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-     <!-- Slide 4 – Innovation & Vergleich -->
-<section class="slide slide-4-innov" data-slide="4">
-  <div class="slide-inner">
+        <!-- Slide 3 – Wer ist besonders gefährdet? -->
+        <section class="slide slide-users" data-slide="3">
+          <div class="slide-inner users-inner">
+            <div class="users-text">
+              <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
+              <ul>
+                <li>Fahrradfahrerinnen und Fahrradfahrer</li>
+                <li>Kinder – besonders auf dem Schulweg</li>
+                <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
+                <li>Menschen mit Sehbeeinträchtigungen</li>
+              </ul>
+            </div>
 
-    <!-- LEFT COLUMN (TEXT) -->
-    <div class="helmet-text">
-      <h1>Unterschied zu bestehenden Lösungen</h1>
+            <div class="users-image">
+              <img src="assets/assetsrisk-groups.jpg"
+                   alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung" />
+            </div>
+          </div>
+        </section>
 
-      <ul class="helmet-list">
-        <li>
-          <strong>Smart Canes / elektronische Langstöcke:</strong><br />
-          Nur nach vorne gerichtet, wenige Meter Reichweite.<br />
-          Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit.<br />
-          Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.
-        </li>
+        <!-- Slide 4 – Unsere Lösung -->
+        <section class="slide slide-3" data-slide="4">
+          <div class="slide-inner">
+            <div class="content-left">
+              <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht.</h1>
+              <ul class="feature-list">
+                <li>Kamera + Nano-Computer + KI</li>
+                <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
+                <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
+                <li>Funktioniert vollständig offline</li>
+                <li>Für Radfahrer:innen, Fußgänger:innen, Senior:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
+              </ul>
+              <p class="closing-line">
+                → Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.
+              </p>
+            </div>
 
-        <li>
-          <strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong><br />
-          Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.<br />
-          Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.<br />
-          Warnen nicht zuverlässig vor Unfällen.
-        </li>
+            <div class="video-box">
+              <div class="video-placeholder">
+                Video wird hier eingefügt<br />
+                (Demovideo des LROX-Helms)
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <li>
-          <strong>Bestehende „smarte“ Helme:</strong><br />
-          Einzelne Sensoren, kleines Sichtfeld.<br />
-          Reagieren erst sehr spät bei Gefahr.<br />
-          Keine echte KI-Echtzeitanalyse, kein 360°-Blick.
-        </li>
-      </ul>
-    </div>
+        <!-- Slide 5 – Innovation & Vergleich -->
+        <section class="slide slide-4-innov" data-slide="5">
+          <div class="slide-inner">
+            <div class="helmet-text">
+              <h1>Unterschied zu bestehenden Lösungen</h1>
+              <ul class="helmet-list">
+                <li>
+                  <strong>Smart Canes / elektronische Langstöcke:</strong><br />
+                  Nur nach vorne gerichtet, wenige Meter Reichweite.<br />
+                  Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit.<br />
+                  Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.
+                </li>
+                <li>
+                  <strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong><br />
+                  Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.<br />
+                  Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.<br />
+                  Warnen nicht zuverlässig vor Unfällen.
+                </li>
+                <li>
+                  <strong>Bestehende „smarte“ Helme:</strong><br />
+                  Einzelne Sensoren, kleines Sichtfeld.<br />
+                  Reagieren erst sehr spät bei Gefahr.<br />
+                  Keine echte KI-Echtzeitanalyse, kein 360°-Blick.
+                </li>
+              </ul>
+            </div>
 
-    <!-- RIGHT COLUMN (IMAGE) -->
-    <div class="helmet-images">
-      <div class="helmet-card">
-        <img src="assets/tools.jpg" alt="Assistive tools">
-        <p>Bisherige Assistenzsysteme: begrenzte Wahrnehmung & späte Warnung.</p>
-      </div>
-    </div>
+            <div class="comparison-right">
+              <div class="comparison-item">
+                <img src="assets/tools.jpg" alt="Assistive tools">
+                <p>Bisherige Assistenzsysteme: begrenzte Wahrnehmung & späte Warnung.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-  </div>
-</section>
-              <!-- Slide 5 – Umsetzung -->
-      <section class="slide slide-5" data-slide="5">
-        <div class="slide-inner">
-          <div class="two-columns">
-            <!-- LEFT TEXT -->
+        <!-- Slide 6 – Umsetzung -->
+        <section class="slide slide-5" data-slide="6">
+          <div class="slide-inner">
             <div class="content-left">
               <h1>Umsetzung, Ressourcen, Kompetenzen</h1>
 
@@ -1267,66 +983,139 @@ header .brand img {
               </ul>
             </div>
 
-            <!-- RIGHT: VIDEO-BOX -->
-            <div class="content-right">
-              <div class="video-box">
-                <div class="video-placeholder">
-                  Demo-Video wird hier eingefügt<br />
-                  <span>(Version 2 – Fahrrad + Helm)</span>
-                </div>
+            <div class="video-box">
+              <div class="video-placeholder">
+                Demo-Video wird hier eingefügt<br />
+                <span>(Version 2 – Fahrrad + Helm)</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-<!-- Slide 6 – Geschäftsmodell & Markt -->
-<section class="slide slide-6" data-slide="6">
-  <div class="slide-inner">
-    <h1>Geschäftsmodell &amp; Marktpotenzial</h1>
+        </section>
 
-    <p class="subtitle-6">
-      Wir kombinieren ein klares Geschäftsmodell mit einem riesigen Markt für
-      smarte Sicherheit.
-    </p>
+        <!-- Slide 7 – Geschäftsmodell & Markt -->
+        <section class="slide slide-6" data-slide="7">
+          <div class="slide-inner">
+            <h1>Geschäftsmodell &amp; Marktpotenzial</h1>
+            <p class="subtitle-6">
+              Wir kombinieren ein klares Geschäftsmodell mit einem riesigen Markt für
+              smarte Sicherheit.
+            </p>
+            <ul class="points-6">
+              <li>
+                <strong>Klares Geschäftsmodell:</strong>
+                Verkauf eines intelligenten Helm-Moduls mit optionalen Premium-Diensten.
+              </li>
+              <li>
+                <strong>Partner für Prävention:</strong>
+                Zusammenarbeit mit Versicherungen, Kommunen und sozialen Einrichtungen,
+                die Unfälle aktiv vermeiden wollen.
+              </li>
+              <li>
+                <strong>Großer Markt:</strong>
+                Über 80&nbsp;Mio. Fahrräder in Europa und Millionen Menschen mit
+                Mobilitäts- oder Sehbeeinträchtigungen.
+              </li>
+              <li>
+                <strong>Skalierbar:</strong>
+                Einsatz im Alltag, im städtischen Raum und in der Industrie –
+                überall dort, wo Sicherheit im Fokus steht.
+              </li>
+            </ul>
+            <p class="closing-6">
+              → Unsere Lösung hat das Potenzial, zum neuen Sicherheitsstandard zu werden.
+            </p>
+          </div>
+        </section>
 
-    <ul class="points-6">
-      <li>
-        <strong>Klares Geschäftsmodell:</strong>
-        Verkauf eines intelligenten Helm-Moduls mit optionalen Premium-Diensten.
-      </li>
-      <li>
-        <strong>Partner für Prävention:</strong>
-        Zusammenarbeit mit Versicherungen, Kommunen und sozialen Einrichtungen,
-        die Unfälle aktiv vermeiden wollen.
-      </li>
-      <li>
-        <strong>Großer Markt:</strong>
-        Über 80&nbsp;Mio. Fahrräder in Europa und Millionen Menschen mit
-        Mobilitäts- oder Sehbeeinträchtigungen.
-      </li>
-      <li>
-        <strong>Skalierbar:</strong>
-        Einsatz im Alltag, im städtischen Raum und in der Industrie –
-        überall dort, wo Sicherheit im Fokus steht.
-      </li>
-    </ul>
+        <!-- Slide 8 – Technische Details -->
+        <section class="slide slide-7" data-slide="8">
+          <div class="slide-inner">
+            <div class="content-left">
+              <h1>Technische Details & KI-Algorithmus</h1>
+              <ul class="feature-list">
+                <li>Echtzeit-Objekt-Erkennung mit YOLO (You Only Look Once)</li>
+                <li>360°-Kamera für vollständige Umgebungserfassung</li>
+                <li>Kollisionsvorhersage basierend auf Geschwindigkeit und Richtung</li>
+                <li>Sprachausgabe in mehreren Sprachen</li>
+                <li>Offline-Betrieb ohne Internetverbindung</li>
+                <li>Energieeffiziente KI-Modelle für längere Akkulaufzeit</li>
+              </ul>
+            </div>
 
-    <p class="closing-6">
-      → Unsere Lösung hat das Potenzial, zum neuen Sicherheitsstandard zu werden.
-    </p>
-  </div>
-</section>
+            <div class="content-right">
+              <div class="image-placeholder">
+                Technische Diagramme<br />
+                (Systemarchitektur & KI-Modell)
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 9 – Roadmap -->
+        <section class="slide slide-8" data-slide="9">
+          <div class="slide-inner">
+            <div class="content-left">
+              <h1>Roadmap & Nächste Schritte</h1>
+              <ul class="feature-list">
+                <li><strong>Q1 2025:</strong> Prototyp-Optimierung & Feldtests</li>
+                <li><strong>Q2 2025:</strong> Partnerschaften mit Blindenverbänden & Versicherungen</li>
+                <li><strong>Q3 2025:</strong> Kleinserienproduktion & Beta-Tests</li>
+                <li><strong>Q4 2025:</strong> Markteinführung & Erweiterung auf Industrieanwendungen</li>
+                <li><strong>2026:</strong> Internationale Expansion & neue Modellvarianten</li>
+              </ul>
+            </div>
+
+            <div class="content-right">
+              <div class="timeline-placeholder">
+                Roadmap-Timeline<br />
+                (Zeitplan & Meilensteine)
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 10 – Kontakt & Abschluss -->
+        <section class="slide slide-9" data-slide="10">
+          <div class="slide-inner">
+            <h1>Vielen Dank für Ihre Aufmerksamkeit</h1>
+            
+            <div class="contact-info">
+              <div class="contact-item">
+                <h3>Kontakt</h3>
+                <p>Ladan Seddighi & Amir Mobasheraghdam<br>info@lrox.de</p>
+              </div>
+              <div class="contact-item">
+                <h3>Website</h3>
+                <p>lrox.de</p>
+              </div>
+              <div class="contact-item">
+                <h3>Demo-Termin</h3>
+                <p>Vereinbaren Sie einen persönlichen<br>Demo-Termin mit uns</p>
+              </div>
+              <div class="contact-item">
+                <h3>Partnerschaften</h3>
+                <p>Wir suchen Partner für<br>Feldtests & Entwicklung</p>
+              </div>
+            </div>
+            
+            <p class="final-message">
+              Gemeinsam machen wir unsere Straßen sicherer für alle.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
 
     <footer>
-    <div class="nav-hint" id="nav-hint">
-        Slide 1 / 2 · Mit der rechten Pfeiltaste zur nächsten Folie
-    </div>
-    
-    <div class="right">
+      <div class="nav-hint" id="nav-hint">
+        Slide 1 / 10 · Mit der rechten Pfeiltaste zur nächsten Folie
+      </div>
+      
+      <div class="right">
         <div class="dot"></div>
         <div class="site-link">lrox.de</div>
-    </div>
-</footer>
+      </div>
+    </footer>
   </div>
 
   <script>
