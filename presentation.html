@@ -467,8 +467,8 @@ header .brand img {
 /* --------------------------------------------- */
 
 .slide-users .users-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);  /* شبیه اسلاید 2 */
+  display: grid !important;  /* حتماً گراید بشه */
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
   gap: 32px;
   align-items: center;
 }
@@ -481,7 +481,7 @@ header .brand img {
 
 /* لیست بلافاصله زیر تیتر */
 .slide-users .users-text ul {
-  list-style: none;
+  list-style: none !important;   /* بولت پیش‌فرض رو خاموش کن */
   margin: 18px 0 0 0;
   padding: 0;
 }
@@ -502,7 +502,7 @@ header .brand img {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--accent);       /* نارنجی */
+  color: var(--accent) !important;   /* حتماً نارنجی */
   font-size: 20px;
   line-height: 1;
 }
@@ -516,7 +516,7 @@ header .brand img {
 
 .slide-users .users-image img {
   width: 100%;
-  max-width: 380px;           /* حدوداً هم‌اندازه دیاگرام اسلاید 2 */
+  max-width: 380px;
   object-fit: contain;
   border-radius: 18px;
   box-shadow:
@@ -532,7 +532,7 @@ header .brand img {
   }
 
   .slide-users .users-image {
-    order: -1;  /* روی موبایل عکس می‌آد بالای متن */
+    order: -1;
   }
 }
   
