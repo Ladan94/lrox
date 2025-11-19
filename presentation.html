@@ -522,8 +522,6 @@ header .brand img {
   font-weight: 600;
   margin-top: 12px;
 }
-
-}
 /* --------------------------------------------- */
 /*               SLIDE 4 – SMART HELMETS         */
 /* --------------------------------------------- */
@@ -592,7 +590,31 @@ header .brand img {
   font-size: 28px;
   margin-bottom: 16px;
 }
+/* لیست مقایسه: سایز و فاصله‌ها و بولت نارنجی */
+.slide-4-innov .comparison-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
 
+.slide-4-innov .comparison-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+}
+
+/* بولت نارنجی */
+.slide-4-innov .comparison-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);   /* نارنجی مثل بقیه اسلایدها */
+  font-size: 22px;
+  line-height: 1;
+}
 .slide-4-innov .helmet-list {
   list-style: none;
   margin: 0 0 8px;
@@ -997,7 +1019,58 @@ header .brand img {
     order: -1;
   }
 }
-  
+  /* --------------------------------------------- */
+/*          SLIDE 4 – INNOVATION (NEW VERSION)   */
+/* --------------------------------------------- */
+
+.slide-4-innov .slide-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.slide-4-innov .helmet-text h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.slide-4-innov .comparison-list {
+  padding-left: 0;
+  margin: 0;
+}
+
+.slide-4-innov .comparison-list li {
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.slide-4-innov .comparison-list li strong {
+  color: var(--accent);
+}
+
+.slide-4-innov .comparison-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-4-innov .comparison-right img {
+  width: 380px;
+  border-radius: 12px;
+}
+
+/* موبایل */
+@media (max-width: 900px) {
+  .slide-4-innov .slide-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-4-innov .comparison-right img {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
@@ -1142,44 +1215,48 @@ header .brand img {
         </div>
       </section>
 
-      <!-- Slide 4 – Innovation & Vergleich -->
-      <section class="slide slide-4-innov" data-slide="4">
-        <div class="slide-inner">
-          <div class="helmet-text">
-            <h1>Unterschied zu bestehenden Lösungen</h1>
+     <!-- Slide 4 – Innovation & Vergleich -->
+<section class="slide slide-4-innov" data-slide="4">
+  <div class="slide-inner">
 
-<ul class="comparison-list">
-  <li>
-    <strong>Smart Canes / elektronische Langstöcke:</strong><br />
-    Nur nach vorne gerichtet, wenige Meter Reichweite.<br />
-    Ultraschall erkennt nur, dass etwas da ist – nicht Art, Richtung oder Geschwindigkeit.<br />
-    Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.
-  </li>
+    <!-- LEFT COLUMN (TEXT) -->
+    <div class="helmet-text">
+      <h1>Unterschied zu bestehenden Lösungen</h1>
 
-  <li>
-    <strong>Assistenzgeräte an der Brille (z.&nbsp;B. Texterkennung):</strong><br />
-    Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.<br />
-    Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.<br />
-    Warnen nicht zuverlässig vor Unfällen.
-  </li>
+      <ul class="helmet-list">
+        <li>
+          <strong>Smart Canes / elektronische Langstöcke:</strong><br />
+          Nur nach vorne gerichtet, wenige Meter Reichweite.<br />
+          Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit.<br />
+          Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.
+        </li>
 
-  <li>
-    <strong>Bestehende „smarte“ Helme:</strong><br />
-    Einzelne Sensoren, kleines Sichtfeld.<br />
-    Reagieren erst sehr spät bei Gefahr.<br />
-    Keine echte KI-Echtzeitanalyse, kein 360°-Blick.
-  </li>
-</ul>
+        <li>
+          <strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong><br />
+          Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.<br />
+          Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.<br />
+          Warnen nicht zuverlässig vor Unfällen.
+        </li>
 
-          <div class="comparison-right">
-  <div class="comparison-item">
-    <img src="assets/tools.jpg"
-         alt="Smart Cane, Assistenzbrille und bestehender smarter Helm im Vergleich" />
-    <p>Beispiele: Smart Cane, Assistenzbrille und bestehender smarter Helm.</p>
+        <li>
+          <strong>Bestehende „smarte“ Helme:</strong><br />
+          Einzelne Sensoren, kleines Sichtfeld.<br />
+          Reagieren erst sehr spät bei Gefahr.<br />
+          Keine echte KI-Echtzeitanalyse, kein 360°-Blick.
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT COLUMN (IMAGE) -->
+    <div class="helmet-images">
+      <div class="helmet-card">
+        <img src="assets/tools.jpg" alt="Assistive tools">
+        <p>Bisherige Assistenzsysteme: begrenzte Wahrnehmung & späte Warnung.</p>
+      </div>
+    </div>
+
   </div>
-</div>
-        </div>
-      </section>
+</section>
               <!-- Slide 5 – Umsetzung -->
       <section class="slide slide-5" data-slide="5">
         <div class="slide-inner">
