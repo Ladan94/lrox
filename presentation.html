@@ -23,8 +23,7 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top, #1d2540 0, #050814 55%),
         radial-gradient(circle at bottom, #130d06 0, #050509 40%);
@@ -112,7 +111,7 @@
       font-weight: 400;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--muted);
       margin-top: -4px;
       margin-left: 0px;
       display: block;
@@ -140,16 +139,24 @@
       justify-content: center;
       position: relative;
       z-index: 1;
+      overflow: hidden;
     }
 
     .slides {
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
+      height: 100%;
+      position: relative;
     }
 
     .slide {
       display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background:
         radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
         radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
@@ -160,8 +167,7 @@
         0 24px 80px rgba(0, 0, 0, 0.85),
         0 0 46px rgba(255, 122, 0, 0.26);
       backdrop-filter: blur(22px);
-      position: relative;
-      overflow: hidden;
+      overflow: auto;
     }
 
     .slide::before {
@@ -180,33 +186,121 @@
     .slide-inner {
       position: relative;
       z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .slide.active {
       display: block;
     }
 
-    /* Slide 1 */
-    .slide-1 .slide-inner {
+    /* Common slide layouts */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      height: 100%;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .centered-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .content-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      padding: 16px;
       text-align: center;
     }
 
-    .logo-hero {
+    .placeholder-box {
+      background: rgba(3, 5, 18, 0.85);
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--muted);
+      height: 100%;
+    }
+
+    .image-placeholder, .video-placeholder {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin: 18px 0 0 0;
+      padding: 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* Slide specific styles */
+    .slide-1 .logo-hero {
       margin-bottom: 22px;
     }
 
-    .logo-hero img {
+    .slide-1 .logo-hero img {
       max-width: 220px;
       height: 220px;
       filter:
         drop-shadow(0 0 18px rgba(255, 122, 0, 0.55))
         drop-shadow(0 0 6px rgba(255, 122, 0, 0.35));
-    }
-
-    .slide-1 h1 {
-      font-size: 32px;
-      line-height: 1.3;
-      margin-bottom: 10px;
     }
 
     .slide-1 .tagline {
@@ -217,507 +311,10 @@
       margin: 10px auto 0;
     }
 
-    .slide-1 .tagline span {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
     .slide-1 .names {
       margin-top: 22px;
       font-size: 14px;
       color: var(--muted);
-    }
-
-    .slide-1 .names span {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Slide 2 */
-    .slide-2 .slide-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .text-block h1 {
-      font-size: 28px;
-      line-height: 1.35;
-      margin-bottom: 14px;
-    }
-
-    .highlight-number {
-      font-size: 23px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .highlight-source {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .text-block p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .text-block .highlight-number {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }   
-
-    .slide-2 .chart-block {
-      justify-self: end;
-      background: rgba(3, 5, 18, 0.85);
-      border-radius: 20px;
-      padding: 14px 14px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.8),
-        0 0 24px rgba(10, 12, 26, 0.9);
-    }
-
-    .slide-2 .chart-block img {
-      width: 95%;
-      max-width: 450px;
-      margin: 0 auto;
-      border-radius: 14px;
-      display: block;
-    }
-
-    .slide-2 .chart-caption {
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* Slide 3 */
-    .slide-users .users-inner {
-      display: grid !important;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .slide-users .users-text h1 {
-      font-size: 28px;
-      margin-bottom: 14px;
-    }
-
-    .slide-users .users-text ul {
-      list-style: none !important;
-      margin: 18px 0 0 0;
-      padding: 0;
-    }
-
-    .slide-users .users-text li {
-      font-size: 16px;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 8px;
-      position: relative;
-      padding-left: 18px;
-    }
-
-    .slide-users .users-text li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent) !important;
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .slide-users .users-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .slide-users .users-image img {
-      width: 100%;
-      max-width: 380px;
-      object-fit: contain;
-      border-radius: 18px;
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.75),
-        0 0 28px rgba(5, 8, 25, 0.9);
-    }
-
-    /* Slide 4 */
-    .slide-3 .slide-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
-      padding: 20px 10px;
-    }
-
-    .slide-3 .content-left h1 {
-      font-size: 30px;
-      margin-bottom: 14px;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin: 18px 0 0;
-      padding: 0;
-    }
-
-    .feature-list li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 6px;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .feature-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .slide-3 .closing-line {
-      margin-top: 10px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .slide-3 .video-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .slide-3 .video-placeholder {
-      width: 100%;
-      min-height: 220px;
-      border-radius: 18px;
-      border: 1px dashed rgba(255, 255, 255, 0.35);
-      background: rgba(3, 5, 18, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 18px;
-      font-size: 15px;
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Slide 5 */
-    .slide-4-innov .slide-inner {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 32px;
-      padding: 20px 10px;
-    }
-
-    .slide-4-innov .helmet-text h1 {
-      font-size: 30px;
-      margin-bottom: 14px;
-    }
-
-    .slide-4-innov .helmet-list {
-      list-style: none;
-      margin: 8px 0;
-      padding-left: 0;
-    }
-
-    .slide-4-innov .helmet-list li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 4px;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .slide-4-innov .helmet-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-    }
-
-    .slide-4-innov .closing-important {
-      margin-top: 12px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .slide-4-innov .comparison-right {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .slide-4-innov .comparison-item {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 14px;
-      padding: 8px;
-      text-align: center;
-    }
-
-    .slide-4-innov .comparison-item img {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-    }
-
-    .slide-4-innov .comparison-item p {
-      font-size: 12px;
-      margin-top: 4px;
-      color: var(--muted);
-    }
-
-    /* Slide 6 */
-    .slide-5 .slide-inner {
-      display: grid;
-      grid-template-columns: 2fr 0.9fr;
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    .slide-5 .content-left h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .slide-5 .section-title {
-      margin-top: 10px;
-      margin-bottom: 4px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .slide-5 .feature-list {
-      list-style: none;
-      margin: 4px 0;
-      padding-left: 0;
-    }
-
-    .slide-5 .feature-list li {
-      position: relative;
-      padding-left: 16px;
-      margin-bottom: 3px;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    .slide-5 .feature-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-    }
-
-    .slide-5 .video-box {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-    }
-
-    .slide-5 .video-placeholder {
-      width: 100%;
-      max-width: 380px;
-      min-height: 230px;
-      border-radius: 22px;
-      border: 1px dashed rgba(255, 255, 255, 0.35);
-      background: rgba(3, 5, 18, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 18px;
-      font-size: 15px;
-      color: var(--muted);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Slide 7 */
-    .slide-6 .slide-inner {
-      padding: 26px 30px;
-    }
-
-    .slide-6 h1 {
-      font-size: 30px;
-      margin-bottom: 14px;
-    }
-
-    .slide-6 .subtitle-6 {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .slide-6 .points-6 {
-      list-style: none;
-      margin: 0;
-      padding-left: 0;
-    }
-
-    .slide-6 .points-6 li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 10px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .slide-6 .points-6 li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-    }
-
-    .slide-6 .points-6 strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .slide-6 .closing-6 {
-      margin-top: 16px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* Slide 8 */
-    .slide-7 .slide-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .slide-7 .content-left h1 {
-      font-size: 30px;
-      margin-bottom: 16px;
-    }
-
-    .slide-7 .feature-list li {
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .slide-7 .content-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .slide-7 .image-placeholder {
-      width: 100%;
-      max-width: 380px;
-      height: 260px;
-      border-radius: 18px;
-      border: 1px dashed rgba(255, 255, 255, 0.35);
-      background: rgba(3, 5, 18, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 18px;
-      font-size: 15px;
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Slide 9 */
-    .slide-8 .slide-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .slide-8 .content-left h1 {
-      font-size: 30px;
-      margin-bottom: 16px;
-    }
-
-    .slide-8 .content-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .slide-8 .timeline-placeholder {
-      width: 100%;
-      max-width: 380px;
-      height: 260px;
-      border-radius: 18px;
-      border: 1px dashed rgba(255, 255, 255, 0.35);
-      background: rgba(3, 5, 18, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 18px;
-      font-size: 15px;
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Slide 10 */
-    .slide-9 .slide-inner {
-      text-align: center;
-    }
-
-    .slide-9 h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .slide-9 .contact-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    .slide-9 .contact-item {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 16px;
-      border-radius: 14px;
-      text-align: center;
-    }
-
-    .slide-9 .contact-item h3 {
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .slide-9 .contact-item p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .slide-9 .final-message {
-      font-size: 18px;
-      color: var(--accent);
-      font-weight: 600;
-      margin-top: 30px;
     }
 
     footer {
@@ -773,44 +370,27 @@
         border-radius: 22px;
       }
 
-      .slide-2 .slide-inner,
-      .slide-users .users-inner,
-      .slide-3 .slide-inner,
-      .slide-4-innov .slide-inner,
-      .slide-5 .slide-inner,
-      .slide-7 .slide-inner,
-      .slide-8 .slide-inner,
-      .slide-9 .contact-info {
+      .two-column, .three-column {
         grid-template-columns: 1fr;
         gap: 18px;
       }
 
-      .slide-2 .chart-block,
-      .slide-users .users-image,
-      .slide-5 .video-box,
-      .slide-7 .content-right,
-      .slide-8 .content-right {
+      .two-column .placeholder-box,
+      .three-column .placeholder-box {
         order: -1;
+        min-height: 200px;
       }
 
-      .slide-1 h1 {
+      h1 {
         font-size: 26px;
       }
 
-      .slide-1 .tagline {
-        font-size: 16px;
+      h2 {
+        font-size: 20px;
       }
 
-      .text-block h1,
-      .slide-users .users-text h1,
-      .slide-3 .content-left h1,
-      .slide-4-innov .helmet-text h1,
-      .slide-5 .content-left h1,
-      .slide-6 h1,
-      .slide-7 .content-left h1,
-      .slide-8 .content-left h1,
-      .slide-9 h1 {
-        font-size: 22px;
+      p, .bullet-list li {
+        font-size: 14px;
       }
     }
   </style>
@@ -821,6 +401,7 @@
 
     <header>
       <div class="brand">
+        <!-- TODO: replace with actual logo path -->
         <img src="logo.png" alt="LROX Logo klein" />
         <div class="brand-text">
           <span class="brand-name">LROX</span>
@@ -831,278 +412,248 @@
 
     <main>
       <div class="slides">
-        <!-- Slide 1 -->
+        <!-- SLIDE 1 START -->
         <section class="slide slide-1 active" data-slide="1">
           <div class="slide-inner">
-            <div class="logo-hero">
-              <img src="logo.png" alt="LROX Logo" />
-            </div>
-            <h1>
-              Was wäre, wenn ein Helm Gefahren erkennen könnte,<br />
-              bevor Sie sie überhaupt sehen?
-            </h1>
-           
-            <div class="names">
-              Präsentiert von <span>Ladan Seddighi</span> &middot;
-              <span>Amir Mobasheraghdam</span>
+            <div class="centered-content">
+              <div class="logo-hero">
+                <!-- TODO: replace with actual logo path -->
+                <img src="logo.png" alt="LROX Logo" />
+              </div>
+              <h1>Was wäre, wenn ein Helm Gefahren erkennen könnte, bevor Sie sie überhaupt sehen?</h1>
+              <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <div class="names">
+                Präsentiert von <span>Ladan Seddighi</span> &middot; <span>Amir Mobasheraghdam</span>
+              </div>
             </div>
           </div>
         </section>
+        <!-- SLIDE 1 END -->
 
-        <!-- Slide 2 - Problem & Zahlen -->
+        <!-- SLIDE 2 START -->
         <section class="slide slide-2" data-slide="2">
           <div class="slide-inner">
-            <div class="text-block">
-              <h1>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</h1>
-              <p class="highlight-number">
-                Durchschnittlich 8 Tote und fast 1&nbsp;000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024
-              </p>
-              <div class="highlight-source">
-                Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Problem & Kontext</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
               </div>
-            </div>
-
-            <div class="chart-block">
-              <img src="assets/diagramm2.jpg"
-                   alt="Im Straßenverkehr Getötete 2024 nach ausgewählter Verkehrs­beteiligungsart und Ortslagen" />
-              <div class="chart-caption">
-                Quelle: Statistisches Bundesamt (Destatis), 2025 – Werte 2024.
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with actual chart image -->
+                  <img src="assets/slide2-placeholder-chart.jpg" alt="Placeholder chart for slide 2" class="image-placeholder" />
+                  <p>Chart placeholder - to be replaced</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+        <!-- SLIDE 2 END -->
 
-        <!-- Slide 3 – Wer ist besonders gefährdet? -->
-        <section class="slide slide-users" data-slide="3">
-          <div class="slide-inner users-inner">
-            <div class="users-text">
-              <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
-              <ul>
-                <li>Fahrradfahrerinnen und Fahrradfahrer</li>
-                <li>Kinder – besonders auf dem Schulweg</li>
-                <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
-                <li>Menschen mit Sehbeeinträchtigungen</li>
-              </ul>
-            </div>
-
-            <div class="users-image">
-              <img src="assets/assetsrisk-groups.jpg"
-                   alt="Collage: Kind auf dem Fahrrad, ältere Person, Person im Rollstuhl, blinde Person mit Stock, Arbeiter in industrieller Umgebung" />
-            </div>
-          </div>
-        </section>
-
-        <!-- Slide 4 – Unsere Lösung -->
-        <section class="slide slide-3" data-slide="4">
+        <!-- SLIDE 3 START -->
+        <section class="slide slide-3" data-slide="3">
           <div class="slide-inner">
-            <div class="content-left">
-              <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht.</h1>
-              <ul class="feature-list">
-                <li>Kamera + Nano-Computer + KI</li>
-                <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
-                <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
-                <li>Funktioniert vollständig offline</li>
-                <li>Für Radfahrer:innen, Fußgänger:innen, Senior:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
-              </ul>
-              <p class="closing-line">
-                → Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.
-              </p>
-            </div>
-
-            <div class="video-box">
-              <div class="video-placeholder">
-                Video wird hier eingefügt<br />
-                (Demovideo des LROX-Helms)
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Risikogruppen & Zielnutzer</h1>
+                <ul class="bullet-list">
+                  <li>TODO: describe risk group here</li>
+                  <li>TODO: describe risk group here</li>
+                  <li>TODO: describe risk group here</li>
+                  <li>TODO: describe risk group here</li>
+                </ul>
+              </div>
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with actual image -->
+                  <img src="assets/slide3-placeholder-image.jpg" alt="Placeholder image for risk groups" class="image-placeholder" />
+                  <p>Image placeholder - to be replaced</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+        <!-- SLIDE 3 END -->
 
-        <!-- Slide 5 – Innovation & Vergleich -->
-        <section class="slide slide-4-innov" data-slide="5">
+        <!-- SLIDE 4 START -->
+        <section class="slide slide-4" data-slide="4">
           <div class="slide-inner">
-            <div class="helmet-text">
-              <h1>Unterschied zu bestehenden Lösungen</h1>
-              <ul class="helmet-list">
-                <li>
-                  <strong>Smart Canes / elektronische Langstöcke:</strong><br />
-                  Nur nach vorne gerichtet, wenige Meter Reichweite.<br />
-                  Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit.<br />
-                  Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.
-                </li>
-                <li>
-                  <strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong><br />
-                  Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.<br />
-                  Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.<br />
-                  Warnen nicht zuverlässig vor Unfällen.
-                </li>
-                <li>
-                  <strong>Bestehende „smarte“ Helme:</strong><br />
-                  Einzelne Sensoren, kleines Sichtfeld.<br />
-                  Reagieren erst sehr spät bei Gefahr.<br />
-                  Keine echte KI-Echtzeitanalyse, kein 360°-Blick.
-                </li>
-              </ul>
-            </div>
-
-            <div class="comparison-right">
-              <div class="comparison-item">
-                <img src="assets/tools.jpg" alt="Assistive tools">
-                <p>Bisherige Assistenzsysteme: begrenzte Wahrnehmung & späte Warnung.</p>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Unsere Lösung / Konzept</h1>
+                <ul class="bullet-list">
+                  <li>TODO: describe feature here</li>
+                  <li>TODO: describe feature here</li>
+                  <li>TODO: describe feature here</li>
+                  <li>TODO: describe feature here</li>
+                </ul>
+                <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+              </div>
+              <div class="video-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with embedded video or video element -->
+                  <div class="video-placeholder">
+                    VIDEO PLACEHOLDER – insert demo link here
+                  </div>
+                  <p>Video placeholder - to be replaced</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+        <!-- SLIDE 4 END -->
 
-        <!-- Slide 6 – Umsetzung -->
-        <section class="slide slide-5" data-slide="6">
+        <!-- SLIDE 5 START -->
+        <section class="slide slide-5" data-slide="5">
           <div class="slide-inner">
-            <div class="content-left">
-              <h1>Umsetzung, Ressourcen, Kompetenzen</h1>
-
-              <div class="section-title">✔ Funktionierender Prototyp</div>
-              <ul class="feature-list">
-                <li>Erste Version lief auf einem Fahrrad mit Jetson Nano (700&nbsp;€).</li>
-                <li>Nach Diebstahl → klar: System muss tragbar, leichter &amp; günstiger werden.</li>
-              </ul>
-
-              <div class="section-title">✔ Neu als Helm konstruiert – aktueller Stand</div>
-              <ul class="feature-list">
-                <li>System wurde als Helm vollständig neu aufgebaut.</li>
-                <li>Batterie hält noch zu kurz.</li>
-                <li>Hardware ist noch zu schwer.</li>
-                <li>Mini-Computer ist empfindlich gegenüber Regen (zuletzt durch Starkregen beschädigt).</li>
-              </ul>
-
-              <div class="section-title">✔ Was wir jetzt brauchen</div>
-              <ul class="feature-list">
-                <li>Raspberry-Pi-System oder eine leichtere Recheneinheit.</li>
-                <li>360°-Kamera.</li>
-                <li>Wasser- &amp; stoßfestes 3D-Gehäuse.</li>
-                <li>Zugang zu 3D-Druck-Laboren &amp; Feldtests mit realen Nutzergruppen.</li>
-              </ul>
-            </div>
-
-            <div class="video-box">
-              <div class="video-placeholder">
-                Demo-Video wird hier eingefügt<br />
-                <span>(Version 2 – Fahrrad + Helm)</span>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Vergleich mit bestehenden Lösungen</h1>
+                <ul class="bullet-list">
+                  <li><strong>Bestehende Lösung 1:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                  <li><strong>Bestehende Lösung 2:</strong> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                  <li><strong>Bestehende Lösung 3:</strong> Ut enim ad minim veniam, quis nostrud exercitation.</li>
+                  <li><strong>LROX Vorteile:</strong> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                </ul>
+              </div>
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with actual image -->
+                  <img src="assets/slide5-placeholder-tools.jpg" alt="Placeholder image for assistive tools" class="image-placeholder" />
+                  <p>Bisherige Assistenzsysteme: begrenzte Wahrnehmung & späte Warnung.</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+        <!-- SLIDE 5 END -->
 
-        <!-- Slide 7 – Geschäftsmodell & Markt -->
-        <section class="slide slide-6" data-slide="7">
+        <!-- SLIDE 6 START -->
+        <section class="slide slide-6" data-slide="6">
           <div class="slide-inner">
-            <h1>Geschäftsmodell &amp; Marktpotenzial</h1>
-            <p class="subtitle-6">
-              Wir kombinieren ein klares Geschäftsmodell mit einem riesigen Markt für
-              smarte Sicherheit.
-            </p>
-            <ul class="points-6">
-              <li>
-                <strong>Klares Geschäftsmodell:</strong>
-                Verkauf eines intelligenten Helm-Moduls mit optionalen Premium-Diensten.
-              </li>
-              <li>
-                <strong>Partner für Prävention:</strong>
-                Zusammenarbeit mit Versicherungen, Kommunen und sozialen Einrichtungen,
-                die Unfälle aktiv vermeiden wollen.
-              </li>
-              <li>
-                <strong>Großer Markt:</strong>
-                Über 80&nbsp;Mio. Fahrräder in Europa und Millionen Menschen mit
-                Mobilitäts- oder Sehbeeinträchtigungen.
-              </li>
-              <li>
-                <strong>Skalierbar:</strong>
-                Einsatz im Alltag, im städtischen Raum und in der Industrie –
-                überall dort, wo Sicherheit im Fokus steht.
-              </li>
-            </ul>
-            <p class="closing-6">
-              → Unsere Lösung hat das Potenzial, zum neuen Sicherheitsstandard zu werden.
-            </p>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Implementierung & Prototyp-Status</h1>
+                <h2>Prototyp</h2>
+                <ul class="bullet-list">
+                  <li>TODO: describe prototype status here</li>
+                  <li>TODO: describe prototype status here</li>
+                </ul>
+                
+                <h2>Aktuelle Herausforderungen</h2>
+                <ul class="bullet-list">
+                  <li>TODO: describe challenge here</li>
+                  <li>TODO: describe challenge here</li>
+                  <li>TODO: describe challenge here</li>
+                </ul>
+                
+                <h2>Nächste Schritte</h2>
+                <ul class="bullet-list">
+                  <li>TODO: describe next step here</li>
+                  <li>TODO: describe next step here</li>
+                  <li>TODO: describe next step here</li>
+                </ul>
+              </div>
+              <div class="video-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with embedded video or video element -->
+                  <div class="video-placeholder">
+                    VIDEO PLACEHOLDER – insert demo link here
+                  </div>
+                  <p>Demo-Video wird hier eingefügt (Version 2 – Fahrrad + Helm)</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+        <!-- SLIDE 6 END -->
 
-        <!-- Slide 8 – Technische Details -->
-        <section class="slide slide-7" data-slide="8">
+        <!-- SLIDE 7 START -->
+        <section class="slide slide-7" data-slide="7">
           <div class="slide-inner">
-            <div class="content-left">
-              <h1>Technische Details & KI-Algorithmus</h1>
-              <ul class="feature-list">
-                <li>Echtzeit-Objekt-Erkennung mit YOLO (You Only Look Once)</li>
-                <li>360°-Kamera für vollständige Umgebungserfassung</li>
-                <li>Kollisionsvorhersage basierend auf Geschwindigkeit und Richtung</li>
-                <li>Sprachausgabe in mehreren Sprachen</li>
-                <li>Offline-Betrieb ohne Internetverbindung</li>
-                <li>Energieeffiziente KI-Modelle für längere Akkulaufzeit</li>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Technologie & Architektur</h1>
+                <ul class="bullet-list">
+                  <li>TODO: describe component here (camera, compute unit, etc.)</li>
+                  <li>TODO: describe component here (AI model, battery, etc.)</li>
+                  <li>TODO: describe component here (connectivity, sensors, etc.)</li>
+                  <li>TODO: describe component here (software, algorithms, etc.)</li>
+                  <li>TODO: describe component here (user interface, etc.)</li>
+                  <li>TODO: describe component here (data processing, etc.)</li>
+                </ul>
+              </div>
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with actual diagram -->
+                  <img src="assets/slide7-placeholder-diagram.jpg" alt="Placeholder system diagram" class="image-placeholder" />
+                  <p>Technische Diagramme (Systemarchitektur & KI-Modell)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 7 END -->
+
+        <!-- SLIDE 8 START -->
+        <section class="slide slide-8" data-slide="8">
+          <div class="slide-inner">
+            <h1>User Journey / Anwendungsfälle</h1>
+            <div class="three-column">
+              <div class="content-card">
+                <h2>Täglicher Pendelverkehr</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+              </div>
+              <div class="content-card">
+                <h2>Sehbehinderte Nutzer</h2>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+              </div>
+              <div class="content-card">
+                <h2>Industrieanwendung</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 8 END -->
+
+        <!-- SLIDE 9 START -->
+        <section class="slide slide-9" data-slide="9">
+          <div class="slide-inner">
+            <div class="centered-content">
+              <h1>Geschäftsmodell & Marktpotenzial</h1>
+              <p class="tagline">Wir kombinieren ein klares Geschäftsmodell mit einem riesigen Markt für smarte Sicherheit.</p>
+              <ul class="bullet-list">
+                <li><strong>Geschäftsmodell:</strong> TODO: describe business model here</li>
+                <li><strong>Partner:</strong> TODO: describe partners here</li>
+                <li><strong>Marktgröße:</strong> TODO: describe market size here</li>
+                <li><strong>Skalierbarkeit:</strong> TODO: describe scalability here</li>
               </ul>
             </div>
-
-            <div class="content-right">
-              <div class="image-placeholder">
-                Technische Diagramme<br />
-                (Systemarchitektur & KI-Modell)
-              </div>
-            </div>
           </div>
         </section>
+        <!-- SLIDE 9 END -->
 
-        <!-- Slide 9 – Roadmap -->
-        <section class="slide slide-8" data-slide="9">
+        <!-- SLIDE 10 START -->
+        <section class="slide slide-10" data-slide="10">
           <div class="slide-inner">
-            <div class="content-left">
-              <h1>Roadmap & Nächste Schritte</h1>
-              <ul class="feature-list">
-                <li><strong>Q1 2025:</strong> Prototyp-Optimierung & Feldtests</li>
-                <li><strong>Q2 2025:</strong> Partnerschaften mit Blindenverbänden & Versicherungen</li>
-                <li><strong>Q3 2025:</strong> Kleinserienproduktion & Beta-Tests</li>
-                <li><strong>Q4 2025:</strong> Markteinführung & Erweiterung auf Industrieanwendungen</li>
-                <li><strong>2026:</strong> Internationale Expansion & neue Modellvarianten</li>
+            <div class="centered-content">
+              <h1>Vision & Call to Action</h1>
+              <ul class="bullet-list">
+                <li>TODO: vision point 1</li>
+                <li>TODO: vision point 2</li>
+                <li>TODO: vision point 3</li>
               </ul>
-            </div>
-
-            <div class="content-right">
-              <div class="timeline-placeholder">
-                Roadmap-Timeline<br />
-                (Zeitplan & Meilensteine)
+              <p class="highlight-line">Gemeinsam machen wir unsere Straßen sicherer für alle.</p>
+              <div class="contact-info">
+                <p>Kontakt: info@lrox.de | Website: lrox.de</p>
               </div>
             </div>
           </div>
         </section>
-
-        <!-- Slide 10 – Kontakt & Abschluss -->
-        <section class="slide slide-9" data-slide="10">
-          <div class="slide-inner">
-            <h1>Vielen Dank für Ihre Aufmerksamkeit</h1>
-            
-            <div class="contact-info">
-              <div class="contact-item">
-                <h3>Kontakt</h3>
-                <p>Ladan Seddighi & Amir Mobasheraghdam<br>info@lrox.de</p>
-              </div>
-              <div class="contact-item">
-                <h3>Website</h3>
-                <p>lrox.de</p>
-              </div>
-              <div class="contact-item">
-                <h3>Demo-Termin</h3>
-                <p>Vereinbaren Sie einen persönlichen<br>Demo-Termin mit uns</p>
-              </div>
-              <div class="contact-item">
-                <h3>Partnerschaften</h3>
-                <p>Wir suchen Partner für<br>Feldtests & Entwicklung</p>
-              </div>
-            </div>
-            
-            <p class="final-message">
-              Gemeinsam machen wir unsere Straßen sicherer für alle.
-            </p>
-          </div>
-        </section>
+        <!-- SLIDE 10 END -->
       </div>
     </main>
 
