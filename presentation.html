@@ -238,13 +238,20 @@
       text-align: center;
       color: var(--muted);
       height: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      gap: 12px;
     }
 
-    .image-placeholder, .video-placeholder {
+    .image-placeholder, .video-placeholder, .slide-image, .slide-video {
       width: 100%;
       max-width: 100%;
       height: auto;
+      max-height: 60vh;
+      object-fit: contain;
       border-radius: 14px;
+      display: block;
+      margin: 0 auto;
     }
 
     .bullet-list {
@@ -290,6 +297,19 @@
       margin-bottom: 12px;
     }
 
+    .highlight-orange {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .source-note {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
     /* Slide specific styles */
     .slide-1 .logo-hero {
       margin-bottom: 22px;
@@ -315,6 +335,15 @@
       margin-top: 22px;
       font-size: 14px;
       color: var(--muted);
+    }
+
+    .slide-2 .image-placeholder,
+    .slide-7 .image-placeholder {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
     }
 
     footer {
@@ -392,6 +421,14 @@
       p, .bullet-list li {
         font-size: 14px;
       }
+      
+      .image-placeholder, .video-placeholder, .slide-image, .slide-video {
+        max-height: 50vh;
+      }
+      
+      .highlight-orange {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -436,15 +473,14 @@
             <div class="two-column">
               <div class="text-content">
                 <h1>Problem & Kontext</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</p>
+                <p class="highlight-orange">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                <p class="source-note">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.</p>
               </div>
               <div class="image-content">
                 <div class="placeholder-box">
-                  <!-- TODO: replace with actual chart image -->
-                  <img src="assets/slide2-placeholder-chart.jpg" alt="Placeholder chart for slide 2" class="image-placeholder" />
-                  <p>Chart placeholder - to be replaced</p>
+                  <img src="https://github.com/Ladan94/lrox/blob/main/assets/diagramm2.jpg?raw=true" alt="Diagramm – Verkehrsunfallstatistik" class="image-placeholder" width="800" height="450" />
+                  <p>Verkehrsunfallstatistik 2024</p>
                 </div>
               </div>
             </div>
@@ -587,8 +623,7 @@
               </div>
               <div class="image-content">
                 <div class="placeholder-box">
-                  <!-- TODO: replace with actual diagram -->
-                  <img src="https://github.com/Ladan94/lrox/blob/main/assets/IMG_3768.gif?raw=true" alt="Placeholder system diagram" class="image-placeholder" />
+                  <img src="https://github.com/Ladan94/lrox/blob/main/assets/IMG_3768.gif?raw=true" alt="LROX System GIF Demonstration" class="image-placeholder" />
                   <p>Technische Diagramme (Systemarchitektur & KI-Modell)</p>
                 </div>
               </div>
