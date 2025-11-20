@@ -14,6 +14,7 @@
       --text: #f5f5f5;
       --muted: #a0a0a0;
       --border-soft: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
     }
 
     * {
@@ -30,6 +31,7 @@
       color: var(--text);
       height: 100vh;
       overflow: hidden;
+      line-height: 1.5;
     }
 
     .presentation-wrapper {
@@ -41,6 +43,7 @@
       padding: 20px 40px;
       position: relative;
       isolation: isolate;
+      overflow: hidden;
     }
 
     .bg-glow {
@@ -79,10 +82,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
       position: relative;
       z-index: 1;
+      margin-bottom: 4px;
+      flex-shrink: 0;
     }
 
     header .brand {
@@ -99,26 +104,26 @@
     }
 
     header .brand-name {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
     }
 
     header .brand-tagline {
-      font-size: 9px;
-      font-weight: 400;
+      font-size: 8px;
+      font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: -4px;
+      margin-top: -2px;
       margin-left: 0px;
       display: block;
     }
 
     header .brand img {
-      height: 30px;
+      height: 28px;
       width: auto;
     }
 
@@ -127,7 +132,7 @@
     }
 
     header .meta div:first-child {
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -160,14 +165,14 @@
       background:
         radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
         radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
-      border-radius: 28px;
-      padding: 28px 32px 26px;
+      border-radius: 20px;
+      padding: 24px 32px 20px;
       border: 1px solid var(--border-soft);
       box-shadow:
         0 24px 80px rgba(0, 0, 0, 0.85),
         0 0 46px rgba(255, 122, 0, 0.26);
       backdrop-filter: blur(22px);
-      overflow: auto;
+      overflow: hidden;
     }
 
     .slide::before {
@@ -200,7 +205,7 @@
     .two-column {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 28px;
       align-items: center;
       height: 100%;
     }
@@ -210,7 +215,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 20px;
       height: 100%;
-      align-items: center;
+      align-items: stretch;
     }
 
     .centered-content {
@@ -220,15 +225,24 @@
     }
 
     .content-card {
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       border-radius: 14px;
-      padding: 16px;
+      padding: 20px 16px;
       text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-card h2 {
+      margin-bottom: 10px;
+      font-size: 16px;
     }
 
     .placeholder-box {
       background: rgba(3, 5, 18, 0.85);
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 20px;
       border: 1px dashed rgba(255, 255, 255, 0.35);
       display: flex;
@@ -247,16 +261,16 @@
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 60vh;
+      max-height: 45vh;
       object-fit: contain;
-      border-radius: 14px;
+      border-radius: 12px;
       display: block;
       margin: 0 auto;
     }
 
     .bullet-list {
       list-style: none;
-      margin: 18px 0 0 0;
+      margin: 16px 0 0 0;
       padding: 0;
     }
 
@@ -264,8 +278,8 @@
       position: relative;
       padding-left: 18px;
       margin-bottom: 10px;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.4;
     }
 
     .bullet-list li::before {
@@ -274,25 +288,27 @@
       left: 0;
       top: 0;
       color: var(--accent);
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
     }
 
     h1 {
-      font-size: 32px;
-      line-height: 1.3;
+      font-size: 30px;
+      line-height: 1.2;
       margin-bottom: 16px;
+      font-weight: 700;
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 22px;
       margin-bottom: 12px;
       color: var(--accent);
+      font-weight: 600;
     }
 
     p {
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.4;
       color: var(--muted);
       margin-bottom: 12px;
     }
@@ -300,50 +316,79 @@
     .highlight-orange {
       color: var(--accent);
       font-weight: 600;
-      font-size: 18px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 16px 0;
+    }
+
+    .key-stat {
+      background: var(--accent-soft);
+      padding: 14px 18px;
+      border-radius: 10px;
+      border-left: 4px solid var(--accent);
+      margin: 16px 0;
     }
 
     .source-note {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      margin-top: 8px;
+      margin-top: 6px;
+      opacity: 0.8;
+    }
+
+    .highlight-line {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 16px;
+      margin: 20px 0;
+      padding: 14px 18px;
+      background: var(--accent-soft);
+      border-radius: 10px;
+      text-align: center;
     }
 
     /* Slide specific styles */
     .slide-1 .logo-hero {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .slide-1 .logo-hero img {
-      max-width: 220px;
-      height: 220px;
+      max-width: 180px;
+      height: 180px;
       filter:
         drop-shadow(0 0 18px rgba(255, 122, 0, 0.55))
         drop-shadow(0 0 6px rgba(255, 122, 0, 0.35));
     }
 
     .slide-1 .tagline {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 17px;
+      line-height: 1.5;
       color: var(--muted);
-      max-width: 720px;
-      margin: 10px auto 0;
+      max-width: 680px;
+      margin: 12px auto 0;
     }
 
     .slide-1 .names {
-      margin-top: 22px;
+      margin-top: 20px;
       font-size: 14px;
       color: var(--muted);
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      display: inline-block;
     }
 
     .slide-2 .image-placeholder,
     .slide-7 .image-placeholder {
       max-width: 100%;
-      max-height: 60vh;
+      max-height: 45vh;
       object-fit: contain;
       display: block;
       margin: 0 auto;
+    }
+
+    .slide-2 .highlight-orange {
+      margin: 16px 0;
     }
 
     /* Slide 6 specific styles */
@@ -353,9 +398,10 @@
     }
 
     .slide-6 .text-content {
-      max-height: 100%;
-      overflow-y: auto;
-      padding-right: 8px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .slide-6 .video-content {
@@ -376,24 +422,48 @@
 
     .slide-6 .video-placeholder {
       max-width: 100%;
-      max-height: 60vh;
+      max-height: 45vh;
       object-fit: contain;
     }
 
     .slide-6 h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .slide-6 h2 {
-      font-size: 20px;
+      font-size: 26px;
       margin-bottom: 8px;
     }
 
+    .slide-6 h2 {
+      font-size: 18px;
+      margin: 16px 0 8px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
+    }
+
     .slide-6 .bullet-list li {
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 6px;
-      line-height: 1.5;
+      line-height: 1.3;
+    }
+
+    .slide-9 .bullet-list li {
+      margin-bottom: 12px;
+    }
+
+    .slide-9 .bullet-list strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .slide-10 .highlight-line {
+      font-size: 18px;
+      line-height: 1.4;
+      margin: 24px 0;
+      padding: 18px;
+    }
+
+    .slide-10 .contact-info {
+      margin-top: 20px;
+      font-size: 16px;
     }
 
     footer {
@@ -404,10 +474,13 @@
       color: var(--muted);
       position: relative;
       z-index: 1;
+      margin-top: 4px;
+      flex-shrink: 0;
     }
 
     .nav-hint {
       opacity: 0.9;
+      font-weight: 500;
     }
 
     footer .right {
@@ -426,6 +499,7 @@
 
     footer .site-link {
       color: var(--accent) !important;
+      font-weight: 600;
     }
 
     /* Responsive Styles */
@@ -438,6 +512,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+        margin-bottom: 2px;
       }
 
       header .meta {
@@ -445,13 +520,13 @@
       }
 
       .slide {
-        padding: 22px 18px 18px;
-        border-radius: 22px;
+        padding: 20px 18px 16px;
+        border-radius: 18px;
       }
 
       .two-column, .three-column {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
       }
 
       .two-column .placeholder-box,
@@ -460,12 +535,20 @@
         min-height: 200px;
       }
 
+      .three-column {
+        gap: 12px;
+      }
+
+      .content-card {
+        padding: 16px 12px;
+      }
+
       h1 {
-        font-size: 26px;
+        font-size: 24px;
       }
 
       h2 {
-        font-size: 20px;
+        font-size: 19px;
       }
 
       p, .bullet-list li {
@@ -473,30 +556,43 @@
       }
       
       .image-placeholder, .video-placeholder, .slide-image, .slide-video {
-        max-height: 50vh;
+        max-height: 40vh;
       }
       
       .highlight-orange {
-        font-size: 16px;
+        font-size: 15px;
+      }
+
+      .slide-1 .logo-hero img {
+        max-width: 140px;
+        height: 140px;
+      }
+
+      .slide-1 .tagline {
+        font-size: 15px;
       }
 
       /* Slide 6 mobile adjustments */
       .slide-6 .text-content {
-        max-height: none;
-        overflow-y: visible;
-        padding-right: 0;
+        height: auto;
       }
 
       .slide-6 h1 {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .slide-6 h2 {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .slide-6 .bullet-list li {
-        font-size: 14px;
+        font-size: 13px;
+      }
+
+      .slide-10 .highlight-line {
+        font-size: 16px;
+        margin: 20px 0;
+        padding: 16px;
       }
     }
   </style>
@@ -543,7 +639,9 @@
               <div class="text-content">
                 <h1>Problem & Kontext</h1>
                 <p>Im Straßenverkehr entscheiden Sekunden über Leben und Tod.</p>
-                <p class="highlight-orange">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                <div class="key-stat">
+                  <p class="highlight-orange">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                </div>
                 <p class="source-note">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.</p>
               </div>
               <div class="image-content">
@@ -618,16 +716,9 @@
               <div class="text-content">
                 <h1>Unterschied zu bestehenden Lösungen</h1>
                 <ul class="bullet-list">
-                  <li><strong>Smart Canes / elektronische Langstöcke::</strong> Nur nach vorne gerichtet, wenige Meter Reichweite.
-Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit.
-Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.</li>
-                  <li><strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong> Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.
-Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.
-Warnen nicht zuverlässig vor Unfällen.</li>
-                  <li><strong>Bestehende „smarte" Helme:</strong> Einzelne Sensoren, kleines Sichtfeld.
-Reagieren erst sehr spät bei Gefahr.
-Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
-                  
+                  <li><strong>Smart Canes / elektronische Langstöcke:</strong> Nur nach vorne gerichtet, wenige Meter Reichweite. Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit. Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.</li>
+                  <li><strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong> Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung. Keine Analyse von Geschwindigkeit oder Kollisionsrisiko. Warnen nicht zuverlässig vor Unfällen.</li>
+                  <li><strong>Bestehende „smarte" Helme:</strong> Einzelne Sensoren, kleines Sichtfeld. Reagieren erst sehr spät bei Gefahr. Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
                 </ul>
               </div>
               <div class="image-content">
@@ -647,30 +738,21 @@ Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
           <div class="slide-inner">
             <div class="two-column">
               <div class="text-content">
-                <h1> Was LROX grundlegend anders macht</h1>
+                <h1>Was LROX grundlegend anders macht</h1>
+                
                 <h2>Echte 360°-Sicht</h2>
                 <ul class="bullet-list">
-                  <li>Erkennt Gefahren aus allen Richtungen:
-von hinten, von der Seite, über Kopfhöhe, am Boden</li>
+                  <li>Erkennt Gefahren aus allen Richtungen: von hinten, von der Seite, über Kopfhöhe, am Boden</li>
                 </ul>
                 
                 <h2>Vorhersage statt Reaktion</h2>
                 <ul class="bullet-list">
-                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX:
- • Art der Gefahr
- • Richtung
- • Distanz
- • Geschwindigkeit, Warnungen Sekunden früher, nicht erst beim Kontakt.
-„Auto rechts – 15 m"
-„Fahrrad kommt von hinten"</li>
+                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX: Art der Gefahr, Richtung, Distanz, Geschwindigkeit. Warnungen Sekunden früher, nicht erst beim Kontakt. „Auto rechts – 15 m", „Fahrrad kommt von hinten"</li>
                 </ul>
                 
                 <h2>Präzise, richtungsabhängige Warnungen</h2>
                 <ul class="bullet-list">
-                  <li>Keine einfachen Pieptöne – sondern konkrete Hinweise:
-• „Bordsteinkante vorne"
-• „Hindernis links, nah"
-• „Fahrrad hinter dir"</li>
+                  <li>Keine einfachen Pieptöne – sondern konkrete Hinweise: „Bordsteinkante vorne", „Hindernis links, nah", „Fahrrad hinter dir"</li>
                 </ul>
               </div>
               <div class="video-content">
@@ -694,23 +776,9 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
               <div class="text-content">
                 <h1>Unser Projekt – Die drei Entwicklungsstufen</h1>
                 <ul class="bullet-list">
-                  <li>1. Version 1 – Fahrrad-Prototyp (abgeschlossen)
-
-• Erste funktionierende KI-Objekterkennung
-• Jetson Nano (700 €)
-• Erkenntnisse: zu groß, zu teuer, nicht tragbar</li>
-                  <li> 2. Version 2 – Helm-Prototyp (aktueller Stand)
-
-• Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung)
-• Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest
-</li>
-                  <li>3. Version 3 – Zukünftige Endversion
-
-• Leichtes Helm-Modul + 360°-Kamera
-• Rechenleistung ausgelagert (Edge/Server)
-• Längere Batterielaufzeit, geringes Gewicht
-• Für reale Nutzergruppen skalierbar</li>
-                 
+                  <li><strong>Version 1 – Fahrrad-Prototyp (abgeschlossen):</strong> Erste funktionierende KI-Objekterkennung, Jetson Nano (700 €), Erkenntnisse: zu groß, zu teuer, nicht tragbar</li>
+                  <li><strong>Version 2 – Helm-Prototyp (aktueller Stand):</strong> Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest</li>
+                  <li><strong>Version 3 – Zukünftige Endversion:</strong> Leichtes Helm-Modul + 360°-Kamera, Rechenleistung ausgelagert (Edge/Server), Längere Batterielaufzeit, geringes Gewicht, Für reale Nutzergruppen skalierbar</li>
                 </ul>
               </div>
               <div class="image-content">
@@ -730,7 +798,7 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
             <h1>Geschäftsmodell & Marktpotenzial</h1>
             <div class="three-column">
               <div class="content-card">
-                <h2> Klare Einnahmequelle</h2>
+                <h2>Klare Einnahmequelle</h2>
                 <p>Verkauf eines intelligenten Helm-Moduls + optionale Premium-Funktionen.</p>
               </div>
               <div class="content-card">
@@ -750,15 +818,11 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
         <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <div class="centered-content">
-              <h1>Unser Team </h1>
+              <h1>Unser Team</h1>
               <ul class="bullet-list">
-                <li><strong>KI & Software:</strong> Objekterkennung, KI-Logik und das Warnsystem
-→ selbst in Python entwickelt</li>
-                <li><strong> Hardware & 3D-Design:</strong> Mechanische Konstruktion, 3D-Teile, Kamerahalterung,
-Verkabelung und vollständige Hardware-Integration
-→ wurden von meinem Teamkollegen umgesetzt</li>
-                <li><strong> Interdisziplinäre Stärke:</strong> Wir verbinden KI, Elektronik, Mechanik
-→ genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</li>
+                <li><strong>KI & Software:</strong> Objekterkennung, KI-Logik und das Warnsystem → selbst in Python entwickelt</li>
+                <li><strong>Hardware & 3D-Design:</strong> Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration → wurden von meinem Teamkollegen umgesetzt</li>
+                <li><strong>Interdisziplinäre Stärke:</strong> Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</li>
               </ul>
             </div>
           </div>
@@ -769,10 +833,7 @@ Verkabelung und vollständige Hardware-Integration
         <section class="slide slide-10" data-slide="10">
           <div class="slide-inner">
             <div class="centered-content">
-    
-              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch,
-der weiter nach Hause kommt.
-Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</p>
+              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der weiter nach Hause kommt. Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</p>
               <div class="contact-info">
                 <p>Kontakt: (email) | Website: LROX.de</p>
               </div>
