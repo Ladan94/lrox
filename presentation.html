@@ -346,6 +346,56 @@
       margin: 0 auto;
     }
 
+    /* Slide 6 specific styles */
+    .slide-6 .two-column {
+      height: 100%;
+      align-items: stretch;
+    }
+
+    .slide-6 .text-content {
+      max-height: 100%;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .slide-6 .video-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-6 .placeholder-box {
+      height: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .slide-6 .video-placeholder {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+    }
+
+    .slide-6 h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .slide-6 h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .slide-6 .bullet-list li {
+      font-size: 15px;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -428,6 +478,25 @@
       
       .highlight-orange {
         font-size: 16px;
+      }
+
+      /* Slide 6 mobile adjustments */
+      .slide-6 .text-content {
+        max-height: none;
+        overflow-y: visible;
+        padding-right: 0;
+      }
+
+      .slide-6 h1 {
+        font-size: 24px;
+      }
+
+      .slide-6 h2 {
+        font-size: 18px;
+      }
+
+      .slide-6 .bullet-list li {
+        font-size: 14px;
       }
     }
   </style>
@@ -555,7 +624,7 @@ Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.</li>
                   <li><strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong> Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung.
 Keine Analyse von Geschwindigkeit oder Kollisionsrisiko.
 Warnen nicht zuverlässig vor Unfällen.</li>
-                  <li><strong>Bestehende „smarte“ Helme:</strong> Einzelne Sensoren, kleines Sichtfeld.
+                  <li><strong>Bestehende „smarte" Helme:</strong> Einzelne Sensoren, kleines Sichtfeld.
 Reagieren erst sehr spät bei Gefahr.
 Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
                   
@@ -592,16 +661,16 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
  • Richtung
  • Distanz
  • Geschwindigkeit, Warnungen Sekunden früher, nicht erst beim Kontakt.
-„Auto rechts – 15 m“
-„Fahrrad kommt von hinten“</li>
+„Auto rechts – 15 m"
+„Fahrrad kommt von hinten"</li>
                 </ul>
                 
                 <h2>Präzise, richtungsabhängige Warnungen</h2>
                 <ul class="bullet-list">
                   <li>Keine einfachen Pieptöne – sondern konkrete Hinweise:
-• „Bordsteinkante vorne“
-• „Hindernis links, nah“
-• „Fahrrad hinter dir“</li>
+• „Bordsteinkante vorne"
+• „Hindernis links, nah"
+• „Fahrrad hinter dir"</li>
                 </ul>
               </div>
               <div class="video-content">
@@ -632,8 +701,7 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
 • Erkenntnisse: zu groß, zu teuer, nicht tragbar</li>
                   <li> 2. Version 2 – Helm-Prototyp (aktueller Stand)
 
-• Komplett neu konstruiert (3D-Design, Mechanik, Verkabelung)
-• KI-Logik und Warnsystem vollständig selbst entwickelt
+• Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung)
 • Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest
 </li>
                   <li>3. Version 3 – Zukünftige Endversion
@@ -682,13 +750,15 @@ von hinten, von der Seite, über Kopfhöhe, am Boden</li>
         <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <div class="centered-content">
-              <h1>Geschäftsmodell & Marktpotenzial</h1>
-              <p class="tagline">Wir kombinieren ein klares Geschäftsmodell mit einem riesigen Markt für smarte Sicherheit.</p>
+              <h1>Unser Team </h1>
               <ul class="bullet-list">
-                <li><strong>Geschäftsmodell:</strong> TODO: describe business model here</li>
-                <li><strong>Partner:</strong> TODO: describe partners here</li>
-                <li><strong>Marktgröße:</strong> TODO: describe market size here</li>
-                <li><strong>Skalierbarkeit:</strong> TODO: describe scalability here</li>
+                <li><strong>KI & Software:</strong> Objekterkennung, KI-Logik und das Warnsystem
+→ selbst in Python entwickelt</li>
+                <li><strong> Hardware & 3D-Design:</strong> Mechanische Konstruktion, 3D-Teile, Kamerahalterung,
+Verkabelung und vollständige Hardware-Integration
+→ wurden von meinem Teamkollegen umgesetzt</li>
+                <li><strong> Interdisziplinäre Stärke:</strong> Wir verbinden KI, Elektronik, Mechanik
+→ genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</li>
               </ul>
             </div>
           </div>
