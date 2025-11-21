@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartBike AI & Smart Helmet — AI-driven Bicycle Safety</title>
-    <meta name="description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
+    <title>LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem</title>
+    <meta name="description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="SmartBike AI & Smart Helmet">
-    <meta property="og:description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
+    <meta property="og:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
+    <meta property="og:description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aikiw.com">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png">
+    <meta property="og:url" content="https://lrox.de">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SmartBike AI & Smart Helmet">
-    <meta name="twitter:description" content="AI-powered bicycle safety system with real-time object detection, gesture control, and intelligent safety alerts">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png">
+    <meta name="twitter:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
+    <meta name="twitter:description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "SmartBike AI",
-      "url": "https://aikiw.com",
-      "logo": "https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png",
+      "name": "LROX",
+      "url": "https://lrox.de",
+      "logo": "https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif",
       "sameAs": [
-        "https://github.com/amirmobash",
-        "https://www.linkedin.com/in/amirmobasher",
-        "https://www.instagram.com/amirmobasher.ir/"
+        "https://github.com/Ladan94/LROX"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -190,18 +188,23 @@
             background: rgba(255, 122, 0, 0.2);
         }
         
-        .back-link {
-            color: var(--text-light);
+        .pitch-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
         }
         
-        .back-link:hover {
-            color: var(--primary);
+        .pitch-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .mobile-menu {
@@ -213,7 +216,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(26, 26, 46, 0.9)),
-                        url('https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png');
+                        url('https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -298,6 +301,10 @@
         .btn-group {
             animation: fadeInUp 1s ease 0.6s forwards;
             opacity: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
         .btn {
@@ -329,7 +336,6 @@
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
-            margin-left: 15px;
             box-shadow: none;
         }
         
@@ -375,142 +381,190 @@
             margin: 0 auto;
         }
         
-        /* SmartBike Section */
-        .smartbike {
+        /* Problem Section */
+        .problem {
             background: var(--dark);
             position: relative;
         }
         
-        .smartbike-content {
+        .problem-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
         
-        .smartbike-text h3 {
+        .problem-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
-        .smartbike-text p {
+        .problem-text p {
             margin-bottom: 25px;
             line-height: 1.7;
         }
         
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .kpi-item {
+        .key-stat {
             background: var(--glass);
             border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            transition: var(--transition-fast);
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--primary);
         }
         
-        .kpi-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .kpi-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .key-stat p {
+            font-size: 1.2rem;
             color: var(--primary);
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin: 0;
         }
         
-        .kpi-label {
+        .source-note {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.7;
+            margin-top: 5px;
         }
         
-        .smartbike-visual {
+        .problem-visual {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .smartbike-visual img {
+        .problem-visual img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s;
         }
         
-        .smartbike-visual:hover img {
+        .problem-visual:hover img {
             transform: scale(1.05);
         }
         
-        /* SmartHelmet Section */
-        .smarthelmet {
+        /* Risk Groups Section */
+        .risk-groups {
             background: var(--darker);
             position: relative;
         }
         
-        .smarthelmet-content {
+        .risk-groups-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
         
-        .smarthelmet-text h3 {
+        .risk-groups-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
-        .smarthelmet-text p {
+        .risk-groups-text p {
             margin-bottom: 25px;
             line-height: 1.7;
         }
         
-        .feature-list {
+        .risk-list {
             list-style: none;
             margin-top: 20px;
         }
         
-        .feature-list li {
+        .risk-list li {
             margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
             gap: 10px;
         }
         
-        .feature-list li i {
+        .risk-list li i {
             color: var(--primary);
             margin-top: 5px;
         }
         
-        .smarthelmet-visual {
+        .risk-groups-visual {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .smarthelmet-visual img {
+        .risk-groups-visual img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.5s;
         }
         
-        .smarthelmet-visual:hover img {
+        .risk-groups-visual:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .solution-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .solution-text p {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .solution-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .solution-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .solution-list li i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+        
+        .solution-visual {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .solution-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .solution-visual:hover img {
             transform: scale(1.05);
         }
         
         /* Features Section */
         .features {
-            background: var(--dark);
+            background: var(--darker);
             position: relative;
         }
         
@@ -602,6 +656,49 @@
             color: var(--primary);
             margin-top: 5px;
             font-size: 0.8rem;
+        }
+        
+        /* Stages Section */
+        .stages {
+            background: var(--dark);
+            position: relative;
+        }
+        
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .stage-card {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition-fast);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .stage-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .stage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .stage-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
         }
         
         /* Demo Section */
@@ -712,114 +809,47 @@
             color: white;
         }
         
-        /* Technology Section */
-        .technology {
+        /* Business Section */
+        .business {
             background: var(--dark);
             position: relative;
         }
         
-        .tech-categories {
+        .business-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
         }
         
-        .tech-category {
+        .business-card {
             background: var(--glass);
             border-radius: 15px;
             padding: 30px;
+            text-align: center;
             transition: var(--transition-fast);
+            border: 1px solid var(--glass-border);
         }
         
-        .tech-category:hover {
+        .business-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--neon-glow);
         }
         
-        .tech-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+        .business-icon {
+            font-size: 3rem;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .tech-category h3 i {
-            font-size: 1.2rem;
-        }
-        
-        .tech-category p {
             margin-bottom: 20px;
-            line-height: 1.6;
         }
         
-        .code-snippet {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-top: 15px;
-            overflow-x: auto;
-        }
-        
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-        }
-        
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 150px;
-            transition: transform 0.3s;
-        }
-        
-        .tech-item:hover {
-            transform: translateY(-10px);
-        }
-        
-        .tech-icon {
-            width: 100px;
-            height: 100px;
-            background-color: var(--glass);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .business-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            transition: all 0.3s;
-            border: 1px solid var(--glass-border);
+            color: var(--text-light);
         }
         
-        .tech-item:hover .tech-icon {
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            background-color: var(--primary);
-        }
-        
-        .tech-icon img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            transition: filter 0.3s;
-        }
-        
-        .tech-item:hover .tech-icon img {
-            filter: brightness(0) invert(1);
-        }
-        
-        .tech-item span {
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-align: center;
+        .business-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
         }
         
         /* Team Section */
@@ -963,82 +993,9 @@
             transform: rotate(180deg);
         }
         
-        /* Downloads Section */
-        .downloads {
-            background: var(--darker);
-            position: relative;
-        }
-        
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .download-card {
-            background: var(--glass);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .download-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .download-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-        
-        .download-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-        }
-        
-        .chatbot-promo {
-            background: linear-gradient(135deg, #FF7A00, #FF9A3D);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .chatbot-promo h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .chatbot-promo p {
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-        
-        .chatbot-promo .btn {
-            background: white;
-            color: #FF7A00;
-        }
-        
-        .chatbot-promo .btn:hover {
-            background: #f0f0f0;
-        }
-        
         /* Contact Section */
         .contact {
-            background: var(--dark);
+            background: var(--darker);
             position: relative;
         }
         
@@ -1144,39 +1101,6 @@
         
         .form-submit {
             text-align: center;
-        }
-        
-        /* Hashtags Section */
-        .hashtags {
-            background: var(--darker);
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .hashtag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hashtag {
-            display: inline-block;
-            padding: 8px 15px;
-            background: var(--glass);
-            border-radius: 20px;
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .hashtag:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
         }
         
         /* Footer */
@@ -1311,15 +1235,17 @@
                 font-size: 3rem;
             }
             
-            .smartbike-content,
-            .smarthelmet-content,
+            .problem-content,
+            .risk-groups-content,
+            .solution-content,
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
             
-            .smartbike-visual,
-            .smarthelmet-visual {
+            .problem-visual,
+            .risk-groups-visual,
+            .solution-visual {
                 order: -1;
             }
         }
@@ -1366,7 +1292,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .tech-categories {
+            .stages-grid,
+            .business-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1398,10 +1325,6 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
         }
     </style>
 </head>
@@ -1416,28 +1339,26 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span>SmartBike</span> AI
+                    <span>LROX</span>
                 </div>
                 
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#smartbike">SmartBike</a></li>
-                    <li><a href="#smarthelmet">SmartHelmet</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#technology">Technology</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#downloads">Downloads</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#hashtags">Hashtags</a></li>
+                    <li><a href="#home" data-key="nav.home">Start</a></li>
+                    <li><a href="#problem" data-key="nav.problem">Problem</a></li>
+                    <li><a href="#risk-groups" data-key="nav.risk">Risikogruppen</a></li>
+                    <li><a href="#solution" data-key="nav.solution">Lösung</a></li>
+                    <li><a href="#features" data-key="nav.features">Vorteile</a></li>
+                    <li><a href="#stages" data-key="nav.stages">Projektphasen</a></li>
+                    <li><a href="#demo" data-key="nav.demo">Demo</a></li>
+                    <li><a href="#business" data-key="nav.business">Geschäftsmodell</a></li>
+                    <li><a href="#team" data-key="nav.team">Team</a></li>
+                    <li><a href="#faq" data-key="nav.faq">FAQ</a></li>
+                    <li><a href="#contact" data-key="nav.contact">Kontakt</a></li>
                 </ul>
                 
                 <div class="nav-utils">
-                    <button class="lang-toggle" id="langToggle">DE</button>
-                    <a href="https://www.aikiw.com" class="back-link">
-                        <i class="fas fa-arrow-left"></i> <span>Back to Main Site</span>
-                    </a>
+                    <a href="https://lrox.de/presentation.html" class="pitch-button" data-key="nav.pitch">Pitch-Deck ansehen</a>
+                    <button class="lang-toggle" id="langToggle">EN</button>
                     <div class="mobile-menu" id="mobileMenu">
                         <i class="fas fa-bars"></i>
                     </div>
@@ -1449,130 +1370,144 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>SmartBike AI & Smart Helmet — AI-driven Bicycle Safety</h1>
-            <p>A revolutionary AI system for real-time hazard detection and intelligent safety alerts for cyclists.</p>
+            <h1 data-key="hero.title">LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem</h1>
+            <p data-key="hero.subtitle">LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt.</p>
             
             <div class="hero-metrics">
                 <div class="metric-card">
                     <div class="metric-value">&lt;80 ms</div>
-                    <div class="metric-label">End-to-End Latency</div>
+                    <div class="metric-label" data-key="metrics.latency">Latenzzeit</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">30 FPS</div>
-                    <div class="metric-label">@ 720p on Edge Device</div>
+                    <div class="metric-label" data-key="metrics.fps">Auf Edge-Gerät</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">0.95</div>
-                    <div class="metric-label">mAP50 (Test Set)</div>
+                    <div class="metric-label" data-key="metrics.map">mAP50 (Test)</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-value">5W</div>
-                    <div class="metric-label">Power Budget</div>
+                    <div class="metric-label" data-key="metrics.power">Stromverbrauch</div>
                 </div>
             </div>
             
             <div class="btn-group">
-                <a href="#demo" class="btn">Watch Demo</a>
-                <a href="#downloads" class="btn btn-outline">Downloads</a>
+                <a href="#demo" class="btn" data-key="hero.demoBtn">Demo ansehen</a>
+                <a href="#contact" class="btn btn-outline" data-key="hero.contactBtn">Kontakt aufnehmen</a>
             </div>
         </div>
     </section>
     
-    <!-- SmartBike Section -->
-    <section class="section smartbike" id="smartbike">
+    <!-- Problem Section -->
+    <section class="section problem" id="problem">
         <div class="container">
             <div class="section-title">
-                <h2>SmartBike AI</h2>
-                <p>Real-time hazard detection for urban cyclists</p>
+                <h2 data-key="problem.title">Problem & Kontext</h2>
+                <p data-key="problem.subtitle">Im Straßenverkehr entscheiden Sekunden über Leben und Tod</p>
             </div>
             
-            <div class="smartbike-content">
-                <div class="smartbike-text">
-                    <h3>On-Device Computer Vision Pipeline</h3>
-                    <p>Our AI-powered SmartBike solution detects and warns of potential road hazards in real-time – without cloud connectivity. Privacy by design through on-device inference.</p>
+            <div class="problem-content">
+                <div class="problem-text">
+                    <h3 data-key="problem.heading">Verkehrssicherheit in Deutschland</h3>
+                    <p data-key="problem.text">Die Straßenverkehrssicherheit ist eine der größten Herausforderungen im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.</p>
                     
-                    <div class="kpi-grid">
-                        <div class="kpi-item">
-                            <div class="kpi-value">0.95</div>
-                            <div class="kpi-label">mAP@50</div>
-                        </div>
-                        <div class="kpi-item">
-                            <div class="kpi-value">30 FPS</div>
-                            <div class="kpi-label">@720p</div>
-                        </div>
-                        <div class="kpi-item">
-                            <div class="kpi-value">98%</div>
-                            <div class="kpi-label">Alert TPR</div>
-                        </div>
-                        <div class="kpi-item">
-                            <div class="kpi-value">&lt;2%</div>
-                            <div class="kpi-label">Alert FPR</div>
-                        </div>
-                        <div class="kpi-item">
-                            <div class="kpi-value">&lt;80 ms</div>
-                            <div class="kpi-label">E2E Latency</div>
-                        </div>
-                        <div class="kpi-item">
-                            <div class="kpi-value">5W</div>
-                            <div class="kpi-label">Power</div>
-                        </div>
+                    <div class="key-stat">
+                        <p data-key="problem.stat">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                        <div class="source-note" data-key="problem.source">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse</div>
                     </div>
+                    
+                    <p data-key="problem.conclusion">Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen, die besonders schutzbedürftige Verkehrsteilnehmer unterstützen.</p>
                 </div>
                 
-                <div class="smartbike-visual">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(2).png" alt="LROX SmartBike with front display" loading="lazy">
+                <div class="problem-visual">
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/diagramm2.jpg?raw=true" alt="Verkehrsunfallstatistik 2024" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- SmartHelmet Section -->
-    <section class="section smarthelmet" id="smarthelmet">
+    <!-- Risk Groups Section -->
+    <section class="section risk-groups" id="risk-groups">
         <div class="container">
             <div class="section-title">
-                <h2>Smart Helmet</h2>
-                <p>Intelligent protection with advanced sensors</p>
+                <h2 data-key="risk.title">Wer ist besonders gefährdet?</h2>
+                <p data-key="risk.subtitle">Bestimmte Gruppen sind im Straßenverkehr besonders schutzbedürftig</p>
             </div>
             
-            <div class="smarthelmet-content">
-                <div class="smarthelmet-visual">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(9).png" alt="LROX Smart Helmet with LED safety ring" loading="lazy">
+            <div class="risk-groups-content">
+                <div class="risk-groups-visual">
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/assetsrisk-groups.jpg?raw=true" alt="Besonders gefährdete Verkehrsteilnehmer" loading="lazy">
                 </div>
                 
-                <div class="smarthelmet-text">
-                    <h3>Docharkhe Hoshmand & Smart Cycling Helmet</h3>
-                    <p>Our smart cycling helmet provides comprehensive safety through advanced sensors and AI-powered warning systems.</p>
+                <div class="risk-groups-text">
+                    <h3 data-key="risk.heading">Schutzbedürftige Verkehrsteilnehmer</h3>
+                    <p data-key="risk.text">Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen im Straßenverkehr:</p>
                     
-                    <ul class="feature-list">
+                    <ul class="risk-list">
                         <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Rear vision/radar for blind spots</span>
+                            <i class="fas fa-bicycle"></i>
+                            <span data-key="risk.cyclists">Fahrradfahrerinnen und Fahrradfahrer</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Bone-conduction audio for alerts</span>
+                            <i class="fas fa-child"></i>
+                            <span data-key="risk.children">Kinder – besonders auf dem Schulweg</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>IMU fall detection</span>
+                            <i class="fas fa-wheelchair"></i>
+                            <span data-key="risk.elderly">Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Night assistance system</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Modular battery</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Ergonomic design</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>IP67 rating</span>
+                            <i class="fas fa-low-vision"></i>
+                            <span data-key="risk.visuallyImpaired">Menschen mit Sehbeeinträchtigungen</span>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section class="section solution" id="solution">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-key="solution.title">Die LROX-Lösung</h2>
+                <p data-key="solution.subtitle">Ein Helm, der sieht, denkt, warnt – und sogar spricht</p>
+            </div>
+            
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3 data-key="solution.heading">Wie LROX funktioniert</h3>
+                    <p data-key="solution.text">Unser intelligentes Sicherheitssystem kombiniert modernste Technologien für umfassenden Schutz:</p>
+                    
+                    <ul class="solution-list">
+                        <li>
+                            <i class="fas fa-camera"></i>
+                            <span data-key="solution.camera">Kamera + Nano-Computer + KI</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-eye"></i>
+                            <span data-key="solution.detection">Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-volume-up"></i>
+                            <span data-key="solution.alerts">Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-wifi"></i>
+                            <span data-key="solution.offline">Funktioniert vollständig offline</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <span data-key="solution.users">Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="key-stat" data-key="solution.benefit">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+                </div>
+                
+                <div class="solution-visual">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(9).png" alt="LROX Smart Helmet" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1582,51 +1517,39 @@
     <section class="section features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Features</h2>
-                <p>Comprehensive AI-powered safety features</p>
+                <h2 data-key="features.title">Was LROX anders macht</h2>
+                <p data-key="features.subtitle">Innovative Funktionen, die LROX von bestehenden Lösungen unterscheiden</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-globe"></i>
                     </div>
-                    <h3>YOLOv8 Object Detection</h3>
-                    <p>Real-time detection of vehicles, pedestrians, and obstacles</p>
+                    <h3 data-key="features.360.title">Echte 360°-Sicht</h3>
+                    <p data-key="features.360.text">Umfassende Rundum-Überwachung für maximale Sicherheit</p>
                     <ul class="feature-bullets">
                         <li>
                             <i class="fas fa-bullseye"></i>
-                            <span>mAP50 = 0.95 (test set)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>30 FPS @ 720p on edge device</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>End-to-end latency &lt; 80 ms</span>
+                            <span data-key="features.360.bullet1">Erkennt Gefahren aus allen Richtungen</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-hands"></i>
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3>MediaPipe Gesture Control</h3>
-                    <p>Intuitive hand gestures for system interaction without distraction</p>
+                    <h3 data-key="features.prediction.title">Vorhersage statt Reaktion</h3>
+                    <p data-key="features.prediction.text">KI-basierte Analyse für frühzeitige Warnungen</p>
                     <ul class="feature-bullets">
                         <li>
                             <i class="fas fa-bullseye"></i>
-                            <span>98% gesture recognition accuracy</span>
+                            <span data-key="features.prediction.bullet1">Analysiert Art, Richtung, Distanz und Geschwindigkeit von Gefahren</span>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
-                            <span>Latency &lt; 50 ms</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-cloud-moon"></i>
-                            <span>Robust in various lighting conditions</span>
+                            <span data-key="features.prediction.bullet2">Warnungen Sekunden früher, nicht erst beim Kontakt</span>
                         </li>
                     </ul>
                 </div>
@@ -1635,89 +1558,65 @@
                     <div class="feature-icon">
                         <i class="fas fa-broadcast-tower"></i>
                     </div>
-                    <h3>TTS Alerts</h3>
-                    <p>Voice alerts for critical warnings without visual distraction</p>
-                    <ul class="feature-bullets">
-                        <li>
-                            <i class="fas fa-language"></i>
-                            <span>Multilingual support</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-volume-up"></i>
-                            <span>Adaptive volume based on ambient noise</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-bolt"></i>
-                            <span>Prioritized alerts</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Speed & Relative Velocity Analysis</h3>
-                    <p>Precise speed measurement and collision risk assessment</p>
+                    <h3 data-key="features.alerts.title">Präzise Warnungen</h3>
+                    <p data-key="features.alerts.text">Konkrete, verständliche Hinweise statt allgemeiner Signale</p>
                     <ul class="feature-bullets">
                         <li>
                             <i class="fas fa-bullseye"></i>
-                            <span>±2% speed accuracy</span>
+                            <span data-key="features.alerts.bullet1">Keine einfachen Pieptöne – sondern konkrete Hinweise</span>
                         </li>
                         <li>
-                            <i class="fas fa-radar"></i>
-                            <span>Relative velocity calculation to detected objects</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <span>Collision prediction algorithm</span>
+                            <i class="fas fa-volume-up"></i>
+                            <span data-key="features.alerts.bullet2">"Bordsteinkante vorne", "Hindernis links, nah", "Fahrrad hinter dir"</span>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stages Section -->
+    <section class="section stages" id="stages">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-key="stages.title">Projektphasen</h2>
+                <p data-key="stages.subtitle">Die Entwicklung von LROX in drei wichtigen Stufen</p>
+            </div>
+            
+            <div class="stages-grid">
+                <div class="stage-card">
+                    <div class="stage-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <h3 data-key="stages.v1.title">Version 1 – Fahrrad-Prototyp</h3>
+                    <p data-key="stages.v1.text">Erste funktionierende KI-Objekterkennung, Jetson Nano (700 €), Erkenntnisse: zu groß, zu teuer, nicht tragbar</p>
+                    <div class="source-note" data-key="stages.v1.status">Abgeschlossen</div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
+                <div class="stage-card">
+                    <div class="stage-icon">
+                        <i class="fas fa-helmet-safety"></i>
                     </div>
-                    <h3>GPS Risk Heatmap</h3>
-                    <p>Dynamic risk mapping based on historical accident data</p>
-                    <ul class="feature-bullets">
-                        <li>
-                            <i class="fas fa-database"></i>
-                            <span>Real-time heatmap updates</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-route"></i>
-                            <span>Alternative route suggestions for safer paths</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-chart-line"></i>
-                            <span>Predictive risk modeling</span>
-                        </li>
-                    </ul>
+                    <h3 data-key="stages.v2.title">Version 2 – Helm-Prototyp</h3>
+                    <p data-key="stages.v2.text">Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest</p>
+                    <div class="source-note" data-key="stages.v2.status">Aktueller Stand</div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-bar"></i>
+                <div class="stage-card">
+                    <div class="stage-icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Ride Analytics</h3>
-                    <p>Detailed analytics to improve riding habits</p>
-                    <ul class="feature-bullets">
-                        <li>
-                            <i class="fas fa-chart-pie"></i>
-                            <span>Risk score per ride</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-history"></i>
-                            <span>Historical trend analysis</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-award"></i>
-                            <span>Improvement suggestions based on AI analysis</span>
-                        </li>
-                    </ul>
+                    <h3 data-key="stages.v3.title">Version 3 – Zukünftige Endversion</h3>
+                    <p data-key="stages.v3.text">Leichtes Helm-Modul + 360°-Kamera, Rechenleistung ausgelagert (Edge/Server), Längere Batterielaufzeit, geringes Gewicht, Für reale Nutzergruppen skalierbar</p>
+                    <div class="source-note" data-key="stages.v3.status">In Planung</div>
                 </div>
+            </div>
+            
+            <div class="video-container" style="margin-top: 50px;">
+                <div class="video-wrapper">
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/IMG_3768.gif?raw=true" alt="LROX System Demonstration" style="width: 100%; height: auto; border-radius: 8px;">
+                </div>
+                <p style="text-align: center; margin-top: 15px; color: rgba(255,255,255,0.7);" data-key="stages.demoCaption">LROX System-Demonstration – Technische Umsetzung</p>
             </div>
         </div>
     </section>
@@ -1726,145 +1625,70 @@
     <section class="section demo" id="demo">
         <div class="container">
             <div class="section-title">
-                <h2>Demo</h2>
-                <p>See the system in action</p>
+                <h2 data-key="demo.title">Demo</h2>
+                <p data-key="demo.subtitle">LROX in Aktion – sehen Sie selbst</p>
             </div>
             
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/8jOE7y8nCiI" title="SmartBike AI Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/8jOE7y8nCiI" title="LROX SmartBike Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/auivtCOWpOg" title="Smart Helmet Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/auivtCOWpOg" title="LROX Smart Helmet Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(3).png" alt="LROX Smart Helmet 5G system diagram" loading="lazy">
-                    <p>5G-enabled Smart Helmet architecture</p>
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(3).png" alt="LROX Smart Helmet Systemdiagramm" loading="lazy">
+                    <p data-key="demo.image1">Smart Helmet Systemarchitektur</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(10).png" alt="Orange LROX smart helmet with camera and antenna" loading="lazy">
-                    <p>Smart Helmet with integrated camera & antenna</p>
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(10).png" alt="LROX Smart Helmet mit Kamera" loading="lazy">
+                    <p data-key="demo.image2">Smart Helmet mit integrierter Kamera</p>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(7).png" alt="Black LROX smart helmet studio photo" loading="lazy">
-                    <p>Studio shot of the LROX Smart Helmet</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(8).png" alt="Cyclist wearing LROX smart helmet" loading="lazy">
-                    <p>Real-world use: rider wearing the LROX Smart Helmet</p>
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/tools.jpg?raw=true" alt="Vergleich mit bestehenden Lösungen" loading="lazy">
+                    <p data-key="demo.image3">Vergleich mit bestehenden Lösungen</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Technology Section -->
-    <section class="section technology" id="technology">
+    <!-- Business Section -->
+    <section class="section business" id="business">
         <div class="container">
             <div class="section-title">
-                <h2>Technology</h2>
-                <p>Advanced AI and hardware integration</p>
+                <h2 data-key="business.title">Geschäftsmodell & Marktpotenzial</h2>
+                <p data-key="business.subtitle">Nachhaltiges Geschäftsmodell mit großer Reichweite</p>
             </div>
             
-            <div class="tech-categories">
-                <div class="tech-category">
-                    <h3><i class="fas fa-eye"></i> Perception</h3>
-                    <p>Multi-sensor fusion for comprehensive environment perception</p>
-                    <div class="code-snippet">
-                        <pre># YOLOv8 Object Detection
-model = YOLO('yolov8n.pt')
-results = model(frame, conf=0.7)
-
-# MediaPipe Gesture Recognition
-with mp_hands.Hands(...) as hands:
-    results = hands.process(frame)</pre>
+            <div class="business-grid">
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-euro-sign"></i>
                     </div>
+                    <h3 data-key="business.revenue.title">Klare Einnahmequelle</h3>
+                    <p data-key="business.revenue.text">Verkauf eines intelligenten Helm-Moduls + optionale Premium-Funktionen</p>
                 </div>
                 
-                <div class="tech-category">
-                    <h3><i class="fas fa-hand-pointer"></i> Interaction</h3>
-                    <p>Intuitive human-machine interfaces for focused riding</p>
-                    <div class="code-snippet">
-                        <pre># Gesture Control
-def process_gesture(landmarks):
-    if is_thumbs_up(landmarks):
-        activate_navigation()
-    elif is_stop_sign(landmarks):
-        emergency_stop()</pre>
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
+                    <h3 data-key="business.partners.title">Starke Partner</h3>
+                    <p data-key="business.partners.text">Versicherungen, Kommunen, soziale Einrichtungen – alle mit Interesse an Unfallprävention</p>
                 </div>
                 
-                <div class="tech-category">
-                    <h3><i class="fas fa-satellite"></i> Telemetry</h3>
-                    <p>Real-time data collection and analysis for predictive safety</p>
-                    <div class="code-snippet">
-                        <pre># GPS & IMU Data Fusion
-def fuse_sensor_data(gps, imu, camera):
-    position = kalman_filter(gps, imu)
-    risk_score = calculate_risk(position, camera_objects)
-    return position, risk_score</pre>
+                <div class="business-card">
+                    <div class="business-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-microchip"></i> Hardware</h3>
-                    <p>Optimized edge computing architecture for low latency</p>
-                    <div class="code-snippet">
-                        <pre># Hardware Abstraction
-class EdgeDevice:
-    def __init__(self):
-        self.camera = Camera(resolution=(1280, 720))
-        self.processor = NPU()
-        self.sensors = [GPS(), IMU(), LIDAR()]</pre>
-                    </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h3><i class="fas fa-code"></i> Software</h3>
-                    <p>Modular software architecture for easy maintenance and updates</p>
-                    <div class="code-snippet">
-                        <pre># Main Pipeline
-pipeline = Pipeline([
-    DataCapture(),
-    ObjectDetection(),
-    RiskAssessment(),
-    AlertGeneration(),
-    UserFeedback()
-])
-pipeline.run()</pre>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tech-stack">
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <img src="../img/256x256bb.jpg" alt="YOLOv8 Logo" loading="lazy">
-                    </div>
-                    <span>YOLOv8</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <img src="../img/mediapipe.jpg" alt="MediaPipe Logo" loading="lazy">
-                    </div>
-                    <span>MediaPipe</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <img src="../img/Python-logo-notext.svg.png" alt="Python Logo" loading="lazy">
-                    </div>
-                    <span>Python</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <img src="../img/Jupyter_logo.svg.png" alt="Jupyter Logo" loading="lazy">
-                    </div>
-                    <span>Jupyter</span>
+                    <h3 data-key="business.market.title">Riesiger Markt</h3>
+                    <p data-key="business.market.text">80 Mio. Fahrräder in Europa + Millionen Menschen mit Mobilitäts- oder Sehbeeinträchtigungen</p>
                 </div>
             </div>
         </div>
@@ -1874,32 +1698,31 @@ pipeline.run()</pre>
     <section class="section team" id="team">
         <div class="container">
             <div class="section-title">
-                <h2>Team</h2>
-                <p>Our experts in AI and bicycle safety</p>
+                <h2 data-key="team.title">Unser Team</h2>
+                <p data-key="team.subtitle">Interdisziplinäre Expertise für innovative Sicherheitslösungen</p>
             </div>
             
             <div class="team-members">
                 <div class="member-card">
-                    <img src="../img/bKN6P.jpg" alt="Amir Mobasheraghdam" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png" alt="Amir Mobasheraghdam" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">Amir Mobasheraghdam</h3>
-                        <div class="member-role">Lead AI Engineer & Project Manager</div>
-                        <p>Expert in Computer Vision and Edge AI with 5+ years of experience developing real-time AI systems.</p>
+                        <div class="member-role" data-key="team.amir.role">KI & Software</div>
+                        <p data-key="team.amir.description">Objekterkennung, KI-Logik und das Warnsystem → selbst in Python entwickelt</p>
                         <div class="member-social">
                             <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
                             <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="mailto:amirmobash@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="member-card">
-                    <img src="../img/6030742101085505296.jpg" alt="Sarah J" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png" alt="Ladan Seddighi" class="member-photo" loading="lazy">
                     <div class="member-info">
-                        <h3 class="member-name">Sarah J</h3>
-                        <div class="member-role">Hardware Engineer</div>
-                        <p>Specialized in embedded systems and sensor integration for edge devices.</p>
+                        <h3 class="member-name">Ladan Seddighi</h3>
+                        <div class="member-role" data-key="team.ladan.role">Hardware & 3D-Design</div>
+                        <p data-key="team.ladan.description">Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
                         <div class="member-social">
                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -1908,15 +1731,11 @@ pipeline.run()</pre>
                 </div>
                 
                 <div class="member-card">
-                    <img src="../img/6030742101085505297.jpg" alt="Ladan S" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png" alt="Team" class="member-photo" loading="lazy">
                     <div class="member-info">
-                        <h3 class="member-name">Ladan S</h3>
-                        <div class="member-role">UX/UI Designer</div>
-                        <p>Responsible for user-friendly design of interaction concepts and visual feedback systems.</p>
-                        <div class="member-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
+                        <h3 class="member-name" data-key="team.interdisciplinary.title">Interdisziplinäre Stärke</h3>
+                        <div class="member-role" data-key="team.interdisciplinary.role">Kombinierte Expertise</div>
+                        <p data-key="team.interdisciplinary.description">Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</p>
                     </div>
                 </div>
             </div>
@@ -1927,144 +1746,60 @@ pipeline.run()</pre>
     <section class="section faq" id="faq">
         <div class="container">
             <div class="section-title">
-                <h2>FAQ</h2>
-                <p>Frequently Asked Questions</p>
+                <h2 data-key="faq.title">Häufige Fragen</h2>
+                <p data-key="faq.subtitle">Antworten auf die wichtigsten Fragen zu LROX</p>
             </div>
             
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Which sensors are used?</span>
+                        <span data-key="faq.q1">Welche Sensoren werden verwendet?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>The system uses a combination of camera, GPS, IMU (Inertial Measurement Unit) and optional LIDAR for comprehensive environment perception.</p>
+                        <p data-key="faq.a1">LROX verwendet eine Kombination aus Kamera, Nano-Computer und KI-Software für die Echtzeit-Objekterkennung. Das System arbeitet vollständig offline und benötigt keine Cloud-Verbindung.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Is calibration required?</span>
+                        <span data-key="faq.q2">Ist eine Kalibrierung erforderlich?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>The system calibrates automatically on first startup. Recalibration is recommended after hardware changes.</p>
+                        <p data-key="faq.a2">Das System kalibriert sich automatisch beim ersten Start. Eine erneute Kalibrierung wird nach Hardware-Änderungen empfohlen.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>How is my data protected?</span>
+                        <span data-key="faq.q3">Wie werden meine Daten geschützt?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>All data processing happens on-device. No personal data is transmitted to cloud servers.</p>
+                        <p data-key="faq.a3">Alle Datenverarbeitung erfolgt auf dem Gerät. Es werden keine persönlichen Daten an Cloud-Server übertragen. Datenschutz ist durch Offline-Verarbeitung gewährleistet.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Is the Smart Helmet compatible with all bicycle helmets?</span>
+                        <span data-key="faq.q4">Ist der Smart Helmet mit allen Fahrradhelmen kompatibel?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Our Smart Helmet is a complete system. For existing helmets, we offer a retrofit kit.</p>
+                        <p data-key="faq.a4">Unser Smart Helmet ist ein komplettes System. Für bestehende Helme bieten wir ein Nachrüstkit an.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Are there legal requirements for road approval?</span>
+                        <span data-key="faq.q5">Gibt es rechtliche Anforderungen für die Straßenzulassung?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>The system is designed as an assistance system and does not replace rider attention. It complies with relevant EU directives.</p>
+                        <p data-key="faq.a5">Das System ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es entspricht den relevanten EU-Richtlinien.</p>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How are software updates performed?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Updates are provided through a mobile app that establishes a secure connection to the device.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What happens in case of system failure?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>In case of critical errors, the system warns the user and switches to a safe mode. The basic functions of the bicycle remain fully usable.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How long is data stored?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Ride data is stored locally for a maximum of 24 hours, unless the user explicitly exports it.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Downloads Section -->
-    <section class="section downloads" id="downloads">
-        <div class="container">
-            <div class="section-title">
-                <h2>Downloads</h2>
-                <p>Technical documentation and resources</p>
-            </div>
-            
-            <div class="downloads-grid">
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3>Technical Documentation</h3>
-                    <p>Detailed specifications and architecture overview</p>
-                    <a href="#" class="btn">Download</a>
-                </div>
-                
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Installation Guide</h3>
-                    <p>Step-by-step setup guide</p>
-                    <a href="#" class="btn">Download</a>
-                </div>
-                
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Dataset Information</h3>
-                    <p>Details on training dataset and annotations</p>
-                    <a href="#" class="btn">Download</a>
-                </div>
-                
-                <div class="download-card">
-                    <div class="download-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Research Paper</h3>
-                    <p>Academic publication about the project</p>
-                    <a href="#" class="btn">Download</a>
-                </div>
-            </div>
-            
-            <div class="chatbot-promo">
-                <h3>Have questions? Our AI chatbot can help!</h3>
-                <p>Ask questions about technology, installation, or features and get instant answers.</p>
-                <a href="https://aikiw.com/chatbot" class="btn">Start Chatbot</a>
             </div>
         </div>
     </section>
@@ -2073,14 +1808,14 @@ pipeline.run()</pre>
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact</h2>
-                <p>Contact us for more information</p>
+                <h2 data-key="contact.title">Kontakt</h2>
+                <p data-key="contact.subtitle">Nehmen Sie Kontakt mit uns auf für mehr Informationen</p>
             </div>
             
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-card">
-                        <h3>Contact Information</h3>
+                        <h3 data-key="contact.info.title">Kontaktinformationen</h3>
                         <ul>
                             <li>
                                 <i class="fas fa-envelope"></i>
@@ -2088,21 +1823,20 @@ pipeline.run()</pre>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Bonn, Germany</span>
+                                <span>Bonn, Deutschland</span>
                             </li>
                             <li>
                                 <i class="fas fa-globe"></i>
-                                <a href="http://www.aikiw.com">www.aikiw.com</a>
+                                <a href="https://lrox.de">www.lrox.de</a>
                             </li>
                         </ul>
                     </div>
                     
                     <div class="contact-card">
-                        <h3>Social Media</h3>
+                        <h3 data-key="contact.social.title">Soziale Medien</h3>
                         <div class="social-links">
-                            <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://github.com/Ladan94/LROX" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -2110,48 +1844,25 @@ pipeline.run()</pre>
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name" data-key="contact.form.name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-key="contact.form.email">E-Mail</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message" data-key="contact.form.message">Nachricht</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         
                         <div class="form-submit">
-                            <button type="submit" class="btn">Send Message</button>
+                            <button type="submit" class="btn" data-key="contact.form.submit">Nachricht senden</button>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Hashtags Section -->
-    <section class="hashtags" id="hashtags">
-        <div class="container">
-            <div class="hashtag-cloud">
-                <a href="#smartbike" class="hashtag">#SmartBike</a>
-                <a href="#smarthelmet" class="hashtag">#SmartHelmet</a>
-                <a href="#technology" class="hashtag">#ComputerVision</a>
-                <a href="#technology" class="hashtag">#YOLOv8</a>
-                <a href="#features" class="hashtag">#MediaPipe</a>
-                <a href="#home" class="hashtag">#CyclingSafety</a>
-                <a href="#technology" class="hashtag">#EdgeAI</a>
-                <a href="#features" class="hashtag">#GPS</a>
-                <a href="#features" class="hashtag">#TTS</a>
-                <a href="#features" class="hashtag">#GestureControl</a>
-                <a href="#home" class="hashtag">#Docharkhe</a>
-                <a href="#smarthelmet" class="hashtag">#Hoshmand</a>
-                <a href="#home" class="hashtag">#BicycleSafety</a>
-                <a href="#technology" class="hashtag">#AI</a>
-                <a href="#features" class="hashtag">#RealTimeDetection</a>
             </div>
         </div>
     </section>
@@ -2161,48 +1872,47 @@ pipeline.run()</pre>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>SmartBike AI</h3>
-                    <p>An AI-powered safety system for cyclists, developed in Bonn, Germany.</p>
+                    <h3>LROX</h3>
+                    <p data-key="footer.description">Ein KI-gestütztes Sicherheitssystem für Fahrradfahrer und besonders gefährdete Verkehrsteilnehmer, entwickelt in Bonn, Deutschland.</p>
                     <div class="social-links">
-                        <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/amirmobasher.ir/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Ladan94/LROX" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
+                    <h3 data-key="footer.links.title">Schnelllinks</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#smartbike">SmartBike</a></li>
-                        <li><a href="#smarthelmet">SmartHelmet</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#home" data-key="nav.home">Start</a></li>
+                        <li><a href="#problem" data-key="nav.problem">Problem</a></li>
+                        <li><a href="#solution" data-key="nav.solution">Lösung</a></li>
+                        <li><a href="#features" data-key="nav.features">Vorteile</a></li>
+                        <li><a href="#demo" data-key="nav.demo">Demo</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Technology</h3>
+                    <h3 data-key="footer.technology.title">Technologie</h3>
                     <ul>
-                        <li><a href="#technology">Technology Stack</a></li>
-                        <li><a href="#downloads">Downloads</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="https://aikiw.com/chatbot">AI Chatbot</a></li>
+                        <li><a href="#solution" data-key="nav.solution">Wie es funktioniert</a></li>
+                        <li><a href="#features" data-key="nav.features">Funktionen</a></li>
+                        <li><a href="#stages" data-key="nav.stages">Projektphasen</a></li>
+                        <li><a href="#faq" data-key="nav.faq">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Contact</h3>
+                    <h3 data-key="footer.contact.title">Kontakt</h3>
                     <ul>
                         <li><i class="fas fa-envelope"></i><a href="mailto:amirmobash@gmail.com">amirmobash@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i><span>Bonn, Germany</span></li>
-                        <li><i class="fas fa-globe"></i><a href="http://www.aikiw.com">www.aikiw.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Bonn, Deutschland</span></li>
+                        <li><i class="fas fa-globe"></i><a href="https://lrox.de">www.lrox.de</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 SmartBike AI. All rights reserved.</p>
+                <p>&copy; 2024 LROX. <span data-key="footer.rights">Alle Rechte vorbehalten.</span></p>
             </div>
         </div>
     </footer>
@@ -2211,6 +1921,305 @@ pipeline.run()</pre>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
     <script>
+        // Translations
+        const translations = {
+            de: {
+                // Navigation
+                'nav.home': 'Start',
+                'nav.problem': 'Problem',
+                'nav.risk': 'Risikogruppen',
+                'nav.solution': 'Lösung',
+                'nav.features': 'Vorteile',
+                'nav.stages': 'Projektphasen',
+                'nav.demo': 'Demo',
+                'nav.business': 'Geschäftsmodell',
+                'nav.team': 'Team',
+                'nav.faq': 'FAQ',
+                'nav.contact': 'Kontakt',
+                'nav.pitch': 'Pitch-Deck ansehen',
+                
+                // Hero Section
+                'hero.title': 'LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem',
+                'hero.subtitle': 'LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt.',
+                'hero.demoBtn': 'Demo ansehen',
+                'hero.contactBtn': 'Kontakt aufnehmen',
+                
+                // Metrics
+                'metrics.latency': 'Latenzzeit',
+                'metrics.fps': 'Auf Edge-Gerät',
+                'metrics.map': 'mAP50 (Test)',
+                'metrics.power': 'Stromverbrauch',
+                
+                // Problem Section
+                'problem.title': 'Problem & Kontext',
+                'problem.subtitle': 'Im Straßenverkehr entscheiden Sekunden über Leben und Tod',
+                'problem.heading': 'Verkehrssicherheit in Deutschland',
+                'problem.text': 'Die Straßenverkehrssicherheit ist eine der größten Herausforderungen im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.',
+                'problem.stat': 'Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024',
+                'problem.source': 'Statistisches Bundesamt (Destatis), vorläufige Ergebnisse',
+                'problem.conclusion': 'Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen, die besonders schutzbedürftige Verkehrsteilnehmer unterstützen.',
+                
+                // Risk Groups Section
+                'risk.title': 'Wer ist besonders gefährdet?',
+                'risk.subtitle': 'Bestimmte Gruppen sind im Straßenverkehr besonders schutzbedürftig',
+                'risk.heading': 'Schutzbedürftige Verkehrsteilnehmer',
+                'risk.text': 'Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen im Straßenverkehr:',
+                'risk.cyclists': 'Fahrradfahrerinnen und Fahrradfahrer',
+                'risk.children': 'Kinder – besonders auf dem Schulweg',
+                'risk.elderly': 'Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl',
+                'risk.visuallyImpaired': 'Menschen mit Sehbeeinträchtigungen',
+                
+                // Solution Section
+                'solution.title': 'Die LROX-Lösung',
+                'solution.subtitle': 'Ein Helm, der sieht, denkt, warnt – und sogar spricht',
+                'solution.heading': 'Wie LROX funktioniert',
+                'solution.text': 'Unser intelligentes Sicherheitssystem kombiniert modernste Technologien für umfassenden Schutz:',
+                'solution.camera': 'Kamera + Nano-Computer + KI',
+                'solution.detection': 'Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit',
+                'solution.alerts': 'Akustische Warnungen: Richtung, Distanz, Geschwindigkeit',
+                'solution.offline': 'Funktioniert vollständig offline',
+                'solution.users': 'Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen',
+                'solution.benefit': '→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.',
+                
+                // Features Section
+                'features.title': 'Was LROX anders macht',
+                'features.subtitle': 'Innovative Funktionen, die LROX von bestehenden Lösungen unterscheiden',
+                'features.360.title': 'Echte 360°-Sicht',
+                'features.360.text': 'Umfassende Rundum-Überwachung für maximale Sicherheit',
+                'features.360.bullet1': 'Erkennt Gefahren aus allen Richtungen',
+                'features.prediction.title': 'Vorhersage statt Reaktion',
+                'features.prediction.text': 'KI-basierte Analyse für frühzeitige Warnungen',
+                'features.prediction.bullet1': 'Analysiert Art, Richtung, Distanz und Geschwindigkeit von Gefahren',
+                'features.prediction.bullet2': 'Warnungen Sekunden früher, nicht erst beim Kontakt',
+                'features.alerts.title': 'Präzise Warnungen',
+                'features.alerts.text': 'Konkrete, verständliche Hinweise statt allgemeiner Signale',
+                'features.alerts.bullet1': 'Keine einfachen Pieptöne – sondern konkrete Hinweise',
+                'features.alerts.bullet2': '"Bordsteinkante vorne", "Hindernis links, nah", "Fahrrad hinter dir"',
+                
+                // Stages Section
+                'stages.title': 'Projektphasen',
+                'stages.subtitle': 'Die Entwicklung von LROX in drei wichtigen Stufen',
+                'stages.v1.title': 'Version 1 – Fahrrad-Prototyp',
+                'stages.v1.text': 'Erste funktionierende KI-Objekterkennung, Jetson Nano (700 €), Erkenntnisse: zu groß, zu teuer, nicht tragbar',
+                'stages.v1.status': 'Abgeschlossen',
+                'stages.v2.title': 'Version 2 – Helm-Prototyp',
+                'stages.v2.text': 'Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest',
+                'stages.v2.status': 'Aktueller Stand',
+                'stages.v3.title': 'Version 3 – Zukünftige Endversion',
+                'stages.v3.text': 'Leichtes Helm-Modul + 360°-Kamera, Rechenleistung ausgelagert (Edge/Server), Längere Batterielaufzeit, geringes Gewicht, Für reale Nutzergruppen skalierbar',
+                'stages.v3.status': 'In Planung',
+                'stages.demoCaption': 'LROX System-Demonstration – Technische Umsetzung',
+                
+                // Demo Section
+                'demo.title': 'Demo',
+                'demo.subtitle': 'LROX in Aktion – sehen Sie selbst',
+                'demo.image1': 'Smart Helmet Systemarchitektur',
+                'demo.image2': 'Smart Helmet mit integrierter Kamera',
+                'demo.image3': 'Vergleich mit bestehenden Lösungen',
+                
+                // Business Section
+                'business.title': 'Geschäftsmodell & Marktpotenzial',
+                'business.subtitle': 'Nachhaltiges Geschäftsmodell mit großer Reichweite',
+                'business.revenue.title': 'Klare Einnahmequelle',
+                'business.revenue.text': 'Verkauf eines intelligenten Helm-Moduls + optionale Premium-Funktionen',
+                'business.partners.title': 'Starke Partner',
+                'business.partners.text': 'Versicherungen, Kommunen, soziale Einrichtungen – alle mit Interesse an Unfallprävention',
+                'business.market.title': 'Riesiger Markt',
+                'business.market.text': '80 Mio. Fahrräder in Europa + Millionen Menschen mit Mobilitäts- oder Sehbeeinträchtigungen',
+                
+                // Team Section
+                'team.title': 'Unser Team',
+                'team.subtitle': 'Interdisziplinäre Expertise für innovative Sicherheitslösungen',
+                'team.amir.role': 'KI & Software',
+                'team.amir.description': 'Objekterkennung, KI-Logik und das Warnsystem → selbst in Python entwickelt',
+                'team.ladan.role': 'Hardware & 3D-Design',
+                'team.ladan.description': 'Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration',
+                'team.interdisciplinary.title': 'Interdisziplinäre Stärke',
+                'team.interdisciplinary.role': 'Kombinierte Expertise',
+                'team.interdisciplinary.description': 'Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind',
+                
+                // FAQ Section
+                'faq.title': 'Häufige Fragen',
+                'faq.subtitle': 'Antworten auf die wichtigsten Fragen zu LROX',
+                'faq.q1': 'Welche Sensoren werden verwendet?',
+                'faq.a1': 'LROX verwendet eine Kombination aus Kamera, Nano-Computer und KI-Software für die Echtzeit-Objekterkennung. Das System arbeitet vollständig offline und benötigt keine Cloud-Verbindung.',
+                'faq.q2': 'Ist eine Kalibrierung erforderlich?',
+                'faq.a2': 'Das System kalibriert sich automatisch beim ersten Start. Eine erneute Kalibrierung wird nach Hardware-Änderungen empfohlen.',
+                'faq.q3': 'Wie werden meine Daten geschützt?',
+                'faq.a3': 'Alle Datenverarbeitung erfolgt auf dem Gerät. Es werden keine persönlichen Daten an Cloud-Server übertragen. Datenschutz ist durch Offline-Verarbeitung gewährleistet.',
+                'faq.q4': 'Ist der Smart Helmet mit allen Fahrradhelmen kompatibel?',
+                'faq.a4': 'Unser Smart Helmet ist ein komplettes System. Für bestehende Helme bieten wir ein Nachrüstkit an.',
+                'faq.q5': 'Gibt es rechtliche Anforderungen für die Straßenzulassung?',
+                'faq.a5': 'Das System ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es entspricht den relevanten EU-Richtlinien.',
+                
+                // Contact Section
+                'contact.title': 'Kontakt',
+                'contact.subtitle': 'Nehmen Sie Kontakt mit uns auf für mehr Informationen',
+                'contact.info.title': 'Kontaktinformationen',
+                'contact.social.title': 'Soziale Medien',
+                'contact.form.name': 'Name',
+                'contact.form.email': 'E-Mail',
+                'contact.form.message': 'Nachricht',
+                'contact.form.submit': 'Nachricht senden',
+                
+                // Footer
+                'footer.description': 'Ein KI-gestütztes Sicherheitssystem für Fahrradfahrer und besonders gefährdete Verkehrsteilnehmer, entwickelt in Bonn, Deutschland.',
+                'footer.links.title': 'Schnelllinks',
+                'footer.technology.title': 'Technologie',
+                'footer.contact.title': 'Kontakt',
+                'footer.rights': 'Alle Rechte vorbehalten.'
+            },
+            en: {
+                // Navigation
+                'nav.home': 'Home',
+                'nav.problem': 'Problem',
+                'nav.risk': 'Risk Groups',
+                'nav.solution': 'Solution',
+                'nav.features': 'Features',
+                'nav.stages': 'Project Stages',
+                'nav.demo': 'Demo',
+                'nav.business': 'Business Model',
+                'nav.team': 'Team',
+                'nav.faq': 'FAQ',
+                'nav.contact': 'Contact',
+                'nav.pitch': 'View pitch deck',
+                
+                // Hero Section
+                'hero.title': 'LROX – AI Smart Helmet & SmartBike Safety System',
+                'hero.subtitle': 'LROX is an AI-driven smart helmet and bicycle system that detects hazards in real time and warns vulnerable road users before a crash happens.',
+                'hero.demoBtn': 'Watch Demo',
+                'hero.contactBtn': 'Contact Us',
+                
+                // Metrics
+                'metrics.latency': 'Latency',
+                'metrics.fps': 'On Edge Device',
+                'metrics.map': 'mAP50 (Test)',
+                'metrics.power': 'Power Consumption',
+                
+                // Problem Section
+                'problem.title': 'Problem & Context',
+                'problem.subtitle': 'In road traffic, seconds decide between life and death',
+                'problem.heading': 'Road Safety in Germany',
+                'problem.text': 'Road traffic safety is one of the biggest challenges in urban areas. Particularly vulnerable groups need additional protection.',
+                'problem.stat': 'Average 8 deaths and almost 1,000 injuries per day in traffic accidents in 2024',
+                'problem.source': 'Federal Statistical Office (Destatis), preliminary results',
+                'problem.conclusion': 'These numbers show the urgent need for innovative safety solutions that support particularly vulnerable road users.',
+                
+                // Risk Groups Section
+                'risk.title': 'Who is most at risk?',
+                'risk.subtitle': 'Certain groups are particularly vulnerable in road traffic',
+                'risk.heading': 'Vulnerable Road Users',
+                'risk.text': 'These groups require special attention and protective measures in road traffic:',
+                'risk.cyclists': 'Cyclists',
+                'risk.children': 'Children – especially on the way to school',
+                'risk.elderly': 'Older people, for example with walkers or in wheelchairs',
+                'risk.visuallyImpaired': 'People with visual impairments',
+                
+                // Solution Section
+                'solution.title': 'The LROX Solution',
+                'solution.subtitle': 'A helmet that sees, thinks, warns – and even speaks',
+                'solution.heading': 'How LROX Works',
+                'solution.text': 'Our intelligent safety system combines cutting-edge technologies for comprehensive protection:',
+                'solution.camera': 'Camera + Nano computer + AI',
+                'solution.detection': 'Detects vehicles, obstacles & environment in real-time',
+                'solution.alerts': 'Acoustic warnings: direction, distance, speed',
+                'solution.offline': 'Works completely offline',
+                'solution.users': 'For cyclists, wheelchair users – especially for blind & visually impaired people',
+                'solution.benefit': '→ More safety. More orientation. More independence.',
+                
+                // Features Section
+                'features.title': 'What Makes LROX Different',
+                'features.subtitle': 'Innovative features that distinguish LROX from existing solutions',
+                'features.360.title': 'True 360° View',
+                'features.360.text': 'Comprehensive all-around monitoring for maximum safety',
+                'features.360.bullet1': 'Detects hazards from all directions',
+                'features.prediction.title': 'Prediction Instead of Reaction',
+                'features.prediction.text': 'AI-based analysis for early warnings',
+                'features.prediction.bullet1': 'Analyzes type, direction, distance and speed of hazards',
+                'features.prediction.bullet2': 'Warnings seconds earlier, not just upon contact',
+                'features.alerts.title': 'Precise Warnings',
+                'features.alerts.text': 'Specific, understandable hints instead of general signals',
+                'features.alerts.bullet1': 'No simple beeps – but concrete instructions',
+                'features.alerts.bullet2': '"Curb ahead", "Obstacle left, close", "Bicycle behind you"',
+                
+                // Stages Section
+                'stages.title': 'Project Stages',
+                'stages.subtitle': 'The development of LROX in three important phases',
+                'stages.v1.title': 'Version 1 – Bicycle Prototype',
+                'stages.v1.text': 'First functioning AI object detection, Jetson Nano (€700), Findings: too big, too expensive, not portable',
+                'stages.v1.status': 'Completed',
+                'stages.v2.title': 'Version 2 – Helmet Prototype',
+                'stages.v2.text': 'Completely redesigned (AI logic and warning system, 3D design, mechanics, wiring), Works – but still heavy, short battery life, not weatherproof',
+                'stages.v2.status': 'Current Status',
+                'stages.v3.title': 'Version 3 – Future Final Version',
+                'stages.v3.text': 'Light helmet module + 360° camera, computing power outsourced (edge/server), Longer battery life, low weight, Scalable for real user groups',
+                'stages.v3.status': 'In Planning',
+                'stages.demoCaption': 'LROX System Demonstration – Technical Implementation',
+                
+                // Demo Section
+                'demo.title': 'Demo',
+                'demo.subtitle': 'LROX in Action – See for Yourself',
+                'demo.image1': 'Smart Helmet System Architecture',
+                'demo.image2': 'Smart Helmet with Integrated Camera',
+                'demo.image3': 'Comparison with Existing Solutions',
+                
+                // Business Section
+                'business.title': 'Business Model & Market Potential',
+                'business.subtitle': 'Sustainable business model with wide reach',
+                'business.revenue.title': 'Clear Revenue Source',
+                'business.revenue.text': 'Sale of intelligent helmet module + optional premium features',
+                'business.partners.title': 'Strong Partners',
+                'business.partners.text': 'Insurance companies, municipalities, social institutions – all with interest in accident prevention',
+                'business.market.title': 'Huge Market',
+                'business.market.text': '80 million bicycles in Europe + millions of people with mobility or visual impairments',
+                
+                // Team Section
+                'team.title': 'Our Team',
+                'team.subtitle': 'Interdisciplinary expertise for innovative safety solutions',
+                'team.amir.role': 'AI & Software',
+                'team.amir.description': 'Object detection, AI logic and warning system → developed in Python',
+                'team.ladan.role': 'Hardware & 3D Design',
+                'team.ladan.description': 'Mechanical construction, 3D parts, camera mounting, wiring and complete hardware integration',
+                'team.interdisciplinary.title': 'Interdisciplinary Strength',
+                'team.interdisciplinary.role': 'Combined Expertise',
+                'team.interdisciplinary.description': 'We combine AI, electronics, mechanics → exactly the competencies needed for a product like LROX',
+                
+                // FAQ Section
+                'faq.title': 'Frequently Asked Questions',
+                'faq.subtitle': 'Answers to the most important questions about LROX',
+                'faq.q1': 'Which sensors are used?',
+                'faq.a1': 'LROX uses a combination of camera, nano-computer and AI software for real-time object detection. The system works completely offline and does not require a cloud connection.',
+                'faq.q2': 'Is calibration required?',
+                'faq.a2': 'The system calibrates automatically on first startup. Recalibration is recommended after hardware changes.',
+                'faq.q3': 'How is my data protected?',
+                'faq.a3': 'All data processing happens on the device. No personal data is transmitted to cloud servers. Data protection is ensured through offline processing.',
+                'faq.q4': 'Is the Smart Helmet compatible with all bicycle helmets?',
+                'faq.a4': 'Our Smart Helmet is a complete system. For existing helmets, we offer a retrofit kit.',
+                'faq.q5': 'Are there legal requirements for road approval?',
+                'faq.a5': 'The system is designed as an assistance system and does not replace user attention. It complies with relevant EU directives.',
+                
+                // Contact Section
+                'contact.title': 'Contact',
+                'contact.subtitle': 'Contact us for more information',
+                'contact.info.title': 'Contact Information',
+                'contact.social.title': 'Social Media',
+                'contact.form.name': 'Name',
+                'contact.form.email': 'Email',
+                'contact.form.message': 'Message',
+                'contact.form.submit': 'Send Message',
+                
+                // Footer
+                'footer.description': 'An AI-powered safety system for cyclists and particularly vulnerable road users, developed in Bonn, Germany.',
+                'footer.links.title': 'Quick Links',
+                'footer.technology.title': 'Technology',
+                'footer.contact.title': 'Contact',
+                'footer.rights': 'All rights reserved.'
+            }
+        };
+
+        // Current language
+        let currentLang = 'de';
+
         // Mobile Menu Toggle
         document.getElementById('mobileMenu').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -2249,17 +2258,30 @@ pipeline.run()</pre>
         
         // Language Toggle
         const langToggle = document.getElementById('langToggle');
-        let currentLang = 'en';
         
         langToggle.addEventListener('click', function() {
-            if (currentLang === 'en') {
-                // Redirect to German version
-                window.location.href = 'index_de.html';
-            } else {
-                // Already on English version
-                window.location.href = 'index.html';
-            }
+            currentLang = currentLang === 'de' ? 'en' : 'de';
+            updateLanguage();
+            langToggle.textContent = currentLang === 'de' ? 'EN' : 'DE';
         });
+        
+        // Update language function
+        function updateLanguage() {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[currentLang][key];
+                    } else {
+                        element.textContent = translations[currentLang][key];
+                    }
+                }
+            });
+            
+            // Update pitch button text
+            const pitchButton = document.querySelector('.pitch-button');
+            pitchButton.textContent = currentLang === 'de' ? 'Pitch-Deck ansehen' : 'View pitch deck';
+        }
         
         // Form Validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -2271,10 +2293,10 @@ pipeline.run()</pre>
             
             if (name && email && message) {
                 // Simple validation - in a real app, you would send the data to a server
-                alert('Message sent! We will get back to you soon.');
+                alert(currentLang === 'de' ? 'Nachricht gesendet! Wir melden uns bald bei Ihnen.' : 'Message sent! We will get back to you soon.');
                 document.getElementById('contactForm').reset();
             } else {
-                alert('Please fill in all fields.');
+                alert(currentLang === 'de' ? 'Bitte füllen Sie alle Felder aus.' : 'Please fill in all fields.');
             }
         });
         
@@ -2295,7 +2317,7 @@ pipeline.run()</pre>
         
         // Observe elements for animation
         document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.feature-card, .tech-category, .member-card, .download-card');
+            const animateElements = document.querySelectorAll('.feature-card, .stage-card, .business-card, .member-card');
             
             animateElements.forEach(el => {
                 el.style.opacity = 0;
@@ -2303,6 +2325,9 @@ pipeline.run()</pre>
                 el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(el);
             });
+            
+            // Initialize language
+            updateLanguage();
         });
     </script>
 </body>
