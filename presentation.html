@@ -15,6 +15,9 @@
       --muted: #a0a0a0;
       --border-soft: rgba(255, 255, 255, 0.06);
       --card-bg: rgba(255, 255, 255, 0.04);
+      --border-radius-sm: 12px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 20px;
     }
 
     * {
@@ -165,7 +168,7 @@
       background:
         radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
         radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
-      border-radius: 20px;
+      border-radius: var(--border-radius-lg);
       padding: 24px 32px 20px;
       border: 1px solid var(--border-soft);
       box-shadow:
@@ -226,7 +229,7 @@
 
     .content-card {
       background: var(--card-bg);
-      border-radius: 14px;
+      border-radius: var(--border-radius-md);
       padding: 20px 16px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -242,7 +245,7 @@
 
     .placeholder-box {
       background: rgba(3, 5, 18, 0.85);
-      border-radius: 16px;
+      border-radius: var(--border-radius-md);
       padding: 20px;
       border: 1px dashed rgba(255, 255, 255, 0.35);
       display: flex;
@@ -263,7 +266,7 @@
       height: auto;
       max-height: 45vh;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: var(--border-radius-sm);
       display: block;
       margin: 0 auto;
     }
@@ -324,7 +327,7 @@
     .key-stat {
       background: var(--accent-soft);
       padding: 14px 18px;
-      border-radius: 10px;
+      border-radius: var(--border-radius-sm);
       border-left: 4px solid var(--accent);
       margin: 16px 0;
     }
@@ -343,7 +346,7 @@
       margin: 20px 0;
       padding: 14px 18px;
       background: var(--accent-soft);
-      border-radius: 10px;
+      border-radius: var(--border-radius-sm);
       text-align: center;
     }
 
@@ -374,7 +377,7 @@
       color: var(--muted);
       padding: 10px 16px;
       background: rgba(255, 255, 255, 0.04);
-      border-radius: 10px;
+      border-radius: var(--border-radius-sm);
       display: inline-block;
     }
 
@@ -444,14 +447,32 @@
       line-height: 1.3;
     }
 
-    .slide-9 .bullet-list li {
-      margin-bottom: 12px;
+    /* Slide 9 - Team slide without bullets */
+    .slide-9 .team-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .slide-9 .bullet-list strong {
+    .slide-9 .team-member {
+      background: var(--card-bg);
+      border-radius: var(--border-radius-md);
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .slide-9 .team-member strong {
       color: var(--accent);
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .slide-9 .team-member p {
+      margin-bottom: 0;
+      line-height: 1.5;
     }
 
     .slide-10 .highlight-line {
@@ -557,6 +578,11 @@
       
       .image-placeholder, .video-placeholder, .slide-image, .slide-video {
         max-height: 40vh;
+        border-radius: var(--border-radius-sm);
+      }
+      
+      .placeholder-box {
+        border-radius: var(--border-radius-md);
       }
       
       .highlight-orange {
@@ -592,6 +618,15 @@
       .slide-10 .highlight-line {
         font-size: 16px;
         margin: 20px 0;
+        padding: 16px;
+      }
+      
+      /* Slide 9 mobile adjustments */
+      .slide-9 .team-content {
+        gap: 16px;
+      }
+      
+      .slide-9 .team-member {
         padding: 16px;
       }
     }
@@ -820,11 +855,20 @@ Die Warnung erfolgt nur, wenn die berechnete Time-to-Collision (TTC) kritisch wi
           <div class="slide-inner">
             <div class="centered-content">
               <h1>Unser Team</h1>
-              <ul class="bullet-list">
-                <li><strong>KI & Software – Ladan Seddighi</strong>Objekterkennung, KI-Logik und das Warnsystem → selbstständig in Python entwickelt</li>
-                <li><strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</li>
-                <li><strong>Interdisziplinäre Stärke:</strong> Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</li>
-              </ul>
+              <div class="team-content">
+                <div class="team-member">
+                  <strong>KI & Software – Ladan Seddighi</strong>
+                  <p>Objekterkennung, KI-Logik und das Warnsystem → selbstständig in Python entwickelt</p>
+                </div>
+                <div class="team-member">
+                  <strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>
+                  <p>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
+                </div>
+                <div class="team-member">
+                  <strong>Interdisziplinäre Stärke</strong>
+                  <p>Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
