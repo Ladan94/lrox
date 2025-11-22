@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>LROX – Presentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
  
   <style>
     :root {
@@ -27,7 +30,7 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top, #1d2540 0, #050814 55%),
         radial-gradient(circle at bottom, #130d06 0, #050509 40%);
@@ -394,6 +397,12 @@
       margin: 16px 0;
     }
 
+    /* Slide 5 - Add orange underline to title */
+    .slide-5 h1 {
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
+      padding-bottom: 8px;
+    }
+
     /* Slide 6 specific styles */
     .slide-6 .two-column {
       height: 100%;
@@ -447,6 +456,12 @@
       line-height: 1.3;
     }
 
+    /* Slide 7 - Add orange underline to title */
+    .slide-7 h1 {
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
+      padding-bottom: 8px;
+    }
+
     /* Slide 9 - Team slide without bullets */
     .slide-9 .team-content {
       display: flex;
@@ -475,16 +490,71 @@
       line-height: 1.5;
     }
 
+    /* Slide 10 - Enhanced final slide */
+    .slide-10 {
+      background:
+        radial-gradient(circle at 50% 30%, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.8) 0, transparent 70%);
+    }
+
+    .slide-10 .slide-inner {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide-10 .centered-content {
+      max-width: 700px;
+      padding: 40px;
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid rgba(255, 122, 0, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-10 .centered-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
     .slide-10 .highlight-line {
-      font-size: 18px;
-      line-height: 1.4;
-      margin: 24px 0;
-      padding: 18px;
+      font-size: 20px;
+      line-height: 1.5;
+      margin: 0 0 30px 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .slide-10 .highlight-line::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--accent);
+      margin: 24px auto 0;
+      opacity: 0.7;
     }
 
     .slide-10 .contact-info {
-      margin-top: 20px;
-      font-size: 16px;
+      margin-top: 30px;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .slide-10 .contact-info p {
+      font-size: 17px;
+      color: var(--text);
+      margin-bottom: 0;
     }
 
     footer {
@@ -616,9 +686,20 @@
       }
 
       .slide-10 .highlight-line {
-        font-size: 16px;
-        margin: 20px 0;
-        padding: 16px;
+        font-size: 18px;
+        margin: 0 0 20px 0;
+      }
+
+      .slide-10 .centered-content {
+        padding: 30px 20px;
+      }
+      
+      .slide-10 .contact-info {
+        font-size: 15px;
+      }
+      
+      .slide-10 .contact-info p {
+        font-size: 15px;
       }
       
       /* Slide 9 mobile adjustments */
@@ -781,9 +862,9 @@
                 
                 <h2>Vorhersage statt Reaktion</h2>
                 <ul class="bullet-list">
-                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX Art der Gefahr, Richtung, Distanz und Relativgeschwindigkeit. 
-So erkennt das System gefährliche Situationen Sekunden früher, nicht erst beim Kontakt. 
-Die Warnung erfolgt nur, wenn die berechnete Time-to-Collision (TTC) kritisch wird – nicht bei normalem Vorbeifahren.</li>
+                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX Art der Gefahr, Richtung, Distanz und Relativgeschwindigkeit.</li>
+                  <li>So erkennt das System gefährliche Situationen Sekunden früher, nicht erst beim Kontakt.</li>
+                  <li>Die Warnung erfolgt nur, wenn die berechnete Time-to-Collision (TTC) kritisch wird – nicht bei normalem Vorbeifahren.</li>
                 </ul>
                 
                 <h2>Präzise, richtungsabhängige Warnungen</h2>
