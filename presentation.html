@@ -602,6 +602,68 @@
       margin-top: 12px;
     }
 
+    /* New styles for added slides */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0;
+      background: var(--card-bg);
+      border-radius: var(--border-radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .data-table th {
+      background: rgba(255, 122, 0, 0.1);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .scrollable-table {
+      max-height: 300px;
+      overflow-y: auto;
+      margin: 16px 0;
+      border-radius: var(--border-radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .scrollable-table table {
+      margin: 0;
+    }
+
+    /* FAQ specific styles */
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-item strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .faq-item p {
+      margin: 0 0 0 18px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -787,6 +849,28 @@
       
       .slide-9 .team-member {
         padding: 16px;
+      }
+
+      /* New slides mobile adjustments */
+      .data-table {
+        font-size: 11px;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 8px 10px;
+      }
+
+      .scrollable-table {
+        max-height: 250px;
+      }
+
+      .faq-item {
+        margin-bottom: 12px;
+      }
+
+      .faq-item p {
+        font-size: 13px;
       }
     }
   </style>
@@ -1045,12 +1129,184 @@
           </div>
         </section>
         <!-- SLIDE 10 END -->
+
+        <!-- SLIDE 11 START -->
+        <section class="slide slide-11" data-slide="11">
+          <div class="slide-inner">
+            <h1>Mögliche Jury-Fragen (kurz & klar)</h1>
+            <div class="faq-list">
+              <div class="faq-item">
+                <strong>Wie genau ist die Erkennung – und wie habt ihr das getestet?</strong>
+                <p>→ Wir haben reale Fahr- und Geh-Tests durchgeführt, Fehlerquoten dokumentiert und nach jedem KI-Update validiert.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Was passiert bei Fehlalarmen?</strong>
+                <p>→ Das System warnt nur bei kritischer Time-to-Collision (TTC), nicht bei normalem Vorbeifahren.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Wie schwer ist das System und wie lange hält der Akku?</strong>
+                <p>→ Version 2 funktioniert, ist aber noch zu schwer; Version 3 reduziert Gewicht deutlich und verlängert die Laufzeit durch Smartphone-Compute.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Was ist euer USP gegenüber bestehenden Lösungen?</strong>
+                <p>→ 360°-Erkennung + KI-Risikoanalyse in Echtzeit + richtungsabhängige, verständliche Warnungen.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Datenschutz – werden Videos gespeichert oder übertragen?</strong>
+                <p>→ Nein. Frames werden nur lokal und temporär verarbeitet, ohne Speicherung oder Cloud-Upload.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Wie sieht der Weg zur CE-Zertifizierung aus?</strong>
+                <p>→ Standard-Richtlinien (LVD/EMV/RED) + klare Prüfplanung; keine Medizinprodukt- oder Fahrzeugzulassung.</p>
+              </div>
+              <div class="faq-item">
+                <strong>Wer ist eure Zielgruppe und wie skaliert ihr?</strong>
+                <p>→ Radfahrer:innen, Rollstuhl- und sehbehinderte Nutzer:innen; skalierbar über leichtes Modul + Smartphone-App.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 11 END -->
+
+        <!-- SLIDE 12 START -->
+        <section class="slide slide-12" data-slide="12">
+          <div class="slide-inner">
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Datenschutz & Privatsphäre</h1>
+                <ul class="bullet-list">
+                  <li>KI läuft lokal (auf Smartphone/Edge).</li>
+                  <li><strong>Keine Speicherung von Bildern oder Videos.</strong></li>
+                  <li>Verarbeitung nur <strong>temporär pro Frame</strong> für die Warnung.</li>
+                  <li>Keine Cloud-Übertragung ohne ausdrückliche Zustimmung.</li>
+                  <li>Keine personenbezogenen Daten → <strong>DSGVO-konform by design.</strong></li>
+                </ul>
+              </div>
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <div class="video-placeholder">
+                    VIDEO PLACEHOLDER — Datenschutz-Demo: keine identifizierbaren Aufnahmen
+                  </div>
+                  <p>Datenschutz-Demo: keine identifizierbaren Aufnahmen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 12 END -->
+
+        <!-- SLIDE 13 START -->
+        <section class="slide slide-13" data-slide="13">
+          <div class="slide-inner">
+            <h1>Test-Timeline & Fehlerreduktion</h1>
+            <p class="highlight-orange">Fehlerquote im Schnitt deutlich gesunken – von >50% (2024) auf ~10% (2025).</p>
+            <div class="scrollable-table">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Datum</th>
+                    <th>Update/Version</th>
+                    <th>Fehlerquote</th>
+                    <th>Notiz</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>06.01.2024</td><td>v1.0</td><td>70%</td><td>Baseline</td></tr>
+                  <tr><td>21.01.2024</td><td>v1.0</td><td>68%</td><td>Baseline</td></tr>
+                  <tr><td>18.02.2024</td><td>v1.1</td><td>62%</td><td>erste Filter</td></tr>
+                  <tr><td>02.03.2024</td><td>v1.1</td><td>75%</td><td>schwierige Szene</td></tr>
+                  <tr><td>17.03.2024</td><td>v1.2</td><td>73%</td><td>vor TTC</td></tr>
+                  <tr><td>20.04.2024</td><td>v1.2</td><td>60%</td><td>stabiler</td></tr>
+                  <tr><td>04.05.2024</td><td>v1.3</td><td>45%</td><td>bessere Klassen</td></tr>
+                  <tr><td>19.05.2024</td><td>v1.3</td><td>55%</td><td>Regen/Noise</td></tr>
+                  <tr><td>02.06.2024</td><td>v1.4</td><td>48%</td><td>Optimierung</td></tr>
+                  <tr><td>16.06.2024</td><td>v1.4</td><td>50%</td><td>Optimierung</td></tr>
+                  <tr><td>07.07.2024</td><td>v1.5</td><td>40%</td><td>nach Update</td></tr>
+                  <tr><td>03.08.2024</td><td>v1.5</td><td>35%</td><td>stabil</td></tr>
+                  <tr><td>17.08.2024</td><td>v1.6</td><td>30%</td><td>weniger False</td></tr>
+                  <tr><td>06.10.2024</td><td>v1.6</td><td>28%</td><td>Herbst-Test</td></tr>
+                  <tr><td>17.11.2024</td><td>v1.6</td><td>25%</td><td>vor Pause</td></tr>
+                  <tr><td>02.02.2025</td><td>v2.0</td><td>18%</td><td>neues Modell</td></tr>
+                  <tr><td>16.02.2025</td><td>v2.0</td><td>15%</td><td>TTC aktiv</td></tr>
+                  <tr><td>02.03.2025</td><td>v2.1</td><td>14%</td><td>Filter-Tuning</td></tr>
+                  <tr><td>16.03.2025</td><td>v2.1</td><td>12%</td><td>stabil</td></tr>
+                  <tr><td>06.04.2025</td><td>v2.2</td><td>10%</td><td>real-traffic</td></tr>
+                  <tr><td>20.04.2025</td><td>v2.2</td><td>9%</td><td>real-traffic</td></tr>
+                  <tr><td>04.05.2025</td><td>v2.3</td><td>8%</td><td>bessere Warnlogik</td></tr>
+                  <tr><td>17.05.2025</td><td>v2.3</td><td>7%</td><td>stabil</td></tr>
+                  <tr><td>08.06.2025</td><td>v2.4</td><td>6%</td><td>outdoor</td></tr>
+                  <tr><td>22.06.2025</td><td>v2.4</td><td>6%</td><td>outdoor</td></tr>
+                  <tr><td>05.07.2025</td><td>v2.5</td><td>5%</td><td>nach Update</td></tr>
+                  <tr><td>20.07.2025</td><td>v2.5</td><td>4%</td><td>nach Update</td></tr>
+                  <tr><td>03.08.2025</td><td>v2.6</td><td>3%</td><td>stabil</td></tr>
+                  <tr><td>05.10.2025</td><td>v2.6</td><td>3%</td><td>Langzeit</td></tr>
+                  <tr><td>16.11.2025</td><td>v2.6</td><td>2%</td><td>aktueller Stand</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- SLIDE 13 END -->
+
+        <!-- SLIDE 14 START -->
+        <section class="slide slide-14" data-slide="14">
+          <div class="slide-inner">
+            <h1>CE-Konformität: realistisch & geplant</h1>
+            <ul class="bullet-list">
+              <li><strong>Das Produkt fällt unter:</strong></li>
+              <li>Niederspannungs-Elektronik (5–12 V) → <strong>LVD 2014/35/EU</strong></li>
+              <li>Elektronik mit Signalverarbeitung → <strong>EMV 2014/30/EU</strong></li>
+              <li>Funk optional (SIM/LTE/WiFi) → <strong>RED 2014/53/EU</strong> (nur bei Funk)</li>
+              <li>Wearable-Integration → Komfort & Verletzungsprävention (&lt;150 g, abgerundet)</li>
+              <li>Datenschutz by design → <strong>DSGVO-konform</strong></li>
+              <li><strong>Geplante CE-Tests:</strong></li>
+              <li><strong>EMV:</strong> EN 301 489, EN 55032/55035</li>
+              <li><strong>Elektrische Sicherheit:</strong> EN 62368-1 (Kleinspannung, CE-Akku)</li>
+              <li><strong>Mechanik & Helm-Sicherheit</strong></li>
+              <li><strong>IP-Schutz geplant: IP54</strong></li>
+              <li><strong>Software lokal, keine Bildspeicherung</strong></li>
+              <li><strong>Warum CE-fähig:</strong></li>
+              <li>Kernkomponenten bereits CE-zertifiziert</li>
+              <li>Standard-Prüfungen, gut planbar</li>
+              <li>Kein Medizinprodukt, keine Fahrzeug-Typgenehmigung</li>
+              <li>→ <strong>Zertifizierung realistisch, kosteneffizient, skalierbar.</strong></li>
+            </ul>
+          </div>
+        </section>
+        <!-- SLIDE 14 END -->
+
+        <!-- SLIDE 15 START -->
+        <section class="slide slide-15" data-slide="15">
+          <div class="slide-inner">
+            <h1>Fördermittel / Funding eligibility</h1>
+            <ul class="bullet-list">
+              <li><strong>Vollständig förderfähig</strong> durch Programme wie <strong>EXIST</strong>, Landes- und EU-Förderungen.</li>
+              <li>Starker Fit zu aktuellen Förderschwerpunkten: <strong>KI</strong>, <strong>Verkehrssicherheit</strong> und <strong>Barrierefreiheit</strong>.</li>
+              <li>Dadurch realistische Chance auf <strong>Start- und Skalierungsfinanzierung</strong>.</li>
+            </ul>
+          </div>
+        </section>
+        <!-- SLIDE 15 END -->
+
+        <!-- SLIDE 16 START -->
+        <section class="slide slide-16" data-slide="16">
+          <div class="slide-inner">
+            <h1>Haftungsrisiken / Liability risks</h1>
+            <ul class="bullet-list">
+              <li><strong>Sehr geringe Haftungsrisiken</strong>, weil das System <strong>nur warnt</strong>, nicht steuert.</li>
+              <li><strong>Technisch sicher:</strong> Niederspannung, CE-kompatible Komponenten, geschlossenes Gehäuse.</li>
+              <li><strong>Mathematische Risikoanalyse (TTC)</strong> reduziert Fehlalarme.</li>
+              <li>Für den Marktstart: <strong>Hersteller-Haftpflichtversicherung</strong> geplant.</li>
+            </ul>
+          </div>
+        </section>
+        <!-- SLIDE 16 END -->
       </div>
     </main>
 
     <footer>
       <div class="nav-hint" id="nav-hint">
-        Slide 1 / 10 · Mit der rechten Pfeiltaste zur nächsten Folie
+        Slide 1 / 16 · Mit der rechten Pfeiltaste zur nächsten Folie
       </div>
       
       <div class="right">
