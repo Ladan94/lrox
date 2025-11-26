@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem</title>
-    <meta name="description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
+    <meta name="description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
-    <meta property="og:description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
+    <meta property="og:description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lrox.de">
     <meta property="og:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
@@ -16,7 +16,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
-    <meta name="twitter:description" content="LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt">
+    <meta name="twitter:description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
     
     <!-- JSON-LD Structured Data -->
@@ -47,22 +47,23 @@
             --accent: #FF4500;
             --dark: #1a1a1a;
             --darker: #121212;
-            --light: #f8f9fa;
+            --light: #ffffff;
             --text: #2f3640;
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-light: #333333;
+            --text-muted: #666666;
             --success: #4cd137;
             --warning: #fbc531;
             --danger: #e84118;
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --card-bg: rgba(30, 30, 30, 0.8);
-            --neon-glow: 0 0 15px rgba(255, 106, 0, 0.5);
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --neon-glow: 0 0 15px rgba(255, 106, 0, 0.3);
             --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-fast: 0.3s ease;
-            --border-radius: 12px;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
         
         * {
@@ -77,11 +78,10 @@
         }
         
         body {
-            background-color: var(--darker);
+            background-color: var(--light);
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, var(--darker) 0%, #1a1a1a 100%);
         }
         
         .container {
@@ -96,30 +96,28 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: transparent;
             z-index: 1000;
         }
         
         .progress-bar {
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             width: 0%;
             transition: width 0.1s ease;
-            box-shadow: var(--neon-glow);
         }
         
         /* Header */
         header {
-            background-color: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(15px);
+            background-color: var(--light);
             color: var(--text-light);
-            padding: 18px 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         nav {
@@ -147,14 +145,14 @@
         }
         
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 20px;
         }
         
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s;
             position: relative;
             padding: 8px 0;
@@ -178,72 +176,73 @@
         .nav-utils {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         
         .lang-toggle {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            background: transparent;
+            border: 1px solid #ddd;
             color: var(--text-light);
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: var(--transition-fast);
         }
         
         .lang-toggle:hover {
-            background: rgba(255, 106, 0, 0.2);
+            background: rgba(255, 106, 0, 0.1);
+            border-color: var(--primary);
         }
         
         .pitch-button {
             background-color: var(--primary);
             color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
+            padding: 8px 16px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
+            font-size: 0.9rem;
         }
         
         .pitch-button:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--text-light);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(26, 26, 30, 0.9)),
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
                         url('https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             color: var(--text-light);
-            padding: 180px 0 120px;
+            padding: 120px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-logo {
+            max-width: 180px;
+            margin: 0 auto 30px;
+            display: block;
+        }
+        
+        .hero-logo img {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 106, 0, 0.3) 0%, rgba(255, 69, 0, 0.3) 100%);
-            z-index: 0;
+            height: auto;
+            border-radius: 8px;
         }
         
         .hero .container {
@@ -252,78 +251,67 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease;
-            background: linear-gradient(90deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--text-light);
         }
         
         .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto 40px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-muted);
         }
         
         .hero-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
         
         .metric-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 25px 20px;
+            padding: 20px 15px;
             transition: var(--transition-fast);
+            box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .metric-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
+            box-shadow: var(--shadow-hover);
         }
         
         .metric-value {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
         }
         
         .metric-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
         
         .btn-group {
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
         
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 12px 28px;
             background-color: var(--primary);
             color: white;
-            border-radius: 50px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
@@ -331,13 +319,11 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
         }
         
         .btn:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         .btn:active {
@@ -347,25 +333,31 @@
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
+            color: var(--primary);
             box-shadow: none;
         }
         
         .btn-outline:hover {
             background-color: var(--primary);
+            color: white;
         }
         
         /* Sections Common Styles */
         .section {
-            padding: 100px 0;
+            padding: 80px 0;
+        }
+        
+        .section-alt {
+            background-color: var(--section-bg);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             color: var(--text-light);
             position: relative;
             display: inline-block;
@@ -380,63 +372,58 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
             border-radius: 2px;
         }
         
         .section-title p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin: 0 auto;
         }
         
         /* Problem Section */
-        .problem {
-            background: var(--dark);
-            position: relative;
-        }
-        
         .problem-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
         
         .problem-text h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
         .problem-text p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-light);
         }
         
         .key-stat {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 25px;
-            margin: 25px 0;
+            padding: 20px;
+            margin: 20px 0;
             border-left: 4px solid var(--primary);
             box-shadow: var(--shadow);
         }
         
         .key-stat p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
             font-weight: 600;
             margin: 0;
         }
         
         .source-note {
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             margin-top: 5px;
         }
         
@@ -459,28 +446,23 @@
         }
         
         /* Risk Groups Section */
-        .risk-groups {
-            background: var(--darker);
-            position: relative;
-        }
-        
         .risk-groups-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
         
         .risk-groups-text h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
         .risk-groups-text p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-light);
         }
         
         .risk-list {
@@ -489,7 +471,7 @@
         }
         
         .risk-list li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
             gap: 10px;
@@ -519,28 +501,23 @@
         }
         
         /* Solution Section */
-        .solution {
-            background: var(--dark);
-            position: relative;
-        }
-        
         .solution-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
         
         .solution-text h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
         .solution-text p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-light);
         }
         
         .solution-list {
@@ -549,7 +526,7 @@
         }
         
         .solution-list li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
             gap: 10px;
@@ -579,90 +556,56 @@
         }
         
         /* Features Section */
-        .features {
-            background: var(--darker);
-            position: relative;
-        }
-        
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .feature-card {
             background: var(--card-bg);
-            border: 1px solid var(--glass-border);
             border-radius: var(--border-radius);
-            padding: 40px 30px;
+            padding: 30px 25px;
             transition: var(--transition-slow);
             position: relative;
             overflow: hidden;
             z-index: 1;
             box-shadow: var(--shadow);
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
+            border: 1px solid #f0f0f0;
+            text-align: center;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
-            color: white;
-        }
-        
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-        
-        .feature-card:hover .feature-icon {
-            color: white;
-        }
-        
-        .feature-card:hover h3,
-        .feature-card:hover p,
-        .feature-card:hover .feature-bullets li {
-            color: white;
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: all 0.3s;
         }
         
         .feature-card h3 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--text-light);
-            transition: color 0.3s;
         }
         
         .feature-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            margin-bottom: 15px;
         }
         
         .feature-bullets {
             list-style: none;
+            text-align: left;
         }
         
         .feature-bullets li {
             margin-bottom: 8px;
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.3s;
+            color: var(--text-muted);
             display: flex;
             align-items: flex-start;
             gap: 8px;
@@ -675,25 +618,20 @@
         }
         
         /* Stages Section */
-        .stages {
-            background: var(--dark);
-            position: relative;
-        }
-        
         .stages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .stage-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 35px 30px;
+            padding: 30px 25px;
             text-align: center;
             transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .stage-card:hover {
@@ -702,83 +640,36 @@
         }
         
         .stage-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
         
         .stage-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--text-light);
         }
         
         .stage-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
         }
         
         /* Demo Section */
         .demo {
-            background: var(--darker);
             position: relative;
             overflow: hidden;
         }
         
-        .demo::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 200px;
-            height: 200px;
-            background-color: rgba(255, 106, 0, 0.1);
-            border-radius: 50%;
-        }
-        
-        .demo::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background-color: rgba(255, 69, 0, 0.1);
-            border-radius: 50%;
-        }
-        
-        .demo .section-title h2 {
-            color: var(--text-light);
-        }
-        
-        .demo .section-title h2::after {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .demo .section-title p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
         .video-container {
-            max-width: 900px;
-            margin: 0 auto 50px;
+            max-width: 800px;
+            margin: 0 auto 40px;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
             z-index: 1;
-        }
-        
-        .video-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
-            opacity: 0.2;
-            z-index: -1;
         }
         
         .video-wrapper {
@@ -798,9 +689,9 @@
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
         
         .gallery-item {
@@ -809,8 +700,8 @@
             border-radius: var(--border-radius);
             text-align: center;
             transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .gallery-item:hover {
@@ -820,34 +711,29 @@
         
         .gallery-item img {
             max-width: 100%;
-            border-radius: 8px;
+            border-radius: 6px;
             margin-bottom: 15px;
         }
         
         .gallery-item p {
-            color: white;
+            color: var(--text-light);
         }
         
         /* Business Section */
-        .business {
-            background: var(--dark);
-            position: relative;
-        }
-        
         .business-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .business-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 35px 30px;
+            padding: 30px 25px;
             text-align: center;
             transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .business-card:hover {
@@ -856,32 +742,27 @@
         }
         
         .business-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
         
         .business-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--text-light);
         }
         
         .business-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
         }
         
         /* Team Section */
-        .team {
-            background: var(--darker);
-            position: relative;
-        }
-        
         .team-members {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         
         .member-card {
@@ -890,8 +771,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition-slow);
-            position: relative;
-            border: 1px solid var(--glass-border);
+            border: 1px solid #f0f0f0;
         }
         
         .member-card:hover {
@@ -901,7 +781,7 @@
         
         .member-photo {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
             transition: transform 0.5s;
         }
@@ -911,12 +791,12 @@
         }
         
         .member-info {
-            padding: 30px;
+            padding: 25px;
             text-align: center;
         }
         
         .member-name {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-bottom: 5px;
             color: var(--primary);
         }
@@ -925,46 +805,41 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--text-light);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .member-info p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
         }
         
         .member-social {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
         
         .member-social a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            background-color: #f5f5f5;
             border-radius: 50%;
             color: var(--text-light);
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: all 0.3s;
         }
         
         .member-social a:hover {
             background-color: var(--primary);
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         /* FAQ Section */
-        .faq {
-            background: var(--dark);
-            position: relative;
-        }
-        
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -973,29 +848,31 @@
         .faq-item {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             overflow: hidden;
-            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .faq-question {
             padding: 20px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: var(--transition-fast);
+            color: var(--text-light);
         }
         
         .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 106, 0, 0.05);
         }
         
         .faq-question i {
             transition: transform 0.3s;
+            color: var(--primary);
         }
         
         .faq-answer {
@@ -1003,6 +880,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-muted);
         }
         
         .faq-item.active .faq-answer {
@@ -1015,30 +893,25 @@
         }
         
         /* Contact Section */
-        .contact {
-            background: var(--darker);
-            position: relative;
-        }
-        
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
         
         .contact-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 25px;
             transition: var(--transition-fast);
-            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
         }
         
         .contact-card:hover {
@@ -1047,8 +920,8 @@
         }
         
         .contact-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--primary);
         }
         
@@ -1057,7 +930,7 @@
         }
         
         .contact-card ul li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1069,7 +942,7 @@
         }
         
         .contact-card ul li a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -1081,13 +954,13 @@
         .contact-form {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 40px;
+            padding: 30px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--glass-border);
+            border: 1px solid #f0f0f0;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
@@ -1101,9 +974,9 @@
         .form-group textarea {
             width: 100%;
             padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
             font-size: 1rem;
             transition: all 0.3s;
             color: var(--text-light);
@@ -1112,13 +985,13 @@
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
+            box-shadow: 0 0 0 2px rgba(255, 106, 0, 0.1);
             outline: none;
         }
         
         .form-group textarea {
             resize: vertical;
-            min-height: 150px;
+            min-height: 120px;
         }
         
         .form-submit {
@@ -1127,11 +1000,10 @@
         
         /* Footer */
         footer {
-            background-color: var(--darker);
-            color: var(--text-light);
-            padding: 80px 0 30px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 20px;
             position: relative;
-            border-top: 1px solid var(--glass-border);
         }
         
         footer .container {
@@ -1141,15 +1013,15 @@
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-column h3 {
             color: white;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             position: relative;
             padding-bottom: 10px;
         }
@@ -1159,14 +1031,14 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 3px;
+            width: 40px;
+            height: 2px;
             background-color: var(--primary);
         }
         
         .footer-column p {
             color: #bbb;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.7;
         }
         
@@ -1175,7 +1047,7 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1197,34 +1069,34 @@
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
         
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
         }
         
         .social-links a:hover {
             background-color: var(--primary);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #bbb;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         /* Animations */
@@ -1239,22 +1111,10 @@
             }
         }
         
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 106, 0, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 106, 0, 0);
-            }
-        }
-        
         /* Responsive Styles */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.4rem;
             }
             
             .problem-content,
@@ -1276,10 +1136,10 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px;
+                top: 60px;
                 left: 0;
                 width: 100%;
-                background-color: var(--dark);
+                background-color: var(--light);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -1298,16 +1158,24 @@
                 display: block;
             }
             
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
             }
             
             .features-grid {
@@ -1321,31 +1189,26 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
             }
         }
         
         @media (max-width: 480px) {
-            .hero {
-                padding: 120px 0 80px;
-            }
-            
             .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
                 font-size: 1.8rem;
             }
             
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
             .btn-group {
-                display: flex;
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+            }
+            
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -1392,6 +1255,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
+            <a href="https://lrox.de/presentation.html" class="hero-logo">
+                <img src="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif" alt="LROX Logo">
+            </a>
             <h1 data-key="hero.title">LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem</h1>
             <p data-key="hero.subtitle">LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt.</p>
             
@@ -1422,7 +1288,7 @@
     </section>
     
     <!-- Problem Section -->
-    <section class="section problem" id="problem">
+    <section class="section section-alt" id="problem">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="problem.title">Problem & Kontext</h2>
@@ -1432,14 +1298,14 @@
             <div class="problem-content">
                 <div class="problem-text">
                     <h3 data-key="problem.heading">Verkehrssicherheit in Deutschland</h3>
-                    <p data-key="problem.text">Die Straßenverkehrssicherheit ist eine der größten Herausforderungen im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.</p>
+                    <p data-key="problem.text">Die Straßenverkehrssicherheit ist eine große Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.</p>
                     
                     <div class="key-stat">
                         <p data-key="problem.stat">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
-                        <div class="source-note" data-key="problem.source">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse</div>
+                        <div class="source-note" data-key="problem.source">Statistisches Bundesamt (Destatis)</div>
                     </div>
                     
-                    <p data-key="problem.conclusion">Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen, die besonders schutzbedürftige Verkehrsteilnehmer unterstützen.</p>
+                    <p data-key="problem.conclusion">Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen.</p>
                 </div>
                 
                 <div class="problem-visual">
@@ -1450,7 +1316,7 @@
     </section>
     
     <!-- Risk Groups Section -->
-    <section class="section risk-groups" id="risk-groups">
+    <section class="section" id="risk-groups">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="risk.title">Wer ist besonders gefährdet?</h2>
@@ -1464,7 +1330,7 @@
                 
                 <div class="risk-groups-text">
                     <h3 data-key="risk.heading">Schutzbedürftige Verkehrsteilnehmer</h3>
-                    <p data-key="risk.text">Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen im Straßenverkehr:</p>
+                    <p data-key="risk.text">Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen:</p>
                     
                     <ul class="risk-list">
                         <li>
@@ -1477,7 +1343,7 @@
                         </li>
                         <li>
                             <i class="fas fa-wheelchair"></i>
-                            <span data-key="risk.elderly">Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</span>
+                            <span data-key="risk.elderly">Ältere Menschen mit Rollator oder im Rollstuhl</span>
                         </li>
                         <li>
                             <i class="fas fa-low-vision"></i>
@@ -1490,7 +1356,7 @@
     </section>
     
     <!-- Solution Section -->
-    <section class="section solution" id="solution">
+    <section class="section section-alt" id="solution">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="solution.title">Die LROX-Lösung</h2>
@@ -1536,7 +1402,7 @@
     </section>
     
     <!-- Features Section -->
-    <section class="section features" id="features">
+    <section class="section" id="features">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="features.title">Was LROX anders macht</h2>
@@ -1598,7 +1464,7 @@
     </section>
     
     <!-- Stages Section -->
-    <section class="section stages" id="stages">
+    <section class="section section-alt" id="stages">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="stages.title">Projektphasen</h2>
@@ -1634,17 +1500,17 @@
                 </div>
             </div>
             
-            <div class="video-container" style="margin-top: 50px;">
+            <div class="video-container" style="margin-top: 40px;">
                 <div class="video-wrapper">
                     <img src="https://github.com/Ladan94/LROX/blob/main/assets/IMG_3768.gif?raw=true" alt="LROX System Demonstration" style="width: 100%; height: auto; border-radius: 8px;">
                 </div>
-                <p style="text-align: center; margin-top: 15px; color: rgba(255,255,255,0.7);" data-key="stages.demoCaption">LROX System-Demonstration – Technische Umsetzung</p>
+                <p style="text-align: center; margin-top: 15px; color: var(--text-muted);" data-key="stages.demoCaption">LROX System-Demonstration – Technische Umsetzung</p>
             </div>
         </div>
     </section>
     
     <!-- Demo Section -->
-    <section class="section demo" id="demo">
+    <section class="section" id="demo">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="demo.title">Demo</h2>
@@ -1681,7 +1547,7 @@
     </section>
     
     <!-- Business Section -->
-    <section class="section business" id="business">
+    <section class="section section-alt" id="business">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="business.title">Geschäftsmodell & Marktpotenzial</h2>
@@ -1717,7 +1583,7 @@
     </section>
     
     <!-- Team Section -->
-    <section class="section team" id="team">
+    <section class="section" id="team">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="team.title">Unser Team</h2>
@@ -1732,7 +1598,7 @@
                         <div class="member-role" data-key="team.amir.role">Mechanical Engineer</div>
                         <p data-key="team.amir.description">Mechanische Konstruktion, Hardware-Integration, 3D-Strukturen und physikalische Komponenten für robuste und tragbare Systeme</p>
                         <div class="member-social">
-                            <a href="https://github.com/amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Amirmobash" aria-label="GitHub"><i class="fab fa-github"></i></a>
                             <a href="https://www.linkedin.com/in/amirmobasher" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="mailto:amirmobash@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
@@ -1746,6 +1612,7 @@
                         <div class="member-role" data-key="team.ladan.role">AI / Machine Learning</div>
                         <p data-key="team.ladan.description">KI-Modelle, Objekterkennung, Softwarelogik und Algorithmen für präzise Echtzeit-Erkennung und Warnsysteme</p>
                         <div class="member-social">
+                            <a href="https://github.com/Ladan94" aria-label="GitHub"><i class="fab fa-github"></i></a>
                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         </div>
@@ -1765,7 +1632,7 @@
     </section>
     
     <!-- FAQ Section -->
-    <section class="section faq" id="faq">
+    <section class="section section-alt" id="faq">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="faq.title">Häufige Fragen</h2>
@@ -1827,7 +1694,7 @@
     </section>
     
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2 data-key="contact.title">Kontakt</h2>
@@ -1976,19 +1843,19 @@
                 'problem.title': 'Problem & Kontext',
                 'problem.subtitle': 'Im Straßenverkehr entscheiden Sekunden über Leben und Tod',
                 'problem.heading': 'Verkehrssicherheit in Deutschland',
-                'problem.text': 'Die Straßenverkehrssicherheit ist eine der größten Herausforderungen im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.',
+                'problem.text': 'Die Straßenverkehrssicherheit ist eine große Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.',
                 'problem.stat': 'Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024',
-                'problem.source': 'Statistisches Bundesamt (Destatis), vorläufige Ergebnisse',
-                'problem.conclusion': 'Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen, die besonders schutzbedürftige Verkehrsteilnehmer unterstützen.',
+                'problem.source': 'Statistisches Bundesamt (Destatis)',
+                'problem.conclusion': 'Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen.',
                 
                 // Risk Groups Section
                 'risk.title': 'Wer ist besonders gefährdet?',
                 'risk.subtitle': 'Bestimmte Gruppen sind im Straßenverkehr besonders schutzbedürftig',
                 'risk.heading': 'Schutzbedürftige Verkehrsteilnehmer',
-                'risk.text': 'Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen im Straßenverkehr:',
+                'risk.text': 'Diese Gruppen benötigen besondere Aufmerksamkeit und Schutzmaßnahmen:',
                 'risk.cyclists': 'Fahrradfahrerinnen und Fahrradfahrer',
                 'risk.children': 'Kinder – besonders auf dem Schulweg',
-                'risk.elderly': 'Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl',
+                'risk.elderly': 'Ältere Menschen mit Rollator oder im Rollstuhl',
                 'risk.visuallyImpaired': 'Menschen mit Sehbeeinträchtigungen',
                 
                 // Solution Section
@@ -2122,19 +1989,19 @@
                 'problem.title': 'Problem & Context',
                 'problem.subtitle': 'In road traffic, seconds decide between life and death',
                 'problem.heading': 'Road Safety in Germany',
-                'problem.text': 'Road traffic safety is one of the biggest challenges in urban areas. Particularly vulnerable groups need additional protection.',
+                'problem.text': 'Road traffic safety is a major challenge in urban areas. Particularly vulnerable groups need additional protection.',
                 'problem.stat': 'Average 8 deaths and almost 1,000 injuries per day in traffic accidents in 2024',
-                'problem.source': 'Federal Statistical Office (Destatis), preliminary results',
-                'problem.conclusion': 'These numbers show the urgent need for innovative safety solutions that support particularly vulnerable road users.',
+                'problem.source': 'Federal Statistical Office (Destatis)',
+                'problem.conclusion': 'These numbers show the urgent need for innovative safety solutions.',
                 
                 // Risk Groups Section
                 'risk.title': 'Who is most at risk?',
                 'risk.subtitle': 'Certain groups are particularly vulnerable in road traffic',
                 'risk.heading': 'Vulnerable Road Users',
-                'risk.text': 'These groups require special attention and protective measures in road traffic:',
+                'risk.text': 'These groups require special attention and protective measures:',
                 'risk.cyclists': 'Cyclists',
                 'risk.children': 'Children – especially on the way to school',
-                'risk.elderly': 'Older people, for example with walkers or in wheelchairs',
+                'risk.elderly': 'Older people with walkers or in wheelchairs',
                 'risk.visuallyImpaired': 'People with visual impairments',
                 
                 // Solution Section
