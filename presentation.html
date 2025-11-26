@@ -1043,23 +1043,32 @@
           <div class="slide-inner">
             <div class="two-column">
               <div class="text-content">
-                <h1>Was LROX grundlegend anders macht</h1>
+                <h1>Was LROX grundlegend anders macht (physikbasiert & KI-basiert)</h1>
                 
-                <h2>Echte 360°-Sicht</h2>
+                <h2>Echte 360°-Gefahrenerkennung</h2>
                 <ul class="bullet-list">
-                  <li>Erkennt Gefahren aus allen Richtungen: von hinten, von der Seite, über Kopfhöhe, am Boden</li>
+                  <li>KI (YOLO/DeepSORT) verfolgt Objekte in alle Richtungen</li>
+                  <li>360°-Überblick statt nur nach vorne</li>
                 </ul>
                 
-                <h2>Vorhersage statt Reaktion</h2>
+                <h2>Physikbasierte Vorhersage</h2>
                 <ul class="bullet-list">
-                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX Art der Gefahr, Richtung, Distanz und Relativgeschwindigkeit.</li>
-                  <li>So erkennt das System gefährliche Situationen Sekunden früher, nicht erst beim Kontakt.</li>
-                  <li>Die Warnung erfolgt nur, wenn die berechnete Time-to-Collision (TTC) kritisch wird – nicht bei normalem Vorbeifahren.</li>
+                  <li>LROX berechnet, wie schnell und aus welcher Richtung sich Objekte annähern – nicht nur, dass sie da sind.</li>
                 </ul>
                 
-                <h2>Präzise, richtungsabhängige Warnungen</h2>
+                <p><strong>Relativgeschwindigkeit:</strong></p>
+                <p>v<sub>a</sub> = (d<sub>t-1</sub> − d<sub>t</sub>) / Δt</p>
+                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Zeigt, wie schnell ein Objekt real auf den Fahrer zukommt.</p>
+                
+                <p><strong>Time-to-Collision (TTC):</strong></p>
+                <p>TTC = d<sub>t</sub> / v<sub>a</sub> &nbsp;&nbsp; (v<sub>a</sub> &gt; 0)</p>
+                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Je kleiner der TTC-Wert, desto kritischer die Situation.</p>
+                
+                <h2>Risikobewertung & Warnlogik</h2>
                 <ul class="bullet-list">
-                  <li>Keine einfachen Pieptöne – sondern konkrete Hinweise: „Bordsteinkante vorne", „Hindernis links, nah", „Fahrrad hinter dir"</li>
+                  <li>Warnung nur bei <strong>kritischem TTC</strong>, z. B.: &lt; 4 s / &lt; 2 s / &lt; 1 s</li>
+                  <li>Objekt muss auf Kollisionskurs bzw. auf der <strong>Fahrspur</strong> liegen</li>
+                  <li>Richtungsabhängige Hinweise, z. B.: „Hindernis vorne – TTC 1,2 s"</li>
                 </ul>
               </div>
               <div class="video-content">
