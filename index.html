@@ -198,19 +198,41 @@
         .pitch-button {
             background-color: var(--primary);
             color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
         }
         
         .pitch-button:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(255, 106, 0, 0.4);
+        }
+        
+        .demo-button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+        }
+        
+        .demo-button:hover {
+            background-color: #1a252f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.4);
         }
         
         .mobile-menu {
@@ -308,22 +330,24 @@
         
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             background-color: var(--primary);
             color: white;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
         }
         
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(255, 106, 0, 0.4);
         }
         
         .btn:active {
@@ -340,6 +364,30 @@
         .btn-outline:hover {
             background-color: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+        }
+        
+        .btn-demo {
+            background-color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+        }
+        
+        .btn-demo:hover {
+            background-color: #1a252f;
+            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.4);
+        }
+        
+        .btn-pitch {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
+            font-size: 1.1rem;
+            padding: 16px 36px;
+        }
+        
+        .btn-pitch:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #e03a00);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 106, 0, 0.5);
         }
         
         /* Sections Common Styles */
@@ -383,6 +431,32 @@
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
         
         /* Problem Section */
@@ -654,6 +728,26 @@
         .stage-card p {
             color: var(--text-muted);
             margin-bottom: 15px;
+        }
+        
+        .stage-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .stage-gallery img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stage-gallery img:hover {
+            transform: scale(1.05);
         }
         
         /* Demo Section */
@@ -1191,6 +1285,24 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1209,6 +1321,19 @@
             
             .hero-metrics {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stage-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stage-gallery img {
+                max-width: 100%;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -1242,6 +1367,7 @@
                 </ul>
                 
                 <div class="nav-utils">
+                    <a href="https://lrox.de/demo.html" class="demo-button" data-key="nav.demoBtn">Demo-Version ansehen</a>
                     <a href="https://lrox.de/presentation.html" class="pitch-button" data-key="nav.pitch">Pitch-Deck ansehen</a>
                     <button class="lang-toggle" id="langToggle">EN</button>
                     <div class="mobile-menu" id="mobileMenu">
@@ -1281,7 +1407,9 @@
             </div>
             
             <div class="btn-group">
-                <a href="#demo" class="btn" data-key="hero.demoBtn">Demo ansehen</a>
+                <a href="https://lrox.de/demo.html" class="btn btn-demo" data-key="hero.demoBtn">Demo-Version ansehen</a>
+                <a href="https://lrox.de/presentation.html" class="btn btn-pitch" data-key="hero.pitchBtn">Pitch-Deck ansehen</a>
+                <a href="#demo" class="btn" data-key="hero.videoBtn">Demo-Video ansehen</a>
                 <a href="#contact" class="btn btn-outline" data-key="hero.contactBtn">Kontakt aufnehmen</a>
             </div>
         </div>
@@ -1298,14 +1426,14 @@
             <div class="problem-content">
                 <div class="problem-text">
                     <h3 data-key="problem.heading">Verkehrssicherheit in Deutschland</h3>
-                    <p data-key="problem.text">Die Straßenverkehrssicherheit ist eine große Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.</p>
+                    <p data-key="problem.text">Die Straßenverkehrssicherheit stellt eine erhebliche Herausforderung im urbanen Raum dar. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.</p>
                     
                     <div class="key-stat">
-                        <p data-key="problem.stat">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                        <p data-key="problem.stat">Durchschnittlich 8 Tote und fast 1.000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
                         <div class="source-note" data-key="problem.source">Statistisches Bundesamt (Destatis)</div>
                     </div>
                     
-                    <p data-key="problem.conclusion">Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen.</p>
+                    <p data-key="problem.conclusion">Diese alarmierenden Zahlen unterstreichen die dringende Notwendigkeit für fortschrittliche Sicherheitstechnologien im Straßenverkehr.</p>
                 </div>
                 
                 <div class="problem-visual">
@@ -1478,6 +1606,9 @@
                     </div>
                     <h3 data-key="stages.v1.title">Version 1 – Fahrrad-Prototyp</h3>
                     <p data-key="stages.v1.text">Erste funktionierende KI-Objekterkennung, Jetson Nano (700 €), Erkenntnisse: zu groß, zu teuer, nicht tragbar</p>
+                    <div class="stage-gallery">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver1%20.png" alt="LROX Version 1 Prototyp" loading="lazy">
+                    </div>
                     <div class="source-note" data-key="stages.v1.status">Abgeschlossen</div>
                 </div>
                 
@@ -1487,6 +1618,9 @@
                     </div>
                     <h3 data-key="stages.v2.title">Version 2 – Helm-Prototyp</h3>
                     <p data-key="stages.v2.text">Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest</p>
+                    <div class="stage-gallery">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver%202.png" alt="LROX Version 2 Prototyp" loading="lazy">
+                    </div>
                     <div class="source-note" data-key="stages.v2.status">Aktueller Stand</div>
                 </div>
                 
@@ -1495,7 +1629,11 @@
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3 data-key="stages.v3.title">Version 3 – Zukünftige Endversion</h3>
-                    <p data-key="stages.v3.text">Leichtes Helm-Modul + 360°-Kamera, Rechenleistung ausgelagert (Edge/Server), Längere Batterielaufzeit, geringes Gewicht, Für reale Nutzergruppen skalierbar</p>
+                    <p data-key="stages.v3.text">Leichtes Helm-Modul mit GoPro-Style-Schnellmontage, Raspberry Pi 5 (8GB), interner Akku, Dual-Fisheye-360°-Kamera, 5G-Modul, GPS und Wärmemanagement. Hybrid-Edge-Cloud-Verarbeitung für maximale Leistung und Zuverlässigkeit.</p>
+                    <div class="stage-gallery">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver3%20%2B%20helm%20.png" alt="LROX Version 3 mit Helm" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver3%20nur%20box%20.png" alt="LROX Version 3 Modul" loading="lazy">
+                    </div>
                     <div class="source-note" data-key="stages.v3.status">In Planung</div>
                 </div>
             </div>
@@ -1505,6 +1643,17 @@
                     <img src="https://github.com/Ladan94/LROX/blob/main/assets/IMG_3768.gif?raw=true" alt="LROX System Demonstration" style="width: 100%; height: auto; border-radius: 8px;">
                 </div>
                 <p style="text-align: center; margin-top: 15px; color: var(--text-muted);" data-key="stages.demoCaption">LROX System-Demonstration – Technische Umsetzung</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pitch CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h3>Jetzt mehr erfahren</h3>
+                <p>Für Investoren, Partner und Interessierte steht ein vollständig ausgearbeitetes Pitch-Deck bereit.</p>
+                <a href="https://lrox.de/presentation.html" class="btn btn-pitch">Pitch-Deck ansehen →</a>
             </div>
         </div>
     </section>
@@ -1542,6 +1691,11 @@
                     <img src="https://github.com/Ladan94/LROX/blob/main/assets/tools.jpg?raw=true" alt="Vergleich mit bestehenden Lösungen" loading="lazy">
                     <p data-key="demo.image3">Vergleich mit bestehenden Lösungen</p>
                 </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://lrox.de/demo.html" class="btn btn-demo" style="font-size: 1.1rem; padding: 16px 36px;">Interaktive Demo-Version ansehen</a>
+                <a href="https://lrox.de/presentation.html" class="btn btn-pitch" style="margin-left: 15px;">Pitch-Deck ansehen</a>
             </div>
         </div>
     </section>
@@ -1826,11 +1980,14 @@
                 'nav.faq': 'FAQ',
                 'nav.contact': 'Kontakt',
                 'nav.pitch': 'Pitch-Deck ansehen',
+                'nav.demoBtn': 'Demo-Version ansehen',
                 
                 // Hero Section
                 'hero.title': 'LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem',
                 'hero.subtitle': 'LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt.',
-                'hero.demoBtn': 'Demo ansehen',
+                'hero.demoBtn': 'Demo-Version ansehen',
+                'hero.pitchBtn': 'Pitch-Deck ansehen',
+                'hero.videoBtn': 'Demo-Video ansehen',
                 'hero.contactBtn': 'Kontakt aufnehmen',
                 
                 // Metrics
@@ -1843,10 +2000,10 @@
                 'problem.title': 'Problem & Kontext',
                 'problem.subtitle': 'Im Straßenverkehr entscheiden Sekunden über Leben und Tod',
                 'problem.heading': 'Verkehrssicherheit in Deutschland',
-                'problem.text': 'Die Straßenverkehrssicherheit ist eine große Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz.',
-                'problem.stat': 'Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024',
+                'problem.text': 'Die Straßenverkehrssicherheit stellt eine erhebliche Herausforderung im urbanen Raum dar. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.',
+                'problem.stat': 'Durchschnittlich 8 Tote und fast 1.000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024',
                 'problem.source': 'Statistisches Bundesamt (Destatis)',
-                'problem.conclusion': 'Diese Zahlen zeigen die dringende Notwendigkeit für innovative Sicherheitslösungen.',
+                'problem.conclusion': 'Diese alarmierenden Zahlen unterstreichen die dringende Notwendigkeit für fortschrittliche Sicherheitstechnologien im Straßenverkehr.',
                 
                 // Risk Groups Section
                 'risk.title': 'Wer ist besonders gefährdet?',
@@ -1895,7 +2052,7 @@
                 'stages.v2.text': 'Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest',
                 'stages.v2.status': 'Aktueller Stand',
                 'stages.v3.title': 'Version 3 – Zukünftige Endversion',
-                'stages.v3.text': 'Leichtes Helm-Modul + 360°-Kamera, Rechenleistung ausgelagert (Edge/Server), Längere Batterielaufzeit, geringes Gewicht, Für reale Nutzergruppen skalierbar',
+                'stages.v3.text': 'Leichtes Helm-Modul mit GoPro-Style-Schnellmontage, Raspberry Pi 5 (8GB), interner Akku, Dual-Fisheye-360°-Kamera, 5G-Modul, GPS und Wärmemanagement. Hybrid-Edge-Cloud-Verarbeitung für maximale Leistung und Zuverlässigkeit.',
                 'stages.v3.status': 'In Planung',
                 'stages.demoCaption': 'LROX System-Demonstration – Technische Umsetzung',
                 
@@ -1972,11 +2129,14 @@
                 'nav.faq': 'FAQ',
                 'nav.contact': 'Contact',
                 'nav.pitch': 'View pitch deck',
+                'nav.demoBtn': 'View Demo Version',
                 
                 // Hero Section
                 'hero.title': 'LROX – AI Smart Helmet & SmartBike Safety System',
                 'hero.subtitle': 'LROX is an AI-driven smart helmet and bicycle system that detects hazards in real time and warns vulnerable road users before a crash happens.',
-                'hero.demoBtn': 'Watch Demo',
+                'hero.demoBtn': 'View Demo Version',
+                'hero.pitchBtn': 'View Pitch Deck',
+                'hero.videoBtn': 'Watch Demo Video',
                 'hero.contactBtn': 'Contact Us',
                 
                 // Metrics
@@ -1989,10 +2149,10 @@
                 'problem.title': 'Problem & Context',
                 'problem.subtitle': 'In road traffic, seconds decide between life and death',
                 'problem.heading': 'Road Safety in Germany',
-                'problem.text': 'Road traffic safety is a major challenge in urban areas. Particularly vulnerable groups need additional protection.',
+                'problem.text': 'Road traffic safety is a major challenge in urban areas. Particularly vulnerable groups need additional protection and innovative safety solutions.',
                 'problem.stat': 'Average 8 deaths and almost 1,000 injuries per day in traffic accidents in 2024',
                 'problem.source': 'Federal Statistical Office (Destatis)',
-                'problem.conclusion': 'These numbers show the urgent need for innovative safety solutions.',
+                'problem.conclusion': 'These alarming numbers highlight the urgent need for advanced safety technologies in road traffic.',
                 
                 // Risk Groups Section
                 'risk.title': 'Who is most at risk?',
@@ -2041,7 +2201,7 @@
                 'stages.v2.text': 'Completely redesigned (AI logic and warning system, 3D design, mechanics, wiring), Works – but still heavy, short battery life, not weatherproof',
                 'stages.v2.status': 'Current Status',
                 'stages.v3.title': 'Version 3 – Future Final Version',
-                'stages.v3.text': 'Light helmet module + 360° camera, computing power outsourced (edge/server), Longer battery life, low weight, Scalable for real user groups',
+                'stages.v3.text': 'Light helmet module with GoPro-style quick mount, Raspberry Pi 5 (8GB), internal battery, dual-fisheye 360° camera, 5G module, GPS and heat management. Hybrid edge-cloud processing for maximum performance and reliability.',
                 'stages.v3.status': 'In Planning',
                 'stages.demoCaption': 'LROX System Demonstration – Technical Implementation',
                 
@@ -2170,6 +2330,12 @@
             // Update pitch button text
             const pitchButton = document.querySelector('.pitch-button');
             pitchButton.textContent = currentLang === 'de' ? 'Pitch-Deck ansehen' : 'View pitch deck';
+            
+            // Update demo button text
+            const demoButton = document.querySelector('.demo-button');
+            if (demoButton) {
+                demoButton.textContent = currentLang === 'de' ? 'Demo-Version ansehen' : 'View Demo Version';
+            }
         }
         
         // Form Validation
