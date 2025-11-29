@@ -287,7 +287,7 @@
 
         /* Route Map */
         .map-container {
-            height: 100px;
+            height: 120px;
             background: linear-gradient(135deg, #2a1e0f 0%, #3a2a14 100%);
             border-radius: 6px;
             margin: 8px 0;
@@ -665,6 +665,240 @@
             0%, 100% { opacity: 1; box-shadow: 0 0 5px #ff4444; }
             50% { opacity: 0.3; box-shadow: 0 0 2px #ff4444; }
         }
+
+        /* New Elements */
+        .sensor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .sensor-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .sensor-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 122, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+        }
+
+        .micro-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1.5px;
+            overflow: hidden;
+        }
+
+        .micro-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff7a00, #ff5500);
+            border-radius: 1.5px;
+            transition: width 0.5s ease;
+        }
+
+        .route-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .route-stat {
+            padding: 6px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .route-stat-value {
+            font-weight: 700;
+            color: #ff7a00;
+            margin-bottom: 1px;
+        }
+
+        .route-stat-label {
+            opacity: 0.8;
+            font-size: 0.65rem;
+        }
+
+        .error-distribution {
+            margin-top: 8px;
+        }
+
+        .error-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            font-size: 0.7rem;
+        }
+
+        .error-label {
+            min-width: 80px;
+        }
+
+        .error-value {
+            margin-left: 6px;
+            font-weight: 600;
+            color: #ff7a00;
+        }
+
+        .error-progress {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-left: 6px;
+            overflow: hidden;
+        }
+
+        .error-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff7a00, #ff5500);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .connection-quality {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.65rem;
+        }
+
+        .quality-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .quality-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-bottom: 2px;
+        }
+
+        .quality-good {
+            background: #4CAF50;
+            animation: dotPulse 2s infinite;
+        }
+
+        .quality-medium {
+            background: #FFC107;
+            animation: dotPulse 2s infinite 0.2s;
+        }
+
+        .quality-poor {
+            background: #FF5722;
+            animation: dotPulse 2s infinite 0.4s;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .segment-list {
+            margin-top: 8px;
+            max-height: 80px;
+            overflow-y: auto;
+            font-size: 0.7rem;
+        }
+
+        .segment-list-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .segment-name {
+            flex: 1;
+        }
+
+        .segment-details {
+            display: flex;
+            gap: 8px;
+        }
+
+        .segment-risk {
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        .risk-low {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .risk-medium {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+
+        .risk-high {
+            background: rgba(255, 87, 34, 0.2);
+            color: #FF5722;
+        }
+
+        .user-stats-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .stat-pill {
+            padding: 3px 6px;
+            background: rgba(255, 122, 0, 0.1);
+            border-radius: 10px;
+            font-size: 0.65rem;
+            color: #ff7a00;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.65rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .legend-color {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .legend-orange {
+            background: #ff7a00;
+        }
+
+        .legend-red {
+            background: #ff4444;
+        }
     </style>
 </head>
 <body>
@@ -711,6 +945,13 @@
                             <div class="stat-label">Training</div>
                         </div>
                     </div>
+                    
+                    <div class="user-stats-pills">
+                        <div class="stat-pill">7 Fahrten/Woche</div>
+                        <div class="stat-pill">156 km gesamt</div>
+                        <div class="stat-pill">3 Beinahe-Unfälle vermieden</div>
+                    </div>
+                    
                     <div class="user-details" style="text-align: left; margin-top: 8px; font-size: 0.7rem;">
                         <strong>Motivation:</strong> "Sicherheit meets Technologie"<br>
                         <strong>Fahrstil:</strong> Urban commuter (35km/Tag)
@@ -729,14 +970,14 @@
                 <div style="margin: 8px 0;">
                     <div style="font-size: 0.75rem;">Batterie: <span id="battery-value">89</span>%</div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 89%"></div>
+                        <div class="progress-fill" id="battery-bar" style="width: 89%"></div>
                     </div>
                 </div>
 
                 <div style="margin: 8px 0;">
                     <div style="font-size: 0.75rem;">Temperatur: <span id="temp-value">34</span>°C</div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 68%"></div>
+                        <div class="progress-fill" id="temp-bar" style="width: 68%"></div>
                     </div>
                 </div>
 
@@ -753,6 +994,37 @@
                         <div class="coverage-fill" style="width: 85%"></div>
                     </div>
                     <span style="font-size: 0.7rem;">85%</span>
+                </div>
+
+                <div class="sensor-grid">
+                    <div class="sensor-item">
+                        <div class="sensor-icon">↘️</div>
+                        <div>Neigungswinkel</div>
+                        <div class="micro-bar">
+                            <div class="micro-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-icon">⏹️</div>
+                        <div>Bremsaktivität</div>
+                        <div class="micro-bar">
+                            <div class="micro-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-icon">👤</div>
+                        <div>Helmposition</div>
+                        <div class="micro-bar">
+                            <div class="micro-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="sensor-item">
+                        <div class="sensor-icon">📡</div>
+                        <div>GPS-Genauigkeit</div>
+                        <div class="micro-bar">
+                            <div class="micro-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="compact-stats">
@@ -787,6 +1059,17 @@
                     <div class="hazard-point" style="top: 45%; left: 75%;"></div>
                 </div>
 
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-orange"></div>
+                        <div>Normale Strecke</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-red"></div>
+                        <div>Risiko-Hotspots</div>
+                    </div>
+                </div>
+
                 <div class="compact-stats">
                     <div class="compact-stat">
                         <div class="compact-value">28.5km</div>
@@ -802,23 +1085,27 @@
                     </div>
                 </div>
 
-                <div class="segment-highlight">
-                    <strong>Schnellster Abschnitt:</strong> Bonn Zentrum (32,1 km/h)
+                <div class="route-stats-grid">
+                    <div class="route-stat">
+                        <div class="route-stat-value">1:15h</div>
+                        <div class="route-stat-label">Ø Zeit</div>
+                    </div>
+                    <div class="route-stat">
+                        <div class="route-stat-value">82%</div>
+                        <div class="route-stat-label">Sicherheit</div>
+                    </div>
+                    <div class="route-stat">
+                        <div class="route-stat-value">7</div>
+                        <div class="route-stat-label">Fahrten/Woche</div>
+                    </div>
+                    <div class="route-stat">
+                        <div class="route-stat-value">Köln-Süd</div>
+                        <div class="route-stat-label">Stärkste Verkehrsdichte</div>
+                    </div>
                 </div>
 
-                <div class="compact-stats">
-                    <div class="compact-stat">
-                        <div class="compact-value">185m</div>
-                        <div class="compact-label">Höhenmeter</div>
-                    </div>
-                    <div class="compact-stat">
-                        <div class="compact-value">85</div>
-                        <div class="compact-label">Ø Trittfrequenz</div>
-                    </div>
-                    <div class="compact-stat">
-                        <div class="compact-value">3</div>
-                        <div class="compact-label">Hotspots</div>
-                    </div>
+                <div class="segment-highlight">
+                    <strong>Schnellster Abschnitt:</strong> Bonn Zentrum (32,1 km/h)
                 </div>
 
                 <div class="ai-comment">
@@ -836,7 +1123,7 @@
                 <div style="margin: 8px 0;">
                     <div style="font-size: 0.75rem;">Aktueller Risiko-Score: <span id="risk-value">73</span>/100</div>
                     <div class="risk-meter">
-                        <div class="risk-indicator" style="left: 73%;"></div>
+                        <div class="risk-indicator" id="risk-indicator" style="left: 73%;"></div>
                     </div>
                 </div>
 
@@ -868,8 +1155,39 @@
                     </div>
                 </div>
 
+                <div class="error-distribution">
+                    <div class="error-bar">
+                        <div class="error-label">Schulterblick</div>
+                        <div class="error-value">42%</div>
+                        <div class="error-progress">
+                            <div class="error-fill" style="width: 42%"></div>
+                        </div>
+                    </div>
+                    <div class="error-bar">
+                        <div class="error-label">Abstand</div>
+                        <div class="error-value">35%</div>
+                        <div class="error-progress">
+                            <div class="error-fill" style="width: 35%"></div>
+                        </div>
+                    </div>
+                    <div class="error-bar">
+                        <div class="error-label">Geschwindigkeit</div>
+                        <div class="error-value">18%</div>
+                        <div class="error-progress">
+                            <div class="error-fill" style="width: 18%"></div>
+                        </div>
+                    </div>
+                    <div class="error-bar">
+                        <div class="error-label">Sonstiges</div>
+                        <div class="error-value">5%</div>
+                        <div class="error-progress">
+                            <div class="error-fill" style="width: 5%"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="notification">
-                    <strong>Top 3 Fehler dieser Woche:</strong> Schulterblick, Abstand, Geschwindigkeit in Kurven
+                    <strong>Ziel:</strong> Risiko-Score < 60/100 in den nächsten 7 Tagen
                 </div>
             </div>
 
@@ -911,6 +1229,29 @@
                         <div class="compact-label">Bester Score</div>
                     </div>
                 </div>
+
+                <div class="connection-quality">
+                    <div class="quality-point">
+                        <div class="quality-dot quality-good"></div>
+                        <div>Bonn</div>
+                    </div>
+                    <div class="quality-point">
+                        <div class="quality-dot quality-medium"></div>
+                        <div>Wesseling</div>
+                    </div>
+                    <div class="quality-point">
+                        <div class="quality-dot quality-good"></div>
+                        <div>Köln-Süd</div>
+                    </div>
+                    <div class="quality-point">
+                        <div class="quality-dot quality-poor"></div>
+                        <div>Zentrum</div>
+                    </div>
+                </div>
+
+                <div class="ai-comment">
+                    "Edge-Analyse bleibt aktiv, auch bei kurzzeitigem Netzverlust."
+                </div>
             </div>
 
             <!-- Fahrtkarte & Segment-Analyse -->
@@ -950,18 +1291,53 @@
                 </div>
                 <div style="text-align: center; font-size: 0.65rem; margin-bottom: 6px;">Segmentzeiten (letzte 5 Segmente)</div>
 
-                <div class="compact-stats">
-                    <div class="compact-stat">
-                        <div class="compact-value">12.3km</div>
-                        <div class="compact-label">Längster Abschnitt</div>
+                <div class="segment-list">
+                    <div class="segment-list-item">
+                        <div class="segment-name">Bonn Zentrum → Stadtrand</div>
+                        <div class="segment-details">
+                            <div>3,1 km</div>
+                            <div>29,8 km/h</div>
+                            <div class="segment-risk risk-medium">Mittel</div>
+                        </div>
                     </div>
-                    <div class="compact-stat">
-                        <div class="compact-value">32.1</div>
-                        <div class="compact-label">km/h schnellster</div>
+                    <div class="segment-list-item">
+                        <div class="segment-name">Stadtrand → Wesseling</div>
+                        <div class="segment-details">
+                            <div>5,2 km</div>
+                            <div>32,1 km/h</div>
+                            <div class="segment-risk risk-low">Sicher</div>
+                        </div>
                     </div>
-                    <div class="compact-stat">
-                        <div class="compact-value">+185m</div>
-                        <div class="compact-label">Höhenmeter</div>
+                    <div class="segment-list-item">
+                        <div class="segment-name">Wesseling → Köln-Süd</div>
+                        <div class="segment-details">
+                            <div>8,7 km</div>
+                            <div>25,3 km/h</div>
+                            <div class="segment-risk risk-high">Riskant</div>
+                        </div>
+                    </div>
+                    <div class="segment-list-item">
+                        <div class="segment-name">Köln-Süd → Zentrum</div>
+                        <div class="segment-details">
+                            <div>11,5 km</div>
+                            <div>22,7 km/h</div>
+                            <div class="segment-risk risk-high">Riskant</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4CAF50;"></div>
+                        <div>Sicher</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #FFC107;"></div>
+                        <div>Mittel</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #FF5722;"></div>
+                        <div>Riskant</div>
                     </div>
                 </div>
 
@@ -977,6 +1353,22 @@
     </div>
 
     <script>
+        // Helper function to update progress bars
+        function updateProgressBar(barId, value) {
+            const bar = document.getElementById(barId);
+            if (bar) {
+                bar.style.width = value + '%';
+            }
+        }
+
+        // Helper function to update risk indicator
+        function updateRiskIndicator(value) {
+            const indicator = document.getElementById('risk-indicator');
+            if (indicator) {
+                indicator.style.left = value + '%';
+            }
+        }
+
         // Simulate live data updates
         function updateLiveData() {
             // Update ping value
@@ -991,8 +1383,13 @@
             syncTime.textContent = Math.floor(Math.random() * 5) + 1;
             
             // Update battery and temperature with small fluctuations
-            document.getElementById('battery-value').textContent = 87 + Math.floor(Math.random() * 5);
-            document.getElementById('temp-value').textContent = 32 + Math.floor(Math.random() * 4);
+            const batteryValue = 87 + Math.floor(Math.random() * 5);
+            document.getElementById('battery-value').textContent = batteryValue;
+            updateProgressBar('battery-bar', batteryValue);
+            
+            const tempValue = 32 + Math.floor(Math.random() * 4);
+            document.getElementById('temp-value').textContent = tempValue;
+            updateProgressBar('temp-bar', tempValue);
             
             // Update safety score with small fluctuations
             document.getElementById('safety-score').textContent = (85 + Math.floor(Math.random() * 5)) + '%';
@@ -1000,7 +1397,7 @@
             // Update risk value with small fluctuations
             const riskValue = 70 + Math.floor(Math.random() * 8);
             document.getElementById('risk-value').textContent = riskValue;
-            document.querySelector('.risk-indicator').style.left = riskValue + '%';
+            updateRiskIndicator(riskValue);
             
             // Update weekly stats with small variations
             document.getElementById('week-km').textContent = 154 + Math.floor(Math.random() * 6);
@@ -1055,6 +1452,16 @@
                 bar.style.setProperty('--height', newHeight + '%');
             });
         }, 3000);
+        
+        // Animate micro bars
+        setInterval(() => {
+            const microBars = document.querySelectorAll('.micro-fill');
+            microBars.forEach(bar => {
+                const currentWidth = parseInt(bar.style.width) || 50;
+                const newWidth = Math.max(20, Math.min(95, currentWidth + (Math.random() * 20 - 10)));
+                bar.style.width = newWidth + '%';
+            });
+        }, 2500);
     </script>
 </body>
 </html>
