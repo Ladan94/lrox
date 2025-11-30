@@ -97,6 +97,7 @@
       z-index: 1;
       margin-bottom: var(--spacing-xs);
       flex-shrink: 0;
+      height: 40px;
     }
 
     header .brand {
@@ -134,16 +135,6 @@
       width: auto;
     }
 
-    header .meta {
-      text-align: right;
-    }
-
-    header .meta div:first-child {
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
     main {
       flex: 1;
       display: flex;
@@ -152,12 +143,12 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
+      height: calc(100vh - 100px);
     }
 
     .slides {
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
       height: 100%;
       position: relative;
     }
@@ -171,11 +162,10 @@
       height: 100%;
       background: var(--card-bg);
       border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg) var(--spacing-xl) 48px;
+      padding: var(--spacing-xl);
       border: 1px solid var(--border-soft);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      position: relative;
     }
 
     .slide::before {
@@ -193,7 +183,6 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
     .slide.active {
@@ -214,10 +203,23 @@
     }
 
     /* Common slide layouts */
+    .slide-header {
+      margin-bottom: var(--spacing-lg);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .two-column {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-lg);
+      gap: var(--spacing-xl);
       align-items: center;
       height: 100%;
     }
@@ -225,7 +227,7 @@
     .three-column {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: var(--spacing-md);
+      gap: var(--spacing-lg);
       height: 100%;
       align-items: stretch;
     }
@@ -240,7 +242,7 @@
     .content-card {
       background: var(--card-bg);
       border-radius: var(--border-radius-md);
-      padding: var(--spacing-md);
+      padding: var(--spacing-lg);
       text-align: center;
       border: 1px solid var(--border-soft);
       display: flex;
@@ -251,13 +253,13 @@
 
     .content-card h2 {
       margin-bottom: var(--spacing-sm);
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .placeholder-box {
       background: rgba(255, 255, 255, 0.9);
       border-radius: var(--border-radius-md);
-      padding: var(--spacing-sm);
+      padding: var(--spacing-md);
       border: 1px solid var(--border-soft);
       display: flex;
       flex-direction: column;
@@ -266,7 +268,6 @@
       text-align: center;
       color: var(--muted);
       height: 100%;
-      max-height: 100%;
       overflow: hidden;
       gap: var(--spacing-sm);
     }
@@ -359,6 +360,11 @@
     }
 
     /* Slide specific styles */
+    .slide-1 .slide-content {
+      justify-content: center;
+      align-items: center;
+    }
+
     .slide-1 .logo-hero {
       margin-bottom: var(--spacing-lg);
     }
@@ -399,8 +405,8 @@
       margin: var(--spacing-md) 0;
     }
 
-    /* Slide 4 - Single column layout after video removal */
-    .slide-4 .slide-inner {
+    /* Slide 4 - Single column layout */
+    .slide-4 .slide-content {
       justify-content: center;
     }
 
@@ -434,11 +440,11 @@
       margin-bottom: 4px;
     }
 
-    /* Slide 6 specific styles - Fixed overflow and layout */
+    /* Slide 6 specific styles */
     .slide-6 .two-column {
       height: 100%;
       align-items: stretch;
-      gap: var(--spacing-md);
+      gap: var(--spacing-lg);
     }
 
     .slide-6 .text-content {
@@ -457,7 +463,6 @@
 
     .slide-6 .placeholder-box {
       height: 100%;
-      max-height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -564,21 +569,13 @@
       object-fit: contain;
     }
 
-    /* Specific styling for the GIF in slide 7 */
-    .slide-7 .version-column:first-child .video-placeholder {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
     .slide-7 .version-video p {
       margin-top: var(--spacing-xs);
       font-size: 12px;
       color: var(--muted);
     }
 
-    /* NEW: Version 3 image styling - FIXED */
+    /* NEW: Version 3 image styling */
     .slide-7 .version-column:last-child .placeholder-box {
       position: relative;
       overflow: hidden;
@@ -597,15 +594,13 @@
     }
 
     /* New Slide 8 - Demo content */
-    .slide-8 .demo-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: var(--border-radius-md);
-    }
-
     .slide-8 .slide-inner {
       padding: 0;
+    }
+
+    .slide-8 .placeholder-box {
+      padding: 0;
+      border: none;
     }
 
     /* Slide 9 - Team slide without bullets */
@@ -620,7 +615,7 @@
     .slide-9 .team-member {
       background: var(--card-bg);
       border-radius: var(--border-radius-md);
-      padding: var(--spacing-md);
+      padding: var(--spacing-lg);
       border: 1px solid var(--border-soft);
     }
 
@@ -641,7 +636,7 @@
       background: var(--card-bg);
     }
 
-    .slide-10 .slide-inner {
+    .slide-10 .slide-content {
       justify-content: center;
       align-items: center;
     }
@@ -740,7 +735,7 @@
     }
 
     .scrollable-table {
-      max-height: 280px;
+      max-height: 380px;
       overflow-y: auto;
       margin: var(--spacing-md) 0;
       border-radius: var(--border-radius-sm);
@@ -771,7 +766,7 @@
 
     /* ONLY for the test table slide */
     .slide-13 {
-      padding: var(--spacing-md) var(--spacing-lg) 48px;
+      padding: var(--spacing-lg);
     }
 
     .slide-13 h1 {
@@ -796,25 +791,24 @@
       letter-spacing: 0.03em;
     }
 
-    /* NEW: Centering for slides 11-16 - FIXED */
-    .slide-11 .slide-inner,
-    .slide-12 .slide-inner,
-    .slide-13 .slide-inner,
-    .slide-14 .slide-inner,
-    .slide-15 .slide-inner,
-    .slide-16 .slide-inner {
+    /* NEW: Centering for slides 11-16 */
+    .slide-11 .slide-content,
+    .slide-12 .slide-content,
+    .slide-13 .slide-content,
+    .slide-14 .slide-content,
+    .slide-15 .slide-content,
+    .slide-16 .slide-content {
       justify-content: center;
-      position: relative;
     }
 
     .slide-11 .centered-content,
     .slide-12 .two-column,
     .slide-13 .slide-inner > h1,
-    .slide-13 .data-table,
+    .slide-13 .scrollable-table,
     .slide-14 .bullet-list,
     .slide-15 .bullet-list,
     .slide-16 .bullet-list {
-      max-width: 800px;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -833,6 +827,7 @@
       z-index: 1;
       margin-top: var(--spacing-xs);
       flex-shrink: 0;
+      height: 40px;
     }
 
     .nav-hint {
@@ -869,14 +864,15 @@
         align-items: flex-start;
         gap: var(--spacing-xs);
         margin-bottom: 2px;
+        height: auto;
       }
 
-      header .meta {
-        text-align: left;
+      main {
+        height: calc(100vh - 120px);
       }
 
       .slide {
-        padding: var(--spacing-md) 18px 36px;
+        padding: var(--spacing-lg) 18px 36px;
         border-radius: 18px;
       }
 
@@ -1081,14 +1077,16 @@
         <!-- SLIDE 1 START -->
         <section class="slide slide-1 active" data-slide="1">
           <div class="slide-inner">
-            <div class="centered-content">
-              <div class="logo-hero">
-                <!-- TODO: replace with actual logo path -->
-                <img src="logo.png" alt="LROX Logo" />
-              </div>
-              <h1>Was wäre, wenn ein Helm Gefahren erkennen könnte, bevor Sie sie überhaupt sehen?</h1>
-              <div class="names">
-                Präsentiert von <span>Ladan Seddighi</span> &middot; <span>Amir Mobasheraghdam</span>
+            <div class="slide-content">
+              <div class="centered-content">
+                <div class="logo-hero">
+                  <!-- TODO: replace with actual logo path -->
+                  <img src="logo.png" alt="LROX Logo" />
+                </div>
+                <h1>Was wäre, wenn ein Helm Gefahren erkennen könnte, bevor Sie sie überhaupt sehen?</h1>
+                <div class="names">
+                  Präsentiert von <span>Ladan Seddighi</span> &middot; <span>Amir Mobasheraghdam</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1099,18 +1097,22 @@
         <!-- SLIDE 2 START -->
         <section class="slide slide-2" data-slide="2">
           <div class="slide-inner">
-            <div class="two-column">
-              <div class="text-content">
-                <h1>Problem & Kontext</h1>
-                <div class="key-stat">
-                  <p class="highlight-orange">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+            <div class="slide-header">
+              <h1>Problem & Kontext</h1>
+            </div>
+            <div class="slide-content">
+              <div class="two-column">
+                <div class="text-content">
+                  <div class="key-stat">
+                    <p class="highlight-orange">Durchschnittlich 8 Tote und fast 1 000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
+                  </div>
+                  <p class="source-note">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.</p>
                 </div>
-                <p class="source-note">Statistisches Bundesamt (Destatis), vorläufige Ergebnisse.</p>
-              </div>
-              <div class="image-content">
-                <div class="placeholder-box">
-                  <img src="https://github.com/Ladan94/LROX/blob/main/assets/diagramm2.jpg?raw=true" alt="Diagramm – Verkehrsunfallstatistik" class="image-placeholder" width="800" height="450" />
-                  <p>Verkehrsunfallstatistik 2024</p>
+                <div class="image-content">
+                  <div class="placeholder-box">
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/diagramm2.jpg?raw=true" alt="Diagramm – Verkehrsunfallstatistik" class="image-placeholder" width="800" height="450" />
+                    <p>Verkehrsunfallstatistik 2024</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1122,21 +1124,25 @@
         <!-- SLIDE 3 START -->
         <section class="slide slide-3" data-slide="3">
           <div class="slide-inner">
-            <div class="two-column">
-              <div class="text-content">
-                <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
-                <ul class="bullet-list">
-                  <li>Fahrradfahrerinnen und Fahrradfahrer</li>
-                  <li>Kinder – besonders auf dem Schulweg</li>
-                  <li>Für Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
-                  <li>Menschen mit Sehbeeinträchtigungen</li>
-                </ul>
-              </div>
-              <div class="image-content">
-                <div class="placeholder-box">
-                  <!-- TODO: replace with actual image -->
-                  <img src="https://github.com/Ladan94/LROX/blob/main/assets/assetsrisk-groups.jpg?raw=true" alt="Placeholder image for risk groups" class="image-placeholder" />
-                  <p>.</p>
+            <div class="slide-header">
+              <h1>Wer ist im Straßenverkehr besonders gefährdet?</h1>
+            </div>
+            <div class="slide-content">
+              <div class="two-column">
+                <div class="text-content">
+                  <ul class="bullet-list">
+                    <li>Fahrradfahrerinnen und Fahrradfahrer</li>
+                    <li>Kinder – besonders auf dem Schulweg</li>
+                    <li>Für Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
+                    <li>Menschen mit Sehbeeinträchtigungen</li>
+                  </ul>
+                </div>
+                <div class="image-content">
+                  <div class="placeholder-box">
+                    <!-- TODO: replace with actual image -->
+                    <img src="https://github.com/Ladan94/LROX/blob/main/assets/assetsrisk-groups.jpg?raw=true" alt="Placeholder image for risk groups" class="image-placeholder" />
+                    <p>.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1148,16 +1154,18 @@
         <!-- SLIDE 4 START -->
         <section class="slide slide-4" data-slide="4">
           <div class="slide-inner">
-            <div class="centered-content">
-              <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht</h1>
-              <ul class="bullet-list">
-                <li>Kamera + Mini-PC + KI + Lautsprecher</li>
-                <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
-                <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
-                <li>Funktioniert vollständig offline</li>
-                <li>Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
-              </ul>
-              <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+            <div class="slide-content">
+              <div class="centered-content">
+                <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht</h1>
+                <ul class="bullet-list">
+                  <li>Kamera + Mini-PC + KI + Lautsprecher</li>
+                  <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
+                  <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
+                  <li>Funktioniert vollständig offline</li>
+                  <li>Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
+                </ul>
+                <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+              </div>
             </div>
           </div>
           <div class="slide-number">4 / 17</div>
@@ -1167,20 +1175,24 @@
         <!-- SLIDE 5 START -->
         <section class="slide slide-5" data-slide="5">
           <div class="slide-inner">
-            <div class="two-column">
-              <div class="text-content">
-                <h1>Unterschied zu bestehenden Lösungen</h1>
-                <ul class="bullet-list">
-                  <li><strong>Smart Canes / elektronische Langstöcke:</strong> Nur nach vorne gerichtet, wenige Meter Reichweite. Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit. Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.</li>
-                  <li><strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong> Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung. Keine Analyse von Geschwindigkeit oder Kollisionsrisiko. Warnen nicht zuverlässig vor Unfällen.</li>
-                  <li><strong>Bestehende „smarte" Helme:</strong> Einzelne Sensoren, kleines Sichtfeld. Reagieren erst sehr spät bei Gefahr. Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
-                </ul>
-              </div>
-              <div class="image-content">
-                <div class="placeholder-box">
-                  <!-- TODO: replace with actual image -->
-                  <img src="assets/tools.jpg" alt="Tools comparison" />
-                  <p>.</p>
+            <div class="slide-header">
+              <h1>Unterschied zu bestehenden Lösungen</h1>
+            </div>
+            <div class="slide-content">
+              <div class="two-column">
+                <div class="text-content">
+                  <ul class="bullet-list">
+                    <li><strong>Smart Canes / elektronische Langstöcke:</strong> Nur nach vorne gerichtet, wenige Meter Reichweite. Ultraschall erkennt nur das Hindernis – nicht Art, Richtung oder Geschwindigkeit. Ein Vibrations- oder Tonhinweis – unklar, welche Gefahr gemeint ist.</li>
+                    <li><strong>Assistenzgeräte an der Brille (z. B. Texterkennung):</strong> Fokus auf Nahbereich wie Lesen oder einfache Objekterkennung. Keine Analyse von Geschwindigkeit oder Kollisionsrisiko. Warnen nicht zuverlässig vor Unfällen.</li>
+                    <li><strong>Bestehende „smarte" Helme:</strong> Einzelne Sensoren, kleines Sichtfeld. Reagieren erst sehr spät bei Gefahr. Keine echte KI-Echtzeitanalyse, kein 360°-Blick.</li>
+                  </ul>
+                </div>
+                <div class="image-content">
+                  <div class="placeholder-box">
+                    <!-- TODO: replace with actual image -->
+                    <img src="assets/tools.jpg" alt="Tools comparison" />
+                    <p>.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1192,38 +1204,39 @@
         <!-- SLIDE 6 START -->
         <section class="slide slide-6" data-slide="6">
           <div class="slide-inner">
-            <div class="two-column">
-              <div class="text-content">
-                <h1>Was LROX grundlegend anders macht (physikbasiert & KI-basiert)</h1>
-                
-                <h2>Echte 360°-Gefahrenerkennung</h2>
-                <ul class="bullet-list">
-                  <li>KI (YOLO/DeepSORT) verfolgt Objekte in alle Richtungen</li>
-                  <li>360°-Überblick statt nur nach vorne</li>
-                </ul>
-                
-                <h2>Physikbasierte Vorhersage</h2>
-                <ul class="bullet-list">
-                  <li>LROX berechnet, wie schnell und aus welcher Richtung sich Objekte annähern – nicht nur, dass sie da sind.</li>
-                </ul>
-                
-                <p><strong>Relativgeschwindigkeit:</strong></p>
-                <p>v<sub>a</sub> = (d<sub>t-1</sub> − d<sub>t</sub>) / Δt</p>
-                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Zeigt, wie schnell ein Objekt real auf den Fahrer zukommt.</p>
-                
-                <p><strong>Time-to-Collision (TTC):</strong></p>
-                <p>TTC = d<sub>t</sub> / v<sub>a</sub> &nbsp;&nbsp; (v<sub>a</sub> &gt; 0)</p>
-                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Je kleiner der TTC-Wert, desto kritischer die Situation.</p>
-                
-                <h2></h2>
-              </div>
-              <div class="image-content">
-                <div class="placeholder-box">
-                  <!-- TODO: replace with embedded video or video element -->
-                  <div class="video-placeholder">
+            <div class="slide-header">
+              <h1>Was LROX grundlegend anders macht (physikbasiert & KI-basiert)</h1>
+            </div>
+            <div class="slide-content">
+              <div class="two-column">
+                <div class="text-content">
+                  <h2>Echte 360°-Gefahrenerkennung</h2>
+                  <ul class="bullet-list">
+                    <li>KI (YOLO/DeepSORT) verfolgt Objekte in alle Richtungen</li>
+                    <li>360°-Überblick statt nur nach vorne</li>
+                  </ul>
+                  
+                  <h2>Physikbasierte Vorhersage</h2>
+                  <ul class="bullet-list">
+                    <li>LROX berechnet, wie schnell und aus welcher Richtung sich Objekte annähern – nicht nur, dass sie da sind.</li>
+                  </ul>
+                  
+                  <p><strong>Relativgeschwindigkeit:</strong></p>
+                  <p>v<sub>a</sub> = (d<sub>t-1</sub> − d<sub>t</sub>) / Δt</p>
+                  <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Zeigt, wie schnell ein Objekt real auf den Fahrer zukommt.</p>
+                  
+                  <p><strong>Time-to-Collision (TTC):</strong></p>
+                  <p>TTC = d<sub>t</sub> / v<sub>a</sub> &nbsp;&nbsp; (v<sub>a</sub> &gt; 0)</p>
+                  <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Je kleiner der TTC-Wert, desto kritischer die Situation.</p>
+                </div>
+                <div class="image-content">
+                  <div class="placeholder-box">
+                    <!-- TODO: replace with embedded video or video element -->
+                    <div class="video-placeholder">
                       <img src="assets/videoqr merged.jpg" alt="demo image" style="max-width:100%; border-radius:8px;" />
+                    </div>
+                    <p></p>
                   </div>
-                  <p></p>
                 </div>
               </div>
             </div>
@@ -1235,62 +1248,66 @@
         <!-- SLIDE 7 START - MODIFIED SLIDE -->
         <section class="slide slide-7" data-slide="7">
           <div class="slide-inner">
-            <h1>Unser Projekt – Die drei Entwicklungsstufen</h1>
-            <div class="three-column">
-              <!-- Column 1 - Version 1 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 1 – Fahrrad-Prototyp (abgeschlossen)</h2>
-                    <ul class="bullet-list">
-                      <li>Erste funktionierende KI-Objekterkennung</li>
-                      <li>Zu groß, zu teuer, nicht tragbar</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/assets/5861445459627412576.jpg" alt="Version 1 Prototype" />
-                      <p>Version 1 – Fahrrad-Prototyp</p>
+            <div class="slide-header">
+              <h1>Unser Projekt – Die drei Entwicklungsstufen</h1>
+            </div>
+            <div class="slide-content">
+              <div class="three-column">
+                <!-- Column 1 - Version 1 -->
+                <div class="version-column">
+                  <div class="version-content">
+                    <div class="version-text">
+                      <h2>Version 1 – Fahrrad-Prototyp (abgeschlossen)</h2>
+                      <ul class="bullet-list">
+                        <li>Erste funktionierende KI-Objekterkennung</li>
+                        <li>Zu groß, zu teuer, nicht tragbar</li>
+                      </ul>
+                    </div>
+                    <div class="version-video">
+                      <div class="placeholder-box">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/assets/5861445459627412576.jpg" alt="Version 1 Prototype" />
+                        <p>Version 1 – Fahrrad-Prototyp</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <!-- Column 2 - Version 2 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 2 – Helm-Prototyp (aktueller Stand)</h2>
-                    <ul class="bullet-list">
-                      <li>KI-Logik und Warnsystem im Helm integriert</li>
-                      <li>Zu schwer; viele wollen nicht immer einen Helm tragen</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/Ai%20bike%20Amir1%20(9).png" alt="Version 2 Prototype" />
-                      <p>Version 2 – Helm-Prototyp</p>
+                
+                <!-- Column 2 - Version 2 -->
+                <div class="version-column">
+                  <div class="version-content">
+                    <div class="version-text">
+                      <h2>Version 2 – Helm-Prototyp (aktueller Stand)</h2>
+                      <ul class="bullet-list">
+                        <li>KI-Logik und Warnsystem im Helm integriert</li>
+                        <li>Zu schwer; viele wollen nicht immer einen Helm tragen</li>
+                      </ul>
+                    </div>
+                    <div class="version-video">
+                      <div class="placeholder-box">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/Ai%20bike%20Amir1%20(9).png" alt="Version 2 Prototype" />
+                        <p>Version 2 – Helm-Prototyp</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <!-- Column 3 - Version 3 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 3 – zukünftige Endversion</h2>
-                    <ul class="bullet-list">
-                      <li>Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku)</li>
-                      <li> Lokale KI ohne Netz, Cloud-KI mit 5G für genaue Warnungen</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/assets/5861445459627412591.jpg"
-                           alt="Version 3 Demo"
-                           class="version3-image" />
-                      <p>Version 3 – zukünftige Endversion</p>
+                
+                <!-- Column 3 - Version 3 -->
+                <div class="version-column">
+                  <div class="version-content">
+                    <div class="version-text">
+                      <h2>Version 3 – zukünftige Endversion</h2>
+                      <ul class="bullet-list">
+                        <li>Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku)</li>
+                        <li> Lokale KI ohne Netz, Cloud-KI mit 5G für genaue Warnungen</li>
+                      </ul>
+                    </div>
+                    <div class="version-video">
+                      <div class="placeholder-box">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/assets/5861445459627412591.jpg"
+                             alt="Version 3 Demo"
+                             class="version3-image" />
+                        <p>Version 3 – zukünftige Endversion</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1304,14 +1321,16 @@
         <!-- NEW SLIDE 8 START - Demo content -->
         <section class="slide slide-8" data-slide="8">
           <div class="slide-inner">
-            <div class="centered-content">
-              <div class="placeholder-box">
-                <img
-  src="assets/2025-11-29 19_58_11-Desktop - File Explorer.png"
-  alt="LROX Demo Screenshot"
-  class="image-placeholder"
-  style="width: 100%; height: 70vh; object-fit: contain;"
-/>
+            <div class="slide-content">
+              <div class="centered-content">
+                <div class="placeholder-box">
+                  <img
+                    src="assets/2025-11-29 19_58_11-Desktop - File Explorer.png"
+                    alt="LROX Demo Screenshot"
+                    class="image-placeholder"
+                    style="width: 100%; height: 70vh; object-fit: contain;"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -1322,19 +1341,23 @@
         <!-- SLIDE 8 START (now slide 9) -->
         <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
-            <h1>Geschäftsmodell & Marktpotenzial</h1>
-            <div class="three-column">
-              <div class="content-card">
-                <h2>Klare Einnahmequelle</h2>
-                <p>Verkauf eines intelligenten Helm-Moduls + optionale Premium-Funktionen.</p>
-              </div>
-              <div class="content-card">
-                <h2>Starke Partner</h2>
-                <p>Versicherungen, Kommunen, soziale Einrichtungen – alle mit Interesse an Unfallprävention.</p>
-              </div>
-              <div class="content-card">
-                <h2>Riesiger Markt</h2>
-                <p>80 Mio. Fahrräder in Europa + Millionen Menschen mit Mobilitäts- oder Sehbeeinträchtigungen.</p>
+            <div class="slide-header">
+              <h1>Geschäftsmodell & Marktpotenzial</h1>
+            </div>
+            <div class="slide-content">
+              <div class="three-column">
+                <div class="content-card">
+                  <h2>Klare Einnahmequelle</h2>
+                  <p>Verkauf eines intelligenten Helm-Moduls + optionale Premium-Funktionen.</p>
+                </div>
+                <div class="content-card">
+                  <h2>Starke Partner</h2>
+                  <p>Versicherungen, Kommunen, soziale Einrichtungen – alle mit Interesse an Unfallprävention.</p>
+                </div>
+                <div class="content-card">
+                  <h2>Riesiger Markt</h2>
+                  <p>80 Mio. Fahrräder in Europa + Millionen Menschen mit Mobilitäts- oder Sehbeeinträchtigungen.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1345,17 +1368,18 @@
         <!-- SLIDE 9 START (now slide 10) -->
         <section class="slide slide-10" data-slide="10">
           <div class="slide-inner">
-            <div class="centered-content">
-              <h1>Unser Team</h1>
-              <div class="team-content">
-                <div class="team-member">
-                  <strong>KI & Software – Ladan Seddighi</strong>
-                  <p>Objekterkennung, KI-Logik und das Warnsystem → selbstständig in Python entwickelt</p>
-                </div>
-                <div class="team-member">
-                  <strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>
-                  <p>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
-                </div>
+            <div class="slide-content">
+              <div class="centered-content">
+                <h1>Unser Team</h1>
+                <div class="team-content">
+                  <div class="team-member">
+                    <strong>KI & Software – Ladan Seddighi</strong>
+                    <p>Objekterkennung, KI-Logik und das Warnsystem → selbstständig in Python entwickelt</p>
+                  </div>
+                  <div class="team-member">
+                    <strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>
+                    <p>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1367,10 +1391,12 @@
         <!-- SLIDE 10 START (now slide 11) -->
         <section class="slide slide-11" data-slide="11">
           <div class="slide-inner">
-            <div class="centered-content">
-              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der wieder nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
-              <div class="contact-info">
-                <p>Kontakt: info@lrox.de | Website: LROX.de</p>
+            <div class="slide-content">
+              <div class="centered-content">
+                <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der wieder nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
+                <div class="contact-info">
+                  <p>Kontakt: info@lrox.de | Website: LROX.de</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1381,23 +1407,27 @@
         <!-- SLIDE 12 START (now slide 12) -->
         <section class="slide slide-12" data-slide="12">
           <div class="slide-inner">
-            <div class="two-column">
-              <div class="text-content">
-                <h1>Datenschutz & Privatsphäre</h1>
-                <ul class="bullet-list">
-                  <li>KI läuft lokal (auf Smartphone/Edge).</li>
-                  <li><strong>Keine Speicherung von Bildern oder Videos.</strong></li>
-                  <li>Verarbeitung nur <strong>temporär pro Frame</strong> für die Warnung.</li>
-                  <li>Keine Cloud-Übertragung ohne ausdrückliche Zustimmung.</li>
-                  <li>Keine personenbezogenen Daten → <strong>DSGVO-konform by design.</strong></li>
-                </ul>
-              </div>
-              <div class="image-content">
-                <div class="placeholder-box">
-                  <div class="video-placeholder">
-                    VIDEO PLACEHOLDER — Datenschutz-Demo: keine identifizierbaren Aufnahmen
+            <div class="slide-header">
+              <h1>Datenschutz & Privatsphäre</h1>
+            </div>
+            <div class="slide-content">
+              <div class="two-column">
+                <div class="text-content">
+                  <ul class="bullet-list">
+                    <li>KI läuft lokal (auf Smartphone/Edge).</li>
+                    <li><strong>Keine Speicherung von Bildern oder Videos.</strong></li>
+                    <li>Verarbeitung nur <strong>temporär pro Frame</strong> für die Warnung.</li>
+                    <li>Keine Cloud-Übertragung ohne ausdrückliche Zustimmung.</li>
+                    <li>Keine personenbezogenen Daten → <strong>DSGVO-konform by design.</strong></li>
+                  </ul>
+                </div>
+                <div class="image-content">
+                  <div class="placeholder-box">
+                    <div class="video-placeholder">
+                      VIDEO PLACEHOLDER — Datenschutz-Demo: keine identifizierbaren Aufnahmen
+                    </div>
+                    <p>Datenschutz-Demo: keine identifizierbaren Aufnahmen</p>
                   </div>
-                  <p>Datenschutz-Demo: keine identifizierbaren Aufnahmen</p>
                 </div>
               </div>
             </div>
@@ -1409,51 +1439,55 @@
         <!-- SLIDE 13 START (now slide 13) -->
         <section class="slide slide-13" data-slide="13">
           <div class="slide-inner">
-            <h1>Testübersicht (24 Praxis-Tests)</h1>
-            <div class="scrollable-table">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Datum</th>
-                    <th>Wetter in Bonn</th>
-                    <th>Anzahl erkannter Objekte</th>
-                    <th>Anzahl Fehler</th>
-                    <th>Fehlerquote (%)</th>
-                    <th>Notiz</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>2024-05-01</td><td>bewölkt</td><td>720</td><td>158</td><td>22</td><td>Feiertag</td></tr>
-                  <tr><td>2024-05-05</td><td>bewölkt</td><td>760</td><td>152</td><td>20</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-05-09</td><td>sonnig</td><td>810</td><td>73</td><td>9</td><td>Feiertag</td></tr>
-                  <tr><td>2024-05-19</td><td>bewölkt</td><td>735</td><td>206</td><td>28</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-05-20</td><td>heiter</td><td>690</td><td>104</td><td>15</td><td>Feiertag</td></tr>
-                  <tr><td>2024-06-02</td><td>bewölkt</td><td>750</td><td>225</td><td>30</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-06-09</td><td>sonnig</td><td>820</td><td>66</td><td>8</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-06-16</td><td>bewölkt</td><td>705</td><td>176</td><td>25</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-06-23</td><td>teils bewölkt</td><td>690</td><td>124</td><td>18</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-09-07</td><td>bewölkt</td><td>700</td><td>168</td><td>24</td><td>Samstagstest</td></tr>
-                  <tr><td>2024-09-22</td><td>sonnig/bewölkt</td><td>740</td><td>141</td><td>19</td><td>Sonntagstest</td></tr>
-                  <tr><td>2024-10-03</td><td>bewölkt</td><td>680</td><td>184</td><td>27</td><td>Feiertag</td></tr>
-                  <tr><td>2024-11-01</td><td>bewölkt</td><td>730</td><td>190</td><td>26</td><td>Feiertag</td></tr>
-                  <tr><td>2024-11-02</td><td>bewölkt</td><td>710</td><td>163</td><td>23</td><td>Samstagstest</td></tr>
-                  <tr><td>2025-01-01</td><td>bewölkt</td><td>650</td><td>162</td><td>25</td><td>Feiertag</td></tr>
-                  <tr><td>2025-01-04</td><td>bewölkt</td><td>700</td><td>154</td><td>22</td><td>Samstagstest</td></tr>
-                  <tr><td>2025-01-19</td><td>sonnig</td><td>760</td><td>84</td><td>11</td><td>Sonntagstest</td></tr>
-                  <tr><td>2025-04-18</td><td>bewölkt</td><td>720</td><td>209</td><td>29</td><td>Feiertag</td></tr>
-                  <tr><td>2025-04-21</td><td>heiter</td><td>710</td><td>114</td><td>16</td><td>Feiertag</td></tr>
-                  <tr><td>2025-05-01</td><td>bewölkt/sonnig</td><td>740</td><td>126</td><td>17</td><td>Feiertag</td></tr>
-                  <tr><td>2025-06-08</td><td>Regen</td><td>–</td><td>–</td><td>–</td><td>kein Test (Regen)</td></tr>
-                  <tr><td>2025-06-22</td><td>sonnig/bewölkt</td><td>790</td><td>142</td><td>18</td><td>Sonntagstest</td></tr>
-                  <tr><td>2025-08-23</td><td>bewölkt</td><td>800</td><td>256</td><td>32</td><td>Samstagstest</td></tr>
-                  <tr><td>2025-09-13</td><td>bewölkt</td><td>720</td><td>245</td><td>34</td><td>Samstagstest</td></tr>
-                  <tr><td>2025-10-18</td><td>teils bewölkt</td><td>740</td><td>148</td><td>20</td><td>Samstagstest</td></tr>
-                  <tr><td>2025-11-23</td><td>bewölkt</td><td>705</td><td>233</td><td>33</td><td>Sonntagstest</td></tr>
-                  <tr><td>2025-11-24</td><td>leicht bewölkt</td><td>670</td><td>107</td><td>16</td><td>Wochentagstest</td></tr>
-                  <tr><td>2025-11-25</td><td>bewölkt</td><td>690</td><td>242</td><td>35</td><td>Wochentagstest</td></tr>
-                  <tr><td>2025-11-26</td><td>bewölkt</td><td>715</td><td>200</td><td>28</td><td>Wochentagstest</td></tr>
-                </tbody>
-              </table>
+            <div class="slide-header">
+              <h1>Testübersicht (24 Praxis-Tests)</h1>
+            </div>
+            <div class="slide-content">
+              <div class="scrollable-table">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Datum</th>
+                      <th>Wetter in Bonn</th>
+                      <th>Anzahl erkannter Objekte</th>
+                      <th>Anzahl Fehler</th>
+                      <th>Fehlerquote (%)</th>
+                      <th>Notiz</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>2024-05-01</td><td>bewölkt</td><td>720</td><td>158</td><td>22</td><td>Feiertag</td></tr>
+                    <tr><td>2024-05-05</td><td>bewölkt</td><td>760</td><td>152</td><td>20</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-05-09</td><td>sonnig</td><td>810</td><td>73</td><td>9</td><td>Feiertag</td></tr>
+                    <tr><td>2024-05-19</td><td>bewölkt</td><td>735</td><td>206</td><td>28</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-05-20</td><td>heiter</td><td>690</td><td>104</td><td>15</td><td>Feiertag</td></tr>
+                    <tr><td>2024-06-02</td><td>bewölkt</td><td>750</td><td>225</td><td>30</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-06-09</td><td>sonnig</td><td>820</td><td>66</td><td>8</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-06-16</td><td>bewölkt</td><td>705</td><td>176</td><td>25</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-06-23</td><td>teils bewölkt</td><td>690</td><td>124</td><td>18</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-09-07</td><td>bewölkt</td><td>700</td><td>168</td><td>24</td><td>Samstagstest</td></tr>
+                    <tr><td>2024-09-22</td><td>sonnig/bewölkt</td><td>740</td><td>141</td><td>19</td><td>Sonntagstest</td></tr>
+                    <tr><td>2024-10-03</td><td>bewölkt</td><td>680</td><td>184</td><td>27</td><td>Feiertag</td></tr>
+                    <tr><td>2024-11-01</td><td>bewölkt</td><td>730</td><td>190</td><td>26</td><td>Feiertag</td></tr>
+                    <tr><td>2024-11-02</td><td>bewölkt</td><td>710</td><td>163</td><td>23</td><td>Samstagstest</td></tr>
+                    <tr><td>2025-01-01</td><td>bewölkt</td><td>650</td><td>162</td><td>25</td><td>Feiertag</td></tr>
+                    <tr><td>2025-01-04</td><td>bewölkt</td><td>700</td><td>154</td><td>22</td><td>Samstagstest</td></tr>
+                    <tr><td>2025-01-19</td><td>sonnig</td><td>760</td><td>84</td><td>11</td><td>Sonntagstest</td></tr>
+                    <tr><td>2025-04-18</td><td>bewölkt</td><td>720</td><td>209</td><td>29</td><td>Feiertag</td></tr>
+                    <tr><td>2025-04-21</td><td>heiter</td><td>710</td><td>114</td><td>16</td><td>Feiertag</td></tr>
+                    <tr><td>2025-05-01</td><td>bewölkt/sonnig</td><td>740</td><td>126</td><td>17</td><td>Feiertag</td></tr>
+                    <tr><td>2025-06-08</td><td>Regen</td><td>–</td><td>–</td><td>–</td><td>kein Test (Regen)</td></tr>
+                    <tr><td>2025-06-22</td><td>sonnig/bewölkt</td><td>790</td><td>142</td><td>18</td><td>Sonntagstest</td></tr>
+                    <tr><td>2025-08-23</td><td>bewölkt</td><td>800</td><td>256</td><td>32</td><td>Samstagstest</td></tr>
+                    <tr><td>2025-09-13</td><td>bewölkt</td><td>720</td><td>245</td><td>34</td><td>Samstagstest</td></tr>
+                    <tr><td>2025-10-18</td><td>teils bewölkt</td><td>740</td><td>148</td><td>20</td><td>Samstagstest</td></tr>
+                    <tr><td>2025-11-23</td><td>bewölkt</td><td>705</td><td>233</td><td>33</td><td>Sonntagstest</td></tr>
+                    <tr><td>2025-11-24</td><td>leicht bewölkt</td><td>670</td><td>107</td><td>16</td><td>Wochentagstest</td></tr>
+                    <tr><td>2025-11-25</td><td>bewölkt</td><td>690</td><td>242</td><td>35</td><td>Wochentagstest</td></tr>
+                    <tr><td>2025-11-26</td><td>bewölkt</td><td>715</td><td>200</td><td>28</td><td>Wochentagstest</td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="slide-number">13 / 17</div>
@@ -1463,16 +1497,20 @@
         <!-- SLIDE 14 START (now slide 14) -->
         <section class="slide slide-14" data-slide="14">
           <div class="slide-inner">
-            <h1>CE-Fähigkeit & Sicherheit</h1>
-            <ul class="bullet-list">
-              <li><strong>LVD 2014/35/EU:</strong> Betrieb mit 5–12 V Kleinspannung.</li>
-              <li><strong>EMV 2014/30/EU:</strong> Standard-EMV-Tests planbar.</li>
-              <li><strong>RED 2014/53/EU:</strong> nur falls Funk (SIM/LTE/WiFi) aktiv.</li>
-              <li><strong>Mechanische Sicherheit:</strong> &lt;150 g, abgerundet, fester Sitz.</li>
-              <li><strong>IP54 geplant:</strong> spritzwasser- und staubgeschützt.</li>
-              <li><strong>DSGVO by design:</strong> keine Bildspeicherung, keine personenbezogenen Daten.</li>
-              <li><strong>CE realistisch:</strong> Kernkomponenten bereits CE-zertifiziert; kein Medizinprodukt, keine Fahrzeugzulassung.</li>
-            </ul>
+            <div class="slide-header">
+              <h1>CE-Fähigkeit & Sicherheit</h1>
+            </div>
+            <div class="slide-content">
+              <ul class="bullet-list">
+                <li><strong>LVD 2014/35/EU:</strong> Betrieb mit 5–12 V Kleinspannung.</li>
+                <li><strong>EMV 2014/30/EU:</strong> Standard-EMV-Tests planbar.</li>
+                <li><strong>RED 2014/53/EU:</strong> nur falls Funk (SIM/LTE/WiFi) aktiv.</li>
+                <li><strong>Mechanische Sicherheit:</strong> &lt;150 g, abgerundet, fester Sitz.</li>
+                <li><strong>IP54 geplant:</strong> spritzwasser- und staubgeschützt.</li>
+                <li><strong>DSGVO by design:</strong> keine Bildspeicherung, keine personenbezogenen Daten.</li>
+                <li><strong>CE realistisch:</strong> Kernkomponenten bereits CE-zertifiziert; kein Medizinprodukt, keine Fahrzeugzulassung.</li>
+              </ul>
+            </div>
           </div>
           <div class="slide-number">14 / 17</div>
         </section>
@@ -1481,10 +1519,14 @@
         <!-- SLIDE 15 START (now slide 15) -->
         <section class="slide slide-15" data-slide="15">
           <div class="slide-inner">
-            <h1>Fördermittel / Funding eligibility</h1>
-            <ul class="bullet-list">
-              <li><strong>Vollständig förderfähig</strong> durch Programme wie <strong>.</strong>,.</li>
-            </ul>
+            <div class="slide-header">
+              <h1>Fördermittel / Funding eligibility</h1>
+            </div>
+            <div class="slide-content">
+              <ul class="bullet-list">
+                <li><strong>Vollständig förderfähig</strong> durch Programme wie <strong>.</strong>,.</li>
+              </ul>
+            </div>
           </div>
           <div class="slide-number">15 / 17</div>
         </section>
@@ -1493,12 +1535,16 @@
         <!-- SLIDE 16 START (now slide 16) -->
         <section class="slide slide-16" data-slide="16">
           <div class="slide-inner">
-            <h1>Haftungsrisiken / Liability risks</h1>
-            <ul class="bullet-list">
-              <li><strong>Sehr geringe Haftungsrisiken</strong>, weil das System <strong>nur warnt</strong>, nicht steuert.</li>
-              <li><strong>Technisch sicher:</strong> Niederspannung, CE-kompatible Komponenten, geschlossenes Gehäuse.</li>
-              <li><strong>Mathematische Risikoanalyse (TTC)</strong> reduziert Fehlalarme.</li>
-            </ul>
+            <div class="slide-header">
+              <h1>Haftungsrisiken / Liability risks</h1>
+            </div>
+            <div class="slide-content">
+              <ul class="bullet-list">
+                <li><strong>Sehr geringe Haftungsrisiken</strong>, weil das System <strong>nur warnt</strong>, nicht steuert.</li>
+                <li><strong>Technisch sicher:</strong> Niederspannung, CE-kompatible Komponenten, geschlossenes Gehäuse.</li>
+                <li><strong>Mathematische Risikoanalyse (TTC)</strong> reduziert Fehlalarme.</li>
+              </ul>
+            </div>
           </div>
           <div class="slide-number">16 / 17</div>
         </section>
