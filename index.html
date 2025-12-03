@@ -6,20 +6,17 @@
     <title>LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem</title>
     <meta name="description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
     <meta property="og:description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lrox.de">
     <meta property="og:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
     
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem">
     <meta name="twitter:description" content="LROX: KI-gestützter Smart-Helm und Fahrrad-Assistent für mehr Sicherheit im Straßenverkehr">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif">
     
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,9 +58,10 @@
             --neon-glow: 0 0 15px rgba(255, 106, 0, 0.3);
             --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-fast: 0.3s ease;
-            --border-radius: 8px;
+            --border-radius: 10px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --section-padding: 80px 0;
         }
         
         * {
@@ -90,7 +88,6 @@
             padding: 0 20px;
         }
         
-        /* Scroll Progress Bar */
         .progress-container {
             position: fixed;
             top: 0;
@@ -108,7 +105,6 @@
             transition: width 0.1s ease;
         }
         
-        /* Header */
         header {
             background-color: var(--light);
             color: var(--text-light);
@@ -242,7 +238,6 @@
             color: var(--text-light);
         }
         
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
                         url('https://raw.githubusercontent.com/Ladan94/LROX/main/assets/IMG_3768.gif');
@@ -265,11 +260,6 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-        }
-        
-        .hero .container {
-            position: relative;
-            z-index: 1;
         }
         
         .hero h1 {
@@ -350,10 +340,6 @@
             box-shadow: 0 6px 18px rgba(255, 106, 0, 0.4);
         }
         
-        .btn:active {
-            transform: translateY(1px);
-        }
-        
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
@@ -390,9 +376,8 @@
             box-shadow: 0 6px 20px rgba(255, 106, 0, 0.5);
         }
         
-        /* Sections Common Styles */
         .section {
-            padding: 80px 0;
+            padding: var(--section-padding);
         }
         
         .section-alt {
@@ -433,7 +418,6 @@
             margin: 0 auto;
         }
         
-        /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             color: white;
@@ -459,21 +443,27 @@
             opacity: 0.9;
         }
         
-        /* Problem Section */
-        .problem-content {
+        .problem-content,
+        .risk-groups-content,
+        .solution-content,
+        .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
         
-        .problem-text h3 {
+        .problem-text h3,
+        .risk-groups-text h3,
+        .solution-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
         
-        .problem-text p {
+        .problem-text p,
+        .risk-groups-text p,
+        .solution-text p {
             margin-bottom: 20px;
             line-height: 1.7;
             color: var(--text-light);
@@ -501,116 +491,8 @@
             margin-top: 5px;
         }
         
-        .problem-visual {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .problem-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .problem-visual:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Risk Groups Section */
-        .risk-groups-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .risk-groups-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .risk-groups-text p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            color: var(--text-light);
-        }
-        
-        .risk-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .risk-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .risk-list li i {
-            color: var(--primary);
-            margin-top: 5px;
-        }
-        
-        .risk-groups-visual {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .risk-groups-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .risk-groups-visual:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Solution Section */
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .solution-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .solution-text p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-            color: var(--text-light);
-        }
-        
-        .solution-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .solution-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .solution-list li i {
-            color: var(--primary);
-            margin-top: 5px;
-        }
-        
+        .problem-visual,
+        .risk-groups-visual,
         .solution-visual {
             position: relative;
             border-radius: var(--border-radius);
@@ -618,6 +500,8 @@
             box-shadow: var(--shadow);
         }
         
+        .problem-visual img,
+        .risk-groups-visual img,
         .solution-visual img {
             width: 100%;
             height: auto;
@@ -625,49 +509,85 @@
             transition: transform 0.5s;
         }
         
+        .problem-visual:hover img,
+        .risk-groups-visual:hover img,
         .solution-visual:hover img {
             transform: scale(1.05);
         }
         
-        /* Features Section */
-        .features-grid {
+        .risk-list,
+        .solution-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .risk-list li,
+        .solution-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .risk-list li i,
+        .solution-list li i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+        
+        .features-grid,
+        .stages-grid,
+        .business-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
         
-        .feature-card {
+        .feature-card,
+        .stage-card,
+        .business-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
             padding: 30px 25px;
-            transition: var(--transition-slow);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            transition: var(--transition-fast);
             box-shadow: var(--shadow);
             border: 1px solid #f0f0f0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
         }
         
-        .feature-card:hover {
+        .stage-card {
+            min-height: 460px;
+            justify-content: flex-start;
+        }
+        
+        .feature-card:hover,
+        .stage-card:hover,
+        .business-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
         }
         
-        .feature-icon {
+        .feature-icon,
+        .stage-icon,
+        .business-icon {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 20px;
-            transition: all 0.3s;
         }
         
-        .feature-card h3 {
+        .feature-card h3,
+        .stage-card h3,
+        .business-card h3 {
             font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--text-light);
         }
         
-        .feature-card p {
+        .feature-card p,
+        .stage-card p,
+        .business-card p {
             color: var(--text-muted);
             margin-bottom: 15px;
         }
@@ -675,6 +595,7 @@
         .feature-bullets {
             list-style: none;
             text-align: left;
+            margin-top: auto;
         }
         
         .feature-bullets li {
@@ -691,56 +612,19 @@
             font-size: 0.8rem;
         }
         
-        /* Stages Section */
-        .stages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .stage-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px 25px;
-            text-align: center;
-            transition: var(--transition-fast);
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-        
-        .stage-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .stage-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .stage-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-        
-        .stage-card p {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-        
         .stage-gallery {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         
         .stage-gallery img {
+            width: 100%;
             max-width: 120px;
-            height: auto;
+            height: 80px;
+            object-fit: cover;
             border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s;
@@ -750,12 +634,6 @@
             transform: scale(1.05);
         }
         
-        /* Demo Section */
-        .demo {
-            position: relative;
-            overflow: hidden;
-        }
-        
         .video-container {
             max-width: 800px;
             margin: 0 auto 40px;
@@ -763,7 +641,6 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
-            z-index: 1;
         }
         
         .video-wrapper {
@@ -804,7 +681,9 @@
         }
         
         .gallery-item img {
-            max-width: 100%;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
             border-radius: 6px;
             margin-bottom: 15px;
         }
@@ -813,46 +692,6 @@
             color: var(--text-light);
         }
         
-        /* Business Section */
-        .business-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .business-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px 25px;
-            text-align: center;
-            transition: var(--transition-fast);
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-        
-        .business-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .business-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .business-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-        
-        .business-card p {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-        
-        /* Team Section */
         .team-members {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -933,7 +772,6 @@
             transform: translateY(-3px);
         }
         
-        /* FAQ Section */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -984,19 +822,6 @@
         
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
-        }
-        
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
         }
         
         .contact-card {
@@ -1092,17 +917,11 @@
             text-align: center;
         }
         
-        /* Footer */
         footer {
             background-color: #2c3e50;
             color: white;
             padding: 60px 0 20px;
             position: relative;
-        }
-        
-        footer .container {
-            position: relative;
-            z-index: 1;
         }
         
         .footer-content {
@@ -1193,19 +1012,6 @@
             font-size: 0.85rem;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive Styles */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 2.4rem;
@@ -1272,12 +1078,17 @@
                 padding: 60px 0;
             }
             
-            .features-grid {
+            .features-grid,
+            .stages-grid,
+            .business-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stages-grid,
-            .business-grid {
+            .stage-card {
+                min-height: auto;
+            }
+            
+            .team-members {
                 grid-template-columns: 1fr;
             }
             
@@ -1330,6 +1141,7 @@
             
             .stage-gallery img {
                 max-width: 100%;
+                height: 100px;
             }
             
             .cta-content h3 {
@@ -1339,12 +1151,10 @@
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
     
-    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -1378,7 +1188,6 @@
         </div>
     </header>
     
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <a href="https://lrox.de/presentation.html" class="hero-logo">
@@ -1415,7 +1224,6 @@
         </div>
     </section>
     
-    <!-- Problem Section -->
     <section class="section section-alt" id="problem">
         <div class="container">
             <div class="section-title">
@@ -1426,7 +1234,7 @@
             <div class="problem-content">
                 <div class="problem-text">
                     <h3 data-key="problem.heading">Verkehrssicherheit in Deutschland</h3>
-                    <p data-key="problem.text">Die Straßenverkehrssicherheit stellt eine erhebliche Herausforderung im urbanen Raum dar. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.</p>
+                    <p data-key="problem.text">Die Straßenverkehrssicherheit ist eine erhebliche Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.</p>
                     
                     <div class="key-stat">
                         <p data-key="problem.stat">Durchschnittlich 8 Tote und fast 1.000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024</p>
@@ -1443,7 +1251,6 @@
         </div>
     </section>
     
-    <!-- Risk Groups Section -->
     <section class="section" id="risk-groups">
         <div class="container">
             <div class="section-title">
@@ -1483,7 +1290,6 @@
         </div>
     </section>
     
-    <!-- Solution Section -->
     <section class="section section-alt" id="solution">
         <div class="container">
             <div class="section-title">
@@ -1529,7 +1335,6 @@
         </div>
     </section>
     
-    <!-- Features Section -->
     <section class="section" id="features">
         <div class="container">
             <div class="section-title">
@@ -1591,7 +1396,6 @@
         </div>
     </section>
     
-    <!-- Stages Section -->
     <section class="section section-alt" id="stages">
         <div class="container">
             <div class="section-title">
@@ -1647,7 +1451,6 @@
         </div>
     </section>
 
-    <!-- Pitch CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
@@ -1658,7 +1461,6 @@
         </div>
     </section>
     
-    <!-- Demo Section -->
     <section class="section" id="demo">
         <div class="container">
             <div class="section-title">
@@ -1700,7 +1502,6 @@
         </div>
     </section>
     
-    <!-- Business Section -->
     <section class="section section-alt" id="business">
         <div class="container">
             <div class="section-title">
@@ -1736,7 +1537,6 @@
         </div>
     </section>
     
-    <!-- Team Section -->
     <section class="section" id="team">
         <div class="container">
             <div class="section-title">
@@ -1785,7 +1585,6 @@
         </div>
     </section>
     
-    <!-- FAQ Section -->
     <section class="section section-alt" id="faq">
         <div class="container">
             <div class="section-title">
@@ -1847,7 +1646,6 @@
         </div>
     </section>
     
-    <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1909,7 +1707,7 @@
             </div>
         </div>
     </section>
-        <!-- Impressum -->
+    
     <section class="section section-alt" id="impressum">
         <div class="container">
             <div class="section-title">
@@ -1922,13 +1720,13 @@
                     <div class="contact-card">
                         <h3>Verantwortlich</h3>
                         <p>
-                            Ladan Sedighi<br>
+                            Ladan Seddighi<br>
                             Altelohmarer st 11<br>
                             Lohmar, Deutschland
                         </p>
                         <p>Telefon: 0177-394-5542</p>
                         <p>E-Mail: <a href="mailto:info@lrox.de">info@lrox.de</a></p>
-                        <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Ladan Sedighi.</p>
+                        <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Ladan Seddighi.</p>
                     </div>
 
                     <div class="contact-card">
@@ -1944,7 +1742,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1989,24 +1786,21 @@
             </div>
             
             <div class="footer-bottom">
-    <p>
-        &copy; 2024 LROX.
-        <span data-key="footer.rights">Alle Rechte vorbehalten.</span>
-        &nbsp;|&nbsp;
-        <a href="#impressum" style="color:#fff;text-decoration:underline;">Impressum</a>
-    </p>
-</div>
+                <p>
+                    &copy; 2024 LROX.
+                    <span data-key="footer.rights">Alle Rechte vorbehalten.</span>
+                    &nbsp;|&nbsp;
+                    <a href="#impressum" style="color:#fff;text-decoration:underline;">Impressum</a>
+                </p>
+            </div>
         </div>
     </footer>
 
-    <!-- Font Awesome for Icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
     <script>
-        // Translations
         const translations = {
             de: {
-                // Navigation
                 'nav.home': 'Start',
                 'nav.problem': 'Problem',
                 'nav.risk': 'Risikogruppen',
@@ -2021,7 +1815,6 @@
                 'nav.pitch': 'Pitch-Deck ansehen',
                 'nav.demoBtn': 'Demo-Version ansehen',
                 
-                // Hero Section
                 'hero.title': 'LROX – KI-Schutzhelm und SmartBike-Sicherheitssystem',
                 'hero.subtitle': 'LROX ist ein KI-gestützter Smart-Helm und Fahrrad-Assistent, der Gefahren in Echtzeit erkennt und besonders gefährdete Verkehrsteilnehmer rechtzeitig warnt.',
                 'hero.demoBtn': 'Demo-Version ansehen',
@@ -2029,22 +1822,19 @@
                 'hero.videoBtn': 'Demo-Video ansehen',
                 'hero.contactBtn': 'Kontakt aufnehmen',
                 
-                // Metrics
                 'metrics.latency': 'Latenzzeit',
                 'metrics.fps': 'Auf Edge-Gerät',
                 'metrics.map': 'mAP50 (Test)',
                 'metrics.power': 'Stromverbrauch',
                 
-                // Problem Section
                 'problem.title': 'Problem & Kontext',
                 'problem.subtitle': 'Im Straßenverkehr entscheiden Sekunden über Leben und Tod',
                 'problem.heading': 'Verkehrssicherheit in Deutschland',
-                'problem.text': 'Die Straßenverkehrssicherheit stellt eine erhebliche Herausforderung im urbanen Raum dar. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.',
+                'problem.text': 'Die Straßenverkehrssicherheit ist eine erhebliche Herausforderung im urbanen Raum. Besonders gefährdete Gruppen benötigen zusätzlichen Schutz und innovative Sicherheitslösungen.',
                 'problem.stat': 'Durchschnittlich 8 Tote und fast 1.000 Verletzte pro Tag bei Verkehrsunfällen im Jahr 2024',
                 'problem.source': 'Statistisches Bundesamt (Destatis)',
                 'problem.conclusion': 'Diese alarmierenden Zahlen unterstreichen die dringende Notwendigkeit für fortschrittliche Sicherheitstechnologien im Straßenverkehr.',
                 
-                // Risk Groups Section
                 'risk.title': 'Wer ist besonders gefährdet?',
                 'risk.subtitle': 'Bestimmte Gruppen sind im Straßenverkehr besonders schutzbedürftig',
                 'risk.heading': 'Schutzbedürftige Verkehrsteilnehmer',
@@ -2054,7 +1844,6 @@
                 'risk.elderly': 'Ältere Menschen mit Rollator oder im Rollstuhl',
                 'risk.visuallyImpaired': 'Menschen mit Sehbeeinträchtigungen',
                 
-                // Solution Section
                 'solution.title': 'Die LROX-Lösung',
                 'solution.subtitle': 'Ein Helm, der sieht, denkt, warnt – und sogar spricht',
                 'solution.heading': 'Wie LROX funktioniert',
@@ -2066,7 +1855,6 @@
                 'solution.users': 'Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen',
                 'solution.benefit': '→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.',
                 
-                // Features Section
                 'features.title': 'Was LROX anders macht',
                 'features.subtitle': 'Innovative Funktionen, die LROX von bestehenden Lösungen unterscheiden',
                 'features.360.title': 'Echte 360°-Sicht',
@@ -2081,7 +1869,6 @@
                 'features.alerts.bullet1': 'Keine einfachen Pieptöne – sondern konkrete Hinweise',
                 'features.alerts.bullet2': '"Bordsteinkante vorne", "Hindernis links, nah", "Fahrrad hinter dir"',
                 
-                // Stages Section
                 'stages.title': 'Projektphasen',
                 'stages.subtitle': 'Die Entwicklung von LROX in drei wichtigen Stufen',
                 'stages.v1.title': 'Version 1 – Fahrrad-Prototyp',
@@ -2095,14 +1882,12 @@
                 'stages.v3.status': 'In Planung',
                 'stages.demoCaption': 'LROX System-Demonstration – Technische Umsetzung',
                 
-                // Demo Section
                 'demo.title': 'Demo',
                 'demo.subtitle': 'LROX in Aktion – sehen Sie selbst',
                 'demo.image1': 'Smart Helmet Systemarchitektur',
                 'demo.image2': 'Smart Helmet mit integrierter Kamera',
                 'demo.image3': 'Vergleich mit bestehenden Lösungen',
                 
-                // Business Section
                 'business.title': 'Geschäftsmodell & Marktpotenzial',
                 'business.subtitle': 'Nachhaltiges Geschäftsmodell mit großer Reichweite',
                 'business.revenue.title': 'Klare Einnahmequelle',
@@ -2112,7 +1897,6 @@
                 'business.market.title': 'Riesiger Markt',
                 'business.market.text': '80 Mio. Fahrräder in Europa + Millionen Menschen mit Mobilitäts- oder Sehbeeinträchtigungen',
                 
-                // Team Section
                 'team.title': 'Unser Team',
                 'team.subtitle': 'Interdisziplinäre Expertise für innovative Sicherheitslösungen',
                 'team.amir.role': 'Mechanical Engineer',
@@ -2123,7 +1907,6 @@
                 'team.interdisciplinary.role': 'Kombinierte Expertise',
                 'team.interdisciplinary.description': 'Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind',
                 
-                // FAQ Section
                 'faq.title': 'Häufige Fragen',
                 'faq.subtitle': 'Antworten auf die wichtigsten Fragen zu LROX',
                 'faq.q1': 'Welche Sensoren werden verwendet?',
@@ -2137,7 +1920,6 @@
                 'faq.q5': 'Gibt es rechtliche Anforderungen für die Straßenzulassung?',
                 'faq.a5': 'Das System ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es entspricht den relevanten EU-Richtlinien.',
                 
-                // Contact Section
                 'contact.title': 'Kontakt',
                 'contact.subtitle': 'Nehmen Sie Kontakt mit uns auf für mehr Informationen',
                 'contact.info.title': 'Kontaktinformationen',
@@ -2147,7 +1929,6 @@
                 'contact.form.message': 'Nachricht',
                 'contact.form.submit': 'Nachricht senden',
                 
-                // Footer
                 'footer.description': 'Ein KI-gestütztes Sicherheitssystem für Fahrradfahrer und besonders gefährdete Verkehrsteilnehmer, entwickelt in Bonn, Deutschland.',
                 'footer.links.title': 'Schnelllinks',
                 'footer.technology.title': 'Technologie',
@@ -2155,7 +1936,6 @@
                 'footer.rights': 'Alle Rechte vorbehalten.'
             },
             en: {
-                // Navigation
                 'nav.home': 'Home',
                 'nav.problem': 'Problem',
                 'nav.risk': 'Risk Groups',
@@ -2170,7 +1950,6 @@
                 'nav.pitch': 'View pitch deck',
                 'nav.demoBtn': 'View Demo Version',
                 
-                // Hero Section
                 'hero.title': 'LROX – AI Smart Helmet & SmartBike Safety System',
                 'hero.subtitle': 'LROX is an AI-driven smart helmet and bicycle system that detects hazards in real time and warns vulnerable road users before a crash happens.',
                 'hero.demoBtn': 'View Demo Version',
@@ -2178,13 +1957,11 @@
                 'hero.videoBtn': 'Watch Demo Video',
                 'hero.contactBtn': 'Contact Us',
                 
-                // Metrics
                 'metrics.latency': 'Latency',
                 'metrics.fps': 'On Edge Device',
                 'metrics.map': 'mAP50 (Test)',
                 'metrics.power': 'Power Consumption',
                 
-                // Problem Section
                 'problem.title': 'Problem & Context',
                 'problem.subtitle': 'In road traffic, seconds decide between life and death',
                 'problem.heading': 'Road Safety in Germany',
@@ -2193,7 +1970,6 @@
                 'problem.source': 'Federal Statistical Office (Destatis)',
                 'problem.conclusion': 'These alarming numbers highlight the urgent need for advanced safety technologies in road traffic.',
                 
-                // Risk Groups Section
                 'risk.title': 'Who is most at risk?',
                 'risk.subtitle': 'Certain groups are particularly vulnerable in road traffic',
                 'risk.heading': 'Vulnerable Road Users',
@@ -2203,7 +1979,6 @@
                 'risk.elderly': 'Older people with walkers or in wheelchairs',
                 'risk.visuallyImpaired': 'People with visual impairments',
                 
-                // Solution Section
                 'solution.title': 'The LROX Solution',
                 'solution.subtitle': 'A helmet that sees, thinks, warns – and even speaks',
                 'solution.heading': 'How LROX Works',
@@ -2215,7 +1990,6 @@
                 'solution.users': 'For cyclists, wheelchair users – especially for blind & visually impaired people',
                 'solution.benefit': '→ More safety. More orientation. More independence.',
                 
-                // Features Section
                 'features.title': 'What Makes LROX Different',
                 'features.subtitle': 'Innovative features that distinguish LROX from existing solutions',
                 'features.360.title': 'True 360° View',
@@ -2230,7 +2004,6 @@
                 'features.alerts.bullet1': 'No simple beeps – but concrete instructions',
                 'features.alerts.bullet2': '"Curb ahead", "Obstacle left, close", "Bicycle behind you"',
                 
-                // Stages Section
                 'stages.title': 'Project Stages',
                 'stages.subtitle': 'The development of LROX in three important phases',
                 'stages.v1.title': 'Version 1 – Bicycle Prototype',
@@ -2244,14 +2017,12 @@
                 'stages.v3.status': 'In Planning',
                 'stages.demoCaption': 'LROX System Demonstration – Technical Implementation',
                 
-                // Demo Section
                 'demo.title': 'Demo',
                 'demo.subtitle': 'LROX in Action – See for Yourself',
                 'demo.image1': 'Smart Helmet System Architecture',
                 'demo.image2': 'Smart Helmet with Integrated Camera',
                 'demo.image3': 'Comparison with Existing Solutions',
                 
-                // Business Section
                 'business.title': 'Business Model & Market Potential',
                 'business.subtitle': 'Sustainable business model with wide reach',
                 'business.revenue.title': 'Clear Revenue Source',
@@ -2261,7 +2032,6 @@
                 'business.market.title': 'Huge Market',
                 'business.market.text': '80 million bicycles in Europe + millions of people with mobility or visual impairments',
                 
-                // Team Section
                 'team.title': 'Our Team',
                 'team.subtitle': 'Interdisciplinary expertise for innovative safety solutions',
                 'team.amir.role': 'Mechanical Engineer',
@@ -2272,7 +2042,6 @@
                 'team.interdisciplinary.role': 'Combined Expertise',
                 'team.interdisciplinary.description': 'We combine AI, electronics, mechanics → exactly the competencies needed for a product like LROX',
                 
-                // FAQ Section
                 'faq.title': 'Frequently Asked Questions',
                 'faq.subtitle': 'Answers to the most important questions about LROX',
                 'faq.q1': 'Which sensors are used?',
@@ -2286,7 +2055,6 @@
                 'faq.q5': 'Are there legal requirements for road approval?',
                 'faq.a5': 'The system is designed as an assistance system and does not replace user attention. It complies with relevant EU directives.',
                 
-                // Contact Section
                 'contact.title': 'Contact',
                 'contact.subtitle': 'Contact us for more information',
                 'contact.info.title': 'Contact Information',
@@ -2296,7 +2064,6 @@
                 'contact.form.message': 'Message',
                 'contact.form.submit': 'Send Message',
                 
-                // Footer
                 'footer.description': 'An AI-powered safety system for cyclists and particularly vulnerable road users, developed in Bonn, Germany.',
                 'footer.links.title': 'Quick Links',
                 'footer.technology.title': 'Technology',
@@ -2305,15 +2072,12 @@
             }
         };
 
-        // Current language
         let currentLang = 'de';
 
-        // Mobile Menu Toggle
         document.getElementById('mobileMenu').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
         });
         
-        // Scroll Progress Bar
         window.onscroll = function() {
             updateProgressBar();
         };
@@ -2325,26 +2089,22 @@
             document.getElementById("progressBar").style.width = scrolled + "%";
         }
         
-        // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             
             question.addEventListener('click', () => {
-                // Close all other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
                     }
                 });
                 
-                // Toggle current item
                 item.classList.toggle('active');
             });
         });
         
-        // Language Toggle
         const langToggle = document.getElementById('langToggle');
         
         langToggle.addEventListener('click', function() {
@@ -2353,7 +2113,6 @@
             langToggle.textContent = currentLang === 'de' ? 'EN' : 'DE';
         });
         
-        // Update language function
         function updateLanguage() {
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
@@ -2366,18 +2125,15 @@
                 }
             });
             
-            // Update pitch button text
             const pitchButton = document.querySelector('.pitch-button');
             pitchButton.textContent = currentLang === 'de' ? 'Pitch-Deck ansehen' : 'View pitch deck';
             
-            // Update demo button text
             const demoButton = document.querySelector('.demo-button');
             if (demoButton) {
                 demoButton.textContent = currentLang === 'de' ? 'Demo-Version ansehen' : 'View Demo Version';
             }
         }
         
-        // Form Validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2386,7 +2142,6 @@
             const message = document.getElementById('message').value;
             
             if (name && email && message) {
-                // Simple validation - in a real app, you would send the data to a server
                 alert(currentLang === 'de' ? 'Nachricht gesendet! Wir melden uns bald bei Ihnen.' : 'Message sent! We will get back to you soon.');
                 document.getElementById('contactForm').reset();
             } else {
@@ -2394,7 +2149,6 @@
             }
         });
         
-        // Intersection Observer for Animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2409,7 +2163,6 @@
             });
         }, observerOptions);
         
-        // Observe elements for animation
         document.addEventListener('DOMContentLoaded', function() {
             const animateElements = document.querySelectorAll('.feature-card, .stage-card, .business-card, .member-card');
             
@@ -2420,7 +2173,6 @@
                 observer.observe(el);
             });
             
-            // Initialize language
             updateLanguage();
         });
     </script>
