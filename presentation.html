@@ -10,17 +10,17 @@
  
   <style>
     :root {
-      --bg: #ffffff;
-      --accent: #ff5c00;
-      --accent-soft: rgba(255, 92, 0, 0.1);
-      --accent-soft-strong: rgba(255, 92, 0, 0.2);
-      --text: #333333;
-      --muted: #666666;
-      --border-soft: rgba(0, 0, 0, 0.1);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --border-radius-sm: 8px;
-      --border-radius-md: 12px;
-      --border-radius-lg: 16px;
+      --bg: #03040a;
+      --accent: #ff7a00;
+      --accent-soft: rgba(255, 122, 0, 0.16);
+      --accent-soft-strong: rgba(255, 122, 0, 0.32);
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --border-radius-sm: 12px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 20px;
     }
 
     * {
@@ -31,7 +31,9 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
+      background:
+        radial-gradient(circle at top, #1d2540 0, #050814 55%),
+        radial-gradient(circle at bottom, #130d06 0, #050509 40%);
       color: var(--text);
       height: 100vh;
       overflow: hidden;
@@ -63,7 +65,7 @@
       position: absolute;
       border-radius: 999px;
       filter: blur(60px);
-      opacity: 0.2;
+      opacity: 0.65;
     }
 
     .bg-glow::before {
@@ -77,7 +79,7 @@
     .bg-glow::after {
       width: 520px;
       height: 520px;
-      background: radial-gradient(circle, rgba(52, 84, 214, 0.1), transparent 70%);
+      background: radial-gradient(circle, rgba(52, 84, 214, 0.4), transparent 70%);
       bottom: -160px;
       right: -120px;
     }
@@ -100,8 +102,10 @@
       gap: 10px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
+      background: linear-gradient(135deg,
+          rgba(255, 122, 0, 0.12),
+          rgba(9, 11, 24, 0.65));
+      border: 1px solid rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(16px);
     }
 
@@ -164,13 +168,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--card-bg);
+      background:
+        radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
       border-radius: var(--border-radius-lg);
-      padding: 24px 32px 40px;
+      padding: 24px 32px 20px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.85),
+        0 0 46px rgba(255, 122, 0, 0.26);
+      backdrop-filter: blur(22px);
       overflow: hidden;
-      position: relative;
     }
 
     .slide::before {
@@ -178,7 +186,11 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255, 92, 0, 0.03), transparent 70%);
+      background: radial-gradient(circle at 18% 0%,
+        rgba(255, 255, 255, 0.05),
+        transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -193,19 +205,6 @@
 
     .slide.active {
       display: block;
-    }
-
-    /* Slide number styling */
-    .slide-number {
-      position: absolute;
-      bottom: 12px;
-      right: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      background: var(--card-bg);
-      padding: 4px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
     }
 
     /* Common slide layouts */
@@ -236,7 +235,7 @@
       border-radius: var(--border-radius-md);
       padding: 20px 16px;
       text-align: center;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -248,10 +247,10 @@
     }
 
     .placeholder-box {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(3, 5, 18, 0.85);
       border-radius: var(--border-radius-md);
-      padding: 0;
-      border: 1px solid var(--border-soft);
+      padding: 20px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -261,15 +260,18 @@
       height: 100%;
       max-height: 100%;
       overflow: hidden;
-      gap: 0;
+      gap: 12px;
     }
 
-    .image-placeholder, .video-placeholder, .slide-image, .slide-video, .placeholder-box img, .placeholder-box video {
+    .image-placeholder, .video-placeholder, .slide-image, .slide-video {
       width: 100%;
-      height: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 45vh;
       object-fit: contain;
       border-radius: var(--border-radius-sm);
       display: block;
+      margin: 0 auto;
     }
 
     .bullet-list {
@@ -359,6 +361,9 @@
     .slide-1 .logo-hero img {
       max-width: 180px;
       height: 180px;
+      filter:
+        drop-shadow(0 0 18px rgba(255, 122, 0, 0.55))
+        drop-shadow(0 0 6px rgba(255, 122, 0, 0.35));
     }
 
     .slide-1 .tagline {
@@ -374,7 +379,7 @@
       font-size: 14px;
       color: var(--muted);
       padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.04);
       border-radius: var(--border-radius-sm);
       display: inline-block;
     }
@@ -392,19 +397,9 @@
       margin: 16px 0;
     }
 
-    /* Slide 4 - Single column layout after video removal */
-    .slide-4 .slide-inner {
-      justify-content: center;
-    }
-
-    .slide-4 .centered-content {
-      max-width: 800px;
-      text-align: left;
-    }
-
     /* Slide 5 - Updated to match Slide 7 style */
     .slide-5 h1 {
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 8px;
       font-size: 26px;
       margin-bottom: 12px;
@@ -422,12 +417,12 @@
       display: block;
       color: var(--accent);
       font-weight: 600;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 4px;
       margin-bottom: 4px;
     }
 
-    /* Slide 6 specific styles - Fixed overflow and layout */
+    /* Slide 6 specific styles - Fixed overflow */
     .slide-6 .two-column {
       height: 100%;
       align-items: stretch;
@@ -442,7 +437,7 @@
       overflow: hidden;
     }
 
-    .slide-6 .image-content {
+    .slide-6 .video-content {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -467,7 +462,7 @@
     .slide-6 h1 {
       font-size: 24px;
       margin-bottom: 6px;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 6px;
     }
 
@@ -475,7 +470,7 @@
       font-size: 16px;
       margin: 12px 0 6px 0;
       padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
     }
 
     .slide-6 .bullet-list {
@@ -490,7 +485,7 @@
 
     /* Slide 7 - Reference style */
     .slide-7 h1 {
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 8px;
       font-size: 26px;
       margin-bottom: 12px;
@@ -523,7 +518,7 @@
       font-size: 18px;
       margin-bottom: 8px;
       color: var(--accent);
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 4px;
     }
 
@@ -546,59 +541,17 @@
     .slide-7 .version-video .placeholder-box {
       flex: 1;
       min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .slide-7 .version-video .video-placeholder {
+      max-height: 30vh;
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Specific styling for the GIF in slide 7 */
-    .slide-7 .version-column:first-child .video-placeholder {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
     }
 
     .slide-7 .version-video p {
       margin-top: 8px;
       font-size: 12px;
       color: var(--muted);
-    }
-
-    /* NEW: Version 3 image styling - FIXED */
-    .slide-7 .version-column:last-child .placeholder-box {
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .slide-7 .version-column:last-child .version3-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      flex: 1;
-    }
-
-    /* New Slide 8 - Demo content */
-    .slide-8 .demo-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: var(--border-radius-md);
-    }
-
-    .slide-8 .slide-inner {
-      padding: 0;
     }
 
     /* Slide 9 - Team slide without bullets */
@@ -614,7 +567,7 @@
       background: var(--card-bg);
       border-radius: var(--border-radius-md);
       padding: 20px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .slide-9 .team-member strong {
@@ -631,7 +584,9 @@
 
     /* Slide 10 - Enhanced final slide */
     .slide-10 {
-      background: var(--card-bg);
+      background:
+        radial-gradient(circle at 50% 30%, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.8) 0, transparent 70%);
     }
 
     .slide-10 .slide-inner {
@@ -644,8 +599,8 @@
       padding: 40px;
       background: var(--card-bg);
       border-radius: var(--border-radius-lg);
-      border: 1px solid rgba(255, 92, 0, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 122, 0, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
     }
@@ -709,18 +664,18 @@
       background: var(--card-bg);
       border-radius: var(--border-radius-sm);
       overflow: hidden;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .data-table th,
     .data-table td {
       padding: 10px 12px;
       text-align: left;
-      border-bottom: 1px solid var(--border-soft);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .data-table th {
-      background: rgba(255, 92, 0, 0.1);
+      background: rgba(255, 122, 0, 0.1);
       color: var(--accent);
       font-weight: 600;
       font-size: 12px;
@@ -737,7 +692,7 @@
       overflow-y: auto;
       margin: 16px 0;
       border-radius: var(--border-radius-sm);
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .scrollable-table table {
@@ -785,33 +740,6 @@
       letter-spacing: 0.03em;
     }
 
-    /* NEW: Centering for slides 11-16 - FIXED */
-    .slide-11 .slide-inner,
-    .slide-12 .slide-inner,
-    .slide-13 .slide-inner,
-    .slide-14 .slide-inner,
-    .slide-15 .slide-inner,
-    .slide-16 .slide-inner {
-      justify-content: center;
-      position: relative;
-    }
-
-    .slide-11 .centered-content,
-    .slide-12 .two-column,
-    .slide-13 .slide-inner > h1,
-    .slide-13 .data-table,
-    .slide-14 .bullet-list,
-    .slide-15 .bullet-list,
-    .slide-16 .bullet-list {
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .slide-13 .slide-inner > h1 {
-      text-align: center;
-    }
-
     footer {
       display: flex;
       justify-content: space-between;
@@ -840,6 +768,7 @@
       height: 6px;
       border-radius: 999px;
       background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 122, 0, 0.9);
     }
 
     footer .site-link {
@@ -865,7 +794,7 @@
       }
 
       .slide {
-        padding: 20px 18px 36px;
+        padding: 20px 18px 16px;
         border-radius: 18px;
       }
 
@@ -922,11 +851,6 @@
         font-size: 15px;
       }
 
-      /* Slide 4 mobile adjustments */
-      .slide-4 .centered-content {
-        padding: 0 10px;
-      }
-
       /* Slide 5 mobile adjustments */
       .slide-5 h1 {
         font-size: 22px;
@@ -975,15 +899,6 @@
 
       .slide-7 .version-text .bullet-list li {
         font-size: 12px;
-      }
-
-      .slide-7 .version-video .placeholder-box {
-        min-height: 180px;
-      }
-
-      /* Slide 8 mobile adjustments */
-      .slide-8 .demo-content h1 {
-        font-size: 22px;
       }
 
       .slide-10 .highlight-line {
@@ -1081,7 +996,6 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">1 / 17</div>
         </section>
         <!-- SLIDE 1 END -->
 
@@ -1104,7 +1018,6 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">2 / 17</div>
         </section>
         <!-- SLIDE 2 END -->
 
@@ -1117,7 +1030,7 @@
                 <ul class="bullet-list">
                   <li>Fahrradfahrerinnen und Fahrradfahrer</li>
                   <li>Kinder – besonders auf dem Schulweg</li>
-                  <li>Für Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
+                  <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
                   <li>Menschen mit Sehbeeinträchtigungen</li>
                 </ul>
               </div>
@@ -1130,26 +1043,35 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">3 / 17</div>
         </section>
         <!-- SLIDE 3 END -->
 
         <!-- SLIDE 4 START -->
         <section class="slide slide-4" data-slide="4">
           <div class="slide-inner">
-            <div class="centered-content">
-              <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht</h1>
-              <ul class="bullet-list">
-                <li>Kamera + Mini-PC + KI + Lautsprecher</li>
-                <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
-                <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
-                <li>Funktioniert vollständig offline</li>
-                <li>Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
-              </ul>
-              <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht</h1>
+                <ul class="bullet-list">
+                  <li>Kamera + Mini-PC + KI + Lautsprecher</li>
+                  <li>Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit</li>
+                  <li>Akustische Warnungen: Richtung, Distanz, Geschwindigkeit</li>
+                  <li>Funktioniert vollständig offline</li>
+                  <li>Für Radfahrer:innen, Rollstuhlnutzer – besonders für blinde & sehbehinderte Personen</li>
+                </ul>
+                <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
+              </div>
+              <div class="video-content">
+                <div class="placeholder-box">
+                  <!-- TODO: replace with embedded video or video element -->
+                  <div class="video-placeholder">
+                    VIDEO PLACEHOLDER – insert demo link here
+                  </div>
+                  <p>Video placeholder - to be replaced</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="slide-number">4 / 17</div>
         </section>
         <!-- SLIDE 4 END -->
 
@@ -1168,13 +1090,12 @@
               <div class="image-content">
                 <div class="placeholder-box">
                   <!-- TODO: replace with actual image -->
-                  <img src="assets/tools.jpg" />
+                  <img src="https://github.com/Ladan94/LROX/blob/main/assets/tools.jpg?raw=true" alt="Placeholder image for assistive tools" class="image-placeholder" />
                   <p>.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">5 / 17</div>
         </section>
         <!-- SLIDE 5 END -->
 
@@ -1204,21 +1125,24 @@
                 <p>TTC = d<sub>t</sub> / v<sub>a</sub> &nbsp;&nbsp; (v<sub>a</sub> &gt; 0)</p>
                 <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Je kleiner der TTC-Wert, desto kritischer die Situation.</p>
                 
-                <h2></h2>
+                <h2>Risikobewertung & Warnlogik</h2>
+                <ul class="bullet-list">
+                  <li>Warnung nur bei <strong>kritischem TTC</strong>, z. B.: &lt; 4 s / &lt; 2 s / &lt; 1 s</li>
+                  <li>Objekt muss auf Kollisionskurs bzw. auf der <strong>Fahrspur</strong> liegen</li>
+                  <li>Richtungsabhängige Hinweise, z. B.: „Hindernis vorne – TTC 1,2 s"</li>
+                </ul>
               </div>
-              <div class="image-content">
+              <div class="video-content">
                 <div class="placeholder-box">
                   <!-- TODO: replace with embedded video or video element -->
                   <div class="video-placeholder">
-                      <img src="assets/5863697259441097492.jpg" alt="demo image" style="max-width:100%; border-radius:8px;">
+                    VIDEO PLACEHOLDER – insert demo link here
                   </div>
-
-                  <p></p>
+                  <p>Demo-Video wird hier eingefügt (Version 2 – Fahrrad + Helm)</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">6 / 17</div>
         </section>
         <!-- SLIDE 6 END -->
 
@@ -1239,7 +1163,9 @@
                   </div>
                   <div class="version-video">
                     <div class="placeholder-box">
-                      <img src="assets/5861445459627412576.jpg" />
+                      <div class="video-placeholder">
+                        VIDEO PLACEHOLDER – Version 1 Demo
+                      </div>
                       <p>Version 1 – Fahrrad-Prototyp</p>
                     </div>
                   </div>
@@ -1253,7 +1179,7 @@
                     <h2>Version 2 – Helm-Prototyp (aktueller Stand)</h2>
                     <ul class="bullet-list">
                       <li>KI-Logik und Warnsystem im Helm integriert</li>
-                      <li>Zu schwer; viele wollen nicht immer einen Helm tragen</li>
+                      <li>Funktioniert, aber noch zu schwer, kurze Akkulaufzeit</li>
                     </ul>
                   </div>
                   <div class="version-video">
@@ -1273,15 +1199,15 @@
                   <div class="version-text">
                     <h2>Version 3 – zukünftige Endversion</h2>
                     <ul class="bullet-list">
-                      <li>Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku)</li>
-                      <li> Lokale KI ohne Netz, Cloud-KI mit 5G für genaue Warnungen</li>
+                      <li>Leichtes Helm-Modul mit 360°-Kamera</li>
+                      <li>Rechenleistung auf Smartphone/Server ausgelagert, längere Laufzeit</li>
                     </ul>
                   </div>
                   <div class="version-video">
                     <div class="placeholder-box">
-                      <img src="assets/5861445459627412591.jpg"
-                           alt="Version 3 Demo"
-                           class="version3-image" />
+                      <div class="video-placeholder">
+                        VIDEO PLACEHOLDER – Version 3 Demo
+                      </div>
                       <p>Version 3 – zukünftige Endversion</p>
                     </div>
                   </div>
@@ -1289,32 +1215,11 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">7 / 17</div>
         </section>
         <!-- SLIDE 7 END -->
 
-        <!-- NEW SLIDE 8 START - Demo content -->
+        <!-- SLIDE 8 START -->
         <section class="slide slide-8" data-slide="8">
-          <div class="slide-inner">
-            <div class="centered-content">
-              <div class="placeholder-box">
-                <img
-  src="assets/2025-11-29 19_58_11-Desktop - File Explorer.png"
-  alt="LROX Demo Screenshot"
-  class="image-placeholder"
-  style="width: 100%; height: 70vh; object-fit: contain;"
-/>
-
-                 
-              </div>
-            </div>
-          </div>
-          <div class="slide-number">8 / 17</div>
-        </section>
-        <!-- NEW SLIDE 8 END -->
-
-        <!-- SLIDE 8 START (now slide 9) -->
-        <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <h1>Geschäftsmodell & Marktpotenzial</h1>
             <div class="three-column">
@@ -1332,12 +1237,11 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">9 / 17</div>
         </section>
         <!-- SLIDE 8 END -->
 
-        <!-- SLIDE 9 START (now slide 10) -->
-        <section class="slide slide-10" data-slide="10">
+        <!-- SLIDE 9 START -->
+        <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <div class="centered-content">
               <h1>Unser Team</h1>
@@ -1350,29 +1254,30 @@
                   <strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>
                   <p>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
                 </div>
+                <div class="team-member">
+                  <strong>Interdisziplinäre Stärke</strong>
+                  <p>Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">10 / 17</div>
         </section>
         <!-- SLIDE 9 END -->
 
-        <!-- SLIDE 10 START (now slide 11) -->
-        <section class="slide slide-11" data-slide="11">
+        <!-- SLIDE 10 START -->
+        <section class="slide slide-10" data-slide="10">
           <div class="slide-inner">
             <div class="centered-content">
-              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der wieder nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
+              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der weiter nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
               <div class="contact-info">
                 <p>Kontakt: info@lrox.de | Website: LROX.de</p>
               </div>
             </div>
           </div>
-          <div class="slide-number">11 / 17</div>
         </section>
         <!-- SLIDE 10 END -->
 
-        <!-- SLIDE 12 START (now slide 12) -->
+        <!-- SLIDE 12 START -->
         <section class="slide slide-12" data-slide="12">
           <div class="slide-inner">
             <div class="two-column">
@@ -1396,11 +1301,10 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">12 / 17</div>
         </section>
         <!-- SLIDE 12 END -->
 
-        <!-- SLIDE 13 START (now slide 13) -->
+                <!-- SLIDE 13 START -->
         <section class="slide slide-13" data-slide="13">
           <div class="slide-inner">
             <h1>Testübersicht (24 Praxis-Tests)</h1>
@@ -1448,11 +1352,10 @@
               </tbody>
             </table>
           </div>
-          <div class="slide-number">13 / 17</div>
         </section>
         <!-- SLIDE 13 END -->
 
-        <!-- SLIDE 14 START (now slide 14) -->
+        <!-- SLIDE 14 START -->
         <section class="slide slide-14" data-slide="14">
           <div class="slide-inner">
             <h1>CE-Fähigkeit & Sicherheit</h1>
@@ -1466,11 +1369,10 @@
               <li><strong>CE realistisch:</strong> Kernkomponenten bereits CE-zertifiziert; kein Medizinprodukt, keine Fahrzeugzulassung.</li>
             </ul>
           </div>
-          <div class="slide-number">14 / 17</div>
         </section>
         <!-- SLIDE 14 END -->
 
-        <!-- SLIDE 15 START (now slide 15) -->
+        <!-- SLIDE 15 START -->
         <section class="slide slide-15" data-slide="15">
           <div class="slide-inner">
             <h1>Fördermittel / Funding eligibility</h1>
@@ -1479,11 +1381,10 @@
              
             </ul>
           </div>
-          <div class="slide-number">15 / 17</div>
         </section>
         <!-- SLIDE 15 END -->
 
-        <!-- SLIDE 16 START (now slide 16) -->
+        <!-- SLIDE 16 START -->
         <section class="slide slide-16" data-slide="16">
           <div class="slide-inner">
             <h1>Haftungsrisiken / Liability risks</h1>
@@ -1493,7 +1394,6 @@
               <li><strong>Mathematische Risikoanalyse (TTC)</strong> reduziert Fehlalarme.</li>
             </ul>
           </div>
-          <div class="slide-number">16 / 17</div>
         </section>
         <!-- SLIDE 16 END -->
       </div>
@@ -1501,7 +1401,7 @@
 
     <footer>
       <div class="nav-hint" id="nav-hint">
-        Slide 1 / 17 · Mit der rechten Pfeiltaste zur nächsten Folie
+        Slide 1 / 15 · Mit der rechten Pfeiltaste zur nächsten Folie
       </div>
       
       <div class="right">
