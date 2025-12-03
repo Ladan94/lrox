@@ -10,17 +10,17 @@
  
   <style>
     :root {
-      --bg: #ffffff;
-      --accent: #ff5c00;
-      --accent-soft: rgba(255, 92, 0, 0.1);
-      --accent-soft-strong: rgba(255, 92, 0, 0.2);
-      --text: #333333;
-      --muted: #666666;
-      --border-soft: rgba(0, 0, 0, 0.1);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --border-radius-sm: 8px;
-      --border-radius-md: 12px;
-      --border-radius-lg: 16px;
+      --bg: #03040a;
+      --accent: #ff7a00;
+      --accent-soft: rgba(255, 122, 0, 0.16);
+      --accent-soft-strong: rgba(255, 122, 0, 0.32);
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --border-radius-sm: 12px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 20px;
     }
 
     * {
@@ -31,7 +31,9 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
+      background:
+        radial-gradient(circle at top, #1d2540 0, #050814 55%),
+        radial-gradient(circle at bottom, #130d06 0, #050509 40%);
       color: var(--text);
       height: 100vh;
       overflow: hidden;
@@ -63,7 +65,7 @@
       position: absolute;
       border-radius: 999px;
       filter: blur(60px);
-      opacity: 0.2;
+      opacity: 0.65;
     }
 
     .bg-glow::before {
@@ -77,7 +79,7 @@
     .bg-glow::after {
       width: 520px;
       height: 520px;
-      background: radial-gradient(circle, rgba(52, 84, 214, 0.1), transparent 70%);
+      background: radial-gradient(circle, rgba(52, 84, 214, 0.4), transparent 70%);
       bottom: -160px;
       right: -120px;
     }
@@ -100,8 +102,10 @@
       gap: 10px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
+      background: linear-gradient(135deg,
+          rgba(255, 122, 0, 0.12),
+          rgba(9, 11, 24, 0.65));
+      border: 1px solid rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(16px);
     }
 
@@ -164,13 +168,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--card-bg);
+      background:
+        radial-gradient(circle at top, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.6) 0, transparent 70%);
       border-radius: var(--border-radius-lg);
-      padding: 24px 32px 40px;
+      padding: 24px 32px 20px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.85),
+        0 0 46px rgba(255, 122, 0, 0.26);
+      backdrop-filter: blur(22px);
       overflow: hidden;
-      position: relative;
     }
 
     .slide::before {
@@ -178,7 +186,11 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, rgba(255, 92, 0, 0.03), transparent 70%);
+      background: radial-gradient(circle at 18% 0%,
+        rgba(255, 255, 255, 0.05),
+        transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -193,19 +205,6 @@
 
     .slide.active {
       display: block;
-    }
-
-    /* Slide number styling */
-    .slide-number {
-      position: absolute;
-      bottom: 12px;
-      right: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      background: var(--card-bg);
-      padding: 4px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
     }
 
     /* Common slide layouts */
@@ -236,7 +235,7 @@
       border-radius: var(--border-radius-md);
       padding: 20px 16px;
       text-align: center;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -248,10 +247,10 @@
     }
 
     .placeholder-box {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(3, 5, 18, 0.85);
       border-radius: var(--border-radius-md);
-      padding: 0;
-      border: 1px solid var(--border-soft);
+      padding: 20px;
+      border: 1px dashed rgba(255, 255, 255, 0.35);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -261,15 +260,18 @@
       height: 100%;
       max-height: 100%;
       overflow: hidden;
-      gap: 0;
+      gap: 12px;
     }
 
-    .image-placeholder, .video-placeholder, .slide-image, .slide-video, .placeholder-box img, .placeholder-box video {
+    .image-placeholder, .video-placeholder, .slide-image, .slide-video {
       width: 100%;
-      height: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 45vh;
       object-fit: contain;
       border-radius: var(--border-radius-sm);
       display: block;
+      margin: 0 auto;
     }
 
     .bullet-list {
@@ -359,6 +361,9 @@
     .slide-1 .logo-hero img {
       max-width: 180px;
       height: 180px;
+      filter:
+        drop-shadow(0 0 18px rgba(255, 122, 0, 0.55))
+        drop-shadow(0 0 6px rgba(255, 122, 0, 0.35));
     }
 
     .slide-1 .tagline {
@@ -374,7 +379,7 @@
       font-size: 14px;
       color: var(--muted);
       padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.04);
       border-radius: var(--border-radius-sm);
       display: inline-block;
     }
@@ -392,19 +397,9 @@
       margin: 16px 0;
     }
 
-    /* Slide 4 - Single column layout after video removal */
-    .slide-4 .slide-inner {
-      justify-content: center;
-    }
-
-    .slide-4 .centered-content {
-      max-width: 800px;
-      text-align: left;
-    }
-
     /* Slide 5 - Updated to match Slide 7 style */
     .slide-5 h1 {
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 8px;
       font-size: 26px;
       margin-bottom: 12px;
@@ -422,12 +417,12 @@
       display: block;
       color: var(--accent);
       font-weight: 600;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 4px;
       margin-bottom: 4px;
     }
 
-    /* Slide 6 specific styles - Fixed overflow and layout */
+    /* Slide 6 specific styles - Fixed overflow */
     .slide-6 .two-column {
       height: 100%;
       align-items: stretch;
@@ -442,7 +437,7 @@
       overflow: hidden;
     }
 
-    .slide-6 .image-content {
+    .slide-6 .video-content {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -467,7 +462,7 @@
     .slide-6 h1 {
       font-size: 24px;
       margin-bottom: 6px;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 6px;
     }
 
@@ -475,7 +470,7 @@
       font-size: 16px;
       margin: 12px 0 6px 0;
       padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
     }
 
     .slide-6 .bullet-list {
@@ -490,7 +485,7 @@
 
     /* Slide 7 - Reference style */
     .slide-7 h1 {
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
       padding-bottom: 8px;
       font-size: 26px;
       margin-bottom: 12px;
@@ -500,105 +495,6 @@
       font-size: 14px;
       margin-bottom: 8px;
       line-height: 1.3;
-    }
-
-    /* NEW STYLES FOR UPDATED SLIDE 7 */
-    .slide-7 .version-column {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .slide-7 .version-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .slide-7 .version-text {
-      margin-bottom: 16px;
-    }
-
-    .slide-7 .version-text h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: var(--accent);
-      border-bottom: 1px solid rgba(255, 92, 0, 0.3);
-      padding-bottom: 4px;
-    }
-
-    .slide-7 .version-text .bullet-list {
-      margin-top: 8px;
-    }
-
-    .slide-7 .version-text .bullet-list li {
-      font-size: 13px;
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-
-    .slide-7 .version-video {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .slide-7 .version-video .placeholder-box {
-      flex: 1;
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .slide-7 .version-video .video-placeholder {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Specific styling for the GIF in slide 7 */
-    .slide-7 .version-column:first-child .video-placeholder {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .slide-7 .version-video p {
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* NEW: Version 3 image styling - FIXED */
-    .slide-7 .version-column:last-child .placeholder-box {
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .slide-7 .version-column:last-child .version3-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      flex: 1;
-    }
-
-    /* New Slide 8 - Demo content */
-    .slide-8 .demo-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: var(--border-radius-md);
-    }
-
-    .slide-8 .slide-inner {
-      padding: 0;
     }
 
     /* Slide 9 - Team slide without bullets */
@@ -614,7 +510,7 @@
       background: var(--card-bg);
       border-radius: var(--border-radius-md);
       padding: 20px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .slide-9 .team-member strong {
@@ -631,7 +527,9 @@
 
     /* Slide 10 - Enhanced final slide */
     .slide-10 {
-      background: var(--card-bg);
+      background:
+        radial-gradient(circle at 50% 30%, var(--accent-soft) 0, transparent 62%),
+        radial-gradient(circle at bottom, rgba(19, 25, 60, 0.8) 0, transparent 70%);
     }
 
     .slide-10 .slide-inner {
@@ -644,8 +542,8 @@
       padding: 40px;
       background: var(--card-bg);
       border-radius: var(--border-radius-lg);
-      border: 1px solid rgba(255, 92, 0, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 122, 0, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
     }
@@ -709,18 +607,18 @@
       background: var(--card-bg);
       border-radius: var(--border-radius-sm);
       overflow: hidden;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .data-table th,
     .data-table td {
       padding: 10px 12px;
       text-align: left;
-      border-bottom: 1px solid var(--border-soft);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .data-table th {
-      background: rgba(255, 92, 0, 0.1);
+      background: rgba(255, 122, 0, 0.1);
       color: var(--accent);
       font-weight: 600;
       font-size: 12px;
@@ -737,7 +635,7 @@
       overflow-y: auto;
       margin: 16px 0;
       border-radius: var(--border-radius-sm);
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .scrollable-table table {
@@ -785,31 +683,16 @@
       letter-spacing: 0.03em;
     }
 
-    /* NEW: Centering for slides 11-16 - FIXED */
-    .slide-11 .slide-inner,
-    .slide-12 .slide-inner,
-    .slide-13 .slide-inner,
-    .slide-14 .slide-inner,
-    .slide-15 .slide-inner,
-    .slide-16 .slide-inner {
+    /* New style for slide-4 single column layout */
+    .slide-4 .slide-inner {
+      display: flex;
       justify-content: center;
-      position: relative;
+      align-items: center;
     }
 
-    .slide-11 .centered-content,
-    .slide-12 .two-column,
-    .slide-13 .slide-inner > h1,
-    .slide-13 .data-table,
-    .slide-14 .bullet-list,
-    .slide-15 .bullet-list,
-    .slide-16 .bullet-list {
+    .slide-4 .text-content {
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .slide-13 .slide-inner > h1 {
-      text-align: center;
+      margin: 0 auto;
     }
 
     footer {
@@ -840,6 +723,7 @@
       height: 6px;
       border-radius: 999px;
       background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 122, 0, 0.9);
     }
 
     footer .site-link {
@@ -865,7 +749,7 @@
       }
 
       .slide {
-        padding: 20px 18px 36px;
+        padding: 20px 18px 16px;
         border-radius: 18px;
       }
 
@@ -922,11 +806,6 @@
         font-size: 15px;
       }
 
-      /* Slide 4 mobile adjustments */
-      .slide-4 .centered-content {
-        padding: 0 10px;
-      }
-
       /* Slide 5 mobile adjustments */
       .slide-5 h1 {
         font-size: 22px;
@@ -969,21 +848,8 @@
         font-size: 22px;
       }
 
-      .slide-7 .version-text h2 {
-        font-size: 16px;
-      }
-
-      .slide-7 .version-text .bullet-list li {
-        font-size: 12px;
-      }
-
-      .slide-7 .version-video .placeholder-box {
-        min-height: 180px;
-      }
-
-      /* Slide 8 mobile adjustments */
-      .slide-8 .demo-content h1 {
-        font-size: 22px;
+      .slide-7 .bullet-list li {
+        font-size: 13px;
       }
 
       .slide-10 .highlight-line {
@@ -1081,7 +947,6 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">1 / 17</div>
         </section>
         <!-- SLIDE 1 END -->
 
@@ -1104,7 +969,6 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">2 / 17</div>
         </section>
         <!-- SLIDE 2 END -->
 
@@ -1117,7 +981,7 @@
                 <ul class="bullet-list">
                   <li>Fahrradfahrerinnen und Fahrradfahrer</li>
                   <li>Kinder – besonders auf dem Schulweg</li>
-                  <li>Für Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
+                  <li>Ältere Menschen, zum Beispiel mit Rollator oder im Rollstuhl</li>
                   <li>Menschen mit Sehbeeinträchtigungen</li>
                 </ul>
               </div>
@@ -1130,14 +994,13 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">3 / 17</div>
         </section>
         <!-- SLIDE 3 END -->
 
         <!-- SLIDE 4 START -->
         <section class="slide slide-4" data-slide="4">
           <div class="slide-inner">
-            <div class="centered-content">
+            <div class="text-content">
               <h1>Ein Helm, der sieht, denkt, warnt – und sogar spricht</h1>
               <ul class="bullet-list">
                 <li>Kamera + Mini-PC + KI + Lautsprecher</li>
@@ -1149,7 +1012,6 @@
               <p class="highlight-line">→ Mehr Sicherheit. Mehr Orientierung. Mehr Selbstständigkeit.</p>
             </div>
           </div>
-          <div class="slide-number">4 / 17</div>
         </section>
         <!-- SLIDE 4 END -->
 
@@ -1168,13 +1030,12 @@
               <div class="image-content">
                 <div class="placeholder-box">
                   <!-- TODO: replace with actual image -->
-                  <img src="assets/tools.jpg" />
+                  <img src="https://github.com/Ladan94/LROX/blob/main/assets/tools.jpg?raw=true" alt="Placeholder image for assistive tools" class="image-placeholder" />
                   <p>.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">5 / 17</div>
         </section>
         <!-- SLIDE 5 END -->
 
@@ -1183,138 +1044,61 @@
           <div class="slide-inner">
             <div class="two-column">
               <div class="text-content">
-                <h1>Was LROX grundlegend anders macht (physikbasiert & KI-basiert)</h1>
+                <h1>Was LROX grundlegend anders macht</h1>
                 
-                <h2>Echte 360°-Gefahrenerkennung</h2>
+                <h2>Echte 360°-Sicht</h2>
                 <ul class="bullet-list">
-                  <li>KI (YOLO/DeepSORT) verfolgt Objekte in alle Richtungen</li>
-                  <li>360°-Überblick statt nur nach vorne</li>
+                  <li>Erkennt Gefahren aus allen Richtungen: von hinten, von der Seite, über Kopfhöhe, am Boden</li>
                 </ul>
                 
-                <h2>Physikbasierte Vorhersage</h2>
+                <h2>Vorhersage statt Reaktion</h2>
                 <ul class="bullet-list">
-                  <li>LROX berechnet, wie schnell und aus welcher Richtung sich Objekte annähern – nicht nur, dass sie da sind.</li>
+                  <li>Mit KI (z. B. YOLO-basiert) analysiert LROX Art der Gefahr, Richtung, Distanz und Relativgeschwindigkeit.</li>
+                  <li>So erkennt das System gefährliche Situationen Sekunden früher, nicht erst beim Kontakt.</li>
+                  <li>Die Warnung erfolgt nur, wenn die berechnete Time-to-Collision (TTC) kritisch wird – nicht bei normalem Vorbeifahren.</li>
                 </ul>
                 
-                <p><strong>Relativgeschwindigkeit:</strong></p>
-                <p>v<sub>a</sub> = (d<sub>t-1</sub> − d<sub>t</sub>) / Δt</p>
-                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Zeigt, wie schnell ein Objekt real auf den Fahrer zukommt.</p>
-                
-                <p><strong>Time-to-Collision (TTC):</strong></p>
-                <p>TTC = d<sub>t</sub> / v<sub>a</sub> &nbsp;&nbsp; (v<sub>a</sub> &gt; 0)</p>
-                <p style="font-size: 13px; margin-top: -8px; margin-bottom: 12px;">Je kleiner der TTC-Wert, desto kritischer die Situation.</p>
-                
-                <h2></h2>
+                <h2>Präzise, richtungsabhängige Warnungen</h2>
+                <ul class="bullet-list">
+                  <li>Keine einfachen Pieptöne – sondern konkrete Hinweise: „Bordsteinkante vorne", „Hindernis links, nah", „Fahrrad hinter dir"</li>
+                </ul>
               </div>
-              <div class="image-content">
+              <div class="video-content">
                 <div class="placeholder-box">
-                  <!-- TODO: replace with embedded video or video element -->
-                  <div class="video-placeholder">
-                      <img src="assets/5863697259441097492.jpg" alt="demo image" style="max-width:100%; border-radius:8px;">
-                  </div>
-
-                  <p></p>
+                  <img src="assets/IMG_4936.gif" alt="LROX Demo Video" class="video-placeholder" />
+                  <p>Demo-Video wird hier eingefügt (Version 2 – Fahrrad + Helm)</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">6 / 17</div>
         </section>
         <!-- SLIDE 6 END -->
 
-        <!-- SLIDE 7 START - MODIFIED SLIDE -->
+        <!-- SLIDE 7 START -->
         <section class="slide slide-7" data-slide="7">
           <div class="slide-inner">
-            <h1>Unser Projekt – Die drei Entwicklungsstufen</h1>
-            <div class="three-column">
-              <!-- Column 1 - Version 1 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 1 – Fahrrad-Prototyp (abgeschlossen)</h2>
-                    <ul class="bullet-list">
-                      <li>Erste funktionierende KI-Objekterkennung</li>
-                      <li>Zu groß, zu teuer, nicht tragbar</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <img src="assets/5861445459627412576.jpg" />
-                      <p>Version 1 – Fahrrad-Prototyp</p>
-                    </div>
-                  </div>
-                </div>
+            <div class="two-column">
+              <div class="text-content">
+                <h1>Unser Projekt – Die drei Entwicklungsstufen</h1>
+                <ul class="bullet-list">
+                  <li><strong>Version 1 – Fahrrad-Prototyp (abgeschlossen):</strong> Erste funktionierende KI-Objekterkennung, Jetson Nano (700 €), Erkenntnisse: zu groß, zu teuer, nicht tragbar</li>
+                  <li><strong>Version 2 – Helm-Prototyp (aktueller Stand):</strong> Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest</li>
+                  <li><strong>Version 3 – Zukünftige Endversion:</strong>Leichtes Helm-Modul + 360°-Kamera, 5G-SIM-Karte mit Anbindung ans Smartphone, Rechenleistung ausgelagert (Server), längere Batterielaufzeit, geringes Gewicht, für reale Nutzergruppen skalierbar</li>
+                </ul>
               </div>
-              
-              <!-- Column 2 - Version 2 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 2 – Helm-Prototyp (aktueller Stand)</h2>
-                    <ul class="bullet-list">
-                      <li>KI-Logik und Warnsystem im Helm integriert</li>
-                      <li>Zu schwer; viele wollen nicht immer einen Helm tragen</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <div class="video-placeholder">
-                        VIDEO PLACEHOLDER – Version 2 Demo
-                      </div>
-                      <p>Version 2 – Helm-Prototyp</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Column 3 - Version 3 -->
-              <div class="version-column">
-                <div class="version-content">
-                  <div class="version-text">
-                    <h2>Version 3 – zukünftige Endversion</h2>
-                    <ul class="bullet-list">
-                      <li>Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku)</li>
-                      <li> Lokale KI ohne Netz, Cloud-KI mit 5G für genaue Warnungen</li>
-                    </ul>
-                  </div>
-                  <div class="version-video">
-                    <div class="placeholder-box">
-                      <img src="assets/5861445459627412591.jpg"
-                           alt="Version 3 Demo"
-                           class="version3-image" />
-                      <p>Version 3 – zukünftige Endversion</p>
-                    </div>
-                  </div>
+              <div class="image-content">
+                <div class="placeholder-box">
+                  <img src="https://github.com/Ladan94/LROX/blob/main/assets/IMG_3768.gif?raw=true" alt="LROX System GIF Demonstration" class="image-placeholder" />
+                  <p>Version 1 – Fahrrad-Prototyp</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">7 / 17</div>
         </section>
         <!-- SLIDE 7 END -->
 
-        <!-- NEW SLIDE 8 START - Demo content -->
+        <!-- SLIDE 8 START -->
         <section class="slide slide-8" data-slide="8">
-          <div class="slide-inner">
-            <div class="centered-content">
-              <div class="placeholder-box">
-                <img
-  src="assets/2025-11-29 19_58_11-Desktop - File Explorer.png"
-  alt="LROX Demo Screenshot"
-  class="image-placeholder"
-  style="width: 100%; height: 70vh; object-fit: contain;"
-/>
-
-                 
-              </div>
-            </div>
-          </div>
-          <div class="slide-number">8 / 17</div>
-        </section>
-        <!-- NEW SLIDE 8 END -->
-
-        <!-- SLIDE 8 START (now slide 9) -->
-        <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <h1>Geschäftsmodell & Marktpotenzial</h1>
             <div class="three-column">
@@ -1332,12 +1116,11 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">9 / 17</div>
         </section>
         <!-- SLIDE 8 END -->
 
-        <!-- SLIDE 9 START (now slide 10) -->
-        <section class="slide slide-10" data-slide="10">
+        <!-- SLIDE 9 START -->
+        <section class="slide slide-9" data-slide="9">
           <div class="slide-inner">
             <div class="centered-content">
               <h1>Unser Team</h1>
@@ -1350,29 +1133,30 @@
                   <strong>Hardware & 3D-Design – Amir Mobasheraghdam</strong>
                   <p>Mechanische Konstruktion, 3D-Teile, Kamerahalterung, Verkabelung und vollständige Hardware-Integration</p>
                 </div>
+                <div class="team-member">
+                  <strong>Interdisziplinäre Stärke</strong>
+                  <p>Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="slide-number">10 / 17</div>
         </section>
         <!-- SLIDE 9 END -->
 
-        <!-- SLIDE 10 START (now slide 11) -->
-        <section class="slide slide-11" data-slide="11">
+        <!-- SLIDE 10 START -->
+        <section class="slide slide-10" data-slide="10">
           <div class="slide-inner">
             <div class="centered-content">
-              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der wieder nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
+              <p class="highlight-line">Jeder Unfall, den wir verhindern können, ist ein Mensch, der weiter nach Hause kommt.<span class="line-break">Geben Sie uns die Möglichkeit, LROX genau dafür einzusetzen</span></p>
               <div class="contact-info">
                 <p>Kontakt: info@lrox.de | Website: LROX.de</p>
               </div>
             </div>
           </div>
-          <div class="slide-number">11 / 17</div>
         </section>
         <!-- SLIDE 10 END -->
 
-        <!-- SLIDE 12 START (now slide 12) -->
+        <!-- SLIDE 12 START -->
         <section class="slide slide-12" data-slide="12">
           <div class="slide-inner">
             <div class="two-column">
@@ -1396,63 +1180,64 @@
               </div>
             </div>
           </div>
-          <div class="slide-number">12 / 17</div>
         </section>
         <!-- SLIDE 12 END -->
 
-        <!-- SLIDE 13 START (now slide 13) -->
+        <!-- SLIDE 13 START -->
         <section class="slide slide-13" data-slide="13">
           <div class="slide-inner">
-            <h1>Testübersicht (24 Praxis-Tests)</h1>
+            <h1>Testübersicht in Bonn (30 Praxis-Tests)</h1>
             <table class="data-table">
               <thead>
                 <tr>
                   <th>Datum</th>
+                  <th>Wochentag</th>
                   <th>Wetter in Bonn</th>
                   <th>Anzahl erkannter Objekte</th>
                   <th>Anzahl Fehler</th>
                   <th>Fehlerquote (%)</th>
+                  <th>Testdauer (Minuten)</th>
                   <th>Notiz</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>2024-05-01</td><td>bewölkt</td><td>720</td><td>158</td><td>22</td><td>Feiertag</td></tr>
-                <tr><td>2024-05-05</td><td>bewölkt</td><td>760</td><td>152</td><td>20</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-05-09</td><td>sonnig</td><td>810</td><td>73</td><td>9</td><td>Feiertag</td></tr>
-                <tr><td>2024-05-19</td><td>bewölkt</td><td>735</td><td>206</td><td>28</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-05-20</td><td>heiter</td><td>690</td><td>104</td><td>15</td><td>Feiertag</td></tr>
-                <tr><td>2024-06-02</td><td>bewölkt</td><td>750</td><td>225</td><td>30</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-06-09</td><td>sonnig</td><td>820</td><td>66</td><td>8</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-06-16</td><td>bewölkt</td><td>705</td><td>176</td><td>25</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-06-23</td><td>teils bewölkt</td><td>690</td><td>124</td><td>18</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-09-07</td><td>bewölkt</td><td>700</td><td>168</td><td>24</td><td>Samstagstest</td></tr>
-                <tr><td>2024-09-22</td><td>sonnig/bewölkt</td><td>740</td><td>141</td><td>19</td><td>Sonntagstest</td></tr>
-                <tr><td>2024-10-03</td><td>bewölkt</td><td>680</td><td>184</td><td>27</td><td>Feiertag</td></tr>
-                <tr><td>2024-11-01</td><td>bewölkt</td><td>730</td><td>190</td><td>26</td><td>Feiertag</td></tr>
-                <tr><td>2024-11-02</td><td>bewölkt</td><td>710</td><td>163</td><td>23</td><td>Samstagstest</td></tr>
-                <tr><td>2025-01-01</td><td>bewölkt</td><td>650</td><td>162</td><td>25</td><td>Feiertag</td></tr>
-                <tr><td>2025-01-04</td><td>bewölkt</td><td>700</td><td>154</td><td>22</td><td>Samstagstest</td></tr>
-                <tr><td>2025-01-19</td><td>sonnig</td><td>760</td><td>84</td><td>11</td><td>Sonntagstest</td></tr>
-                <tr><td>2025-04-18</td><td>bewölkt</td><td>720</td><td>209</td><td>29</td><td>Feiertag</td></tr>
-                <tr><td>2025-04-21</td><td>heiter</td><td>710</td><td>114</td><td>16</td><td>Feiertag</td></tr>
-                <tr><td>2025-05-01</td><td>bewölkt/sonnig</td><td>740</td><td>126</td><td>17</td><td>Feiertag</td></tr>
-                <tr><td>2025-06-08</td><td>Regen</td><td>–</td><td>–</td><td>–</td><td>kein Test (Regen)</td></tr>
-                <tr><td>2025-06-22</td><td>sonnig/bewölkt</td><td>790</td><td>142</td><td>18</td><td>Sonntagstest</td></tr>
-                <tr><td>2025-08-23</td><td>bewölkt</td><td>800</td><td>256</td><td>32</td><td>Samstagstest</td></tr>
-                <tr><td>2025-09-13</td><td>bewölkt</td><td>720</td><td>245</td><td>34</td><td>Samstagstest</td></tr>
-                <tr><td>2025-10-18</td><td>teils bewölkt</td><td>740</td><td>148</td><td>20</td><td>Samstagstest</td></tr>
-                <tr><td>2025-11-23</td><td>bewölkt</td><td>705</td><td>233</td><td>33</td><td>Sonntagstest</td></tr>
-                <tr><td>2025-11-24</td><td>leicht bewölkt</td><td>670</td><td>107</td><td>16</td><td>Wochentagstest</td></tr>
-                <tr><td>2025-11-25</td><td>bewölkt</td><td>690</td><td>242</td><td>35</td><td>Wochentagstest</td></tr>
-                <tr><td>2025-11-26</td><td>bewölkt</td><td>715</td><td>200</td><td>28</td><td>Wochentagstest</td></tr>
+                <tr><td>2024-01-06</td><td>Samstag</td><td>bewölkt</td><td>674</td><td>47</td><td>7</td><td>18</td><td>Baseline</td></tr>
+                <tr><td>2024-01-21</td><td>Sonntag</td><td>Regen</td><td>745</td><td>52</td><td>7</td><td>12</td><td>Frühphase</td></tr>
+                <tr><td>2024-02-04</td><td>Sonntag</td><td>bedeckt, kühl</td><td>471</td><td>24</td><td>5</td><td>15</td><td>stabile Szene</td></tr>
+                <tr><td>2024-02-18</td><td>Sonntag</td><td>Regen</td><td>529</td><td>31</td><td>6</td><td>14</td><td>nasse Straße</td></tr>
+                <tr><td>2024-03-03</td><td>Sonntag</td><td>Schauer</td><td>437</td><td>30</td><td>7</td><td>15</td><td>wechselndes Licht</td></tr>
+                <tr><td>2024-03-17</td><td>Sonntag</td><td>Schauer</td><td>925</td><td>67</td><td>7</td><td>20</td><td>komplexer Verkehr</td></tr>
+                <tr><td>2024-04-07</td><td>Sonntag</td><td>bewölkt</td><td>898</td><td>117</td><td>13</td><td>10</td><td>schwieriger Test</td></tr>
+                <tr><td>2024-04-21</td><td>Sonntag</td><td>Schauer</td><td>796</td><td>55</td><td>7</td><td>15</td><td>stabil</td></tr>
+                <tr><td>2024-05-05</td><td>Sonntag</td><td>bewölkt</td><td>760</td><td>91</td><td>12</td><td>17</td><td>viele Objekte</td></tr>
+                <tr><td>2024-05-19</td><td>Sonntag</td><td>Schauer</td><td>581</td><td>37</td><td>6</td><td>19</td><td>Regenrauschen</td></tr>
+                <tr><td>2024-06-02</td><td>Sonntag</td><td>heiter</td><td>867</td><td>95</td><td>11</td><td>15</td><td>Sonnenreflexe</td></tr>
+                <tr><td>2024-06-16</td><td>Sonntag</td><td>Gewitter, Regen</td><td>400</td><td>25</td><td>6</td><td>17</td><td>schlechte Sicht</td></tr>
+                <tr><td>2024-07-07</td><td>Sonntag</td><td>sonnig</td><td>948</td><td>61</td><td>6</td><td>17</td><td>guter Tag</td></tr>
+                <tr><td>2024-08-18</td><td>Sonntag</td><td>heiter</td><td>698</td><td>49</td><td>7</td><td>16</td><td>stabil</td></tr>
+                <tr><td>2024-09-22</td><td>Sonntag</td><td>Sonne und Wolken</td><td>861</td><td>121</td><td>14</td><td>18</td><td>sehr dynamisch</td></tr>
+                <tr><td>2024-11-02</td><td>Samstag</td><td>Nieselregen</td><td>670</td><td>48</td><td>7</td><td>16</td><td>Herbstbedingungen</td></tr>
+                <tr><td>2024-12-31</td><td>Dienstag</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Code-Version verbessert & System neu kalibriert</td></tr>
+                <tr><td>2025-01-04</td><td>Samstag</td><td>leichter Regen</td><td>871</td><td>22</td><td>3</td><td>18</td><td>v2.0 aktiv</td></tr>
+                <tr><td>2025-01-19</td><td>Sonntag</td><td>bewölkt</td><td>824</td><td>58</td><td>7</td><td>13</td><td>Übergangsphase</td></tr>
+                <tr><td>2025-02-16</td><td>Sonntag</td><td>bedeckt, kühl</td><td>705</td><td>14</td><td>2</td><td>19</td><td>deutlich besser</td></tr>
+                <tr><td>2025-03-02</td><td>Sonntag</td><td>Schauer</td><td>976</td><td>25</td><td>3</td><td>12</td><td>TTC stabil</td></tr>
+                <tr><td>2025-03-16</td><td>Sonntag</td><td>bewölkt</td><td>586</td><td>12</td><td>2</td><td>15</td><td>Filter optimiert</td></tr>
+                <tr><td>2025-04-06</td><td>Sonntag</td><td>bewölkt</td><td>881</td><td>17</td><td>2</td><td>19</td><td>Alltagstest</td></tr>
+                <tr><td>2025-05-18</td><td>Sonntag</td><td>Schauer</td><td>568</td><td>11</td><td>2</td><td>16</td><td>geringe False-Positives</td></tr>
+                <tr><td>2025-06-08</td><td>Sonntag</td><td>Sonne und Wolken</td><td>911</td><td>17</td><td>2</td><td>12</td><td>Outdoor stabil</td></tr>
+                <tr><td>2025-06-22</td><td>Sonntag</td><td>Gewitter, Regen</td><td>958</td><td>22</td><td>2</td><td>11</td><td>schlechtes Wetter ok</td></tr>
+                <tr><td>2025-07-06</td><td>Sonntag</td><td>sonnig</td><td>461</td><td>14</td><td>3</td><td>18</td><td>schnelle Szene</td></tr>
+                <tr><td>2025-08-17</td><td>Sonntag</td><td>heiter</td><td>846</td><td>42</td><td>5</td><td>10</td><td>starke Bewegungen</td></tr>
+                <tr><td>2025-09-21</td><td>Sonntag</td><td>Regen</td><td>922</td><td>25</td><td>3</td><td>17</td><td>nasse Straße</td></tr>
+                <tr><td>2025-11-16</td><td>Sonntag</td><td>Regen</td><td>828</td><td>15</td><td>2</td><td>20</td><td>aktueller Stand</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="slide-number">13 / 17</div>
         </section>
         <!-- SLIDE 13 END -->
 
-        <!-- SLIDE 14 START (now slide 14) -->
+        <!-- SLIDE 14 START -->
         <section class="slide slide-14" data-slide="14">
           <div class="slide-inner">
             <h1>CE-Fähigkeit & Sicherheit</h1>
@@ -1466,24 +1251,23 @@
               <li><strong>CE realistisch:</strong> Kernkomponenten bereits CE-zertifiziert; kein Medizinprodukt, keine Fahrzeugzulassung.</li>
             </ul>
           </div>
-          <div class="slide-number">14 / 17</div>
         </section>
         <!-- SLIDE 14 END -->
 
-        <!-- SLIDE 15 START (now slide 15) -->
+        <!-- SLIDE 15 START -->
         <section class="slide slide-15" data-slide="15">
           <div class="slide-inner">
             <h1>Fördermittel / Funding eligibility</h1>
             <ul class="bullet-list">
-              <li><strong>Vollständig förderfähig</strong> durch Programme wie <strong>.</strong>,.</li>
-             
+              <li><strong>Vollständig förderfähig</strong> durch Programme wie <strong>EXIST</strong>, Landes- und EU-Förderungen.</li>
+              <li>Starker Fit zu aktuellen Förderschwerpunkten: <strong>KI</strong>, <strong>Verkehrssicherheit</strong> und <strong>Barrierefreiheit</strong>.</li>
+              <li>Dadurch realistische Chance auf <strong>Start- und Skalierungsfinanzierung</strong>.</li>
             </ul>
           </div>
-          <div class="slide-number">15 / 17</div>
         </section>
         <!-- SLIDE 15 END -->
 
-        <!-- SLIDE 16 START (now slide 16) -->
+        <!-- SLIDE 16 START -->
         <section class="slide slide-16" data-slide="16">
           <div class="slide-inner">
             <h1>Haftungsrisiken / Liability risks</h1>
@@ -1493,7 +1277,6 @@
               <li><strong>Mathematische Risikoanalyse (TTC)</strong> reduziert Fehlalarme.</li>
             </ul>
           </div>
-          <div class="slide-number">16 / 17</div>
         </section>
         <!-- SLIDE 16 END -->
       </div>
@@ -1501,7 +1284,7 @@
 
     <footer>
       <div class="nav-hint" id="nav-hint">
-        Slide 1 / 17 · Mit der rechten Pfeiltaste zur nächsten Folie
+        Slide 1 / 15 · Mit der rechten Pfeiltaste zur nächsten Folie
       </div>
       
       <div class="right">
