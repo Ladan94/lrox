@@ -647,6 +647,7 @@
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            background: #000;
         }
         
         .video-wrapper iframe {
@@ -714,13 +715,26 @@
         
         .member-photo {
             width: 100%;
-            height: 250px;
+            height: 400px;
             object-fit: cover;
+            object-position: center top;
             transition: transform 0.5s;
         }
         
         .member-card:hover .member-photo {
             transform: scale(1.05);
+        }
+        
+        .award-photo {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            object-position: center 30%;
+            transition: transform 0.5s;
+        }
+        
+        .member-card:hover .award-photo {
+            transform: scale(1.03);
         }
         
         .member-info {
@@ -744,6 +758,22 @@
         .member-info p {
             color: var(--text-muted);
             margin-bottom: 15px;
+        }
+        
+        .member-award-link {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        
+        .member-award-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .member-award-link a:hover {
+            text-decoration: underline;
         }
         
         .member-social {
@@ -1030,6 +1060,14 @@
             .solution-visual {
                 order: -1;
             }
+            
+            .member-photo {
+                height: 350px;
+            }
+            
+            .award-photo {
+                height: 320px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1114,6 +1152,14 @@
             .cta-content p {
                 font-size: 1rem;
             }
+            
+            .member-photo {
+                height: 300px;
+            }
+            
+            .award-photo {
+                height: 280px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1147,6 +1193,14 @@
             .cta-content h3 {
                 font-size: 1.6rem;
             }
+            
+            .member-photo {
+                height: 260px;
+            }
+            
+            .award-photo {
+                height: 240px;
+            }
         }
     </style>
 </head>
@@ -1173,7 +1227,7 @@
                     <li><a href="#business" data-key="nav.business">Geschäftsmodell</a></li>
                     <li><a href="#team" data-key="nav.team">Team</a></li>
                     <li><a href="#faq" data-key="nav.faq">FAQ</a></li>
-                    <li><a href="#contact" data-key="nav.contact">Kontakt</a></li>
+                    <li><a href="https://lrox.de/main/Impressum.html" data-key="nav.contact">Impressum</a></li>
                 </ul>
                 
                 <div class="nav-utils">
@@ -1219,7 +1273,7 @@
                 <a href="https://lrox.de/demo.html" class="btn btn-demo" data-key="hero.demoBtn">Demo-Version ansehen</a>
                 <a href="https://lrox.de/presentation.html" class="btn btn-pitch" data-key="hero.pitchBtn">Pitch-Deck ansehen</a>
                 <a href="#demo" class="btn" data-key="hero.videoBtn">Demo-Video ansehen</a>
-                <a href="#contact" class="btn btn-outline" data-key="hero.contactBtn">Kontakt aufnehmen</a>
+                <a href="#faq" class="btn btn-outline" data-key="hero.contactBtn">Kontakt aufnehmen</a>
             </div>
         </div>
     </section>
@@ -1470,13 +1524,13 @@
             
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/8jOE7y8nCiI" title="LROX SmartBike Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/yUz0BnASDw4" title="LROX SmartBike Demo – Real Horizontal Test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             
             <div class="video-container">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/auivtCOWpOg" title="LROX Smart Helmet Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/aFr5vlp87aA" title="LROX Smart Helmet Demo – Data Protection Respected" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             
@@ -1546,7 +1600,7 @@
             
             <div class="team-members">
                 <div class="member-card">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/Ai%20bike%20Amir1%20(8).png" alt="Amir Mobasheraghdam" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Amir2.jpg" alt="Amir Mobasheraghdam" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">Amir Mobasheraghdam</h3>
                         <div class="member-role" data-key="team.amir.role">Mechanical Engineer</div>
@@ -1560,7 +1614,7 @@
                 </div>
                 
                 <div class="member-card">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/6030742101085505296.jpg" alt="Ladan Seddighi" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/lada2.jpg" alt="Ladan Seddighi" class="member-photo" loading="lazy">
                     <div class="member-info">
                         <h3 class="member-name">Ladan Seddighi</h3>
                         <div class="member-role" data-key="team.ladan.role">AI / Machine Learning</div>
@@ -1574,11 +1628,12 @@
                 </div>
                 
                 <div class="member-card">
-                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Ai%20bike%20Amir1%20(4).png" alt="Team" class="member-photo" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/Amirladalamp.jpg" alt="Team LROX – Preisträger Ideenwettbewerb" class="award-photo" loading="lazy">
                     <div class="member-info">
-                        <h3 class="member-name" data-key="team.interdisciplinary.title">Interdisziplinäre Stärke</h3>
-                        <div class="member-role" data-key="team.interdisciplinary.role">Kombinierte Expertise</div>
-                        <p data-key="team.interdisciplinary.description">Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind</p>
+                        <h3 class="member-name" data-key="team.award.title">Ausgezeichnetes Team</h3>
+                        <div class="member-role" data-key="team.award.role">Preisträger Ideenwettbewerb Universität Bonn 2025</div>
+                        <p data-key="team.award.description">LROX wurde beim Ideenwettbewerb 2025 des Transfer Centers enaCom der Universität Bonn ausgezeichnet (Preisgeld: 100 €).</p>
+                        <div class="member-award-link" data-key="team.award.link">Mehr Infos: <a href="https://www.uni-bonn.de/en/research-and-teaching/transfer/transfer-center-enacom/events/ideas-competition-at-the-university-of-bonn-2025" target="_blank" rel="noopener">Ideenwettbewerb der Universität Bonn 2025</a></div>
                     </div>
                 </div>
             </div>
@@ -1646,102 +1701,6 @@
         </div>
     </section>
     
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-key="contact.title">Kontakt</h2>
-                <p data-key="contact.subtitle">Nehmen Sie Kontakt mit uns auf für mehr Informationen</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3 data-key="contact.info.title">Kontaktinformationen</h3>
-                        <ul>
-                            <li>
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:info@lrox.de">info@lrox.de</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Lohmar, Deutschland</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-globe"></i>
-                                <a href="https://lrox.de">www.lrox.de</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3 data-key="contact.social.title">Soziale Medien</h3>
-                        <div class="social-links">
-                            <a href="https://github.com/Ladan94/LROX" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" data-key="contact.form.name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" data-key="contact.form.email">E-Mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" data-key="contact.form.message">Nachricht</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn" data-key="contact.form.submit">Nachricht senden</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section section-alt" id="impressum">
-        <div class="container">
-            <div class="section-title">
-                <h2>Impressum</h2>
-                <p>Angaben gemäß § 5 DDG</p>
-            </div>
-
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>Verantwortlich</h3>
-                        <p>
-                            Ladan Seddighi<br>
-                            Altelohmarer st 11<br>
-                            Lohmar, Deutschland
-                        </p>
-                        <p>Telefon: 0177-394-5542</p>
-                        <p>E-Mail: <a href="mailto:info@lrox.de">info@lrox.de</a></p>
-                        <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Ladan Seddighi.</p>
-                    </div>
-
-                    <div class="contact-card">
-                        <h3>Hinweis zur Nutzung</h3>
-                        <p>
-                            Dies ist eine rein private, nicht-kommerzielle Website. Es ist kein Unternehmen registriert,
-                            es werden über diese Website keine Einnahmen erzielt und sie dient ausschließlich der Darstellung
-                            persönlicher Arbeiten, Prototypen und Projekte.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1762,6 +1721,7 @@
                         <li><a href="#solution" data-key="nav.solution">Lösung</a></li>
                         <li><a href="#features" data-key="nav.features">Vorteile</a></li>
                         <li><a href="#demo" data-key="nav.demo">Demo</a></li>
+                        <li><a href="https://www.uni-bonn.de/en/research-and-teaching/transfer/transfer-center-enacom/events/ideas-competition-at-the-university-of-bonn-2025" target="_blank" rel="noopener" data-key="footer.ideenwettbewerb">Ideenwettbewerb Universität Bonn 2025 – Preisträger</a></li>
                     </ul>
                 </div>
                 
@@ -1774,15 +1734,6 @@
                         <li><a href="#faq" data-key="nav.faq">FAQ</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3 data-key="footer.contact.title">Kontakt</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i><a href="mailto:amirmobash@gmail.com">amirmobash@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i><span>Bonn, Deutschland</span></li>
-                        <li><i class="fas fa-globe"></i><a href="https://lrox.de">www.lrox.de</a></li>
-                    </ul>
-                </div>
             </div>
             
             <div class="footer-bottom">
@@ -1790,7 +1741,7 @@
                     &copy; 2024 LROX.
                     <span data-key="footer.rights">Alle Rechte vorbehalten.</span>
                     &nbsp;|&nbsp;
-                    <a href="#impressum" style="color:#fff;text-decoration:underline;">Impressum</a>
+                    <a href="https://lrox.de/main/Impressum.html" style="color:#fff;text-decoration:underline;">Impressum</a>
                 </p>
             </div>
         </div>
@@ -1811,7 +1762,7 @@
                 'nav.business': 'Geschäftsmodell',
                 'nav.team': 'Team',
                 'nav.faq': 'FAQ',
-                'nav.contact': 'Kontakt',
+                'nav.contact': 'Impressum',
                 'nav.pitch': 'Pitch-Deck ansehen',
                 'nav.demoBtn': 'Demo-Version ansehen',
                 
@@ -1846,7 +1797,7 @@
                 
                 'solution.title': 'Die LROX-Lösung',
                 'solution.subtitle': 'Ein Helm, der sieht, denkt, warnt – und sogar spricht',
-                'solution.heading': 'Wie LROX funktioniert',
+                'solution.heading': 'Wie LROX funktiniert',
                 'solution.text': 'Unser intelligentes Sicherheitssystem kombiniert modernste Technologien für umfassenden Schutz:',
                 'solution.camera': 'Kamera + Nano-Computer + KI',
                 'solution.detection': 'Erkennt Fahrzeuge, Hindernisse & Umgebung in Echtzeit',
@@ -1903,9 +1854,10 @@
                 'team.amir.description': 'Mechanische Konstruktion, Hardware-Integration, 3D-Strukturen und physikalische Komponenten für robuste und tragbare Systeme',
                 'team.ladan.role': 'AI / Machine Learning',
                 'team.ladan.description': 'KI-Modelle, Objekterkennung, Softwarelogik und Algorithmen für präzise Echtzeit-Erkennung und Warnsysteme',
-                'team.interdisciplinary.title': 'Interdisziplinäre Stärke',
-                'team.interdisciplinary.role': 'Kombinierte Expertise',
-                'team.interdisciplinary.description': 'Wir verbinden KI, Elektronik, Mechanik → genau die Kompetenzen, die für ein Produkt wie LROX nötig sind',
+                'team.award.title': 'Ausgezeichnetes Team',
+                'team.award.role': 'Preisträger Ideenwettbewerb Universität Bonn 2025',
+                'team.award.description': 'LROX wurde beim Ideenwettbewerb 2025 des Transfer Centers enaCom der Universität Bonn ausgezeichnet (Preisgeld: 100 €).',
+                'team.award.link': 'Mehr Infos: <a href="https://www.uni-bonn.de/en/research-and-teaching/transfer/transfer-center-enacom/events/ideas-competition-at-the-university-of-bonn-2025" target="_blank" rel="noopener">Ideenwettbewerb der Universität Bonn 2025</a>',
                 
                 'faq.title': 'Häufige Fragen',
                 'faq.subtitle': 'Antworten auf die wichtigsten Fragen zu LROX',
@@ -1918,22 +1870,13 @@
                 'faq.q4': 'Ist der Smart Helmet mit allen Fahrradhelmen kompatibel?',
                 'faq.a4': 'Unser Smart Helmet ist ein komplettes System. Für bestehende Helme bieten wir ein Nachrüstkit an.',
                 'faq.q5': 'Gibt es rechtliche Anforderungen für die Straßenzulassung?',
-                'faq.a5': 'Das System ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. Es entspricht den relevanten EU-Richtlinien.',
-                
-                'contact.title': 'Kontakt',
-                'contact.subtitle': 'Nehmen Sie Kontakt mit uns auf für mehr Informationen',
-                'contact.info.title': 'Kontaktinformationen',
-                'contact.social.title': 'Soziale Medien',
-                'contact.form.name': 'Name',
-                'contact.form.email': 'E-Mail',
-                'contact.form.message': 'Nachricht',
-                'contact.form.submit': 'Nachricht senden',
+                'faq.a5': 'Das System ist als Assistenzsystem konzipiert und ersetzt nicht die Aufmerksamkeit des Nutzers. It entspricht den relevanten EU-Richtlinien.',
                 
                 'footer.description': 'Ein KI-gestütztes Sicherheitssystem für Fahrradfahrer und besonders gefährdete Verkehrsteilnehmer, entwickelt in Bonn, Deutschland.',
                 'footer.links.title': 'Schnelllinks',
                 'footer.technology.title': 'Technologie',
-                'footer.contact.title': 'Kontakt',
-                'footer.rights': 'Alle Rechte vorbehalten.'
+                'footer.rights': 'Alle Rechte vorbehalten.',
+                'footer.ideenwettbewerb': 'Ideenwettbewerb Universität Bonn 2025 – Preisträger'
             },
             en: {
                 'nav.home': 'Home',
@@ -1946,7 +1889,7 @@
                 'nav.business': 'Business Model',
                 'nav.team': 'Team',
                 'nav.faq': 'FAQ',
-                'nav.contact': 'Contact',
+                'nav.contact': 'Imprint',
                 'nav.pitch': 'View pitch deck',
                 'nav.demoBtn': 'View Demo Version',
                 
@@ -2038,9 +1981,10 @@
                 'team.amir.description': 'Mechanical design, hardware integration, 3D structures and physical components for robust and wearable systems',
                 'team.ladan.role': 'AI / Machine Learning',
                 'team.ladan.description': 'AI models, object detection, software logic and algorithms for precise real-time recognition and warning systems',
-                'team.interdisciplinary.title': 'Interdisciplinary Strength',
-                'team.interdisciplinary.role': 'Combined Expertise',
-                'team.interdisciplinary.description': 'We combine AI, electronics, mechanics → exactly the competencies needed for a product like LROX',
+                'team.award.title': 'Award-winning Team',
+                'team.award.role': 'Winners of the University of Bonn Ideas Competition 2025',
+                'team.award.description': 'LROX was awarded at the 2025 Ideas Competition of the University of Bonn’s transfer center enaCom (prize: €100).',
+                'team.award.link': 'More info: <a href="https://www.uni-bonn.de/en/research-and-teaching/transfer/transfer-center-enacom/events/ideas-competition-at-the-university-of-bonn-2025" target="_blank" rel="noopener">Ideas Competition at the University of Bonn 2025</a>',
                 
                 'faq.title': 'Frequently Asked Questions',
                 'faq.subtitle': 'Answers to the most important questions about LROX',
@@ -2055,20 +1999,11 @@
                 'faq.q5': 'Are there legal requirements for road approval?',
                 'faq.a5': 'The system is designed as an assistance system and does not replace user attention. It complies with relevant EU directives.',
                 
-                'contact.title': 'Contact',
-                'contact.subtitle': 'Contact us for more information',
-                'contact.info.title': 'Contact Information',
-                'contact.social.title': 'Social Media',
-                'contact.form.name': 'Name',
-                'contact.form.email': 'Email',
-                'contact.form.message': 'Message',
-                'contact.form.submit': 'Send Message',
-                
                 'footer.description': 'An AI-powered safety system for cyclists and particularly vulnerable road users, developed in Bonn, Germany.',
                 'footer.links.title': 'Quick Links',
                 'footer.technology.title': 'Technology',
-                'footer.contact.title': 'Contact',
-                'footer.rights': 'All rights reserved.'
+                'footer.rights': 'All rights reserved.',
+                'footer.ideenwettbewerb': 'University of Bonn Ideas Competition 2025 – Winners'
             }
         };
 
@@ -2120,7 +2055,7 @@
                     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                         element.placeholder = translations[currentLang][key];
                     } else {
-                        element.textContent = translations[currentLang][key];
+                        element.innerHTML = translations[currentLang][key];
                     }
                 }
             });
@@ -2133,21 +2068,6 @@
                 demoButton.textContent = currentLang === 'de' ? 'Demo-Version ansehen' : 'View Demo Version';
             }
         }
-        
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                alert(currentLang === 'de' ? 'Nachricht gesendet! Wir melden uns bald bei Ihnen.' : 'Message sent! We will get back to you soon.');
-                document.getElementById('contactForm').reset();
-            } else {
-                alert(currentLang === 'de' ? 'Bitte füllen Sie alle Felder aus.' : 'Please fill in all fields.');
-            }
-        });
         
         const observerOptions = {
             threshold: 0.1,
