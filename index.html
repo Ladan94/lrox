@@ -614,20 +614,24 @@
         
         .stage-gallery {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
             justify-content: center;
             margin-top: 20px;
+            width: 100%;
         }
         
         .stage-gallery img {
             width: 100%;
-            max-width: 120px;
-            height: 80px;
+            max-width: 340px;
+            height: 240px;
             object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
             transition: transform 0.3s;
+            display: block;
+        }
+        
+        .stage-gallery img.hidden-image {
+            display: none;
         }
         
         .stage-gallery img:hover {
@@ -1126,6 +1130,11 @@
                 min-height: auto;
             }
             
+            .stage-gallery img {
+                max-width: 100%;
+                height: 220px;
+            }
+            
             .team-members {
                 grid-template-columns: 1fr;
             }
@@ -1180,14 +1189,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .stage-gallery {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .stage-gallery img {
-                max-width: 100%;
-                height: 100px;
+                height: 200px;
             }
             
             .cta-content h3 {
@@ -1487,9 +1490,10 @@
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3 data-key="stages.v3.title">Version 3 – Zukünftige Endversion</h3>
-                    <p data-key="stages.v3.text">Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku) Lokale KI ohne Internet; Cloud-KI über 5G für präzisere Warnungen</p>
+                    <p data-key="stages.v3.text">Leichtes Helm-Modul mit GoPro-Style-Schnellmontage, Raspberry Pi 5 (8GB), interner Akku, Dual-Fisheye-360°-Kamera, 5G-Modul, GPS und Wärmemanagement. Hybrid-Edge-Cloud-Verarbeitung für maximale Leistung und Zuverlässigkeit.</p>
                     <div class="stage-gallery">
-                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver3%20nur%20box%20.png" alt="LROX Version 3 Modul" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver3%20%2B%20helm%20.png" alt="LROX Version 3 mit Helm" loading="lazy">
+                        <img src="https://raw.githubusercontent.com/Ladan94/lrox/refs/heads/main/main/ver3%20nur%20box%20.png" alt="LROX Version 3 Modul" class="hidden-image" loading="lazy">
                     </div>
                     <div class="source-note" data-key="stages.v3.status">In Planung</div>
                 </div>
@@ -1829,7 +1833,7 @@
                 'stages.v2.text': 'Komplett neu konstruiert (KI-Logik und Warnsystem, 3D-Design, Mechanik, Verkabelung), Funktioniert – aber noch schwer, kurze Akkulaufzeit, nicht wetterfest',
                 'stages.v2.status': 'Aktueller Stand',
                 'stages.v3.title': 'Version 3 – Zukünftige Endversion',
-                'stages.v3.text': 'Leichtes 360°-Sicherheitsmodul (Kamera + 5G + GPS + Akku) Lokale KI ohne Internet; Cloud-KI über 5G für präzisere Warnungen',
+                'stages.v3.text': 'Leichtes Helm-Modul mit GoPro-Style-Schnellmontage, Raspberry Pi 5 (8GB), interner Akku, Dual-Fisheye-360°-Kamera, 5G-Modul, GPS und Wärmemanagement. Hybrid-Edge-Cloud-Verarbeitung für maximale Leistung und Zuverlässigkeit.',
                 'stages.v3.status': 'In Planung',
                 'stages.demoCaption': 'LROX System-Demonstration – Technische Umsetzung',
                 
