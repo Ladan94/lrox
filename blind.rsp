@@ -1,62 +1,45 @@
 import time
 import serial
 import subprocess
-import threading
-import queue
 from collections import deque
 
 PORT = "/dev/serial0"
 BAUD = 115200
 
-# -----------------------------
-# Safety thresholds for walking
-# -----------------------------
-WARN_DISTANCE = 140      # cm
-DANGER_DISTANCE = 70     # cm
+# فاصله‌ها برای آدم پیاده
+WARN_DISTANCE = 120
+DANGER_DISTANCE = 50
 
-WARN_TTC = 3.5           # seconds
-DANGER_TTC = 1.5         # seconds
+# TTC
+WARN_TTC = 3.0
+DANGER_TTC = 1.4
 
-MIN_CLOSING_SPEED = 35   # cm/s
+# فقط اگر واقعاً داری نزدیک می‌شی
+MIN_WARN_SPEED = 25
+MIN_DANGER_SPEED = 45
 
-MIN_VALID_DIST = 10
-MAX_VALID_DIST = 1200
 MIN_STRENGTH = 50
+MIN_DIST = 10
+MAX_DIST = 1200
 
-DIST_MEDIAN_WINDOW = 5
-SPEED_WINDOW = 10
+DIST_WINDOW = 5
+SPEED_WINDOW = 12
 
-WARN_CONFIRM = 3
-DANGER_CONFIRM = 2
-SAFE_CONFIRM = 5
+WARN_CONFIRM = 5
+DANGER_CONFIRM = 4
+SAFE_CONFIRM = 8
 
-PRINT_EVERY = 1
+NO_OBJECT_LIMIT = 8
 
 
-class Speaker:
-    def __init__(self):
-        self.q = queue.Queue(maxsize=5)
-        self.last_t = 0.0
-        threading.Thread(target=self._run, daemon=True).start()
-
-    def say(self, text, gap):
-        now = time.time()
-        if now - self.last_t < gap:
-            return
-        self.last_t = now
-        try:
-            self.q.put_nowait(text)
-        except queue.Full:
-            pass
-
-    def _run(self):
-        while True:
-            text = self.q.get()
-            subprocess.Popen(
-                ["espeak", "-s", "145", "-a", "180", text],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
+def speak_once(text):
+    # نگذارد صداها روی هم بیفتند
+    subprocess.run(["pkill", "-f", "espeak"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.Popen(
+        ["espeak", "-s", "145", "-a", "180", text],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
 def median(values):
@@ -66,146 +49,133 @@ def median(values):
 
 def main():
     ser = serial.Serial(PORT, BAUD, timeout=0.2)
-
-    print("TFmini-S walking collision warning")
-    print("Parser: valid-frame buffer mode")
-    print("Ctrl+C to stop\n")
-
-    speaker = Speaker()
-    speaker.say("System ready", gap=0)
-
     buf = bytearray()
 
-    dist_hist = deque(maxlen=DIST_MEDIAN_WINDOW)
+    dist_hist = deque(maxlen=DIST_WINDOW)
     speed_hist = deque(maxlen=SPEED_WINDOW)
+
+    level = "SAFE"
+    last_voice_level = "SAFE"
 
     warn_count = 0
     danger_count = 0
     safe_count = 0
+    no_object_count = 0
 
-    level = "SAFE"
-    frame_i = 0
+    print("TFmini assistant stable version")
+    speak_once("System ready")
 
-    try:
-        while True:
-            buf += ser.read(64)
+    while True:
+        buf += ser.read(64)
+        got_frame = False
 
-            while len(buf) >= 9:
-                if buf[0] != 0x59 or buf[1] != 0x59:
-                    buf.pop(0)
-                    continue
+        while len(buf) >= 9:
+            if buf[0] != 0x59 or buf[1] != 0x59:
+                buf.pop(0)
+                continue
 
-                frame = buf[:9]
-                buf = buf[9:]
+            frame = buf[:9]
+            buf = buf[9:]
 
-                checksum = sum(frame[:8]) & 0xFF
-                if checksum != frame[8]:
-                    continue
+            if (sum(frame[:8]) & 0xFF) != frame[8]:
+                continue
 
-                dist = frame[2] | (frame[3] << 8)
-                strength = frame[4] | (frame[5] << 8)
-                temp = (frame[6] | (frame[7] << 8)) / 8.0 - 256
+            dist = frame[2] | (frame[3] << 8)
+            strength = frame[4] | (frame[5] << 8)
 
-                if strength < MIN_STRENGTH:
-                    continue
+            if strength < MIN_STRENGTH or dist < MIN_DIST or dist > MAX_DIST:
+                continue
 
-                if dist < MIN_VALID_DIST or dist > MAX_VALID_DIST:
-                    continue
+            got_frame = True
+            no_object_count = 0
 
-                now = time.time()
+            now = time.time()
+            dist_hist.append(dist)
+            speed_hist.append((now, dist))
 
-                dist_hist.append(dist)
-                speed_hist.append((now, dist))
+            if len(dist_hist) < DIST_WINDOW or len(speed_hist) < 5:
+                continue
 
-                if len(dist_hist) < DIST_MEDIAN_WINDOW:
-                    continue
+            stable = median(list(dist_hist))
 
-                stable_dist = median(list(dist_hist))
+            t0, d0 = speed_hist[0]
+            t1, d1 = speed_hist[-1]
+            dt = max(0.001, t1 - t0)
 
-                closing_speed = 0.0
-                ttc = None
+            speed = (d0 - d1) / dt  # مثبت یعنی نزدیک می‌شی
 
-                if len(speed_hist) >= 4:
-                    t0, d0 = speed_hist[0]
-                    t1, d1 = speed_hist[-1]
-                    dt = t1 - t0
+            ttc = None
+            if speed >= MIN_WARN_SPEED:
+                ttc = stable / speed
 
-                    if dt > 0:
-                        closing_speed = (d0 - d1) / dt
+            danger_raw = False
+            warn_raw = False
 
-                    if closing_speed >= MIN_CLOSING_SPEED:
-                        ttc = stable_dist / closing_speed
+            # DANGER فقط وقتی نزدیک شدن واقعی هست
+            if stable <= DANGER_DISTANCE and speed >= MIN_DANGER_SPEED:
+                danger_raw = True
+            elif ttc is not None and ttc <= DANGER_TTC and speed >= MIN_DANGER_SPEED and stable <= 180:
+                danger_raw = True
 
-                danger_raw = False
-                warn_raw = False
+            # WARN اگر جسم نزدیکه یا داری بهش نزدیک می‌شی
+            elif stable <= WARN_DISTANCE:
+                warn_raw = True
+            elif ttc is not None and ttc <= WARN_TTC and stable <= 240:
+                warn_raw = True
 
-                # 1) Absolute distance danger
-                if stable_dist <= DANGER_DISTANCE:
-                    danger_raw = True
+            if danger_raw:
+                danger_count += 1
+                warn_count = 0
+                safe_count = 0
+            elif warn_raw:
+                warn_count += 1
+                danger_count = 0
+                safe_count = 0
+            else:
+                safe_count += 1
+                warn_count = 0
+                danger_count = 0
 
-                # 2) TTC danger only when really approaching
-                elif ttc is not None and ttc <= DANGER_TTC and stable_dist <= 250:
-                    danger_raw = True
+            old_level = level
 
-                # 3) Absolute distance warning
-                elif stable_dist <= WARN_DISTANCE:
-                    warn_raw = True
+            if danger_count >= DANGER_CONFIRM:
+                level = "DANGER"
+            elif warn_count >= WARN_CONFIRM:
+                level = "WARN"
+            elif safe_count >= SAFE_CONFIRM:
+                level = "SAFE"
 
-                # 4) TTC warning only when really approaching
-                elif ttc is not None and ttc <= WARN_TTC and stable_dist <= 300:
-                    warn_raw = True
+            print(
+                f"level={level:6s} dist={dist:4d} stable={stable:4d} "
+                f"speed={speed:6.1f} ttc={'None' if ttc is None else f'{ttc:.2f}'} "
+                f"warn={warn_count} danger={danger_count} safe={safe_count}"
+            )
 
-                if danger_raw:
-                    danger_count += 1
-                    warn_count = 0
-                    safe_count = 0
-
-                elif warn_raw:
-                    warn_count += 1
-                    danger_count = 0
-                    safe_count = 0
-
-                else:
-                    safe_count += 1
-                    warn_count = 0
-                    danger_count = 0
-
-                if danger_count >= DANGER_CONFIRM:
-                    level = "DANGER"
-
-                elif warn_count >= WARN_CONFIRM:
-                    level = "WARN"
-
-                elif safe_count >= SAFE_CONFIRM:
-                    level = "SAFE"
-
-                frame_i += 1
-
-                if frame_i % PRINT_EVERY == 0:
-                    print(
-                        f"level={level:6s} "
-                        f"dist={dist:4d}cm "
-                        f"stable={stable_dist:4d}cm "
-                        f"speed={closing_speed:6.1f}cm/s "
-                        f"ttc={'None' if ttc is None else f'{ttc:.2f}s'} "
-                        f"strength={strength:5d} "
-                        f"temp={temp:5.1f}C "
-                        f"warn={warn_count} danger={danger_count} safe={safe_count}"
-                    )
-
+            # صدا فقط وقتی حالت بالا می‌رود
+            if level != last_voice_level:
                 if level == "DANGER":
-                    speaker.say("Danger. Stop.", gap=1.1)
+                    speak_once("Stop")
+                    last_voice_level = "DANGER"
 
-                elif level == "WARN":
-                    speaker.say("Object ahead.", gap=2.0)
+                elif level == "WARN" and last_voice_level == "SAFE":
+                    speak_once("Object ahead")
+                    last_voice_level = "WARN"
 
-            time.sleep(0.02)
+                elif level == "SAFE":
+                    last_voice_level = "SAFE"
 
-    except KeyboardInterrupt:
-        print("\nStopped")
+        if not got_frame:
+            no_object_count += 1
+            if no_object_count >= NO_OBJECT_LIMIT:
+                level = "SAFE"
+                last_voice_level = "SAFE"
+                warn_count = 0
+                danger_count = 0
+                safe_count = 0
+                dist_hist.clear()
+                speed_hist.clear()
 
-    finally:
-        ser.close()
+        time.sleep(0.03)
 
 
 if __name__ == "__main__":
