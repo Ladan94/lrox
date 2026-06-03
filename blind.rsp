@@ -6,17 +6,10 @@ from collections import deque
 PORT = "/dev/serial0"
 BAUD = 115200
 
-# فاصله‌ها برای آدم پیاده
-WARN_DISTANCE = 120
-DANGER_DISTANCE = 50
-
-# TTC
-WARN_TTC = 3.0
-DANGER_TTC = 1.4
-
-# فقط اگر واقعاً داری نزدیک می‌شی
-MIN_WARN_SPEED = 25
-MIN_DANGER_SPEED = 45
+# فقط هشدار نهایی
+STOP_DISTANCE = 40        # cm؛ فقط خیلی نزدیک
+STOP_TTC = 1.2            # seconds
+MIN_STOP_SPEED = 45       # cm/s؛ فقط اگر واقعاً نزدیک می‌شوی
 
 MIN_STRENGTH = 50
 MIN_DIST = 10
@@ -25,18 +18,16 @@ MAX_DIST = 1200
 DIST_WINDOW = 5
 SPEED_WINDOW = 12
 
-WARN_CONFIRM = 5
-DANGER_CONFIRM = 4
-SAFE_CONFIRM = 8
-
+STOP_CONFIRM = 5
+SAFE_CONFIRM = 5
 NO_OBJECT_LIMIT = 8
 
+STOP_GAP = 3.0            # حداقل فاصله بین دو Stop
 
-def speak_once(text):
-    # نگذارد صداها روی هم بیفتند
-    subprocess.run(["pkill", "-f", "espeak"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def speak_stop():
     subprocess.Popen(
-        ["espeak", "-s", "145", "-a", "180", text],
+        ["espeak", "-s", "145", "-a", "180", "Stop"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
     )
@@ -55,15 +46,14 @@ def main():
     speed_hist = deque(maxlen=SPEED_WINDOW)
 
     level = "SAFE"
-    last_voice_level = "SAFE"
-
-    warn_count = 0
-    danger_count = 0
+    stop_count = 0
     safe_count = 0
     no_object_count = 0
+    last_stop_time = 0.0
 
-    print("TFmini assistant stable version")
-    speak_once("System ready")
+    print("TFmini STOP-only TTC assistant")
+    print("Only says Stop when close + approaching")
+    print("Ctrl+C to stop")
 
     while True:
         buf += ser.read(64)
@@ -102,75 +92,53 @@ def main():
             t1, d1 = speed_hist[-1]
             dt = max(0.001, t1 - t0)
 
-            speed = (d0 - d1) / dt  # مثبت یعنی نزدیک می‌شی
+            speed = (d0 - d1) / dt  # مثبت یعنی داری نزدیک می‌شی
 
             ttc = None
-            if speed >= MIN_WARN_SPEED:
+            if speed >= MIN_STOP_SPEED:
                 ttc = stable / speed
 
-            danger_raw = False
-            warn_raw = False
+            stop_raw = False
 
-            # DANGER فقط وقتی نزدیک شدن واقعی هست
-            if stable <= DANGER_DISTANCE and speed >= MIN_DANGER_SPEED:
-                danger_raw = True
-            elif ttc is not None and ttc <= DANGER_TTC and speed >= MIN_DANGER_SPEED and stable <= 180:
-                danger_raw = True
+            # حالت ۱: خیلی نزدیک + واقعاً نزدیک‌شدن
+            if stable <= STOP_DISTANCE and speed >= MIN_STOP_SPEED:
+                stop_raw = True
 
-            # WARN اگر جسم نزدیکه یا داری بهش نزدیک می‌شی
-            elif stable <= WARN_DISTANCE:
-                warn_raw = True
-            elif ttc is not None and ttc <= WARN_TTC and stable <= 240:
-                warn_raw = True
+            # حالت ۲: TTC خطرناک + واقعاً نزدیک‌شدن
+            elif ttc is not None and ttc <= STOP_TTC and stable <= 180:
+                stop_raw = True
 
-            if danger_raw:
-                danger_count += 1
-                warn_count = 0
-                safe_count = 0
-            elif warn_raw:
-                warn_count += 1
-                danger_count = 0
+            if stop_raw:
+                stop_count += 1
                 safe_count = 0
             else:
                 safe_count += 1
-                warn_count = 0
-                danger_count = 0
+                stop_count = 0
 
-            old_level = level
-
-            if danger_count >= DANGER_CONFIRM:
-                level = "DANGER"
-            elif warn_count >= WARN_CONFIRM:
-                level = "WARN"
+            if stop_count >= STOP_CONFIRM:
+                level = "STOP"
             elif safe_count >= SAFE_CONFIRM:
                 level = "SAFE"
 
             print(
-                f"level={level:6s} dist={dist:4d} stable={stable:4d} "
-                f"speed={speed:6.1f} ttc={'None' if ttc is None else f'{ttc:.2f}'} "
-                f"warn={warn_count} danger={danger_count} safe={safe_count}"
+                f"level={level:5s} dist={dist:4d} stable={stable:4d} "
+                f"speed={speed:6.1f}cm/s "
+                f"ttc={'None' if ttc is None else f'{ttc:.2f}s'} "
+                f"stop_count={stop_count} safe_count={safe_count}"
             )
 
-            # صدا فقط وقتی حالت بالا می‌رود
-            if level != last_voice_level:
-                if level == "DANGER":
-                    speak_once("Stop")
-                    last_voice_level = "DANGER"
+            now_voice = time.time()
 
-                elif level == "WARN" and last_voice_level == "SAFE":
-                    speak_once("Object ahead")
-                    last_voice_level = "WARN"
-
-                elif level == "SAFE":
-                    last_voice_level = "SAFE"
+            if level == "STOP":
+                if now_voice - last_stop_time >= STOP_GAP:
+                    speak_stop()
+                    last_stop_time = now_voice
 
         if not got_frame:
             no_object_count += 1
             if no_object_count >= NO_OBJECT_LIMIT:
                 level = "SAFE"
-                last_voice_level = "SAFE"
-                warn_count = 0
-                danger_count = 0
+                stop_count = 0
                 safe_count = 0
                 dist_hist.clear()
                 speed_hist.clear()
