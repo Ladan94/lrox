@@ -6,7 +6,26 @@ from collections import deque
 PORT = "/dev/serial0"
 BAUD = 115200
 
-# فقط هشدار نهایی
+# =========================
+# MODE
+# =========================
+# WEARABLE:
+#   حالت اصلی تو. دستگاه دست فرد است و منطق اولت دقیقاً کار می‌کند.
+#
+# STATIONARY_TTC_ONLY:
+#   دستگاه روی میز ثابت است و فقط جسم/آدمی که سریع به سمتش نزدیک می‌شود
+#   باید Stop بگیرد. در این حالت منطق اصلی CORE صدا نمی‌دهد.
+#
+# برای استفاده واقعی فعلاً بگذار WEARABLE.
+# برای تست TTC روی میز بگذار STATIONARY_TTC_ONLY.
+DEVICE_MODE = "WEARABLE"
+
+
+# =========================
+# ORIGINAL CORE LOGIC
+# این بخش همان منطق اصلی خودت است
+# =========================
+
 STOP_DISTANCE = 40        # cm؛ فقط خیلی نزدیک
 STOP_TTC = 1.2            # seconds
 MIN_STOP_SPEED = 45       # cm/s؛ فقط اگر واقعاً نزدیک می‌شوی
@@ -25,6 +44,43 @@ NO_OBJECT_LIMIT = 8
 STOP_GAP = 3.0            # حداقل فاصله بین دو Stop
 
 
+# =========================
+# STATIONARY TTC TEST LOGIC
+# فقط برای حالتی که دستگاه روی میز ثابت است
+# =========================
+
+ST_TTC_ENABLED = True
+
+# در حالت دستگاه ثابت، این‌ها moderate هستند:
+# نه مثل قبل خیلی حساس، نه آن‌قدر سخت‌گیر که اصلاً ندهد.
+ST_MIN_DISTANCE = 45          # cm؛ کمتر از این دیگر خیلی نزدیک است
+ST_MAX_DISTANCE = 450         # cm؛ بیشتر از 4.5m فعلاً هشدار نده
+
+# آستانه سرعت نزدیک‌شدن
+# طبق لاگ قبلی، دویدن تو حدود 180 تا 210 cm/s دیده شده بود،
+# پس 165 منطقی‌تر از 280 است.
+ST_MIN_CLOSING_SPEED = 165    # cm/s
+
+# اگر زمان برخورد کمتر از این باشد، خطر حساب شود
+ST_TTC_DANGER = 1.8          # seconds
+
+# برای جلوگیری از سرعت‌های غیرواقعی
+ST_MAX_VALID_SPEED = 700      # cm/s
+
+# باید چند بار پشت سر هم تأیید شود
+ST_CONFIRM = 2
+
+# نمونه‌برداری برای TTC ثابت
+ST_SAMPLE_GAP = 0.05          # seconds
+ST_WINDOW = 7                 # تعداد نمونه‌ها
+ST_MIN_DT = 0.22              # حداقل زمان بین اولین و آخرین نمونه
+
+# برای اینکه عقب رفتن یا نویز باعث Stop نشود:
+ST_MIN_NET_DROP = 18          # cm؛ فاصله باید حداقل این‌قدر کم شده باشد
+ST_DECREASE_RATIO = 0.65      # حداقل 65 درصد حرکت‌ها باید کاهشی باشند
+ST_NOISE_TOLERANCE = 2        # cm؛ تغییرات کمتر از این نویز حساب می‌شود
+
+
 def speak_stop():
     subprocess.Popen(
         ["espeak", "-s", "145", "-a", "180", "Stop"],
@@ -38,6 +94,81 @@ def median(values):
     return values[len(values) // 2]
 
 
+def fmt_ttc(value):
+    return "None" if value is None else f"{value:.2f}s"
+
+
+def stationary_ttc_check(st_hist, stable):
+    """
+    این تابع فقط برای حالت دستگاه ثابت است.
+    خروجی:
+      danger, st_speed, st_ttc, trend_ok
+
+    قانون:
+    - فاصله باید واقعاً در حال کم شدن باشد
+    - سرعت باید از حد مشخص بیشتر باشد
+    - TTC باید پایین باشد
+    - روند باید بیشتر کاهشی باشد، نه نوسانی
+    """
+
+    if len(st_hist) < ST_WINDOW:
+        return False, None, None, False
+
+    t_first, d_first = st_hist[0]
+    t_last, d_last = st_hist[-1]
+    dt = t_last - t_first
+
+    if dt < ST_MIN_DT:
+        return False, None, None, False
+
+    net_drop = d_first - d_last  # مثبت یعنی نزدیک شدن
+
+    # اگر فاصله کم نشده، یعنی جسم نزدیک نمی‌شود
+    if net_drop < ST_MIN_NET_DROP:
+        return False, None, None, False
+
+    # بررسی روند: چند حرکت پشت سر هم واقعاً کاهشی بوده؟
+    decreases = 0
+    total_moves = 0
+
+    items = list(st_hist)
+    for i in range(1, len(items)):
+        prev_d = items[i - 1][1]
+        curr_d = items[i][1]
+        diff = prev_d - curr_d
+
+        if abs(diff) <= ST_NOISE_TOLERANCE:
+            continue
+
+        total_moves += 1
+        if diff > 0:
+            decreases += 1
+
+    if total_moves == 0:
+        return False, None, None, False
+
+    decrease_ratio = decreases / total_moves
+    trend_ok = decrease_ratio >= ST_DECREASE_RATIO
+
+    if not trend_ok:
+        return False, None, None, False
+
+    st_speed = net_drop / dt  # cm/s
+
+    if st_speed < ST_MIN_CLOSING_SPEED:
+        return False, st_speed, None, trend_ok
+
+    if st_speed > ST_MAX_VALID_SPEED:
+        return False, st_speed, None, trend_ok
+
+    st_ttc = stable / st_speed
+
+    if st_ttc <= ST_TTC_DANGER:
+        return True, st_speed, st_ttc, trend_ok
+
+    return False, st_speed, st_ttc, trend_ok
+
+
 def main():
     ser = serial.Serial(PORT, BAUD, timeout=0.2)
     buf = bytearray()
@@ -45,14 +176,20 @@ def main():
     dist_hist = deque(maxlen=DIST_WINDOW)
     speed_hist = deque(maxlen=SPEED_WINDOW)
 
+    # history جدا فقط برای TTC حالت دستگاه ثابت
+    st_hist = deque(maxlen=ST_WINDOW)
+    last_st_sample_time = 0.0
+    st_count = 0
+
     level = "SAFE"
     stop_count = 0
     safe_count = 0
     no_object_count = 0
     last_stop_time = 0.0
 
-    print("TFmini STOP-only TTC assistant")
-    print("Only says Stop when close + approaching")
+    print("TFmini STOP assistant")
+    print(f"DEVICE_MODE = {DEVICE_MODE}")
+    print("Voice output is only: Stop")
     print("Ctrl+C to stop")
 
     while True:
@@ -88,6 +225,11 @@ def main():
 
             stable = median(list(dist_hist))
 
+            # =========================
+            # ORIGINAL CORE LOGIC
+            # این قسمت همان روش اول توست
+            # =========================
+
             t0, d0 = speed_hist[0]
             t1, d1 = speed_hist[-1]
             dt = max(0.001, t1 - t0)
@@ -98,17 +240,82 @@ def main():
             if speed >= MIN_STOP_SPEED:
                 ttc = stable / speed
 
-            stop_raw = False
+            core_stop_raw = False
 
             # حالت ۱: خیلی نزدیک + واقعاً نزدیک‌شدن
             if stable <= STOP_DISTANCE and speed >= MIN_STOP_SPEED:
-                stop_raw = True
+                core_stop_raw = True
 
             # حالت ۲: TTC خطرناک + واقعاً نزدیک‌شدن
             elif ttc is not None and ttc <= STOP_TTC and stable <= 180:
-                stop_raw = True
+                core_stop_raw = True
 
-            if stop_raw:
+            # =========================
+            # STATIONARY TTC ONLY
+            # فقط برای روش دوم: دستگاه ثابت روی میز
+            # =========================
+
+            st_stop_raw = False
+            st_speed = None
+            st_ttc = None
+            st_trend_ok = False
+
+            if ST_TTC_ENABLED:
+                # فقط در بازه فاصله مناسب history بساز
+                if ST_MIN_DISTANCE <= stable <= ST_MAX_DISTANCE:
+                    if now - last_st_sample_time >= ST_SAMPLE_GAP:
+                        st_hist.append((now, stable))
+                        last_st_sample_time = now
+
+                    st_stop_raw, st_speed, st_ttc, st_trend_ok = stationary_ttc_check(
+                        st_hist, stable
+                    )
+                else:
+                    st_hist.clear()
+                    st_count = 0
+
+            if st_stop_raw:
+                st_count += 1
+            else:
+                st_count = 0
+
+            st_confirmed = st_count >= ST_CONFIRM
+
+            # =========================
+            # FINAL DECISION
+            # =========================
+
+            if DEVICE_MODE == "WEARABLE":
+                # دقیقاً رفتار اصلی خودت:
+                # TTC جدید هیچ دخالتی در صدا ندارد.
+                final_stop_raw = core_stop_raw
+
+                if core_stop_raw:
+                    reason = "CORE"
+                else:
+                    reason = "-"
+
+            elif DEVICE_MODE == "STATIONARY_TTC_ONLY":
+                # فقط روش دوم:
+                # منطق اصلی تو صدا نمی‌دهد.
+                # فقط TTC ثابت اگر سرعت درست باشد Stop می‌دهد.
+                final_stop_raw = st_confirmed
+
+                if st_confirmed:
+                    reason = "ST_TTC"
+                elif st_stop_raw:
+                    reason = "ST_RAW"
+                elif core_stop_raw:
+                    reason = "CORE_IGNORED"
+                else:
+                    reason = "-"
+
+            else:
+                # اگر اشتباه تایپی در DEVICE_MODE بود، امن رفتار کن
+                final_stop_raw = core_stop_raw
+                reason = "CORE_SAFE_FALLBACK" if core_stop_raw else "-"
+
+            if final_stop_raw:
                 stop_count += 1
                 safe_count = 0
             else:
@@ -121,9 +328,16 @@ def main():
                 level = "SAFE"
 
             print(
-                f"level={level:5s} dist={dist:4d} stable={stable:4d} "
-                f"speed={speed:6.1f}cm/s "
-                f"ttc={'None' if ttc is None else f'{ttc:.2f}s'} "
+                f"mode={DEVICE_MODE:19s} "
+                f"level={level:5s} "
+                f"dist={dist:4d} stable={stable:4d} "
+                f"speed={speed:7.1f}cm/s "
+                f"ttc={fmt_ttc(ttc):>6s} "
+                f"st_speed={'None' if st_speed is None else f'{st_speed:6.1f}'} "
+                f"st_ttc={fmt_ttc(st_ttc):>6s} "
+                f"st_count={st_count} "
+                f"trend={st_trend_ok} "
+                f"reason={reason:13s} "
                 f"stop_count={stop_count} safe_count={safe_count}"
             )
 
@@ -140,8 +354,12 @@ def main():
                 level = "SAFE"
                 stop_count = 0
                 safe_count = 0
+                no_object_count = 0
+                st_count = 0
                 dist_hist.clear()
                 speed_hist.clear()
+                st_hist.clear()
+                last_st_sample_time = 0.0
 
         time.sleep(0.03)
 
