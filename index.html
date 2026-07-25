@@ -53,8 +53,8 @@
     .lrox-hero *,
     .lrox-value,
     .lrox-value *,
-    .lrox-product-reveal,
-    .lrox-product-reveal * {
+    .lrox-product-placeholder,
+    .lrox-product-placeholder * {
       box-sizing: border-box;
     }
 
@@ -906,331 +906,33 @@
       transform: translateY(3px);
     }
 
-    /* =========================
-       SLIDE 3
-    ========================== */
-
-    .lrox-product-reveal {
-      position: relative;
-      width: 100%;
-      background: #fffaf6;
-      color: #171411;
-    }
-
-    .lrox-product-reveal__scroll {
-      position: relative;
-      height: 300vh;
-    }
-
-    .lrox-product-reveal__stage {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100svh;
-      min-height: 720px;
-      overflow: hidden;
-      isolation: isolate;
+    .lrox-product-placeholder {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
       background:
-        radial-gradient(
-          circle at 50% 46%,
-          rgba(255, 90, 18, 0.13) 0%,
-          rgba(255, 90, 18, 0.06) 24%,
-          rgba(255, 90, 18, 0.015) 46%,
-          transparent 68%
-        ),
         linear-gradient(
           180deg,
           #f8f1ea 0%,
-          #fffaf6 15%,
-          #ffffff 52%,
-          #fff9f4 100%
+          #ffffff 22%,
+          #ffffff 100%
         );
-    }
-
-    .lrox-product-reveal__stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      pointer-events: none;
-      opacity: 0.34;
-      background-image:
-        linear-gradient(
-          rgba(40, 29, 22, 0.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(40, 29, 22, 0.035) 1px,
-          transparent 1px
-        );
-      background-size: 84px 84px;
-      mask-image:
-        radial-gradient(
-          circle at center,
-          #000 0%,
-          rgba(0, 0, 0, 0.5) 48%,
-          transparent 84%
-        );
-    }
-
-    .lrox-product-reveal__orange-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: -2;
-      width: min(76vw, 1080px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      pointer-events: none;
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 91, 18, 0.16) 0%,
-          rgba(255, 120, 57, 0.07) 32%,
-          transparent 68%
-        );
-      filter: blur(16px);
-      transform: translate(-50%, -47%) scale(0.82);
-      transition: transform 160ms linear;
-    }
-
-    .lrox-product-reveal__header {
-      position: absolute;
-      top: clamp(28px, 4.5vh, 55px);
-      right: 0;
-      left: 0;
-      z-index: 12;
-      width: min(calc(100% - 64px), 1440px);
-      margin: 0 auto;
-      pointer-events: none;
+      color: #d8d1ca;
       text-align: center;
     }
 
-    .lrox-product-reveal__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      color: #70645c;
-      font-size: 0.76rem;
-      font-weight: 780;
+    .lrox-product-placeholder span {
+      color: var(--lrox-orange);
+      font-size: 0.75rem;
+      font-weight: 760;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .lrox-product-reveal__eyebrow::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #ff5a12;
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.1);
-    }
-
-    .lrox-product-reveal__title {
+    .lrox-product-placeholder h2 {
       margin: 15px 0 0;
-      color: #171411;
-      font-size: clamp(2.6rem, 4.7vw, 5.4rem);
-      line-height: 0.93;
-      letter-spacing: -0.06em;
-      font-weight: 790;
-    }
-
-    .lrox-product-reveal__title span {
-      color: #ff5a12;
-    }
-
-    .lrox-product-reveal__viewer {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      display: grid;
-      place-items: center;
-      perspective: 1800px;
-      pointer-events: none;
-    }
-
-    .lrox-product-reveal__product {
-      position: relative;
-      width: min(86vw, 1220px);
-      height: min(82vh, 900px);
-      margin-top: clamp(58px, 7vh, 88px);
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .lrox-product-reveal__image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      opacity: 0;
-      transform:
-        translate3d(0, 20px, 0)
-        scale(0.95)
-        rotateY(0deg);
-      filter:
-        drop-shadow(0 42px 48px rgba(31, 21, 15, 0.16))
-        drop-shadow(0 12px 16px rgba(31, 21, 15, 0.08));
-      transition:
-        opacity 180ms linear,
-        transform 180ms linear,
-        filter 180ms linear;
-      user-select: none;
-    }
-
-    .lrox-product-reveal__image--front {
-      opacity: 1;
-    }
-
-    .lrox-product-reveal__floor {
-      position: absolute;
-      left: 50%;
-      bottom: 8.5vh;
-      z-index: 2;
-      width: min(50vw, 690px);
-      height: 72px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: rgba(55, 37, 26, 0.14);
-      filter: blur(30px);
-      transform: translateX(-50%) scaleX(0.86);
-      opacity: 0.75;
-    }
-
-    .lrox-product-reveal__technical {
-      position: absolute;
-      right: 0;
-      bottom: clamp(28px, 4.5vh, 52px);
-      left: 0;
-      z-index: 12;
-      width: min(calc(100% - 64px), 1440px);
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 32px;
-      pointer-events: none;
-    }
-
-    .lrox-product-reveal__statement {
-      max-width: 360px;
-    }
-
-    .lrox-product-reveal__statement strong {
-      display: block;
-      color: #171411;
-      font-size: clamp(1.04rem, 1.35vw, 1.25rem);
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-    }
-
-    .lrox-product-reveal__statement p {
-      margin: 7px 0 0;
-      color: #786d65;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .lrox-product-reveal__features {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .lrox-product-reveal__feature {
-      min-height: 42px;
-      padding: 0 15px;
-      border: 1px solid rgba(255, 90, 18, 0.18);
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: rgba(255, 255, 255, 0.74);
-      color: #62574f;
-      box-shadow:
-        0 14px 34px rgba(43, 29, 20, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(14px);
-      font-size: 0.72rem;
-      font-weight: 750;
-      letter-spacing: 0.045em;
-      text-transform: uppercase;
-      opacity: 0.48;
-      transform: translateY(8px);
-      transition:
-        opacity 280ms ease,
-        color 280ms ease,
-        border-color 280ms ease,
-        background 280ms ease,
-        transform 280ms ease;
-    }
-
-    .lrox-product-reveal__feature::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      background: #d8c8bd;
-      transition:
-        background 280ms ease,
-        box-shadow 280ms ease;
-    }
-
-    .lrox-product-reveal__feature.is-active {
-      opacity: 1;
-      color: #271e18;
-      border-color: rgba(255, 90, 18, 0.4);
-      background: rgba(255, 250, 246, 0.94);
-      transform: translateY(0);
-    }
-
-    .lrox-product-reveal__feature.is-active::before {
-      background: #ff5a12;
-      box-shadow: 0 0 0 6px rgba(255, 90, 18, 0.1);
-    }
-
-    .lrox-product-reveal__progress {
-      position: absolute;
-      top: 50%;
-      right: 28px;
-      z-index: 14;
-      display: grid;
-      gap: 10px;
-      transform: translateY(-50%);
-    }
-
-    .lrox-product-reveal__progress-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(45, 34, 27, 0.18);
-      transition:
-        height 280ms ease,
-        border-radius 280ms ease,
-        background 280ms ease;
-    }
-
-    .lrox-product-reveal__progress-dot.is-active {
-      height: 34px;
-      border-radius: 999px;
-      background: #ff5a12;
-    }
-
-    .lrox-product-reveal__angle {
-      position: absolute;
-      right: 28px;
-      bottom: 24px;
-      z-index: 15;
-      color: #81746c;
-      font-size: 0.68rem;
-      font-weight: 760;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      letter-spacing: -0.07em;
     }
 
     @media (max-width: 1100px) {
@@ -1261,20 +963,6 @@
 
       .lrox-value__process {
         width: min(calc(100% - 48px), 1440px);
-      }
-
-      .lrox-product-reveal__product {
-        width: min(92vw, 1080px);
-        height: min(75vh, 780px);
-      }
-
-      .lrox-product-reveal__technical {
-        width: min(calc(100% - 42px), 1440px);
-      }
-
-      .lrox-product-reveal__features {
-        max-width: 480px;
-        flex-wrap: wrap;
       }
     }
 
@@ -1431,70 +1119,6 @@
       .lrox-value__continue span {
         display: none;
       }
-
-      .lrox-product-reveal__scroll {
-        height: 250vh;
-      }
-
-      .lrox-product-reveal__stage {
-        min-height: 760px;
-      }
-
-      .lrox-product-reveal__header {
-        top: 28px;
-        width: calc(100% - 40px);
-      }
-
-      .lrox-product-reveal__title {
-        font-size: clamp(2.35rem, 10.5vw, 3.8rem);
-      }
-
-      .lrox-product-reveal__product {
-        width: 118vw;
-        height: 60vh;
-        margin-top: 54px;
-      }
-
-      .lrox-product-reveal__floor {
-        bottom: 25vh;
-        width: 75vw;
-      }
-
-      .lrox-product-reveal__technical {
-        right: 20px;
-        bottom: 24px;
-        left: 20px;
-        width: auto;
-        display: block;
-      }
-
-      .lrox-product-reveal__statement {
-        max-width: 300px;
-      }
-
-      .lrox-product-reveal__statement p {
-        display: none;
-      }
-
-      .lrox-product-reveal__features {
-        margin-top: 15px;
-        justify-content: flex-start;
-        gap: 7px;
-      }
-
-      .lrox-product-reveal__feature {
-        min-height: 37px;
-        padding: 0 11px;
-        font-size: 0.6rem;
-      }
-
-      .lrox-product-reveal__progress {
-        right: 11px;
-      }
-
-      .lrox-product-reveal__angle {
-        display: none;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1516,13 +1140,348 @@
         transform: none;
         transition: none;
       }
+    }
 
-      .lrox-product-reveal__image,
-      .lrox-product-reveal__orange-glow,
-      .lrox-product-reveal__feature {
-        transition: none;
+
+    /* =========================
+       SLIDE 3 — PRODUCT ROTATION
+       Hero and Slide 2 remain unchanged.
+    ========================== */
+
+    .lrox-product-rotation,
+    .lrox-product-rotation * {
+      box-sizing: border-box;
+    }
+
+    .lrox-product-rotation {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      margin-top: -38vh;
+      background: #fffaf6;
+      color: var(--lrox-text);
+    }
+
+    .lrox-product-rotation__scroll {
+      position: relative;
+      height: 190vh;
+    }
+
+    .lrox-product-rotation__stage {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100svh;
+      min-height: 720px;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(
+          circle at 50% 51%,
+          rgba(215, 211, 207, 0.42) 0%,
+          rgba(242, 236, 231, 0.36) 29%,
+          rgba(255, 250, 246, 0) 64%
+        ),
+        linear-gradient(180deg, #f8f1ea 0%, #fffaf6 11%, #fff 52%, #fffaf6 100%);
+    }
+
+    .lrox-product-rotation__stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255, 90, 18, 0.115), transparent 39%);
+    }
+
+    .lrox-product-rotation__intro {
+      position: absolute;
+      top: clamp(24px, 4vh, 48px);
+      left: 50%;
+      z-index: 12;
+      width: min(calc(100% - 64px), 1440px);
+      text-align: center;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .lrox-product-rotation__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #756a62;
+      font-size: 0.73rem;
+      font-weight: 780;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .lrox-product-rotation__eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lrox-orange);
+      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.10);
+    }
+
+    .lrox-product-rotation__title {
+      margin: 13px 0 0;
+      color: #171411;
+      font-size: clamp(2.2rem, 4.2vw, 4.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      font-weight: 790;
+    }
+
+    .lrox-product-rotation__title span {
+      color: var(--lrox-orange);
+    }
+
+    .lrox-product-rotation__viewer {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      perspective: 1800px;
+      pointer-events: none;
+    }
+
+    .lrox-product-rotation__object {
+      position: relative;
+      width: min(96vw, 1380px);
+      height: min(88vh, 960px);
+      margin-top: clamp(52px, 6vh, 82px);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .lrox-product-rotation__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      opacity: 0;
+      user-select: none;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter:
+        drop-shadow(0 44px 48px rgba(37, 25, 17, 0.15))
+        drop-shadow(0 12px 18px rgba(37, 25, 17, 0.08));
+      transition: opacity 90ms linear;
+    }
+
+    .lrox-product-rotation__image--front {
+      opacity: 1;
+    }
+
+    .lrox-product-rotation__floor {
+      position: absolute;
+      left: 50%;
+      bottom: 8.5vh;
+      z-index: 2;
+      width: min(55vw, 760px);
+      height: 74px;
+      border-radius: 50%;
+      background: rgba(61, 42, 30, 0.13);
+      filter: blur(32px);
+      transform: translateX(-50%) scaleX(0.9);
+      pointer-events: none;
+    }
+
+    .lrox-product-rotation__copy {
+      position: absolute;
+      left: max(32px, calc((100% - 1440px) / 2));
+      bottom: clamp(30px, 5vh, 58px);
+      z-index: 12;
+      max-width: 330px;
+      pointer-events: none;
+    }
+
+    .lrox-product-rotation__copy strong {
+      display: block;
+      color: #171411;
+      font-size: clamp(1.05rem, 1.35vw, 1.28rem);
+      line-height: 1.28;
+      letter-spacing: -0.025em;
+    }
+
+    .lrox-product-rotation__copy p {
+      margin: 7px 0 0;
+      color: #796e66;
+      font-size: 0.91rem;
+      line-height: 1.5;
+    }
+
+    .lrox-product-rotation__features {
+      position: absolute;
+      right: max(32px, calc((100% - 1440px) / 2));
+      bottom: clamp(31px, 5vh, 60px);
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 9px;
+      pointer-events: none;
+    }
+
+    .lrox-product-rotation__feature {
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 90, 18, 0.17);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #8b8078;
+      box-shadow: 0 12px 30px rgba(43, 29, 20, 0.05);
+      backdrop-filter: blur(14px);
+      font-size: 0.68rem;
+      font-weight: 760;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      opacity: 0.48;
+      transition: opacity 220ms ease, color 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .lrox-product-rotation__feature::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #d8cec7;
+    }
+
+    .lrox-product-rotation__feature.is-active {
+      opacity: 1;
+      color: #271f1a;
+      border-color: rgba(255, 90, 18, 0.42);
+      background: rgba(255, 250, 246, 0.96);
+    }
+
+    .lrox-product-rotation__feature.is-active::before {
+      background: var(--lrox-orange);
+      box-shadow: 0 0 0 6px rgba(255, 90, 18, 0.10);
+    }
+
+    .lrox-product-rotation__steps {
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      z-index: 14;
+      display: grid;
+      gap: 9px;
+      transform: translateY(-50%);
+    }
+
+    .lrox-product-rotation__step {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(49, 37, 30, 0.17);
+      transition: height 220ms ease, border-radius 220ms ease, background 220ms ease;
+    }
+
+    .lrox-product-rotation__step.is-active {
+      height: 32px;
+      border-radius: 999px;
+      background: var(--lrox-orange);
+    }
+
+    .lrox-product-rotation__angle {
+      position: absolute;
+      right: 26px;
+      bottom: 19px;
+      z-index: 15;
+      color: #877b73;
+      font-size: 0.67rem;
+      font-weight: 760;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1100px) {
+      .lrox-product-rotation {
+        margin-top: -32vh;
+      }
+
+      .lrox-product-rotation__object {
+        width: 110vw;
+        height: 82vh;
+      }
+
+      .lrox-product-rotation__features {
+        max-width: 520px;
+        flex-wrap: wrap;
       }
     }
+
+    @media (max-width: 760px) {
+      .lrox-product-rotation {
+        margin-top: -22vh;
+      }
+
+      .lrox-product-rotation__scroll {
+        height: 175vh;
+      }
+
+      .lrox-product-rotation__stage {
+        min-height: 760px;
+      }
+
+      .lrox-product-rotation__intro {
+        top: 25px;
+        width: calc(100% - 40px);
+      }
+
+      .lrox-product-rotation__title {
+        font-size: clamp(2.15rem, 10vw, 3.5rem);
+      }
+
+      .lrox-product-rotation__object {
+        width: 142vw;
+        height: 66vh;
+        margin-top: 45px;
+      }
+
+      .lrox-product-rotation__copy {
+        left: 20px;
+        bottom: 94px;
+        max-width: 285px;
+      }
+
+      .lrox-product-rotation__copy p {
+        display: none;
+      }
+
+      .lrox-product-rotation__features {
+        right: 20px;
+        bottom: 25px;
+        left: 20px;
+        justify-content: flex-start;
+        gap: 6px;
+      }
+
+      .lrox-product-rotation__feature {
+        min-height: 35px;
+        padding: 0 10px;
+        font-size: 0.56rem;
+      }
+
+      .lrox-product-rotation__steps {
+        right: 10px;
+      }
+
+      .lrox-product-rotation__angle {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -1778,133 +1737,90 @@
     </div>
   </section>
 
+
   <section
-    class="lrox-product-reveal"
+    class="lrox-product-rotation"
     id="product"
   >
-    <div class="lrox-product-reveal__scroll">
-      <div class="lrox-product-reveal__stage">
-
-        <div
-          class="lrox-product-reveal__orange-glow"
-          aria-hidden="true"
-        ></div>
-
-        <div class="lrox-product-reveal__header">
-          <div class="lrox-product-reveal__eyebrow">
+    <div class="lrox-product-rotation__scroll">
+      <div class="lrox-product-rotation__stage">
+        <div class="lrox-product-rotation__intro">
+          <div class="lrox-product-rotation__eyebrow">
             The LROX system
           </div>
 
-          <h2 class="lrox-product-reveal__title">
+          <h2 class="lrox-product-rotation__title">
             Mehrere Sensoren.
             <span>Eine klare Warnung.</span>
           </h2>
         </div>
 
-        <div class="lrox-product-reveal__viewer">
+        <div class="lrox-product-rotation__viewer">
           <div
-            class="lrox-product-reveal__product"
+            class="lrox-product-rotation__object"
             id="lroxProductObject"
           >
             <img
-              class="
-                lrox-product-reveal__image
-                lrox-product-reveal__image--front
-              "
+              class="lrox-product-rotation__image lrox-product-rotation__image--front"
               src="assets/lrox-helmet-front-orange.png"
               alt="LROX Fahrradhelm mit Sicherheitsmodul von vorne"
             />
 
             <img
-              class="
-                lrox-product-reveal__image
-                lrox-product-reveal__image--angle
-              "
+              class="lrox-product-rotation__image lrox-product-rotation__image--angle"
               src="assets/lrox-helmet-angle-orange.png"
               alt="LROX Fahrradhelm mit Sicherheitsmodul aus seitlicher Perspektive"
             />
 
             <img
-              class="
-                lrox-product-reveal__image
-                lrox-product-reveal__image--back
-              "
+              class="lrox-product-rotation__image lrox-product-rotation__image--back"
               src="assets/lrox-helmet-back-orange.png"
               alt="LROX Fahrradhelm mit Sicherheitsmodul von hinten"
             />
           </div>
 
           <div
-            class="lrox-product-reveal__floor"
+            class="lrox-product-rotation__floor"
             aria-hidden="true"
           ></div>
         </div>
 
-        <div class="lrox-product-reveal__technical">
-          <div class="lrox-product-reveal__statement">
-            <strong id="lroxProductStatement">
-              Sensoren erfassen die Umgebung.
-            </strong>
+        <div class="lrox-product-rotation__copy">
+          <strong id="lroxProductStatement">
+            Sensoren erfassen die Umgebung.
+          </strong>
 
-            <p id="lroxProductDescription">
-              Das kompakte Helm-Modul erkennt relevante Bewegungen,
-              bevor eine kritische Situation offensichtlich wird.
-            </p>
-          </div>
-
-          <div class="lrox-product-reveal__features">
-            <span
-              class="
-                lrox-product-reveal__feature
-                is-active
-              "
-              data-product-feature="0"
-            >
-              Multi-sensor detection
-            </span>
-
-            <span
-              class="lrox-product-reveal__feature"
-              data-product-feature="1"
-            >
-              Ohne klassische Kamera
-            </span>
-
-            <span
-              class="lrox-product-reveal__feature"
-              data-product-feature="2"
-            >
-              Instant visual warning
-            </span>
-          </div>
+          <p id="lroxProductDescription">
+            Das Helm-Modul erkennt relevante Bewegungen frühzeitig.
+          </p>
         </div>
 
-        <div
-          class="lrox-product-reveal__progress"
-          aria-hidden="true"
-        >
-          <span
-            class="
-              lrox-product-reveal__progress-dot
-              is-active
-            "
-          ></span>
+        <div class="lrox-product-rotation__features">
+          <span class="lrox-product-rotation__feature is-active">
+            Multi-sensor detection
+          </span>
 
-          <span
-            class="lrox-product-reveal__progress-dot"
-          ></span>
+          <span class="lrox-product-rotation__feature">
+            Ohne klassische Kamera
+          </span>
 
-          <span
-            class="lrox-product-reveal__progress-dot"
-          ></span>
-        </div>
-
-        <div class="lrox-product-reveal__angle">
-          <span id="lroxProductAngle">
-            01 · Front
+          <span class="lrox-product-rotation__feature">
+            Instant visual warning
           </span>
         </div>
 
+        <div
+          class="lrox-product-rotation__steps"
+          aria-hidden="true"
+        >
+          <span class="lrox-product-rotation__step is-active"></span>
+          <span class="lrox-product-rotation__step"></span>
+          <span class="lrox-product-rotation__step"></span>
+        </div>
+
+        <div class="lrox-product-rotation__angle">
+          <span id="lroxProductAngle">01 · Front</span>
+        </div>
       </div>
     </div>
   </section>
@@ -2117,53 +2033,44 @@
     })();
   </script>
 
+
   <script>
     (() => {
       const section = document.querySelector(
-        ".lrox-product-reveal"
+        ".lrox-product-rotation"
       );
 
       if (!section) return;
 
       const scrollArea = section.querySelector(
-        ".lrox-product-reveal__scroll"
+        ".lrox-product-rotation__scroll"
       );
 
       const productObject = section.querySelector(
         "#lroxProductObject"
       );
 
-      const glow = section.querySelector(
-        ".lrox-product-reveal__orange-glow"
-      );
-
-      const floor = section.querySelector(
-        ".lrox-product-reveal__floor"
-      );
-
       const images = [
         section.querySelector(
-          ".lrox-product-reveal__image--front"
+          ".lrox-product-rotation__image--front"
         ),
-
         section.querySelector(
-          ".lrox-product-reveal__image--angle"
+          ".lrox-product-rotation__image--angle"
         ),
-
         section.querySelector(
-          ".lrox-product-reveal__image--back"
+          ".lrox-product-rotation__image--back"
         )
       ];
 
       const features = Array.from(
         section.querySelectorAll(
-          ".lrox-product-reveal__feature"
+          ".lrox-product-rotation__feature"
         )
       );
 
-      const progressDots = Array.from(
+      const steps = Array.from(
         section.querySelectorAll(
-          ".lrox-product-reveal__progress-dot"
+          ".lrox-product-rotation__step"
         )
       );
 
@@ -2175,106 +2082,64 @@
         "#lroxProductDescription"
       );
 
-      const angleLabel = section.querySelector(
+      const angle = section.querySelector(
         "#lroxProductAngle"
       );
 
       const content = [
         {
-          statement:
-            "Sensoren erfassen die Umgebung.",
-
-          description:
-            "Das kompakte Helm-Modul erkennt relevante Bewegungen, bevor eine kritische Situation offensichtlich wird.",
-
-          angle:
-            "01 · Front"
+          statement: "Sensoren erfassen die Umgebung.",
+          description: "Das Helm-Modul erkennt relevante Bewegungen frühzeitig.",
+          angle: "01 · Front"
         },
-
         {
-          statement:
-            "Erkennung ohne klassische Kamera.",
-
-          description:
-            "Mehrere Sensorsignale werden kombiniert, ohne dass eine konventionelle Dauer-Videoaufnahme erforderlich ist.",
-
-          angle:
-            "02 · Angle"
+          statement: "Erkennung ohne klassische Kamera.",
+          description: "Mehrere Sensorsignale werden direkt am Gerät kombiniert.",
+          angle: "02 · Angle"
         },
-
         {
-          statement:
-            "Die Warnung kommt im richtigen Moment.",
-
-          description:
-            "Das erkannte Risiko wird direkt in ein klares visuelles Warnsignal am Helm übersetzt.",
-
-          angle:
-            "03 · Rear"
+          statement: "Warnung im entscheidenden Moment.",
+          description: "Das erkannte Risiko wird in ein klares Lichtsignal übersetzt.",
+          angle: "03 · Rear"
         }
       ];
 
-      function clamp(
-        value,
-        minimum,
-        maximum
-      ) {
-        return Math.min(
-          Math.max(value, minimum),
-          maximum
-        );
+      function clamp(value, min, max) {
+        return Math.min(Math.max(value, min), max);
       }
 
-      function smoothstep(
-        edge0,
-        edge1,
-        value
-      ) {
-        const normalized = clamp(
-          (value - edge0) /
-          (edge1 - edge0),
+      function smoothstep(edge0, edge1, value) {
+        const x = clamp(
+          (value - edge0) / (edge1 - edge0),
           0,
           1
         );
 
-        return (
-          normalized *
-          normalized *
-          (3 - 2 * normalized)
-        );
+        return x * x * (3 - 2 * x);
       }
 
-      function setImageState(
+      function setImage(
         image,
         opacity,
         x,
-        y,
         scale,
-        rotateY,
-        rotateZ
+        rotateY
       ) {
         if (!image) return;
 
         image.style.opacity = opacity;
-
         image.style.transform = `
-          translate3d(${x}px, ${y}px, 0)
+          translate3d(${x}px, 0, 0)
           scale(${scale})
           rotateY(${rotateY}deg)
-          rotateZ(${rotateZ}deg)
         `;
       }
 
       function updateProduct() {
-        const rect =
-          scrollArea.getBoundingClientRect();
-
-        const viewportHeight =
-          window.innerHeight;
-
+        const rect = scrollArea.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
         const scrollDistance =
-          scrollArea.offsetHeight -
-          viewportHeight;
+          scrollArea.offsetHeight - viewportHeight;
 
         const travelled = clamp(
           -rect.top,
@@ -2287,150 +2152,84 @@
             ? travelled / scrollDistance
             : 0;
 
-        const frontToAngle = smoothstep(
-          0.14,
-          0.4,
+        const firstTurn = smoothstep(
+          0.02,
+          0.42,
           progress
         );
 
-        const angleToBack = smoothstep(
-          0.58,
-          0.86,
+        const secondTurn = smoothstep(
+          0.43,
+          0.83,
           progress
         );
 
-        const frontOpacity =
-          1 - frontToAngle;
+        const frontOpacity = 1 - firstTurn;
+        const angleOpacity = Math.min(
+          firstTurn,
+          1 - secondTurn
+        );
+        const backOpacity = secondTurn;
 
-        const angleOpacity =
-          Math.min(
-            frontToAngle,
-            1 - angleToBack
-          );
-
-        const backOpacity =
-          angleToBack;
-
-        setImageState(
+        setImage(
           images[0],
           frontOpacity,
-          -18 * frontToAngle,
-          6 * frontToAngle,
-          0.96 + progress * 0.04,
-          -7 * frontToAngle,
-          -1.2 * frontToAngle
+          -22 * firstTurn,
+          1.02 + progress * 0.035,
+          -7 * firstTurn
         );
 
-        setImageState(
+        setImage(
           images[1],
           angleOpacity,
-          18 * (1 - frontToAngle) -
-          12 * angleToBack,
-          0,
-          0.96 + angleOpacity * 0.04,
-          8 - angleToBack * 12,
-          1.2 - angleToBack * 1.8
+          20 * (1 - firstTurn) - 14 * secondTurn,
+          1.035 + angleOpacity * 0.035,
+          8 - secondTurn * 12
         );
 
-        setImageState(
+        setImage(
           images[2],
           backOpacity,
-          18 * (1 - angleToBack),
-          -3 * angleToBack,
-          0.96 + backOpacity * 0.04,
-          7 * (1 - angleToBack),
-          0.8 * (1 - angleToBack)
+          22 * (1 - secondTurn),
+          1.025 + backOpacity * 0.035,
+          7 * (1 - secondTurn)
         );
 
         if (productObject) {
           const floatY =
-            Math.sin(
-              progress * Math.PI * 3
-            ) * 7;
-
-          const tiltX =
-            Math.sin(
-              progress * Math.PI
-            ) * -2.2;
+            Math.sin(progress * Math.PI * 2) * 5;
 
           productObject.style.transform = `
             translate3d(0, ${floatY}px, 0)
-            rotateX(${tiltX}deg)
-            rotateY(${progress * -5}deg)
+            rotateX(${Math.sin(progress * Math.PI) * -1.5}deg)
           `;
-        }
-
-        if (glow) {
-          glow.style.transform = `
-            translate(-50%, -47%)
-            scale(${0.82 + progress * 0.18})
-          `;
-
-          glow.style.opacity =
-            0.72 + progress * 0.28;
-        }
-
-        if (floor) {
-          floor.style.transform = `
-            translateX(-50%)
-            scaleX(${0.82 + progress * 0.13})
-          `;
-
-          floor.style.opacity =
-            0.62 + progress * 0.2;
         }
 
         let activeIndex = 0;
 
-        if (progress >= 0.67) {
+        if (progress >= 0.64) {
           activeIndex = 2;
-        } else if (progress >= 0.33) {
+        } else if (progress >= 0.29) {
           activeIndex = 1;
         }
 
-        features.forEach(
-          (feature, index) => {
-            feature.classList.toggle(
-              "is-active",
-              index === activeIndex
-            );
-          }
-        );
-
-        progressDots.forEach(
-          (dot, index) => {
-            dot.classList.toggle(
-              "is-active",
-              index === activeIndex
-            );
-          }
-        );
-
-        const activeContent =
-          content[activeIndex];
-
-        if (
-          statement &&
-          statement.textContent.trim() !==
-          activeContent.statement
-        ) {
-          statement.animate(
-            [
-              {
-                opacity: 0,
-                transform: "translateY(8px)"
-              },
-              {
-                opacity: 1,
-                transform: "translateY(0)"
-              }
-            ],
-            {
-              duration: 360,
-              easing: "ease-out"
-            }
+        features.forEach((item, index) => {
+          item.classList.toggle(
+            "is-active",
+            index === activeIndex
           );
+        });
 
+        steps.forEach((item, index) => {
+          item.classList.toggle(
+            "is-active",
+            index === activeIndex
+          );
+        });
+
+        const activeContent = content[activeIndex];
+
+        if (statement) {
           statement.textContent =
             activeContent.statement;
         }
@@ -2440,42 +2239,38 @@
             activeContent.description;
         }
 
-        if (angleLabel) {
-          angleLabel.textContent =
-            activeContent.angle;
+        if (angle) {
+          angle.textContent = activeContent.angle;
         }
       }
 
       let ticking = false;
 
-      function requestProductUpdate() {
+      function requestUpdate() {
         if (ticking) return;
 
         ticking = true;
 
-        window.requestAnimationFrame(
-          () => {
-            updateProduct();
-            ticking = false;
-          }
-        );
+        window.requestAnimationFrame(() => {
+          updateProduct();
+          ticking = false;
+        });
       }
 
       window.addEventListener(
         "scroll",
-        requestProductUpdate,
-        {
-          passive: true
-        }
+        requestUpdate,
+        { passive: true }
       );
 
       window.addEventListener(
         "resize",
-        requestProductUpdate
+        requestUpdate
       );
 
       updateProduct();
     })();
   </script>
+
 </body>
 </html>
