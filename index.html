@@ -2153,14 +2153,14 @@
             : 0;
 
         const firstTurn = smoothstep(
-          0.02,
-          0.42,
+          0.00,
+          0.20,
           progress
         );
 
         const secondTurn = smoothstep(
-          0.43,
-          0.83,
+          0.22,
+          0.46,
           progress
         );
 
@@ -2207,9 +2207,9 @@
 
         let activeIndex = 0;
 
-        if (progress >= 0.64) {
+        if (progress >= 0.42) {
           activeIndex = 2;
-        } else if (progress >= 0.29) {
+        } else if (progress >= 0.16) {
           activeIndex = 1;
         }
 
