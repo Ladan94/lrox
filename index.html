@@ -1164,7 +1164,7 @@
 
     .lrox-product-rotation__scroll {
       position: relative;
-      height: 155vh;
+      height: 190vh;
     }
 
     .lrox-product-rotation__stage {
@@ -2141,26 +2141,37 @@
         const scrollDistance =
           scrollArea.offsetHeight - viewportHeight;
 
-        /* Start the sequence while Slide 3 is entering the viewport,
-           not only after its top reaches the browser top. */
-        const entryLead = viewportHeight * 0.72;
-        const totalJourney = entryLead + Math.max(scrollDistance, 1);
-
-        const progress = clamp(
-          (entryLead - rect.top) / totalJourney,
+        /*
+          The product stays on the front view while Slide 3 first enters.
+          The rotation begins only after the sticky stage reaches the top.
+        */
+        const travelled = clamp(
+          -rect.top,
           0,
-          1
+          Math.max(scrollDistance, 1)
         );
 
+        const progress =
+          scrollDistance > 0
+            ? travelled / scrollDistance
+            : 0;
+
+        /*
+          0%   – 22%  Front view remains fully visible.
+          22%  – 40%  Front transitions to angle.
+          40%  – 58%  Angle remains fully visible.
+          58%  – 76%  Angle transitions to rear.
+          76%  – 100% Rear remains fully visible.
+        */
         const firstTurn = smoothstep(
-          0.06,
-          0.32,
+          0.22,
+          0.40,
           progress
         );
 
         const secondTurn = smoothstep(
-          0.36,
-          0.66,
+          0.58,
+          0.76,
           progress
         );
 
@@ -2174,42 +2185,42 @@
         setImage(
           images[0],
           frontOpacity,
-          -22 * firstTurn,
-          0.96 + progress * 0.025,
-          -7 * firstTurn
+          -14 * firstTurn,
+          0.98,
+          -5 * firstTurn
         );
 
         setImage(
           images[1],
           angleOpacity,
-          20 * (1 - firstTurn) - 14 * secondTurn,
-          0.97 + angleOpacity * 0.025,
-          8 - secondTurn * 12
+          14 * (1 - firstTurn) - 10 * secondTurn,
+          0.98,
+          6 - secondTurn * 9
         );
 
         setImage(
           images[2],
           backOpacity,
-          22 * (1 - secondTurn),
-          0.96 + backOpacity * 0.025,
-          7 * (1 - secondTurn)
+          14 * (1 - secondTurn),
+          0.98,
+          5 * (1 - secondTurn)
         );
 
         if (productObject) {
           const floatY =
-            Math.sin(progress * Math.PI * 2) * 5;
+            Math.sin(progress * Math.PI * 2) * 3;
 
           productObject.style.transform = `
             translate3d(0, ${floatY}px, 0)
-            rotateX(${Math.sin(progress * Math.PI) * -1.5}deg)
+            rotateX(${Math.sin(progress * Math.PI) * -1}deg)
           `;
         }
 
         let activeIndex = 0;
 
-        if (progress >= 0.58) {
+        if (progress >= 0.67) {
           activeIndex = 2;
-        } else if (progress >= 0.22) {
+        } else if (progress >= 0.32) {
           activeIndex = 1;
         }
 
