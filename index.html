@@ -2,12 +2,10 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   />
-
   <meta
     name="description"
     content="LROX erkennt kritische Verkehrssituationen in Echtzeit und warnt Radfahrende im entscheidenden Moment."
@@ -78,15 +76,15 @@
       bottom: -1px;
       left: 0;
       z-index: 6;
-      height: clamp(90px, 14vh, 160px);
+      height: clamp(80px, 11vh, 125px);
       pointer-events: none;
       background:
         linear-gradient(
           180deg,
           transparent 0%,
-          rgba(34, 21, 14, 0.14) 22%,
-          rgba(113, 65, 38, 0.34) 49%,
-          rgba(215, 165, 132, 0.7) 74%,
+          rgba(35, 22, 15, 0.08) 18%,
+          rgba(121, 76, 50, 0.22) 42%,
+          rgba(222, 181, 153, 0.54) 71%,
           #f8f1ea 100%
         );
     }
@@ -129,7 +127,7 @@
           180deg,
           rgba(0, 0, 0, 0.12) 0%,
           transparent 32%,
-          transparent 74%,
+          transparent 75%,
           rgba(0, 0, 0, 0.12) 100%
         );
     }
@@ -406,7 +404,7 @@
 
     .lrox-value__scroll {
       position: relative;
-      height: 175vh;
+      height: 165vh;
       background: var(--lrox-cream);
     }
 
@@ -415,12 +413,12 @@
       top: 0;
       width: 100%;
       height: 100svh;
-      min-height: 700px;
+      min-height: 720px;
       overflow: hidden;
       isolation: isolate;
       background:
         radial-gradient(
-          circle at 82% 22%,
+          circle at 82% 23%,
           rgba(255, 110, 38, 0.15),
           transparent 28%
         ),
@@ -472,7 +470,7 @@
 
     .lrox-value__glow {
       position: absolute;
-      top: 5%;
+      top: 4%;
       right: -9%;
       width: 58vw;
       height: 58vw;
@@ -487,21 +485,13 @@
           transparent 68%
         );
       filter: blur(8px);
-      opacity: 0.72;
-      transform: scale(0.86);
-      transition:
-        opacity 900ms ease,
-        transform 1200ms cubic-bezier(0.2, 0.75, 0.2, 1);
-    }
-
-    .lrox-value.is-active .lrox-value__glow {
       opacity: 1;
       transform: scale(1);
     }
 
     .lrox-value__radar {
       position: absolute;
-      top: 7%;
+      top: 6%;
       right: 5%;
       width: min(38vw, 570px);
       aspect-ratio: 1;
@@ -515,11 +505,8 @@
       display: block;
       border: 1px solid rgba(255, 90, 18, 0.2);
       border-radius: 50%;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.68);
-      transition:
-        opacity 650ms ease,
-        transform 1000ms cubic-bezier(0.2, 0.75, 0.2, 1);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
 
     .lrox-value__ring--1 {
@@ -530,7 +517,6 @@
     .lrox-value__ring--2 {
       width: 68%;
       height: 68%;
-      transition-delay: 70ms;
     }
 
     .lrox-value__ring--3 {
@@ -538,12 +524,6 @@
       height: 37%;
       border-color: rgba(255, 90, 18, 0.36);
       background: rgba(255, 90, 18, 0.025);
-      transition-delay: 140ms;
-    }
-
-    .lrox-value.is-active .lrox-value__ring {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
     }
 
     .lrox-value__radar-center {
@@ -557,16 +537,7 @@
       box-shadow:
         0 0 0 9px rgba(255, 90, 18, 0.1),
         0 0 50px rgba(255, 90, 18, 0.5);
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0);
-      transition:
-        opacity 400ms ease 180ms,
-        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1) 180ms;
-    }
-
-    .lrox-value.is-active .lrox-value__radar-center {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%);
     }
 
     .lrox-value__target {
@@ -602,17 +573,11 @@
       background:
         linear-gradient(
           90deg,
-          rgba(255, 90, 18, 0.82),
+          rgba(255, 90, 18, 0.88),
           transparent
         );
       transform-origin: left center;
-      transform: rotate(-90deg);
-      opacity: 0;
-    }
-
-    .lrox-value.is-scanning .lrox-value__scan-line {
-      opacity: 1;
-      animation: lroxRadarScan 3.8s linear infinite;
+      animation: lroxRadarScan 3.5s linear infinite;
     }
 
     @keyframes lroxRadarScan {
@@ -631,7 +596,7 @@
       width: min(calc(100% - 64px), 1440px);
       height: 100%;
       margin: 0 auto;
-      padding: 7vh 0 25vh;
+      padding: 6.5vh 0 29vh;
       display: grid;
       grid-template-columns: minmax(0, 760px) 1fr;
       align-items: center;
@@ -642,6 +607,7 @@
       position: relative;
       z-index: 3;
       max-width: 760px;
+      transform: translateY(-4vh);
     }
 
     .lrox-value__eyebrow {
@@ -657,7 +623,7 @@
       opacity: 0;
       transform: translateY(18px);
       transition:
-        opacity 500ms ease,
+        opacity 550ms ease,
         transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1);
     }
 
@@ -669,7 +635,7 @@
       box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.12);
     }
 
-    .lrox-value.is-active .lrox-value__eyebrow {
+    .lrox-value.is-entered .lrox-value__eyebrow {
       opacity: 1;
       transform: translateY(0);
     }
@@ -687,35 +653,52 @@
     .lrox-value__line {
       display: block;
       opacity: 0;
-      transform: translateY(58px);
+      transform: translateY(52px);
       transition:
         opacity 600ms ease,
-        transform 780ms cubic-bezier(0.16, 0.75, 0.2, 1);
+        transform 760ms cubic-bezier(0.16, 0.75, 0.2, 1);
     }
 
     .lrox-value__line--orange {
       color: var(--lrox-orange);
     }
 
-    .lrox-value__line.is-visible {
+    .lrox-value.is-entered
+    .lrox-value__line:nth-child(1) {
       opacity: 1;
       transform: translateY(0);
+      transition-delay: 80ms;
+    }
+
+    .lrox-value.is-entered
+    .lrox-value__line:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 210ms;
+    }
+
+    .lrox-value.is-entered
+    .lrox-value__line:nth-child(3) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 340ms;
     }
 
     .lrox-value__description {
       max-width: 590px;
-      margin: 29px 0 0;
+      margin: 28px 0 0;
       color: var(--lrox-muted);
       font-size: clamp(1.03rem, 1.25vw, 1.18rem);
       line-height: 1.62;
       opacity: 0;
-      transform: translateY(25px);
+      transform: translateY(22px);
       transition:
-        opacity 550ms ease,
-        transform 680ms cubic-bezier(0.2, 0.75, 0.2, 1);
+        opacity 550ms ease 430ms,
+        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1) 430ms;
     }
 
-    .lrox-value__description.is-visible {
+    .lrox-value.is-entered
+    .lrox-value__description {
       opacity: 1;
       transform: translateY(0);
     }
@@ -723,7 +706,7 @@
     .lrox-value__process {
       position: absolute;
       right: 0;
-      bottom: 8.5vh;
+      bottom: 7.5vh;
       left: 0;
       z-index: 8;
       width: min(calc(100% - 64px), 1440px);
@@ -735,20 +718,20 @@
 
     .lrox-value__item {
       position: relative;
-      min-height: 150px;
-      padding: 18px 20px;
+      min-height: 142px;
+      padding: 17px 19px;
       display: grid;
       grid-template-columns: 42px 1fr;
       gap: 18px;
       border: 1px solid rgba(38, 30, 24, 0.1);
       border-radius: 23px;
-      background: rgba(255, 255, 255, 0.81);
+      background: rgba(255, 255, 255, 0.82);
       box-shadow:
         0 20px 54px rgba(72, 50, 34, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(20px);
       opacity: 0;
-      transform: translateY(36px);
+      transform: translateY(34px);
       transition:
         opacity 500ms ease,
         transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1),
@@ -789,7 +772,7 @@
     .lrox-value__item-icon {
       width: 34px;
       height: 34px;
-      margin-bottom: 12px;
+      margin-bottom: 11px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(255, 90, 18, 0.2);
@@ -805,12 +788,14 @@
       border-radius: 50%;
     }
 
-    .lrox-value__item:nth-child(2) .lrox-value__item-icon {
+    .lrox-value__item:nth-child(2)
+    .lrox-value__item-icon {
       display: flex;
       gap: 4px;
     }
 
-    .lrox-value__item:nth-child(2) .lrox-value__item-icon span {
+    .lrox-value__item:nth-child(2)
+    .lrox-value__item-icon span {
       width: 6px;
       height: 18px;
       border: 0;
@@ -824,7 +809,8 @@
       opacity: 0.55;
     }
 
-    .lrox-value__item:nth-child(3) .lrox-value__item-icon span {
+    .lrox-value__item:nth-child(3)
+    .lrox-value__item-icon span {
       width: 14px;
       height: 10px;
       border-radius: 2px;
@@ -834,21 +820,21 @@
     .lrox-value__item strong {
       display: block;
       color: #1b1815;
-      font-size: 1.16rem;
+      font-size: 1.15rem;
       letter-spacing: -0.02em;
     }
 
     .lrox-value__item p {
       margin: 7px 0 0;
       color: #756b63;
-      font-size: 0.87rem;
-      line-height: 1.46;
+      font-size: 0.86rem;
+      line-height: 1.44;
     }
 
     .lrox-value__bottom {
       position: absolute;
       right: 32px;
-      bottom: 22px;
+      bottom: 19px;
       left: 32px;
       z-index: 10;
       width: min(calc(100% - 64px), 1440px);
@@ -873,11 +859,11 @@
 
     .lrox-value__progress-labels {
       width: calc(100% - 240px);
-      margin-top: 10px;
+      margin-top: 9px;
       display: flex;
       justify-content: space-between;
       color: #83786f;
-      font-size: 0.66rem;
+      font-size: 0.65rem;
       font-weight: 730;
       letter-spacing: 0.09em;
       text-transform: uppercase;
@@ -962,16 +948,15 @@
 
       .lrox-value__inner {
         width: min(calc(100% - 48px), 1440px);
-        padding-top: 6vh;
-        align-items: start;
+        padding-top: 5vh;
       }
 
       .lrox-value__heading {
-        margin-top: 5vh;
+        transform: translateY(-2vh);
       }
 
       .lrox-value__radar {
-        top: 5%;
+        top: 4%;
         right: -12%;
         width: 52vw;
       }
@@ -987,7 +972,7 @@
       }
 
       .lrox-hero::after {
-        height: 120px;
+        height: 105px;
       }
 
       .lrox-header,
@@ -1001,10 +986,6 @@
 
       .lrox-hero__video {
         object-position: 58% center;
-        filter:
-          brightness(1.1)
-          contrast(1)
-          saturate(1.06);
       }
 
       .lrox-hero__shade {
@@ -1048,21 +1029,21 @@
       }
 
       .lrox-value__scroll {
-        height: 210vh;
+        height: 200vh;
       }
 
       .lrox-value__stage {
-        min-height: 760px;
+        min-height: 790px;
       }
 
       .lrox-value__inner {
         width: calc(100% - 40px);
-        padding: 6vh 0 39vh;
+        padding: 5vh 0 43vh;
         display: block;
       }
 
       .lrox-value__heading {
-        margin-top: 0;
+        transform: none;
       }
 
       .lrox-value__eyebrow {
@@ -1078,20 +1059,20 @@
       .lrox-value__description {
         max-width: 92%;
         margin-top: 20px;
-        font-size: 0.96rem;
+        font-size: 0.95rem;
         line-height: 1.5;
       }
 
       .lrox-value__radar {
-        top: 4%;
-        right: -52%;
-        width: 100vw;
-        opacity: 0.58;
+        top: 2%;
+        right: -57%;
+        width: 105vw;
+        opacity: 0.55;
       }
 
       .lrox-value__process {
         right: 20px;
-        bottom: 8vh;
+        bottom: 7.5vh;
         left: 20px;
         width: auto;
         grid-template-columns: 1fr;
@@ -1125,7 +1106,7 @@
 
       .lrox-value__bottom {
         right: 20px;
-        bottom: 15px;
+        bottom: 14px;
         left: 20px;
         width: auto;
       }
@@ -1154,8 +1135,6 @@
       .lrox-value__line,
       .lrox-value__description,
       .lrox-value__item,
-      .lrox-value__ring,
-      .lrox-value__radar-center,
       .lrox-value__target {
         opacity: 1;
         transform: none;
@@ -1304,23 +1283,16 @@
             </div>
 
             <h2 class="lrox-value__title">
-              <span
-                class="lrox-value__line"
-                data-line="1"
-              >
+              <span class="lrox-value__line">
                 Mehr Zeit.
               </span>
 
-              <span
-                class="lrox-value__line"
-                data-line="2"
-              >
+              <span class="lrox-value__line">
                 Mehr Kontrolle.
               </span>
 
               <span
                 class="lrox-value__line lrox-value__line--orange"
-                data-line="3"
               >
                 Mehr Sicherheit.
               </span>
@@ -1515,16 +1487,6 @@
         ".lrox-value__scroll"
       );
 
-      const lines = Array.from(
-        section.querySelectorAll(
-          ".lrox-value__line"
-        )
-      );
-
-      const description = section.querySelector(
-        ".lrox-value__description"
-      );
-
       const items = Array.from(
         section.querySelectorAll(
           ".lrox-value__item"
@@ -1550,9 +1512,19 @@
         const rect =
           scrollArea.getBoundingClientRect();
 
+        const viewportHeight =
+          window.innerHeight;
+
+        const entryProgress = clamp(
+          (viewportHeight - rect.top) /
+          (viewportHeight * 0.55),
+          0,
+          1
+        );
+
         const scrollableDistance =
           scrollArea.offsetHeight -
-          window.innerHeight;
+          viewportHeight;
 
         const travelled = clamp(
           -rect.top,
@@ -1566,51 +1538,35 @@
             : 0;
 
         section.classList.toggle(
-          "is-active",
-          progress >= 0
-        );
-
-        section.classList.toggle(
-          "is-scanning",
-          progress > 0.04
+          "is-entered",
+          entryProgress > 0.06
         );
 
         section.classList.toggle(
           "is-target-visible",
-          progress > 0.22
+          entryProgress > 0.48 ||
+          progress > 0.08
         );
-
-        lines.forEach((line, index) => {
-          const revealPoint =
-            0.01 + index * 0.1;
-
-          line.classList.toggle(
-            "is-visible",
-            progress >= revealPoint
-          );
-        });
-
-        if (description) {
-          description.classList.toggle(
-            "is-visible",
-            progress >= 0.22
-          );
-        }
 
         items.forEach((item, index) => {
           const revealPoint =
-            0.34 + index * 0.11;
+            0.08 + index * 0.1;
+
+          const isVisible =
+            entryProgress >
+            0.67 + index * 0.1 ||
+            progress >= revealPoint;
+
+          item.classList.toggle(
+            "is-visible",
+            isVisible
+          );
 
           const currentStart =
             revealPoint;
 
           const currentEnd =
-            revealPoint + 0.19;
-
-          item.classList.toggle(
-            "is-visible",
-            progress >= revealPoint
-          );
+            revealPoint + 0.24;
 
           item.classList.toggle(
             "is-current",
@@ -1621,7 +1577,10 @@
 
         if (progressBar) {
           progressBar.style.width =
-            `${progress * 100}%`;
+            `${Math.max(
+              entryProgress * 16,
+              progress * 100
+            )}%`;
         }
       }
 
