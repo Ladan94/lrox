@@ -1157,14 +1157,14 @@
       position: relative;
       z-index: 20;
       width: 100%;
-      margin-top: -38vh;
+      margin-top: -18vh;
       background: #fffaf6;
       color: var(--lrox-text);
     }
 
     .lrox-product-rotation__scroll {
       position: relative;
-      height: 190vh;
+      height: 155vh;
     }
 
     .lrox-product-rotation__stage {
@@ -1251,9 +1251,9 @@
 
     .lrox-product-rotation__object {
       position: relative;
-      width: min(96vw, 1380px);
-      height: min(88vh, 960px);
-      margin-top: clamp(52px, 6vh, 82px);
+      width: min(84vw, 1180px);
+      height: min(72vh, 780px);
+      margin-top: clamp(36px, 4vh, 58px);
       transform-style: preserve-3d;
       will-change: transform;
     }
@@ -1281,9 +1281,9 @@
     .lrox-product-rotation__floor {
       position: absolute;
       left: 50%;
-      bottom: 8.5vh;
+      bottom: 11vh;
       z-index: 2;
-      width: min(55vw, 760px);
+      width: min(48vw, 680px);
       height: 74px;
       border-radius: 50%;
       background: rgba(61, 42, 30, 0.13);
@@ -1444,8 +1444,8 @@
       }
 
       .lrox-product-rotation__object {
-        width: 142vw;
-        height: 66vh;
+        width: 112vw;
+        height: 58vh;
         margin-top: 45px;
       }
 
@@ -2141,26 +2141,26 @@
         const scrollDistance =
           scrollArea.offsetHeight - viewportHeight;
 
-        const travelled = clamp(
-          -rect.top,
+        /* Start the sequence while Slide 3 is entering the viewport,
+           not only after its top reaches the browser top. */
+        const entryLead = viewportHeight * 0.72;
+        const totalJourney = entryLead + Math.max(scrollDistance, 1);
+
+        const progress = clamp(
+          (entryLead - rect.top) / totalJourney,
           0,
-          scrollDistance
+          1
         );
 
-        const progress =
-          scrollDistance > 0
-            ? travelled / scrollDistance
-            : 0;
-
         const firstTurn = smoothstep(
-          0.00,
-          0.20,
+          0.06,
+          0.32,
           progress
         );
 
         const secondTurn = smoothstep(
-          0.22,
-          0.46,
+          0.36,
+          0.66,
           progress
         );
 
@@ -2175,7 +2175,7 @@
           images[0],
           frontOpacity,
           -22 * firstTurn,
-          1.02 + progress * 0.035,
+          0.96 + progress * 0.025,
           -7 * firstTurn
         );
 
@@ -2183,7 +2183,7 @@
           images[1],
           angleOpacity,
           20 * (1 - firstTurn) - 14 * secondTurn,
-          1.035 + angleOpacity * 0.035,
+          0.97 + angleOpacity * 0.025,
           8 - secondTurn * 12
         );
 
@@ -2191,7 +2191,7 @@
           images[2],
           backOpacity,
           22 * (1 - secondTurn),
-          1.025 + backOpacity * 0.035,
+          0.96 + backOpacity * 0.025,
           7 * (1 - secondTurn)
         );
 
@@ -2207,9 +2207,9 @@
 
         let activeIndex = 0;
 
-        if (progress >= 0.42) {
+        if (progress >= 0.58) {
           activeIndex = 2;
-        } else if (progress >= 0.16) {
+        } else if (progress >= 0.22) {
           activeIndex = 1;
         }
 
