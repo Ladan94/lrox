@@ -1,7 +1,21 @@
 <section class="lrox-hero" id="home">
+  <!-- Blurred background layer -->
+  <video
+    class="lrox-hero__video lrox-hero__video--background"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  >
+    <source src="assets/videolrox-hero.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Main video: completely visible, no crop -->
   <video
     id="lroxHeroVideo"
-    class="lrox-hero__video"
+    class="lrox-hero__video lrox-hero__video--main"
     autoplay
     muted
     loop
@@ -11,7 +25,7 @@
     <source src="assets/videolrox-hero.mp4" type="video/mp4" />
   </video>
 
-  <div class="lrox-hero__overlay"></div>
+  <div class="lrox-hero__text-shade"></div>
 
   <header class="lrox-header">
     <a class="lrox-logo" href="#home" aria-label="LROX home">
@@ -50,7 +64,7 @@
     <div class="lrox-actions">
       <a class="lrox-btn lrox-btn--primary" href="#demo">
         Demo ansehen
-        <span>→</span>
+        <span aria-hidden="true">→</span>
       </a>
 
       <a class="lrox-btn lrox-btn--secondary" href="#contact">
@@ -78,7 +92,7 @@
 <style>
   :root {
     --lrox-orange: #ff5a12;
-    --lrox-orange-dark: #e84a08;
+    --lrox-orange-dark: #e94b08;
     --lrox-white: #ffffff;
     --lrox-black: #080808;
   }
@@ -111,41 +125,69 @@
     text-decoration: none;
   }
 
-  .lrox-hero__video {
+  /*
+    Background video:
+    fills the screen and is blurred so there are no empty bars.
+  */
+  .lrox-hero__video--background {
+    position: absolute;
+    inset: -40px;
+    z-index: -5;
+    width: calc(100% + 80px);
+    height: calc(100% + 80px);
+    object-fit: cover;
+    object-position: center;
+    filter:
+      blur(30px)
+      brightness(1.15)
+      saturate(1.15);
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+
+  /*
+    Main video:
+    contain means the full frame is visible and nothing is cropped.
+  */
+  .lrox-hero__video--main {
+    position: absolute;
+    inset: 0;
+    z-index: -4;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    filter:
+      brightness(1.18)
+      contrast(1.02)
+      saturate(1.08);
+  }
+
+  /*
+    Only darkens the left side behind the text.
+    The rest of the video remains bright.
+  */
+  .lrox-hero__text-shade {
     position: absolute;
     inset: 0;
     z-index: -3;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center 38%;
-    transform: none;
-    background: #000;
-    filter:
-      brightness(1.08)
-      contrast(1.02)
-      saturate(1.05);
-  }
-
-  .lrox-hero__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
     pointer-events: none;
     background:
       linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.62) 0%,
-        rgba(0, 0, 0, 0.42) 30%,
-        rgba(0, 0, 0, 0.14) 58%,
-        rgba(0, 0, 0, 0.02) 100%
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.48) 25%,
+        rgba(0, 0, 0, 0.18) 45%,
+        rgba(0, 0, 0, 0.03) 63%,
+        transparent 80%
       ),
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.14) 0%,
-        rgba(0, 0, 0, 0.02) 46%,
-        rgba(0, 0, 0, 0.26) 100%
+        rgba(0, 0, 0, 0.12) 0%,
+        transparent 38%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.16) 100%
       );
   }
 
@@ -158,7 +200,7 @@
     display: flex;
     align-items: center;
     gap: 34px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   }
 
   .lrox-logo {
@@ -194,13 +236,14 @@
 
   .lrox-nav {
     display: flex;
+    align-items: center;
     gap: 32px;
     margin-left: auto;
   }
 
   .lrox-nav a {
     position: relative;
-    color: rgba(255, 255, 255, 0.84);
+    color: rgba(255, 255, 255, 0.86);
     font-size: 0.94rem;
     transition: color 180ms ease;
   }
@@ -208,9 +251,9 @@
   .lrox-nav a::after {
     content: "";
     position: absolute;
-    left: 0;
     right: 0;
     bottom: -9px;
+    left: 0;
     height: 1px;
     background: var(--lrox-orange);
     transform: scaleX(0);
@@ -229,12 +272,13 @@
   .lrox-header__cta {
     min-height: 48px;
     padding: 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.34);
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(8, 8, 10, 0.18);
+    background: rgba(8, 8, 10, 0.16);
+    color: #fff;
     backdrop-filter: blur(12px);
     font-size: 0.92rem;
     font-weight: 700;
@@ -245,8 +289,8 @@
   }
 
   .lrox-header__cta:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.48);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.55);
     transform: translateY(-1px);
   }
 
@@ -256,7 +300,7 @@
     width: min(calc(100% - 64px), 1440px);
     min-height: calc(100svh - 89px);
     margin: 0 auto;
-    padding: 76px 0 100px;
+    padding: 70px 0 105px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,11 +312,12 @@
     align-items: center;
     gap: 11px;
     margin-bottom: 24px;
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.84rem;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
   }
 
   .lrox-eyebrow span {
@@ -280,16 +325,17 @@
     height: 9px;
     border-radius: 50%;
     background: var(--lrox-orange);
-    box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.15);
+    box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.16);
   }
 
   .lrox-hero h1 {
-    max-width: 820px;
+    max-width: 790px;
     margin: 0;
-    font-size: clamp(3.4rem, 6.8vw, 7.4rem);
+    font-size: clamp(3.3rem, 6.5vw, 7.2rem);
     line-height: 0.92;
-    letter-spacing: -0.067em;
-    font-weight: 740;
+    letter-spacing: -0.065em;
+    font-weight: 750;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.42);
   }
 
   .lrox-hero h1 strong {
@@ -300,10 +346,10 @@
   .lrox-hero p {
     max-width: 610px;
     margin: 28px 0 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     font-size: clamp(1.04rem, 1.3vw, 1.22rem);
     line-height: 1.62;
-    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
   }
 
   .lrox-actions {
@@ -342,14 +388,14 @@
   }
 
   .lrox-btn--secondary {
-    border: 1px solid rgba(255, 255, 255, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.42);
     background: rgba(8, 8, 10, 0.2);
     backdrop-filter: blur(14px);
   }
 
   .lrox-btn--secondary:hover {
-    border-color: rgba(255, 255, 255, 0.55);
-    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.12);
   }
 
   .lrox-status {
@@ -361,10 +407,10 @@
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.26);
     border-radius: 999px;
-    background: rgba(8, 8, 10, 0.3);
-    color: rgba(255, 255, 255, 0.9);
+    background: rgba(8, 8, 10, 0.26);
+    color: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(14px);
     font-size: 0.82rem;
   }
@@ -374,7 +420,7 @@
     height: 8px;
     border-radius: 50%;
     background: #3eff8b;
-    box-shadow: 0 0 0 6px rgba(62, 255, 139, 0.1);
+    box-shadow: 0 0 0 6px rgba(62, 255, 139, 0.11);
     animation: lroxPulse 1.8s ease-in-out infinite;
   }
 
@@ -400,9 +446,9 @@
     height: 50px;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.26);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    background: rgba(8, 8, 10, 0.3);
+    background: rgba(8, 8, 10, 0.26);
     color: #fff;
     backdrop-filter: blur(14px);
     cursor: pointer;
@@ -410,7 +456,7 @@
   }
 
   .lrox-video-toggle:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.14);
   }
 
   @media (max-width: 980px) {
@@ -437,30 +483,38 @@
 
     .lrox-hero__content {
       min-height: calc(100svh - 77px);
-      padding: 64px 0 82px;
+      padding: 60px 0 82px;
     }
 
-    .lrox-hero__video {
-      object-position: 58% 38%;
+    .lrox-hero__video--main {
+      object-fit: contain;
+      object-position: center;
       filter:
-        brightness(1.1)
-        contrast(1.01)
-        saturate(1.04);
+        brightness(1.2)
+        contrast(1)
+        saturate(1.06);
     }
 
-    .lrox-hero__overlay {
+    .lrox-hero__video--background {
+      filter:
+        blur(24px)
+        brightness(1.08)
+        saturate(1.12);
+    }
+
+    .lrox-hero__text-shade {
       background:
         linear-gradient(
           180deg,
-          rgba(0, 0, 0, 0.16) 0%,
-          rgba(0, 0, 0, 0.2) 36%,
-          rgba(0, 0, 0, 0.62) 68%,
-          rgba(0, 0, 0, 0.9) 100%
+          rgba(0, 0, 0, 0.05) 0%,
+          rgba(0, 0, 0, 0.08) 34%,
+          rgba(0, 0, 0, 0.54) 65%,
+          rgba(0, 0, 0, 0.86) 100%
         );
     }
 
     .lrox-hero h1 {
-      font-size: clamp(2.9rem, 14vw, 4.6rem);
+      font-size: clamp(2.8rem, 14vw, 4.5rem);
     }
 
     .lrox-hero p {
@@ -491,15 +545,26 @@
 
 <script>
   (() => {
-    const video = document.querySelector("#lroxHeroVideo");
+    const mainVideo = document.querySelector("#lroxHeroVideo");
+    const backgroundVideo = document.querySelector(
+      ".lrox-hero__video--background"
+    );
     const toggle = document.querySelector("#lroxVideoToggle");
     const pauseIcon = document.querySelector(".lrox-pause");
     const playIcon = document.querySelector(".lrox-play");
 
-    if (!video || !toggle || !pauseIcon || !playIcon) return;
+    if (
+      !mainVideo ||
+      !backgroundVideo ||
+      !toggle ||
+      !pauseIcon ||
+      !playIcon
+    ) {
+      return;
+    }
 
-    function updateVideoButton() {
-      const isPlaying = !video.paused;
+    function updateButton() {
+      const isPlaying = !mainVideo.paused;
 
       pauseIcon.hidden = !isPlaying;
       playIcon.hidden = isPlaying;
@@ -511,22 +576,36 @@
     }
 
     toggle.addEventListener("click", async () => {
-      if (video.paused) {
+      if (mainVideo.paused) {
         try {
-          await video.play();
+          await Promise.all([
+            mainVideo.play(),
+            backgroundVideo.play()
+          ]);
         } catch (error) {
           console.error("Video playback failed:", error);
         }
       } else {
-        video.pause();
+        mainVideo.pause();
+        backgroundVideo.pause();
       }
 
-      updateVideoButton();
+      updateButton();
     });
 
-    video.addEventListener("play", updateVideoButton);
-    video.addEventListener("pause", updateVideoButton);
+    mainVideo.addEventListener("play", updateButton);
+    mainVideo.addEventListener("pause", updateButton);
 
-    updateVideoButton();
+    mainVideo.addEventListener("timeupdate", () => {
+      const difference = Math.abs(
+        mainVideo.currentTime - backgroundVideo.currentTime
+      );
+
+      if (difference > 0.25) {
+        backgroundVideo.currentTime = mainVideo.currentTime;
+      }
+    });
+
+    updateButton();
   })();
 </script>
