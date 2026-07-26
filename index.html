@@ -1251,9 +1251,9 @@
 
     .lrox-product-rotation__object {
       position: relative;
-      width: min(84vw, 1180px);
-      height: min(72vh, 780px);
-      margin-top: clamp(36px, 4vh, 58px);
+      width: min(82vw, 1120px);
+      height: min(66vh, 720px);
+      margin-top: clamp(72px, 9vh, 104px);
       transform-style: preserve-3d;
       will-change: transform;
     }
@@ -1444,9 +1444,9 @@
       }
 
       .lrox-product-rotation__object {
-        width: 112vw;
-        height: 58vh;
-        margin-top: 45px;
+        width: 104vw;
+        height: 54vh;
+        margin-top: 78px;
       }
 
       .lrox-product-rotation__copy {
@@ -2142,36 +2142,40 @@
           scrollArea.offsetHeight - viewportHeight;
 
         /*
-          The product stays on the front view while Slide 3 first enters.
-          The rotation begins only after the sticky stage reaches the top.
+          Start measuring slightly before the sticky stage reaches the top.
+          This keeps the first product view visible on entry, then distributes
+          all three views evenly across the available scroll distance.
         */
-        const travelled = clamp(
-          -rect.top,
-          0,
-          Math.max(scrollDistance, 1)
+        const startOffset = viewportHeight * 0.20;
+        const animationDistance = Math.max(
+          scrollDistance + startOffset,
+          1
         );
 
-        const progress =
-          scrollDistance > 0
-            ? travelled / scrollDistance
-            : 0;
+        const travelled = clamp(
+          startOffset - rect.top,
+          0,
+          animationDistance
+        );
+
+        const progress = travelled / animationDistance;
 
         /*
-          0%   – 22%  Front view remains fully visible.
-          22%  – 40%  Front transitions to angle.
-          40%  – 58%  Angle remains fully visible.
-          58%  – 76%  Angle transitions to rear.
-          76%  – 100% Rear remains fully visible.
+          0%   – 24%  Front remains fully visible.
+          24%  – 38%  Front transitions to angle.
+          38%  – 56%  Angle remains fully visible.
+          56%  – 70%  Angle transitions to rear.
+          70%  – 100% Rear remains fully visible.
         */
         const firstTurn = smoothstep(
-          0.22,
-          0.40,
+          0.24,
+          0.38,
           progress
         );
 
         const secondTurn = smoothstep(
-          0.58,
-          0.76,
+          0.56,
+          0.70,
           progress
         );
 
@@ -2218,9 +2222,9 @@
 
         let activeIndex = 0;
 
-        if (progress >= 0.67) {
+        if (progress >= 0.63) {
           activeIndex = 2;
-        } else if (progress >= 0.32) {
+        } else if (progress >= 0.31) {
           activeIndex = 1;
         }
 
