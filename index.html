@@ -1164,7 +1164,7 @@
 
     .lrox-product-rotation__scroll {
       position: relative;
-      height: 145vh;
+      height: 175vh;
     }
 
     .lrox-product-rotation__stage {
@@ -2119,20 +2119,31 @@
           rect.top = -20vh. Therefore the rotation is already complete
           before the slide reaches the middle of the screen.
         */
-        const entranceProgress = clamp(
-          (viewportHeight - rect.top) /
-          (viewportHeight * 1.20),
-          0,
+        /*
+          Balanced timing:
+          - The Front view remains fully visible while Slide 3 enters.
+          - Rotation starts only after the section reaches roughly the
+            upper third of the viewport.
+          - The Angle view is completed well before the sticky section ends.
+        */
+        const scrollDistance = Math.max(
+          scrollArea.offsetHeight - viewportHeight,
           1
         );
 
-        const turn = smoothstep(
-          0.34,
-          0.72,
-          entranceProgress
+        const travelled = clamp(
+          viewportHeight * 0.34 - rect.top,
+          0,
+          scrollDistance
         );
 
-        const progress = entranceProgress;
+        const progress = travelled / scrollDistance;
+
+        const turn = smoothstep(
+          0.30,
+          0.72,
+          progress
+        );
 
         if (frontImage) {
           frontImage.style.opacity = 1 - turn;
