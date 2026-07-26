@@ -2061,15 +2061,15 @@
     .lrox-recognition__layout {
       display: grid;
       grid-template-columns:
-        minmax(0, 1.22fr)
-        minmax(360px, 0.78fr);
+        minmax(0, 0.92fr)
+        minmax(460px, 1.08fr);
       gap: clamp(24px, 3vw, 42px);
       align-items: stretch;
     }
 
     .lrox-recognition__award {
       position: relative;
-      min-height: 560px;
+      min-height: 500px;
       overflow: hidden;
       border-radius: 32px;
       background: #171411;
@@ -2095,6 +2095,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center 43%;
+      transform: scale(0.96);
+      transform-origin: center;
     }
 
     .lrox-recognition__award::after {
@@ -2177,10 +2179,10 @@
 
     .lrox-recognition__member {
       position: relative;
-      min-height: 270px;
+      min-height: 248px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 42% 58%;
+      grid-template-columns: 34% 66%;
       border: 1px solid rgba(255, 90, 18, 0.14);
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.80);
@@ -2221,7 +2223,7 @@
 
     .lrox-recognition__member-content {
       position: relative;
-      padding: 26px 26px 24px;
+      padding: 24px 24px 22px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -2250,10 +2252,14 @@
 
     .lrox-recognition__member h3 {
       margin: 0;
-      font-size: clamp(1.55rem, 2.2vw, 2.5rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
+      max-width: 100%;
+      font-size: clamp(1.38rem, 1.75vw, 2.05rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
       font-weight: 790;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: normal;
     }
 
     .lrox-recognition__member p {
@@ -2312,8 +2318,8 @@
       }
 
       .lrox-recognition__member {
-        grid-template-columns: 1fr;
-        grid-template-rows: 280px auto;
+        grid-template-columns: 34% 66%;
+        grid-template-rows: auto;
       }
     }
 
@@ -2350,9 +2356,9 @@
       }
 
       .lrox-recognition__member {
-        grid-template-columns: 38% 62%;
+        grid-template-columns: 32% 68%;
         grid-template-rows: auto;
-        min-height: 250px;
+        min-height: 236px;
         border-radius: 22px;
       }
 
