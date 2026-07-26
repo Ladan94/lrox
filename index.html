@@ -2086,7 +2086,7 @@
 
     .lrox-recognition__card {
       position: relative;
-      min-height: 490px;
+      min-height: 470px;
       overflow: hidden;
       border: 1px solid rgba(255, 90, 18, 0.16);
       border-radius: 28px;
@@ -2142,7 +2142,8 @@
 
     .lrox-recognition__member-card {
       display: grid;
-      grid-template-rows: 260px 1fr;
+      min-height: 430px;
+      grid-template-rows: 220px 1fr;
     }
 
     .lrox-recognition__member-photo {
@@ -2151,16 +2152,21 @@
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      padding: 10px 10px 0;
+      padding: 12px 18px 0;
       background: linear-gradient(180deg, rgba(238, 229, 220, 0.95), rgba(246, 239, 233, 0.88));
     }
 
     .lrox-recognition__member-photo img {
-      width: 100%;
+      width: auto;
+      max-width: min(100%, 230px);
       height: 100%;
       display: block;
       object-fit: contain;
       object-position: center top;
+    }
+
+    .lrox-recognition__member-photo--amir img {
+      transform: translateY(-10px);
     }
 
     .lrox-recognition__card-content {
@@ -2289,7 +2295,7 @@
       }
 
       .lrox-recognition__card {
-        min-height: 420px;
+        min-height: 400px;
       }
 
       .lrox-recognition__member-card {
@@ -2299,7 +2305,7 @@
 
       .lrox-recognition__member-photo {
         min-height: 100%;
-        padding: 12px;
+        padding: 12px 16px 0;
       }
     }
 
@@ -2332,11 +2338,11 @@
 
       .lrox-recognition__member-card {
         grid-template-columns: 1fr;
-        grid-template-rows: 260px auto;
+        grid-template-rows: 220px auto;
       }
 
       .lrox-recognition__member-photo {
-        padding: 10px 10px 0;
+        padding: 12px 18px 0;
       }
 
       .lrox-recognition__card-content {
@@ -2348,6 +2354,85 @@
       .lrox-recognition__award,
       .lrox-recognition__member {
         transition: none;
+      }
+    }
+
+
+    /* FINAL OVERRIDE — compact member cards and aligned portraits */
+    .lrox-recognition .lrox-recognition__member-card {
+      min-height: 390px !important;
+      height: 390px !important;
+      grid-template-rows: 205px 185px !important;
+    }
+
+    .lrox-recognition .lrox-recognition__member-photo {
+      height: 205px !important;
+      min-height: 205px !important;
+      padding: 0 !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      background: rgba(245, 238, 232, 0.92) !important;
+    }
+
+    .lrox-recognition .lrox-recognition__member-photo img {
+      width: 100% !important;
+      max-width: none !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 24% !important;
+      transform: none !important;
+    }
+
+    .lrox-recognition .lrox-recognition__member-photo--amir img {
+      object-position: center 18% !important;
+      transform: translateY(-14px) scale(1.035) !important;
+      transform-origin: center top !important;
+    }
+
+    .lrox-recognition .lrox-recognition__card-content {
+      padding: 17px 22px 18px !important;
+    }
+
+    .lrox-recognition .lrox-recognition__member-card h3 {
+      font-size: clamp(1.45rem, 1.55vw, 1.9rem) !important;
+      line-height: 1.02 !important;
+    }
+
+    .lrox-recognition .lrox-recognition__member-card p {
+      margin-top: 10px !important;
+      font-size: 0.9rem !important;
+      line-height: 1.55 !important;
+    }
+
+    @media (max-width: 1120px) {
+      .lrox-recognition .lrox-recognition__member-card {
+        height: auto !important;
+        min-height: 340px !important;
+        grid-template-columns: 240px 1fr !important;
+        grid-template-rows: 340px !important;
+      }
+
+      .lrox-recognition .lrox-recognition__member-photo {
+        height: 340px !important;
+        min-height: 340px !important;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .lrox-recognition .lrox-recognition__member-card {
+        min-height: 360px !important;
+        height: 360px !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 190px 170px !important;
+      }
+
+      .lrox-recognition .lrox-recognition__member-photo {
+        height: 190px !important;
+        min-height: 190px !important;
+      }
+
+      .lrox-recognition .lrox-recognition__member-photo--amir img {
+        transform: translateY(-10px) scale(1.03) !important;
       }
     }
 
@@ -2965,7 +3050,7 @@
           class="lrox-recognition__card lrox-recognition__member-card"
           data-recognition-reveal
         >
-          <div class="lrox-recognition__member-photo">
+          <div class="lrox-recognition__member-photo lrox-recognition__member-photo--amir">
             <img
               src="assets/lrox-award-amir.jpg"
               alt="Amir Mobasheraghdam mit LROX Auszeichnung und Helm-Prototyp"
