@@ -1949,6 +1949,7 @@
        Single-screen compact layout.
     ========================== */
 
+
     .lrox-recognition,
     .lrox-recognition * {
       box-sizing: border-box;
@@ -1962,23 +1963,23 @@
       overflow: hidden;
       display: flex;
       align-items: center;
-      padding: clamp(56px, 6.5vh, 88px) 0;
+      padding: clamp(56px, 6.5vh, 84px) 0;
       color: #171411;
       background:
         radial-gradient(
-          circle at 86% 12%,
+          circle at 86% 10%,
           rgba(255, 117, 35, 0.16),
-          transparent 30%
+          transparent 31%
         ),
         radial-gradient(
           circle at 12% 88%,
-          rgba(255, 153, 92, 0.10),
-          transparent 28%
+          rgba(255, 157, 101, 0.08),
+          transparent 26%
         ),
         linear-gradient(
           180deg,
           #fff4ec 0%,
-          #fff8f3 40%,
+          #fff8f4 38%,
           #fffdfa 100%
         );
       isolation: isolate;
@@ -1988,132 +1989,201 @@
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.28;
       background-image:
         linear-gradient(
-          rgba(58, 41, 30, 0.04) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(58, 41, 30, 0.04) 1px,
+          to right,
+          rgba(23, 20, 17, 0.045) 1px,
           transparent 1px
         );
-      background-size: 88px 88px;
-      mask-image:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.72),
-          transparent 94%
-        );
+      background-size: 86px 100%;
+      mask-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.20),
+        rgba(0, 0, 0, 0.08) 18%,
+        transparent 78%
+      );
+      pointer-events: none;
+      z-index: 0;
     }
 
     .lrox-recognition__inner {
-      width: min(calc(100% - 64px), 1480px);
+      position: relative;
+      z-index: 2;
+      width: min(1280px, calc(100% - 56px));
       margin: 0 auto;
     }
 
     .lrox-recognition__header {
-      max-width: 1020px;
-      margin-bottom: clamp(34px, 5vh, 58px);
+      max-width: 860px;
+      margin-bottom: clamp(26px, 3vh, 36px);
     }
 
     .lrox-recognition__eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      color: #756a62;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: #786c64;
+      font-size: 0.78rem;
+      font-weight: 780;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .lrox-recognition__eyebrow::before {
       content: "";
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: #ff5a12;
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.12);
+      background: #ff6419;
+      box-shadow: 0 0 0 7px rgba(255, 100, 25, 0.11);
     }
 
     .lrox-recognition__title {
       margin: 0;
-      font-size: clamp(3rem, 5.5vw, 6.4rem);
-      line-height: 0.93;
-      letter-spacing: -0.06em;
-      font-weight: 800;
+      font-size: clamp(2.9rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      font-weight: 820;
     }
 
     .lrox-recognition__title span {
-      color: #ff5a12;
+      color: #ff6419;
     }
 
     .lrox-recognition__subtitle {
-      max-width: 780px;
-      margin: 20px 0 0;
+      margin: 18px 0 0;
+      max-width: 64ch;
       color: #756a62;
-      font-size: clamp(0.98rem, 1.15vw, 1.13rem);
-      line-height: 1.58;
+      font-size: 1.02rem;
+      line-height: 1.74;
     }
 
     .lrox-recognition__layout {
       display: grid;
-      grid-template-columns:
-        minmax(320px, 0.9fr)
-        minmax(480px, 1.1fr);
-      gap: clamp(22px, 2.6vw, 34px);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2vw, 24px);
       align-items: stretch;
     }
 
-    .lrox-recognition__award {
+    .lrox-recognition__card {
       position: relative;
-      min-height: 448px;
+      min-height: 470px;
       overflow: hidden;
-      border: 1px solid rgba(255, 90, 18, 0.16);
-      border-radius: 30px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.90),
-          rgba(255, 250, 246, 0.96)
-        );
+      border: 1px solid rgba(255, 90, 18, 0.14);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.84);
       box-shadow:
-        0 24px 72px rgba(77, 43, 22, 0.10),
-        inset 0 1px 0 rgba(255, 255, 255, 0.98);
+        0 22px 68px rgba(74, 45, 27, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(18px);
       opacity: 0;
-      transform: translateY(34px);
+      transform: translateY(32px);
       transition:
         opacity 750ms ease,
-        transform 950ms cubic-bezier(0.18, 0.72, 0.18, 1);
+        transform 900ms cubic-bezier(0.18, 0.72, 0.18, 1);
     }
 
-    .lrox-recognition__award.is-visible {
+    .lrox-recognition__card.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .lrox-recognition__award-info {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      padding: 28px 30px;
+    .lrox-recognition__card:nth-child(2) {
+      transition-delay: 80ms;
+    }
+
+    .lrox-recognition__card:nth-child(3) {
+      transition-delay: 160ms;
+    }
+
+    .lrox-recognition__award-card {
+      padding: 28px 28px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      color: #171411;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 247, 241, 0.98),
+          rgba(255, 251, 248, 0.94)
+        );
     }
 
-    .lrox-recognition__award-info h3 {
+    .lrox-recognition__award-card::after {
+      content: "";
+      position: absolute;
+      right: -54px;
+      bottom: -54px;
+      width: 188px;
+      height: 188px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 100, 25, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .lrox-recognition__member-card {
+      display: grid;
+      grid-template-rows: 220px 1fr;
+    }
+
+    .lrox-recognition__member-photo {
+      position: relative;
+      overflow: hidden;
+      background: #eee7e1;
+    }
+
+    .lrox-recognition__member-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 22%;
+    }
+
+    .lrox-recognition__card-content {
+      position: relative;
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .lrox-recognition__role {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: #ff5a12;
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .lrox-recognition__role::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 5px rgba(255, 90, 18, 0.10);
+    }
+
+    .lrox-recognition__card h3 {
       margin: 0;
-      font-size: clamp(2.1rem, 3vw, 3.3rem);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
+      font-size: clamp(1.62rem, 2vw, 2.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
       font-weight: 790;
+      overflow-wrap: anywhere;
+    }
+
+    .lrox-recognition__card p {
+      margin: 14px 0 0;
+      color: #756a62;
+      font-size: 0.96rem;
+      line-height: 1.68;
     }
 
     .lrox-recognition__award-facts {
@@ -2123,14 +2193,6 @@
       margin-top: 18px;
     }
 
-    .lrox-recognition__award-copy {
-      margin: 16px 0 0;
-      max-width: 34ch;
-      color: #756a62;
-      font-size: 0.98rem;
-      line-height: 1.65;
-    }
-
     .lrox-recognition__award-fact {
       min-height: 36px;
       padding: 0 12px;
@@ -2138,7 +2200,7 @@
       align-items: center;
       border: 1px solid rgba(255, 90, 18, 0.18);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.74);
       color: #5f564f;
       font-size: 0.61rem;
       font-weight: 780;
@@ -2165,94 +2227,9 @@
       font-size: 0.95rem;
     }
 
-    .lrox-recognition__team {
-      display: grid;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .lrox-recognition__member {
-      position: relative;
-      min-height: 200px;
-      overflow: hidden;
-      display: block;
-      border: 1px solid rgba(255, 90, 18, 0.14);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow:
-        0 22px 68px rgba(74, 45, 27, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(18px);
-      opacity: 0;
-      transform: translateY(32px);
-      transition:
-        opacity 750ms ease,
-        transform 900ms cubic-bezier(0.18, 0.72, 0.18, 1);
-    }
-
-    .lrox-recognition__member:nth-child(2) {
-      transition-delay: 100ms;
-    }
-
-    .lrox-recognition__member.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    .lrox-recognition__member-content {
-      position: relative;
-      height: 100%;
-      padding: 26px 28px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .lrox-recognition__role {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 11px;
-      color: #ff5a12;
-      font-size: 0.63rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__role::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 5px rgba(255, 90, 18, 0.10);
-    }
-
-    .lrox-recognition__member h3 {
-      margin: 0;
-      max-width: 100%;
-      font-size: clamp(1.52rem, 1.9vw, 2.25rem);
-      line-height: 1.02;
-      letter-spacing: -0.035em;
-      font-weight: 790;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: normal;
-    }
-
-    .lrox-recognition__member p {
-      margin: 13px 0 0;
-      max-width: 40ch;
-      color: #756a62;
-      font-size: 0.97rem;
-      line-height: 1.65;
-    }
-
     .lrox-recognition__strip {
-      margin-top: 26px;
-      padding: 10px 2px 0;
+      margin-top: 22px;
+      padding: 12px 2px 0;
       border-top: 1px solid rgba(62, 46, 36, 0.10);
       display: flex;
       flex-wrap: wrap;
@@ -2280,7 +2257,7 @@
       text-transform: uppercase;
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1120px) {
       .lrox-recognition {
         min-height: auto;
       }
@@ -2289,19 +2266,19 @@
         grid-template-columns: 1fr;
       }
 
-      .lrox-recognition__award {
+      .lrox-recognition__card {
         min-height: 420px;
       }
 
-      .lrox-recognition__team {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .lrox-recognition__member-card {
+        grid-template-columns: 300px 1fr;
         grid-template-rows: auto;
       }
     }
 
     @media (max-width: 720px) {
       .lrox-recognition {
-        padding: 52px 0 60px;
+        padding: 50px 0 58px;
       }
 
       .lrox-recognition__inner {
@@ -2312,37 +2289,27 @@
         font-size: clamp(2.8rem, 12vw, 4.3rem);
       }
 
-      .lrox-recognition__award {
-        min-height: 360px;
+      .lrox-recognition__subtitle {
+        font-size: 0.95rem;
+      }
+
+      .lrox-recognition__card {
+        min-height: auto;
         border-radius: 24px;
       }
 
-      .lrox-recognition__award-info {
-        padding: 22px 20px;
+      .lrox-recognition__award-card {
+        min-height: 340px;
+        padding: 22px 20px 20px;
       }
 
-      .lrox-recognition__team {
+      .lrox-recognition__member-card {
         grid-template-columns: 1fr;
+        grid-template-rows: 240px auto;
       }
 
-      .lrox-recognition__member {
-        min-height: 188px;
-        border-radius: 22px;
-      }
-
-      .lrox-recognition__member-content {
-        padding: 20px 18px 18px;
-      }
-
-      .lrox-recognition__strip {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .lrox-recognition__member {
-        min-height: 178px;
+      .lrox-recognition__card-content {
+        padding: 20px 18px 20px;
       }
     }
 
@@ -2892,92 +2859,102 @@
 
       <div class="lrox-recognition__layout">
         <article
-          class="lrox-recognition__award"
+          class="lrox-recognition__card lrox-recognition__award-card"
           data-recognition-reveal
         >
-          <div class="lrox-recognition__award-info">
-            <div>
-              <div class="lrox-recognition__role">
-                00 · Anerkennung
-              </div>
-
-              <h3>
-                Gewinneridee 2025
-              </h3>
-
-              <p class="lrox-recognition__award-copy">
-                LROX wurde beim Ideenwettbewerb 2025 der Universität Bonn ausgezeichnet. Die Prämierung würdigt die Verbindung aus Forschung, technischem Prototyping und unternehmerischem Potenzial.
-              </p>
-
-              <div class="lrox-recognition__award-facts">
-                <span class="lrox-recognition__award-fact">
-                  Universität Bonn
-                </span>
-
-                <span class="lrox-recognition__award-fact">
-                  Transfer Center enaCom
-                </span>
-
-                <span class="lrox-recognition__award-fact">
-                  1.000 Euro
-                </span>
-
-                <span class="lrox-recognition__award-fact">
-                  Comma Soft AG
-                </span>
-              </div>
+          <div>
+            <div class="lrox-recognition__role">
+              00 · Anerkennung
             </div>
 
-            <a
-              class="lrox-recognition__source-link"
-              href="https://www.uni-bonn.de/de/neues/ideen-mit-leidenschaft-und-unternehmergeist"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Bericht der Universität Bonn
-            </a>
+            <h3>
+              Gewinneridee 2025
+            </h3>
+
+            <p>
+              LROX wurde beim Ideenwettbewerb 2025 der Universität Bonn ausgezeichnet. Die Prämierung würdigt die Verbindung aus Forschung, technischem Prototyping und unternehmerischem Potenzial.
+            </p>
+
+            <div class="lrox-recognition__award-facts">
+              <span class="lrox-recognition__award-fact">
+                Universität Bonn
+              </span>
+
+              <span class="lrox-recognition__award-fact">
+                Transfer Center enaCom
+              </span>
+
+              <span class="lrox-recognition__award-fact">
+                1.000 Euro
+              </span>
+
+              <span class="lrox-recognition__award-fact">
+                Comma Soft AG
+              </span>
+            </div>
+          </div>
+
+          <a
+            class="lrox-recognition__source-link"
+            href="https://www.uni-bonn.de/de/neues/ideen-mit-leidenschaft-und-unternehmergeist"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bericht der Universität Bonn
+          </a>
+        </article>
+
+        <article
+          class="lrox-recognition__card lrox-recognition__member-card"
+          data-recognition-reveal
+        >
+          <div class="lrox-recognition__member-photo">
+            <img
+              src="assets/lrox-award-ladan.jpg"
+              alt="Ladan Seddighi mit LROX Auszeichnung und Helm-Prototyp"
+            />
+          </div>
+
+          <div class="lrox-recognition__card-content">
+            <div class="lrox-recognition__role">
+              01 · KI & Software
+            </div>
+
+            <h3>
+              Ladan Seddighi
+            </h3>
+
+            <p>
+              Objekterkennung, KI-Logik und Entwicklung des Warnsystems in Python.
+            </p>
           </div>
         </article>
 
-        <div class="lrox-recognition__team">
-          <article
-            class="lrox-recognition__member"
-            data-recognition-reveal
-          >
-            <div class="lrox-recognition__member-content">
-              <div class="lrox-recognition__role">
-                01 · KI & Software
-              </div>
+        <article
+          class="lrox-recognition__card lrox-recognition__member-card"
+          data-recognition-reveal
+        >
+          <div class="lrox-recognition__member-photo">
+            <img
+              src="assets/lrox-award-amir.jpg"
+              alt="Amir Mobasheraghdam mit LROX Auszeichnung und Helm-Prototyp"
+            />
+          </div>
 
-              <h3>
-                Ladan Seddighi
-              </h3>
-
-              <p>
-                Objekterkennung, KI-Logik und Entwicklung des Warnsystems in Python.
-              </p>
+          <div class="lrox-recognition__card-content">
+            <div class="lrox-recognition__role">
+              02 · Hardware & 3D Design
             </div>
-          </article>
 
-          <article
-            class="lrox-recognition__member"
-            data-recognition-reveal
-          >
-            <div class="lrox-recognition__member-content">
-              <div class="lrox-recognition__role">
-                02 · Hardware & 3D Design
-              </div>
+            <h3>
+              Amir Mobasheraghdam
+            </h3>
 
-              <h3>
-                Amir Mobasheraghdam
-              </h3>
-
-              <p>
-                Mechanische Konstruktion, 3D-Komponenten, Halterungen, Verkabelung und vollständige Hardware-Integration.
-              </p>
-            </div>
-          </article>
-        </div>
+            <p>
+              Mechanische Konstruktion, 3D-Komponenten, Halterungen, Verkabelung und vollständige Hardware-Integration.
+            </p>
+          </div>
+        </article>
       </div>
 
       <div class="lrox-recognition__strip">
