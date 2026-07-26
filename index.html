@@ -1950,6 +1950,7 @@
     ========================== */
 
 
+
     .lrox-recognition,
     .lrox-recognition * {
       box-sizing: border-box;
@@ -1967,20 +1968,22 @@
       color: #171411;
       background:
         radial-gradient(
-          circle at 86% 10%,
-          rgba(255, 117, 35, 0.16),
-          transparent 31%
+          circle at 84% 14%,
+          rgba(255, 115, 35, 0.18),
+          transparent 30%
         ),
         radial-gradient(
-          circle at 12% 88%,
-          rgba(255, 157, 101, 0.08),
-          transparent 26%
+          circle at 14% 88%,
+          rgba(255, 160, 105, 0.10),
+          transparent 28%
         ),
         linear-gradient(
           180deg,
-          #fff4ec 0%,
-          #fff8f4 38%,
-          #fffdfa 100%
+          #ff8c49 0%,
+          #ffd2b7 14%,
+          #fff1e7 32%,
+          #fff7f2 68%,
+          #fffaf7 100%
         );
       isolation: isolate;
     }
@@ -1989,18 +1992,33 @@
       content: "";
       position: absolute;
       inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 103, 20, 0.22) 0%,
+          rgba(255, 103, 20, 0.08) 10%,
+          transparent 26%
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .lrox-recognition::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       background-image:
         linear-gradient(
           to right,
-          rgba(23, 20, 17, 0.045) 1px,
+          rgba(23, 20, 17, 0.038) 1px,
           transparent 1px
         );
       background-size: 86px 100%;
       mask-image: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.20),
-        rgba(0, 0, 0, 0.08) 18%,
-        transparent 78%
+        rgba(0, 0, 0, 0.18),
+        rgba(0, 0, 0, 0.07) 22%,
+        transparent 80%
       );
       pointer-events: none;
       z-index: 0;
@@ -2009,13 +2027,13 @@
     .lrox-recognition__inner {
       position: relative;
       z-index: 2;
-      width: min(1280px, calc(100% - 56px));
+      width: min(1320px, calc(100% - 56px));
       margin: 0 auto;
     }
 
     .lrox-recognition__header {
-      max-width: 860px;
-      margin-bottom: clamp(26px, 3vh, 36px);
+      max-width: 880px;
+      margin-bottom: clamp(28px, 3.2vh, 40px);
     }
 
     .lrox-recognition__eyebrow {
@@ -2023,7 +2041,7 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 14px;
-      color: #786c64;
+      color: #7f6658;
       font-size: 0.78rem;
       font-weight: 780;
       letter-spacing: 0.12em;
@@ -2036,12 +2054,12 @@
       height: 9px;
       border-radius: 50%;
       background: #ff6419;
-      box-shadow: 0 0 0 7px rgba(255, 100, 25, 0.11);
+      box-shadow: 0 0 0 7px rgba(255, 100, 25, 0.12);
     }
 
     .lrox-recognition__title {
       margin: 0;
-      font-size: clamp(2.9rem, 6vw, 5.4rem);
+      font-size: clamp(3rem, 6vw, 5.45rem);
       line-height: 0.96;
       letter-spacing: -0.055em;
       font-weight: 820;
@@ -2054,28 +2072,28 @@
     .lrox-recognition__subtitle {
       margin: 18px 0 0;
       max-width: 64ch;
-      color: #756a62;
+      color: #76675e;
       font-size: 1.02rem;
       line-height: 1.74;
     }
 
     .lrox-recognition__layout {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 0.9fr 1fr 1fr;
       gap: clamp(18px, 2vw, 24px);
       align-items: stretch;
     }
 
     .lrox-recognition__card {
       position: relative;
-      min-height: 470px;
+      min-height: 490px;
       overflow: hidden;
-      border: 1px solid rgba(255, 90, 18, 0.14);
+      border: 1px solid rgba(255, 90, 18, 0.16);
       border-radius: 28px;
-      background: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 250, 246, 0.82);
       box-shadow:
-        0 22px 68px rgba(74, 45, 27, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.96);
+        0 22px 68px rgba(91, 48, 22, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(18px);
       opacity: 0;
       transform: translateY(32px);
@@ -2105,8 +2123,8 @@
       background:
         linear-gradient(
           180deg,
-          rgba(255, 247, 241, 0.98),
-          rgba(255, 251, 248, 0.94)
+          rgba(255, 244, 235, 0.96),
+          rgba(255, 250, 246, 0.92)
         );
     }
 
@@ -2124,26 +2142,30 @@
 
     .lrox-recognition__member-card {
       display: grid;
-      grid-template-rows: 220px 1fr;
+      grid-template-rows: 260px 1fr;
     }
 
     .lrox-recognition__member-photo {
       position: relative;
       overflow: hidden;
-      background: #eee7e1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 10px 10px 0;
+      background: linear-gradient(180deg, rgba(238, 229, 220, 0.95), rgba(246, 239, 233, 0.88));
     }
 
     .lrox-recognition__member-photo img {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: center 22%;
+      object-fit: contain;
+      object-position: center top;
     }
 
     .lrox-recognition__card-content {
       position: relative;
-      padding: 22px 24px 24px;
+      padding: 20px 22px 24px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -2172,8 +2194,8 @@
 
     .lrox-recognition__card h3 {
       margin: 0;
-      font-size: clamp(1.62rem, 2vw, 2.3rem);
-      line-height: 1.02;
+      font-size: clamp(1.52rem, 1.6vw, 1.98rem);
+      line-height: 1.03;
       letter-spacing: -0.04em;
       font-weight: 790;
       overflow-wrap: anywhere;
@@ -2200,7 +2222,7 @@
       align-items: center;
       border: 1px solid rgba(255, 90, 18, 0.18);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.72);
       color: #5f564f;
       font-size: 0.61rem;
       font-weight: 780;
@@ -2271,8 +2293,13 @@
       }
 
       .lrox-recognition__member-card {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 320px 1fr;
         grid-template-rows: auto;
+      }
+
+      .lrox-recognition__member-photo {
+        min-height: 100%;
+        padding: 12px;
       }
     }
 
@@ -2305,7 +2332,11 @@
 
       .lrox-recognition__member-card {
         grid-template-columns: 1fr;
-        grid-template-rows: 240px auto;
+        grid-template-rows: 260px auto;
+      }
+
+      .lrox-recognition__member-photo {
+        padding: 10px 10px 0;
       }
 
       .lrox-recognition__card-content {
