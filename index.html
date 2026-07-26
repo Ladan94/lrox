@@ -1157,14 +1157,14 @@
       position: relative;
       z-index: 20;
       width: 100%;
-      margin-top: -18vh;
+      margin-top: -6vh;
       background: #fffaf6;
       color: var(--lrox-text);
     }
 
     .lrox-product-rotation__scroll {
       position: relative;
-      height: 165vh;
+      height: 145vh;
     }
 
     .lrox-product-rotation__stage {
@@ -1407,7 +1407,7 @@
 
     @media (max-width: 1100px) {
       .lrox-product-rotation {
-        margin-top: -32vh;
+        margin-top: -6vh;
       }
 
       .lrox-product-rotation__object {
@@ -1423,11 +1423,11 @@
 
     @media (max-width: 760px) {
       .lrox-product-rotation {
-        margin-top: -22vh;
+        margin-top: -4vh;
       }
 
       .lrox-product-rotation__scroll {
-        height: 160vh;
+        height: 145vh;
       }
 
       .lrox-product-rotation__stage {
@@ -2105,33 +2105,34 @@
       function updateProduct() {
         const rect = scrollArea.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        const scrollDistance = Math.max(
-          scrollArea.offsetHeight - viewportHeight,
+
+        /*
+          The rotation is tied to the section entering the viewport,
+          not to the moment it finally reaches the sticky position.
+
+          Front remains fully visible while the section first appears.
+          The transition starts when the top of Slide 3 reaches 62% of
+          the viewport and finishes when it reaches 18%.
+          After that, the Angle view stays fully visible during the
+          remaining sticky portion of the slide.
+        */
+        const transitionStart = viewportHeight * 0.62;
+        const transitionEnd = viewportHeight * 0.18;
+
+        const entryProgress = clamp(
+          (transitionStart - rect.top) /
+          (transitionStart - transitionEnd),
+          0,
           1
         );
 
-        /*
-          The animation only starts after the section becomes sticky.
-          This guarantees that the complete front image is visible first.
-        */
-        const travelled = clamp(
-          -rect.top,
-          0,
-          scrollDistance
-        );
-
-        const progress = travelled / scrollDistance;
-
-        /*
-          0%–24%   Front view stays completely visible.
-          24%–58%  Smooth front-to-angle transition.
-          58%–100% Angle view stays completely visible.
-        */
         const turn = smoothstep(
-          0.24,
-          0.58,
-          progress
+          0,
+          1,
+          entryProgress
         );
+
+        const progress = turn;
 
         if (frontImage) {
           frontImage.style.opacity = 1 - turn;
@@ -2161,7 +2162,7 @@
           `;
         }
 
-        const activeIndex = progress < 0.43 ? 0 : 1;
+        const activeIndex = turn < 0.55 ? 0 : 1;
 
         features.forEach((item, index) => {
           item.classList.toggle(
