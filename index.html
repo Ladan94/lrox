@@ -1164,7 +1164,7 @@
 
     .lrox-product-rotation__scroll {
       position: relative;
-      height: 190vh;
+      height: 165vh;
     }
 
     .lrox-product-rotation__stage {
@@ -1251,9 +1251,9 @@
 
     .lrox-product-rotation__object {
       position: relative;
-      width: min(82vw, 1120px);
-      height: min(66vh, 720px);
-      margin-top: clamp(72px, 9vh, 104px);
+      width: min(78vw, 1080px);
+      height: min(64vh, 700px);
+      margin-top: clamp(78px, 9vh, 104px);
       transform-style: preserve-3d;
       will-change: transform;
     }
@@ -1411,8 +1411,8 @@
       }
 
       .lrox-product-rotation__object {
-        width: 110vw;
-        height: 82vh;
+        width: min(92vw, 980px);
+        height: min(66vh, 700px);
       }
 
       .lrox-product-rotation__features {
@@ -1427,7 +1427,7 @@
       }
 
       .lrox-product-rotation__scroll {
-        height: 175vh;
+        height: 160vh;
       }
 
       .lrox-product-rotation__stage {
@@ -1444,9 +1444,9 @@
       }
 
       .lrox-product-rotation__object {
-        width: 104vw;
-        height: 54vh;
-        margin-top: 78px;
+        width: 96vw;
+        height: 52vh;
+        margin-top: 86px;
       }
 
       .lrox-product-rotation__copy {
@@ -1772,11 +1772,6 @@
               alt="LROX Fahrradhelm mit Sicherheitsmodul aus seitlicher Perspektive"
             />
 
-            <img
-              class="lrox-product-rotation__image lrox-product-rotation__image--back"
-              src="assets/lrox-helmet-back-orange.png"
-              alt="LROX Fahrradhelm mit Sicherheitsmodul von hinten"
-            />
           </div>
 
           <div
@@ -1803,10 +1798,6 @@
           <span class="lrox-product-rotation__feature">
             Ohne klassische Kamera
           </span>
-
-          <span class="lrox-product-rotation__feature">
-            Instant visual warning
-          </span>
         </div>
 
         <div
@@ -1814,7 +1805,6 @@
           aria-hidden="true"
         >
           <span class="lrox-product-rotation__step is-active"></span>
-          <span class="lrox-product-rotation__step"></span>
           <span class="lrox-product-rotation__step"></span>
         </div>
 
@@ -2050,17 +2040,13 @@
         "#lroxProductObject"
       );
 
-      const images = [
-        section.querySelector(
-          ".lrox-product-rotation__image--front"
-        ),
-        section.querySelector(
-          ".lrox-product-rotation__image--angle"
-        ),
-        section.querySelector(
-          ".lrox-product-rotation__image--back"
-        )
-      ];
+      const frontImage = section.querySelector(
+        ".lrox-product-rotation__image--front"
+      );
+
+      const angleImage = section.querySelector(
+        ".lrox-product-rotation__image--angle"
+      );
 
       const features = Array.from(
         section.querySelectorAll(
@@ -2082,7 +2068,7 @@
         "#lroxProductDescription"
       );
 
-      const angle = section.querySelector(
+      const angleLabel = section.querySelector(
         "#lroxProductAngle"
       );
 
@@ -2096,16 +2082,14 @@
           statement: "Erkennung ohne klassische Kamera.",
           description: "Mehrere Sensorsignale werden direkt am Gerät kombiniert.",
           angle: "02 · Angle"
-        },
-        {
-          statement: "Warnung im entscheidenden Moment.",
-          description: "Das erkannte Risiko wird in ein klares Lichtsignal übersetzt.",
-          angle: "03 · Rear"
         }
       ];
 
-      function clamp(value, min, max) {
-        return Math.min(Math.max(value, min), max);
+      function clamp(value, minimum, maximum) {
+        return Math.min(
+          Math.max(value, minimum),
+          maximum
+        );
       }
 
       function smoothstep(edge0, edge1, value) {
@@ -2118,115 +2102,66 @@
         return x * x * (3 - 2 * x);
       }
 
-      function setImage(
-        image,
-        opacity,
-        x,
-        scale,
-        rotateY
-      ) {
-        if (!image) return;
-
-        image.style.opacity = opacity;
-        image.style.transform = `
-          translate3d(${x}px, 0, 0)
-          scale(${scale})
-          rotateY(${rotateY}deg)
-        `;
-      }
-
       function updateProduct() {
         const rect = scrollArea.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        const scrollDistance =
-          scrollArea.offsetHeight - viewportHeight;
-
-        /*
-          Start measuring slightly before the sticky stage reaches the top.
-          This keeps the first product view visible on entry, then distributes
-          all three views evenly across the available scroll distance.
-        */
-        const startOffset = viewportHeight * 0.20;
-        const animationDistance = Math.max(
-          scrollDistance + startOffset,
+        const scrollDistance = Math.max(
+          scrollArea.offsetHeight - viewportHeight,
           1
         );
 
+        /*
+          The animation only starts after the section becomes sticky.
+          This guarantees that the complete front image is visible first.
+        */
         const travelled = clamp(
-          startOffset - rect.top,
+          -rect.top,
           0,
-          animationDistance
+          scrollDistance
         );
 
-        const progress = travelled / animationDistance;
+        const progress = travelled / scrollDistance;
 
         /*
-          0%   – 24%  Front remains fully visible.
-          24%  – 38%  Front transitions to angle.
-          38%  – 56%  Angle remains fully visible.
-          56%  – 70%  Angle transitions to rear.
-          70%  – 100% Rear remains fully visible.
+          0%–24%   Front view stays completely visible.
+          24%–58%  Smooth front-to-angle transition.
+          58%–100% Angle view stays completely visible.
         */
-        const firstTurn = smoothstep(
+        const turn = smoothstep(
           0.24,
-          0.38,
+          0.58,
           progress
         );
 
-        const secondTurn = smoothstep(
-          0.56,
-          0.70,
-          progress
-        );
-
-        const frontOpacity = 1 - firstTurn;
-        const angleOpacity = Math.min(
-          firstTurn,
-          1 - secondTurn
-        );
-        const backOpacity = secondTurn;
-
-        setImage(
-          images[0],
-          frontOpacity,
-          -14 * firstTurn,
-          0.98,
-          -5 * firstTurn
-        );
-
-        setImage(
-          images[1],
-          angleOpacity,
-          14 * (1 - firstTurn) - 10 * secondTurn,
-          0.98,
-          6 - secondTurn * 9
-        );
-
-        setImage(
-          images[2],
-          backOpacity,
-          14 * (1 - secondTurn),
-          0.98,
-          5 * (1 - secondTurn)
-        );
-
-        if (productObject) {
-          const floatY =
-            Math.sin(progress * Math.PI * 2) * 3;
-
-          productObject.style.transform = `
-            translate3d(0, ${floatY}px, 0)
-            rotateX(${Math.sin(progress * Math.PI) * -1}deg)
+        if (frontImage) {
+          frontImage.style.opacity = 1 - turn;
+          frontImage.style.transform = `
+            translate3d(${-10 * turn}px, 0, 0)
+            scale(${1 - turn * 0.015})
+            rotateY(${-4 * turn}deg)
           `;
         }
 
-        let activeIndex = 0;
-
-        if (progress >= 0.63) {
-          activeIndex = 2;
-        } else if (progress >= 0.31) {
-          activeIndex = 1;
+        if (angleImage) {
+          angleImage.style.opacity = turn;
+          angleImage.style.transform = `
+            translate3d(${10 * (1 - turn)}px, 0, 0)
+            scale(${0.985 + turn * 0.015})
+            rotateY(${4 * (1 - turn)}deg)
+          `;
         }
+
+        if (productObject) {
+          const floatY =
+            Math.sin(progress * Math.PI) * 2;
+
+          productObject.style.transform = `
+            translate3d(0, ${floatY}px, 0)
+            rotateX(${Math.sin(progress * Math.PI) * -0.6}deg)
+          `;
+        }
+
+        const activeIndex = progress < 0.43 ? 0 : 1;
 
         features.forEach((item, index) => {
           item.classList.toggle(
@@ -2254,8 +2189,9 @@
             activeContent.description;
         }
 
-        if (angle) {
-          angle.textContent = activeContent.angle;
+        if (angleLabel) {
+          angleLabel.textContent =
+            activeContent.angle;
         }
       }
 
