@@ -1482,783 +1482,449 @@
       }
     }
 
-
     /* =========================
-       SLIDE 4 — EVOLUTION
+       SLIDE 4 — DEVELOPMENT PHASES
        Slides 1, 2 and 3 remain unchanged.
     ========================== */
 
-    .lrox-evolution,
-    .lrox-evolution * {
+    .lrox-development,
+    .lrox-development * {
       box-sizing: border-box;
     }
 
-    .lrox-evolution {
+    .lrox-development {
       position: relative;
       z-index: 24;
       width: 100%;
       margin-top: -1px;
-      background: #fffaf6;
-      color: var(--lrox-text);
-    }
-
-    .lrox-evolution__scroll {
-      position: relative;
-      height: 285vh;
-    }
-
-    .lrox-evolution__stage {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100svh;
-      min-height: 720px;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(
-          circle at 71% 48%,
-          rgba(255, 90, 18, 0.12),
-          transparent 33%
-        ),
-        radial-gradient(
-          circle at 22% 78%,
-          rgba(255, 183, 139, 0.12),
-          transparent 30%
-        ),
-        linear-gradient(
-          145deg,
-          #fffdfa 0%,
-          #fff8f2 48%,
-          #f8eee5 100%
-        );
-    }
-
-    .lrox-evolution__stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -4;
-      pointer-events: none;
-      opacity: 0.34;
-      background-image:
-        linear-gradient(
-          rgba(42, 31, 24, 0.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(42, 31, 24, 0.035) 1px,
-          transparent 1px
-        );
-      background-size: 92px 92px;
-      mask-image:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.65),
-          transparent 92%
-        );
-    }
-
-    .lrox-evolution__header {
-      position: absolute;
-      top: clamp(28px, 4.7vh, 54px);
-      left: 50%;
-      z-index: 14;
-      width: min(calc(100% - 64px), 1440px);
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-
-    .lrox-evolution__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #756a62;
-      font-size: 0.72rem;
-      font-weight: 780;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .lrox-evolution__eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.11);
-    }
-
-    .lrox-evolution__title {
-      max-width: 1000px;
-      margin: 14px 0 0;
       color: #171411;
-      font-size: clamp(2.5rem, 5vw, 5.6rem);
-      line-height: 0.94;
-      letter-spacing: -0.065em;
-      font-weight: 790;
+      background: #fffaf6;
     }
 
-    .lrox-evolution__title span {
-      color: var(--lrox-orange);
+    .lrox-development__phase {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: clamp(72px, 9vh, 118px) 0;
+      isolation: isolate;
     }
 
-    .lrox-evolution__subtitle {
-      max-width: 650px;
-      margin: 18px 0 0;
-      color: #756a62;
-      font-size: clamp(0.96rem, 1.2vw, 1.15rem);
-      line-height: 1.55;
+    .lrox-development__phase--one {
+      background:
+        radial-gradient(circle at 77% 42%, rgba(255, 146, 87, 0.16), transparent 34%),
+        linear-gradient(145deg, #fffdfb 0%, #fff8f2 58%, #fdf0e6 100%);
     }
 
-    .lrox-evolution__layout {
+    .lrox-development__phase--two {
+      background:
+        radial-gradient(circle at 28% 48%, rgba(255, 112, 42, 0.20), transparent 37%),
+        linear-gradient(145deg, #fff8f1 0%, #ffe8d6 52%, #ffd3b5 100%);
+    }
+
+    .lrox-development__phase--three {
+      background:
+        radial-gradient(circle at 72% 45%, rgba(255, 255, 255, 0.18), transparent 31%),
+        linear-gradient(145deg, #ff8a3b 0%, #ff6418 52%, #e94800 100%);
+      color: #fff;
+    }
+
+    .lrox-development__phase::before {
+      content: "";
       position: absolute;
       inset: 0;
-      z-index: 6;
-      width: min(calc(100% - 64px), 1440px);
-      height: 100%;
+      z-index: -3;
+      opacity: 0.42;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(45, 33, 25, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 33, 25, 0.035) 1px, transparent 1px);
+      background-size: 86px 86px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 94%);
+    }
+
+    .lrox-development__phase--three::before {
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
+    }
+
+    .lrox-development__inner {
+      position: relative;
+      width: min(calc(100% - 64px), 1480px);
+      min-height: calc(100svh - clamp(144px, 18vh, 236px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      gap: 34px;
+      grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+      gap: clamp(36px, 6vw, 92px);
       align-items: center;
-      padding-top: clamp(164px, 21vh, 210px);
-      padding-bottom: clamp(82px, 10vh, 112px);
     }
 
-    .lrox-evolution__rail {
-      position: relative;
-      align-self: stretch;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
+    .lrox-development__phase:nth-child(even) .lrox-development__inner {
+      grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
     }
 
-    .lrox-evolution__rail-line {
-      position: absolute;
-      top: 15%;
-      bottom: 15%;
-      left: 17px;
-      width: 2px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: rgba(42, 31, 24, 0.1);
+    .lrox-development__phase:nth-child(even) .lrox-development__copy {
+      order: 2;
     }
 
-    .lrox-evolution__rail-progress {
-      width: 100%;
-      height: 0%;
-      display: block;
-      border-radius: inherit;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 22px rgba(255, 90, 18, 0.35);
+    .lrox-development__phase:nth-child(even) .lrox-development__visual {
+      order: 1;
     }
 
-    .lrox-evolution__nav-item {
-      position: relative;
-      min-height: 86px;
-      padding: 14px 12px 14px 52px;
-      border: 0;
-      background: transparent;
-      color: #9a8f87;
-      text-align: left;
-      opacity: 0.5;
-      transition:
-        opacity 260ms ease,
-        color 260ms ease,
-        transform 260ms ease;
-    }
-
-    .lrox-evolution__nav-item::before {
-      content: "";
-      position: absolute;
-      top: 28px;
-      left: 9px;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(49, 37, 30, 0.18);
-      border-radius: 50%;
-      background: #fffaf6;
-      transition:
-        border-color 260ms ease,
-        background 260ms ease,
-        box-shadow 260ms ease;
-    }
-
-    .lrox-evolution__nav-item.is-active {
-      color: #1e1916;
-      opacity: 1;
-      transform: translateX(4px);
-    }
-
-    .lrox-evolution__nav-item.is-active::before {
-      border-color: var(--lrox-orange);
-      background: var(--lrox-orange);
-      box-shadow:
-        0 0 0 7px rgba(255, 90, 18, 0.1),
-        0 0 28px rgba(255, 90, 18, 0.3);
-    }
-
-    .lrox-evolution__nav-number {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--lrox-orange);
-      font-size: 0.68rem;
-      font-weight: 820;
-      letter-spacing: 0.12em;
-    }
-
-    .lrox-evolution__nav-title {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 780;
-      letter-spacing: 0.075em;
-      line-height: 1.35;
-      text-transform: uppercase;
-    }
-
-    .lrox-evolution__viewport {
-      position: relative;
-      min-width: 0;
-      height: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(51, 38, 29, 0.09);
-      border-radius: 34px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.93),
-          rgba(255, 250, 246, 0.76)
-        );
-      box-shadow:
-        0 34px 90px rgba(72, 50, 34, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(18px);
-    }
-
-    .lrox-evolution__phase {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
-      align-items: center;
+    .lrox-development__copy,
+    .lrox-development__visual {
       opacity: 0;
-      visibility: hidden;
-      transform: translate3d(0, 28px, 0) scale(0.985);
+      transform: translateY(42px);
       transition:
-        opacity 420ms ease,
-        visibility 420ms ease,
-        transform 620ms cubic-bezier(0.18, 0.72, 0.18, 1);
+        opacity 800ms ease,
+        transform 950ms cubic-bezier(.18,.72,.18,1);
     }
 
-    .lrox-evolution__phase.is-active {
+    .lrox-development__phase.is-visible .lrox-development__copy,
+    .lrox-development__phase.is-visible .lrox-development__visual {
       opacity: 1;
-      visibility: visible;
-      transform: translate3d(0, 0, 0) scale(1);
+      transform: translateY(0);
     }
 
-    .lrox-evolution__media {
-      position: relative;
-      height: 100%;
-      min-width: 0;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(
-          circle at 50% 52%,
-          rgba(255, 90, 18, 0.08),
-          transparent 44%
-        );
+    .lrox-development__visual {
+      transition-delay: 90ms;
     }
 
-    .lrox-evolution__media::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 10%;
-      bottom: 10%;
-      width: 1px;
-      background:
-        linear-gradient(
-          transparent,
-          rgba(57, 42, 32, 0.1),
-          transparent
-        );
-    }
-
-    .lrox-evolution__road-frame {
-      position: relative;
-      width: min(42vh, 360px);
-      max-width: 68%;
-      aspect-ratio: 0.54;
-      overflow: hidden;
-      border: 10px solid rgba(255, 255, 255, 0.95);
-      border-radius: 30px;
-      background: #171717;
-      box-shadow:
-        0 35px 70px rgba(33, 25, 20, 0.22),
-        0 8px 18px rgba(33, 25, 20, 0.1);
-      transform: rotate(-1.2deg);
-    }
-
-    .lrox-evolution__road-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.08),
-          transparent 22%,
-          transparent 76%,
-          rgba(0, 0, 0, 0.08)
-        );
-    }
-
-    .lrox-evolution__road-frame img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .lrox-evolution__field-badge {
-      position: absolute;
-      left: 28px;
-      bottom: 24px;
-      z-index: 4;
-      padding: 11px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-      background: rgba(18, 18, 18, 0.5);
-      color: #fff;
-      backdrop-filter: blur(12px);
-      font-size: 0.65rem;
-      font-weight: 780;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .lrox-evolution__prototype {
-      position: relative;
-      width: min(76%, 790px);
-      height: min(68vh, 620px);
-      transform-style: preserve-3d;
-      perspective: 1600px;
-    }
-
-    .lrox-evolution__prototype img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter:
-        drop-shadow(0 40px 42px rgba(47, 31, 21, 0.17))
-        drop-shadow(0 10px 18px rgba(47, 31, 21, 0.08));
-      opacity: 0;
-      transform:
-        translate3d(0, 0, 0)
-        rotateY(10deg)
-        scale(0.96);
-      transition:
-        opacity 350ms ease,
-        transform 650ms cubic-bezier(0.16, 0.75, 0.2, 1);
-    }
-
-    .lrox-evolution__prototype img.is-active {
-      opacity: 1;
-      transform:
-        translate3d(0, 0, 0)
-        rotateY(0deg)
-        scale(1);
-    }
-
-    .lrox-evolution__prototype-hint {
-      position: absolute;
-      left: 50%;
-      bottom: 18px;
-      z-index: 5;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 10px 13px;
-      border: 1px solid rgba(255, 90, 18, 0.22);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      color: #4d433d;
-      box-shadow: 0 12px 30px rgba(52, 36, 24, 0.07);
-      backdrop-filter: blur(14px);
-      font-size: 0.65rem;
-      font-weight: 760;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transform: translateX(-50%);
-    }
-
-    .lrox-evolution__prototype-hint::before {
-      content: "↻";
-      color: var(--lrox-orange);
-      font-size: 1rem;
-    }
-
-    .lrox-evolution__modular {
-      position: relative;
-      width: min(80%, 830px);
-      height: min(70vh, 640px);
-      display: grid;
-      place-items: center;
-    }
-
-    .lrox-evolution__modular img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter:
-        drop-shadow(0 42px 46px rgba(47, 31, 21, 0.16))
-        drop-shadow(0 10px 18px rgba(47, 31, 21, 0.08));
-      transform: scale(0.97);
-      transition: transform 900ms cubic-bezier(0.16, 0.75, 0.2, 1);
-    }
-
-    .lrox-evolution__phase.is-active
-    .lrox-evolution__modular img {
-      transform: scale(1.035);
-    }
-
-    .lrox-evolution__module-line {
-      position: absolute;
-      top: 20%;
-      right: 2%;
-      width: 25%;
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          var(--lrox-orange),
-          rgba(255, 90, 18, 0.12)
-        );
-      transform-origin: left;
-    }
-
-    .lrox-evolution__module-line::before {
-      content: "";
-      position: absolute;
-      left: -5px;
-      top: -5px;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.1);
-    }
-
-    .lrox-evolution__module-label {
-      position: absolute;
-      top: calc(20% - 15px);
-      right: 0;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      color: #51463f;
-      box-shadow: 0 10px 28px rgba(47, 31, 21, 0.06);
-      font-size: 0.61rem;
-      font-weight: 780;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .lrox-evolution__copy {
-      position: relative;
-      z-index: 4;
-      padding: 46px 44px 46px 36px;
-    }
-
-    .lrox-evolution__phase-label {
+    .lrox-development__kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 22px;
-      color: var(--lrox-orange);
-      font-size: 0.71rem;
+      color: #756a62;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
-    .lrox-evolution__phase-label::before {
+    .lrox-development__phase--three .lrox-development__kicker {
+      color: rgba(255,255,255,.74);
+    }
+
+    .lrox-development__kicker::before {
       content: "";
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.1);
+      background: #ff5a12;
+      box-shadow: 0 0 0 7px rgba(255,90,18,.12);
     }
 
-    .lrox-evolution__copy h3 {
+    .lrox-development__phase--three .lrox-development__kicker::before {
+      background: #fff;
+      box-shadow: 0 0 0 7px rgba(255,255,255,.14);
+    }
+
+    .lrox-development__copy h2,
+    .lrox-development__copy h3 {
       margin: 0;
-      color: #171411;
-      font-size: clamp(2.1rem, 3.4vw, 4.25rem);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      font-weight: 790;
+      max-width: 760px;
+      font-size: clamp(3rem, 5.9vw, 6.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.065em;
+      font-weight: 800;
     }
 
-    .lrox-evolution__copy p {
-      max-width: 420px;
-      margin: 22px 0 0;
-      color: #756a62;
-      font-size: clamp(0.95rem, 1.08vw, 1.06rem);
+    .lrox-development__copy h2 span,
+    .lrox-development__copy h3 span {
+      color: #ff5a12;
+    }
+
+    .lrox-development__phase--three .lrox-development__copy h3 span {
+      color: #171411;
+    }
+
+    .lrox-development__copy p {
+      max-width: 610px;
+      margin: 26px 0 0;
+      color: #746a63;
+      font-size: clamp(1rem, 1.25vw, 1.18rem);
       line-height: 1.62;
     }
 
-    .lrox-evolution__chips {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .lrox-development__phase--three .lrox-development__copy p {
+      color: rgba(255,255,255,.82);
     }
 
-    .lrox-evolution__chip {
-      min-height: 37px;
-      padding: 0 13px;
-      border: 1px solid rgba(255, 90, 18, 0.19);
+    .lrox-development__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .lrox-development__chip {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid rgba(255,90,18,.23);
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.7);
-      color: #51463f;
-      box-shadow: 0 10px 26px rgba(47, 31, 21, 0.045);
-      font-size: 0.62rem;
-      font-weight: 760;
-      letter-spacing: 0.07em;
+      background: rgba(255,255,255,.72);
+      color: #4e443d;
+      font-size: 0.63rem;
+      font-weight: 780;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      backdrop-filter: blur(12px);
     }
 
-    .lrox-evolution__chip::before {
+    .lrox-development__phase--three .lrox-development__chip {
+      border-color: rgba(255,255,255,.32);
+      background: rgba(255,255,255,.13);
+      color: #fff;
+    }
+
+    .lrox-development__chip::before {
       content: "";
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--lrox-orange);
+      background: #ff5a12;
     }
 
-    .lrox-evolution__current {
-      margin-top: 28px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #171411;
-      color: #fff;
-      font-size: 0.63rem;
-      font-weight: 780;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+    .lrox-development__phase--three .lrox-development__chip::before {
+      background: #fff;
     }
 
-    .lrox-evolution__current::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 6px rgba(255, 90, 18, 0.16);
+    .lrox-development__visual {
+      position: relative;
+      min-width: 0;
+      min-height: min(76vh, 780px);
+      display: grid;
+      place-items: center;
     }
 
-    .lrox-evolution__counter {
+    .lrox-development__card {
+      position: relative;
+      width: min(100%, 850px);
+      height: min(76vh, 780px);
+      overflow: hidden;
+      border: 1px solid rgba(50, 37, 28, .09);
+      border-radius: 40px;
+      background: rgba(255,255,255,.75);
+      box-shadow:
+        0 42px 100px rgba(68, 44, 28, .16),
+        inset 0 1px 0 rgba(255,255,255,.96);
+      backdrop-filter: blur(18px);
+    }
+
+    .lrox-development__phase--three .lrox-development__card {
+      border-color: rgba(255,255,255,.24);
+      background: rgba(255,255,255,.11);
+      box-shadow:
+        0 42px 100px rgba(91, 24, 0, .28),
+        inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    .lrox-development__road-card {
+      display: grid;
+      place-items: center;
+      padding: clamp(22px, 4vw, 54px);
+    }
+
+    .lrox-development__road-card img {
+      display: block;
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 28px;
+      box-shadow: 0 28px 70px rgba(30,25,22,.22);
+      background: #151515;
+    }
+
+    .lrox-development__road-badge {
       position: absolute;
-      right: 26px;
-      bottom: 20px;
-      z-index: 16;
-      color: #857970;
-      font-size: 0.66rem;
-      font-weight: 770;
-      letter-spacing: 0.12em;
+      left: 28px;
+      bottom: 26px;
+      padding: 11px 14px;
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 999px;
+      background: rgba(16,16,16,.55);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 780;
+      letter-spacing: .09em;
       text-transform: uppercase;
+      backdrop-filter: blur(12px);
     }
 
-    @media (max-width: 1100px) {
-      .lrox-evolution__layout {
-        grid-template-columns: 190px minmax(0, 1fr);
-        gap: 20px;
-      }
-
-      .lrox-evolution__phase {
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      }
-
-      .lrox-evolution__copy {
-        padding: 34px 28px;
-      }
-
-      .lrox-evolution__prototype,
-      .lrox-evolution__modular {
-        width: 92%;
-      }
+    .lrox-development__prototype-card {
+      perspective: 1600px;
+      display: grid;
+      place-items: center;
     }
 
-    @media (max-width: 760px) {
-      .lrox-evolution__scroll {
-        height: 250vh;
+    .lrox-development__prototype-image {
+      position: absolute;
+      inset: 3%;
+      width: 94%;
+      height: 94%;
+      object-fit: contain;
+      opacity: 0;
+      transform: rotateY(12deg) scale(.96);
+      filter: drop-shadow(0 38px 38px rgba(55,31,15,.18));
+      transition:
+        opacity 500ms ease,
+        transform 900ms cubic-bezier(.18,.72,.18,1);
+    }
+
+    .lrox-development__prototype-image.is-active {
+      opacity: 1;
+      transform: rotateY(0deg) scale(1);
+    }
+
+    .lrox-development__prototype-label {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      padding: 10px 14px;
+      border: 1px solid rgba(255,90,18,.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: #50453f;
+      font-size: .61rem;
+      font-weight: 780;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      white-space: nowrap;
+    }
+
+    .lrox-development__modular-card {
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .lrox-development__modular-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 42px 42px rgba(89,24,0,.32));
+      transform: scale(.96);
+      transition: transform 1100ms cubic-bezier(.18,.72,.18,1);
+    }
+
+    .lrox-development__phase--three.is-visible
+    .lrox-development__modular-card img {
+      transform: scale(1.035);
+    }
+
+    .lrox-development__phase-number {
+      position: absolute;
+      right: clamp(24px, 4vw, 64px);
+      bottom: clamp(22px, 3.5vh, 44px);
+      z-index: 6;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(70,53,42,.52);
+    }
+
+    .lrox-development__phase--three
+    .lrox-development__phase-number {
+      color: rgba(255,255,255,.64);
+    }
+
+    @media (max-width: 900px) {
+      .lrox-development__phase {
+        min-height: auto;
+        padding: 80px 0 92px;
       }
 
-      .lrox-evolution__stage {
-        min-height: 760px;
-      }
-
-      .lrox-evolution__header {
-        top: 24px;
-        width: calc(100% - 40px);
-      }
-
-      .lrox-evolution__title {
-        font-size: clamp(2.15rem, 10.5vw, 3.45rem);
-      }
-
-      .lrox-evolution__subtitle {
-        display: none;
-      }
-
-      .lrox-evolution__layout {
-        width: calc(100% - 28px);
-        padding-top: 145px;
-        padding-bottom: 70px;
-        display: block;
-      }
-
-      .lrox-evolution__rail {
-        position: absolute;
-        top: 104px;
-        right: 0;
-        left: 0;
-        z-index: 20;
-        height: 42px;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 4px;
-      }
-
-      .lrox-evolution__rail-line {
-        top: 20px;
-        right: 7%;
-        bottom: auto;
-        left: 7%;
-        width: auto;
-        height: 2px;
-      }
-
-      .lrox-evolution__rail-progress {
-        width: 0%;
-        height: 100%;
-      }
-
-      .lrox-evolution__nav-item {
-        min-height: 42px;
-        padding: 0;
-        flex: 1;
-        text-align: center;
-      }
-
-      .lrox-evolution__nav-item::before {
-        top: 13px;
-        left: 50%;
-        width: 12px;
-        height: 12px;
-        transform: translateX(-50%);
-      }
-
-      .lrox-evolution__nav-number,
-      .lrox-evolution__nav-title {
-        display: none;
-      }
-
-      .lrox-evolution__viewport {
-        height: 100%;
-        border-radius: 24px;
-      }
-
-      .lrox-evolution__phase {
+      .lrox-development__inner,
+      .lrox-development__phase:nth-child(even)
+      .lrox-development__inner {
+        width: min(calc(100% - 36px), 760px);
+        min-height: auto;
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 38px;
       }
 
-      .lrox-evolution__media {
-        min-height: 0;
+      .lrox-development__phase:nth-child(even)
+      .lrox-development__copy,
+      .lrox-development__phase:nth-child(even)
+      .lrox-development__visual {
+        order: initial;
       }
 
-      .lrox-evolution__media::after {
-        top: auto;
-        right: 8%;
-        bottom: 0;
-        left: 8%;
-        width: auto;
-        height: 1px;
+      .lrox-development__copy h2,
+      .lrox-development__copy h3 {
+        font-size: clamp(2.8rem, 11vw, 5rem);
       }
 
-      .lrox-evolution__road-frame {
-        width: min(34vh, 265px);
-        max-width: 72%;
-        border-width: 7px;
-        border-radius: 23px;
+      .lrox-development__visual {
+        min-height: 520px;
       }
 
-      .lrox-evolution__prototype,
-      .lrox-evolution__modular {
-        width: 96%;
-        height: min(47vh, 430px);
+      .lrox-development__card {
+        height: min(68vh, 620px);
+        border-radius: 28px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .lrox-development__phase {
+        padding: 64px 0 78px;
       }
 
-      .lrox-evolution__copy {
-        padding: 22px 22px 28px;
+      .lrox-development__inner {
+        width: calc(100% - 24px);
+        gap: 28px;
       }
 
-      .lrox-evolution__phase-label {
-        margin-bottom: 12px;
+      .lrox-development__copy p {
+        margin-top: 18px;
+        font-size: .94rem;
       }
 
-      .lrox-evolution__copy h3 {
-        font-size: clamp(1.9rem, 8.6vw, 2.8rem);
+      .lrox-development__visual {
+        min-height: 430px;
       }
 
-      .lrox-evolution__copy p {
-        margin-top: 12px;
-        font-size: 0.86rem;
-        line-height: 1.5;
+      .lrox-development__card {
+        height: 58vh;
+        min-height: 420px;
       }
 
-      .lrox-evolution__chips,
-      .lrox-evolution__current {
-        margin-top: 16px;
+      .lrox-development__road-card {
+        padding: 16px;
       }
 
-      .lrox-evolution__chip {
-        min-height: 31px;
-        padding: 0 10px;
-        font-size: 0.54rem;
+      .lrox-development__road-card img {
+        border-radius: 20px;
       }
 
-      .lrox-evolution__counter {
-        right: 18px;
-        bottom: 13px;
+      .lrox-development__road-badge {
+        left: 16px;
+        bottom: 16px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lrox-evolution__phase,
-      .lrox-evolution__prototype img,
-      .lrox-evolution__modular img,
-      .lrox-evolution__nav-item {
+      .lrox-development__copy,
+      .lrox-development__visual,
+      .lrox-development__prototype-image,
+      .lrox-development__modular-card img {
         transition: none;
       }
     }
+
+
 
   </style>
 </head>
@@ -2593,251 +2259,187 @@
     </div>
   </section>
 
-
   <section
-    class="lrox-evolution"
+    class="lrox-development"
     id="development"
   >
-    <div class="lrox-evolution__scroll">
-      <div class="lrox-evolution__stage">
-        <div class="lrox-evolution__header">
-          <div class="lrox-evolution__eyebrow">
-            Entwicklung
+    <article
+      class="lrox-development__phase lrox-development__phase--one"
+      data-development-phase
+    >
+      <div class="lrox-development__inner">
+        <div class="lrox-development__copy">
+          <div class="lrox-development__kicker">
+            01 · Road Research
           </div>
 
-          <h2 class="lrox-evolution__title">
+          <h2>
             Von der Forschung zum
             <span>modularen System.</span>
           </h2>
 
-          <p class="lrox-evolution__subtitle">
-            Drei Entwicklungsstufen. Ein klares Ziel:
-            Gefahren im Straßenverkehr früher erkennen.
+          <p>
+            Die erste Generation analysierte reale
+            Verkehrssituationen direkt am Fahrrad.
+            Felddaten bildeten die Grundlage für
+            Erkennung und Risikobewertung.
           </p>
+
+          <div class="lrox-development__chips">
+            <span class="lrox-development__chip">
+              Field testing
+            </span>
+
+            <span class="lrox-development__chip">
+              Real traffic data
+            </span>
+          </div>
         </div>
 
-        <div class="lrox-evolution__layout">
-          <aside
-            class="lrox-evolution__rail"
-            aria-label="Entwicklungsphasen"
+        <div class="lrox-development__visual">
+          <div
+            class="lrox-development__card
+                   lrox-development__road-card"
           >
-            <div
-              class="lrox-evolution__rail-line"
-              aria-hidden="true"
-            >
-              <span
-                class="lrox-evolution__rail-progress"
-              ></span>
-            </div>
+            <img
+              src="assets/IMG_3768.gif"
+              alt="LROX Straßentest mit Gefahrenerkennung"
+            />
 
-            <div
-              class="lrox-evolution__nav-item is-active"
-              data-evolution-nav="0"
-            >
-              <span class="lrox-evolution__nav-number">
-                01
-              </span>
-
-              <span class="lrox-evolution__nav-title">
-                Road Research
-              </span>
-            </div>
-
-            <div
-              class="lrox-evolution__nav-item"
-              data-evolution-nav="1"
-            >
-              <span class="lrox-evolution__nav-number">
-                02
-              </span>
-
-              <span class="lrox-evolution__nav-title">
-                Helmet Prototype
-              </span>
-            </div>
-
-            <div
-              class="lrox-evolution__nav-item"
-              data-evolution-nav="2"
-            >
-              <span class="lrox-evolution__nav-number">
-                03
-              </span>
-
-              <span class="lrox-evolution__nav-title">
-                Modular System
-              </span>
-            </div>
-          </aside>
-
-          <div class="lrox-evolution__viewport">
-            <article
-              class="lrox-evolution__phase is-active"
-              data-evolution-phase="0"
-            >
-              <div class="lrox-evolution__media">
-                <div class="lrox-evolution__road-frame">
-                  <img
-                    src="assets/lrox-phase-1-road-research.gif"
-                    alt="LROX Straßentest mit Erkennung von Verkehrsteilnehmenden"
-                  />
-
-                  <span class="lrox-evolution__field-badge">
-                    Field testing · Real traffic data
-                  </span>
-                </div>
-              </div>
-
-              <div class="lrox-evolution__copy">
-                <div class="lrox-evolution__phase-label">
-                  01 · Road Research
-                </div>
-
-                <h3>
-                  Gefahrenerkennung beginnt auf der Straße.
-                </h3>
-
-                <p>
-                  Die erste Generation analysierte reale
-                  Verkehrssituationen direkt am Fahrrad und
-                  bildete die Grundlage für Erkennung und
-                  Risikobewertung.
-                </p>
-
-                <div class="lrox-evolution__chips">
-                  <span class="lrox-evolution__chip">
-                    Field testing
-                  </span>
-
-                  <span class="lrox-evolution__chip">
-                    Real traffic data
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="lrox-evolution__phase"
-              data-evolution-phase="1"
-            >
-              <div class="lrox-evolution__media">
-                <div
-                  class="lrox-evolution__prototype"
-                  id="lroxPrototypeViewer"
-                >
-                  <img
-                    class="is-active"
-                    src="assets/lrox-phase-2-front.png"
-                    alt="Früher LROX Helm-Prototyp von vorne"
-                    data-prototype-image="0"
-                  />
-
-                  <img
-                    src="assets/lrox-phase-2-rear.png"
-                    alt="Früher LROX Helm-Prototyp mit Mini-Computer an der Rückseite"
-                    data-prototype-image="1"
-                  />
-
-                  <div class="lrox-evolution__prototype-hint">
-                    Front → Rear computer
-                  </div>
-                </div>
-              </div>
-
-              <div class="lrox-evolution__copy">
-                <div class="lrox-evolution__phase-label">
-                  02 · Helmet Prototype
-                </div>
-
-                <h3>
-                  Die Rechenleistung kommt an den Helm.
-                </h3>
-
-                <p>
-                  Sensorik und Mini-Computer wurden erstmals
-                  direkt in einen tragbaren Helm-Prototyp
-                  integriert.
-                </p>
-
-                <div class="lrox-evolution__chips">
-                  <span class="lrox-evolution__chip">
-                    Mini computer
-                  </span>
-
-                  <span class="lrox-evolution__chip">
-                    Integrated prototype
-                  </span>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="lrox-evolution__phase"
-              data-evolution-phase="2"
-            >
-              <div class="lrox-evolution__media">
-                <div class="lrox-evolution__modular">
-                  <img
-                    src="assets/lrox-phase-3-modular.png"
-                    alt="Aktuelles modulares LROX Sensorsystem auf einem Fahrradhelm"
-                  />
-
-                  <span
-                    class="lrox-evolution__module-line"
-                    aria-hidden="true"
-                  ></span>
-
-                  <span class="lrox-evolution__module-label">
-                    Modular mount
-                  </span>
-                </div>
-              </div>
-
-              <div class="lrox-evolution__copy">
-                <div class="lrox-evolution__phase-label">
-                  03 · Modular System
-                </div>
-
-                <h3>
-                  Ein kompaktes Modul für bestehende Helme.
-                </h3>
-
-                <p>
-                  Die aktuelle Generation kombiniert mehrere
-                  Sensoren, lokale Verarbeitung und eine direkte
-                  visuelle Warnung – ohne klassische Kamera.
-                </p>
-
-                <div class="lrox-evolution__chips">
-                  <span class="lrox-evolution__chip">
-                    Sensor fusion
-                  </span>
-
-                  <span class="lrox-evolution__chip">
-                    Camera-free
-                  </span>
-
-                  <span class="lrox-evolution__chip">
-                    Visual warning
-                  </span>
-                </div>
-
-                <div class="lrox-evolution__current">
-                  Current prototype
-                </div>
-              </div>
-            </article>
-
-            <div class="lrox-evolution__counter">
-              <span id="lroxEvolutionCounter">
-                01 · 03
-              </span>
-            </div>
+            <span class="lrox-development__road-badge">
+              Live road research
+            </span>
           </div>
         </div>
       </div>
-    </div>
+
+      <span class="lrox-development__phase-number">
+        Phase 01 · 03
+      </span>
+    </article>
+
+    <article
+      class="lrox-development__phase lrox-development__phase--two"
+      data-development-phase
+      id="helmet-prototype"
+    >
+      <div class="lrox-development__inner">
+        <div class="lrox-development__copy">
+          <div class="lrox-development__kicker">
+            02 · Helmet Prototype
+          </div>
+
+          <h3>
+            Die Rechenleistung kommt
+            <span>an den Helm.</span>
+          </h3>
+
+          <p>
+            Sensorik und Mini-Computer wurden erstmals
+            direkt in einen tragbaren Helm-Prototyp
+            integriert. Beim Scrollen wechselt die Ansicht
+            von vorne zur Rückseite.
+          </p>
+
+          <div class="lrox-development__chips">
+            <span class="lrox-development__chip">
+              Integrated sensors
+            </span>
+
+            <span class="lrox-development__chip">
+              Mini computer
+            </span>
+          </div>
+        </div>
+
+        <div class="lrox-development__visual">
+          <div
+            class="lrox-development__card
+                   lrox-development__prototype-card"
+          >
+            <img
+              class="lrox-development__prototype-image is-active"
+              src="assets/lrox-phase-2-front.png"
+              alt="LROX Helm-Prototyp von vorne"
+              data-phase-two-image="front"
+            />
+
+            <img
+              class="lrox-development__prototype-image"
+              src="assets/lrox-phase-2-rear.png"
+              alt="LROX Helm-Prototyp mit Mini-Computer an der Rückseite"
+              data-phase-two-image="rear"
+            />
+
+            <span class="lrox-development__prototype-label">
+              Front view → Rear mini-computer
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <span class="lrox-development__phase-number">
+        Phase 02 · 03
+      </span>
+    </article>
+
+    <article
+      class="lrox-development__phase lrox-development__phase--three"
+      data-development-phase
+    >
+      <div class="lrox-development__inner">
+        <div class="lrox-development__copy">
+          <div class="lrox-development__kicker">
+            03 · Modular System
+          </div>
+
+          <h3>
+            Ein kompaktes Modul.
+            <span>Flexible Integration.</span>
+          </h3>
+
+          <p>
+            Die aktuelle Generation kombiniert mehrere
+            Sensoren, lokale Verarbeitung und eine direkte
+            visuelle Warnung. Das System arbeitet ohne
+            klassische Kamera und lässt sich modular
+            auf bestehenden Helmen montieren.
+          </p>
+
+          <div class="lrox-development__chips">
+            <span class="lrox-development__chip">
+              Sensor fusion
+            </span>
+
+            <span class="lrox-development__chip">
+              Camera-free
+            </span>
+
+            <span class="lrox-development__chip">
+              Visual warning
+            </span>
+          </div>
+        </div>
+
+        <div class="lrox-development__visual">
+          <div
+            class="lrox-development__card
+                   lrox-development__modular-card"
+          >
+            <img
+              src="assets/lrox-phase-3-modular.png"
+              alt="Aktuelles modulares LROX Sensorsystem"
+            />
+          </div>
+        </div>
+      </div>
+
+      <span class="lrox-development__phase-number">
+        Phase 03 · 03
+      </span>
+    </article>
   </section>
+
 
 
   <script>
@@ -3260,43 +2862,44 @@
     })();
   </script>
 
-
   <script>
     (() => {
-      const section = document.querySelector(
-        ".lrox-evolution"
-      );
-
-      if (!section) return;
-
-      const scrollArea = section.querySelector(
-        ".lrox-evolution__scroll"
-      );
-
       const phases = Array.from(
-        section.querySelectorAll(
-          "[data-evolution-phase]"
+        document.querySelectorAll(
+          "[data-development-phase]"
         )
       );
 
-      const navItems = Array.from(
-        section.querySelectorAll(
-          "[data-evolution-nav]"
-        )
+      if (!phases.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle(
+              "is-visible",
+              entry.isIntersecting
+            );
+          });
+        },
+        {
+          threshold: 0.22
+        }
       );
 
-      const railProgress = section.querySelector(
-        ".lrox-evolution__rail-progress"
+      phases.forEach((phase) => {
+        observer.observe(phase);
+      });
+
+      const prototypePhase = document.querySelector(
+        "#helmet-prototype"
       );
 
-      const counter = section.querySelector(
-        "#lroxEvolutionCounter"
+      const frontImage = document.querySelector(
+        '[data-phase-two-image="front"]'
       );
 
-      const prototypeImages = Array.from(
-        section.querySelectorAll(
-          "[data-prototype-image]"
-        )
+      const rearImage = document.querySelector(
+        '[data-phase-two-image="rear"]'
       );
 
       function clamp(value, minimum, maximum) {
@@ -3306,143 +2909,77 @@
         );
       }
 
-      function updateEvolution() {
+      function updatePrototypeView() {
+        if (
+          !prototypePhase ||
+          !frontImage ||
+          !rearImage
+        ) {
+          return;
+        }
+
         const rect =
-          scrollArea.getBoundingClientRect();
+          prototypePhase.getBoundingClientRect();
 
         const viewportHeight =
           window.innerHeight;
 
-        const scrollableDistance = Math.max(
-          scrollArea.offsetHeight - viewportHeight,
+        const total =
+          rect.height + viewportHeight;
+
+        const progress = clamp(
+          (viewportHeight - rect.top) / total,
+          0,
           1
         );
 
-        const travelled = clamp(
-          -rect.top,
-          0,
-          scrollableDistance
+        /*
+          Front remains visible through the first half
+          of Phase 2. Rear view then becomes visible and
+          remains on screen through the end of the phase.
+        */
+        const showRear =
+          progress >= 0.56;
+
+        frontImage.classList.toggle(
+          "is-active",
+          !showRear
         );
 
-        const progress =
-          travelled / scrollableDistance;
-
-        let activeIndex = 0;
-
-        if (progress >= 0.67) {
-          activeIndex = 2;
-        } else if (progress >= 0.33) {
-          activeIndex = 1;
-        }
-
-        phases.forEach((phase, index) => {
-          phase.classList.toggle(
-            "is-active",
-            index === activeIndex
-          );
-        });
-
-        navItems.forEach((item, index) => {
-          item.classList.toggle(
-            "is-active",
-            index === activeIndex
-          );
-        });
-
-        if (railProgress) {
-          if (
-            window.matchMedia(
-              "(max-width: 760px)"
-            ).matches
-          ) {
-            railProgress.style.width =
-              `${progress * 100}%`;
-
-            railProgress.style.height =
-              "100%";
-          } else {
-            railProgress.style.height =
-              `${progress * 100}%`;
-
-            railProgress.style.width =
-              "100%";
-          }
-        }
-
-        if (counter) {
-          counter.textContent =
-            `0${activeIndex + 1} · 03`;
-        }
-
-        /*
-          During Phase 2 the two prototype images rotate
-          from the front view to the rear view. The rear view
-          remains visible long enough to show the mini-computer.
-        */
-        if (prototypeImages.length === 2) {
-          const phaseTwoStart = 0.33;
-          const phaseTwoEnd = 0.67;
-
-          const phaseTwoProgress = clamp(
-            (progress - phaseTwoStart) /
-            (phaseTwoEnd - phaseTwoStart),
-            0,
-            1
-          );
-
-          const rearVisible =
-            phaseTwoProgress >= 0.5;
-
-          prototypeImages[0].classList.toggle(
-            "is-active",
-            !rearVisible
-          );
-
-          prototypeImages[1].classList.toggle(
-            "is-active",
-            rearVisible
-          );
-
-          const rotation =
-            phaseTwoProgress * 10 - 5;
-
-          prototypeImages.forEach((image) => {
-            image.style.transform = `
-              translate3d(0, 0, 0)
-              rotateY(${rotation}deg)
-              scale(1)
-            `;
-          });
-        }
+        rearImage.classList.toggle(
+          "is-active",
+          showRear
+        );
       }
 
       let ticking = false;
 
-      function requestEvolutionUpdate() {
+      function requestUpdate() {
         if (ticking) return;
 
         ticking = true;
 
         window.requestAnimationFrame(() => {
-          updateEvolution();
+          updatePrototypeView();
           ticking = false;
         });
       }
 
       window.addEventListener(
         "scroll",
-        requestEvolutionUpdate,
+        requestUpdate,
         { passive: true }
       );
 
       window.addEventListener(
         "resize",
-        requestEvolutionUpdate
+        requestUpdate
       );
 
-      updateEvolution();
+      updatePrototypeView();
     })();
   </script>
+
 
 </body>
 </html>
