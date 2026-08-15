@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -17,15 +15,9 @@
 
   <title>LROX Guide — Intelligente Mobilitätsassistenz</title>
 
-
   <style>
 
-    /* =========================================================
-       GLOBAL
-    ========================================================== */
-
     :root {
-
       --cream: #f5f2ec;
       --white: #ffffff;
 
@@ -39,7 +31,6 @@
       --ice-blue: #edf5ff;
 
       --line: rgba(17, 19, 24, 0.11);
-
     }
 
 
@@ -54,7 +45,6 @@
 
 
     body {
-
       margin: 0;
 
       font-family:
@@ -68,7 +58,6 @@
       color: var(--text);
 
       overflow-x: hidden;
-
     }
 
 
@@ -81,15 +70,12 @@
 
     /* =========================================================
        HERO
-       UNCHANGED
     ========================================================== */
 
     .hero {
-
       position: relative;
 
       width: 100%;
-
       height: 100svh;
 
       min-height: 700px;
@@ -101,23 +87,19 @@
       color: white;
 
       isolation: isolate;
-
     }
 
 
 
     .hero-video-bg {
-
       position: absolute;
 
       inset: -40px;
 
       width: calc(100% + 80px);
-
       height: calc(100% + 80px);
 
       object-fit: cover;
-
       object-position: center top;
 
       z-index: -6;
@@ -128,19 +110,16 @@
         saturate(0.92);
 
       transform: scale(1.06);
-
     }
 
 
 
     .hero-video-main {
-
       position: absolute;
 
       inset: 0;
 
       width: 100%;
-
       height: 100%;
 
       object-fit: contain;
@@ -148,13 +127,11 @@
       object-position: 58% top;
 
       z-index: -5;
-
     }
 
 
 
     .hero-overlay {
-
       position: absolute;
 
       inset: 0;
@@ -175,13 +152,9 @@
           90deg,
 
           rgba(3, 8, 12, 0.64) 0%,
-
           rgba(5, 10, 15, 0.43) 23%,
-
           rgba(6, 12, 18, 0.18) 46%,
-
           rgba(6, 12, 18, 0.03) 72%,
-
           rgba(5, 11, 17, 0.08) 100%
         ),
 
@@ -189,26 +162,19 @@
           180deg,
 
           rgba(0,0,0,0.18) 0%,
-
           rgba(0,0,0,0.01) 40%,
-
           rgba(0,0,0,0.10) 67%,
-
           rgba(7, 12, 17, 0.64) 100%
         );
-
     }
 
 
 
     .hero-fade {
-
       position: absolute;
 
       left: 0;
-
       right: 0;
-
       bottom: -1px;
 
       height: 230px;
@@ -223,35 +189,25 @@
           180deg,
 
           rgba(245,248,252,0) 0%,
-
           rgba(245,248,252,0.03) 15%,
-
           rgba(245,248,252,0.10) 30%,
-
           rgba(245,248,252,0.26) 48%,
-
           rgba(245,248,252,0.55) 67%,
-
           rgba(245,248,252,0.84) 84%,
-
           #f5f8fc 100%
         );
-
     }
 
 
 
     /* =========================================================
        NAVIGATION
-       UNCHANGED
     ========================================================== */
 
     .nav {
-
       position: absolute;
 
       top: 0;
-
       left: 50%;
 
       transform: translateX(-50%);
@@ -265,9 +221,7 @@
       height: 82px;
 
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
 
       z-index: 20;
@@ -280,39 +234,31 @@
         1s
         ease
         both;
-
     }
 
 
 
     @keyframes navIn {
-
       from {
-
         opacity: 0;
 
         transform:
           translateX(-50%)
           translateY(-12px);
-
       }
 
       to {
-
         opacity: 1;
 
         transform:
           translateX(-50%)
           translateY(0);
-
       }
-
     }
 
 
 
     .logo {
-
       font-size: 18px;
 
       font-weight: 800;
@@ -324,13 +270,11 @@
         2px
         18px
         rgba(0,0,0,0.45);
-
     }
 
 
 
     .mode {
-
       position: absolute;
 
       left: 50%;
@@ -347,13 +291,11 @@
 
       color:
         rgba(255,255,255,0.72);
-
     }
 
 
 
     .back {
-
       font-size: 13px;
 
       color:
@@ -361,7 +303,6 @@
 
       transition:
         opacity 0.25s ease;
-
     }
 
 
@@ -374,11 +315,9 @@
 
     /* =========================================================
        HERO CONTENT
-       UNCHANGED
     ========================================================== */
 
     .hero-content {
-
       position: absolute;
 
       left:
@@ -403,37 +342,29 @@
         cubic-bezier(.22,.61,.36,1)
         0.15s
         both;
-
     }
 
 
 
     @keyframes heroContentIn {
-
       from {
-
         opacity: 0;
 
         transform:
           translateY(32px);
-
       }
 
       to {
-
         opacity: 1;
 
         transform:
           translateY(0);
-
       }
-
     }
 
 
 
     .eyebrow {
-
       margin-bottom: 16px;
 
       font-size: 11px;
@@ -446,13 +377,11 @@
 
       color:
         rgba(255,255,255,0.73);
-
     }
 
 
 
     .hero h1 {
-
       margin: 0;
 
       max-width: 560px;
@@ -475,13 +404,11 @@
         4px
         28px
         rgba(0,0,0,0.34);
-
     }
 
 
 
     .hero-text {
-
       max-width: 500px;
 
       margin-top: 20px;
@@ -503,17 +430,14 @@
         2px
         15px
         rgba(0,0,0,0.35);
-
     }
 
 
 
     .hero-button {
-
       display: inline-flex;
 
       align-items: center;
-
       justify-content: center;
 
       margin-top: 23px;
@@ -533,7 +457,6 @@
         rgba(0,0,0,0.16);
 
       backdrop-filter: blur(12px);
-
       -webkit-backdrop-filter: blur(12px);
 
       font-size: 11px;
@@ -549,13 +472,11 @@
         color 0.3s ease,
         transform 0.3s ease,
         border-color 0.3s ease;
-
     }
 
 
 
     .hero-button:hover {
-
       background: white;
 
       color: #111;
@@ -564,26 +485,21 @@
 
       transform:
         translateY(-2px);
-
     }
 
 
 
     /* =========================================================
        SLIDE 02
-       UNCHANGED
     ========================================================== */
 
     .statement {
-
       position: relative;
 
       width: 100%;
-
       height: 100svh;
 
       min-height: 650px;
-
       max-height: 1000px;
 
       margin-top: -1px;
@@ -591,7 +507,6 @@
       overflow: hidden;
 
       display: flex;
-
       align-items: center;
 
       background:
@@ -612,24 +527,18 @@
           180deg,
 
           #f5f8fc 0%,
-
           #f8fafc 11%,
-
           #ffffff 27%,
-
           #fafcff 62%,
-
           #f1f7ff 100%
         );
 
       isolation: isolate;
-
     }
 
 
 
     .statement::before {
-
       content: "";
 
       position: absolute;
@@ -642,30 +551,21 @@
           90deg,
 
           transparent 0%,
-
           transparent 31%,
-
           rgba(113,170,239,0.035) 31.1%,
-
           transparent 31.22%,
-
           transparent 66%,
-
           rgba(113,170,239,0.03) 66.1%,
-
           transparent 66.22%,
-
           transparent 100%
         );
 
       pointer-events: none;
-
     }
 
 
 
     .statement-inner {
-
       position: relative;
 
       z-index: 5;
@@ -679,33 +579,24 @@
       margin:
         0
         auto;
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 TOP
-    ========================================================== */
-
     .statement-top {
-
       display: flex;
 
       align-items: center;
-
       justify-content: space-between;
 
       gap: 40px;
 
       margin-bottom: 55px;
-
     }
 
 
 
     .section-label {
-
       font-size: 11px;
 
       font-weight: 700;
@@ -724,13 +615,11 @@
       transition:
         opacity 0.75s ease,
         transform 0.75s ease;
-
     }
 
 
 
     .audience-pill {
-
       display: inline-flex;
 
       align-items: center;
@@ -781,15 +670,12 @@
       transition:
         opacity 0.75s ease 0.08s,
         transform 0.75s ease 0.08s;
-
     }
 
 
 
     .audience-dot {
-
       width: 7px;
-
       height: 7px;
 
       border-radius: 50%;
@@ -803,17 +689,11 @@
         0
         6px
         rgba(105,169,255,0.10);
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 MAIN TYPOGRAPHY
-    ========================================================== */
-
     .statement-title {
-
       margin: 0;
 
       max-width: 1150px;
@@ -830,13 +710,11 @@
       letter-spacing: -0.055em;
 
       font-weight: 620;
-
     }
 
 
 
     .title-dark {
-
       display: block;
 
       color: #172131;
@@ -856,13 +734,11 @@
         0.9s
         cubic-bezier(.22,.61,.36,1)
         0.12s;
-
     }
 
 
 
     .title-blue {
-
       display: block;
 
       margin-top: 13px;
@@ -885,17 +761,11 @@
         0.95s
         cubic-bezier(.22,.61,.36,1)
         0.28s;
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 LOWER CONTENT
-    ========================================================== */
-
     .statement-lower {
-
       margin-top: 54px;
 
       padding-top: 28px;
@@ -913,13 +783,11 @@
       gap: 80px;
 
       align-items: start;
-
     }
 
 
 
     .statement-keyline {
-
       max-width: 620px;
 
       font-size:
@@ -943,24 +811,20 @@
       transition:
         opacity 0.8s ease 0.45s,
         transform 0.8s ease 0.45s;
-
     }
 
 
 
     .statement-keyline strong {
-
       color:
         var(--blue-deep);
 
       font-weight: 600;
-
     }
 
 
 
     .statement-description {
-
       margin: 0;
 
       font-size:
@@ -982,48 +846,36 @@
       transition:
         opacity 0.8s ease 0.56s,
         transform 0.8s ease 0.56s;
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 MOTION LINE
-    ========================================================== */
-
     .motion-line {
-
       position: absolute;
 
       left: 0;
-
       bottom: 0;
 
       width: 100%;
-
       height: 2px;
 
       overflow: hidden;
 
       background:
         rgba(85,145,225,0.08);
-
     }
 
 
 
     .motion-line::after {
-
       content: "";
 
       position: absolute;
 
       top: 0;
-
       left: -25%;
 
       width: 25%;
-
       height: 100%;
 
       background:
@@ -1046,13 +898,11 @@
         5.5s
         ease-in-out
         infinite;
-
     }
 
 
 
     @keyframes lightMove {
-
       0% {
         left: -25%;
         opacity: 0;
@@ -1070,7 +920,6 @@
         left: 105%;
         opacity: 0;
       }
-
     }
 
 
@@ -1092,27 +941,22 @@
 
     .statement.is-visible
     .statement-description {
-
       opacity: 1;
 
       transform:
         translateY(0);
-
     }
 
 
 
     /* =========================================================
        SLIDE 03
-       FULL SCREEN VIDEO
     ========================================================== */
 
     .technology {
-
       position: relative;
 
       width: 100%;
-
       height: 100svh;
 
       min-height: 700px;
@@ -1126,23 +970,16 @@
       isolation: isolate;
 
       color: #172131;
-
     }
 
 
 
-    /* =========================================================
-       FULLSCREEN VIDEO
-    ========================================================== */
-
     .technology-video {
-
       position: absolute;
 
       inset: 0;
 
       width: 100%;
-
       height: 100%;
 
       object-fit: cover;
@@ -1157,27 +994,19 @@
         transform
         1.8s
         cubic-bezier(.22,.61,.36,1);
-
     }
 
 
 
     .technology.is-visible
     .technology-video {
-
       transform:
         scale(1);
-
     }
 
 
 
-    /* =========================================================
-       READABILITY OVERLAY
-    ========================================================== */
-
     .technology-overlay {
-
       position: absolute;
 
       inset: 0;
@@ -1192,15 +1021,10 @@
           90deg,
 
           rgba(250,252,255,0.97) 0%,
-
           rgba(250,252,255,0.93) 19%,
-
           rgba(250,252,255,0.78) 32%,
-
           rgba(250,252,255,0.43) 44%,
-
           rgba(250,252,255,0.12) 57%,
-
           rgba(250,252,255,0.00) 72%
         ),
 
@@ -1208,28 +1032,18 @@
           180deg,
 
           rgba(245,249,255,0.09) 0%,
-
           rgba(255,255,255,0.00) 50%,
-
           rgba(242,247,252,0.20) 100%
         );
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 → SLIDE 03 TRANSITION
-    ========================================================== */
-
     .technology-transition {
-
       position: absolute;
 
       left: 0;
-
       right: 0;
-
       top: 0;
 
       height: 250px;
@@ -1244,36 +1058,26 @@
           180deg,
 
           #f1f7ff 0%,
-
           rgba(241,247,255,0.96) 10%,
-
           rgba(241,247,255,0.78) 24%,
-
           rgba(241,247,255,0.46) 43%,
-
           rgba(241,247,255,0.18) 65%,
-
           rgba(241,247,255,0.04) 82%,
-
           rgba(241,247,255,0) 100%
         );
-
     }
 
 
 
     .technology-transition::after {
-
       content: "";
 
       position: absolute;
 
       left: 50%;
-
       top: -90px;
 
       width: 900px;
-
       height: 300px;
 
       transform:
@@ -1292,17 +1096,11 @@
 
       filter:
         blur(30px);
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 03 CONTENT
-    ========================================================== */
-
     .technology-inner {
-
       position: relative;
 
       z-index: 5;
@@ -1320,15 +1118,12 @@
         auto;
 
       display: flex;
-
       align-items: center;
-
     }
 
 
 
     .technology-content {
-
       width:
         min(
           570px,
@@ -1336,17 +1131,11 @@
         );
 
       margin-top: 58px;
-
     }
 
 
 
-    /* =========================================================
-       LABEL
-    ========================================================== */
-
     .technology-label {
-
       margin-bottom: 20px;
 
       font-size: 11px;
@@ -1367,17 +1156,11 @@
       transition:
         opacity 0.75s ease,
         transform 0.75s ease;
-
     }
 
 
 
-    /* =========================================================
-       BADGE
-    ========================================================== */
-
     .technology-badge {
-
       display: inline-flex;
 
       align-items: center;
@@ -1431,15 +1214,12 @@
       transition:
         opacity 0.8s ease 0.08s,
         transform 0.8s ease 0.08s;
-
     }
 
 
 
     .technology-badge-dot {
-
       width: 7px;
-
       height: 7px;
 
       flex: 0 0 auto;
@@ -1455,17 +1235,11 @@
         0
         6px
         rgba(105,169,255,0.12);
-
     }
 
 
 
-    /* =========================================================
-       TITLE
-    ========================================================== */
-
     .technology-title {
-
       margin: 0;
 
       max-width: 580px;
@@ -1482,13 +1256,11 @@
       letter-spacing: -0.054em;
 
       font-weight: 650;
-
     }
 
 
 
     .technology-title-dark {
-
       display: block;
 
       color: #172131;
@@ -1501,13 +1273,11 @@
       transition:
         opacity 0.9s ease 0.14s,
         transform 0.9s cubic-bezier(.22,.61,.36,1) 0.14s;
-
     }
 
 
 
     .technology-title-blue {
-
       display: block;
 
       margin-top: 11px;
@@ -1523,17 +1293,11 @@
       transition:
         opacity 0.9s ease 0.28s,
         transform 0.9s cubic-bezier(.22,.61,.36,1) 0.28s;
-
     }
 
 
 
-    /* =========================================================
-       HIGHLIGHT
-    ========================================================== */
-
     .technology-highlight {
-
       max-width: 520px;
 
       margin:
@@ -1562,28 +1326,20 @@
       transition:
         opacity 0.85s ease 0.43s,
         transform 0.85s ease 0.43s;
-
     }
 
 
 
     .technology-highlight strong {
-
       color:
         var(--blue-deep);
 
       font-weight: 650;
-
     }
 
 
 
-    /* =========================================================
-       DESCRIPTION
-    ========================================================== */
-
     .technology-description {
-
       max-width: 520px;
 
       margin:
@@ -1610,17 +1366,11 @@
       transition:
         opacity 0.85s ease 0.54s,
         transform 0.85s ease 0.54s;
-
     }
 
 
 
-    /* =========================================================
-       MICRO INFO
-    ========================================================== */
-
     .technology-meta {
-
       display: flex;
 
       align-items: center;
@@ -1647,36 +1397,26 @@
       transition:
         opacity 0.8s ease 0.64s,
         transform 0.8s ease 0.64s;
-
     }
 
 
 
     .technology-meta span {
-
       width: 4px;
-
       height: 4px;
 
       border-radius: 50%;
 
       background:
         var(--blue);
-
     }
 
 
 
-    /* =========================================================
-       VIDEO SIDE MARKER
-    ========================================================== */
-
     .technology-video-label {
-
       position: absolute;
 
       right: 34px;
-
       bottom: 31px;
 
       z-index: 6;
@@ -1688,7 +1428,6 @@
         13px;
 
       display: inline-flex;
-
       align-items: center;
 
       border:
@@ -1730,14 +1469,9 @@
       transition:
         opacity 0.8s ease 0.72s,
         transform 0.8s ease 0.72s;
-
     }
 
 
-
-    /* =========================================================
-       SLIDE 03 ACTIVE
-    ========================================================== */
 
     .technology.is-visible
     .technology-label,
@@ -1762,12 +1496,643 @@
 
     .technology.is-visible
     .technology-video-label {
-
       opacity: 1;
 
       transform:
         translateY(0);
+    }
 
+
+
+    /* =========================================================
+       SLIDE 04
+    ========================================================== */
+
+    .ground-slide {
+      position: relative;
+
+      width: 100%;
+      height: 100svh;
+
+      min-height: 700px;
+
+      margin-top: -1px;
+
+      overflow: hidden;
+
+      isolation: isolate;
+
+      color: #172131;
+
+      background: #eaf1f8;
+    }
+
+
+
+    .ground-slide-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center center;
+
+      z-index: -7;
+
+      transform: scale(1.025);
+
+      transition:
+        transform 1.8s cubic-bezier(.22,.61,.36,1);
+    }
+
+
+
+    .ground-slide.is-visible
+    .ground-slide-image {
+      transform: scale(1);
+    }
+
+
+
+    /* transition Slide 03 → Slide 04 */
+
+    .ground-slide-transition {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 0;
+
+      height: 235px;
+
+      z-index: 2;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          180deg,
+
+          rgba(245,249,253,0.98) 0%,
+          rgba(245,249,253,0.90) 12%,
+          rgba(245,249,253,0.66) 31%,
+          rgba(245,249,253,0.34) 52%,
+          rgba(245,249,253,0.11) 73%,
+          rgba(245,249,253,0) 100%
+        );
+    }
+
+
+
+    .ground-slide-transition::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: -100px;
+
+      width: 900px;
+      height: 300px;
+
+      transform:
+        translateX(-50%);
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          ellipse,
+          rgba(105,169,255,0.12),
+          rgba(105,169,255,0.03) 45%,
+          transparent 72%
+        );
+
+      filter:
+        blur(28px);
+    }
+
+
+
+    /* same light language as slide 03 */
+
+    .ground-slide-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -4;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          90deg,
+
+          rgba(250,252,255,0.985) 0%,
+          rgba(250,252,255,0.95) 19%,
+          rgba(250,252,255,0.83) 31%,
+          rgba(250,252,255,0.53) 43%,
+          rgba(250,252,255,0.16) 57%,
+          rgba(250,252,255,0.02) 72%,
+          rgba(250,252,255,0) 100%
+        ),
+
+        linear-gradient(
+          180deg,
+
+          rgba(242,247,252,0.06) 0%,
+          rgba(255,255,255,0) 55%,
+          rgba(236,243,250,0.16) 100%
+        );
+    }
+
+
+
+    .ground-slide-inner {
+      position: relative;
+
+      z-index: 5;
+
+      width:
+        min(
+          1320px,
+          calc(100% - 64px)
+        );
+
+      height: 100%;
+
+      margin:
+        0
+        auto;
+
+      display: flex;
+
+      align-items: center;
+    }
+
+
+
+    .ground-slide-content {
+      width:
+        min(
+          575px,
+          46vw
+        );
+
+      margin-top: 55px;
+    }
+
+
+
+    .ground-slide-label {
+      margin-bottom: 20px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #667588;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+
+
+    .ground-slide-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-height: 39px;
+
+      padding:
+        0
+        15px;
+
+      margin-bottom: 32px;
+
+      border:
+        1px solid
+        rgba(68,136,228,0.25);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.70);
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
+
+      box-shadow:
+        0
+        12px
+        36px
+        rgba(50,90,145,0.07);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
+      text-transform: uppercase;
+
+      color: #3475c8;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        opacity 0.8s ease 0.08s,
+        transform 0.8s ease 0.08s;
+    }
+
+
+
+    .ground-slide-badge-dot {
+      width: 7px;
+      height: 7px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+
+      box-shadow:
+        0
+        0
+        0
+        6px
+        rgba(105,169,255,0.12);
+    }
+
+
+
+    .ground-slide-title {
+      margin: 0;
+
+      max-width: 600px;
+
+      font-size:
+        clamp(
+          44px,
+          4.8vw,
+          74px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.054em;
+
+      font-weight: 650;
+    }
+
+
+
+    .ground-slide-title-dark {
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform:
+        translateY(32px);
+
+      transition:
+        opacity 0.9s ease 0.14s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.14s;
+    }
+
+
+
+    .ground-slide-title-blue {
+      display: block;
+
+      margin-top: 11px;
+
+      color:
+        var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+        translateY(32px);
+
+      transition:
+        opacity 0.9s ease 0.28s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.28s;
+    }
+
+
+
+    .ground-slide-highlight {
+      max-width: 520px;
+
+      margin:
+        35px
+        0
+        0;
+
+      font-size:
+        clamp(
+          18px,
+          1.35vw,
+          21px
+        );
+
+      line-height: 1.45;
+
+      letter-spacing: -0.018em;
+
+      color: #2d3948;
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+        opacity 0.85s ease 0.43s,
+        transform 0.85s ease 0.43s;
+    }
+
+
+
+    .ground-slide-highlight strong {
+      color:
+        var(--blue-deep);
+
+      font-weight: 650;
+    }
+
+
+
+    .ground-slide-description {
+      max-width: 520px;
+
+      margin:
+        21px
+        0
+        0;
+
+      font-size:
+        clamp(
+          14px,
+          1.02vw,
+          16px
+        );
+
+      line-height: 1.7;
+
+      color: #617084;
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+        opacity 0.85s ease 0.54s,
+        transform 0.85s ease 0.54s;
+    }
+
+
+
+    /* markers */
+
+    .ground-marker {
+      position: absolute;
+
+      z-index: 7;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 0;
+
+      min-width: 220px;
+
+      opacity: 0;
+
+      transform:
+        translateX(18px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+
+      pointer-events: none;
+    }
+
+
+
+    .ground-marker-dot {
+      width: 8px;
+      height: 8px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background:
+        #69a9ff;
+
+      box-shadow:
+        0
+        0
+        0
+        7px
+        rgba(105,169,255,0.10),
+
+        0
+        0
+        18px
+        rgba(105,169,255,0.55);
+    }
+
+
+
+    .ground-marker-line {
+      width: 95px;
+      height: 1px;
+
+      flex: 0 0 auto;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          rgba(105,169,255,0.95),
+          rgba(105,169,255,0.28)
+        );
+
+      box-shadow:
+        0
+        0
+        8px
+        rgba(105,169,255,0.22);
+    }
+
+
+
+    .ground-marker-copy {
+      position: relative;
+
+      padding-left: 14px;
+
+      min-height: 48px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+
+
+    .ground-marker-copy::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+
+      top: 0;
+      bottom: 0;
+
+      width: 1px;
+
+      background:
+        rgba(78,145,236,0.75);
+    }
+
+
+
+    .ground-marker-copy strong {
+      font-size: 12px;
+
+      line-height: 1.25;
+
+      letter-spacing: 0.10em;
+
+      text-transform: uppercase;
+
+      color: #20334a;
+
+      font-weight: 700;
+
+      text-shadow:
+        0
+        1px
+        10px
+        rgba(255,255,255,0.75);
+    }
+
+
+
+    .ground-marker-copy small {
+      margin-top: 4px;
+
+      font-size: 12px;
+
+      line-height: 1.3;
+
+      color: #52677e;
+
+      text-shadow:
+        0
+        1px
+        10px
+        rgba(255,255,255,0.85);
+    }
+
+
+
+    .ground-marker-recess {
+      right: 7%;
+
+      top: 24%;
+
+      transition-delay: 0.72s;
+    }
+
+
+
+    .ground-marker-step {
+      right: 6%;
+
+      top: 48%;
+
+      transition-delay: 0.88s;
+    }
+
+
+
+    .ground-marker-edge {
+      right: 6%;
+
+      bottom: 20%;
+
+      transition-delay: 1.04s;
+    }
+
+
+
+    .ground-slide.is-visible
+    .ground-slide-label,
+
+    .ground-slide.is-visible
+    .ground-slide-badge,
+
+    .ground-slide.is-visible
+    .ground-slide-title-dark,
+
+    .ground-slide.is-visible
+    .ground-slide-title-blue,
+
+    .ground-slide.is-visible
+    .ground-slide-highlight,
+
+    .ground-slide.is-visible
+    .ground-slide-description,
+
+    .ground-slide.is-visible
+    .ground-marker {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        translateX(0);
     }
 
 
@@ -1778,11 +2143,7 @@
 
     @media (max-width: 900px) {
 
-
-      /* slide 02 — unchanged responsive */
-
       .statement {
-
         height: auto;
 
         min-height: 100svh;
@@ -1790,72 +2151,90 @@
         padding:
           90px
           0;
-
       }
 
 
       .statement-top {
-
         margin-bottom: 42px;
-
       }
 
 
       .statement-title {
-
         font-size:
           clamp(
             42px,
             8vw,
             68px
           );
-
       }
 
 
       .statement-lower {
-
         grid-template-columns: 1fr;
 
         gap: 24px;
 
         margin-top: 45px;
-
       }
 
 
 
-      /* slide 03 */
-
       .technology-content {
-
         width:
           min(
             530px,
             61vw
           );
-
       }
 
 
       .technology-overlay {
-
         background:
 
           linear-gradient(
             90deg,
 
             rgba(250,252,255,0.98) 0%,
-
             rgba(250,252,255,0.92) 28%,
-
             rgba(250,252,255,0.70) 48%,
-
             rgba(250,252,255,0.20) 70%,
-
             transparent 90%
           );
+      }
 
+
+
+      .ground-slide-content {
+        width:
+          min(
+            530px,
+            61vw
+          );
+      }
+
+
+      .ground-slide-overlay {
+        background:
+
+          linear-gradient(
+            90deg,
+
+            rgba(250,252,255,0.99) 0%,
+            rgba(250,252,255,0.94) 28%,
+            rgba(250,252,255,0.72) 48%,
+            rgba(250,252,255,0.24) 70%,
+            transparent 90%
+          );
+      }
+
+
+      .ground-marker {
+        transform:
+          translateX(18px)
+          scale(0.92);
+
+        transform-origin:
+          right center;
       }
 
     }
@@ -1868,99 +2247,72 @@
 
     @media (max-width: 700px) {
 
-
-      /* =====================================================
-         HERO — UNCHANGED
-      ====================================================== */
-
       .hero {
-
         min-height: 680px;
-
       }
 
 
       .hero-video-main {
-
         object-fit: cover;
 
         object-position:
           center top;
-
       }
 
 
       .hero-video-bg {
-
         display: none;
-
       }
 
 
       .hero-fade {
-
         height: 175px;
-
       }
 
 
       .nav {
-
         width:
           calc(
             100% - 36px
           );
 
         height: 72px;
-
       }
 
 
       .mode {
-
         display: none;
-
       }
 
 
       .logo {
-
         font-size: 16px;
-
       }
 
 
       .back {
-
         font-size: 11px;
-
       }
 
 
       .hero-content {
-
         left: 22px;
-
         right: 22px;
 
         bottom: 105px;
 
         width: auto;
-
       }
 
 
       .eyebrow {
-
         font-size: 9px;
 
         margin-bottom: 13px;
-
       }
 
 
       .hero h1 {
-
         max-width: 460px;
 
         font-size:
@@ -1969,79 +2321,61 @@
             10vw,
             54px
           );
-
       }
 
 
       .hero-text {
-
         max-width: 430px;
 
         margin-top: 16px;
 
         font-size: 14px;
-
       }
 
 
       .hero-button {
-
         margin-top: 18px;
 
         min-height: 40px;
 
         font-size: 10px;
-
       }
 
 
 
-      /* =====================================================
-         SLIDE 02 — UNCHANGED
-      ====================================================== */
-
       .statement {
-
         margin-top: -1px;
 
         padding:
           72px
           0
           74px;
-
       }
 
 
       .statement-inner {
-
         width:
           calc(
             100% - 40px
           );
-
       }
 
 
       .statement-top {
-
         display: block;
 
         margin-bottom: 36px;
-
       }
 
 
       .section-label {
-
         margin-bottom: 16px;
 
         font-size: 9px;
-
       }
 
 
       .audience-pill {
-
         min-height: 34px;
 
         padding:
@@ -2049,94 +2383,68 @@
           11px;
 
         font-size: 8px;
-
       }
 
 
       .statement-title {
-
         font-size:
           clamp(
             36px,
             10vw,
             52px
           );
-
       }
 
 
       .title-blue {
-
         margin-top: 12px;
-
       }
 
 
       .statement-lower {
-
         margin-top: 38px;
 
         padding-top: 22px;
-
       }
 
 
       .statement-keyline {
-
         font-size: 18px;
-
       }
 
 
       .statement-description {
-
         font-size: 14px;
-
       }
 
 
 
-      /* =====================================================
-         SLIDE 03
-      ====================================================== */
-
       .technology {
-
         min-height: 760px;
-
       }
 
 
       .technology-video {
-
         object-position:
           55% center;
-
       }
 
 
       .technology-transition {
-
         height: 170px;
-
       }
 
 
       .technology-overlay {
-
         background:
 
           linear-gradient(
             180deg,
 
             rgba(250,252,255,0.90) 0%,
-
             rgba(250,252,255,0.73) 32%,
-
             rgba(250,252,255,0.42) 58%,
-
             rgba(250,252,255,0.12) 78%,
-
             rgba(250,252,255,0.05) 100%
           ),
 
@@ -2144,17 +2452,13 @@
             90deg,
 
             rgba(250,252,255,0.90) 0%,
-
             rgba(250,252,255,0.45) 70%,
-
             transparent 100%
           );
-
       }
 
 
       .technology-inner {
-
         width:
           calc(
             100% - 40px
@@ -2163,32 +2467,26 @@
         align-items: flex-start;
 
         padding-top: 150px;
-
       }
 
 
       .technology-content {
-
         width: 100%;
 
         max-width: 520px;
 
         margin-top: 0;
-
       }
 
 
       .technology-label {
-
         font-size: 9px;
 
         margin-bottom: 14px;
-
       }
 
 
       .technology-badge {
-
         min-height: 34px;
 
         padding:
@@ -2198,12 +2496,10 @@
         margin-bottom: 25px;
 
         font-size: 7px;
-
       }
 
 
       .technology-title {
-
         max-width: 430px;
 
         font-size:
@@ -2212,49 +2508,189 @@
             10vw,
             52px
           );
-
       }
 
 
       .technology-highlight {
-
         max-width: 430px;
 
         margin-top: 27px;
 
         font-size: 17px;
-
       }
 
 
       .technology-description {
-
         max-width: 430px;
 
         margin-top: 17px;
 
         font-size: 14px;
-
       }
 
 
       .technology-meta {
-
         margin-top: 23px;
 
         font-size: 8px;
-
       }
 
 
       .technology-video-label {
-
         right: 18px;
 
         bottom: 18px;
 
         font-size: 7px;
+      }
 
+
+
+      .ground-slide {
+        min-height: 800px;
+      }
+
+
+      .ground-slide-image {
+        object-position:
+          61% center;
+      }
+
+
+      .ground-slide-transition {
+        height: 170px;
+      }
+
+
+      .ground-slide-overlay {
+        background:
+
+          linear-gradient(
+            180deg,
+
+            rgba(250,252,255,0.94) 0%,
+            rgba(250,252,255,0.82) 34%,
+            rgba(250,252,255,0.52) 58%,
+            rgba(250,252,255,0.16) 78%,
+            rgba(250,252,255,0.06) 100%
+          ),
+
+          linear-gradient(
+            90deg,
+
+            rgba(250,252,255,0.92) 0%,
+            rgba(250,252,255,0.48) 72%,
+            transparent 100%
+          );
+      }
+
+
+      .ground-slide-inner {
+        width:
+          calc(
+            100% - 40px
+          );
+
+        align-items: flex-start;
+
+        padding-top: 150px;
+      }
+
+
+      .ground-slide-content {
+        width: 100%;
+
+        max-width: 520px;
+
+        margin-top: 0;
+      }
+
+
+      .ground-slide-label {
+        margin-bottom: 14px;
+
+        font-size: 9px;
+      }
+
+
+      .ground-slide-badge {
+        min-height: 34px;
+
+        padding:
+          0
+          11px;
+
+        margin-bottom: 25px;
+
+        font-size: 7px;
+      }
+
+
+      .ground-slide-title {
+        max-width: 430px;
+
+        font-size:
+          clamp(
+            36px,
+            10vw,
+            52px
+          );
+      }
+
+
+      .ground-slide-highlight {
+        max-width: 430px;
+
+        margin-top: 27px;
+
+        font-size: 17px;
+      }
+
+
+      .ground-slide-description {
+        max-width: 430px;
+
+        margin-top: 17px;
+
+        font-size: 14px;
+      }
+
+
+      .ground-marker {
+        min-width: 160px;
+
+        transform:
+          translateX(10px)
+          scale(0.76);
+
+        transform-origin:
+          right center;
+      }
+
+
+      .ground-marker-line {
+        width: 58px;
+      }
+
+
+      .ground-marker-recess {
+        right: 1%;
+
+        top: 57%;
+      }
+
+
+      .ground-marker-step {
+        right: 1%;
+
+        top: 70%;
+      }
+
+
+      .ground-marker-edge {
+        right: 1%;
+
+        bottom: 7%;
       }
 
     }
@@ -2268,7 +2704,6 @@
     @media
     (prefers-reduced-motion: reduce) {
 
-
       html {
         scroll-behavior: auto;
       }
@@ -2276,9 +2711,7 @@
 
       .hero-content,
       .nav {
-
         animation: none;
-
       }
 
 
@@ -2309,57 +2742,59 @@
 
       .technology-meta,
 
-      .technology-video-label {
+      .technology-video-label,
 
+      .ground-slide-label,
+
+      .ground-slide-badge,
+
+      .ground-slide-title-dark,
+
+      .ground-slide-title-blue,
+
+      .ground-slide-highlight,
+
+      .ground-slide-description,
+
+      .ground-marker {
         opacity: 1 !important;
 
         transform: none !important;
 
         transition: none !important;
-
       }
 
 
-      .technology-video {
-
+      .technology-video,
+      .ground-slide-image {
         transform: none !important;
 
         transition: none !important;
-
       }
 
 
       .motion-line::after {
-
         animation: none;
-
       }
 
 
       .hero-button {
-
         transition: none;
-
       }
 
     }
 
   </style>
-
 </head>
-
 
 
 <body>
 
-
   <!-- =====================================================
-       HERO / SLIDE 01
-       UNCHANGED
+       SLIDE 01 / HERO
   ====================================================== -->
 
   <section class="hero">
-
 
     <video
       class="hero-video-bg"
@@ -2370,14 +2805,11 @@
       preload="auto"
       aria-hidden="true"
     >
-
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
-
     </video>
-
 
 
     <video
@@ -2389,25 +2821,20 @@
       preload="auto"
       aria-hidden="true"
     >
-
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
-
     </video>
 
 
-
     <div class="hero-overlay"></div>
-
 
 
     <nav
       class="nav"
       aria-label="Hauptnavigation"
     >
-
 
       <a
         class="logo"
@@ -2418,11 +2845,9 @@
       </a>
 
 
-
       <div class="mode">
         Guide
       </div>
-
 
 
       <a
@@ -2432,56 +2857,40 @@
         ← Zur Auswahl
       </a>
 
-
     </nav>
 
 
-
     <div class="hero-content">
-
 
       <div class="eyebrow">
         Intelligente Mobilitätsassistenz
       </div>
 
 
-
       <h1>
-
         Hindernisse erkennen.<br>
-
         Freie Wege finden.
-
       </h1>
 
 
-
       <div class="hero-text">
-
         LROX Guide erkennt Hindernisse,
         prüft freie Richtungen und hilft dabei,
         einen klareren Weg nach vorn zu finden.
-
       </div>
-
 
 
       <a
         class="hero-button"
         href="#funktion"
       >
-
         So funktioniert es ↓
-
       </a>
-
 
     </div>
 
 
-
     <div class="hero-fade"></div>
-
 
   </section>
 
@@ -2489,7 +2898,6 @@
 
   <!-- =====================================================
        SLIDE 02
-       UNCHANGED
   ====================================================== -->
 
   <section
@@ -2497,19 +2905,13 @@
     id="funktion"
   >
 
-
     <div class="statement-inner">
-
 
       <div class="statement-top">
 
-
         <div class="section-label">
-
           02 / Mobilitätsassistenz
-
         </div>
-
 
 
         <div class="audience-pill">
@@ -2520,34 +2922,24 @@
 
         </div>
 
-
       </div>
-
 
 
       <h2 class="statement-title">
 
-
         <span class="title-dark">
-
           Hindernisse erkennen.
-
         </span>
 
 
         <span class="title-blue">
-
           Freie Wege verstehen.
-
         </span>
-
 
       </h2>
 
 
-
       <div class="statement-lower">
-
 
         <div class="statement-keyline">
 
@@ -2555,14 +2947,11 @@
           als nur vor Hindernissen zu warnen.
 
           <strong>
-
             Entscheidend ist zu wissen,
             wo es weitergeht.
-
           </strong>
 
         </div>
-
 
 
         <p class="statement-description">
@@ -2576,12 +2965,9 @@
 
         </p>
 
-
       </div>
 
-
     </div>
-
 
 
     <div
@@ -2589,23 +2975,18 @@
       aria-hidden="true"
     ></div>
 
-
   </section>
 
 
 
   <!-- =====================================================
        SLIDE 03
-       FULL SCREEN PRODUCT VIDEO
   ====================================================== -->
 
   <section
     class="technology"
     id="sensorik"
   >
-
-
-    <!-- FULL SCREEN VIDEO -->
 
     <video
       class="technology-video"
@@ -2615,17 +2996,12 @@
       preload="auto"
       aria-hidden="true"
     >
-
       <source
         src="../assets/guide/how-it-works.mp4"
         type="video/mp4"
       >
-
     </video>
 
-
-
-    <!-- TEXT READABILITY -->
 
     <div
       class="technology-overlay"
@@ -2633,30 +3009,19 @@
     ></div>
 
 
-
-    <!-- SOFT TRANSITION FROM SLIDE 02 -->
-
     <div
       class="technology-transition"
       aria-hidden="true"
     ></div>
 
 
-
-    <!-- CONTENT -->
-
     <div class="technology-inner">
-
 
       <div class="technology-content">
 
-
         <div class="technology-label">
-
           03 / Sensorbasierte Orientierung
-
         </div>
-
 
 
         <div class="technology-badge">
@@ -2668,29 +3033,20 @@
         </div>
 
 
-
         <h2 class="technology-title">
 
-
           <span class="technology-title-dark">
-
             Orientierung<br>
             ohne Kamera.
-
           </span>
-
 
 
           <span class="technology-title-blue">
-
             Offline.<br>
             Sensorbasiert.
-
           </span>
 
-
         </h2>
-
 
 
         <p class="technology-highlight">
@@ -2698,14 +3054,11 @@
           Sensoren erkennen
 
           <strong>
-
             Hindernisse, Stufen,
             Kanten und freie Wege.
-
           </strong>
 
         </p>
-
 
 
         <p class="technology-description">
@@ -2722,7 +3075,6 @@
         </p>
 
 
-
         <div class="technology-meta">
 
           Lokale Verarbeitung
@@ -2733,23 +3085,173 @@
 
         </div>
 
-
       </div>
 
-
     </div>
-
 
 
     <div
       class="technology-video-label"
       aria-hidden="true"
     >
-
       Sensorbasierte Umgebungserfassung
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SLIDE 04
+  ====================================================== -->
+
+  <section
+    class="ground-slide"
+    id="boden"
+  >
+
+    <img
+      class="ground-slide-image"
+      src="../assets/guide/ground-awareness.png"
+      alt=""
+      aria-hidden="true"
+    >
+
+
+    <div
+      class="ground-slide-overlay"
+      aria-hidden="true"
+    ></div>
+
+
+    <div
+      class="ground-slide-transition"
+      aria-hidden="true"
+    ></div>
+
+
+    <div class="ground-slide-inner">
+
+      <div class="ground-slide-content">
+
+        <div class="ground-slide-label">
+          04 / Bodenwahrnehmung
+        </div>
+
+
+        <div class="ground-slide-badge">
+
+          <span class="ground-slide-badge-dot"></span>
+
+          Stufen • Kanten • Vertiefungen
+
+        </div>
+
+
+        <h2 class="ground-slide-title">
+
+          <span class="ground-slide-title-dark">
+            Nicht nur<br>
+            vor Ihnen.
+          </span>
+
+
+          <span class="ground-slide-title-blue">
+            Auch unter Ihnen.
+          </span>
+
+        </h2>
+
+
+        <p class="ground-slide-highlight">
+
+          LROX erkennt
+
+          <strong>
+            Veränderungen im Boden.
+          </strong>
+
+        </p>
+
+
+        <p class="ground-slide-description">
+
+          LROX Guide erfasst nicht nur
+          Hindernisse voraus.
+
+          Die Sensoren helfen auch dabei,
+          Veränderungen im Boden wie Stufen,
+          Kanten und Vertiefungen frühzeitig
+          zu erkennen.
+
+        </p>
+
+      </div>
 
     </div>
 
+
+
+    <div
+      class="ground-marker ground-marker-recess"
+      aria-hidden="true"
+    >
+
+      <span class="ground-marker-dot"></span>
+
+      <span class="ground-marker-line"></span>
+
+      <div class="ground-marker-copy">
+
+        <strong>Vertiefung</strong>
+
+        <small>Früh erfasst</small>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="ground-marker ground-marker-step"
+      aria-hidden="true"
+    >
+
+      <span class="ground-marker-dot"></span>
+
+      <span class="ground-marker-line"></span>
+
+      <div class="ground-marker-copy">
+
+        <strong>Stufe</strong>
+
+        <small>Erfasst</small>
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="ground-marker ground-marker-edge"
+      aria-hidden="true"
+    >
+
+      <span class="ground-marker-dot"></span>
+
+      <span class="ground-marker-line"></span>
+
+      <div class="ground-marker-copy">
+
+        <strong>Kante</strong>
+
+        <small>Erfasst</small>
+
+      </div>
+
+    </div>
 
   </section>
 
@@ -2760,11 +3262,6 @@
   ====================================================== -->
 
   <script>
-
-
-    /* =========================================================
-       HERO VIDEO SYNC
-    ========================================================== */
 
     const mainVideo =
       document.querySelector(
@@ -2781,27 +3278,17 @@
 
     function syncVideos() {
 
-
       if (
-
         mainVideo &&
-
         backgroundVideo &&
-
         Math.abs(
-
           mainVideo.currentTime -
-
           backgroundVideo.currentTime
-
         ) > 0.15
-
       ) {
-
 
         backgroundVideo.currentTime =
           mainVideo.currentTime;
-
 
       }
 
@@ -2814,20 +3301,16 @@
       backgroundVideo
     ) {
 
-
       mainVideo.addEventListener(
         "timeupdate",
         syncVideos
       );
 
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 02 REVEAL
-    ========================================================== */
+    /* SLIDE 02 */
 
     const statement =
       document.querySelector(
@@ -2835,27 +3318,20 @@
       );
 
 
-
     if (statement) {
-
 
       const statementObserver =
         new IntersectionObserver(
 
-
           (entries) => {
-
 
             entries.forEach(
 
-
               (entry) => {
-
 
                 if (
                   entry.isIntersecting
                 ) {
-
 
                   statement.classList.add(
                     "is-visible"
@@ -2866,23 +3342,17 @@
                     statement
                   );
 
-
                 }
-
 
               }
 
-
             );
 
-
           },
-
 
           {
             threshold: 0.24
           }
-
 
         );
 
@@ -2891,15 +3361,11 @@
         statement
       );
 
-
     }
 
 
 
-    /* =========================================================
-       SLIDE 03
-       REVEAL + RESTART VIDEO
-    ========================================================== */
+    /* SLIDE 03 */
 
     const technology =
       document.querySelector(
@@ -2913,27 +3379,20 @@
       );
 
 
-
     if (technology) {
-
 
       const technologyObserver =
         new IntersectionObserver(
 
-
           (entries) => {
-
 
             entries.forEach(
 
-
               (entry) => {
-
 
                 if (
                   entry.isIntersecting
                 ) {
-
 
                   technology.classList.add(
                     "is-visible"
@@ -2941,7 +3400,6 @@
 
 
                   if (technologyVideo) {
-
 
                     technologyVideo.currentTime = 0;
 
@@ -2954,47 +3412,33 @@
                       playPromise !== undefined
                     ) {
 
-
                       playPromise.catch(() => {});
-
 
                     }
 
-
                   }
 
-
                 }
-
 
                 else {
 
-
                   if (technologyVideo) {
-
 
                     technologyVideo.pause();
 
-
                   }
-
 
                 }
 
-
               }
-
 
             );
 
-
           },
-
 
           {
             threshold: 0.32
           }
-
 
         );
 
@@ -3003,13 +3447,64 @@
         technology
       );
 
-
     }
 
 
+
+    /* SLIDE 04 */
+
+    const groundSlide =
+      document.querySelector(
+        ".ground-slide"
+      );
+
+
+    if (groundSlide) {
+
+      const groundSlideObserver =
+        new IntersectionObserver(
+
+          (entries) => {
+
+            entries.forEach(
+
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  groundSlide.classList.add(
+                    "is-visible"
+                  );
+
+
+                  groundSlideObserver.unobserve(
+                    groundSlide
+                  );
+
+                }
+
+              }
+
+            );
+
+          },
+
+          {
+            threshold: 0.24
+          }
+
+        );
+
+
+      groundSlideObserver.observe(
+        groundSlide
+      );
+
+    }
+
   </script>
 
-
 </body>
-
 </html>
