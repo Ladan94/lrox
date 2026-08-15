@@ -69,7 +69,7 @@
 
       width: 100%;
       height: 100svh;
-      min-height: 700px;
+      min-height: 680px;
 
       overflow: hidden;
 
@@ -80,7 +80,43 @@
     }
 
 
-    .hero video {
+    /*
+      BACKGROUND VIDEO
+
+      این ویدیو فقط برای پر کردن اطراف تصویر اصلی است.
+      کمی بزرگ و تار نمایش داده می‌شود.
+    */
+
+    .hero-video-bg {
+      position: absolute;
+
+      inset: -35px;
+
+      width: calc(100% + 70px);
+      height: calc(100% + 70px);
+
+      object-fit: cover;
+      object-position: center top;
+
+      z-index: -5;
+
+      filter:
+        blur(24px)
+        brightness(0.68)
+        saturate(0.9);
+
+      transform: scale(1.05);
+    }
+
+
+    /*
+      MAIN VIDEO
+
+      object-fit: contain باعث می‌شود فریم کامل ویدیو
+      نمایش داده شود و سر خانم از بالا بریده نشود.
+    */
+
+    .hero-video-main {
       position: absolute;
 
       inset: 0;
@@ -88,16 +124,15 @@
       width: 100%;
       height: 100%;
 
-      object-fit: cover;
+      object-fit: contain;
 
       /*
-        مهم:
-        این باعث می‌شود قسمت بالای ویدیو بیشتر دیده شود
-        و سر خانم از تصویر خارج نشود.
+        کمی به سمت راست قرار می‌دهیم تا
+        سمت چپ برای نوشته‌ها بازتر باشد.
       */
-      object-position: center 20%;
+      object-position: 58% top;
 
-      z-index: -3;
+      z-index: -4;
     }
 
 
@@ -114,17 +149,19 @@
 
         linear-gradient(
           90deg,
-          rgba(0,0,0,0.46) 0%,
-          rgba(0,0,0,0.23) 30%,
-          rgba(0,0,0,0.04) 62%,
-          rgba(0,0,0,0.02) 100%
+          rgba(0,0,0,0.58) 0%,
+          rgba(0,0,0,0.40) 23%,
+          rgba(0,0,0,0.16) 43%,
+          rgba(0,0,0,0.02) 68%,
+          rgba(0,0,0,0.03) 100%
         ),
 
         linear-gradient(
           180deg,
-          rgba(0,0,0,0.18) 0%,
-          rgba(0,0,0,0.02) 40%,
-          rgba(0,0,0,0.64) 100%
+          rgba(0,0,0,0.15) 0%,
+          rgba(0,0,0,0.01) 38%,
+          rgba(0,0,0,0.10) 68%,
+          rgba(0,0,0,0.62) 100%
         );
     }
 
@@ -155,7 +192,7 @@
       z-index: 20;
 
       border-bottom:
-        1px solid rgba(255,255,255,0.24);
+        1px solid rgba(255,255,255,0.23);
     }
 
 
@@ -217,11 +254,11 @@
           calc((100vw - 1500px) / 2)
         );
 
-      bottom: 68px;
+      bottom: 62px;
 
       width:
         min(
-          690px,
+          550px,
           calc(100% - 64px)
         );
 
@@ -230,61 +267,65 @@
 
 
     .eyebrow {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
 
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
 
-      letter-spacing: 0.20em;
+      letter-spacing: 0.19em;
       text-transform: uppercase;
 
       color:
-        rgba(255,255,255,0.76);
+        rgba(255,255,255,0.74);
     }
 
+
+    /*
+      تیتر نسبت به نسخه قبل خیلی کوچک‌تر شده.
+    */
 
     .hero h1 {
       margin: 0;
 
-      max-width: 760px;
+      max-width: 560px;
 
       font-size:
         clamp(
-          50px,
-          6.4vw,
-          104px
+          40px,
+          4.2vw,
+          68px
         );
 
-      line-height: 0.93;
+      line-height: 0.98;
 
-      letter-spacing: -0.055em;
+      letter-spacing: -0.045em;
 
       font-weight: 700;
 
       text-shadow:
-        0 4px 28px rgba(0,0,0,0.32);
+        0 4px 28px rgba(0,0,0,0.34);
     }
 
 
     .hero-text {
-      max-width: 575px;
+      max-width: 510px;
 
-      margin-top: 24px;
+      margin-top: 20px;
 
       font-size:
         clamp(
-          16px,
-          1.2vw,
-          19px
+          15px,
+          1.05vw,
+          17px
         );
 
       line-height: 1.55;
 
       color:
-        rgba(255,255,255,0.85);
+        rgba(255,255,255,0.84);
 
       text-shadow:
-        0 2px 15px rgba(0,0,0,0.32);
+        0 2px 15px rgba(0,0,0,0.35);
     }
 
 
@@ -294,13 +335,13 @@
       align-items: center;
       justify-content: center;
 
-      margin-top: 26px;
+      margin-top: 23px;
 
-      min-height: 46px;
+      min-height: 44px;
 
       padding:
         0
-        19px;
+        18px;
 
       border:
         1px solid rgba(255,255,255,0.44);
@@ -308,18 +349,16 @@
       border-radius: 999px;
 
       background:
-        rgba(0,0,0,0.15);
+        rgba(0,0,0,0.16);
 
-      backdrop-filter:
-        blur(12px);
+      backdrop-filter: blur(12px);
 
-      -webkit-backdrop-filter:
-        blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
 
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
 
       transition:
@@ -388,9 +427,9 @@
 
 
     .section-label {
-      margin-bottom: 42px;
+      margin-bottom: 38px;
 
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
 
       letter-spacing: 0.18em;
@@ -400,21 +439,26 @@
     }
 
 
+    /*
+      این تیتر هم کمی کوچک‌تر شده
+      تا صفحه ظریف‌تر و premium تر باشد.
+    */
+
     .statement h2 {
       margin: 0;
 
-      max-width: 1120px;
+      max-width: 1000px;
 
       font-size:
         clamp(
-          46px,
-          6.3vw,
-          96px
+          40px,
+          5vw,
+          72px
         );
 
-      line-height: 0.98;
+      line-height: 1;
 
-      letter-spacing: -0.055em;
+      letter-spacing: -0.048em;
 
       font-weight: 600;
     }
@@ -426,19 +470,19 @@
 
 
     .statement p {
-      max-width: 650px;
+      max-width: 600px;
 
       margin:
-        44px
+        40px
         0
         0
         auto;
 
       font-size:
         clamp(
-          17px,
-          1.5vw,
-          21px
+          16px,
+          1.3vw,
+          19px
         );
 
       line-height: 1.65;
@@ -491,29 +535,29 @@
     .logic h3 {
       margin: 0;
 
-      max-width: 760px;
+      max-width: 700px;
 
       font-size:
         clamp(
-          44px,
-          5.4vw,
-          82px
+          38px,
+          4.5vw,
+          66px
         );
 
-      line-height: 0.98;
+      line-height: 1;
 
-      letter-spacing: -0.05em;
+      letter-spacing: -0.045em;
 
       font-weight: 600;
     }
 
 
     .logic-intro {
-      max-width: 430px;
+      max-width: 420px;
 
-      padding-bottom: 5px;
+      padding-bottom: 4px;
 
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.6;
 
       color: var(--muted);
@@ -525,7 +569,7 @@
     ========================================================== */
 
     .steps {
-      margin-top: 88px;
+      margin-top: 80px;
 
       display: grid;
 
@@ -546,9 +590,9 @@
     .step {
       position: relative;
 
-      min-height: 295px;
+      min-height: 270px;
 
-      padding: 30px;
+      padding: 28px;
 
       display: flex;
 
@@ -559,7 +603,8 @@
         1px solid var(--line);
 
       transition:
-        background 0.35s ease;
+        background 0.35s ease,
+        transform 0.35s ease;
     }
 
 
@@ -575,7 +620,7 @@
 
 
     .step-number {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
 
       letter-spacing: 0.15em;
@@ -587,9 +632,9 @@
     .step-name {
       font-size:
         clamp(
-          30px,
-          3vw,
-          50px
+          27px,
+          2.7vw,
+          44px
         );
 
       letter-spacing: -0.04em;
@@ -608,8 +653,8 @@
     .step-dot {
       position: absolute;
 
-      top: 30px;
-      right: 30px;
+      top: 29px;
+      right: 29px;
 
       width: 8px;
       height: 8px;
@@ -632,7 +677,7 @@
 
 
     /* =========================================================
-       RESPONSIVE
+       TABLET
     ========================================================== */
 
     @media (max-width: 900px) {
@@ -655,7 +700,7 @@
 
 
       .step {
-        min-height: 220px;
+        min-height: 215px;
 
         border-bottom:
           1px solid var(--line);
@@ -664,6 +709,10 @@
     }
 
 
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
     @media (max-width: 700px) {
 
       .hero {
@@ -671,11 +720,19 @@
       }
 
 
-      .hero video {
-        /*
-          روی موبایل باز هم بالای کادر را نگه می‌داریم.
-        */
-        object-position: center 18%;
+      /*
+        روی موبایل از cover استفاده می‌کنیم،
+        ولی حتماً بالای فریم حفظ می‌شود.
+      */
+
+      .hero-video-main {
+        object-fit: cover;
+        object-position: center top;
+      }
+
+
+      .hero-video-bg {
+        display: none;
       }
 
 
@@ -700,45 +757,62 @@
 
 
       .back {
-        font-size: 12px;
+        font-size: 11px;
       }
 
 
       .hero-content {
         left: 22px;
         right: 22px;
-        bottom: 35px;
+        bottom: 34px;
 
         width: auto;
       }
 
 
       .eyebrow {
-        font-size: 10px;
+        font-size: 9px;
+
+        margin-bottom: 13px;
       }
 
 
       .hero h1 {
+        max-width: 460px;
+
         font-size:
           clamp(
-            46px,
-            13vw,
-            64px
+            38px,
+            11vw,
+            55px
           );
+
+        line-height: 1;
       }
 
 
       .hero-text {
-        max-width: 460px;
+        max-width: 430px;
 
-        font-size: 15px;
+        margin-top: 16px;
+
+        font-size: 14px;
+      }
+
+
+      .hero-button {
+        margin-top: 18px;
+
+        min-height: 40px;
+
+        font-size: 10px;
       }
 
 
       .statement,
       .logic {
         padding:
-          90px
+          85px
           22px;
       }
 
@@ -746,27 +820,32 @@
       .statement h2 {
         font-size:
           clamp(
-            42px,
-            12vw,
-            64px
+            37px,
+            10vw,
+            56px
           );
       }
 
 
       .statement p {
-        margin-top: 35px;
+        margin-top: 32px;
 
-        font-size: 17px;
+        font-size: 16px;
       }
 
 
       .logic h3 {
         font-size:
           clamp(
-            42px,
-            11vw,
-            62px
+            36px,
+            10vw,
+            54px
           );
+      }
+
+
+      .logic-intro {
+        font-size: 15px;
       }
 
 
@@ -776,7 +855,7 @@
 
 
       .step {
-        min-height: 180px;
+        min-height: 165px;
 
         border-right: none;
       }
@@ -816,7 +895,30 @@
   <section class="hero">
 
 
+    <!-- blurred background -->
+
     <video
+      class="hero-video-bg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+
+      <source
+        src="../assets/guide/hero.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+
+    <!-- main full video -->
+
+    <video
+      class="hero-video-main"
       autoplay
       muted
       loop
@@ -836,6 +938,8 @@
     <div class="hero-overlay"></div>
 
 
+
+    <!-- NAVIGATION -->
 
     <nav
       class="nav"
@@ -860,12 +964,14 @@
         class="back"
         href="../gateway-preview.html"
       >
-        ← Auswahl
+        ← Zur Auswahl
       </a>
 
     </nav>
 
 
+
+    <!-- HERO TEXT -->
 
     <div class="hero-content">
 
@@ -876,15 +982,15 @@
 
 
       <h1>
-        Erkennen, was vor Ihnen liegt.<br>
-        Wissen, wo es weitergeht.
+        Hindernisse erkennen.<br>
+        Freie Wege finden.
       </h1>
 
 
       <div class="hero-text">
         LROX Guide erkennt Hindernisse,
-        prüft freie Richtungen und unterstützt dabei,
-        einen klareren Weg nach vorn zu finden.
+        prüft freie Richtungen und hilft dabei,
+        einen sicheren Weg nach vorn zu finden.
       </div>
 
 
@@ -923,11 +1029,11 @@
 
       <h2>
 
-        Es erkennt nicht nur,
-        was vor Ihnen liegt.
+        Nicht nur erkennen,
+        was im Weg ist.
 
         <span>
-          Es hilft zu erkennen,
+          Sondern verstehen,
           wo der Weg frei ist.
         </span>
 
@@ -937,9 +1043,9 @@
       <p>
         LROX Guide erkennt ein Hindernis,
         signalisiert den Stopp,
-        prüft rechts und links
+        prüft die rechte und linke Seite
         und unterstützt dabei,
-        die freiere Richtung zu identifizieren.
+        die freie Richtung zu erkennen.
       </p>
 
 
@@ -980,9 +1086,9 @@
 
 
         <div class="logic-intro">
-          Aus den Umgebungsdaten entsteht eine
-          einfache Abfolge, die unmittelbar verständlich
-          und im richtigen Moment nutzbar ist.
+          Die Sensordaten werden in eine einfache
+          und unmittelbar verständliche Abfolge
+          für die Navigation übersetzt.
         </div>
 
 
@@ -992,6 +1098,8 @@
 
       <div class="steps">
 
+
+        <!-- STEP 01 -->
 
         <div class="step">
 
@@ -1009,6 +1117,8 @@
 
 
 
+        <!-- STEP 02 -->
+
         <div class="step">
 
           <div class="step-number">
@@ -1025,6 +1135,8 @@
 
 
 
+        <!-- STEP 03 -->
+
         <div class="step">
 
           <div class="step-number">
@@ -1040,6 +1152,8 @@
         </div>
 
 
+
+        <!-- STEP 04 -->
 
         <div class="step">
 
@@ -1063,6 +1177,53 @@
 
 
   </section>
+
+
+  <!-- =====================================================
+       KEEP BACKGROUND VIDEO SYNCHRONIZED
+  ====================================================== -->
+
+  <script>
+
+    const mainVideo =
+      document.querySelector(".hero-video-main");
+
+    const backgroundVideo =
+      document.querySelector(".hero-video-bg");
+
+
+    function syncVideos() {
+
+      if (
+        mainVideo &&
+        backgroundVideo &&
+        Math.abs(
+          mainVideo.currentTime -
+          backgroundVideo.currentTime
+        ) > 0.15
+      ) {
+
+        backgroundVideo.currentTime =
+          mainVideo.currentTime;
+
+      }
+
+    }
+
+
+    if (
+      mainVideo &&
+      backgroundVideo
+    ) {
+
+      mainVideo.addEventListener(
+        "timeupdate",
+        syncVideos
+      );
+
+    }
+
+  </script>
 
 
 </body>
