@@ -1,5005 +1,2955 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
+
+  <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  />
+  >
+
   <meta
     name="description"
-    content="LROX erkennt kritische Verkehrssituationen in Echtzeit und warnt Radfahrende im entscheidenden Moment."
-  />
+    content="LROX Guide erkennt Hindernisse, prüft freie Richtungen und unterstützt bei der Orientierung im Alltag."
+  >
 
-  <title>LROX — AI-powered bicycle safety</title>
+  <title>LROX Guide — Intelligente Mobilitätsassistenz</title>
+
 
   <style>
+
+    /* =========================================================
+       GLOBAL
+    ========================================================== */
+
     :root {
-      --lrox-orange: #ff5a12;
-      --lrox-orange-dark: #e94b08;
-      --lrox-white: #ffffff;
-      --lrox-black: #070707;
-      --lrox-cream: #f8f1ea;
-      --lrox-soft-white: #fffaf6;
-      --lrox-text: #171411;
-      --lrox-muted: #71675f;
+
+      --cream: #f5f2ec;
+
+      --white: #ffffff;
+
+      --text: #111318;
+
+      --muted: #687382;
+
+      --blue: #69a9ff;
+
+      --blue-deep: #4e91ec;
+
+      --ice: #f6f8fb;
+
+      --ice-blue: #edf5ff;
+
+      --line: rgba(17, 19, 24, 0.11);
+
     }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
 
     html {
       scroll-behavior: smooth;
     }
 
-    html,
-    body {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background: var(--lrox-black);
-    }
 
     body {
+
+      margin: 0;
+
       font-family:
         Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
+        Arial,
+        Helvetica,
         sans-serif;
+
+      background: var(--white);
+
+      color: var(--text);
+
+      overflow-x: hidden;
+
     }
 
-    .lrox-hero,
-    .lrox-hero *,
-    .lrox-value,
-    .lrox-value *,
-    .lrox-product-placeholder,
-    .lrox-product-placeholder * {
-      box-sizing: border-box;
-    }
 
-    .lrox-hero {
-      position: relative;
-      width: 100%;
-      height: 100svh;
-      min-height: 680px;
-      overflow: hidden;
-      isolation: isolate;
-      background: var(--lrox-black);
-      color: var(--lrox-white);
-    }
-
-    .lrox-hero::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -1px;
-      left: 0;
-      z-index: 6;
-      height: clamp(80px, 11vh, 125px);
-      pointer-events: none;
-      background:
-        linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(35, 22, 15, 0.08) 18%,
-          rgba(121, 76, 50, 0.22) 42%,
-          rgba(222, 181, 153, 0.54) 71%,
-          #f8f1ea 100%
-        );
-    }
-
-    .lrox-hero a {
+    a {
       color: inherit;
       text-decoration: none;
     }
 
-    .lrox-hero__video {
-      position: absolute;
-      inset: 0;
-      z-index: -3;
+
+
+    /* =========================================================
+       HERO
+       UNCHANGED
+    ========================================================== */
+
+    .hero {
+
+      position: relative;
+
       width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center center;
-      filter:
-        brightness(1.08)
-        contrast(1.02)
-        saturate(1.06);
+
+      height: 100svh;
+
+      min-height: 700px;
+
+      overflow: hidden;
+
+      background: #11151a;
+
+      color: white;
+
+      isolation: isolate;
+
     }
 
-    .lrox-hero__shade {
+
+
+    .hero-video-bg {
+
       position: absolute;
+
+      inset: -40px;
+
+      width: calc(100% + 80px);
+
+      height: calc(100% + 80px);
+
+      object-fit: cover;
+
+      object-position: center top;
+
+      z-index: -6;
+
+      filter:
+
+        blur(26px)
+
+        brightness(0.64)
+
+        saturate(0.92);
+
+      transform: scale(1.06);
+
+    }
+
+
+
+    .hero-video-main {
+
+      position: absolute;
+
       inset: 0;
-      z-index: -2;
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position: 58% top;
+
+      z-index: -5;
+
+    }
+
+
+
+    .hero-overlay {
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -3;
+
       pointer-events: none;
+
       background:
+
+        radial-gradient(
+          circle at 72% 35%,
+          rgba(90, 164, 255, 0.10),
+          transparent 35%
+        ),
+
         linear-gradient(
           90deg,
-          rgba(0, 0, 0, 0.68) 0%,
-          rgba(0, 0, 0, 0.46) 25%,
-          rgba(0, 0, 0, 0.16) 44%,
-          rgba(0, 0, 0, 0.02) 64%,
-          transparent 82%
+
+          rgba(3, 8, 12, 0.64) 0%,
+
+          rgba(5, 10, 15, 0.43) 23%,
+
+          rgba(6, 12, 18, 0.18) 46%,
+
+          rgba(6, 12, 18, 0.03) 72%,
+
+          rgba(5, 10, 15, 0.08) 100%
         ),
+
         linear-gradient(
           180deg,
-          rgba(0, 0, 0, 0.12) 0%,
-          transparent 32%,
-          transparent 75%,
-          rgba(0, 0, 0, 0.12) 100%
+
+          rgba(0,0,0,0.18) 0%,
+
+          rgba(0,0,0,0.01) 40%,
+
+          rgba(0,0,0,0.10) 67%,
+
+          rgba(7, 12, 17, 0.64) 100%
         );
+
     }
 
-    .lrox-header {
-      position: relative;
-      z-index: 10;
-      width: min(calc(100% - 64px), 1440px);
-      height: 88px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
 
-    .lrox-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.34rem;
-      font-weight: 800;
-      letter-spacing: 0.24em;
-      white-space: nowrap;
-    }
 
-    .lrox-logo__mark {
-      position: relative;
-      width: 14px;
-      height: 14px;
-      flex: 0 0 auto;
-      border: 2px solid var(--lrox-orange);
-      border-radius: 50%;
-    }
+    .hero-fade {
 
-    .lrox-logo__mark::after {
-      content: "";
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      transform: translate(-50%, -50%);
-    }
 
-    .lrox-nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      margin-left: auto;
-    }
-
-    .lrox-nav a {
-      position: relative;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.94rem;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-    }
-
-    .lrox-nav a::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -9px;
       left: 0;
-      height: 1px;
-      background: var(--lrox-orange);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 180ms ease;
+
+      right: 0;
+
+      bottom: -1px;
+
+      height: 230px;
+
+      z-index: 2;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          180deg,
+
+          rgba(245,248,252,0) 0%,
+
+          rgba(245,248,252,0.03) 15%,
+
+          rgba(245,248,252,0.10) 30%,
+
+          rgba(245,248,252,0.26) 48%,
+
+          rgba(245,248,252,0.55) 67%,
+
+          rgba(245,248,252,0.84) 84%,
+
+          #f5f8fc 100%
+        );
+
     }
 
-    .lrox-nav a:hover::after {
-      transform: scaleX(1);
-    }
 
-    .lrox-header__cta {
-      min-height: 46px;
-      padding: 0 20px;
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(8, 8, 10, 0.18);
-      color: #fff;
-      backdrop-filter: blur(12px);
-      font-size: 0.91rem;
-      font-weight: 700;
-      transition:
-        background 180ms ease,
-        transform 180ms ease;
-    }
 
-    .lrox-header__cta:hover {
-      background: rgba(255, 255, 255, 0.14);
-      transform: translateY(-1px);
-    }
+    /* =========================================================
+       NAVIGATION
+       UNCHANGED
+    ========================================================== */
 
-    .lrox-hero__content {
-      position: relative;
-      z-index: 4;
-      width: min(calc(100% - 64px), 1440px);
-      height: calc(100svh - 88px);
-      min-height: 592px;
-      margin: 0 auto;
-      padding: 58px 0 112px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
+    .nav {
 
-    .lrox-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      margin-bottom: 22px;
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
-    }
-
-    .lrox-eyebrow span {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.16);
-    }
-
-    .lrox-hero h1 {
-      max-width: 650px;
-      margin: 0;
-      font-size: clamp(3.4rem, 5.7vw, 6.6rem);
-      line-height: 0.91;
-      letter-spacing: -0.065em;
-      font-weight: 760;
-      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .lrox-hero h1 strong {
-      color: var(--lrox-orange);
-      font-weight: inherit;
-    }
-
-    .lrox-hero p {
-      max-width: 560px;
-      margin: 26px 0 0;
-      color: rgba(255, 255, 255, 0.94);
-      font-size: clamp(1rem, 1.18vw, 1.16rem);
-      line-height: 1.62;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
-    }
-
-    .lrox-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .lrox-btn {
-      min-height: 54px;
-      padding: 0 24px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      font-weight: 700;
-      transition:
-        transform 180ms ease,
-        background 180ms ease,
-        border-color 180ms ease;
-    }
-
-    .lrox-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .lrox-btn--primary {
-      background: var(--lrox-orange);
-      box-shadow: 0 12px 34px rgba(255, 90, 18, 0.2);
-    }
-
-    .lrox-btn--primary:hover {
-      background: var(--lrox-orange-dark);
-    }
-
-    .lrox-btn--secondary {
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      background: rgba(8, 8, 10, 0.22);
-      backdrop-filter: blur(14px);
-    }
-
-    .lrox-btn--secondary:hover {
-      border-color: rgba(255, 255, 255, 0.75);
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .lrox-status {
       position: absolute;
-      right: 32px;
-      top: 50%;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 15px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      border-radius: 999px;
-      background: rgba(8, 8, 10, 0.24);
-      color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(14px);
-      font-size: 0.82rem;
-    }
 
-    .lrox-status span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #3eff8b;
-      box-shadow: 0 0 0 6px rgba(62, 255, 139, 0.12);
-      animation: lroxPulse 1.8s ease-in-out infinite;
-    }
-
-    .lrox-video-toggle {
-      position: absolute;
-      right: 28px;
-      bottom: 48px;
-      z-index: 8;
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.36);
-      border-radius: 50%;
-      background: rgba(8, 8, 10, 0.24);
-      color: #fff;
-      backdrop-filter: blur(14px);
-      cursor: pointer;
-    }
-
-    .lrox-video-toggle:hover {
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    @keyframes lroxPulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.55;
-        transform: scale(0.82);
-      }
-    }
-
-    .lrox-value {
-      position: relative;
-      width: 100%;
-      margin-top: -2px;
-      background: var(--lrox-cream);
-      color: var(--lrox-text);
-    }
-
-    .lrox-value__scroll {
-      position: relative;
-      height: 120vh;
-      background: var(--lrox-cream);
-    }
-
-    .lrox-value__stage {
-      position: sticky;
       top: 0;
-      width: 100%;
-      height: 100svh;
-      min-height: 720px;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(
-          circle at 82% 23%,
-          rgba(255, 110, 38, 0.15),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 74% 48%,
-          rgba(255, 161, 107, 0.08),
-          transparent 34%
-        ),
-        linear-gradient(
-          135deg,
-          #fffdfa 0%,
-          #faf5ef 58%,
-          #f5e9df 100%
-        );
-    }
 
-    .lrox-value__stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -4;
-      pointer-events: none;
-      opacity: 0.3;
-      background-image:
-        linear-gradient(
-          rgba(35, 28, 23, 0.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(35, 28, 23, 0.035) 1px,
-          transparent 1px
-        );
-      background-size: 82px 82px;
-      mask-image:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.6),
-          transparent 88%
-        );
-    }
-
-    .lrox-value__background {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-    }
-
-    .lrox-value__glow {
-      position: absolute;
-      top: 4%;
-      right: -9%;
-      width: 58vw;
-      height: 58vw;
-      min-width: 720px;
-      min-height: 720px;
-      border-radius: 50%;
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 103, 31, 0.17) 0%,
-          rgba(255, 138, 77, 0.07) 34%,
-          transparent 68%
-        );
-      filter: blur(8px);
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .lrox-value__radar {
-      position: absolute;
-      top: 6%;
-      right: 5%;
-      width: min(38vw, 570px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-    }
-
-    .lrox-value__ring {
-      position: absolute;
-      top: 50%;
       left: 50%;
-      display: block;
-      border: 1px solid rgba(255, 90, 18, 0.2);
-      border-radius: 50%;
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
 
-    .lrox-value__ring--1 {
-      width: 100%;
-      height: 100%;
-    }
+      transform: translateX(-50%);
 
-    .lrox-value__ring--2 {
-      width: 68%;
-      height: 68%;
-    }
+      width:
 
-    .lrox-value__ring--3 {
-      width: 37%;
-      height: 37%;
-      border-color: rgba(255, 90, 18, 0.36);
-      background: rgba(255, 90, 18, 0.025);
-    }
-
-    .lrox-value__radar-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow:
-        0 0 0 9px rgba(255, 90, 18, 0.1),
-        0 0 50px rgba(255, 90, 18, 0.5);
-      transform: translate(-50%, -50%);
-    }
-
-    .lrox-value__target {
-      position: absolute;
-      top: 27%;
-      left: 25%;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow:
-        0 0 0 8px rgba(255, 90, 18, 0.1),
-        0 0 34px rgba(255, 90, 18, 0.5);
-      opacity: 0;
-      transform: scale(0);
-      transition:
-        opacity 400ms ease,
-        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1);
-    }
-
-    .lrox-value.is-target-visible .lrox-value__target {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .lrox-value__scan-line {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 45%;
-      height: 1px;
-      display: block;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255, 90, 18, 0.88),
-          transparent
+        min(
+          calc(100% - 64px),
+          1500px
         );
-      transform-origin: left center;
-      animation: lroxRadarScan 3.5s linear infinite;
+
+      height: 82px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      z-index: 20;
+
+      border-bottom:
+
+        1px solid rgba(255,255,255,0.22);
+
+      animation:
+
+        navIn
+        1s
+        ease
+        both;
+
     }
 
-    @keyframes lroxRadarScan {
+
+
+    @keyframes navIn {
+
       from {
-        transform: rotate(-90deg);
+
+        opacity: 0;
+
+        transform:
+
+          translateX(-50%)
+
+          translateY(-12px);
+
       }
+
 
       to {
-        transform: rotate(270deg);
+
+        opacity: 1;
+
+        transform:
+
+          translateX(-50%)
+
+          translateY(0);
+
       }
+
     }
 
-    .lrox-value__inner {
-      position: relative;
-      z-index: 4;
-      width: min(calc(100% - 64px), 1440px);
-      height: 100%;
-      margin: 0 auto;
-      padding: 6.5vh 0 29vh;
-      display: grid;
-      grid-template-columns: minmax(0, 760px) 1fr;
-      align-items: center;
-      gap: 60px;
-    }
 
-    .lrox-value__heading {
-      position: relative;
-      z-index: 3;
-      max-width: 760px;
-      transform: translateY(-4vh);
-    }
 
-    .lrox-value__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      margin-bottom: 25px;
-      color: var(--lrox-muted);
-      font-size: 0.78rem;
-      font-weight: 760;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateY(18px);
-      transition:
-        opacity 550ms ease,
-        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1);
-    }
+    .logo {
 
-    .lrox-value__eyebrow span {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.12);
-    }
+      font-size: 18px;
 
-    .lrox-value.is-entered .lrox-value__eyebrow {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .lrox-value__title {
-      max-width: 760px;
-      margin: 0;
-      color: var(--lrox-text);
-      font-size: clamp(4rem, 6.6vw, 7.8rem);
-      line-height: 0.89;
-      letter-spacing: -0.075em;
-      font-weight: 790;
-    }
-
-    .lrox-value__line {
-      display: block;
-      opacity: 0;
-      transform: translateY(52px);
-      transition:
-        opacity 600ms ease,
-        transform 760ms cubic-bezier(0.16, 0.75, 0.2, 1);
-    }
-
-    .lrox-value__line--orange {
-      color: var(--lrox-orange);
-    }
-
-    .lrox-value.is-entered
-    .lrox-value__line:nth-child(1) {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 80ms;
-    }
-
-    .lrox-value.is-entered
-    .lrox-value__line:nth-child(2) {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 210ms;
-    }
-
-    .lrox-value.is-entered
-    .lrox-value__line:nth-child(3) {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 340ms;
-    }
-
-    .lrox-value__description {
-      max-width: 590px;
-      margin: 28px 0 0;
-      color: var(--lrox-muted);
-      font-size: clamp(1.03rem, 1.25vw, 1.18rem);
-      line-height: 1.62;
-      opacity: 0;
-      transform: translateY(22px);
-      transition:
-        opacity 550ms ease 430ms,
-        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1) 430ms;
-    }
-
-    .lrox-value.is-entered
-    .lrox-value__description {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .lrox-value__process {
-      position: absolute;
-      right: 0;
-      bottom: 7.5vh;
-      left: 0;
-      z-index: 8;
-      width: min(calc(100% - 64px), 1440px);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .lrox-value__item {
-      position: relative;
-      min-height: 142px;
-      padding: 17px 19px;
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 14px;
-      border: 1px solid rgba(38, 30, 24, 0.1);
-      border-radius: 23px;
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow:
-        0 20px 54px rgba(72, 50, 34, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(20px);
-      opacity: 0;
-      transform: translateY(34px);
-      transition:
-        opacity 500ms ease,
-        transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1),
-        border-color 250ms ease,
-        box-shadow 250ms ease,
-        background 250ms ease;
-    }
-
-    .lrox-value__item.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .lrox-value__item.is-current {
-      border-color: rgba(255, 90, 18, 0.4);
-      background: rgba(255, 250, 246, 0.97);
-      box-shadow:
-        0 24px 62px rgba(255, 90, 18, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.98);
-    }
-
-    .lrox-value__item-number {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(255, 90, 18, 0.1);
-      color: var(--lrox-orange);
-      font-size: 0.73rem;
       font-weight: 800;
+
+      letter-spacing: 0.30em;
+
+      text-shadow:
+
+        0
+        2px
+        18px
+        rgba(0,0,0,0.45);
+
     }
 
-    .lrox-value__item-content {
-      min-width: 0;
-    }
 
-    .lrox-value__item-icon {
-      width: 34px;
-      height: 34px;
-      margin-bottom: 11px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 90, 18, 0.2);
-      border-radius: 11px;
-      background: rgba(255, 90, 18, 0.06);
-    }
 
-    .lrox-value__item-icon span {
-      width: 8px;
-      height: 8px;
-      display: block;
-      border: 2px solid var(--lrox-orange);
-      border-radius: 50%;
-    }
+    .mode {
 
-    .lrox-value__item:nth-child(2)
-    .lrox-value__item-icon {
-      display: flex;
-      gap: 4px;
-    }
-
-    .lrox-value__item:nth-child(2)
-    .lrox-value__item-icon span {
-      width: 6px;
-      height: 18px;
-      border: 0;
-      border-radius: 99px;
-      background: var(--lrox-orange);
-    }
-
-    .lrox-value__item:nth-child(2)
-    .lrox-value__item-icon span:last-child {
-      height: 11px;
-      opacity: 0.55;
-    }
-
-    .lrox-value__item:nth-child(3)
-    .lrox-value__item-icon span {
-      width: 14px;
-      height: 10px;
-      border-radius: 2px;
-      transform: rotate(-14deg);
-    }
-
-    .lrox-value__item strong {
-      display: block;
-      color: #1b1815;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-
-    .lrox-value__item p {
-      margin: 7px 0 0;
-      color: #756b63;
-      font-size: 0.86rem;
-      line-height: 1.44;
-    }
-
-    .lrox-value__bottom {
       position: absolute;
-      right: 32px;
-      bottom: 19px;
-      left: 32px;
-      z-index: 10;
-      width: min(calc(100% - 64px), 1440px);
-      margin: 0 auto;
-    }
 
-    .lrox-value__progress {
-      width: calc(100% - 240px);
-      height: 3px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: rgba(41, 32, 25, 0.09);
-    }
+      left: 50%;
 
-    .lrox-value__progress span {
-      width: 0%;
-      height: 100%;
-      display: block;
-      border-radius: inherit;
-      background: var(--lrox-orange);
-    }
+      transform: translateX(-50%);
 
-    .lrox-value__progress-labels {
-      width: calc(100% - 240px);
-      margin-top: 9px;
-      display: flex;
-      justify-content: space-between;
-      color: #83786f;
-      font-size: 0.65rem;
-      font-weight: 730;
-      letter-spacing: 0.09em;
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.18em;
+
       text-transform: uppercase;
+
+      color:
+
+        rgba(255,255,255,0.72);
+
     }
 
-    .lrox-value__continue {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: #625950;
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 730;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
 
-    .lrox-value__continue strong {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(35, 28, 23, 0.13);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.84);
-      color: #181512;
-      box-shadow: 0 12px 32px rgba(52, 39, 29, 0.08);
+
+    .back {
+
+      font-size: 13px;
+
+      color:
+
+        rgba(255,255,255,0.82);
+
       transition:
-        color 180ms ease,
-        background 180ms ease,
-        transform 180ms ease;
+
+        opacity 0.25s ease;
+
     }
 
-    .lrox-value__continue:hover strong {
-      color: #fff;
-      background: var(--lrox-orange);
-      transform: translateY(3px);
+
+
+    .back:hover {
+
+      opacity: 0.60;
+
     }
 
-    .lrox-product-placeholder {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
+
+
+    /* =========================================================
+       HERO CONTENT
+       UNCHANGED
+    ========================================================== */
+
+    .hero-content {
+
+      position: absolute;
+
+      left:
+
+        max(
+          32px,
+          calc((100vw - 1500px) / 2)
+        );
+
+      bottom: 125px;
+
+      width:
+
+        min(
+          550px,
+          calc(100% - 64px)
+        );
+
+      z-index: 5;
+
+      animation:
+
+        heroContentIn
+        1.15s
+        cubic-bezier(.22,.61,.36,1)
+        0.15s
+        both;
+
+    }
+
+
+
+    @keyframes heroContentIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(32px);
+
+      }
+
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+
+    .eyebrow {
+
+      margin-bottom: 16px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.19em;
+
+      text-transform: uppercase;
+
+      color:
+
+        rgba(255,255,255,0.73);
+
+    }
+
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      max-width: 560px;
+
+      font-size:
+
+        clamp(
+          40px,
+          4.2vw,
+          68px
+        );
+
+      line-height: 0.99;
+
+      letter-spacing: -0.045em;
+
+      font-weight: 700;
+
+      text-shadow:
+
+        0
+        4px
+        28px
+        rgba(0,0,0,0.34);
+
+    }
+
+
+
+    .hero-text {
+
+      max-width: 500px;
+
+      margin-top: 20px;
+
+      font-size:
+
+        clamp(
+          15px,
+          1.05vw,
+          17px
+        );
+
+      line-height: 1.58;
+
+      color:
+
+        rgba(255,255,255,0.83);
+
+      text-shadow:
+
+        0
+        2px
+        15px
+        rgba(0,0,0,0.35);
+
+    }
+
+
+
+    .hero-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-top: 23px;
+
+      min-height: 44px;
+
+      padding:
+
+        0
+        18px;
+
+      border:
+
+        1px solid rgba(255,255,255,0.42);
+
+      border-radius: 999px;
+
       background:
+
+        rgba(0,0,0,0.16);
+
+      backdrop-filter: blur(12px);
+
+      -webkit-backdrop-filter: blur(12px);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.07em;
+
+      text-transform: uppercase;
+
+      transition:
+
+        background 0.3s ease,
+
+        color 0.3s ease,
+
+        transform 0.3s ease,
+
+        border-color 0.3s ease;
+
+    }
+
+
+
+    .hero-button:hover {
+
+      background: white;
+
+      color: #111;
+
+      border-color: white;
+
+      transform:
+
+        translateY(-2px);
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02
+       DIRECTLY CONNECTED TO HERO
+    ========================================================== */
+
+    .statement {
+
+      position: relative;
+
+      width: 100%;
+
+      height: 100svh;
+
+      min-height: 650px;
+
+      max-height: 1000px;
+
+      margin-top: -1px;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      background:
+
+        radial-gradient(
+          circle at 82% 20%,
+          rgba(111,174,255,0.16),
+          transparent 31%
+        ),
+
+        radial-gradient(
+          circle at 15% 85%,
+          rgba(160,204,255,0.08),
+          transparent 27%
+        ),
+
         linear-gradient(
           180deg,
-          #f8f1ea 0%,
-          #ffffff 22%,
+
+          #f5f8fc 0%,
+
+          #f8fafc 11%,
+
+          #ffffff 27%,
+
+          #fafcff 62%,
+
+          #f1f7ff 100%
+        );
+
+      isolation: isolate;
+
+    }
+
+
+
+    .statement::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+
+        linear-gradient(
+          90deg,
+
+          transparent 0%,
+
+          transparent 31%,
+
+          rgba(113,170,239,0.035) 31.1%,
+
+          transparent 31.22%,
+
+          transparent 66%,
+
+          rgba(113,170,239,0.03) 66.1%,
+
+          transparent 66.22%,
+
+          transparent 100%
+        );
+
+      pointer-events: none;
+
+    }
+
+
+
+    .statement-inner {
+
+      position: relative;
+
+      z-index: 5;
+
+      width:
+
+        min(
+          1260px,
+          calc(100% - 64px)
+        );
+
+      margin:
+
+        0
+        auto;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 TOP
+    ========================================================== */
+
+    .statement-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 40px;
+
+      margin-bottom: 55px;
+
+    }
+
+
+
+    .section-label {
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #7c8794;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(16px);
+
+      transition:
+
+        opacity 0.75s ease,
+
+        transform 0.75s ease;
+
+    }
+
+
+
+    .audience-pill {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-height: 38px;
+
+      padding:
+
+        0
+        15px;
+
+      border:
+
+        1px solid rgba(80,145,235,0.25);
+
+      border-radius: 999px;
+
+      background:
+
+        rgba(255,255,255,0.60);
+
+      backdrop-filter:
+
+        blur(14px);
+
+      -webkit-backdrop-filter:
+
+        blur(14px);
+
+      box-shadow:
+
+        0
+        10px
+        32px
+        rgba(68,116,177,0.055);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.09em;
+
+      text-transform: uppercase;
+
+      color: #397bce;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(16px);
+
+      transition:
+
+        opacity 0.75s ease 0.08s,
+
+        transform 0.75s ease 0.08s;
+
+    }
+
+
+
+    .audience-dot {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+
+        var(--blue);
+
+      box-shadow:
+
+        0
+        0
+        0
+        6px
+        rgba(105,169,255,0.10);
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 MAIN TYPOGRAPHY
+    ========================================================== */
+
+    .statement-title {
+
+      margin: 0;
+
+      max-width: 1150px;
+
+      font-size:
+
+        clamp(
+          46px,
+          5.4vw,
+          82px
+        );
+
+      line-height: 0.99;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 620;
+
+    }
+
+
+
+    .title-dark {
+
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(34px);
+
+      transition:
+
+        opacity
+        0.9s
+        ease
+        0.12s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.12s;
+
+    }
+
+
+
+    .title-blue {
+
+      display: block;
+
+      margin-top: 13px;
+
+      color: var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+
+        translateY(34px);
+
+      transition:
+
+        opacity
+        0.95s
+        ease
+        0.28s,
+
+        transform
+        0.95s
+        cubic-bezier(.22,.61,.36,1)
+        0.28s;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 LOWER CONTENT
+    ========================================================== */
+
+    .statement-lower {
+
+      margin-top: 54px;
+
+      padding-top: 28px;
+
+      border-top:
+
+        1px solid
+        rgba(34,49,68,0.10);
+
+      display: grid;
+
+      grid-template-columns:
+
+        1fr
+        minmax(330px, 490px);
+
+      gap: 80px;
+
+      align-items: start;
+
+    }
+
+
+
+    .statement-keyline {
+
+      max-width: 620px;
+
+      font-size:
+
+        clamp(
+          19px,
+          1.55vw,
+          24px
+        );
+
+      line-height: 1.5;
+
+      letter-spacing: -0.018em;
+
+      color: #2d3948;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(20px);
+
+      transition:
+
+        opacity 0.8s ease 0.45s,
+
+        transform 0.8s ease 0.45s;
+
+    }
+
+
+
+    .statement-keyline strong {
+
+      color:
+
+        var(--blue-deep);
+
+      font-weight: 600;
+
+    }
+
+
+
+    .statement-description {
+
+      margin: 0;
+
+      font-size:
+
+        clamp(
+          14px,
+          1.05vw,
+          16px
+        );
+
+      line-height: 1.72;
+
+      color: #687483;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(20px);
+
+      transition:
+
+        opacity 0.8s ease 0.56s,
+
+        transform 0.8s ease 0.56s;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 MOTION LINE
+    ========================================================== */
+
+    .motion-line {
+
+      position: absolute;
+
+      left: 0;
+
+      bottom: 0;
+
+      width: 100%;
+
+      height: 2px;
+
+      overflow: hidden;
+
+      background:
+
+        rgba(85,145,225,0.08);
+
+    }
+
+
+
+    .motion-line::after {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      left: -25%;
+
+      width: 25%;
+
+      height: 100%;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(82,148,239,0.85),
+          transparent
+        );
+
+      box-shadow:
+
+        0
+        0
+        14px
+        rgba(82,148,239,0.28);
+
+      animation:
+
+        lightMove
+        5.5s
+        ease-in-out
+        infinite;
+
+    }
+
+
+
+    @keyframes lightMove {
+
+      0% {
+
+        left: -25%;
+
+        opacity: 0;
+
+      }
+
+
+      15% {
+
+        opacity: 1;
+
+      }
+
+
+      75% {
+
+        opacity: 1;
+
+      }
+
+
+      100% {
+
+        left: 105%;
+
+        opacity: 0;
+
+      }
+
+    }
+
+
+
+    .statement.is-visible
+    .section-label,
+
+    .statement.is-visible
+    .audience-pill,
+
+    .statement.is-visible
+    .title-dark,
+
+    .statement.is-visible
+    .title-blue,
+
+    .statement.is-visible
+    .statement-keyline,
+
+    .statement.is-visible
+    .statement-description {
+
+      opacity: 1;
+
+      transform:
+
+        translateY(0);
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03
+       SENSOR TECHNOLOGY + VIDEO
+    ========================================================== */
+
+    .technology {
+
+      position: relative;
+
+      min-height: 100svh;
+
+      overflow: hidden;
+
+      padding:
+
+        82px
+        32px
+        86px;
+
+      background:
+
+        radial-gradient(
+          circle at 80% 18%,
+          rgba(105,169,255,0.13),
+          transparent 27%
+        ),
+
+        linear-gradient(
+          180deg,
+          #f1f7ff 0%,
+          #f8fbff 14%,
+          #ffffff 38%,
           #ffffff 100%
         );
-      color: #d8d1ca;
-      text-align: center;
-    }
 
-    .lrox-product-placeholder span {
-      color: var(--lrox-orange);
-      font-size: 0.75rem;
-      font-weight: 760;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .lrox-product-placeholder h2 {
-      margin: 15px 0 0;
-      font-size: clamp(3.5rem, 8vw, 8rem);
-      letter-spacing: -0.07em;
-    }
-
-    @media (max-width: 1100px) {
-      .lrox-nav,
-      .lrox-header__cta,
-      .lrox-status {
-        display: none;
-      }
-
-      .lrox-hero__content {
-        justify-content: flex-end;
-      }
-
-      .lrox-value__inner {
-        width: min(calc(100% - 48px), 1440px);
-        padding-top: 5vh;
-      }
-
-      .lrox-value__heading {
-        transform: translateY(-2vh);
-      }
-
-      .lrox-value__radar {
-        top: 4%;
-        right: -12%;
-        width: 52vw;
-      }
-
-      .lrox-value__process {
-        width: min(calc(100% - 48px), 1440px);
-      }
-    }
-
-    @media (max-width: 760px) {
-      .lrox-hero {
-        min-height: 720px;
-      }
-
-      .lrox-hero::after {
-        height: 105px;
-      }
-
-      .lrox-header,
-      .lrox-hero__content {
-        width: min(calc(100% - 30px), 1440px);
-      }
-
-      .lrox-header {
-        height: 74px;
-      }
-
-      .lrox-hero__video {
-        object-position: 58% center;
-      }
-
-      .lrox-hero__shade {
-        background:
-          linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.06) 0%,
-            rgba(0, 0, 0, 0.08) 34%,
-            rgba(0, 0, 0, 0.52) 64%,
-            rgba(0, 0, 0, 0.82) 100%
-          );
-      }
-
-      .lrox-hero__content {
-        height: calc(100svh - 74px);
-        min-height: 646px;
-        padding: 54px 0 118px;
-      }
-
-      .lrox-hero h1 {
-        max-width: 100%;
-        font-size: clamp(2.8rem, 14vw, 4.5rem);
-      }
-
-      .lrox-hero p {
-        font-size: 1rem;
-        line-height: 1.52;
-      }
-
-      .lrox-actions {
-        width: 100%;
-      }
-
-      .lrox-btn {
-        width: 100%;
-      }
-
-      .lrox-video-toggle {
-        right: 15px;
-        bottom: 65px;
-      }
-
-      .lrox-value__scroll {
-        height: 200vh;
-      }
-
-      .lrox-value__stage {
-        min-height: 790px;
-      }
-
-      .lrox-value__inner {
-        width: calc(100% - 40px);
-        padding: 5vh 0 43vh;
-        display: block;
-      }
-
-      .lrox-value__heading {
-        transform: none;
-      }
-
-      .lrox-value__eyebrow {
-        margin-bottom: 18px;
-        font-size: 0.66rem;
-      }
-
-      .lrox-value__title {
-        font-size: clamp(3.15rem, 14vw, 4.85rem);
-        line-height: 0.9;
-      }
-
-      .lrox-value__description {
-        max-width: 92%;
-        margin-top: 20px;
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-
-      .lrox-value__radar {
-        top: 2%;
-        right: -57%;
-        width: 105vw;
-        opacity: 0.55;
-      }
-
-      .lrox-value__process {
-        right: 20px;
-        bottom: 7.5vh;
-        left: 20px;
-        width: auto;
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .lrox-value__item {
-        min-height: auto;
-        padding: 12px 13px;
-        grid-template-columns: 38px 1fr;
-        border-radius: 17px;
-      }
-
-      .lrox-value__item-number {
-        width: 36px;
-        height: 36px;
-      }
-
-      .lrox-value__item-icon {
-        display: none;
-      }
-
-      .lrox-value__item strong {
-        font-size: 1rem;
-      }
-
-      .lrox-value__item p {
-        margin-top: 4px;
-        font-size: 0.78rem;
-      }
-
-      .lrox-value__bottom {
-        right: 20px;
-        bottom: 14px;
-        left: 20px;
-        width: auto;
-      }
-
-      .lrox-value__progress,
-      .lrox-value__progress-labels {
-        width: calc(100% - 58px);
-      }
-
-      .lrox-value__continue span {
-        display: none;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .lrox-status span,
-      .lrox-value__scan-line {
-        animation: none;
-      }
-
-      .lrox-value__eyebrow,
-      .lrox-value__line,
-      .lrox-value__description,
-      .lrox-value__item,
-      .lrox-value__target {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-
-    /* =========================
-       SLIDE 3 — PRODUCT ROTATION
-       Hero and Slide 2 remain unchanged.
-    ========================== */
-
-    .lrox-product-rotation,
-    .lrox-product-rotation * {
-      box-sizing: border-box;
-    }
-
-    .lrox-product-rotation {
-      position: relative;
-      z-index: 20;
-      width: 100%;
-      margin-top: -18vh;
-      background: #fffaf6;
-      color: var(--lrox-text);
-    }
-
-    .lrox-product-rotation__scroll {
-      position: relative;
-      height: 150vh;
-    }
-
-    .lrox-product-rotation__stage {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100svh;
-      min-height: 720px;
-      overflow: hidden;
       isolation: isolate;
+
+    }
+
+
+
+    .technology::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 720px;
+
+      height: 720px;
+
+      right: -260px;
+
+      bottom: -310px;
+
+      border-radius: 50%;
+
       background:
+
         radial-gradient(
-          circle at 50% 51%,
-          rgba(215, 211, 207, 0.42) 0%,
-          rgba(242, 236, 231, 0.36) 29%,
-          rgba(255, 250, 246, 0) 64%
-        ),
-        linear-gradient(180deg, #f8f1ea 0%, #fffaf6 11%, #fff 52%, #fffaf6 100%);
-    }
+          circle,
+          rgba(92,158,245,0.11),
+          rgba(92,158,245,0.025) 48%,
+          transparent 72%
+        );
 
-    .lrox-product-rotation__stage::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
+      filter: blur(18px);
+
       pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 48%, rgba(255, 90, 18, 0.115), transparent 39%);
+
     }
 
-    .lrox-product-rotation__intro {
-      position: absolute;
-      top: clamp(24px, 4vh, 48px);
-      left: 50%;
-      z-index: 12;
-      width: min(calc(100% - 64px), 1440px);
-      text-align: center;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
 
-    .lrox-product-rotation__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #756a62;
-      font-size: 0.73rem;
-      font-weight: 780;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
 
-    .lrox-product-rotation__eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.10);
-    }
+    .technology-inner {
 
-    .lrox-product-rotation__title {
-      margin: 13px 0 0;
-      color: #171411;
-      font-size: clamp(2.2rem, 4.2vw, 4.8rem);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
-      font-weight: 790;
-    }
-
-    .lrox-product-rotation__title span {
-      color: var(--lrox-orange);
-    }
-
-    .lrox-product-rotation__viewer {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      display: grid;
-      place-items: center;
-      perspective: 1800px;
-      pointer-events: none;
-    }
-
-    .lrox-product-rotation__object {
       position: relative;
-      width: min(78vw, 1080px);
-      height: min(64vh, 700px);
-      margin-top: clamp(78px, 9vh, 104px);
-      transform-style: preserve-3d;
-      will-change: transform;
+
+      z-index: 3;
+
+      width:
+
+        min(
+          1320px,
+          100%
+        );
+
+      margin:
+
+        0 auto;
+
     }
 
-    .lrox-product-rotation__image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+
+
+    /* =========================================================
+       SLIDE 03 HEADER
+    ========================================================== */
+
+    .technology-top {
+
+      display: grid;
+
+      grid-template-columns:
+
+        minmax(0, 0.95fr)
+        minmax(360px, 0.55fr);
+
+      gap: 80px;
+
+      align-items: end;
+
+      margin-bottom: 48px;
+
+    }
+
+
+
+    .technology-label {
+
+      margin-bottom: 18px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #7b8795;
+
       opacity: 0;
-      user-select: none;
-      transform: translate3d(0, 0, 0) scale(1);
-      filter:
-        drop-shadow(0 44px 48px rgba(37, 25, 17, 0.15))
-        drop-shadow(0 12px 18px rgba(37, 25, 17, 0.08));
-      transition: opacity 90ms linear;
-    }
 
-    .lrox-product-rotation__image--front {
-      opacity: 1;
-    }
+      transform:
+        translateY(18px);
 
-    .lrox-product-rotation__floor {
-      position: absolute;
-      left: 50%;
-      bottom: 11vh;
-      z-index: 2;
-      width: min(48vw, 680px);
-      height: 74px;
-      border-radius: 50%;
-      background: rgba(61, 42, 30, 0.13);
-      filter: blur(32px);
-      transform: translateX(-50%) scaleX(0.9);
-      pointer-events: none;
-    }
-
-    .lrox-product-rotation__copy {
-      position: absolute;
-      left: max(32px, calc((100% - 1440px) / 2));
-      bottom: clamp(30px, 5vh, 58px);
-      z-index: 12;
-      max-width: 330px;
-      pointer-events: none;
-    }
-
-    .lrox-product-rotation__copy strong {
-      display: block;
-      color: #171411;
-      font-size: clamp(1.05rem, 1.35vw, 1.28rem);
-      line-height: 1.28;
-      letter-spacing: -0.025em;
-    }
-
-    .lrox-product-rotation__copy p {
-      margin: 7px 0 0;
-      color: #796e66;
-      font-size: 0.91rem;
-      line-height: 1.5;
-    }
-
-    .lrox-product-rotation__features {
-      position: absolute;
-      right: max(32px, calc((100% - 1440px) / 2));
-      bottom: clamp(31px, 5vh, 60px);
-      z-index: 12;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 9px;
-      pointer-events: none;
-    }
-
-    .lrox-product-rotation__feature {
-      min-height: 40px;
-      padding: 0 14px;
-      border: 1px solid rgba(255, 90, 18, 0.17);
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.78);
-      color: #8b8078;
-      box-shadow: 0 12px 30px rgba(43, 29, 20, 0.05);
-      backdrop-filter: blur(14px);
-      font-size: 0.68rem;
-      font-weight: 760;
-      letter-spacing: 0.045em;
-      text-transform: uppercase;
-      opacity: 0.48;
-      transition: opacity 220ms ease, color 220ms ease, border-color 220ms ease, background 220ms ease;
-    }
-
-    .lrox-product-rotation__feature::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      flex: 0 0 auto;
-      border-radius: 50%;
-      background: #d8cec7;
-    }
-
-    .lrox-product-rotation__feature.is-active {
-      opacity: 1;
-      color: #271f1a;
-      border-color: rgba(255, 90, 18, 0.42);
-      background: rgba(255, 250, 246, 0.96);
-    }
-
-    .lrox-product-rotation__feature.is-active::before {
-      background: var(--lrox-orange);
-      box-shadow: 0 0 0 6px rgba(255, 90, 18, 0.10);
-    }
-
-    .lrox-product-rotation__steps {
-      position: absolute;
-      top: 50%;
-      right: 24px;
-      z-index: 14;
-      display: grid;
-      gap: 9px;
-      transform: translateY(-50%);
-    }
-
-    .lrox-product-rotation__step {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(49, 37, 30, 0.17);
-      transition: height 220ms ease, border-radius 220ms ease, background 220ms ease;
-    }
-
-    .lrox-product-rotation__step.is-active {
-      height: 32px;
-      border-radius: 999px;
-      background: var(--lrox-orange);
-    }
-
-    .lrox-product-rotation__angle {
-      position: absolute;
-      right: 26px;
-      bottom: 19px;
-      z-index: 15;
-      color: #877b73;
-      font-size: 0.67rem;
-      font-weight: 760;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 1100px) {
-      .lrox-product-rotation {
-        margin-top: -10vh;
-      }
-
-      .lrox-product-rotation__object {
-        width: min(92vw, 980px);
-        height: min(66vh, 700px);
-      }
-
-      .lrox-product-rotation__features {
-        max-width: 520px;
-        flex-wrap: wrap;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .lrox-product-rotation {
-        margin-top: -6vh;
-      }
-
-      .lrox-product-rotation__scroll {
-        height: 138vh;
-      }
-
-      .lrox-product-rotation__stage {
-        min-height: 760px;
-      }
-
-      .lrox-product-rotation__intro {
-        top: 25px;
-        width: calc(100% - 40px);
-      }
-
-      .lrox-product-rotation__title {
-        font-size: clamp(2.15rem, 10vw, 3.5rem);
-      }
-
-      .lrox-product-rotation__object {
-        width: 96vw;
-        height: 52vh;
-        margin-top: 86px;
-      }
-
-      .lrox-product-rotation__copy {
-        left: 20px;
-        bottom: 94px;
-        max-width: 285px;
-      }
-
-      .lrox-product-rotation__copy p {
-        display: none;
-      }
-
-      .lrox-product-rotation__features {
-        right: 20px;
-        bottom: 25px;
-        left: 20px;
-        justify-content: flex-start;
-        gap: 6px;
-      }
-
-      .lrox-product-rotation__feature {
-        min-height: 35px;
-        padding: 0 10px;
-        font-size: 0.56rem;
-      }
-
-      .lrox-product-rotation__steps {
-        right: 10px;
-      }
-
-      .lrox-product-rotation__angle {
-        display: none;
-      }
-    }
-
-    /* =========================
-       SLIDE 4 — DEVELOPMENT PHASES
-       Slides 1, 2 and 3 remain unchanged.
-    ========================== */
-
-    .lrox-development,
-    .lrox-development * {
-      box-sizing: border-box;
-    }
-
-    .lrox-development {
-      position: relative;
-      z-index: 24;
-      width: 100%;
-      margin-top: -50vh;
-      color: #171411;
-      background: #fffaf6;
-    }
-
-    .lrox-development__phase {
-      position: relative;
-      width: 100%;
-      min-height: 100svh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: clamp(72px, 9vh, 118px) 0;
-      isolation: isolate;
-    }
-
-    .lrox-development__phase--one {
-      background:
-        radial-gradient(circle at 77% 42%, rgba(255, 146, 87, 0.16), transparent 34%),
-        linear-gradient(145deg, #fffdfb 0%, #fff8f2 58%, #fdf0e6 100%);
-    }
-
-    .lrox-development__phase--two {
-      background:
-        radial-gradient(circle at 28% 48%, rgba(255, 112, 42, 0.20), transparent 37%),
-        linear-gradient(145deg, #fff8f1 0%, #ffe8d6 52%, #ffd3b5 100%);
-    }
-
-    .lrox-development__phase--three {
-      background:
-        radial-gradient(circle at 72% 45%, rgba(255, 255, 255, 0.18), transparent 31%),
-        linear-gradient(145deg, #ff8a3b 0%, #ff6418 52%, #e94800 100%);
-      color: #fff;
-    }
-
-    .lrox-development__phase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      opacity: 0.42;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(45, 33, 25, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(45, 33, 25, 0.035) 1px, transparent 1px);
-      background-size: 86px 86px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 94%);
-    }
-
-    .lrox-development__phase--three::before {
-      opacity: 0.18;
-      background-image:
-        linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
-    }
-
-    .lrox-development__inner {
-      position: relative;
-      width: min(calc(100% - 64px), 1480px);
-      min-height: calc(100svh - clamp(144px, 18vh, 236px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
-      gap: clamp(36px, 6vw, 92px);
-      align-items: center;
-    }
-
-    .lrox-development__phase:nth-child(even) .lrox-development__inner {
-      grid-template-columns: minmax(0, 1.22fr) minmax(300px, 0.78fr);
-    }
-
-    .lrox-development__phase:nth-child(even) .lrox-development__copy {
-      order: 2;
-    }
-
-    .lrox-development__phase:nth-child(even) .lrox-development__visual {
-      order: 1;
-    }
-
-    .lrox-development__copy,
-    .lrox-development__visual {
-      opacity: 0;
-      transform: translateY(42px);
       transition:
-        opacity 800ms ease,
-        transform 950ms cubic-bezier(.18,.72,.18,1);
+
+        opacity 0.75s ease,
+
+        transform 0.75s ease;
+
     }
 
-    .lrox-development__phase.is-visible .lrox-development__copy,
-    .lrox-development__phase.is-visible .lrox-development__visual {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
-    .lrox-development__visual {
-      transition-delay: 90ms;
-    }
 
-    .lrox-development__kicker {
+    .technology-badge {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 10px;
-      margin-bottom: 22px;
-      color: #756a62;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
 
-    .lrox-development__phase--three .lrox-development__kicker {
-      color: rgba(255,255,255,.74);
-    }
-
-    .lrox-development__kicker::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ff5a12;
-      box-shadow: 0 0 0 7px rgba(255,90,18,.12);
-    }
-
-    .lrox-development__phase--three .lrox-development__kicker::before {
-      background: #fff;
-      box-shadow: 0 0 0 7px rgba(255,255,255,.14);
-    }
-
-    .lrox-development__copy h2,
-    .lrox-development__copy h3 {
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(3rem, 5.9vw, 6.7rem);
-      line-height: 0.92;
-      letter-spacing: -0.065em;
-      font-weight: 800;
-    }
-
-    .lrox-development__copy h2 span,
-    .lrox-development__copy h3 span {
-      color: #ff5a12;
-    }
-
-    .lrox-development__phase--three .lrox-development__copy h3 span {
-      color: #171411;
-    }
-
-    .lrox-development__copy p {
-      max-width: 610px;
-      margin: 26px 0 0;
-      color: #746a63;
-      font-size: clamp(1rem, 1.25vw, 1.18rem);
-      line-height: 1.62;
-    }
-
-    .lrox-development__phase--three .lrox-development__copy p {
-      color: rgba(255,255,255,.82);
-    }
-
-    .lrox-development__chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 30px;
-    }
-
-    .lrox-development__chip {
       min-height: 38px;
-      padding: 0 14px;
-      border: 1px solid rgba(255,90,18,.23);
+
+      padding:
+
+        0
+        15px;
+
+      margin-bottom: 25px;
+
+      border:
+
+        1px solid
+        rgba(75,143,235,0.24);
+
       border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.72);
-      color: #4e443d;
-      font-size: 0.63rem;
-      font-weight: 780;
-      letter-spacing: .08em;
+
+      background:
+
+        rgba(255,255,255,0.62);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      color:
+        #3978c9;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
       text-transform: uppercase;
-      backdrop-filter: blur(12px);
-    }
 
-    .lrox-development__phase--three .lrox-development__chip {
-      border-color: rgba(255,255,255,.32);
-      background: rgba(255,255,255,.13);
-      color: #fff;
-    }
-
-    .lrox-development__chip::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #ff5a12;
-    }
-
-    .lrox-development__phase--three .lrox-development__chip::before {
-      background: #fff;
-    }
-
-    .lrox-development__visual {
-      position: relative;
-      min-width: 0;
-      min-height: min(76vh, 780px);
-      display: grid;
-      place-items: center;
-    }
-
-    .lrox-development__card {
-      position: relative;
-      width: min(100%, 900px);
-      height: min(78vh, 800px);
-      overflow: visible;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-      backdrop-filter: none;
-    }
-
-    .lrox-development__phase--three .lrox-development__card {
-      border: 0;
-      background: transparent;
-      box-shadow: none;
-      backdrop-filter: none;
-    }
-
-    .lrox-development__phase--three .lrox-development__visual {
-      min-height: min(84vh, 860px);
-    }
-
-    .lrox-development__phase--three .lrox-development__card {
-      width: min(112%, 1040px);
-      height: min(84vh, 860px);
-    }
-
-    .lrox-development__road-card {
-      display: grid;
-      place-items: center;
-      padding: 0;
-    }
-
-    .lrox-development__road-card img {
-      display: block;
-      width: auto;
-      height: min(76vh, 780px);
-      max-width: 100%;
-      object-fit: contain;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-      background: transparent;
-    }
-
-    .lrox-development__road-badge {
-      position: absolute;
-      left: 28px;
-      bottom: 26px;
-      padding: 11px 14px;
-      border: 1px solid rgba(255,255,255,.34);
-      border-radius: 999px;
-      background: rgba(16,16,16,.55);
-      color: #fff;
-      font-size: .62rem;
-      font-weight: 780;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      backdrop-filter: blur(12px);
-    }
-
-    .lrox-development__prototype-card {
-      perspective: 1600px;
-      display: grid;
-      place-items: center;
-      background: transparent;
-    }
-
-    .lrox-development__prototype-image {
-      position: absolute;
-      inset: 3%;
-      width: 94%;
-      height: 94%;
-      object-fit: contain;
       opacity: 0;
-      transform: rotateY(12deg) scale(.96);
-      filter: drop-shadow(0 38px 38px rgba(55,31,15,.18));
+
+      transform:
+        translateY(18px);
+
       transition:
-        opacity 500ms ease,
-        transform 900ms cubic-bezier(.18,.72,.18,1);
+
+        opacity 0.75s ease 0.08s,
+
+        transform 0.75s ease 0.08s;
+
     }
 
-    .lrox-development__prototype-image.is-active {
-      opacity: 1;
-      transform: rotateY(0deg) scale(1);
+
+
+    .technology-badge-dot {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+
+      box-shadow:
+
+        0
+        0
+        0
+        6px
+        rgba(105,169,255,0.10);
+
     }
 
-    .lrox-development__prototype-label {
+
+
+    .technology-title {
+
+      margin: 0;
+
+      max-width: 750px;
+
+      font-size:
+
+        clamp(
+          44px,
+          4.7vw,
+          72px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.052em;
+
+      font-weight: 630;
+
+    }
+
+
+
+    .technology-title-dark {
+
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+
+        opacity 0.9s ease 0.14s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.14s;
+
+    }
+
+
+
+    .technology-title-blue {
+
+      display: block;
+
+      margin-top: 10px;
+
+      color:
+        var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+
+        opacity 0.9s ease 0.27s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.27s;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 COPY
+    ========================================================== */
+
+    .technology-copy {
+
+      padding-bottom: 5px;
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+
+        opacity 0.85s ease 0.42s,
+
+        transform 0.85s ease 0.42s;
+
+    }
+
+
+
+    .technology-highlight {
+
+      margin:
+
+        0
+        0
+        20px;
+
+      font-size:
+
+        clamp(
+          18px,
+          1.5vw,
+          22px
+        );
+
+      line-height: 1.45;
+
+      letter-spacing: -0.015em;
+
+      color: #29384a;
+
+      font-weight: 520;
+
+    }
+
+
+
+    .technology-highlight strong {
+
+      color:
+        var(--blue-deep);
+
+      font-weight: 620;
+
+    }
+
+
+
+    .technology-description {
+
+      margin: 0;
+
+      font-size:
+
+        clamp(
+          14px,
+          1.05vw,
+          16px
+        );
+
+      line-height: 1.72;
+
+      color: #687483;
+
+    }
+
+
+
+    /* =========================================================
+       VIDEO
+    ========================================================== */
+
+    .technology-video-wrap {
+
+      position: relative;
+
+      width: 100%;
+
+      height:
+        clamp(
+          360px,
+          52vh,
+          610px
+        );
+
+      overflow: hidden;
+
+      border-radius: 30px;
+
+      background: #f7f7f4;
+
+      border:
+
+        1px solid
+        rgba(27,43,63,0.07);
+
+      box-shadow:
+
+        0
+        28px
+        85px
+        rgba(50,84,128,0.10);
+
+      opacity: 0;
+
+      transform:
+        translateY(34px)
+        scale(0.988);
+
+      transition:
+
+        opacity 1s ease 0.32s,
+
+        transform 1s
+        cubic-bezier(.22,.61,.36,1)
+        0.32s;
+
+    }
+
+
+
+    .technology-video {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center center;
+
+    }
+
+
+
+    .technology-video-wrap::after {
+
+      content: "";
+
       position: absolute;
-      left: 50%;
-      bottom: 22px;
-      transform: translateX(-50%);
-      padding: 10px 14px;
-      border: 1px solid rgba(255,90,18,.22);
+
+      inset: 0;
+
+      pointer-events: none;
+
+      box-shadow:
+
+        inset
+        0
+        0
+        70px
+        rgba(255,255,255,0.12);
+
+    }
+
+
+
+    /* =========================================================
+       VIDEO TOP LABELS
+    ========================================================== */
+
+    .video-ui {
+
+      position: absolute;
+
+      left: 24px;
+
+      right: 24px;
+
+      top: 22px;
+
+      z-index: 4;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 16px;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .video-ui-left,
+    .video-ui-right {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 34px;
+
+      padding:
+
+        0
+        12px;
+
+      border:
+
+        1px solid
+        rgba(55,85,120,0.10);
+
       border-radius: 999px;
-      background: rgba(255,255,255,.78);
-      color: #50453f;
-      font-size: .61rem;
-      font-weight: 780;
-      letter-spacing: .08em;
+
+      background:
+
+        rgba(255,255,255,0.68);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      color: #617083;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+
       text-transform: uppercase;
-      backdrop-filter: blur(14px);
-      white-space: nowrap;
+
     }
 
-    .lrox-development__modular-card {
-      display: grid;
-      place-items: center;
-      padding: 0;
-      background: transparent;
+
+
+    .video-ui-right {
+
+      color:
+        #3978c9;
+
+      border-color:
+        rgba(80,145,235,0.20);
+
     }
 
-    .lrox-development__modular-card img {
-      width: 118%;
-      height: 118%;
-      max-width: none;
-      object-fit: contain;
-      filter: drop-shadow(0 38px 42px rgba(89,24,0,.26));
-      transform: scale(1.08);
-      transition: transform 1100ms cubic-bezier(.18,.72,.18,1);
+
+
+    /* =========================================================
+       SLIDE 03 ACTIVE
+    ========================================================== */
+
+    .technology.is-visible
+    .technology-label,
+
+    .technology.is-visible
+    .technology-badge,
+
+    .technology.is-visible
+    .technology-title-dark,
+
+    .technology.is-visible
+    .technology-title-blue,
+
+    .technology.is-visible
+    .technology-copy,
+
+    .technology.is-visible
+    .technology-video-wrap {
+
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
+
     }
 
-    .lrox-development__phase--three.is-visible
-    .lrox-development__modular-card img {
-      transform: scale(1.16);
-    }
 
-    .lrox-development__phase-number {
-      position: absolute;
-      right: clamp(24px, 4vw, 64px);
-      bottom: clamp(22px, 3.5vh, 44px);
-      z-index: 6;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(70,53,42,.52);
-    }
 
-    .lrox-development__phase--three
-    .lrox-development__phase-number {
-      color: rgba(255,255,255,.64);
-    }
+    /* =========================================================
+       TABLET
+    ========================================================== */
 
     @media (max-width: 900px) {
-      .lrox-development {
-        margin-top: -38vh;
-      }
 
-      .lrox-development__phase {
-        min-height: auto;
-        padding: 80px 0 92px;
-      }
 
-      .lrox-development__inner,
-      .lrox-development__phase:nth-child(even)
-      .lrox-development__inner {
-        width: min(calc(100% - 36px), 760px);
-        min-height: auto;
-        grid-template-columns: 1fr;
-        gap: 38px;
-      }
+      .statement {
 
-      .lrox-development__phase:nth-child(even)
-      .lrox-development__copy,
-      .lrox-development__phase:nth-child(even)
-      .lrox-development__visual {
-        order: initial;
-      }
+        height: auto;
 
-      .lrox-development__copy h2,
-      .lrox-development__copy h3 {
-        font-size: clamp(2.8rem, 11vw, 5rem);
-      }
+        min-height: 100svh;
 
-      .lrox-development__visual {
-        min-height: 520px;
-      }
-
-      .lrox-development__card {
-        height: min(68vh, 620px);
-        border-radius: 28px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .lrox-development {
-        margin-top: -30vh;
-      }
-
-      .lrox-development__phase {
-        padding: 64px 0 78px;
-      }
-
-      .lrox-development__inner {
-        width: calc(100% - 24px);
-        gap: 28px;
-      }
-
-      .lrox-development__copy p {
-        margin-top: 18px;
-        font-size: .94rem;
-      }
-
-      .lrox-development__visual {
-        min-height: 430px;
-      }
-
-      .lrox-development__card {
-        height: 58vh;
-        min-height: 420px;
-      }
-
-      .lrox-development__road-card {
-        padding: 16px;
-      }
-
-      .lrox-development__road-card img {
-        border-radius: 20px;
-      }
-
-      .lrox-development__road-badge {
-        left: 16px;
-        bottom: 16px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .lrox-development__copy,
-      .lrox-development__visual,
-      .lrox-development__prototype-image,
-      .lrox-development__modular-card img {
-        transition: none;
-      }
-    }
-
-
-
-    /* =========================
-       SLIDE 5 — AWARD + TEAM
-       Single-screen compact layout.
-    ========================== */
-
-
-
-    .lrox-recognition,
-    .lrox-recognition * {
-      box-sizing: border-box;
-    }
-
-    .lrox-recognition {
-      position: relative;
-      z-index: 30;
-      width: 100%;
-      min-height: 100svh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: clamp(56px, 6.5vh, 84px) 0;
-      color: #171411;
-      background:
-        radial-gradient(
-          circle at 84% 14%,
-          rgba(255, 115, 35, 0.18),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 14% 88%,
-          rgba(255, 160, 105, 0.10),
-          transparent 28%
-        ),
-        linear-gradient(
-          180deg,
-          #ff8c49 0%,
-          #ffd2b7 14%,
-          #fff1e7 32%,
-          #fff7f2 68%,
-          #fffaf7 100%
-        );
-      isolation: isolate;
-    }
-
-    .lrox-recognition::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255, 103, 20, 0.22) 0%,
-          rgba(255, 103, 20, 0.08) 10%,
-          transparent 26%
-        );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .lrox-recognition::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(
-          to right,
-          rgba(23, 20, 17, 0.038) 1px,
-          transparent 1px
-        );
-      background-size: 86px 100%;
-      mask-image: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.18),
-        rgba(0, 0, 0, 0.07) 22%,
-        transparent 80%
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .lrox-recognition__inner {
-      position: relative;
-      z-index: 2;
-      width: min(1320px, calc(100% - 56px));
-      margin: 0 auto;
-    }
-
-    .lrox-recognition__header {
-      max-width: 880px;
-      margin-bottom: clamp(28px, 3.2vh, 40px);
-    }
-
-    .lrox-recognition__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 14px;
-      color: #7f6658;
-      font-size: 0.78rem;
-      font-weight: 780;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__eyebrow::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #ff6419;
-      box-shadow: 0 0 0 7px rgba(255, 100, 25, 0.12);
-    }
-
-    .lrox-recognition__title {
-      margin: 0;
-      font-size: clamp(3rem, 6vw, 5.45rem);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
-      font-weight: 820;
-    }
-
-    .lrox-recognition__title span {
-      color: #ff6419;
-    }
-
-    .lrox-recognition__subtitle {
-      margin: 18px 0 0;
-      max-width: 64ch;
-      color: #76675e;
-      font-size: 1.02rem;
-      line-height: 1.74;
-    }
-
-    .lrox-recognition__layout {
-      display: grid;
-      grid-template-columns: 0.9fr 1fr 1fr;
-      gap: clamp(18px, 2vw, 24px);
-      align-items: stretch;
-    }
-
-    .lrox-recognition__card {
-      position: relative;
-      min-height: 470px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 90, 18, 0.16);
-      border-radius: 28px;
-      background: rgba(255, 250, 246, 0.82);
-      box-shadow:
-        0 22px 68px rgba(91, 48, 22, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(18px);
-      opacity: 0;
-      transform: translateY(32px);
-      transition:
-        opacity 750ms ease,
-        transform 900ms cubic-bezier(0.18, 0.72, 0.18, 1);
-    }
-
-    .lrox-recognition__card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .lrox-recognition__card:nth-child(2) {
-      transition-delay: 80ms;
-    }
-
-    .lrox-recognition__card:nth-child(3) {
-      transition-delay: 160ms;
-    }
-
-    .lrox-recognition__award-card {
-      padding: 28px 28px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255, 244, 235, 0.96),
-          rgba(255, 250, 246, 0.92)
-        );
-    }
-
-    .lrox-recognition__award-card::after {
-      content: "";
-      position: absolute;
-      right: -54px;
-      bottom: -54px;
-      width: 188px;
-      height: 188px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 100, 25, 0.16), transparent 68%);
-      pointer-events: none;
-    }
-
-    .lrox-recognition__member-card {
-      display: grid;
-      min-height: 430px;
-      grid-template-rows: 220px 1fr;
-    }
-
-    .lrox-recognition__member-photo {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 12px 18px 0;
-      background: linear-gradient(180deg, rgba(238, 229, 220, 0.95), rgba(246, 239, 233, 0.88));
-    }
-
-    .lrox-recognition__member-photo img {
-      width: auto;
-      max-width: min(100%, 230px);
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      object-position: center top;
-    }
-
-    .lrox-recognition__member-photo--amir img {
-      transform: translateY(-10px);
-    }
-
-    .lrox-recognition__card-content {
-      position: relative;
-      padding: 20px 22px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .lrox-recognition__role {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      color: #ff5a12;
-      font-size: 0.63rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__role::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 5px rgba(255, 90, 18, 0.10);
-    }
-
-    .lrox-recognition__card h3 {
-      margin: 0;
-      font-size: clamp(1.52rem, 1.6vw, 1.98rem);
-      line-height: 1.03;
-      letter-spacing: -0.04em;
-      font-weight: 790;
-      overflow-wrap: anywhere;
-    }
-
-    .lrox-recognition__card p {
-      margin: 14px 0 0;
-      color: #756a62;
-      font-size: 0.96rem;
-      line-height: 1.68;
-    }
-
-    .lrox-recognition__award-facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .lrox-recognition__award-fact {
-      min-height: 36px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid rgba(255, 90, 18, 0.18);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      color: #5f564f;
-      font-size: 0.61rem;
-      font-weight: 780;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__source-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 18px;
-      color: #171411;
-      text-decoration: none;
-      font-size: 0.66rem;
-      font-weight: 780;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__source-link::after {
-      content: "↗";
-      color: #ff7a35;
-      font-size: 0.95rem;
-    }
-
-    .lrox-recognition__strip {
-      margin-top: 22px;
-      padding: 12px 2px 0;
-      border-top: 1px solid rgba(62, 46, 36, 0.10);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px 28px;
-      color: #756a62;
-    }
-
-    .lrox-recognition__strip-label {
-      color: #171411;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-
-    .lrox-recognition__institutions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-      font-size: 0.72rem;
-      font-weight: 750;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 1120px) {
-      .lrox-recognition {
-        min-height: auto;
-      }
-
-      .lrox-recognition__layout {
-        grid-template-columns: 1fr;
-      }
-
-      .lrox-recognition__card {
-        min-height: 400px;
-      }
-
-      .lrox-recognition__member-card {
-        grid-template-columns: 320px 1fr;
-        grid-template-rows: auto;
-      }
-
-      .lrox-recognition__member-photo {
-        min-height: 100%;
-        padding: 12px 16px 0;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .lrox-recognition {
-        padding: 50px 0 58px;
-      }
-
-      .lrox-recognition__inner {
-        width: calc(100% - 28px);
-      }
-
-      .lrox-recognition__title {
-        font-size: clamp(2.8rem, 12vw, 4.3rem);
-      }
-
-      .lrox-recognition__subtitle {
-        font-size: 0.95rem;
-      }
-
-      .lrox-recognition__card {
-        min-height: auto;
-        border-radius: 24px;
-      }
-
-      .lrox-recognition__award-card {
-        min-height: 340px;
-        padding: 22px 20px 20px;
-      }
-
-      .lrox-recognition__member-card {
-        grid-template-columns: 1fr;
-        grid-template-rows: 220px auto;
-      }
-
-      .lrox-recognition__member-photo {
-        padding: 12px 18px 0;
-      }
-
-      .lrox-recognition__card-content {
-        padding: 20px 18px 20px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .lrox-recognition__award,
-      .lrox-recognition__member {
-        transition: none;
-      }
-    }
-
-
-    /* FINAL OVERRIDE — compact member cards and aligned portraits */
-    .lrox-recognition .lrox-recognition__member-card {
-      min-height: 390px !important;
-      height: 390px !important;
-      grid-template-rows: 205px 185px !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-photo {
-      height: 205px !important;
-      min-height: 205px !important;
-      padding: 0 !important;
-      align-items: flex-start !important;
-      justify-content: center !important;
-      background: rgba(245, 238, 232, 0.92) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-photo img {
-      width: 100% !important;
-      max-width: none !important;
-      height: 100% !important;
-      object-fit: cover !important;
-      object-position: center 24% !important;
-      transform: none !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-photo--amir img {
-      object-position: center 18% !important;
-      transform: translateY(-14px) scale(1.035) !important;
-      transform-origin: center top !important;
-    }
-
-    .lrox-recognition .lrox-recognition__card-content {
-      padding: 17px 22px 18px !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card h3 {
-      font-size: clamp(1.45rem, 1.55vw, 1.9rem) !important;
-      line-height: 1.02 !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card p {
-      margin-top: 10px !important;
-      font-size: 0.9rem !important;
-      line-height: 1.55 !important;
-    }
-
-    @media (max-width: 1120px) {
-      .lrox-recognition .lrox-recognition__member-card {
-        height: auto !important;
-        min-height: 340px !important;
-        grid-template-columns: 240px 1fr !important;
-        grid-template-rows: 340px !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-photo {
-        height: 340px !important;
-        min-height: 340px !important;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .lrox-recognition .lrox-recognition__member-card {
-        min-height: 360px !important;
-        height: 360px !important;
-        grid-template-columns: 1fr !important;
-        grid-template-rows: 190px 170px !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-photo {
-        height: 190px !important;
-        min-height: 190px !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-photo--amir img {
-        transform: translateY(-10px) scale(1.03) !important;
-      }
-    }
-
-    /* FINAL OVERRIDE V9 — award card left, member cards stacked right */
-    .lrox-recognition {
-      padding: clamp(58px, 7vh, 88px) 0 clamp(48px, 6.5vh, 74px) !important;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255, 120, 40, 0.22), transparent 24%),
-        radial-gradient(circle at 88% 8%, rgba(255, 116, 40, 0.18), transparent 22%),
-        linear-gradient(
-          180deg,
-          #ff6216 0%,
-          #ff7b34 7%,
-          #ffcdb0 18%,
-          #fff1e6 31%,
-          #fff8f3 100%
-        ) !important;
-    }
-
-    .lrox-recognition::before {
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255, 96, 17, 0.24) 0%,
-          rgba(255, 96, 17, 0.10) 9%,
-          transparent 23%
-        ) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__header {
-      max-width: 860px !important;
-      margin-bottom: clamp(24px, 3vh, 34px) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__subtitle {
-      max-width: 62ch !important;
-    }
-
-    .lrox-recognition .lrox-recognition__layout {
-      grid-template-columns: minmax(320px, 0.88fr) minmax(560px, 1.12fr) !important;
-      grid-template-rows: auto auto !important;
-      gap: 18px 22px !important;
-      align-items: stretch !important;
-    }
-
-    .lrox-recognition .lrox-recognition__award-card {
-      grid-column: 1 !important;
-      grid-row: 1 / span 2 !important;
-      min-height: 522px !important;
-      height: auto !important;
-      padding: 26px 24px 22px !important;
-      background: linear-gradient(180deg, rgba(255, 245, 237, 0.96), rgba(255, 250, 246, 0.92)) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card {
-      grid-column: 2 !important;
-      min-height: 252px !important;
-      height: 252px !important;
-      display: grid !important;
-      grid-template-columns: 220px minmax(0, 1fr) !important;
-      grid-template-rows: 1fr !important;
-      background: rgba(255, 250, 246, 0.9) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card:nth-child(2) {
-      grid-row: 1 !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card:nth-child(3) {
-      grid-row: 2 !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-photo {
-      height: 100% !important;
-      min-height: 100% !important;
-      padding: 10px 8px 0 12px !important;
-      display: flex !important;
-      align-items: flex-start !important;
-      justify-content: center !important;
-      background: linear-gradient(180deg, rgba(241, 232, 223, 0.95), rgba(248, 242, 237, 0.88)) !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-photo img {
-      width: 100% !important;
-      max-width: 188px !important;
-      height: 100% !important;
-      object-fit: contain !important;
-      object-position: center top !important;
-      transform: none !important;
-      display: block !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card:nth-child(3) .lrox-recognition__member-photo img {
-      transform: translateY(-6px) scale(1.01) !important;
-      transform-origin: center top !important;
-    }
-
-    .lrox-recognition .lrox-recognition__card-content {
-      padding: 18px 22px 18px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: center !important;
-    }
-
-    .lrox-recognition .lrox-recognition__role {
-      margin-bottom: 10px !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card h3 {
-      font-size: clamp(1.6rem, 1.9vw, 2.15rem) !important;
-      line-height: 0.98 !important;
-      letter-spacing: -0.045em !important;
-      overflow-wrap: normal !important;
-      word-break: normal !important;
-    }
-
-    .lrox-recognition .lrox-recognition__member-card p {
-      margin-top: 10px !important;
-      font-size: 0.95rem !important;
-      line-height: 1.55 !important;
-      max-width: 40ch !important;
-    }
-
-    .lrox-recognition .lrox-recognition__strip {
-      margin-top: 18px !important;
-    }
-
-    @media (max-width: 1120px) {
-      .lrox-recognition .lrox-recognition__layout {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto auto !important;
-      }
-
-      .lrox-recognition .lrox-recognition__award-card,
-      .lrox-recognition .lrox-recognition__member-card {
-        grid-column: 1 !important;
-      }
-
-      .lrox-recognition .lrox-recognition__award-card {
-        grid-row: 1 !important;
-        min-height: 360px !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-card:nth-child(2) {
-        grid-row: 2 !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-card:nth-child(3) {
-        grid-row: 3 !important;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .lrox-recognition .lrox-recognition__member-card {
-        min-height: auto !important;
-        height: auto !important;
-        grid-template-columns: 1fr !important;
-        grid-template-rows: 230px auto !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-photo {
-        min-height: 230px !important;
-        height: 230px !important;
-        padding: 10px 10px 0 !important;
-      }
-
-      .lrox-recognition .lrox-recognition__member-photo img {
-        max-width: 180px !important;
-      }
-
-      .lrox-recognition .lrox-recognition__card-content {
-        padding: 18px 18px 20px !important;
-      }
-    }
-
-
-    /* =========================
-       SLIDE 6 — FAQ
-       Previous slides remain unchanged.
-    ========================== */
-
-    .lrox-faq,
-    .lrox-faq * {
-      box-sizing: border-box;
-    }
-
-    .lrox-faq {
-      position: relative;
-      z-index: 32;
-      width: 100%;
-      min-height: 100svh;
-      overflow: hidden;
-      padding: clamp(72px, 9vh, 118px) 0;
-      color: #171411;
-      background:
-        radial-gradient(
-          circle at 82% 16%,
-          rgba(255, 112, 39, 0.16),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 18% 88%,
-          rgba(255, 169, 114, 0.10),
-          transparent 30%
-        ),
-        linear-gradient(
-          180deg,
-          #fff2e8 0%,
-          #fff8f3 38%,
-          #fffdfa 100%
-        );
-      isolation: isolate;
-    }
-
-    .lrox-faq::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.28;
-      background-image:
-        linear-gradient(
-          rgba(54, 40, 31, 0.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(54, 40, 31, 0.035) 1px,
-          transparent 1px
-        );
-      background-size: 88px 88px;
-      mask-image:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.7),
-          transparent 95%
-        );
-    }
-
-    .lrox-faq__inner {
-      width: min(calc(100% - 64px), 1460px);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns:
-        minmax(300px, 0.72fr)
-        minmax(0, 1.28fr);
-      gap: clamp(42px, 7vw, 110px);
-      align-items: start;
-    }
-
-    .lrox-faq__intro {
-      position: sticky;
-      top: clamp(28px, 7vh, 80px);
-      padding-top: 6px;
-    }
-
-    .lrox-faq__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: #756a62;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .lrox-faq__eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ff5a12;
-      box-shadow: 0 0 0 7px rgba(255, 90, 18, 0.12);
-    }
-
-    .lrox-faq__title {
-      margin: 0;
-      max-width: 650px;
-      font-size: clamp(3rem, 5.8vw, 6.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.06em;
-      font-weight: 820;
-    }
-
-    .lrox-faq__title span {
-      color: #ff5a12;
-    }
-
-    .lrox-faq__description {
-      max-width: 560px;
-      margin: 24px 0 0;
-      color: #756a62;
-      font-size: clamp(1rem, 1.15vw, 1.12rem);
-      line-height: 1.65;
-    }
-
-    .lrox-faq__contact {
-      margin-top: 34px;
-      padding: 22px 0 0;
-      border-top: 1px solid rgba(58, 43, 33, 0.11);
-    }
-
-    .lrox-faq__contact p {
-      margin: 0;
-      color: #756a62;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .lrox-faq__contact a {
-      margin-top: 14px;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      background: #171411;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.72rem;
-      font-weight: 780;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition:
-        transform 180ms ease,
-        background 180ms ease;
-    }
-
-    .lrox-faq__contact a:hover {
-      background: #ff5a12;
-      transform: translateY(-2px);
-    }
-
-    .lrox-faq__list {
-      border-top: 1px solid rgba(58, 43, 33, 0.12);
-    }
-
-    .lrox-faq__item {
-      position: relative;
-      border-bottom: 1px solid rgba(58, 43, 33, 0.12);
-      transition:
-        background 240ms ease,
-        box-shadow 240ms ease;
-    }
-
-    .lrox-faq__item.is-open {
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255, 90, 18, 0.055),
-          rgba(255, 255, 255, 0.38)
-        );
-      box-shadow:
-        inset 3px 0 0 #ff5a12;
-    }
-
-    .lrox-faq__button {
-      width: 100%;
-      min-height: 92px;
-      padding: 22px 0;
-      border: 0;
-      display: grid;
-      grid-template-columns: 44px minmax(0, 1fr) 44px;
-      gap: 18px;
-      align-items: center;
-      background: transparent;
-      color: #171411;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .lrox-faq__number {
-      color: #ff5a12;
-      font-size: 0.68rem;
-      font-weight: 820;
-      letter-spacing: 0.12em;
-    }
-
-    .lrox-faq__question {
-      font-size: clamp(1.2rem, 1.7vw, 1.75rem);
-      line-height: 1.18;
-      letter-spacing: -0.025em;
-      font-weight: 740;
-    }
-
-    .lrox-faq__icon {
-      position: relative;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(58, 43, 33, 0.14);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.72);
-      transition:
-        background 220ms ease,
-        border-color 220ms ease,
-        transform 220ms ease;
-    }
-
-    .lrox-faq__icon::before,
-    .lrox-faq__icon::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 13px;
-      height: 1.5px;
-      border-radius: 99px;
-      background: #171411;
-      transform: translate(-50%, -50%);
-      transition:
-        transform 220ms ease,
-        background 220ms ease;
-    }
-
-    .lrox-faq__icon::after {
-      transform:
-        translate(-50%, -50%)
-        rotate(90deg);
-    }
-
-    .lrox-faq__item.is-open
-    .lrox-faq__icon {
-      border-color: #ff5a12;
-      background: #ff5a12;
-      transform: rotate(180deg);
-    }
-
-    .lrox-faq__item.is-open
-    .lrox-faq__icon::before,
-    .lrox-faq__item.is-open
-    .lrox-faq__icon::after {
-      background: #fff;
-    }
-
-    .lrox-faq__item.is-open
-    .lrox-faq__icon::after {
-      transform:
-        translate(-50%, -50%)
-        rotate(0deg);
-    }
-
-    .lrox-faq__answer {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition:
-        grid-template-rows 380ms cubic-bezier(0.18, 0.72, 0.18, 1);
-    }
-
-    .lrox-faq__item.is-open
-    .lrox-faq__answer {
-      grid-template-rows: 1fr;
-    }
-
-    .lrox-faq__answer-inner {
-      overflow: hidden;
-    }
-
-    .lrox-faq__answer p {
-      max-width: 760px;
-      margin: 0;
-      padding:
-        0
-        62px
-        26px
-        62px;
-      color: #756a62;
-      font-size: 1rem;
-      line-height: 1.72;
-    }
-
-    @media (max-width: 980px) {
-      .lrox-faq__inner {
-        grid-template-columns: 1fr;
-        gap: 46px;
-      }
-
-      .lrox-faq__intro {
-        position: relative;
-        top: auto;
-      }
-
-      .lrox-faq__title {
-        max-width: 780px;
-      }
-
-      .lrox-faq__description {
-        max-width: 720px;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .lrox-faq {
-        padding: 62px 0 76px;
-      }
-
-      .lrox-faq__inner {
-        width: calc(100% - 28px);
-      }
-
-      .lrox-faq__title {
-        font-size: clamp(2.8rem, 12vw, 4.4rem);
-      }
-
-      .lrox-faq__button {
-        min-height: 80px;
-        grid-template-columns: 34px minmax(0, 1fr) 38px;
-        gap: 11px;
-      }
-
-      .lrox-faq__question {
-        font-size: 1.08rem;
-      }
-
-      .lrox-faq__icon {
-        width: 34px;
-        height: 34px;
-      }
-
-      .lrox-faq__answer p {
         padding:
-          0
-          44px
-          22px
-          45px;
-        font-size: 0.92rem;
-      }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      .lrox-faq__answer,
-      .lrox-faq__icon,
-      .lrox-faq__icon::before,
-      .lrox-faq__icon::after {
-        transition: none;
-      }
-    }
+          90px
+          0;
 
-
-    /* =========================
-       FINAL WEBSITE FOOTER
-    ========================== */
-
-    .lrox-footer,
-    .lrox-footer * {
-      box-sizing: border-box;
-    }
-
-    .lrox-footer {
-      position: relative;
-      z-index: 34;
-      overflow: hidden;
-      color: #fffaf7;
-      background:
-        radial-gradient(
-          circle at 12% 0%,
-          rgba(255, 126, 54, 0.28),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 86% 14%,
-          rgba(255, 91, 18, 0.18),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          #3a1d12 0%,
-          #25130e 46%,
-          #17100d 100%
-        );
-    }
-
-    .lrox-footer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.2;
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.045) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.045) 1px,
-          transparent 1px
-        );
-      background-size: 88px 88px;
-      mask-image:
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.7),
-          transparent 90%
-        );
-    }
-
-    .lrox-footer__inner {
-      position: relative;
-      z-index: 2;
-      width: min(calc(100% - 64px), 1460px);
-      margin: 0 auto;
-      padding: clamp(58px, 7vh, 88px) 0 28px;
-    }
-
-    .lrox-footer__top {
-      display: grid;
-      grid-template-columns:
-        minmax(280px, 1.2fr)
-        minmax(170px, 0.65fr)
-        minmax(150px, 0.55fr)
-        minmax(230px, 0.8fr);
-      gap: clamp(36px, 5vw, 88px);
-      align-items: start;
-    }
-
-    .lrox-footer__brand {
-      max-width: 470px;
-    }
-
-    .lrox-footer__logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.25rem;
-      font-weight: 820;
-      letter-spacing: -0.03em;
-    }
-
-    .lrox-footer__logo-mark {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 13px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.08),
-          rgba(255, 255, 255, 0.015)
-        );
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    }
-
-    .lrox-footer__logo-mark::before {
-      content: "";
-      position: absolute;
-      top: 12px;
-      right: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ff6a22;
-      box-shadow: 0 0 18px rgba(255, 106, 34, 0.8);
-    }
-
-    .lrox-footer__logo-mark::after {
-      content: "";
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 12px;
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.24),
-          #ff6a22
-        );
-    }
-
-    .lrox-footer__summary {
-      margin: 24px 0 0;
-      max-width: 44ch;
-      color: rgba(255, 250, 247, 0.72);
-      font-size: 0.98rem;
-      line-height: 1.7;
-    }
-
-    .lrox-footer__status {
-      margin-top: 22px;
-      min-height: 38px;
-      padding: 0 14px;
-      border: 1px solid rgba(255, 106, 34, 0.38);
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: #ffb488;
-      background: rgba(255, 106, 34, 0.08);
-      font-size: 0.64rem;
-      font-weight: 800;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-
-    .lrox-footer__status::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #ff6a22;
-      box-shadow: 0 0 12px rgba(255, 106, 34, 0.8);
-    }
-
-    .lrox-footer__heading {
-      margin: 5px 0 20px;
-      color: rgba(255, 250, 247, 0.46);
-      font-size: 0.66rem;
-      font-weight: 820;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .lrox-footer__links {
-      display: grid;
-      gap: 13px;
-    }
-
-    .lrox-footer__links a,
-    .lrox-footer__contact a {
-      width: fit-content;
-      color: rgba(255, 250, 247, 0.7);
-      text-decoration: none;
-      font-size: 0.92rem;
-      line-height: 1.4;
-      transition:
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .lrox-footer__links a:hover,
-    .lrox-footer__contact a:hover {
-      color: #ff8b4a;
-      transform: translateX(3px);
-    }
-
-    .lrox-footer__contact {
-      display: grid;
-      gap: 15px;
-    }
-
-    .lrox-footer__contact-item {
-      display: grid;
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-    }
-
-    .lrox-footer__contact-icon {
-      width: 28px;
-      height: 28px;
-      border: 1px solid rgba(255, 106, 34, 0.24);
-      border-radius: 9px;
-      display: grid;
-      place-items: center;
-      color: #ff7b35;
-      font-size: 0.8rem;
-      background: rgba(255, 106, 34, 0.05);
-    }
-
-    .lrox-footer__contact-label {
-      display: block;
-      margin-bottom: 3px;
-      color: rgba(255, 250, 247, 0.38);
-      font-size: 0.59rem;
-      font-weight: 780;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-
-    .lrox-footer__contact-value {
-      color: rgba(255, 250, 247, 0.74);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
-
-    .lrox-footer__bottom {
-      margin-top: clamp(46px, 6vh, 70px);
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px 42px;
-    }
-
-    .lrox-footer__copyright {
-      color: rgba(255, 250, 247, 0.42);
-      font-size: 0.77rem;
-      line-height: 1.7;
-    }
-
-    .lrox-footer__copyright strong {
-      display: block;
-      color: rgba(255, 250, 247, 0.66);
-      font-weight: 650;
-    }
-
-    .lrox-footer__attributes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px 26px;
-      color: rgba(255, 250, 247, 0.64);
-      font-size: 0.61rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .lrox-footer__attributes span:first-child {
-      position: relative;
-      padding-left: 14px;
-    }
-
-    .lrox-footer__attributes span:first-child::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #ff6a22;
-      transform: translateY(-50%);
-    }
-
-    @media (max-width: 1040px) {
-      .lrox-footer__top {
-        grid-template-columns: 1.2fr 0.8fr;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .lrox-footer__inner {
-        width: calc(100% - 28px);
-        padding-top: 52px;
       }
 
-      .lrox-footer__top {
+
+      .statement-top {
+
+        margin-bottom: 42px;
+
+      }
+
+
+      .statement-title {
+
+        font-size:
+
+          clamp(
+            42px,
+            8vw,
+            68px
+          );
+
+      }
+
+
+      .statement-lower {
+
         grid-template-columns: 1fr;
-        gap: 38px;
+
+        gap: 24px;
+
+        margin-top: 45px;
+
       }
 
-      .lrox-footer__bottom {
-        align-items: flex-start;
+
+
+      /* slide 03 */
+
+      .technology {
+
+        padding:
+
+          90px
+          28px;
+
       }
 
-      .lrox-footer__attributes {
-        justify-content: flex-start;
+
+      .technology-top {
+
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+
+        margin-bottom: 38px;
+
       }
+
+
+      .technology-copy {
+
+        max-width: 650px;
+
+      }
+
+
+      .technology-video-wrap {
+
+        height:
+          clamp(
+            360px,
+            50vh,
+            520px
+          );
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
+    @media (max-width: 700px) {
+
+
+      /* hero */
+
+      .hero {
+
+        min-height: 680px;
+
+      }
+
+
+      .hero-video-main {
+
+        object-fit: cover;
+
+        object-position:
+
+          center top;
+
+      }
+
+
+      .hero-video-bg {
+
+        display: none;
+
+      }
+
+
+      .hero-fade {
+
+        height: 175px;
+
+      }
+
+
+      .nav {
+
+        width:
+
+          calc(
+            100% - 36px
+          );
+
+        height: 72px;
+
+      }
+
+
+      .mode {
+
+        display: none;
+
+      }
+
+
+      .logo {
+
+        font-size: 16px;
+
+      }
+
+
+      .back {
+
+        font-size: 11px;
+
+      }
+
+
+      .hero-content {
+
+        left: 22px;
+
+        right: 22px;
+
+        bottom: 105px;
+
+        width: auto;
+
+      }
+
+
+      .eyebrow {
+
+        font-size: 9px;
+
+        margin-bottom: 13px;
+
+      }
+
+
+      .hero h1 {
+
+        max-width: 460px;
+
+        font-size:
+
+          clamp(
+            37px,
+            10vw,
+            54px
+          );
+
+      }
+
+
+      .hero-text {
+
+        max-width: 430px;
+
+        margin-top: 16px;
+
+        font-size: 14px;
+
+      }
+
+
+      .hero-button {
+
+        margin-top: 18px;
+
+        min-height: 40px;
+
+        font-size: 10px;
+
+      }
+
+
+
+      /* slide 02 */
+
+      .statement {
+
+        margin-top: -1px;
+
+        padding:
+
+          72px
+          0
+          74px;
+
+      }
+
+
+      .statement-inner {
+
+        width:
+
+          calc(
+            100% - 40px
+          );
+
+      }
+
+
+      .statement-top {
+
+        display: block;
+
+        margin-bottom: 36px;
+
+      }
+
+
+      .section-label {
+
+        margin-bottom: 16px;
+
+        font-size: 9px;
+
+      }
+
+
+      .audience-pill {
+
+        min-height: 34px;
+
+        padding:
+
+          0
+          11px;
+
+        font-size: 8px;
+
+      }
+
+
+      .statement-title {
+
+        font-size:
+
+          clamp(
+            36px,
+            10vw,
+            52px
+          );
+
+      }
+
+
+      .title-blue {
+
+        margin-top: 12px;
+
+      }
+
+
+      .statement-lower {
+
+        margin-top: 38px;
+
+        padding-top: 22px;
+
+      }
+
+
+      .statement-keyline {
+
+        font-size: 18px;
+
+      }
+
+
+      .statement-description {
+
+        font-size: 14px;
+
+      }
+
+
+
+      /* slide 03 */
+
+      .technology {
+
+        min-height: auto;
+
+        padding:
+
+          75px
+          20px
+          80px;
+
+      }
+
+
+      .technology-label {
+
+        font-size: 9px;
+
+      }
+
+
+      .technology-badge {
+
+        font-size: 7px;
+
+        line-height: 1.4;
+
+        padding:
+
+          7px
+          10px;
+
+        min-height: 32px;
+
+      }
+
+
+      .technology-title {
+
+        font-size:
+
+          clamp(
+            36px,
+            10vw,
+            52px
+          );
+
+      }
+
+
+      .technology-highlight {
+
+        font-size: 17px;
+
+      }
+
+
+      .technology-description {
+
+        font-size: 14px;
+
+      }
+
+
+      .technology-video-wrap {
+
+        height: 310px;
+
+        border-radius: 22px;
+
+      }
+
+
+      .video-ui {
+
+        left: 12px;
+
+        right: 12px;
+
+        top: 12px;
+
+      }
+
+
+      .video-ui-left,
+      .video-ui-right {
+
+        min-height: 29px;
+
+        padding:
+
+          0
+          9px;
+
+        font-size: 7px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================== */
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+
+      html {
+
+        scroll-behavior: auto;
+
+      }
+
+
+      .hero-content,
+      .nav {
+
+        animation: none;
+
+      }
+
+
+      .statement
+      .section-label,
+
+      .audience-pill,
+
+      .title-dark,
+
+      .title-blue,
+
+      .statement-keyline,
+
+      .statement-description,
+
+      .technology-label,
+
+      .technology-badge,
+
+      .technology-title-dark,
+
+      .technology-title-blue,
+
+      .technology-copy,
+
+      .technology-video-wrap {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        transition: none !important;
+
+      }
+
+
+      .motion-line::after {
+
+        animation: none;
+
+      }
+
+
+      .hero-button {
+
+        transition: none;
+
+      }
+
     }
 
   </style>
+
 </head>
 
+
+
 <body>
-  <section class="lrox-hero" id="home">
+
+
+  <!-- =====================================================
+       HERO / SLIDE 01
+       SAME AS CURRENT VERSION
+  ====================================================== -->
+
+  <section class="hero">
+
+
     <video
-      id="lroxHeroVideo"
-      class="lrox-hero__video"
+      class="hero-video-bg"
       autoplay
       muted
       loop
       playsinline
       preload="auto"
+      aria-hidden="true"
     >
+
       <source
-        src="assets/videolrox-hero.mp4"
+        src="../assets/guide/hero.mp4"
         type="video/mp4"
-      />
+      >
+
     </video>
 
+
+
+    <video
+      class="hero-video-main"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+
+      <source
+        src="../assets/guide/hero.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+
+
+    <div class="hero-overlay"></div>
+
+
+
+    <nav
+      class="nav"
+      aria-label="Hauptnavigation"
+    >
+
+
+      <a
+        class="logo"
+        href="../gateway-preview.html"
+        aria-label="Zur LROX Auswahl"
+      >
+
+        LROX
+
+      </a>
+
+
+
+      <div class="mode">
+
+        Guide
+
+      </div>
+
+
+
+      <a
+        class="back"
+        href="../gateway-preview.html"
+      >
+
+        ← Zur Auswahl
+
+      </a>
+
+
+    </nav>
+
+
+
+    <div class="hero-content">
+
+
+      <div class="eyebrow">
+
+        Intelligente Mobilitätsassistenz
+
+      </div>
+
+
+
+      <h1>
+
+        Hindernisse erkennen.<br>
+
+        Freie Wege finden.
+
+      </h1>
+
+
+
+      <div class="hero-text">
+
+        LROX Guide erkennt Hindernisse,
+        prüft freie Richtungen und hilft dabei,
+        einen klareren Weg nach vorn zu finden.
+
+      </div>
+
+
+
+      <a
+        class="hero-button"
+        href="#funktion"
+      >
+
+        So funktioniert es ↓
+
+      </a>
+
+
+    </div>
+
+
+
+    <div class="hero-fade"></div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SLIDE 02
+       SAME AS CURRENT VERSION
+  ====================================================== -->
+
+  <section
+    class="statement"
+    id="funktion"
+  >
+
+
+    <div class="statement-inner">
+
+
+      <div class="statement-top">
+
+
+        <div class="section-label">
+
+          02 / Mobilitätsassistenz
+
+        </div>
+
+
+
+        <div class="audience-pill">
+
+          <span class="audience-dot"></span>
+
+          Für blinde und sehbehinderte Menschen
+
+        </div>
+
+
+      </div>
+
+
+
+      <h2 class="statement-title">
+
+
+        <span class="title-dark">
+
+          Hindernisse erkennen.
+
+        </span>
+
+
+        <span class="title-blue">
+
+          Freie Wege verstehen.
+
+        </span>
+
+
+      </h2>
+
+
+
+      <div class="statement-lower">
+
+
+        <div class="statement-keyline">
+
+          Orientierung bedeutet mehr,
+          als nur vor Hindernissen zu warnen.
+
+          <strong>
+
+            Entscheidend ist zu wissen,
+            wo es weitergeht.
+
+          </strong>
+
+        </div>
+
+
+
+        <p class="statement-description">
+
+          LROX Guide unterstützt blinde und
+          sehbehinderte Menschen bei der Orientierung.
+
+          Das System erkennt Hindernisse,
+          signalisiert den Stopp und hilft dabei,
+          eine freie Richtung zu identifizieren.
+
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
+
     <div
-      class="lrox-hero__shade"
+      class="motion-line"
       aria-hidden="true"
     ></div>
 
-    <header class="lrox-header">
-      <a
-        class="lrox-logo"
-        href="#home"
-        aria-label="LROX home"
-      >
-        <span class="lrox-logo__mark"></span>
-        <span>LROX</span>
-      </a>
 
-      <nav
-        class="lrox-nav"
-        aria-label="Primary navigation"
-      >
-        <a href="#home">Start</a>
-        <a href="#product">Product</a>
-        <a href="#development">Entwicklung</a>
-        <a href="#team">Team & Preis</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Kontakt</a>
-      </nav>
-
-      <a
-        class="lrox-header__cta"
-        href="#contact"
-      >
-        Pilot Partner
-      </a>
-    </header>
-
-    <div class="lrox-hero__content">
-      <div class="lrox-eyebrow">
-        <span></span>
-        AI-powered bicycle safety
-      </div>
-
-      <h1>
-        Gefahren erkennen.<br />
-        <strong>Bevor sie entstehen.</strong>
-      </h1>
-
-      <p>
-        LROX erkennt kritische Verkehrssituationen in Echtzeit
-        und warnt Radfahrende im entscheidenden Moment.
-      </p>
-
-      <div class="lrox-actions">
-        <a
-          class="lrox-btn lrox-btn--primary"
-          href="#statement"
-        >
-          Mehr erfahren
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="lrox-status">
-      <span></span>
-      Live risk detection
-    </div>
-
-    <button
-      id="lroxVideoToggle"
-      class="lrox-video-toggle"
-      type="button"
-      aria-label="Pause video"
-    >
-      <span class="lrox-pause">Ⅱ</span>
-      <span class="lrox-play" hidden>▶</span>
-    </button>
-  </section>
-
-  <section
-    class="lrox-value"
-    id="statement"
-  >
-    <div class="lrox-value__scroll">
-      <div class="lrox-value__stage">
-        <div
-          class="lrox-value__background"
-          aria-hidden="true"
-        >
-          <div class="lrox-value__glow"></div>
-
-          <div class="lrox-value__radar">
-            <span
-              class="lrox-value__ring lrox-value__ring--1"
-            ></span>
-
-            <span
-              class="lrox-value__ring lrox-value__ring--2"
-            ></span>
-
-            <span
-              class="lrox-value__ring lrox-value__ring--3"
-            ></span>
-
-            <span class="lrox-value__radar-center"></span>
-            <span class="lrox-value__target"></span>
-            <span class="lrox-value__scan-line"></span>
-          </div>
-        </div>
-
-        <div class="lrox-value__inner">
-          <div class="lrox-value__heading">
-            <div class="lrox-value__eyebrow">
-              <span></span>
-              From detection to reaction
-            </div>
-
-            <h2 class="lrox-value__title">
-              <span class="lrox-value__line">
-                Mehr Zeit.
-              </span>
-
-              <span class="lrox-value__line">
-                Mehr Kontrolle.
-              </span>
-
-              <span
-                class="lrox-value__line lrox-value__line--orange"
-              >
-                Mehr Sicherheit.
-              </span>
-            </h2>
-
-            <p class="lrox-value__description">
-              LROX verwandelt komplexe Verkehrsdaten in eine klare,
-              rechtzeitige Warnung – damit Radfahrende früher
-              reagieren können.
-            </p>
-          </div>
-
-          <div class="lrox-value__process">
-            <article
-              class="lrox-value__item"
-              data-process="1"
-            >
-              <span class="lrox-value__item-number">
-                01
-              </span>
-
-              <div class="lrox-value__item-content">
-                <div class="lrox-value__item-icon">
-                  <span></span>
-                </div>
-
-                <strong>See</strong>
-
-                <p>
-                  Die Verkehrssituation kontinuierlich erfassen.
-                </p>
-              </div>
-            </article>
-
-            <article
-              class="lrox-value__item"
-              data-process="2"
-            >
-              <span class="lrox-value__item-number">
-                02
-              </span>
-
-              <div class="lrox-value__item-content">
-                <div class="lrox-value__item-icon">
-                  <span></span>
-                  <span></span>
-                </div>
-
-                <strong>Think</strong>
-
-                <p>
-                  Bewegungen analysieren und Risiken bewerten.
-                </p>
-              </div>
-            </article>
-
-            <article
-              class="lrox-value__item"
-              data-process="3"
-            >
-              <span class="lrox-value__item-number">
-                03
-              </span>
-
-              <div class="lrox-value__item-content">
-                <div class="lrox-value__item-icon">
-                  <span></span>
-                </div>
-
-                <strong>Warn</strong>
-
-                <p>
-                  Im richtigen Moment eine klare Warnung ausgeben.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="lrox-value__bottom">
-          <div class="lrox-value__progress">
-            <span></span>
-          </div>
-
-          <div class="lrox-value__progress-labels">
-            <span>Detect</span>
-            <span>Analyse</span>
-            <span>React</span>
-          </div>
-
-          <a
-            class="lrox-value__continue"
-            href="#product"
-            aria-label="Continue to product"
-          >
-            <span>Discover the product</span>
-            <strong>↓</strong>
-          </a>
-        </div>
-      </div>
-    </div>
   </section>
 
 
+
+  <!-- =====================================================
+       SLIDE 03
+       SENSOR-BASED / OFFLINE
+  ====================================================== -->
+
   <section
-    class="lrox-product-rotation"
-    id="product"
+    class="technology"
+    id="sensorik"
   >
-    <div class="lrox-product-rotation__scroll">
-      <div class="lrox-product-rotation__stage">
-        <div class="lrox-product-rotation__intro">
-          <div class="lrox-product-rotation__eyebrow">
-            The LROX system
+
+
+    <div class="technology-inner">
+
+
+      <div class="technology-top">
+
+
+        <!-- LEFT -->
+
+        <div class="technology-heading">
+
+
+          <div class="technology-label">
+
+            03 / Sensorbasierte Orientierung
+
           </div>
 
-          <h2 class="lrox-product-rotation__title">
-            Mehrere Sensoren.
-            <span>Eine klare Warnung.</span>
+
+
+          <div class="technology-badge">
+
+            <span class="technology-badge-dot"></span>
+
+            Ohne Kamera • Offline • Nur mit Sensoren
+
+          </div>
+
+
+
+          <h2 class="technology-title">
+
+
+            <span class="technology-title-dark">
+
+              Orientierung<br>
+              ohne Kamera.
+
+            </span>
+
+
+            <span class="technology-title-blue">
+
+              Offline.<br>
+              Sensorbasiert.
+
+            </span>
+
+
           </h2>
+
+
         </div>
 
-        <div class="lrox-product-rotation__viewer">
-          <div
-            class="lrox-product-rotation__object"
-            id="lroxProductObject"
-          >
-            <img
-              class="lrox-product-rotation__image lrox-product-rotation__image--front"
-              src="assets/lrox-helmet-front-orange.png"
-              alt="LROX Fahrradhelm mit Sicherheitsmodul von vorne"
-            />
 
-            <img
-              class="lrox-product-rotation__image lrox-product-rotation__image--angle"
-              src="assets/lrox-helmet-angle-orange.png"
-              alt="LROX Fahrradhelm mit Sicherheitsmodul aus seitlicher Perspektive"
-            />
 
-          </div>
+        <!-- RIGHT -->
 
-          <div
-            class="lrox-product-rotation__floor"
-            aria-hidden="true"
-          ></div>
-        </div>
+        <div class="technology-copy">
 
-        <div class="lrox-product-rotation__copy">
-          <strong id="lroxProductStatement">
-            Sensoren erfassen die Umgebung.
-          </strong>
 
-          <p id="lroxProductDescription">
-            Das Helm-Modul erkennt relevante Bewegungen frühzeitig.
+          <p class="technology-highlight">
+
+            Sensoren erkennen
+
+            <strong>
+              Hindernisse, Stufen,
+              Kanten und freie Wege.
+            </strong>
+
           </p>
+
+
+
+          <p class="technology-description">
+
+            LROX Guide arbeitet vollständig
+            ohne Kamera und offline.
+
+            Das System nutzt ausschließlich Sensoren,
+            um Hindernisse, Stufen, Kanten,
+            Vertiefungen und andere Wegelemente
+            zu erkennen, die Umgebung zu prüfen
+            und eine freie Richtung zu bestimmen.
+
+          </p>
+
+
         </div>
 
-        <div class="lrox-product-rotation__features">
-          <span class="lrox-product-rotation__feature is-active">
-            Multi-sensor detection
-          </span>
 
-          <span class="lrox-product-rotation__feature">
-            Ohne klassische Kamera
-          </span>
-        </div>
+      </div>
+
+
+
+      <!-- VIDEO -->
+
+      <div class="technology-video-wrap">
+
+
+        <video
+          class="technology-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+
+          <source
+            src="../assets/guide/how-it-works.mp4"
+            type="video/mp4"
+          >
+
+        </video>
+
+
 
         <div
-          class="lrox-product-rotation__steps"
+          class="video-ui"
           aria-hidden="true"
         >
-          <span class="lrox-product-rotation__step is-active"></span>
-          <span class="lrox-product-rotation__step"></span>
+
+
+          <div class="video-ui-left">
+
+            Sensorbasierte Umgebungserfassung
+
+          </div>
+
+
+          <div class="video-ui-right">
+
+            Offline • Keine Kamera
+
+          </div>
+
+
         </div>
 
-        <div class="lrox-product-rotation__angle">
-          <span id="lroxProductAngle">01 · Front</span>
-        </div>
+
       </div>
+
+
     </div>
-  </section>
 
-  <section
-    class="lrox-development"
-    id="development"
-  >
-    <article
-      class="lrox-development__phase lrox-development__phase--one"
-      data-development-phase
-    >
-      <div class="lrox-development__inner">
-        <div class="lrox-development__copy">
-          <div class="lrox-development__kicker">
-            01 · Road Research
-          </div>
 
-          <h2>
-            Von der Forschung zum
-            <span>modularen System.</span>
-          </h2>
-
-          <p>
-            Die erste Generation analysierte reale
-            Verkehrssituationen direkt am Fahrrad.
-            Felddaten bildeten die Grundlage für
-            Erkennung und Risikobewertung.
-          </p>
-
-          <div class="lrox-development__chips">
-            <span class="lrox-development__chip">
-              Field testing
-            </span>
-
-            <span class="lrox-development__chip">
-              Real traffic data
-            </span>
-          </div>
-        </div>
-
-        <div class="lrox-development__visual">
-          <div
-            class="lrox-development__card
-                   lrox-development__road-card"
-          >
-            <img
-              src="assets/IMG_3768.gif"
-              alt="LROX Straßentest mit Gefahrenerkennung"
-            />
-
-            <span class="lrox-development__road-badge">
-              Live road research
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <span class="lrox-development__phase-number">
-        Phase 01 · 03
-      </span>
-    </article>
-
-    <article
-      class="lrox-development__phase lrox-development__phase--two"
-      data-development-phase
-      id="helmet-prototype"
-    >
-      <div class="lrox-development__inner">
-        <div class="lrox-development__copy">
-          <div class="lrox-development__kicker">
-            02 · Helmet Prototype
-          </div>
-
-          <h3>
-            Die Rechenleistung kommt
-            <span>an den Helm.</span>
-          </h3>
-
-          <p>
-            Sensorik, Kamera und Mini-Computer wurden erstmals
-            direkt in einen tragbaren Helm-Prototyp
-            integriert. Beim Scrollen wechselt die Ansicht
-            von vorne zur Rückseite.
-          </p>
-
-          <div class="lrox-development__chips">
-            <span class="lrox-development__chip">
-              Integrated sensors
-            </span>
-
-            <span class="lrox-development__chip">
-              Front camera
-            </span>
-
-            <span class="lrox-development__chip">
-              Mini computer
-            </span>
-          </div>
-        </div>
-
-        <div class="lrox-development__visual">
-          <div
-            class="lrox-development__card
-                   lrox-development__prototype-card"
-          >
-            <img
-              class="lrox-development__prototype-image is-active"
-              src="assets/lrox-phase-2-front.png"
-              alt="LROX Helm-Prototyp von vorne"
-              data-phase-two-image="front"
-            />
-
-            <img
-              class="lrox-development__prototype-image"
-              src="assets/lrox-phase-2-rear.png"
-              alt="LROX Helm-Prototyp mit Mini-Computer an der Rückseite"
-              data-phase-two-image="rear"
-            />
-
-            <span class="lrox-development__prototype-label">
-              Front view → Rear mini-computer
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <span class="lrox-development__phase-number">
-        Phase 02 · 03
-      </span>
-    </article>
-
-    <article
-      class="lrox-development__phase lrox-development__phase--three"
-      data-development-phase
-    >
-      <div class="lrox-development__inner">
-        <div class="lrox-development__copy">
-          <div class="lrox-development__kicker">
-            03 · Modular System
-          </div>
-
-          <h3>
-            Ein kompaktes Modul.
-            <span>Flexible Integration.</span>
-          </h3>
-
-          <p>
-            Die aktuelle Generation kombiniert mehrere
-            Sensoren, lokale Verarbeitung und eine direkte
-            visuelle Warnung. Das System arbeitet ohne
-            klassische Kamera und lässt sich modular
-            auf bestehenden Helmen montieren.
-          </p>
-
-          <div class="lrox-development__chips">
-            <span class="lrox-development__chip">
-              Sensor fusion
-            </span>
-
-            <span class="lrox-development__chip">
-              Camera-free
-            </span>
-
-            <span class="lrox-development__chip">
-              Visual warning
-            </span>
-          </div>
-        </div>
-
-        <div class="lrox-development__visual">
-          <div
-            class="lrox-development__card
-                   lrox-development__modular-card"
-          >
-            <img
-              src="assets/lrox-phase-3-modular.png"
-              alt="Aktuelles modulares LROX Sensorsystem"
-            />
-          </div>
-        </div>
-      </div>
-
-      <span class="lrox-development__phase-number">
-        Phase 03 · 03
-      </span>
-    </article>
-  </section>
-
-  <section
-    class="lrox-recognition"
-    id="team"
-  >
-    <div class="lrox-recognition__inner">
-      <div class="lrox-recognition__header">
-        <div class="lrox-recognition__eyebrow">
-          Universität Bonn · Ideenwettbewerb 2025
-        </div>
-
-        <h2 class="lrox-recognition__title">
-          Von der Idee
-          <span>zur Auszeichnung.</span>
-        </h2>
-
-        <p class="lrox-recognition__subtitle">
-          LROX wurde beim Ideenwettbewerb 2025 der
-          Universität Bonn ausgezeichnet. Hinter dem
-          System stehen KI, Software, mechanische
-          Konstruktion und vollständige Hardware-Integration.
-        </p>
-      </div>
-
-      <div class="lrox-recognition__layout">
-        <article
-          class="lrox-recognition__card lrox-recognition__award-card"
-          data-recognition-reveal
-        >
-          <div>
-            <div class="lrox-recognition__role">
-              00 · Anerkennung
-            </div>
-
-            <h3>
-              Gewinneridee 2025
-            </h3>
-
-            <p>
-              LROX wurde beim Ideenwettbewerb 2025 der Universität Bonn ausgezeichnet. Die Prämierung würdigt die Verbindung aus Forschung, technischem Prototyping und unternehmerischem Potenzial.
-            </p>
-
-            <div class="lrox-recognition__award-facts">
-              <span class="lrox-recognition__award-fact">
-                Universität Bonn
-              </span>
-
-              <span class="lrox-recognition__award-fact">
-                Transfer Center enaCom
-              </span>
-
-              <span class="lrox-recognition__award-fact">
-                1.000 Euro
-              </span>
-
-              <span class="lrox-recognition__award-fact">
-                Comma Soft AG
-              </span>
-            </div>
-          </div>
-
-          <a
-            class="lrox-recognition__source-link"
-            href="https://www.uni-bonn.de/de/neues/ideen-mit-leidenschaft-und-unternehmergeist"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Bericht der Universität Bonn
-          </a>
-        </article>
-
-        <article
-          class="lrox-recognition__card lrox-recognition__member-card"
-          data-recognition-reveal
-        >
-          <div class="lrox-recognition__member-photo">
-            <img
-              src="assets/lrox-award-ladan.jpg"
-              alt="Ladan Seddighi mit LROX Auszeichnung und Helm-Prototyp"
-            />
-          </div>
-
-          <div class="lrox-recognition__card-content">
-            <div class="lrox-recognition__role">
-              01 · KI & Software
-            </div>
-
-            <h3>
-              Ladan Seddighi
-            </h3>
-
-            <p>
-              Objekterkennung, KI-Logik und Entwicklung des Warnsystems in Python.
-            </p>
-          </div>
-        </article>
-
-        <article
-          class="lrox-recognition__card lrox-recognition__member-card"
-          data-recognition-reveal
-        >
-          <div class="lrox-recognition__member-photo lrox-recognition__member-photo--amir">
-            <img
-              src="assets/lrox-award-amir.jpg"
-              alt="Amir Mobasheraghdam mit LROX Auszeichnung und Helm-Prototyp"
-            />
-          </div>
-
-          <div class="lrox-recognition__card-content">
-            <div class="lrox-recognition__role">
-              02 · Hardware & 3D Design
-            </div>
-
-            <h3>
-              Amir Mobasheraghdam
-            </h3>
-
-            <p>
-              Mechanische Konstruktion, 3D-Komponenten, Halterungen, Verkabelung und vollständige Hardware-Integration.
-            </p>
-          </div>
-        </article>
-      </div>
-
-      <div class="lrox-recognition__strip">
-        <span class="lrox-recognition__strip-label">
-          Anerkannt durch
-        </span>
-
-        <div class="lrox-recognition__institutions">
-          <span>Universität Bonn</span>
-          <span>Transfer Center enaCom</span>
-          <span>Comma Soft AG</span>
-          <span>DIGITALHUB.DE</span>
-        </div>
-      </div>
-    </div>
   </section>
 
 
 
-
-  <section
-    class="lrox-faq"
-    id="faq"
-  >
-    <div class="lrox-faq__inner">
-      <div class="lrox-faq__intro">
-        <div class="lrox-faq__eyebrow">
-          Fragen & Antworten
-        </div>
-
-        <h2 class="lrox-faq__title">
-          Häufige Fragen.
-          <span>Klare Antworten.</span>
-        </h2>
-
-        <p class="lrox-faq__description">
-          Was LROX heute ist, wie das System gedacht ist
-          und welche nächsten Schritte folgen.
-        </p>
-
-        <div class="lrox-faq__contact">
-          <p>
-            Weitere Fragen zu Forschung,
-            Pilotprojekten oder Kooperationen?
-          </p>
-
-          <a href="#contact">
-            Kontakt aufnehmen
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="lrox-faq__list">
-        <article class="lrox-faq__item is-open">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="true"
-          >
-            <span class="lrox-faq__number">
-              01
-            </span>
-
-            <span class="lrox-faq__question">
-              Ist LROX bereits erhältlich?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Nein. LROX befindet sich aktuell in einer
-                frühen Entwicklungs- und Prototypenphase.
-                Das System wird derzeit technisch
-                weiterentwickelt, getestet und für
-                zukünftige Pilotprojekte vorbereitet.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              02
-            </span>
-
-            <span class="lrox-faq__question">
-              Was ist LROX genau?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                LROX ist ein modulares Sicherheitskonzept
-                für Fahrradhelme. Es kombiniert verschiedene
-                Sensoren, bewertet kritische
-                Verkehrssituationen und warnt die Fahrerin
-                oder den Fahrer über einen integrierten
-                Lautsprecher.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              03
-            </span>
-
-            <span class="lrox-faq__question">
-              Verwendet LROX eine Kamera?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Nein. LROX arbeitet ohne Kamera. Das System
-                nutzt verschiedene Sensoren, um relevante
-                Bewegungen und kritische Situationen zu
-                erkennen.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              04
-            </span>
-
-            <span class="lrox-faq__question">
-              Wie wird die Fahrerin oder der Fahrer gewarnt?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Die Warnung erfolgt über einen integrierten
-                Lautsprecher. Bei einer erkannten kritischen
-                Situation gibt das System ein akustisches
-                Warnsignal aus, das direkt und schnell
-                wahrgenommen werden kann.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              05
-            </span>
-
-            <span class="lrox-faq__question">
-              Welche Gefahren soll das System erkennen?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Der Fokus liegt auf kritischen Annäherungen,
-                riskanten Bewegungsmustern und
-                Verkehrssituationen, in denen zusätzliche
-                Reaktionszeit hilfreich sein kann. Die
-                genaue Erkennungslogik wird während der
-                Entwicklungs- und Testphase weiter validiert.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              06
-            </span>
-
-            <span class="lrox-faq__question">
-              Passt das Modul auf jeden Fahrradhelm?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Das aktuelle Konzept verwendet eine modulare
-                Halterung. Die Kompatibilität mit
-                unterschiedlichen Helmformen und
-                Befestigungssystemen ist Teil der weiteren
-                Produktentwicklung und muss noch umfassend
-                getestet werden.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="lrox-faq__item">
-          <button
-            class="lrox-faq__button"
-            type="button"
-            aria-expanded="false"
-          >
-            <span class="lrox-faq__number">
-              07
-            </span>
-
-            <span class="lrox-faq__question">
-              Was sind die nächsten Schritte?
-            </span>
-
-            <span
-              class="lrox-faq__icon"
-              aria-hidden="true"
-            ></span>
-          </button>
-
-          <div class="lrox-faq__answer">
-            <div class="lrox-faq__answer-inner">
-              <p>
-                Die nächsten Schritte sind die technische
-                Miniaturisierung, weitere Sensor- und
-                Straßentests, die Optimierung der Halterung
-                sowie Pilotprojekte mit Forschungs- und
-                Entwicklungspartnern.
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
-
-  <footer
-    class="lrox-footer"
-    id="contact"
-  >
-    <div class="lrox-footer__inner">
-      <div class="lrox-footer__top">
-        <div class="lrox-footer__brand">
-          <a
-            class="lrox-footer__logo"
-            href="#home"
-            aria-label="LROX Startseite"
-          >
-            <span
-              class="lrox-footer__logo-mark"
-              aria-hidden="true"
-            ></span>
-            <span>LROX</span>
-          </a>
-
-          <p class="lrox-footer__summary">
-            Sensorbasierte Sicherheit für den urbanen
-            Fahrradverkehr. Ein frühes Entwicklungsprojekt
-            für intelligentere und sicherere Mobilität.
-          </p>
-
-          <div class="lrox-footer__status">
-            Frühe Entwicklungsphase · Nicht erhältlich
-          </div>
-        </div>
-
-        <nav
-          aria-label="Footer Navigation"
-        >
-          <h2 class="lrox-footer__heading">
-            Navigation
-          </h2>
-
-          <div class="lrox-footer__links">
-            <a href="#home">Startseite</a>
-            <a href="#statement">Warum LROX?</a>
-            <a href="#product">Produkt</a>
-            <a href="#development">Entwicklung</a>
-            <a href="#team">Team & Auszeichnung</a>
-            <a href="#faq">FAQ</a>
-          </div>
-        </nav>
-
-        <div>
-          <h2 class="lrox-footer__heading">
-            Rechtliches
-          </h2>
-
-          <div class="lrox-footer__links">
-            <a href="impressum.html">
-              Impressum
-            </a>
-
-            <a href="datenschutz.html">
-              Datenschutz
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h2 class="lrox-footer__heading">
-            Kontakt
-          </h2>
-
-          <div class="lrox-footer__contact">
-            <div class="lrox-footer__contact-item">
-              <span
-                class="lrox-footer__contact-icon"
-                aria-hidden="true"
-              >
-                @
-              </span>
-
-              <div>
-                <span class="lrox-footer__contact-label">
-                  E-Mail
-                </span>
-
-                <a
-                  class="lrox-footer__contact-value"
-                  href="mailto:ladansediqi@gmail.com"
-                >
-                  ladansediqi@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div class="lrox-footer__contact-item">
-              <span
-                class="lrox-footer__contact-icon"
-                aria-hidden="true"
-              >
-                ◇
-              </span>
-
-              <div>
-                <span class="lrox-footer__contact-label">
-                  Standort
-                </span>
-
-                <span class="lrox-footer__contact-value">
-                  Lohmar, Deutschland
-                </span>
-              </div>
-            </div>
-
-            <div class="lrox-footer__contact-item">
-              <span
-                class="lrox-footer__contact-icon"
-                aria-hidden="true"
-              >
-                i
-              </span>
-
-              <div>
-                <span class="lrox-footer__contact-label">
-                  Projektstatus
-                </span>
-
-                <span class="lrox-footer__contact-value">
-                  Kein Unternehmen, kein Verkauf,
-                  keine Vorbestellung
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lrox-footer__bottom">
-        <div class="lrox-footer__copyright">
-          <strong>
-            © 2026 LROX. Alle Rechte vorbehalten.
-          </strong>
-          Ein privates Entwicklungs- und Forschungsprojekt
-          von Ladan Seddighi.
-        </div>
-
-        <div class="lrox-footer__attributes">
-          <span>Entwickelt in Deutschland</span>
-          <span>Camera-free</span>
-          <span>Sensor-based safety</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
   <script>
-    (() => {
-      const video = document.querySelector(
-        "#lroxHeroVideo"
+
+
+    /* =========================================================
+       HERO VIDEO SYNC
+    ========================================================== */
+
+    const mainVideo =
+
+      document.querySelector(
+        ".hero-video-main"
       );
 
-      const toggle = document.querySelector(
-        "#lroxVideoToggle"
+
+    const backgroundVideo =
+
+      document.querySelector(
+        ".hero-video-bg"
       );
 
-      const pauseIcon = document.querySelector(
-        ".lrox-pause"
-      );
 
-      const playIcon = document.querySelector(
-        ".lrox-play"
-      );
+
+    function syncVideos() {
+
 
       if (
-        video &&
-        toggle &&
-        pauseIcon &&
-        playIcon
+
+        mainVideo &&
+
+        backgroundVideo &&
+
+        Math.abs(
+
+          mainVideo.currentTime -
+
+          backgroundVideo.currentTime
+
+        ) > 0.15
+
       ) {
-        function updateVideoButton() {
-          const playing = !video.paused;
 
-          pauseIcon.hidden = !playing;
-          playIcon.hidden = playing;
 
-          toggle.setAttribute(
-            "aria-label",
-            playing
-              ? "Pause video"
-              : "Play video"
-          );
-        }
+        backgroundVideo.currentTime =
 
-        toggle.addEventListener(
-          "click",
-          async () => {
-            if (video.paused) {
-              try {
-                await video.play();
-              } catch (error) {
-                console.error(
-                  "Video playback failed:",
-                  error
-                );
+          mainVideo.currentTime;
+
+
+      }
+
+    }
+
+
+
+    if (
+
+      mainVideo &&
+
+      backgroundVideo
+
+    ) {
+
+
+      mainVideo.addEventListener(
+
+        "timeupdate",
+
+        syncVideos
+
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 REVEAL
+    ========================================================== */
+
+    const statement =
+
+      document.querySelector(
+        ".statement"
+      );
+
+
+
+    if (statement) {
+
+
+      const statementObserver =
+
+        new IntersectionObserver(
+
+
+          (entries) => {
+
+
+            entries.forEach(
+
+
+              (entry) => {
+
+
+                if (
+
+                  entry.isIntersecting
+
+                ) {
+
+
+                  statement.classList.add(
+                    "is-visible"
+                  );
+
+
+                  statementObserver.unobserve(
+                    statement
+                  );
+
+
+                }
+
+
               }
-            } else {
-              video.pause();
-            }
 
-            updateVideoButton();
+
+            );
+
+
+          },
+
+
+          {
+
+            threshold: 0.24
+
           }
+
+
         );
 
-        video.addEventListener(
-          "play",
-          updateVideoButton
-        );
 
-        video.addEventListener(
-          "pause",
-          updateVideoButton
-        );
-
-        updateVideoButton();
-      }
-
-      const section = document.querySelector(
-        ".lrox-value"
+      statementObserver.observe(
+        statement
       );
 
-      if (!section) return;
 
-      const scrollArea = section.querySelector(
-        ".lrox-value__scroll"
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 REVEAL
+    ========================================================== */
+
+    const technology =
+
+      document.querySelector(
+        ".technology"
       );
 
-      const items = Array.from(
-        section.querySelectorAll(
-          ".lrox-value__item"
-        )
-      );
 
-      const progressBar = section.querySelector(
-        ".lrox-value__progress span"
-      );
 
-      function clamp(
-        value,
-        minimum,
-        maximum
-      ) {
-        return Math.min(
-          Math.max(value, minimum),
-          maximum
-        );
-      }
+    if (technology) {
 
-      function updateValueSection() {
-        const rect =
-          scrollArea.getBoundingClientRect();
 
-        const viewportHeight =
-          window.innerHeight;
+      const technologyObserver =
 
-        const entryProgress = clamp(
-          (viewportHeight - rect.top) /
-          (viewportHeight * 0.55),
-          0,
-          1
-        );
+        new IntersectionObserver(
 
-        const scrollableDistance =
-          scrollArea.offsetHeight -
-          viewportHeight;
 
-        const travelled = clamp(
-          -rect.top,
-          0,
-          scrollableDistance
-        );
+          (entries) => {
 
-        const progress =
-          scrollableDistance > 0
-            ? travelled / scrollableDistance
-            : 0;
 
-        section.classList.toggle(
-          "is-entered",
-          entryProgress > 0.06
-        );
+            entries.forEach(
 
-        section.classList.toggle(
-          "is-target-visible",
-          entryProgress > 0.48 ||
-          progress > 0.08
-        );
 
-        items.forEach((item, index) => {
-          const revealPoint =
-            0.08 + index * 0.1;
+              (entry) => {
 
-          const isVisible =
-            entryProgress >
-            0.67 + index * 0.1 ||
-            progress >= revealPoint;
 
-          item.classList.toggle(
-            "is-visible",
-            isVisible
-          );
+                if (
 
-          const currentStart =
-            revealPoint;
+                  entry.isIntersecting
 
-          const currentEnd =
-            revealPoint + 0.24;
+                ) {
 
-          item.classList.toggle(
-            "is-current",
-            progress >= currentStart &&
-            progress < currentEnd
-          );
-        });
 
-        if (progressBar) {
-          progressBar.style.width =
-            `${Math.max(
-              entryProgress * 16,
-              progress * 100
-            )}%`;
-        }
-      }
+                  technology.classList.add(
+                    "is-visible"
+                  );
 
-      let ticking = false;
 
-      function requestValueUpdate() {
-        if (ticking) return;
+                  technologyObserver.unobserve(
+                    technology
+                  );
 
-        ticking = true;
 
-        window.requestAnimationFrame(() => {
-          updateValueSection();
-          ticking = false;
-        });
-      }
+                }
 
-      window.addEventListener(
-        "scroll",
-        requestValueUpdate,
-        {
-          passive: true
-        }
-      );
 
-      window.addEventListener(
-        "resize",
-        requestValueUpdate
-      );
-
-      updateValueSection();
-    })();
-  </script>
-
-
-  <script>
-    (() => {
-      const section = document.querySelector(
-        ".lrox-product-rotation"
-      );
-
-      if (!section) return;
-
-      const scrollArea = section.querySelector(
-        ".lrox-product-rotation__scroll"
-      );
-
-      const productObject = section.querySelector(
-        "#lroxProductObject"
-      );
-
-      const frontImage = section.querySelector(
-        ".lrox-product-rotation__image--front"
-      );
-
-      const angleImage = section.querySelector(
-        ".lrox-product-rotation__image--angle"
-      );
-
-      const features = Array.from(
-        section.querySelectorAll(
-          ".lrox-product-rotation__feature"
-        )
-      );
-
-      const steps = Array.from(
-        section.querySelectorAll(
-          ".lrox-product-rotation__step"
-        )
-      );
-
-      const statement = section.querySelector(
-        "#lroxProductStatement"
-      );
-
-      const description = section.querySelector(
-        "#lroxProductDescription"
-      );
-
-      const angleLabel = section.querySelector(
-        "#lroxProductAngle"
-      );
-
-      const content = [
-        {
-          statement: "Sensoren erfassen die Umgebung.",
-          description: "Das Helm-Modul erkennt relevante Bewegungen frühzeitig.",
-          angle: "01 · Front"
-        },
-        {
-          statement: "Erkennung ohne klassische Kamera.",
-          description: "Mehrere Sensorsignale werden direkt am Gerät kombiniert.",
-          angle: "02 · Angle"
-        }
-      ];
-
-      function clamp(value, minimum, maximum) {
-        return Math.min(
-          Math.max(value, minimum),
-          maximum
-        );
-      }
-
-      function smoothstep(edge0, edge1, value) {
-        const x = clamp(
-          (value - edge0) / (edge1 - edge0),
-          0,
-          1
-        );
-
-        return x * x * (3 - 2 * x);
-      }
-
-      function updateProduct() {
-        const rect = scrollArea.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        /*
-          Start the product sequence as soon as Slide 3 enters from
-          the bottom of the viewport.
-
-          0%–34%  : Front view stays fully visible.
-          34%–72% : Front crossfades smoothly into Angle.
-          72%–100%: Angle stays fully visible.
-
-          The important difference is that progress is measured across
-          the whole entrance of the section, from rect.top = 100vh to
-          rect.top = -20vh. Therefore the rotation is already complete
-          before the slide reaches the middle of the screen.
-        */
-        /*
-          Balanced timing:
-          - The Front view remains fully visible while Slide 3 enters.
-          - Rotation starts only after the section reaches roughly the
-            upper third of the viewport.
-          - The Angle view is completed well before the sticky section ends.
-        */
-        const scrollDistance = Math.max(
-          scrollArea.offsetHeight - viewportHeight,
-          1
-        );
-
-        const travelled = clamp(
-          viewportHeight * 0.34 - rect.top,
-          0,
-          scrollDistance
-        );
-
-        const progress = travelled / scrollDistance;
-
-        const turn = smoothstep(
-          0.30,
-          0.72,
-          progress
-        );
-
-        if (frontImage) {
-          frontImage.style.opacity = 1 - turn;
-          frontImage.style.transform = `
-            translate3d(${-10 * turn}px, 0, 0)
-            scale(${1 - turn * 0.015})
-            rotateY(${-4 * turn}deg)
-          `;
-        }
-
-        if (angleImage) {
-          angleImage.style.opacity = turn;
-          angleImage.style.transform = `
-            translate3d(${10 * (1 - turn)}px, 0, 0)
-            scale(${0.985 + turn * 0.015})
-            rotateY(${4 * (1 - turn)}deg)
-          `;
-        }
-
-        if (productObject) {
-          const floatY =
-            Math.sin(progress * Math.PI) * 2;
-
-          productObject.style.transform = `
-            translate3d(0, ${floatY}px, 0)
-            rotateX(${Math.sin(progress * Math.PI) * -0.6}deg)
-          `;
-        }
-
-        const activeIndex = turn < 0.55 ? 0 : 1;
-
-        features.forEach((item, index) => {
-          item.classList.toggle(
-            "is-active",
-            index === activeIndex
-          );
-        });
-
-        steps.forEach((item, index) => {
-          item.classList.toggle(
-            "is-active",
-            index === activeIndex
-          );
-        });
-
-        const activeContent = content[activeIndex];
-
-        if (statement) {
-          statement.textContent =
-            activeContent.statement;
-        }
-
-        if (description) {
-          description.textContent =
-            activeContent.description;
-        }
-
-        if (angleLabel) {
-          angleLabel.textContent =
-            activeContent.angle;
-        }
-      }
-
-      let ticking = false;
-
-      function requestUpdate() {
-        if (ticking) return;
-
-        ticking = true;
-
-        window.requestAnimationFrame(() => {
-          updateProduct();
-          ticking = false;
-        });
-      }
-
-      window.addEventListener(
-        "scroll",
-        requestUpdate,
-        { passive: true }
-      );
-
-      window.addEventListener(
-        "resize",
-        requestUpdate
-      );
-
-      updateProduct();
-    })();
-  </script>
-
-  <script>
-    (() => {
-      const phases = Array.from(
-        document.querySelectorAll(
-          "[data-development-phase]"
-        )
-      );
-
-      if (!phases.length) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entry.target.classList.toggle(
-              "is-visible",
-              entry.isIntersecting
-            );
-          });
-        },
-        {
-          threshold: 0.22
-        }
-      );
-
-      phases.forEach((phase) => {
-        observer.observe(phase);
-      });
-
-      const prototypePhase = document.querySelector(
-        "#helmet-prototype"
-      );
-
-      const frontImage = document.querySelector(
-        '[data-phase-two-image="front"]'
-      );
-
-      const rearImage = document.querySelector(
-        '[data-phase-two-image="rear"]'
-      );
-
-      function clamp(value, minimum, maximum) {
-        return Math.min(
-          Math.max(value, minimum),
-          maximum
-        );
-      }
-
-      function updatePrototypeView() {
-        if (
-          !prototypePhase ||
-          !frontImage ||
-          !rearImage
-        ) {
-          return;
-        }
-
-        const rect =
-          prototypePhase.getBoundingClientRect();
-
-        const viewportHeight =
-          window.innerHeight;
-
-        const total =
-          rect.height + viewportHeight;
-
-        const progress = clamp(
-          (viewportHeight - rect.top) / total,
-          0,
-          1
-        );
-
-        /*
-          Front remains visible through the first half
-          of Phase 2. Rear view then becomes visible and
-          remains on screen through the end of the phase.
-        */
-        const showRear =
-          progress >= 0.56;
-
-        frontImage.classList.toggle(
-          "is-active",
-          !showRear
-        );
-
-        rearImage.classList.toggle(
-          "is-active",
-          showRear
-        );
-      }
-
-      let ticking = false;
-
-      function requestUpdate() {
-        if (ticking) return;
-
-        ticking = true;
-
-        window.requestAnimationFrame(() => {
-          updatePrototypeView();
-          ticking = false;
-        });
-      }
-
-      window.addEventListener(
-        "scroll",
-        requestUpdate,
-        { passive: true }
-      );
-
-      window.addEventListener(
-        "resize",
-        requestUpdate
-      );
-
-      updatePrototypeView();
-    })();
-  </script>
-
-
-
-  <script>
-    (() => {
-      const revealItems = Array.from(
-        document.querySelectorAll(
-          "[data-recognition-reveal]"
-        )
-      );
-
-      if (!revealItems.length) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            entry.target.classList.toggle(
-              "is-visible",
-              entry.isIntersecting
-            );
-          });
-        },
-        {
-          threshold: 0.18,
-          rootMargin: "0px 0px -8% 0px"
-        }
-      );
-
-      revealItems.forEach((item) => {
-        observer.observe(item);
-      });
-    })();
-  </script>
-
-
-
-  <script>
-    (() => {
-      const faqItems = Array.from(
-        document.querySelectorAll(
-          ".lrox-faq__item"
-        )
-      );
-
-      if (!faqItems.length) return;
-
-      faqItems.forEach((item) => {
-        const button = item.querySelector(
-          ".lrox-faq__button"
-        );
-
-        if (!button) return;
-
-        button.addEventListener(
-          "click",
-          () => {
-            const isOpen =
-              item.classList.contains("is-open");
-
-            faqItems.forEach((otherItem) => {
-              const otherButton =
-                otherItem.querySelector(
-                  ".lrox-faq__button"
-                );
-
-              otherItem.classList.remove(
-                "is-open"
-              );
-
-              if (otherButton) {
-                otherButton.setAttribute(
-                  "aria-expanded",
-                  "false"
-                );
               }
-            });
 
-            if (!isOpen) {
-              item.classList.add("is-open");
 
-              button.setAttribute(
-                "aria-expanded",
-                "true"
-              );
-            }
+            );
+
+
+          },
+
+
+          {
+
+            threshold: 0.18
+
           }
+
+
         );
-      });
-    })();
+
+
+      technologyObserver.observe(
+        technology
+      );
+
+
+    }
+
+
   </script>
 
 
 </body>
+
 </html>
