@@ -27,21 +27,22 @@
     :root {
 
       --cream: #f5f2ec;
-      --cream-light: #faf8f4;
 
       --white: #ffffff;
 
       --text: #111318;
-      --muted: #70747c;
 
-      --blue: #6caeff;
-      --blue-strong: #5d9ff6;
-      --blue-soft: #a9d1ff;
+      --muted: #687382;
 
-      --ice: #f5f8fc;
-      --ice-2: #edf4fc;
+      --blue: #69a9ff;
 
-      --line: rgba(17, 19, 24, 0.12);
+      --blue-deep: #4e91ec;
+
+      --ice: #f6f8fb;
+
+      --ice-blue: #edf5ff;
+
+      --line: rgba(17, 19, 24, 0.11);
 
     }
 
@@ -66,7 +67,7 @@
         Helvetica,
         sans-serif;
 
-      background: var(--ice);
+      background: var(--white);
 
       color: var(--text);
 
@@ -84,6 +85,7 @@
 
     /* =========================================================
        HERO
+       UNCHANGED
     ========================================================== */
 
     .hero {
@@ -91,12 +93,15 @@
       position: relative;
 
       width: 100%;
+
       height: 100svh;
+
       min-height: 700px;
 
       overflow: hidden;
 
       background: #11151a;
+
       color: white;
 
       isolation: isolate;
@@ -105,10 +110,6 @@
 
 
 
-    /* =========================================================
-       HERO BACKGROUND VIDEO
-    ========================================================== */
-
     .hero-video-bg {
 
       position: absolute;
@@ -116,16 +117,21 @@
       inset: -40px;
 
       width: calc(100% + 80px);
+
       height: calc(100% + 80px);
 
       object-fit: cover;
+
       object-position: center top;
 
       z-index: -6;
 
       filter:
+
         blur(26px)
+
         brightness(0.64)
+
         saturate(0.92);
 
       transform: scale(1.06);
@@ -134,10 +140,6 @@
 
 
 
-    /* =========================================================
-       HERO MAIN VIDEO
-    ========================================================== */
-
     .hero-video-main {
 
       position: absolute;
@@ -145,6 +147,7 @@
       inset: 0;
 
       width: 100%;
+
       height: 100%;
 
       object-fit: contain;
@@ -156,10 +159,6 @@
     }
 
 
-
-    /* =========================================================
-       HERO CINEMATIC OVERLAY
-    ========================================================== */
 
     .hero-overlay {
 
@@ -209,17 +208,14 @@
 
 
 
-    /* =========================================================
-       HERO → SLIDE 2
-       SOFT CINEMATIC TRANSITION
-    ========================================================== */
-
     .hero-fade {
 
       position: absolute;
 
       left: 0;
+
       right: 0;
+
       bottom: -1px;
 
       height: 230px;
@@ -254,6 +250,7 @@
 
     /* =========================================================
        NAVIGATION
+       UNCHANGED
     ========================================================== */
 
     .nav {
@@ -261,11 +258,13 @@
       position: absolute;
 
       top: 0;
+
       left: 50%;
 
       transform: translateX(-50%);
 
       width:
+
         min(
           calc(100% - 64px),
           1500px
@@ -274,21 +273,26 @@
       height: 82px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       z-index: 20;
 
       border-bottom:
+
         1px solid rgba(255,255,255,0.22);
 
       animation:
+
         navIn
         1s
         ease
         both;
 
     }
+
 
 
     @keyframes navIn {
@@ -298,17 +302,22 @@
         opacity: 0;
 
         transform:
+
           translateX(-50%)
+
           translateY(-12px);
 
       }
+
 
       to {
 
         opacity: 1;
 
         transform:
+
           translateX(-50%)
+
           translateY(0);
 
       }
@@ -326,6 +335,7 @@
       letter-spacing: 0.30em;
 
       text-shadow:
+
         0
         2px
         18px
@@ -352,6 +362,7 @@
       text-transform: uppercase;
 
       color:
+
         rgba(255,255,255,0.72);
 
     }
@@ -363,22 +374,28 @@
       font-size: 13px;
 
       color:
+
         rgba(255,255,255,0.82);
 
       transition:
+
         opacity 0.25s ease;
 
     }
 
 
+
     .back:hover {
+
       opacity: 0.60;
+
     }
 
 
 
     /* =========================================================
        HERO CONTENT
+       UNCHANGED
     ========================================================== */
 
     .hero-content {
@@ -386,6 +403,7 @@
       position: absolute;
 
       left:
+
         max(
           32px,
           calc((100vw - 1500px) / 2)
@@ -394,6 +412,7 @@
       bottom: 125px;
 
       width:
+
         min(
           550px,
           calc(100% - 64px)
@@ -402,6 +421,7 @@
       z-index: 5;
 
       animation:
+
         heroContentIn
         1.15s
         cubic-bezier(.22,.61,.36,1)
@@ -411,21 +431,25 @@
     }
 
 
+
     @keyframes heroContentIn {
 
       from {
 
         opacity: 0;
 
-        transform: translateY(32px);
+        transform:
+          translateY(32px);
 
       }
+
 
       to {
 
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+          translateY(0);
 
       }
 
@@ -446,6 +470,7 @@
       text-transform: uppercase;
 
       color:
+
         rgba(255,255,255,0.73);
 
     }
@@ -459,6 +484,7 @@
       max-width: 560px;
 
       font-size:
+
         clamp(
           40px,
           4.2vw,
@@ -472,6 +498,7 @@
       font-weight: 700;
 
       text-shadow:
+
         0
         4px
         28px
@@ -488,6 +515,7 @@
       margin-top: 20px;
 
       font-size:
+
         clamp(
           15px,
           1.05vw,
@@ -497,9 +525,11 @@
       line-height: 1.58;
 
       color:
+
         rgba(255,255,255,0.83);
 
       text-shadow:
+
         0
         2px
         15px
@@ -514,6 +544,7 @@
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
       margin-top: 23px;
@@ -521,15 +552,18 @@
       min-height: 44px;
 
       padding:
+
         0
         18px;
 
       border:
+
         1px solid rgba(255,255,255,0.42);
 
       border-radius: 999px;
 
       background:
+
         rgba(0,0,0,0.16);
 
       backdrop-filter: blur(12px);
@@ -545,9 +579,13 @@
       text-transform: uppercase;
 
       transition:
+
         background 0.3s ease,
+
         color 0.3s ease,
+
         transform 0.3s ease,
+
         border-color 0.3s ease;
 
     }
@@ -562,21 +600,24 @@
 
       border-color: white;
 
-      transform: translateY(-2px);
+      transform:
+
+        translateY(-2px);
 
     }
 
 
 
     /* =========================================================
-       TRANSITION BRIDGE
+       HERO → SLIDE 02
+       CLEAN TRANSITION
     ========================================================== */
 
     .transition-bridge {
 
       position: relative;
 
-      height: 90px;
+      height: 58px;
 
       margin-top: -2px;
 
@@ -587,8 +628,8 @@
         linear-gradient(
           180deg,
           #f5f8fc 0%,
-          #f7f9fc 45%,
-          #f8fafc 100%
+          #f8fafc 46%,
+          #ffffff 100%
         );
 
     }
@@ -601,49 +642,32 @@
 
       position: absolute;
 
-      width: 700px;
-      height: 300px;
+      width: 900px;
 
-      right: 7%;
+      height: 220px;
 
-      top: -220px;
+      left: 50%;
+
+      top: -190px;
+
+      transform:
+
+        translateX(-50%);
 
       border-radius: 50%;
 
       background:
 
         radial-gradient(
-          circle,
-          rgba(108,174,255,0.18) 0%,
-          rgba(108,174,255,0.07) 38%,
+          ellipse,
+          rgba(100,167,255,0.18),
+          rgba(100,167,255,0.05) 40%,
           transparent 72%
         );
 
-      filter: blur(26px);
+      filter:
 
-    }
-
-
-
-    .transition-bridge::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      height: 55px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,255,255,0.58) 100%
-        );
+        blur(26px);
 
     }
 
@@ -651,44 +675,46 @@
 
     /* =========================================================
        SLIDE 02
-       LIGHT / PREMIUM / ABSTRACT
+       FULL SCREEN / NO IMAGE
     ========================================================== */
 
     .statement {
 
       position: relative;
 
-      min-height: 100svh;
+      width: 100%;
 
-      display: flex;
-      align-items: center;
+      height: 100svh;
 
-      padding:
-        70px
-        32px
-        115px;
+      min-height: 650px;
+
+      max-height: 1000px;
 
       overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
 
       background:
 
         radial-gradient(
-          circle at 80% 28%,
-          rgba(116,176,255,0.16),
-          transparent 29%
+          circle at 82% 20%,
+          rgba(111,174,255,0.17),
+          transparent 31%
         ),
 
         radial-gradient(
-          circle at 56% 88%,
-          rgba(116,176,255,0.08),
-          transparent 28%
+          circle at 15% 85%,
+          rgba(160,204,255,0.10),
+          transparent 27%
         ),
 
         linear-gradient(
           135deg,
-          #fafbfc 0%,
-          #f7f9fc 42%,
-          #eef5fd 100%
+          #ffffff 0%,
+          #f8fafc 54%,
+          #eff6ff 100%
         );
 
       isolation: isolate;
@@ -697,7 +723,7 @@
 
 
 
-    /* background light haze */
+    /* very light vertical atmosphere */
 
     .statement::before {
 
@@ -705,30 +731,69 @@
 
       position: absolute;
 
-      width: 800px;
-      height: 800px;
-
-      right: -320px;
-      top: 44%;
-
-      transform: translateY(-50%);
-
-      border-radius: 50%;
+      inset: 0;
 
       background:
 
-        radial-gradient(
-          circle,
-          rgba(99,164,255,0.15),
-          rgba(99,164,255,0.045) 42%,
-          transparent 71%
+        linear-gradient(
+          90deg,
+
+          transparent 0%,
+
+          transparent 31%,
+
+          rgba(113,170,239,0.05) 31.1%,
+
+          transparent 31.25%,
+
+          transparent 66%,
+
+          rgba(113,170,239,0.045) 66.1%,
+
+          transparent 66.25%,
+
+          transparent 100%
         );
 
-      filter: blur(20px);
+      pointer-events: none;
 
-      z-index: -3;
+    }
+
+
+
+    /* huge subtle background word */
+
+    .statement::after {
+
+      content: "GUIDE";
+
+      position: absolute;
+
+      right: -25px;
+
+      bottom: -42px;
+
+      font-size:
+
+        clamp(
+          160px,
+          22vw,
+          420px
+        );
+
+      line-height: 0.72;
+
+      letter-spacing: -0.07em;
+
+      font-weight: 800;
+
+      color:
+
+        rgba(94,154,230,0.035);
 
       pointer-events: none;
+
+      user-select: none;
 
     }
 
@@ -741,52 +806,42 @@
       z-index: 5;
 
       width:
+
         min(
-          1380px,
-          100%
+          1260px,
+          calc(100% - 64px)
         );
 
-      margin: 0 auto;
+      margin:
 
-    }
-
-
-
-    .statement-layout {
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(480px, 0.92fr)
-        minmax(520px, 1.08fr);
-
-      gap: 65px;
-
-      align-items: center;
+        0
+        auto;
 
     }
 
 
 
     /* =========================================================
-       SLIDE 02 COPY
+       TOP
     ========================================================== */
 
-    .statement-copy {
+    .statement-top {
 
-      position: relative;
+      display: flex;
 
-      z-index: 6;
+      align-items: center;
 
-      max-width: 720px;
+      justify-content: space-between;
+
+      gap: 40px;
+
+      margin-bottom: 55px;
 
     }
 
 
 
     .section-label {
-
-      margin-bottom: 25px;
 
       font-size: 11px;
 
@@ -796,20 +851,18 @@
 
       text-transform: uppercase;
 
-      color: #617087;
-
-    }
-
-
-
-    .statement .section-label {
+      color: #7c8794;
 
       opacity: 0;
 
-      transform: translateY(18px);
+      transform:
+
+        translateY(16px);
 
       transition:
+
         opacity 0.75s ease,
+
         transform 0.75s ease;
 
     }
@@ -824,49 +877,59 @@
 
       gap: 10px;
 
-      min-height: 40px;
+      min-height: 38px;
 
       padding:
+
         0
         15px;
 
-      margin-bottom: 52px;
-
       border:
-        1px solid rgba(91,155,241,0.36);
+
+        1px solid rgba(80,145,235,0.25);
 
       border-radius: 999px;
 
       background:
-        rgba(255,255,255,0.56);
+
+        rgba(255,255,255,0.58);
+
+      backdrop-filter:
+
+        blur(14px);
+
+      -webkit-backdrop-filter:
+
+        blur(14px);
 
       box-shadow:
+
         0
         10px
         32px
-        rgba(81,130,205,0.06);
-
-      backdrop-filter: blur(12px);
-
-      -webkit-backdrop-filter: blur(12px);
+        rgba(68,116,177,0.055);
 
       font-size: 10px;
 
       font-weight: 700;
 
-      letter-spacing: 0.10em;
+      letter-spacing: 0.09em;
 
       text-transform: uppercase;
 
-      color: #2e6fc6;
+      color: #397bce;
 
       opacity: 0;
 
-      transform: translateY(18px);
+      transform:
+
+        translateY(16px);
 
       transition:
-        opacity 0.8s ease 0.08s,
-        transform 0.8s ease 0.08s;
+
+        opacity 0.75s ease 0.08s,
+
+        transform 0.75s ease 0.08s;
 
     }
 
@@ -875,97 +938,184 @@
     .audience-dot {
 
       width: 7px;
-      height: 7px;
 
-      flex: 0 0 auto;
+      height: 7px;
 
       border-radius: 50%;
 
       background:
+
         var(--blue);
 
       box-shadow:
+
         0
         0
         0
         6px
-        rgba(108,174,255,0.11);
+        rgba(105,169,255,0.10);
 
     }
 
 
+
+    /* =========================================================
+       MAIN TYPOGRAPHY
+    ========================================================== */
 
     .statement-title {
 
       margin: 0;
 
-      max-width: 760px;
+      max-width: 1150px;
 
       font-size:
+
         clamp(
-          42px,
-          4.4vw,
-          68px
+          46px,
+          5.4vw,
+          82px
         );
 
-      line-height: 1.04;
+      line-height: 0.99;
 
-      letter-spacing: -0.052em;
+      letter-spacing: -0.055em;
 
-      font-weight: 650;
+      font-weight: 620;
 
     }
 
 
 
-    .statement-title .dark-line {
+    .title-dark {
 
       display: block;
 
-      color: #1e2a39;
+      color: #172131;
 
       opacity: 0;
 
-      transform: translateY(32px);
+      transform:
+
+        translateY(34px);
 
       transition:
+
         opacity
         0.9s
         ease
-        0.16s,
+        0.12s,
 
         transform
         0.9s
         cubic-bezier(.22,.61,.36,1)
-        0.16s;
+        0.12s;
 
     }
 
 
 
-    .statement-title .blue-line {
+    .title-blue {
 
       display: block;
 
-      margin-top: 19px;
+      margin-top: 13px;
+
+      color: var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+
+        translateY(34px);
+
+      transition:
+
+        opacity
+        0.95s
+        ease
+        0.28s,
+
+        transform
+        0.95s
+        cubic-bezier(.22,.61,.36,1)
+        0.28s;
+
+    }
+
+
+
+    /* =========================================================
+       LOWER CONTENT
+    ========================================================== */
+
+    .statement-lower {
+
+      margin-top: 54px;
+
+      padding-top: 28px;
+
+      border-top:
+
+        1px solid
+        rgba(34,49,68,0.10);
+
+      display: grid;
+
+      grid-template-columns:
+
+        1fr
+        minmax(330px, 490px);
+
+      gap: 80px;
+
+      align-items: start;
+
+    }
+
+
+
+    .statement-keyline {
+
+      max-width: 620px;
+
+      font-size:
+
+        clamp(
+          19px,
+          1.55vw,
+          24px
+        );
+
+      line-height: 1.5;
+
+      letter-spacing: -0.018em;
+
+      color: #2d3948;
+
+      opacity: 0;
+
+      transform:
+
+        translateY(20px);
+
+      transition:
+
+        opacity 0.8s ease 0.45s,
+
+        transform 0.8s ease 0.45s;
+
+    }
+
+
+
+    .statement-keyline strong {
 
       color:
-        var(--blue-strong);
 
-      opacity: 0;
+        var(--blue-deep);
 
-      transform: translateY(32px);
-
-      transition:
-        opacity
-        0.9s
-        ease
-        0.32s,
-
-        transform
-        0.9s
-        cubic-bezier(.22,.61,.36,1)
-        0.32s;
+      font-weight: 600;
 
     }
 
@@ -973,397 +1123,96 @@
 
     .statement-description {
 
-      max-width: 590px;
-
-      margin:
-        46px
-        0
-        0;
+      margin: 0;
 
       font-size:
+
         clamp(
-          16px,
-          1.25vw,
-          19px
+          14px,
+          1.05vw,
+          16px
         );
 
       line-height: 1.72;
 
-      color: #637083;
+      color: #687483;
 
       opacity: 0;
 
-      transform: translateY(22px);
+      transform:
+
+        translateY(20px);
 
       transition:
-        opacity 0.85s ease 0.48s,
-        transform 0.85s ease 0.48s;
+
+        opacity 0.8s ease 0.56s,
+
+        transform 0.8s ease 0.56s;
 
     }
 
 
 
     /* =========================================================
-       SLIDE 02 ABSTRACT VISUAL
-       NO RADAR / NO OBSTACLE DIAGRAM / NO FOUR ITEMS
+       ANIMATED LIGHT LINE
     ========================================================== */
 
-    .ambient-visual {
+    .motion-line {
 
-      position: relative;
+      position: absolute;
 
-      min-height: 650px;
+      left: 0;
+
+      bottom: 0;
+
+      width: 100%;
+
+      height: 2px;
 
       overflow: hidden;
 
-      border-radius: 44px;
+      background:
 
-      opacity: 0;
-
-      transform:
-        translateY(30px)
-        scale(0.985);
-
-      transition:
-        opacity 1s ease 0.22s,
-        transform 1.05s cubic-bezier(.22,.61,.36,1) 0.22s;
+        rgba(85,145,225,0.08);
 
     }
 
 
 
-    .ambient-visual::before {
+    .motion-line::after {
 
       content: "";
 
       position: absolute;
 
-      inset: 0;
+      top: 0;
 
-      background:
+      left: -25%;
 
-        radial-gradient(
-          circle at 51% 72%,
-          rgba(104,170,255,0.18),
-          rgba(104,170,255,0.035) 30%,
-          transparent 60%
-        );
+      width: 25%;
 
-      pointer-events: none;
-
-    }
-
-
-
-    /* abstract vertical luminous structures */
-
-    .light-column {
-
-      position: absolute;
-
-      top: 2%;
-      bottom: 7%;
-
-      width: 22%;
-
-      border-radius:
-        6px
-        6px
-        38px
-        38px;
+      height: 100%;
 
       background:
 
         linear-gradient(
-          180deg,
-          rgba(255,255,255,0.48) 0%,
-          rgba(255,255,255,0.82) 52%,
-          rgba(243,247,252,0.94) 100%
-        );
-
-      border:
-        1px solid
-        rgba(255,255,255,0.74);
-
-      box-shadow:
-
-        inset
-        0
-        0
-        32px
-        rgba(120,175,255,0.06),
-
-        0
-        22px
-        70px
-        rgba(68,102,150,0.055);
-
-      backdrop-filter:
-        blur(8px);
-
-      -webkit-backdrop-filter:
-        blur(8px);
-
-    }
-
-
-
-    .column-left {
-
-      left: 3%;
-
-      opacity: 0.68;
-
-    }
-
-
-
-    .column-center {
-
-      left: 38%;
-
-      width: 24%;
-
-      opacity: 0.94;
-
-    }
-
-
-
-    .column-right {
-
-      right: 2%;
-
-      opacity: 0.70;
-
-    }
-
-
-
-    /* thin blue edges inspired by device light strips */
-
-    .light-column::after {
-
-      content: "";
-
-      position: absolute;
-
-      right: 0;
-
-      top: 12%;
-      bottom: 13%;
-
-      width: 2px;
-
-      border-radius: 999px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(108,174,255,0),
-          rgba(108,174,255,0.60) 35%,
-          rgba(108,174,255,0.88) 72%,
-          rgba(108,174,255,0)
-        );
-
-      box-shadow:
-        0
-        0
-        12px
-        rgba(108,174,255,0.22);
-
-      opacity: 0.64;
-
-    }
-
-
-
-    /* floor / depth lines */
-
-    .floor-line {
-
-      position: absolute;
-
-      left: 50%;
-      bottom: 3%;
-
-      height: 43%;
-
-      width: 1px;
-
-      transform-origin: bottom;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0),
-          rgba(145,177,215,0.30)
-        );
-
-    }
-
-
-
-    .floor-line-1 {
-
-      transform:
-        translateX(-50%)
-        rotate(33deg);
-
-    }
-
-
-
-    .floor-line-2 {
-
-      transform:
-        translateX(-50%)
-        rotate(-33deg);
-
-    }
-
-
-
-    .floor-line-3 {
-
-      transform:
-        translateX(-50%);
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(108,174,255,0),
-          rgba(108,174,255,0.82)
-        );
-
-      box-shadow:
-        0
-        0
-        16px
-        rgba(108,174,255,0.22);
-
-    }
-
-
-
-    /* central blue route */
-
-    .light-route {
-
-      position: absolute;
-
-      left: 50%;
-      bottom: 0;
-
-      width: 3px;
-      height: 48%;
-
-      transform:
-        translateX(-50%);
-
-      border-radius: 999px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(108,174,255,0.03) 0%,
-          rgba(108,174,255,0.24) 22%,
-          rgba(108,174,255,0.82) 72%,
-          rgba(108,174,255,1) 100%
+          90deg,
+          transparent,
+          rgba(82,148,239,0.85),
+          transparent
         );
 
       box-shadow:
 
         0
         0
-        8px
-        rgba(108,174,255,0.24),
-
-        0
-        0
-        28px
-        rgba(108,174,255,0.16);
-
-      transform-origin: bottom;
-
-      scale: 1 0;
-
-      transition:
-        scale
-        1.65s
-        cubic-bezier(.22,.61,.36,1)
-        0.72s;
-
-    }
-
-
-
-    .route-light {
-
-      position: absolute;
-
-      left: 50%;
-      bottom: 0;
-
-      width: 300px;
-      height: 230px;
-
-      transform:
-        translateX(-50%);
-
-      background:
-
-        radial-gradient(
-          ellipse at center bottom,
-          rgba(108,174,255,0.22) 0%,
-          rgba(108,174,255,0.06) 34%,
-          transparent 72%
-        );
-
-      filter:
-        blur(8px);
-
-      opacity: 0;
-
-      transition:
-        opacity 1.2s ease 0.95s;
-
-    }
-
-
-
-    /* subtle floating glow */
-
-    .ambient-glow {
-
-      position: absolute;
-
-      width: 340px;
-      height: 340px;
-
-      right: 5%;
-      top: 12%;
-
-      border-radius: 50%;
-
-      background:
-
-        radial-gradient(
-          circle,
-          rgba(111,176,255,0.15),
-          rgba(111,176,255,0.03) 44%,
-          transparent 72%
-        );
-
-      filter: blur(22px);
+        14px
+        rgba(82,148,239,0.28);
 
       animation:
-        ambientFloat
-        7s
+
+        lightMove
+        5.5s
         ease-in-out
         infinite;
 
@@ -1371,22 +1220,36 @@
 
 
 
-    @keyframes ambientFloat {
+    @keyframes lightMove {
 
-      0%,
-      100% {
+      0% {
 
-        transform:
-          translate3d(0,0,0)
-          scale(0.96);
+        left: -25%;
+
+        opacity: 0;
 
       }
 
-      50% {
 
-        transform:
-          translate3d(-25px,18px,0)
-          scale(1.06);
+      15% {
+
+        opacity: 1;
+
+      }
+
+
+      75% {
+
+        opacity: 1;
+
+      }
+
+
+      100% {
+
+        left: 105%;
+
+        opacity: 0;
 
       }
 
@@ -1405,76 +1268,30 @@
     .audience-pill,
 
     .statement.is-visible
-    .dark-line,
+    .title-dark,
 
     .statement.is-visible
-    .blue-line,
+    .title-blue,
 
     .statement.is-visible
-    .statement-description,
+    .statement-keyline,
 
     .statement.is-visible
-    .ambient-visual {
+    .statement-description {
 
       opacity: 1;
 
       transform:
-        translateY(0)
-        scale(1);
 
-    }
-
-
-
-    .statement.is-visible
-    .light-route {
-
-      scale: 1 1;
-
-    }
-
-
-
-    .statement.is-visible
-    .route-light {
-
-      opacity: 1;
+        translateY(0);
 
     }
 
 
 
     /* =========================================================
-       SLIDE 02 → SLIDE 03
-    ========================================================== */
-
-    .statement-end {
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      height: 120px;
-
-      pointer-events: none;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,255,255,0.68) 60%,
-          #ffffff 100%
-        );
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 03 — EXISTING NAVIGATION LOGIC
+       SLIDE 03
+       UNCHANGED
     ========================================================== */
 
     .logic {
@@ -1484,6 +1301,7 @@
       min-height: 100svh;
 
       padding:
+
         125px
         32px
         135px;
@@ -1497,7 +1315,9 @@
         );
 
       border-top:
-        1px solid rgba(17,19,24,0.05);
+
+        1px solid
+        rgba(17,19,24,0.05);
 
     }
 
@@ -1506,12 +1326,15 @@
     .logic-inner {
 
       width:
+
         min(
           1320px,
           100%
         );
 
-      margin: 0 auto;
+      margin:
+
+        0 auto;
 
     }
 
@@ -1522,6 +1345,7 @@
       display: flex;
 
       align-items: flex-end;
+
       justify-content: space-between;
 
       gap: 60px;
@@ -1537,6 +1361,7 @@
       max-width: 700px;
 
       font-size:
+
         clamp(
           38px,
           4.5vw,
@@ -1569,10 +1394,6 @@
 
 
 
-    /* =========================================================
-       STEPS
-    ========================================================== */
-
     .steps {
 
       margin-top: 80px;
@@ -1580,15 +1401,18 @@
       display: grid;
 
       grid-template-columns:
+
         repeat(
           4,
           1fr
         );
 
       border-top:
+
         1px solid var(--line);
 
       border-bottom:
+
         1px solid var(--line);
 
     }
@@ -1610,10 +1434,13 @@
       justify-content: space-between;
 
       border-right:
+
         1px solid var(--line);
 
       transition:
+
         background 0.35s ease,
+
         transform 0.35s ease;
 
     }
@@ -1621,7 +1448,9 @@
 
 
     .step:last-child {
+
       border-right: none;
+
     }
 
 
@@ -1629,6 +1458,7 @@
     .step:hover {
 
       background:
+
         rgba(108,174,255,0.055);
 
     }
@@ -1652,6 +1482,7 @@
     .step-name {
 
       font-size:
+
         clamp(
           27px,
           2.7vw,
@@ -1668,8 +1499,11 @@
 
 
 
-    .step:last-child .step-name {
+    .step:last-child
+    .step-name {
+
       color: var(--blue);
+
     }
 
 
@@ -1679,9 +1513,11 @@
       position: absolute;
 
       top: 29px;
+
       right: 29px;
 
       width: 8px;
+
       height: 8px;
 
       border-radius: 50%;
@@ -1694,7 +1530,8 @@
 
 
 
-    .step:first-child .step-dot {
+    .step:first-child
+    .step-dot {
 
       opacity: 1;
 
@@ -1719,56 +1556,50 @@
        TABLET
     ========================================================== */
 
-    @media (max-width: 1050px) {
-
-      .statement-layout {
-
-        grid-template-columns:
-          1fr
-          0.9fr;
-
-        gap: 40px;
-
-      }
-
-
-      .ambient-visual {
-        min-height: 560px;
-      }
-
-    }
-
-
-
     @media (max-width: 900px) {
+
 
       .statement {
 
-        padding-top: 55px;
+        height: auto;
+
+        min-height: 100svh;
+
+        padding:
+
+          90px
+          0;
 
       }
 
 
-      .statement-layout {
+      .statement-top {
 
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .statement-copy {
-
-        max-width: 760px;
+        margin-bottom: 42px;
 
       }
 
 
-      .ambient-visual {
+      .statement-title {
 
-        min-height: 500px;
+        font-size:
 
-        margin-top: 20px;
+          clamp(
+            42px,
+            8vw,
+            68px
+          );
+
+      }
+
+
+      .statement-lower {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+        margin-top: 45px;
 
       }
 
@@ -1790,6 +1621,7 @@
       .steps {
 
         grid-template-columns:
+
           1fr
           1fr;
 
@@ -1801,6 +1633,7 @@
         min-height: 215px;
 
         border-bottom:
+
           1px solid var(--line);
 
       }
@@ -1827,24 +1660,31 @@
 
         object-fit: cover;
 
-        object-position: center top;
+        object-position:
+
+          center top;
 
       }
 
 
       .hero-video-bg {
+
         display: none;
+
       }
 
 
       .hero-fade {
+
         height: 175px;
+
       }
 
 
       .nav {
 
         width:
+
           calc(
             100% - 36px
           );
@@ -1855,23 +1695,30 @@
 
 
       .mode {
+
         display: none;
+
       }
 
 
       .logo {
+
         font-size: 16px;
+
       }
 
 
       .back {
+
         font-size: 11px;
+
       }
 
 
       .hero-content {
 
         left: 22px;
+
         right: 22px;
 
         bottom: 105px;
@@ -1895,6 +1742,7 @@
         max-width: 460px;
 
         font-size:
+
           clamp(
             37px,
             10vw,
@@ -1926,24 +1774,53 @@
       }
 
 
+
+      /* transition */
+
       .transition-bridge {
-        height: 55px;
+
+        height: 42px;
+
       }
 
+
+
+      /* slide 02 */
 
       .statement {
 
         padding:
-          45px
-          22px
-          90px;
+
+          72px
+          0
+          74px;
+
+      }
+
+
+      .statement-inner {
+
+        width:
+
+          calc(
+            100% - 40px
+          );
+
+      }
+
+
+      .statement-top {
+
+        display: block;
+
+        margin-bottom: 36px;
 
       }
 
 
       .section-label {
 
-        margin-bottom: 20px;
+        margin-bottom: 16px;
 
         font-size: 9px;
 
@@ -1952,17 +1829,14 @@
 
       .audience-pill {
 
-        margin-bottom: 36px;
-
-        min-height: 36px;
+        min-height: 34px;
 
         padding:
+
           0
-          12px;
+          11px;
 
         font-size: 8px;
-
-        letter-spacing: 0.07em;
 
       }
 
@@ -1970,59 +1844,53 @@
       .statement-title {
 
         font-size:
+
           clamp(
             36px,
-            9.5vw,
+            10vw,
             52px
           );
 
       }
 
 
-      .statement-title .blue-line {
-        margin-top: 14px;
+      .title-blue {
+
+        margin-top: 12px;
+
+      }
+
+
+      .statement-lower {
+
+        margin-top: 38px;
+
+        padding-top: 22px;
+
+      }
+
+
+      .statement-keyline {
+
+        font-size: 18px;
+
       }
 
 
       .statement-description {
 
-        margin-top: 32px;
-
-        font-size: 15px;
+        font-size: 14px;
 
       }
 
 
-      .ambient-visual {
 
-        min-height: 400px;
-
-        margin-top: 10px;
-
-        border-radius: 28px;
-
-      }
-
-
-      .light-column {
-
-        width: 25%;
-
-      }
-
-
-      .column-center {
-
-        width: 28%;
-
-        left: 36%;
-
-      }
-
+      /* slide 03 */
 
       .logic {
 
         padding:
+
           90px
           22px;
 
@@ -2032,6 +1900,7 @@
       .logic h3 {
 
         font-size:
+
           clamp(
             36px,
             10vw,
@@ -2042,12 +1911,18 @@
 
 
       .logic-intro {
+
         font-size: 15px;
+
       }
 
 
       .steps {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+
+          1fr;
+
       }
 
 
@@ -2067,26 +1942,37 @@
        REDUCED MOTION
     ========================================================== */
 
-    @media (prefers-reduced-motion: reduce) {
+    @media
+    (prefers-reduced-motion: reduce) {
 
 
       html {
+
         scroll-behavior: auto;
+
       }
 
 
       .hero-content,
       .nav {
+
         animation: none;
+
       }
 
 
-      .statement .section-label,
+      .statement
+      .section-label,
+
       .audience-pill,
-      .dark-line,
-      .blue-line,
-      .statement-description,
-      .ambient-visual {
+
+      .title-dark,
+
+      .title-blue,
+
+      .statement-keyline,
+
+      .statement-description {
 
         opacity: 1 !important;
 
@@ -2097,28 +1983,18 @@
       }
 
 
-      .light-route {
+      .motion-line::after {
 
-        scale: 1 1;
-
-        transition: none;
-
-      }
-
-
-      .route-light {
-        opacity: 1;
-      }
-
-
-      .ambient-glow {
         animation: none;
+
       }
 
 
       .hero-button,
       .step {
+
         transition: none;
+
       }
 
     }
@@ -2134,19 +2010,28 @@
 
   <!-- =====================================================
        HERO / SLIDE 01
+       EXACTLY SAME HERO
   ====================================================== -->
 
   <section class="hero">
 
 
     <video
+
       class="hero-video-bg"
+
       autoplay
+
       muted
+
       loop
+
       playsinline
+
       preload="auto"
+
       aria-hidden="true"
+
     >
 
       <source
@@ -2159,13 +2044,21 @@
 
 
     <video
+
       class="hero-video-main"
+
       autoplay
+
       muted
+
       loop
+
       playsinline
+
       preload="auto"
+
       aria-hidden="true"
+
     >
 
       <source
@@ -2182,32 +2075,48 @@
 
 
     <nav
+
       class="nav"
+
       aria-label="Hauptnavigation"
+
     >
 
 
       <a
+
         class="logo"
+
         href="../gateway-preview.html"
+
         aria-label="Zur LROX Auswahl"
+
       >
+
         LROX
+
       </a>
 
 
 
       <div class="mode">
+
         Guide
+
       </div>
 
 
 
       <a
+
         class="back"
+
         href="../gateway-preview.html"
+
       >
+
         ← Zur Auswahl
+
       </a>
 
 
@@ -2219,7 +2128,9 @@
 
 
       <div class="eyebrow">
+
         Intelligente Mobilitätsassistenz
+
       </div>
 
 
@@ -2245,10 +2156,15 @@
 
 
       <a
+
         class="hero-button"
+
         href="#funktion"
+
       >
+
         So funktioniert es ↓
+
       </a>
 
 
@@ -2264,7 +2180,7 @@
 
 
   <!-- =====================================================
-       HERO → SLIDE 02 BRIDGE
+       HERO → SLIDE 02
   ====================================================== -->
 
   <div
@@ -2279,134 +2195,94 @@
   ====================================================== -->
 
   <section
+
     class="statement"
+
     id="funktion"
+
   >
 
 
     <div class="statement-inner">
 
 
-      <div class="statement-layout">
+      <!-- TOP -->
+
+      <div class="statement-top">
 
 
-        <!-- LEFT TEXT -->
+        <div class="section-label">
 
-        <div class="statement-copy">
-
-
-          <div class="section-label">
-
-            02 / Mobilitätsassistenz
-
-          </div>
-
-
-
-          <div class="audience-pill">
-
-            <span class="audience-dot"></span>
-
-            Für blinde und sehbehinderte Menschen
-
-          </div>
-
-
-
-          <h2 class="statement-title">
-
-
-            <span class="dark-line">
-
-              Mehr Sicherheit beginnt<br>
-
-              mit besserer Orientierung.
-
-            </span>
-
-
-
-            <span class="blue-line">
-
-              Nicht nur Hindernisse erkennen.<br>
-
-              Sondern freie Wege verstehen.
-
-            </span>
-
-
-          </h2>
-
-
-
-          <p class="statement-description">
-
-            LROX Guide unterstützt blinde
-            und sehbehinderte Menschen
-            bei der Orientierung.
-
-            <br><br>
-
-            Das System erkennt Hindernisse,
-            signalisiert den Stopp
-            und hilft dabei,
-            eine freie Richtung zu identifizieren.
-
-          </p>
-
+          02 / Mobilitätsassistenz
 
         </div>
 
 
 
-        <!-- RIGHT ABSTRACT VISUAL -->
+        <div class="audience-pill">
 
-        <div
-          class="ambient-visual"
-          aria-hidden="true"
-        >
+          <span class="audience-dot"></span>
 
-
-          <div class="ambient-glow"></div>
-
-
-          <div
-            class="light-column column-left"
-          ></div>
-
-
-          <div
-            class="light-column column-center"
-          ></div>
-
-
-          <div
-            class="light-column column-right"
-          ></div>
-
-
-          <div
-            class="floor-line floor-line-1"
-          ></div>
-
-
-          <div
-            class="floor-line floor-line-2"
-          ></div>
-
-
-          <div
-            class="floor-line floor-line-3"
-          ></div>
-
-
-          <div class="route-light"></div>
-
-
-          <div class="light-route"></div>
-
+          Für blinde und sehbehinderte Menschen
 
         </div>
+
+
+      </div>
+
+
+
+      <!-- MAIN MESSAGE -->
+
+      <h2 class="statement-title">
+
+
+        <span class="title-dark">
+
+          Hindernisse erkennen.
+
+        </span>
+
+
+        <span class="title-blue">
+
+          Freie Wege verstehen.
+
+        </span>
+
+
+      </h2>
+
+
+
+      <!-- LOWER MESSAGE -->
+
+      <div class="statement-lower">
+
+
+        <div class="statement-keyline">
+
+          Orientierung bedeutet mehr,
+          als nur vor Hindernissen zu warnen.
+
+          <strong>
+            Entscheidend ist zu wissen,
+            wo es weitergeht.
+          </strong>
+
+        </div>
+
+
+
+        <p class="statement-description">
+
+          LROX Guide unterstützt blinde und
+          sehbehinderte Menschen bei der Orientierung.
+          Das System erkennt Hindernisse,
+          signalisiert den Stopp und hilft dabei,
+          eine freie Richtung zu identifizieren.
+
+        </p>
 
 
       </div>
@@ -2415,7 +2291,11 @@
     </div>
 
 
-    <div class="statement-end"></div>
+
+    <div
+      class="motion-line"
+      aria-hidden="true"
+    ></div>
 
 
   </section>
@@ -2424,7 +2304,7 @@
 
   <!-- =====================================================
        SLIDE 03
-       CURRENT NAVIGATION LOGIC
+       UNCHANGED
   ====================================================== -->
 
   <section class="logic">
@@ -2480,7 +2360,9 @@
 
 
           <div class="step-number">
+
             01
+
           </div>
 
 
@@ -2488,7 +2370,9 @@
 
 
           <div class="step-name">
+
             Erkennen
+
           </div>
 
 
@@ -2500,7 +2384,9 @@
 
 
           <div class="step-number">
+
             02
+
           </div>
 
 
@@ -2508,7 +2394,9 @@
 
 
           <div class="step-name">
+
             Stoppen
+
           </div>
 
 
@@ -2520,7 +2408,9 @@
 
 
           <div class="step-number">
+
             03
+
           </div>
 
 
@@ -2528,7 +2418,9 @@
 
 
           <div class="step-name">
+
             Prüfen
+
           </div>
 
 
@@ -2540,7 +2432,9 @@
 
 
           <div class="step-number">
+
             04
+
           </div>
 
 
@@ -2548,7 +2442,9 @@
 
 
           <div class="step-name">
+
             Führen
+
           </div>
 
 
@@ -2566,23 +2462,25 @@
 
 
   <!-- =====================================================
-       SCRIPTS
+       JAVASCRIPT
   ====================================================== -->
 
   <script>
 
 
-    /* ---------------------------------------------------------
-       Keep hero videos synchronized
-    ---------------------------------------------------------- */
+    /* =========================================================
+       HERO VIDEO SYNC
+    ========================================================== */
 
     const mainVideo =
+
       document.querySelector(
         ".hero-video-main"
       );
 
 
     const backgroundVideo =
+
       document.querySelector(
         ".hero-video-bg"
       );
@@ -2610,6 +2508,7 @@
 
 
         backgroundVideo.currentTime =
+
           mainVideo.currentTime;
 
 
@@ -2620,14 +2519,20 @@
 
 
     if (
+
       mainVideo &&
+
       backgroundVideo
+
     ) {
 
 
       mainVideo.addEventListener(
+
         "timeupdate",
+
         syncVideos
+
       );
 
 
@@ -2635,11 +2540,12 @@
 
 
 
-    /* ---------------------------------------------------------
-       Slide 02 reveal animation
-    ---------------------------------------------------------- */
+    /* =========================================================
+       SLIDE 02 REVEAL
+    ========================================================== */
 
     const statement =
+
       document.querySelector(
         ".statement"
       );
@@ -2664,7 +2570,9 @@
 
 
                 if (
+
                   entry.isIntersecting
+
                 ) {
 
 
@@ -2691,7 +2599,9 @@
 
 
           {
-            threshold: 0.20
+
+            threshold: 0.24
+
           }
 
 
