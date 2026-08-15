@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LROX Guide</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f2ec;
+      color: #111;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      background: #111;
+      color: white;
+    }
+
+    .hero video {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0.18) 0%,
+          rgba(0,0,0,0.03) 45%,
+          rgba(0,0,0,0.68) 100%
+        );
+    }
+
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(calc(100% - 64px), 1500px);
+      height: 82px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      z-index: 10;
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.25);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.30em;
+    }
+
+    .mode {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .back {
+      font-size: 13px;
+      color: rgba(255,255,255,0.80);
+    }
+
+    .hero-content {
+      position: absolute;
+
+      left: max(32px, calc((100vw - 1500px) / 2));
+      bottom: 70px;
+
+      max-width: 850px;
+
+      z-index: 5;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+
+      color: rgba(255,255,255,0.75);
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: clamp(52px, 7vw, 108px);
+      line-height: 0.92;
+
+      letter-spacing: -0.055em;
+    }
+
+    .hero-text {
+      margin-top: 24px;
+      max-width: 550px;
+
+      font-size: 18px;
+      line-height: 1.55;
+
+      color: rgba(255,255,255,0.84);
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+
+      margin-top: 26px;
+
+      padding: 13px 18px;
+
+      border:
+        1px solid rgba(255,255,255,0.45);
+
+      border-radius: 999px;
+
+      background:
+        rgba(0,0,0,0.18);
+
+      backdrop-filter: blur(12px);
+
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION 2 */
+
+    .statement {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 110px 32px;
+
+      background:
+        radial-gradient(
+          circle at 72% 34%,
+          rgba(110,175,255,0.15),
+          transparent 30%
+        ),
+        #f5f2ec;
+    }
+
+    .statement-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      margin-bottom: 42px;
+
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+
+      color: #777;
+    }
+
+    .statement h2 {
+      margin: 0;
+
+      max-width: 1100px;
+
+      font-size: clamp(46px, 6.5vw, 96px);
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 600;
+    }
+
+    .statement h2 span {
+      color: #5aa7ff;
+    }
+
+    .statement p {
+      max-width: 630px;
+
+      margin: 44px 0 0 auto;
+
+      font-size: 20px;
+      line-height: 1.6;
+
+      color: #70747c;
+    }
+
+    /* SECTION 3 */
+
+    .logic {
+      min-height: 100vh;
+
+      padding: 110px 32px;
+
+      background: white;
+    }
+
+    .logic-inner {
+      width: min(1320px, 100%);
+      margin: 0 auto;
+    }
+
+    .logic h3 {
+      margin: 0;
+
+      max-width: 850px;
+
+      font-size: clamp(44px, 5.5vw, 82px);
+      line-height: 0.98;
+
+      letter-spacing: -0.05em;
+    }
+
+    .steps {
+      margin-top: 90px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .step {
+      min-height: 280px;
+
+      padding: 30px;
+
+      border-right: 1px solid rgba(0,0,0,0.12);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .step:last-child {
+      border-right: none;
+    }
+
+    .step-number {
+      font-size: 12px;
+      color: #777;
+      letter-spacing: 0.15em;
+    }
+
+    .step-name {
+      font-size: clamp(30px, 3vw, 50px);
+      letter-spacing: -0.04em;
+    }
+
+    .step:last-child .step-name {
+      color: #5aa7ff;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .nav {
+        width: calc(100% - 36px);
+      }
+
+      .mode {
+        display: none;
+      }
+
+      .hero-content {
+        left: 22px;
+        right: 22px;
+        bottom: 38px;
+      }
+
+      h1 {
+        font-size: 54px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step {
+        min-height: 210px;
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source
+        src="../assets/guide/hero.mp4"
+        type="video/mp4"
+      >
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <nav class="nav">
+
+      <a
+        class="logo"
+        href="../gateway-preview.html"
+      >
+        LROX
+      </a>
+
+      <div class="mode">
+        Guide
+      </div>
+
+      <a
+        class="back"
+        href="../gateway-preview.html"
+      >
+        ← Choose mode
+      </a>
+
+    </nav>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Intelligent Mobility Assistance
+      </div>
+
+      <h1>
+        Know what’s ahead.<br>
+        Know where to go.
+      </h1>
+
+      <div class="hero-text">
+        Environmental awareness designed to help identify obstacles
+        and understand which direction remains open.
+      </div>
+
+      <a
+        class="hero-button"
+        href="#why"
+      >
+        See how it works ↓
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="statement"
+    id="why"
+  >
+
+    <div class="statement-inner">
+
+      <div class="section-label">
+        01 / Beyond detection
+      </div>
+
+      <h2>
+        It doesn’t just detect
+        what’s ahead.
+        <span>
+          It helps find what’s open.
+        </span>
+      </h2>
+
+      <p>
+        LROX Guide detects an obstacle,
+        pauses movement, checks the available directions
+        and helps identify a clearer route forward.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="logic">
+
+    <div class="logic-inner">
+
+      <div class="section-label">
+        02 / Navigation logic
+      </div>
+
+      <h3>
+        Four steps.
+        One clear decision.
+      </h3>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-name">Detect</div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-name">Stop</div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-name">Scan</div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <div class="step-name">Guide</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
