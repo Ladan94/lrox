@@ -2,11 +2,16 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>LROX — Choose your experience</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -18,58 +23,129 @@
       height: 100%;
       background: #050505;
       color: white;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       overflow: hidden;
     }
+
+    body {
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================
+       GATEWAY
+    ========================== */
 
     .gateway {
       position: relative;
+
       width: 100%;
       height: 100vh;
+
       display: flex;
+
       overflow: hidden;
+
       background: #050505;
     }
 
+
+    /* =========================
+       LOGO
+    ========================== */
+
     .brand {
       position: absolute;
+
       top: 30px;
       left: 50%;
+
       transform: translateX(-50%);
-      z-index: 20;
+
+      z-index: 30;
 
       font-size: 20px;
       font-weight: 800;
+
       letter-spacing: 0.32em;
 
-      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+
+      text-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.65);
     }
+
+
+    /* =========================
+       PANELS
+    ========================== */
 
     .panel {
       position: relative;
+
       flex: 1;
+
       height: 100%;
+
+      display: block;
+
       overflow: hidden;
+
       cursor: pointer;
 
+      color: white;
+
       transition:
-        flex 0.7s cubic-bezier(.22,.61,.36,1);
+        flex 0.75s cubic-bezier(.22,.61,.36,1);
     }
+
+
+    /* when hovering whole gateway */
 
     .gateway:hover .panel {
       flex: 0.82;
     }
 
+
+    /* selected side */
+
     .gateway .panel:hover {
       flex: 1.25;
     }
 
+
+    /* keyboard focus */
+
+    .panel:focus-visible {
+      outline: 2px solid white;
+      outline-offset: -4px;
+      z-index: 15;
+    }
+
+
+    /* =========================
+       VIDEO
+    ========================== */
+
     .panel video {
       position: absolute;
+
       inset: 0;
 
       width: 100%;
       height: 100%;
+
+      display: block;
 
       object-fit: cover;
       object-position: center;
@@ -78,94 +154,222 @@
         brightness(0.72)
         saturate(0.95);
 
+      transform: scale(1);
+
       transition:
-        transform 1s ease,
-        filter 0.6s ease;
+        transform 1.1s cubic-bezier(.22,.61,.36,1),
+        filter 0.65s ease;
     }
+
 
     .panel:hover video {
-      transform: scale(1.035);
+      transform: scale(1.04);
 
       filter:
-        brightness(0.9)
-        saturate(1.05);
+        brightness(0.92)
+        saturate(1.08);
     }
+
+
+    /* make other side slightly darker */
+
+    .gateway:hover .panel:not(:hover) video {
+      filter:
+        brightness(0.57)
+        saturate(0.80);
+    }
+
+
+    /* =========================
+       OVERLAY
+    ========================== */
 
     .overlay {
       position: absolute;
+
       inset: 0;
+
+      z-index: 2;
+
+      pointer-events: none;
 
       background:
         linear-gradient(
           180deg,
-          rgba(0,0,0,0.08) 0%,
-          rgba(0,0,0,0.02) 40%,
-          rgba(0,0,0,0.72) 100%
+          rgba(0,0,0,0.09) 0%,
+          rgba(0,0,0,0.02) 38%,
+          rgba(0,0,0,0.18) 57%,
+          rgba(0,0,0,0.78) 100%
+        );
+
+      transition:
+        background 0.6s ease;
+    }
+
+
+    .panel:hover .overlay {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0.04) 0%,
+          rgba(0,0,0,0.01) 40%,
+          rgba(0,0,0,0.12) 60%,
+          rgba(0,0,0,0.68) 100%
         );
     }
+
+
+    /* =========================
+       TEXT CONTENT
+    ========================== */
 
     .content {
       position: absolute;
 
       left: 48px;
       right: 48px;
-      bottom: 64px;
+      bottom: 72px;
 
       z-index: 5;
+
+      transition:
+        transform 0.65s cubic-bezier(.22,.61,.36,1);
     }
+
+
+    .panel:hover .content {
+      transform: translateY(-8px);
+    }
+
 
     .label {
       margin-bottom: 12px;
 
       font-size: 12px;
+      font-weight: 600;
+
       letter-spacing: 0.20em;
       text-transform: uppercase;
 
       color: rgba(255,255,255,0.72);
     }
 
-    h2 {
-      margin: 0 0 18px;
 
-      font-size: clamp(40px, 4.5vw, 74px);
+    h2 {
+      margin:
+        0
+        0
+        18px;
+
+      font-size:
+        clamp(
+          40px,
+          4.5vw,
+          74px
+        );
+
       line-height: 0.95;
 
       letter-spacing: -0.045em;
+
+      font-weight: 700;
     }
+
 
     .description {
       max-width: 430px;
 
       margin-bottom: 24px;
 
-      font-size: clamp(15px, 1.2vw, 18px);
+      font-size:
+        clamp(
+          15px,
+          1.2vw,
+          18px
+        );
+
       line-height: 1.55;
 
-      color: rgba(255,255,255,0.82);
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.83
+        );
     }
+
+
+    /* =========================
+       BUTTON
+    ========================== */
 
     .button {
       display: inline-flex;
+
       align-items: center;
+      justify-content: center;
 
       min-height: 46px;
 
-      padding: 0 20px;
+      padding:
+        0
+        20px;
 
       border:
-        1px solid rgba(255,255,255,0.45);
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.45
+        );
 
       border-radius: 999px;
 
       background:
-        rgba(0,0,0,0.18);
+        rgba(
+          0,
+          0,
+          0,
+          0.18
+        );
 
-      backdrop-filter: blur(12px);
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
 
       font-size: 13px;
+      font-weight: 600;
+
       letter-spacing: 0.08em;
+
       text-transform: uppercase;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
     }
+
+
+    .panel:hover .button {
+      background: white;
+      color: #111;
+
+      border-color: white;
+
+      transform:
+        translateX(4px);
+    }
+
+
+    /* =========================
+       CENTER DIVIDER
+    ========================== */
 
     .divider {
       position: absolute;
@@ -174,53 +378,104 @@
       bottom: 0;
       left: 50%;
 
-      z-index: 10;
+      z-index: 20;
 
       width: 1px;
 
-      background:
-        rgba(255,255,255,0.25);
-
       pointer-events: none;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.24
+        );
     }
+
+
+    /* =========================
+       BOTTOM TAGLINE
+    ========================== */
 
     .tagline {
       position: absolute;
 
       left: 50%;
-      bottom: 24px;
+      bottom: 27px;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
-      z-index: 20;
+      z-index: 25;
 
-      font-size: 12px;
-      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: 0.18em;
+
       text-transform: uppercase;
 
-      color: rgba(255,255,255,0.6);
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.62
+        );
 
       white-space: nowrap;
+
+      pointer-events: none;
     }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
 
     @media (max-width: 760px) {
 
+      html,
+      body {
+        overflow-y: auto;
+      }
+
       .gateway {
+        height: 100svh;
+        min-height: 700px;
+
         flex-direction: column;
       }
+
 
       .gateway:hover .panel,
       .gateway .panel:hover {
         flex: 1;
       }
 
+
       .panel {
         min-height: 50%;
       }
 
+
+      .panel:hover video {
+        transform: scale(1.02);
+      }
+
+
+      .gateway:hover .panel:not(:hover) video {
+        filter:
+          brightness(0.72)
+          saturate(0.95);
+      }
+
+
       .divider {
         top: 50%;
         bottom: auto;
+
         left: 0;
         right: 0;
 
@@ -228,47 +483,104 @@
         height: 1px;
       }
 
+
       .content {
         left: 24px;
         right: 24px;
         bottom: 28px;
       }
 
+
+      .panel:hover .content {
+        transform: none;
+      }
+
+
       h2 {
         font-size: 38px;
+
+        margin-bottom: 12px;
       }
+
+
+      .description {
+        max-width: 360px;
+
+        margin-bottom: 16px;
+
+        font-size: 14px;
+      }
+
+
+      .button {
+        min-height: 40px;
+
+        padding:
+          0
+          16px;
+
+        font-size: 11px;
+      }
+
 
       .brand {
         top: 18px;
+
+        font-size: 16px;
       }
+
 
       .tagline {
         display: none;
       }
+
     }
 
+
+    /* =========================
+       REDUCED MOTION
+    ========================== */
+
     @media (prefers-reduced-motion: reduce) {
+
       .panel,
-      .panel video {
+      .panel video,
+      .content,
+      .button {
         transition: none;
       }
+
     }
+
   </style>
 </head>
 
 
 <body>
 
+
   <main class="gateway">
+
+
+    <!-- =====================
+         LROX LOGO
+    ====================== -->
 
     <div class="brand">
       LROX
     </div>
 
 
-    <!-- RIDE -->
 
-    <section class="panel">
+    <!-- =====================
+         RIDE
+    ====================== -->
+
+    <a
+      class="panel ride-panel"
+      href="index.html"
+      aria-label="Open LROX Ride"
+    >
 
       <video
         autoplay
@@ -277,13 +589,17 @@
         playsinline
         preload="auto"
       >
+
         <source
           src="assets/gateway/ride.mp4"
           type="video/mp4"
         >
+
       </video>
 
+
       <div class="overlay"></div>
+
 
       <div class="content">
 
@@ -291,14 +607,17 @@
           Cyclist Safety
         </div>
 
+
         <h2>
           LROX Ride
         </h2>
+
 
         <div class="description">
           Intelligent awareness for safer movement
           on two wheels.
         </div>
+
 
         <div class="button">
           Explore Ride →
@@ -306,12 +625,19 @@
 
       </div>
 
-    </section>
+    </a>
 
 
-    <!-- GUIDE -->
 
-    <section class="panel">
+    <!-- =====================
+         GUIDE
+    ====================== -->
+
+    <a
+      class="panel guide-panel"
+      href="guide/"
+      aria-label="Open LROX Guide"
+    >
 
       <video
         autoplay
@@ -320,13 +646,17 @@
         playsinline
         preload="auto"
       >
+
         <source
           src="assets/gateway/guide.mp4"
           type="video/mp4"
         >
+
       </video>
 
+
       <div class="overlay"></div>
+
 
       <div class="content">
 
@@ -334,9 +664,11 @@
           Mobility Assistance
         </div>
 
+
         <h2>
           LROX Guide
         </h2>
+
 
         <div class="description">
           Detect what is ahead.
@@ -344,22 +676,36 @@
           Move with confidence.
         </div>
 
+
         <div class="button">
           Explore Guide →
         </div>
 
       </div>
 
-    </section>
+    </a>
 
+
+
+    <!-- =====================
+         DIVIDER
+    ====================== -->
 
     <div class="divider"></div>
+
+
+
+    <!-- =====================
+         TAGLINE
+    ====================== -->
 
     <div class="tagline">
       One platform. Two ways forward.
     </div>
 
+
   </main>
+
 
 </body>
 </html>
