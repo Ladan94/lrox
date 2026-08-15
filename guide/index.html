@@ -1046,8 +1046,7 @@
       height: 100%;
 
       margin:
-        0
-        auto;
+        0 auto;
 
       display: flex;
 
@@ -1466,7 +1465,7 @@
 
 
     /* =========================================================
-       TRANSITION 03 -> 04
+       TRANSITION 03 → 04
     ========================================================== */
 
     .ground-slide-transition {
@@ -1826,7 +1825,7 @@
 
 
     /* =========================================================
-       MINIMAL MARKERS
+       SLIDE 04 MINIMAL MARKERS
     ========================================================== */
 
     .ground-marker {
@@ -1843,7 +1842,7 @@
       opacity: 0;
 
       transform:
-        translateX(18px);
+        translateX(14px);
 
       transition:
         opacity 0.75s ease,
@@ -1869,12 +1868,12 @@
         0
         0
         6px
-        rgba(98,165,255,0.11),
+        rgba(98,165,255,0.10),
 
         0
         0
         18px
-        rgba(76,147,245,0.62);
+        rgba(76,147,245,0.58);
     }
 
 
@@ -1887,22 +1886,15 @@
 
       border-radius: 50%;
 
-      background:
-        white;
+      background: white;
     }
 
 
 
-    /*
-       IMPORTANT:
-       line length now changes for each marker.
-       Dot stays near the detected object,
-       text moves much farther right.
-    */
+    /* SHORT LINE — IMPORTANT */
 
     .ground-marker-line {
-      width:
-        var(--marker-line, 160px);
+      width: 92px;
 
       height: 1px;
 
@@ -1912,17 +1904,19 @@
         linear-gradient(
           90deg,
           rgba(92,158,247,1),
-          rgba(92,158,247,0.48)
+          rgba(92,158,247,0.52)
         );
 
       box-shadow:
         0
         0
         8px
-        rgba(92,158,247,0.30);
+        rgba(92,158,247,0.28);
     }
 
 
+
+    /* NO BOX */
 
     .ground-marker-card {
       position: relative;
@@ -1936,10 +1930,6 @@
       border: none;
 
       box-shadow: none;
-
-      backdrop-filter: none;
-
-      -webkit-backdrop-filter: none;
     }
 
 
@@ -1961,8 +1951,8 @@
       box-shadow:
         0
         0
-        8px
-        rgba(78,145,236,0.24);
+        7px
+        rgba(78,145,236,0.20);
     }
 
 
@@ -1989,8 +1979,8 @@
 
         0
         0
-        12px
-        rgba(255,255,255,1);
+        10px
+        rgba(255,255,255,0.96);
     }
 
 
@@ -2015,30 +2005,24 @@
 
         0
         0
-        13px
-        rgba(255,255,255,1);
+        10px
+        rgba(255,255,255,0.96);
     }
 
 
 
     /* =========================================================
        MARKER POSITIONS
+       WHOLE MARKER IS ON RIGHT SIDE
     ========================================================== */
 
 
-    /* Hole / depression */
+    /* VERTIEFUNG */
 
     .ground-marker-recess {
-      left: 41.5%;
+      left: 64%;
 
-      top: 16.5%;
-
-      --marker-line:
-        clamp(
-          250px,
-          30vw,
-          420px
-        );
+      top: 20.5%;
 
       transition-delay:
         0.72s;
@@ -2046,19 +2030,12 @@
 
 
 
-    /* Middle step */
+    /* STUFE */
 
     .ground-marker-step {
-      left: 48%;
+      left: 66%;
 
-      top: 43.5%;
-
-      --marker-line:
-        clamp(
-          225px,
-          27vw,
-          380px
-        );
+      top: 44%;
 
       transition-delay:
         0.88s;
@@ -2066,19 +2043,12 @@
 
 
 
-    /* Foreground edge */
+    /* KANTE */
 
     .ground-marker-edge {
-      left: 56%;
+      left: 66%;
 
       bottom: 18.5%;
-
-      --marker-line:
-        clamp(
-          180px,
-          21vw,
-          300px
-        );
 
       transition-delay:
         1.04s;
@@ -2202,39 +2172,23 @@
       }
 
 
-      .ground-marker-recess {
-        left: 39%;
+      .ground-marker-line {
+        width: 72px;
+      }
 
-        --marker-line:
-          clamp(
-            150px,
-            27vw,
-            260px
-          );
+
+      .ground-marker-recess {
+        left: 61%;
       }
 
 
       .ground-marker-step {
-        left: 46%;
-
-        --marker-line:
-          clamp(
-            140px,
-            24vw,
-            230px
-          );
+        left: 63%;
       }
 
 
       .ground-marker-edge {
-        left: 54%;
-
-        --marker-line:
-          clamp(
-            110px,
-            18vw,
-            180px
-          );
+        left: 63%;
       }
 
     }
@@ -2659,8 +2613,6 @@
 
 
 
-      /* mobile markers */
-
       .ground-marker {
         left: auto !important;
 
@@ -2676,7 +2628,7 @@
 
 
       .ground-marker-line {
-        width: 55px;
+        width: 50px;
       }
 
 
@@ -2786,7 +2738,6 @@
   </style>
 
 </head>
-
 
 
 <body>
