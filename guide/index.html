@@ -609,73 +609,8 @@
 
 
     /* =========================================================
-       HERO → SLIDE 02
-       CLEAN TRANSITION
-    ========================================================== */
-
-    .transition-bridge {
-
-      position: relative;
-
-      height: 58px;
-
-      margin-top: -2px;
-
-      overflow: hidden;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          #f5f8fc 0%,
-          #f8fafc 46%,
-          #ffffff 100%
-        );
-
-    }
-
-
-
-    .transition-bridge::before {
-
-      content: "";
-
-      position: absolute;
-
-      width: 900px;
-
-      height: 220px;
-
-      left: 50%;
-
-      top: -190px;
-
-      transform:
-
-        translateX(-50%);
-
-      border-radius: 50%;
-
-      background:
-
-        radial-gradient(
-          ellipse,
-          rgba(100,167,255,0.18),
-          rgba(100,167,255,0.05) 40%,
-          transparent 72%
-        );
-
-      filter:
-
-        blur(26px);
-
-    }
-
-
-
-    /* =========================================================
        SLIDE 02
-       FULL SCREEN / NO IMAGE
+       DIRECTLY CONNECTED TO HERO
     ========================================================== */
 
     .statement {
@@ -690,6 +625,8 @@
 
       max-height: 1000px;
 
+      margin-top: -1px;
+
       overflow: hidden;
 
       display: flex;
@@ -700,21 +637,28 @@
 
         radial-gradient(
           circle at 82% 20%,
-          rgba(111,174,255,0.17),
+          rgba(111,174,255,0.16),
           transparent 31%
         ),
 
         radial-gradient(
           circle at 15% 85%,
-          rgba(160,204,255,0.10),
+          rgba(160,204,255,0.08),
           transparent 27%
         ),
 
         linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f8fafc 54%,
-          #eff6ff 100%
+          180deg,
+
+          #f5f8fc 0%,
+
+          #f8fafc 11%,
+
+          #ffffff 27%,
+
+          #fafcff 62%,
+
+          #f1f7ff 100%
         );
 
       isolation: isolate;
@@ -723,7 +667,7 @@
 
 
 
-    /* very light vertical atmosphere */
+    /* very subtle depth */
 
     .statement::before {
 
@@ -742,15 +686,15 @@
 
           transparent 31%,
 
-          rgba(113,170,239,0.05) 31.1%,
+          rgba(113,170,239,0.035) 31.1%,
 
-          transparent 31.25%,
+          transparent 31.22%,
 
           transparent 66%,
 
-          rgba(113,170,239,0.045) 66.1%,
+          rgba(113,170,239,0.03) 66.1%,
 
-          transparent 66.25%,
+          transparent 66.22%,
 
           transparent 100%
         );
@@ -761,41 +705,10 @@
 
 
 
-    /* huge subtle background word */
-
-    .statement::after {
-
-      content: "GUIDE";
-
-      position: absolute;
-
-      right: -25px;
-
-      bottom: -42px;
-
-      font-size:
-
-        clamp(
-          160px,
-          22vw,
-          420px
-        );
-
-      line-height: 0.72;
-
-      letter-spacing: -0.07em;
-
-      font-weight: 800;
-
-      color:
-
-        rgba(94,154,230,0.035);
-
-      pointer-events: none;
-
-      user-select: none;
-
-    }
+    /*
+       IMPORTANT:
+       no GUIDE background word anymore
+    */
 
 
 
@@ -892,7 +805,7 @@
 
       background:
 
-        rgba(255,255,255,0.58);
+        rgba(255,255,255,0.60);
 
       backdrop-filter:
 
@@ -1775,19 +1688,11 @@
 
 
 
-      /* transition */
-
-      .transition-bridge {
-
-        height: 42px;
-
-      }
-
-
-
       /* slide 02 */
 
       .statement {
+
+        margin-top: -1px;
 
         padding:
 
@@ -2017,21 +1922,13 @@
 
 
     <video
-
       class="hero-video-bg"
-
       autoplay
-
       muted
-
       loop
-
       playsinline
-
       preload="auto"
-
       aria-hidden="true"
-
     >
 
       <source
@@ -2044,21 +1941,13 @@
 
 
     <video
-
       class="hero-video-main"
-
       autoplay
-
       muted
-
       loop
-
       playsinline
-
       preload="auto"
-
       aria-hidden="true"
-
     >
 
       <source
@@ -2075,22 +1964,15 @@
 
 
     <nav
-
       class="nav"
-
       aria-label="Hauptnavigation"
-
     >
 
 
       <a
-
         class="logo"
-
         href="../gateway-preview.html"
-
         aria-label="Zur LROX Auswahl"
-
       >
 
         LROX
@@ -2108,11 +1990,8 @@
 
 
       <a
-
         class="back"
-
         href="../gateway-preview.html"
-
       >
 
         ← Zur Auswahl
@@ -2156,11 +2035,8 @@
 
 
       <a
-
         class="hero-button"
-
         href="#funktion"
-
       >
 
         So funktioniert es ↓
@@ -2180,33 +2056,18 @@
 
 
   <!-- =====================================================
-       HERO → SLIDE 02
-  ====================================================== -->
-
-  <div
-    class="transition-bridge"
-    aria-hidden="true"
-  ></div>
-
-
-
-  <!-- =====================================================
        SLIDE 02
+       DIRECTLY CONNECTED TO HERO
   ====================================================== -->
 
   <section
-
     class="statement"
-
     id="funktion"
-
   >
 
 
     <div class="statement-inner">
 
-
-      <!-- TOP -->
 
       <div class="statement-top">
 
@@ -2232,8 +2093,6 @@
 
 
 
-      <!-- MAIN MESSAGE -->
-
       <h2 class="statement-title">
 
 
@@ -2255,8 +2114,6 @@
 
 
 
-      <!-- LOWER MESSAGE -->
-
       <div class="statement-lower">
 
 
@@ -2266,8 +2123,10 @@
           als nur vor Hindernissen zu warnen.
 
           <strong>
+
             Entscheidend ist zu wissen,
             wo es weitergeht.
+
           </strong>
 
         </div>
@@ -2278,6 +2137,7 @@
 
           LROX Guide unterstützt blinde und
           sehbehinderte Menschen bei der Orientierung.
+
           Das System erkennt Hindernisse,
           signalisiert den Stopp und hilft dabei,
           eine freie Richtung zu identifizieren.
