@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LROX — Choose your experience</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: #050505;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    .gateway {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      background: #050505;
+    }
+
+    .brand {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .panel {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      overflow: hidden;
+      cursor: pointer;
+
+      transition:
+        flex 0.7s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .gateway:hover .panel {
+      flex: 0.82;
+    }
+
+    .gateway .panel:hover {
+      flex: 1.25;
+    }
+
+    .panel video {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      filter:
+        brightness(0.72)
+        saturate(0.95);
+
+      transition:
+        transform 1s ease,
+        filter 0.6s ease;
+    }
+
+    .panel:hover video {
+      transform: scale(1.035);
+
+      filter:
+        brightness(0.9)
+        saturate(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0.08) 0%,
+          rgba(0,0,0,0.02) 40%,
+          rgba(0,0,0,0.72) 100%
+        );
+    }
+
+    .content {
+      position: absolute;
+
+      left: 48px;
+      right: 48px;
+      bottom: 64px;
+
+      z-index: 5;
+    }
+
+    .label {
+      margin-bottom: 12px;
+
+      font-size: 12px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+
+      color: rgba(255,255,255,0.72);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+
+      font-size: clamp(40px, 4.5vw, 74px);
+      line-height: 0.95;
+
+      letter-spacing: -0.045em;
+    }
+
+    .description {
+      max-width: 430px;
+
+      margin-bottom: 24px;
+
+      font-size: clamp(15px, 1.2vw, 18px);
+      line-height: 1.55;
+
+      color: rgba(255,255,255,0.82);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+
+      min-height: 46px;
+
+      padding: 0 20px;
+
+      border:
+        1px solid rgba(255,255,255,0.45);
+
+      border-radius: 999px;
+
+      background:
+        rgba(0,0,0,0.18);
+
+      backdrop-filter: blur(12px);
+
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      position: absolute;
+
+      top: 0;
+      bottom: 0;
+      left: 50%;
+
+      z-index: 10;
+
+      width: 1px;
+
+      background:
+        rgba(255,255,255,0.25);
+
+      pointer-events: none;
+    }
+
+    .tagline {
+      position: absolute;
+
+      left: 50%;
+      bottom: 24px;
+
+      transform: translateX(-50%);
+
+      z-index: 20;
+
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+
+      color: rgba(255,255,255,0.6);
+
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+
+      .gateway {
+        flex-direction: column;
+      }
+
+      .gateway:hover .panel,
+      .gateway .panel:hover {
+        flex: 1;
+      }
+
+      .panel {
+        min-height: 50%;
+      }
+
+      .divider {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+
+        width: auto;
+        height: 1px;
+      }
+
+      .content {
+        left: 24px;
+        right: 24px;
+        bottom: 28px;
+      }
+
+      h2 {
+        font-size: 38px;
+      }
+
+      .brand {
+        top: 18px;
+      }
+
+      .tagline {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel,
+      .panel video {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="gateway">
+
+    <div class="brand">
+      LROX
+    </div>
+
+
+    <!-- RIDE -->
+
+    <section class="panel">
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="assets/gateway/ride.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+      <div class="overlay"></div>
+
+      <div class="content">
+
+        <div class="label">
+          Cyclist Safety
+        </div>
+
+        <h2>
+          LROX Ride
+        </h2>
+
+        <div class="description">
+          Intelligent awareness for safer movement
+          on two wheels.
+        </div>
+
+        <div class="button">
+          Explore Ride →
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GUIDE -->
+
+    <section class="panel">
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="assets/gateway/guide.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+      <div class="overlay"></div>
+
+      <div class="content">
+
+        <div class="label">
+          Mobility Assistance
+        </div>
+
+        <h2>
+          LROX Guide
+        </h2>
+
+        <div class="description">
+          Detect what is ahead.
+          Understand what is open.
+          Move with confidence.
+        </div>
+
+        <div class="button">
+          Explore Guide →
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="divider"></div>
+
+    <div class="tagline">
+      One platform. Two ways forward.
+    </div>
+
+  </main>
+
+</body>
+</html>
