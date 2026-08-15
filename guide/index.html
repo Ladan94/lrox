@@ -667,8 +667,6 @@
 
 
 
-    /* very subtle depth */
-
     .statement::before {
 
       content: "";
@@ -705,13 +703,6 @@
 
 
 
-    /*
-       IMPORTANT:
-       no GUIDE background word anymore
-    */
-
-
-
     .statement-inner {
 
       position: relative;
@@ -735,7 +726,7 @@
 
 
     /* =========================================================
-       TOP
+       SLIDE 02 TOP
     ========================================================== */
 
     .statement-top {
@@ -873,7 +864,7 @@
 
 
     /* =========================================================
-       MAIN TYPOGRAPHY
+       SLIDE 02 MAIN TYPOGRAPHY
     ========================================================== */
 
     .statement-title {
@@ -959,7 +950,7 @@
 
 
     /* =========================================================
-       LOWER CONTENT
+       SLIDE 02 LOWER CONTENT
     ========================================================== */
 
     .statement-lower {
@@ -1067,7 +1058,7 @@
 
 
     /* =========================================================
-       ANIMATED LIGHT LINE
+       SLIDE 02 MOTION LINE
     ========================================================== */
 
     .motion-line {
@@ -1170,10 +1161,6 @@
 
 
 
-    /* =========================================================
-       SLIDE 02 ACTIVE
-    ========================================================== */
-
     .statement.is-visible
     .section-label,
 
@@ -1204,39 +1191,83 @@
 
     /* =========================================================
        SLIDE 03
-       UNCHANGED
+       SENSOR TECHNOLOGY + VIDEO
     ========================================================== */
 
-    .logic {
+    .technology {
 
       position: relative;
 
       min-height: 100svh;
 
+      overflow: hidden;
+
       padding:
 
-        125px
+        82px
         32px
-        135px;
+        86px;
 
       background:
 
+        radial-gradient(
+          circle at 80% 18%,
+          rgba(105,169,255,0.13),
+          transparent 27%
+        ),
+
         linear-gradient(
           180deg,
-          #ffffff 0%,
+          #f1f7ff 0%,
+          #f8fbff 14%,
+          #ffffff 38%,
           #ffffff 100%
         );
 
-      border-top:
-
-        1px solid
-        rgba(17,19,24,0.05);
+      isolation: isolate;
 
     }
 
 
 
-    .logic-inner {
+    .technology::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 720px;
+
+      height: 720px;
+
+      right: -260px;
+
+      bottom: -310px;
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          rgba(92,158,245,0.11),
+          rgba(92,158,245,0.025) 48%,
+          transparent 72%
+        );
+
+      filter: blur(18px);
+
+      pointer-events: none;
+
+    }
+
+
+
+    .technology-inner {
+
+      position: relative;
+
+      z-index: 3;
 
       width:
 
@@ -1253,213 +1284,503 @@
 
 
 
-    .logic-header {
+    /* =========================================================
+       SLIDE 03 HEADER
+    ========================================================== */
 
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: space-between;
-
-      gap: 60px;
-
-    }
-
-
-
-    .logic h3 {
-
-      margin: 0;
-
-      max-width: 700px;
-
-      font-size:
-
-        clamp(
-          38px,
-          4.5vw,
-          66px
-        );
-
-      line-height: 1;
-
-      letter-spacing: -0.045em;
-
-      font-weight: 600;
-
-    }
-
-
-
-    .logic-intro {
-
-      max-width: 420px;
-
-      padding-bottom: 4px;
-
-      font-size: 16px;
-
-      line-height: 1.6;
-
-      color: var(--muted);
-
-    }
-
-
-
-    .steps {
-
-      margin-top: 80px;
+    .technology-top {
 
       display: grid;
 
       grid-template-columns:
 
-        repeat(
-          4,
-          1fr
-        );
+        minmax(0, 0.95fr)
+        minmax(360px, 0.55fr);
 
-      border-top:
+      gap: 80px;
 
-        1px solid var(--line);
+      align-items: end;
 
-      border-bottom:
-
-        1px solid var(--line);
+      margin-bottom: 48px;
 
     }
 
 
 
-    .step {
+    .technology-label {
 
-      position: relative;
-
-      min-height: 270px;
-
-      padding: 28px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      border-right:
-
-        1px solid var(--line);
-
-      transition:
-
-        background 0.35s ease,
-
-        transform 0.35s ease;
-
-    }
-
-
-
-    .step:last-child {
-
-      border-right: none;
-
-    }
-
-
-
-    .step:hover {
-
-      background:
-
-        rgba(108,174,255,0.055);
-
-    }
-
-
-
-    .step-number {
+      margin-bottom: 18px;
 
       font-size: 11px;
 
-      font-weight: 600;
+      font-weight: 700;
 
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
 
-      color: #8b8e94;
+      text-transform: uppercase;
 
-    }
-
-
-
-    .step-name {
-
-      font-size:
-
-        clamp(
-          27px,
-          2.7vw,
-          44px
-        );
-
-      letter-spacing: -0.04em;
-
-      line-height: 1;
-
-      font-weight: 500;
-
-    }
-
-
-
-    .step:last-child
-    .step-name {
-
-      color: var(--blue);
-
-    }
-
-
-
-    .step-dot {
-
-      position: absolute;
-
-      top: 29px;
-
-      right: 29px;
-
-      width: 8px;
-
-      height: 8px;
-
-      border-radius: 50%;
-
-      background: var(--blue);
+      color: #7b8795;
 
       opacity: 0;
 
+      transform:
+        translateY(18px);
+
+      transition:
+
+        opacity 0.75s ease,
+
+        transform 0.75s ease;
+
     }
 
 
 
-    .step:first-child
-    .step-dot {
+    .technology-badge {
 
-      opacity: 1;
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-height: 38px;
+
+      padding:
+
+        0
+        15px;
+
+      margin-bottom: 25px;
+
+      border:
+
+        1px solid
+        rgba(75,143,235,0.24);
+
+      border-radius: 999px;
+
+      background:
+
+        rgba(255,255,255,0.62);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      color:
+        #3978c9;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
+      text-transform: uppercase;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+
+        opacity 0.75s ease 0.08s,
+
+        transform 0.75s ease 0.08s;
+
+    }
+
+
+
+    .technology-badge-dot {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
 
       box-shadow:
 
         0
         0
         0
-        8px
-        rgba(108,174,255,0.10),
+        6px
+        rgba(105,169,255,0.10);
+
+    }
+
+
+
+    .technology-title {
+
+      margin: 0;
+
+      max-width: 750px;
+
+      font-size:
+
+        clamp(
+          44px,
+          4.7vw,
+          72px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.052em;
+
+      font-weight: 630;
+
+    }
+
+
+
+    .technology-title-dark {
+
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+
+        opacity 0.9s ease 0.14s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.14s;
+
+    }
+
+
+
+    .technology-title-blue {
+
+      display: block;
+
+      margin-top: 10px;
+
+      color:
+        var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+
+        opacity 0.9s ease 0.27s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.27s;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 COPY
+    ========================================================== */
+
+    .technology-copy {
+
+      padding-bottom: 5px;
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+
+        opacity 0.85s ease 0.42s,
+
+        transform 0.85s ease 0.42s;
+
+    }
+
+
+
+    .technology-highlight {
+
+      margin:
 
         0
         0
-        24px
-        rgba(108,174,255,0.35);
+        20px;
+
+      font-size:
+
+        clamp(
+          18px,
+          1.5vw,
+          22px
+        );
+
+      line-height: 1.45;
+
+      letter-spacing: -0.015em;
+
+      color: #29384a;
+
+      font-weight: 520;
+
+    }
+
+
+
+    .technology-highlight strong {
+
+      color:
+        var(--blue-deep);
+
+      font-weight: 620;
+
+    }
+
+
+
+    .technology-description {
+
+      margin: 0;
+
+      font-size:
+
+        clamp(
+          14px,
+          1.05vw,
+          16px
+        );
+
+      line-height: 1.72;
+
+      color: #687483;
+
+    }
+
+
+
+    /* =========================================================
+       VIDEO
+    ========================================================== */
+
+    .technology-video-wrap {
+
+      position: relative;
+
+      width: 100%;
+
+      height:
+        clamp(
+          360px,
+          52vh,
+          610px
+        );
+
+      overflow: hidden;
+
+      border-radius: 30px;
+
+      background: #f7f7f4;
+
+      border:
+
+        1px solid
+        rgba(27,43,63,0.07);
+
+      box-shadow:
+
+        0
+        28px
+        85px
+        rgba(50,84,128,0.10);
+
+      opacity: 0;
+
+      transform:
+        translateY(34px)
+        scale(0.988);
+
+      transition:
+
+        opacity 1s ease 0.32s,
+
+        transform 1s
+        cubic-bezier(.22,.61,.36,1)
+        0.32s;
+
+    }
+
+
+
+    .technology-video {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center center;
+
+    }
+
+
+
+    .technology-video-wrap::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      box-shadow:
+
+        inset
+        0
+        0
+        70px
+        rgba(255,255,255,0.12);
+
+    }
+
+
+
+    /* =========================================================
+       VIDEO TOP LABELS
+    ========================================================== */
+
+    .video-ui {
+
+      position: absolute;
+
+      left: 24px;
+
+      right: 24px;
+
+      top: 22px;
+
+      z-index: 4;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 16px;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .video-ui-left,
+    .video-ui-right {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      min-height: 34px;
+
+      padding:
+
+        0
+        12px;
+
+      border:
+
+        1px solid
+        rgba(55,85,120,0.10);
+
+      border-radius: 999px;
+
+      background:
+
+        rgba(255,255,255,0.68);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      color: #617083;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    .video-ui-right {
+
+      color:
+        #3978c9;
+
+      border-color:
+        rgba(80,145,235,0.20);
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 ACTIVE
+    ========================================================== */
+
+    .technology.is-visible
+    .technology-label,
+
+    .technology.is-visible
+    .technology-badge,
+
+    .technology.is-visible
+    .technology-title-dark,
+
+    .technology.is-visible
+    .technology-title-blue,
+
+    .technology.is-visible
+    .technology-copy,
+
+    .technology.is-visible
+    .technology-video-wrap {
+
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
 
     }
 
@@ -1517,37 +1838,45 @@
       }
 
 
-      .logic-header {
 
-        display: block;
+      /* slide 03 */
 
-      }
+      .technology {
 
+        padding:
 
-      .logic-intro {
-
-        margin-top: 30px;
-
-      }
-
-
-      .steps {
-
-        grid-template-columns:
-
-          1fr
-          1fr;
+          90px
+          28px;
 
       }
 
 
-      .step {
+      .technology-top {
 
-        min-height: 215px;
+        grid-template-columns: 1fr;
 
-        border-bottom:
+        gap: 28px;
 
-          1px solid var(--line);
+        margin-bottom: 38px;
+
+      }
+
+
+      .technology-copy {
+
+        max-width: 650px;
+
+      }
+
+
+      .technology-video-wrap {
+
+        height:
+          clamp(
+            360px,
+            50vh,
+            520px
+          );
 
       }
 
@@ -1561,6 +1890,8 @@
 
     @media (max-width: 700px) {
 
+
+      /* hero */
 
       .hero {
 
@@ -1792,50 +2123,100 @@
 
       /* slide 03 */
 
-      .logic {
+      .technology {
+
+        min-height: auto;
 
         padding:
 
-          90px
-          22px;
+          75px
+          20px
+          80px;
 
       }
 
 
-      .logic h3 {
+      .technology-label {
+
+        font-size: 9px;
+
+      }
+
+
+      .technology-badge {
+
+        font-size: 7px;
+
+        line-height: 1.4;
+
+        padding:
+
+          7px
+          10px;
+
+        min-height: 32px;
+
+      }
+
+
+      .technology-title {
 
         font-size:
 
           clamp(
             36px,
             10vw,
-            54px
+            52px
           );
 
       }
 
 
-      .logic-intro {
+      .technology-highlight {
 
-        font-size: 15px;
-
-      }
-
-
-      .steps {
-
-        grid-template-columns:
-
-          1fr;
+        font-size: 17px;
 
       }
 
 
-      .step {
+      .technology-description {
 
-        min-height: 165px;
+        font-size: 14px;
 
-        border-right: none;
+      }
+
+
+      .technology-video-wrap {
+
+        height: 310px;
+
+        border-radius: 22px;
+
+      }
+
+
+      .video-ui {
+
+        left: 12px;
+
+        right: 12px;
+
+        top: 12px;
+
+      }
+
+
+      .video-ui-left,
+      .video-ui-right {
+
+        min-height: 29px;
+
+        padding:
+
+          0
+          9px;
+
+        font-size: 7px;
 
       }
 
@@ -1877,7 +2258,19 @@
 
       .statement-keyline,
 
-      .statement-description {
+      .statement-description,
+
+      .technology-label,
+
+      .technology-badge,
+
+      .technology-title-dark,
+
+      .technology-title-blue,
+
+      .technology-copy,
+
+      .technology-video-wrap {
 
         opacity: 1 !important;
 
@@ -1895,8 +2288,7 @@
       }
 
 
-      .hero-button,
-      .step {
+      .hero-button {
 
         transition: none;
 
@@ -1915,7 +2307,7 @@
 
   <!-- =====================================================
        HERO / SLIDE 01
-       EXACTLY SAME HERO
+       SAME AS CURRENT VERSION
   ====================================================== -->
 
   <section class="hero">
@@ -2057,7 +2449,7 @@
 
   <!-- =====================================================
        SLIDE 02
-       DIRECTLY CONNECTED TO HERO
+       SAME AS CURRENT VERSION
   ====================================================== -->
 
   <section
@@ -2164,47 +2556,101 @@
 
   <!-- =====================================================
        SLIDE 03
-       UNCHANGED
+       SENSOR-BASED / OFFLINE
   ====================================================== -->
 
-  <section class="logic">
+  <section
+    class="technology"
+    id="sensorik"
+  >
 
 
-    <div class="logic-inner">
+    <div class="technology-inner">
 
 
-      <div class="logic-header">
+      <div class="technology-top">
 
 
-        <div>
+        <!-- LEFT -->
+
+        <div class="technology-heading">
 
 
-          <div class="section-label">
+          <div class="technology-label">
 
-            03 / Navigationslogik
+            03 / Sensorbasierte Orientierung
 
           </div>
 
 
 
-          <h3>
+          <div class="technology-badge">
 
-            Vier Schritte.<br>
+            <span class="technology-badge-dot"></span>
 
-            Eine klare Entscheidung.
+            Ohne Kamera • Offline • Nur mit Sensoren
 
-          </h3>
+          </div>
+
+
+
+          <h2 class="technology-title">
+
+
+            <span class="technology-title-dark">
+
+              Orientierung<br>
+              ohne Kamera.
+
+            </span>
+
+
+            <span class="technology-title-blue">
+
+              Offline.<br>
+              Sensorbasiert.
+
+            </span>
+
+
+          </h2>
 
 
         </div>
 
 
 
-        <div class="logic-intro">
+        <!-- RIGHT -->
 
-          Die Sensordaten werden in eine einfache
-          und unmittelbar verständliche Abfolge
-          für die Navigation übersetzt.
+        <div class="technology-copy">
+
+
+          <p class="technology-highlight">
+
+            Sensoren erkennen
+
+            <strong>
+              Hindernisse, Stufen,
+              Kanten und freie Wege.
+            </strong>
+
+          </p>
+
+
+
+          <p class="technology-description">
+
+            LROX Guide arbeitet vollständig
+            ohne Kamera und offline.
+
+            Das System nutzt ausschließlich Sensoren,
+            um Hindernisse, Stufen, Kanten,
+            Vertiefungen und andere Wegelemente
+            zu erkennen, die Umgebung zu prüfen
+            und eine freie Richtung zu bestimmen.
+
+          </p>
+
 
         </div>
 
@@ -2213,97 +2659,45 @@
 
 
 
-      <div class="steps">
+      <!-- VIDEO -->
+
+      <div class="technology-video-wrap">
 
 
-        <div class="step">
+        <video
+          class="technology-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
 
+          <source
+            src="../assets/guide/how-it-works.mp4"
+            type="video/mp4"
+          >
 
-          <div class="step-number">
-
-            01
-
-          </div>
-
-
-          <div class="step-dot"></div>
-
-
-          <div class="step-name">
-
-            Erkennen
-
-          </div>
-
-
-        </div>
+        </video>
 
 
 
-        <div class="step">
+        <div
+          class="video-ui"
+          aria-hidden="true"
+        >
 
 
-          <div class="step-number">
+          <div class="video-ui-left">
 
-            02
-
-          </div>
-
-
-          <div class="step-dot"></div>
-
-
-          <div class="step-name">
-
-            Stoppen
+            Sensorbasierte Umgebungserfassung
 
           </div>
 
 
-        </div>
+          <div class="video-ui-right">
 
-
-
-        <div class="step">
-
-
-          <div class="step-number">
-
-            03
-
-          </div>
-
-
-          <div class="step-dot"></div>
-
-
-          <div class="step-name">
-
-            Prüfen
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="step">
-
-
-          <div class="step-number">
-
-            04
-
-          </div>
-
-
-          <div class="step-dot"></div>
-
-
-          <div class="step-name">
-
-            Führen
+            Offline • Keine Kamera
 
           </div>
 
@@ -2470,6 +2864,83 @@
 
       statementObserver.observe(
         statement
+      );
+
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 REVEAL
+    ========================================================== */
+
+    const technology =
+
+      document.querySelector(
+        ".technology"
+      );
+
+
+
+    if (technology) {
+
+
+      const technologyObserver =
+
+        new IntersectionObserver(
+
+
+          (entries) => {
+
+
+            entries.forEach(
+
+
+              (entry) => {
+
+
+                if (
+
+                  entry.isIntersecting
+
+                ) {
+
+
+                  technology.classList.add(
+                    "is-visible"
+                  );
+
+
+                  technologyObserver.unobserve(
+                    technology
+                  );
+
+
+                }
+
+
+              }
+
+
+            );
+
+
+          },
+
+
+          {
+
+            threshold: 0.18
+
+          }
+
+
+        );
+
+
+      technologyObserver.observe(
+        technology
       );
 
 
