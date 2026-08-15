@@ -1466,7 +1466,7 @@
 
 
     /* =========================================================
-       SLIDE 03 → 04 TRANSITION
+       TRANSITION 03 -> 04
     ========================================================== */
 
     .ground-slide-transition {
@@ -1485,7 +1485,6 @@
       background:
         linear-gradient(
           180deg,
-
           rgba(245,249,253,0.96) 0%,
           rgba(245,249,253,0.82) 16%,
           rgba(245,249,253,0.54) 38%,
@@ -1527,7 +1526,7 @@
 
 
     /* =========================================================
-       SLIDE 04 LIGHT OVERLAY
+       SLIDE 04 OVERLAY
     ========================================================== */
 
     .ground-slide-overlay {
@@ -1543,7 +1542,6 @@
 
         linear-gradient(
           90deg,
-
           rgba(250,252,255,0.985) 0%,
           rgba(250,252,255,0.955) 18%,
           rgba(250,252,255,0.84) 31%,
@@ -1555,7 +1553,6 @@
 
         linear-gradient(
           180deg,
-
           rgba(240,246,252,0.05) 0%,
           rgba(255,255,255,0) 52%,
           rgba(235,242,249,0.10) 100%
@@ -1565,7 +1562,7 @@
 
 
     /* =========================================================
-       SLIDE 04 TEXT
+       SLIDE 04 CONTENT
     ========================================================== */
 
     .ground-slide-inner {
@@ -1829,7 +1826,7 @@
 
 
     /* =========================================================
-       SLIDE 04 MINIMAL MARKERS
+       MINIMAL MARKERS
     ========================================================== */
 
     .ground-marker {
@@ -1854,7 +1851,6 @@
     }
 
 
-
     .ground-marker-dot {
       position: relative;
 
@@ -1869,7 +1865,6 @@
         #62a5ff;
 
       box-shadow:
-
         0
         0
         0
@@ -1898,8 +1893,17 @@
 
 
 
+    /*
+       IMPORTANT:
+       line length now changes for each marker.
+       Dot stays near the detected object,
+       text moves much farther right.
+    */
+
     .ground-marker-line {
-      width: 96px;
+      width:
+        var(--marker-line, 160px);
+
       height: 1px;
 
       flex: 0 0 auto;
@@ -1920,25 +1924,16 @@
 
 
 
-    /*
-       NO BOX.
-       Just a very clean vertical accent + text.
-    */
-
     .ground-marker-card {
       position: relative;
 
       min-width: 130px;
-
-      margin-left: 0;
 
       padding-left: 15px;
 
       background: transparent;
 
       border: none;
-
-      border-radius: 0;
 
       box-shadow: none;
 
@@ -1948,28 +1943,27 @@
     }
 
 
-
     .ground-marker-card::before {
       content: "";
 
       position: absolute;
 
       left: 0;
+
       top: -7px;
       bottom: -7px;
 
       width: 1px;
 
       background:
-        rgba(78,145,236,0.88);
+        rgba(78,145,236,0.90);
 
       box-shadow:
         0
         0
-        7px
-        rgba(78,145,236,0.18);
+        8px
+        rgba(78,145,236,0.24);
     }
-
 
 
     .ground-marker-card strong {
@@ -1991,14 +1985,13 @@
         0
         1px
         2px
-        rgba(255,255,255,0.95),
+        rgba(255,255,255,1),
 
         0
         0
         12px
-        rgba(255,255,255,0.95);
+        rgba(255,255,255,1);
     }
-
 
 
     .ground-marker-card small {
@@ -2018,29 +2011,34 @@
         0
         1px
         2px
-        rgba(255,255,255,0.98),
+        rgba(255,255,255,1),
 
         0
         0
         13px
-        rgba(255,255,255,0.98);
+        rgba(255,255,255,1);
     }
 
 
 
     /* =========================================================
-       EXACT DESKTOP POSITIONS
+       MARKER POSITIONS
     ========================================================== */
 
-    /*
-       Vertiefung:
-       moved much farther LEFT + slightly UP
-       so the dot points toward the actual recessed area.
-    */
+
+    /* Hole / depression */
 
     .ground-marker-recess {
-      left: 58.5%;
+      left: 41.5%;
+
       top: 16.5%;
+
+      --marker-line:
+        clamp(
+          250px,
+          30vw,
+          420px
+        );
 
       transition-delay:
         0.72s;
@@ -2048,15 +2046,19 @@
 
 
 
-    /*
-       Stufe:
-       moved left so the marker ends on the step,
-       not on the tactile paving.
-    */
+    /* Middle step */
 
     .ground-marker-step {
-      left: 63%;
+      left: 48%;
+
       top: 43.5%;
+
+      --marker-line:
+        clamp(
+          225px,
+          27vw,
+          380px
+        );
 
       transition-delay:
         0.88s;
@@ -2064,14 +2066,19 @@
 
 
 
-    /*
-       Kante:
-       stays toward the right side of the foreground edge.
-    */
+    /* Foreground edge */
 
     .ground-marker-edge {
-      left: 68%;
+      left: 56%;
+
       bottom: 18.5%;
+
+      --marker-line:
+        clamp(
+          180px,
+          21vw,
+          300px
+        );
 
       transition-delay:
         1.04s;
@@ -2195,28 +2202,39 @@
       }
 
 
-      .ground-marker-line {
-        width: 65px;
-      }
-
-
-      .ground-marker-card {
-        min-width: 105px;
-      }
-
-
       .ground-marker-recess {
-        left: 55%;
+        left: 39%;
+
+        --marker-line:
+          clamp(
+            150px,
+            27vw,
+            260px
+          );
       }
 
 
       .ground-marker-step {
-        left: 60%;
+        left: 46%;
+
+        --marker-line:
+          clamp(
+            140px,
+            24vw,
+            230px
+          );
       }
 
 
       .ground-marker-edge {
-        left: 64%;
+        left: 54%;
+
+        --marker-line:
+          clamp(
+            110px,
+            18vw,
+            180px
+          );
       }
 
     }
@@ -2641,18 +2659,16 @@
 
 
 
-      /*
-         Mobile markers go to the right/lower part.
-      */
+      /* mobile markers */
 
       .ground-marker {
         left: auto !important;
 
-        right: 1%;
+        right: 2%;
 
         transform:
-          translateX(10px)
-          scale(0.78);
+          translateX(8px)
+          scale(0.76);
 
         transform-origin:
           right center;
@@ -2660,7 +2676,7 @@
 
 
       .ground-marker-line {
-        width: 46px;
+        width: 55px;
       }
 
 
@@ -3272,8 +3288,6 @@
   ====================================================== -->
 
   <script>
-
-    /* HERO VIDEO SYNC */
 
     const mainVideo =
       document.querySelector(
