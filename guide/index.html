@@ -1,830 +1,2714 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="LROX Guide erkennt Hindernisse, prüft freie Richtungen und unterstützt bei der Orientierung im Alltag."
+  >
+
   <title>LROX Guide — Intelligente Mobilitätsassistenz</title>
 
+
   <style>
+
+    /* =========================================================
+       GLOBAL
+    ========================================================== */
+
     :root {
-      --bg-dark: #0b0d10;
-      --bg-dark-2: #101419;
-      --text-light: #f7f7f5;
-      --text-soft: rgba(255,255,255,0.76);
-      --line-light: rgba(255,255,255,0.14);
 
-      --section-light: #f5f2ec;
-      --section-light-2: #eef4fb;
-      --section-text: #111318;
-      --section-soft: #5d6672;
+      --cream: #f5f2ec;
+      --cream-light: #faf8f4;
 
-      --accent-orange: #ff6a1a;
-      --accent-blue: #6aa8ff;
-      --accent-blue-soft: rgba(106,168,255,0.18);
+      --white: #ffffff;
 
-      --container: 1240px;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --shadow-soft: 0 20px 60px rgba(18, 28, 45, 0.08);
+      --text: #111318;
+      --muted: #70747c;
+
+      --blue: #6caeff;
+      --blue-strong: #5d9ff6;
+      --blue-soft: #a9d1ff;
+
+      --ice: #f5f8fc;
+      --ice-2: #edf4fc;
+
+      --line: rgba(17, 19, 24, 0.12);
+
     }
+
 
     * {
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
+
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--section-light);
-      color: var(--section-text);
+
+      font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--ice);
+
+      color: var(--text);
+
       overflow-x: hidden;
+
     }
+
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    .container {
-      width: min(var(--container), calc(100% - 48px));
-      margin: 0 auto;
-    }
 
-    /* =========================
-       HEADER
-    ========================= */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 30;
-      padding: 20px 0;
-      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
-    }
 
-    .site-header.scrolled {
-      background: rgba(14, 17, 22, 0.55);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 0.32em;
-      color: #fff;
-    }
-
-    .header-link {
-      color: rgba(255,255,255,0.82);
-      font-size: 14px;
-      letter-spacing: 0.02em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header-link:hover {
-      color: #fff;
-    }
-
-    /* =========================
+    /* =========================================================
        HERO
-    ========================= */
+    ========================================================== */
+
     .hero {
+
       position: relative;
-      min-height: 100vh;
-      background: #000;
-      color: var(--text-light);
+
+      width: 100%;
+      height: 100svh;
+      min-height: 700px;
+
       overflow: hidden;
+
+      background: #11151a;
+      color: white;
+
+      isolation: isolate;
+
     }
 
-    .hero-media {
+
+
+    /* =========================================================
+       HERO BACKGROUND VIDEO
+    ========================================================== */
+
+    .hero-video-bg {
+
       position: absolute;
-      inset: 0;
-      overflow: hidden;
+
+      inset: -40px;
+
+      width: calc(100% + 80px);
+      height: calc(100% + 80px);
+
+      object-fit: cover;
+      object-position: center top;
+
+      z-index: -6;
+
+      filter:
+        blur(26px)
+        brightness(0.64)
+        saturate(0.92);
+
+      transform: scale(1.06);
+
     }
 
-    .hero-video {
+
+
+    /* =========================================================
+       HERO MAIN VIDEO
+    ========================================================== */
+
+    .hero-video-main {
+
+      position: absolute;
+
+      inset: 0;
+
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 22%;
-      display: block;
-      filter: saturate(0.95) contrast(1.02);
+
+      object-fit: contain;
+
+      object-position: 58% top;
+
+      z-index: -5;
+
     }
+
+
+
+    /* =========================================================
+       HERO CINEMATIC OVERLAY
+    ========================================================== */
 
     .hero-overlay {
+
       position: absolute;
+
       inset: 0;
+
+      z-index: -3;
+
+      pointer-events: none;
+
       background:
-        linear-gradient(90deg, rgba(7,10,14,0.82) 0%, rgba(7,10,14,0.52) 38%, rgba(7,10,14,0.20) 70%, rgba(7,10,14,0.10) 100%),
-        linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.42) 100%);
+
+        radial-gradient(
+          circle at 72% 35%,
+          rgba(90, 164, 255, 0.10),
+          transparent 35%
+        ),
+
+        linear-gradient(
+          90deg,
+
+          rgba(3, 8, 12, 0.64) 0%,
+
+          rgba(5, 10, 15, 0.43) 23%,
+
+          rgba(6, 12, 18, 0.18) 46%,
+
+          rgba(6, 12, 18, 0.03) 72%,
+
+          rgba(5, 10, 15, 0.08) 100%
+        ),
+
+        linear-gradient(
+          180deg,
+
+          rgba(0,0,0,0.18) 0%,
+
+          rgba(0,0,0,0.01) 40%,
+
+          rgba(0,0,0,0.10) 67%,
+
+          rgba(7, 12, 17, 0.64) 100%
+        );
+
     }
 
-    /* پل نرم بین Hero و Slide 2 */
-    .hero::after {
-      content: "";
+
+
+    /* =========================================================
+       HERO → SLIDE 2
+       SOFT CINEMATIC TRANSITION
+    ========================================================== */
+
+    .hero-fade {
+
       position: absolute;
+
       left: 0;
       right: 0;
       bottom: -1px;
-      height: 180px;
+
+      height: 230px;
+
+      z-index: 2;
+
+      pointer-events: none;
+
       background:
+
         linear-gradient(
           180deg,
-          rgba(245,242,236,0) 0%,
-          rgba(245,242,236,0.35) 35%,
-          rgba(245,242,236,0.78) 70%,
-          rgba(245,242,236,1) 100%
+
+          rgba(245,248,252,0) 0%,
+
+          rgba(245,248,252,0.03) 15%,
+
+          rgba(245,248,252,0.10) 30%,
+
+          rgba(245,248,252,0.26) 48%,
+
+          rgba(245,248,252,0.55) 67%,
+
+          rgba(245,248,252,0.84) 84%,
+
+          #f5f8fc 100%
         );
-      pointer-events: none;
-      z-index: 2;
+
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 3;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 0 140px;
-    }
 
-    .hero-content {
-      max-width: 670px;
-    }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      color: rgba(255,255,255,0.88);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
+    /* =========================================================
+       NAVIGATION
+    ========================================================== */
 
-    .eyebrow::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--accent-orange);
-      box-shadow: 0 0 0 6px rgba(255,106,26,0.16);
-      flex: 0 0 auto;
-    }
+    .nav {
 
-    .hero-title {
-      margin: 0;
-      font-size: clamp(54px, 8.2vw, 102px);
-      line-height: 0.94;
-      letter-spacing: -0.055em;
-      font-weight: 800;
-    }
-
-    .hero-title .accent {
-      color: var(--accent-orange);
-    }
-
-    .hero-text {
-      max-width: 590px;
-      margin: 26px 0 36px;
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.6;
-      color: var(--text-soft);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 56px;
-      padding: 0 24px;
-      border-radius: 999px;
-      background: var(--accent-orange);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      box-shadow: 0 16px 40px rgba(255,106,26,0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 44px rgba(255,106,26,0.30);
-    }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 56px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.28);
-      color: #fff;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(10px);
-      font-size: 15px;
-      font-weight: 700;
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
-    }
-
-    .hero-bottom-bar {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 28px;
-      z-index: 3;
-      color: rgba(255,255,255,0.72);
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
 
-    .hero-bottom-inner {
+      top: 0;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width:
+        min(
+          calc(100% - 64px),
+          1500px
+        );
+
+      height: 82px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+
+      z-index: 20;
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.22);
+
+      animation:
+        navIn
+        1s
+        ease
+        both;
+
     }
 
-    .scroll-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.86);
-      transition: opacity 0.25s ease;
+
+    @keyframes navIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateX(-50%)
+          translateY(-12px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateX(-50%)
+          translateY(0);
+
+      }
+
     }
 
-    .scroll-link:hover {
-      opacity: 0.75;
+
+
+    .logo {
+
+      font-size: 18px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.30em;
+
+      text-shadow:
+        0
+        2px
+        18px
+        rgba(0,0,0,0.45);
+
     }
 
-    /* =========================
-       SLIDE 2
-    ========================= */
-    .section-2 {
-      position: relative;
-      background:
-        radial-gradient(circle at 78% 28%, rgba(147, 191, 255, 0.22) 0%, rgba(147, 191, 255, 0.08) 22%, rgba(147, 191, 255, 0) 52%),
-        linear-gradient(180deg, #f5f2ec 0%, #f4f4f0 32%, #eef4fb 100%);
-      padding: 110px 0 120px;
-      overflow: hidden;
-    }
 
-    .section-2::before {
-      content: "";
+
+    .mode {
+
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0) 55%),
-        linear-gradient(180deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0) 26%);
-      pointer-events: none;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255,255,255,0.72);
+
     }
 
-    .section-2-inner {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-      gap: 56px;
-      align-items: center;
+
+
+    .back {
+
+      font-size: 13px;
+
+      color:
+        rgba(255,255,255,0.82);
+
+      transition:
+        opacity 0.25s ease;
+
     }
+
+
+    .back:hover {
+      opacity: 0.60;
+    }
+
+
+
+    /* =========================================================
+       HERO CONTENT
+    ========================================================== */
+
+    .hero-content {
+
+      position: absolute;
+
+      left:
+        max(
+          32px,
+          calc((100vw - 1500px) / 2)
+        );
+
+      bottom: 125px;
+
+      width:
+        min(
+          550px,
+          calc(100% - 64px)
+        );
+
+      z-index: 5;
+
+      animation:
+        heroContentIn
+        1.15s
+        cubic-bezier(.22,.61,.36,1)
+        0.15s
+        both;
+
+    }
+
+
+    @keyframes heroContentIn {
+
+      from {
+
+        opacity: 0;
+
+        transform: translateY(32px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+      }
+
+    }
+
+
+
+    .eyebrow {
+
+      margin-bottom: 16px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.19em;
+
+      text-transform: uppercase;
+
+      color:
+        rgba(255,255,255,0.73);
+
+    }
+
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      max-width: 560px;
+
+      font-size:
+        clamp(
+          40px,
+          4.2vw,
+          68px
+        );
+
+      line-height: 0.99;
+
+      letter-spacing: -0.045em;
+
+      font-weight: 700;
+
+      text-shadow:
+        0
+        4px
+        28px
+        rgba(0,0,0,0.34);
+
+    }
+
+
+
+    .hero-text {
+
+      max-width: 500px;
+
+      margin-top: 20px;
+
+      font-size:
+        clamp(
+          15px,
+          1.05vw,
+          17px
+        );
+
+      line-height: 1.58;
+
+      color:
+        rgba(255,255,255,0.83);
+
+      text-shadow:
+        0
+        2px
+        15px
+        rgba(0,0,0,0.35);
+
+    }
+
+
+
+    .hero-button {
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 23px;
+
+      min-height: 44px;
+
+      padding:
+        0
+        18px;
+
+      border:
+        1px solid rgba(255,255,255,0.42);
+
+      border-radius: 999px;
+
+      background:
+        rgba(0,0,0,0.16);
+
+      backdrop-filter: blur(12px);
+
+      -webkit-backdrop-filter: blur(12px);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.07em;
+
+      text-transform: uppercase;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+
+    }
+
+
+
+    .hero-button:hover {
+
+      background: white;
+
+      color: #111;
+
+      border-color: white;
+
+      transform: translateY(-2px);
+
+    }
+
+
+
+    /* =========================================================
+       TRANSITION BRIDGE
+    ========================================================== */
+
+    .transition-bridge {
+
+      position: relative;
+
+      height: 90px;
+
+      margin-top: -2px;
+
+      overflow: hidden;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #f5f8fc 0%,
+          #f7f9fc 45%,
+          #f8fafc 100%
+        );
+
+    }
+
+
+
+    .transition-bridge::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 700px;
+      height: 300px;
+
+      right: 7%;
+
+      top: -220px;
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          rgba(108,174,255,0.18) 0%,
+          rgba(108,174,255,0.07) 38%,
+          transparent 72%
+        );
+
+      filter: blur(26px);
+
+    }
+
+
+
+    .transition-bridge::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 55px;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.58) 100%
+        );
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02
+       LIGHT / PREMIUM / ABSTRACT
+    ========================================================== */
+
+    .statement {
+
+      position: relative;
+
+      min-height: 100svh;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        70px
+        32px
+        115px;
+
+      overflow: hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 80% 28%,
+          rgba(116,176,255,0.16),
+          transparent 29%
+        ),
+
+        radial-gradient(
+          circle at 56% 88%,
+          rgba(116,176,255,0.08),
+          transparent 28%
+        ),
+
+        linear-gradient(
+          135deg,
+          #fafbfc 0%,
+          #f7f9fc 42%,
+          #eef5fd 100%
+        );
+
+      isolation: isolate;
+
+    }
+
+
+
+    /* background light haze */
+
+    .statement::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 800px;
+      height: 800px;
+
+      right: -320px;
+      top: 44%;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          rgba(99,164,255,0.15),
+          rgba(99,164,255,0.045) 42%,
+          transparent 71%
+        );
+
+      filter: blur(20px);
+
+      z-index: -3;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .statement-inner {
+
+      position: relative;
+
+      z-index: 5;
+
+      width:
+        min(
+          1380px,
+          100%
+        );
+
+      margin: 0 auto;
+
+    }
+
+
+
+    .statement-layout {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(480px, 0.92fr)
+        minmax(520px, 1.08fr);
+
+      gap: 65px;
+
+      align-items: center;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 COPY
+    ========================================================== */
+
+    .statement-copy {
+
+      position: relative;
+
+      z-index: 6;
+
+      max-width: 720px;
+
+    }
+
+
 
     .section-label {
-      margin-bottom: 18px;
-      color: #7c8590;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+
+      margin-bottom: 25px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
       text-transform: uppercase;
+
+      color: #617087;
+
     }
 
-    .section-pill {
+
+
+    .statement .section-label {
+
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+
+    }
+
+
+
+    .audience-pill {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 10px;
-      min-height: 42px;
-      padding: 0 16px;
+
+      min-height: 40px;
+
+      padding:
+        0
+        15px;
+
+      margin-bottom: 52px;
+
+      border:
+        1px solid rgba(91,155,241,0.36);
+
       border-radius: 999px;
-      background: rgba(106,168,255,0.10);
-      border: 1px solid rgba(106,168,255,0.20);
-      color: #3679e3;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 26px;
-      box-shadow: 0 10px 24px rgba(80,125,210,0.08);
-    }
 
-    .section-pill::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent-blue);
-      box-shadow: 0 0 0 6px rgba(106,168,255,0.14);
-      flex: 0 0 auto;
-    }
-
-    .section-title {
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(42px, 5.3vw, 76px);
-      line-height: 1.03;
-      letter-spacing: -0.05em;
-      font-weight: 800;
-      color: #111318;
-    }
-
-    .section-title .blue {
-      display: block;
-      margin-top: 14px;
-      color: #69a3f4;
-    }
-
-    .section-copy {
-      max-width: 620px;
-      margin-top: 28px;
-      font-size: clamp(18px, 1.6vw, 22px);
-      line-height: 1.85;
-      color: #5e6673;
-    }
-
-    .section-copy strong {
-      color: #232831;
-    }
-
-    .section-note {
-      max-width: 620px;
-      margin-top: 22px;
-      font-size: 16px;
-      line-height: 1.9;
-      color: #6f7782;
-    }
-
-    .section-actions {
-      margin-top: 34px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-light {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      background: #111318;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      box-shadow: 0 14px 34px rgba(17,19,24,0.12);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .btn-light:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(17,19,24,0.16);
-    }
-
-    .btn-outline-light {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(22,28,37,0.10);
-      background: rgba(255,255,255,0.56);
-      color: #1b2330;
-      font-size: 15px;
-      font-weight: 700;
-      backdrop-filter: blur(12px);
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .btn-outline-light:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.82);
-    }
-
-    /* بخش بصری سمت راست */
-    .ambient-visual {
-      position: relative;
-      min-height: 640px;
-      border-radius: 36px;
-      overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.66) 0%, rgba(255,255,255,0.42) 100%);
+        rgba(255,255,255,0.56);
+
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.55),
-        0 28px 80px rgba(44, 77, 128, 0.10);
-      border: 1px solid rgba(255,255,255,0.7);
+        0
+        10px
+        32px
+        rgba(81,130,205,0.06);
+
+      backdrop-filter: blur(12px);
+
+      -webkit-backdrop-filter: blur(12px);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
+      text-transform: uppercase;
+
+      color: #2e6fc6;
+
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity 0.8s ease 0.08s,
+        transform 0.8s ease 0.08s;
+
     }
+
+
+
+    .audience-dot {
+
+      width: 7px;
+      height: 7px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+
+      box-shadow:
+        0
+        0
+        0
+        6px
+        rgba(108,174,255,0.11);
+
+    }
+
+
+
+    .statement-title {
+
+      margin: 0;
+
+      max-width: 760px;
+
+      font-size:
+        clamp(
+          42px,
+          4.4vw,
+          68px
+        );
+
+      line-height: 1.04;
+
+      letter-spacing: -0.052em;
+
+      font-weight: 650;
+
+    }
+
+
+
+    .statement-title .dark-line {
+
+      display: block;
+
+      color: #1e2a39;
+
+      opacity: 0;
+
+      transform: translateY(32px);
+
+      transition:
+        opacity
+        0.9s
+        ease
+        0.16s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.16s;
+
+    }
+
+
+
+    .statement-title .blue-line {
+
+      display: block;
+
+      margin-top: 19px;
+
+      color:
+        var(--blue-strong);
+
+      opacity: 0;
+
+      transform: translateY(32px);
+
+      transition:
+        opacity
+        0.9s
+        ease
+        0.32s,
+
+        transform
+        0.9s
+        cubic-bezier(.22,.61,.36,1)
+        0.32s;
+
+    }
+
+
+
+    .statement-description {
+
+      max-width: 590px;
+
+      margin:
+        46px
+        0
+        0;
+
+      font-size:
+        clamp(
+          16px,
+          1.25vw,
+          19px
+        );
+
+      line-height: 1.72;
+
+      color: #637083;
+
+      opacity: 0;
+
+      transform: translateY(22px);
+
+      transition:
+        opacity 0.85s ease 0.48s,
+        transform 0.85s ease 0.48s;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 ABSTRACT VISUAL
+       NO RADAR / NO OBSTACLE DIAGRAM / NO FOUR ITEMS
+    ========================================================== */
+
+    .ambient-visual {
+
+      position: relative;
+
+      min-height: 650px;
+
+      overflow: hidden;
+
+      border-radius: 44px;
+
+      opacity: 0;
+
+      transform:
+        translateY(30px)
+        scale(0.985);
+
+      transition:
+        opacity 1s ease 0.22s,
+        transform 1.05s cubic-bezier(.22,.61,.36,1) 0.22s;
+
+    }
+
+
 
     .ambient-visual::before {
+
       content: "";
+
       position: absolute;
+
       inset: 0;
+
       background:
-        radial-gradient(circle at 72% 22%, rgba(119,173,255,0.22) 0%, rgba(119,173,255,0.10) 18%, rgba(119,173,255,0) 48%),
-        radial-gradient(circle at 56% 80%, rgba(119,173,255,0.12) 0%, rgba(119,173,255,0) 34%);
+
+        radial-gradient(
+          circle at 51% 72%,
+          rgba(104,170,255,0.18),
+          rgba(104,170,255,0.035) 30%,
+          transparent 60%
+        );
+
       pointer-events: none;
+
     }
 
-    .light-columns {
+
+
+    /* abstract vertical luminous structures */
+
+    .light-column {
+
       position: absolute;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      gap: 44px;
-      padding: 36px 46px;
-    }
 
-    .column {
-      position: relative;
-      flex: 1 1 0;
-      max-width: 132px;
-      border-radius: 40px;
+      top: 2%;
+      bottom: 7%;
+
+      width: 22%;
+
+      border-radius:
+        6px
+        6px
+        38px
+        38px;
+
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(246,249,255,0.98) 100%);
+
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.48) 0%,
+          rgba(255,255,255,0.82) 52%,
+          rgba(243,247,252,0.94) 100%
+        );
+
+      border:
+        1px solid
+        rgba(255,255,255,0.74);
+
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.92),
-        inset 0 0 32px rgba(122,177,255,0.08),
-        0 18px 50px rgba(45, 82, 135, 0.06);
-      opacity: 0.92;
+
+        inset
+        0
+        0
+        32px
+        rgba(120,175,255,0.06),
+
+        0
+        22px
+        70px
+        rgba(68,102,150,0.055);
+
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+
     }
 
-    .column::after {
+
+
+    .column-left {
+
+      left: 3%;
+
+      opacity: 0.68;
+
+    }
+
+
+
+    .column-center {
+
+      left: 38%;
+
+      width: 24%;
+
+      opacity: 0.94;
+
+    }
+
+
+
+    .column-right {
+
+      right: 2%;
+
+      opacity: 0.70;
+
+    }
+
+
+
+    /* thin blue edges inspired by device light strips */
+
+    .light-column::after {
+
       content: "";
+
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 86px;
+
+      right: 0;
+
+      top: 12%;
+      bottom: 13%;
+
       width: 2px;
-      height: 210px;
+
       border-radius: 999px;
-      background: linear-gradient(180deg, rgba(106,168,255,0) 0%, rgba(106,168,255,0.95) 100%);
-      box-shadow: 0 0 14px rgba(106,168,255,0.30);
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(108,174,255,0),
+          rgba(108,174,255,0.60) 35%,
+          rgba(108,174,255,0.88) 72%,
+          rgba(108,174,255,0)
+        );
+
+      box-shadow:
+        0
+        0
+        12px
+        rgba(108,174,255,0.22);
+
+      opacity: 0.64;
+
     }
 
-    .column.left::after {
-      height: 190px;
-      bottom: 98px;
-    }
 
-    .column.right::after {
-      height: 225px;
-      bottom: 78px;
-    }
 
-    .path-line {
+    /* floor / depth lines */
+
+    .floor-line {
+
       position: absolute;
+
       left: 50%;
-      bottom: 68px;
-      width: 2px;
-      height: 280px;
-      transform: translateX(-50%);
+      bottom: 3%;
+
+      height: 43%;
+
+      width: 1px;
+
+      transform-origin: bottom;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0),
+          rgba(145,177,215,0.30)
+        );
+
+    }
+
+
+
+    .floor-line-1 {
+
+      transform:
+        translateX(-50%)
+        rotate(33deg);
+
+    }
+
+
+
+    .floor-line-2 {
+
+      transform:
+        translateX(-50%)
+        rotate(-33deg);
+
+    }
+
+
+
+    .floor-line-3 {
+
+      transform:
+        translateX(-50%);
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(108,174,255,0),
+          rgba(108,174,255,0.82)
+        );
+
+      box-shadow:
+        0
+        0
+        16px
+        rgba(108,174,255,0.22);
+
+    }
+
+
+
+    /* central blue route */
+
+    .light-route {
+
+      position: absolute;
+
+      left: 50%;
+      bottom: 0;
+
+      width: 3px;
+      height: 48%;
+
+      transform:
+        translateX(-50%);
+
       border-radius: 999px;
-      background: linear-gradient(180deg, rgba(106,168,255,0) 0%, rgba(106,168,255,0.95) 100%);
-      box-shadow: 0 0 22px rgba(106,168,255,0.22);
-      opacity: 0.72;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(108,174,255,0.03) 0%,
+          rgba(108,174,255,0.24) 22%,
+          rgba(108,174,255,0.82) 72%,
+          rgba(108,174,255,1) 100%
+        );
+
+      box-shadow:
+
+        0
+        0
+        8px
+        rgba(108,174,255,0.24),
+
+        0
+        0
+        28px
+        rgba(108,174,255,0.16);
+
+      transform-origin: bottom;
+
+      scale: 1 0;
+
+      transition:
+        scale
+        1.65s
+        cubic-bezier(.22,.61,.36,1)
+        0.72s;
+
     }
 
-    .path-glow {
+
+
+    .route-light {
+
       position: absolute;
+
       left: 50%;
-      bottom: 44px;
-      width: 220px;
-      height: 220px;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(106,168,255,0.22) 0%, rgba(106,168,255,0.05) 36%, rgba(106,168,255,0) 72%);
-      pointer-events: none;
+      bottom: 0;
+
+      width: 300px;
+      height: 230px;
+
+      transform:
+        translateX(-50%);
+
+      background:
+
+        radial-gradient(
+          ellipse at center bottom,
+          rgba(108,174,255,0.22) 0%,
+          rgba(108,174,255,0.06) 34%,
+          transparent 72%
+        );
+
+      filter:
+        blur(8px);
+
+      opacity: 0;
+
+      transition:
+        opacity 1.2s ease 0.95s;
+
     }
 
-    .mini-caption {
+
+
+    /* subtle floating glow */
+
+    .ambient-glow {
+
       position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 28px;
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.64);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.68);
-      box-shadow: 0 14px 32px rgba(24,42,73,0.06);
-      color: #55606d;
-      font-size: 15px;
-      line-height: 1.7;
+
+      width: 340px;
+      height: 340px;
+
+      right: 5%;
+      top: 12%;
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          rgba(111,176,255,0.15),
+          rgba(111,176,255,0.03) 44%,
+          transparent 72%
+        );
+
+      filter: blur(22px);
+
+      animation:
+        ambientFloat
+        7s
+        ease-in-out
+        infinite;
+
     }
 
-    .mini-caption strong {
-      color: #1c2430;
-    }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-    @media (max-width: 1120px) {
-      .section-2-inner {
-        grid-template-columns: 1fr;
+
+    @keyframes ambientFloat {
+
+      0%,
+      100% {
+
+        transform:
+          translate3d(0,0,0)
+          scale(0.96);
+
       }
+
+      50% {
+
+        transform:
+          translate3d(-25px,18px,0)
+          scale(1.06);
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 ACTIVE
+    ========================================================== */
+
+    .statement.is-visible
+    .section-label,
+
+    .statement.is-visible
+    .audience-pill,
+
+    .statement.is-visible
+    .dark-line,
+
+    .statement.is-visible
+    .blue-line,
+
+    .statement.is-visible
+    .statement-description,
+
+    .statement.is-visible
+    .ambient-visual {
+
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+
+
+    .statement.is-visible
+    .light-route {
+
+      scale: 1 1;
+
+    }
+
+
+
+    .statement.is-visible
+    .route-light {
+
+      opacity: 1;
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 02 → SLIDE 03
+    ========================================================== */
+
+    .statement-end {
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 120px;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.68) 60%,
+          #ffffff 100%
+        );
+
+    }
+
+
+
+    /* =========================================================
+       SLIDE 03 — EXISTING NAVIGATION LOGIC
+    ========================================================== */
+
+    .logic {
+
+      position: relative;
+
+      min-height: 100svh;
+
+      padding:
+        125px
+        32px
+        135px;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #ffffff 100%
+        );
+
+      border-top:
+        1px solid rgba(17,19,24,0.05);
+
+    }
+
+
+
+    .logic-inner {
+
+      width:
+        min(
+          1320px,
+          100%
+        );
+
+      margin: 0 auto;
+
+    }
+
+
+
+    .logic-header {
+
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 60px;
+
+    }
+
+
+
+    .logic h3 {
+
+      margin: 0;
+
+      max-width: 700px;
+
+      font-size:
+        clamp(
+          38px,
+          4.5vw,
+          66px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -0.045em;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .logic-intro {
+
+      max-width: 420px;
+
+      padding-bottom: 4px;
+
+      font-size: 16px;
+
+      line-height: 1.6;
+
+      color: var(--muted);
+
+    }
+
+
+
+    /* =========================================================
+       STEPS
+    ========================================================== */
+
+    .steps {
+
+      margin-top: 80px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          1fr
+        );
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+
+    .step {
+
+      position: relative;
+
+      min-height: 270px;
+
+      padding: 28px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      border-right:
+        1px solid var(--line);
+
+      transition:
+        background 0.35s ease,
+        transform 0.35s ease;
+
+    }
+
+
+
+    .step:last-child {
+      border-right: none;
+    }
+
+
+
+    .step:hover {
+
+      background:
+        rgba(108,174,255,0.055);
+
+    }
+
+
+
+    .step-number {
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.15em;
+
+      color: #8b8e94;
+
+    }
+
+
+
+    .step-name {
+
+      font-size:
+        clamp(
+          27px,
+          2.7vw,
+          44px
+        );
+
+      letter-spacing: -0.04em;
+
+      line-height: 1;
+
+      font-weight: 500;
+
+    }
+
+
+
+    .step:last-child .step-name {
+      color: var(--blue);
+    }
+
+
+
+    .step-dot {
+
+      position: absolute;
+
+      top: 29px;
+      right: 29px;
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+
+      opacity: 0;
+
+    }
+
+
+
+    .step:first-child .step-dot {
+
+      opacity: 1;
+
+      box-shadow:
+
+        0
+        0
+        0
+        8px
+        rgba(108,174,255,0.10),
+
+        0
+        0
+        24px
+        rgba(108,174,255,0.35);
+
+    }
+
+
+
+    /* =========================================================
+       TABLET
+    ========================================================== */
+
+    @media (max-width: 1050px) {
+
+      .statement-layout {
+
+        grid-template-columns:
+          1fr
+          0.9fr;
+
+        gap: 40px;
+
+      }
+
 
       .ambient-visual {
-        min-height: 520px;
+        min-height: 560px;
       }
 
-      .section-title {
-        max-width: none;
-      }
-
-      .section-copy,
-      .section-note {
-        max-width: none;
-      }
     }
 
-    @media (max-width: 820px) {
-      .container {
-        width: min(var(--container), calc(100% - 32px));
+
+
+    @media (max-width: 900px) {
+
+      .statement {
+
+        padding-top: 55px;
+
       }
 
-      .site-header {
-        padding: 16px 0;
+
+      .statement-layout {
+
+        grid-template-columns:
+          1fr;
+
       }
 
-      .hero-inner {
-        padding: 104px 0 120px;
+
+      .statement-copy {
+
+        max-width: 760px;
+
       }
 
-      .hero-title {
-        font-size: clamp(42px, 12vw, 72px);
+
+      .ambient-visual {
+
+        min-height: 500px;
+
+        margin-top: 20px;
+
       }
+
+
+      .logic-header {
+
+        display: block;
+
+      }
+
+
+      .logic-intro {
+
+        margin-top: 30px;
+
+      }
+
+
+      .steps {
+
+        grid-template-columns:
+          1fr
+          1fr;
+
+      }
+
+
+      .step {
+
+        min-height: 215px;
+
+        border-bottom:
+          1px solid var(--line);
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
+    @media (max-width: 700px) {
+
+
+      .hero {
+
+        min-height: 680px;
+
+      }
+
+
+      .hero-video-main {
+
+        object-fit: cover;
+
+        object-position: center top;
+
+      }
+
+
+      .hero-video-bg {
+        display: none;
+      }
+
+
+      .hero-fade {
+        height: 175px;
+      }
+
+
+      .nav {
+
+        width:
+          calc(
+            100% - 36px
+          );
+
+        height: 72px;
+
+      }
+
+
+      .mode {
+        display: none;
+      }
+
+
+      .logo {
+        font-size: 16px;
+      }
+
+
+      .back {
+        font-size: 11px;
+      }
+
+
+      .hero-content {
+
+        left: 22px;
+        right: 22px;
+
+        bottom: 105px;
+
+        width: auto;
+
+      }
+
+
+      .eyebrow {
+
+        font-size: 9px;
+
+        margin-bottom: 13px;
+
+      }
+
+
+      .hero h1 {
+
+        max-width: 460px;
+
+        font-size:
+          clamp(
+            37px,
+            10vw,
+            54px
+          );
+
+      }
+
 
       .hero-text {
-        font-size: 17px;
-        line-height: 1.75;
+
+        max-width: 430px;
+
+        margin-top: 16px;
+
+        font-size: 14px;
+
       }
 
-      .hero-bottom-inner {
-        flex-direction: column;
-        align-items: flex-start;
+
+      .hero-button {
+
+        margin-top: 18px;
+
+        min-height: 40px;
+
+        font-size: 10px;
+
       }
 
-      .section-2 {
-        padding: 84px 0 92px;
+
+      .transition-bridge {
+        height: 55px;
       }
 
-      .section-title {
-        font-size: clamp(34px, 9.4vw, 52px);
+
+      .statement {
+
+        padding:
+          45px
+          22px
+          90px;
+
       }
 
-      .section-copy {
-        font-size: 17px;
-        line-height: 1.8;
+
+      .section-label {
+
+        margin-bottom: 20px;
+
+        font-size: 9px;
+
       }
 
-      .section-note {
+
+      .audience-pill {
+
+        margin-bottom: 36px;
+
+        min-height: 36px;
+
+        padding:
+          0
+          12px;
+
+        font-size: 8px;
+
+        letter-spacing: 0.07em;
+
+      }
+
+
+      .statement-title {
+
+        font-size:
+          clamp(
+            36px,
+            9.5vw,
+            52px
+          );
+
+      }
+
+
+      .statement-title .blue-line {
+        margin-top: 14px;
+      }
+
+
+      .statement-description {
+
+        margin-top: 32px;
+
+        font-size: 15px;
+
+      }
+
+
+      .ambient-visual {
+
+        min-height: 400px;
+
+        margin-top: 10px;
+
+        border-radius: 28px;
+
+      }
+
+
+      .light-column {
+
+        width: 25%;
+
+      }
+
+
+      .column-center {
+
+        width: 28%;
+
+        left: 36%;
+
+      }
+
+
+      .logic {
+
+        padding:
+          90px
+          22px;
+
+      }
+
+
+      .logic h3 {
+
+        font-size:
+          clamp(
+            36px,
+            10vw,
+            54px
+          );
+
+      }
+
+
+      .logic-intro {
         font-size: 15px;
       }
 
-      .ambient-visual {
-        min-height: 420px;
-        border-radius: 28px;
+
+      .steps {
+        grid-template-columns: 1fr;
       }
 
-      .light-columns {
-        gap: 22px;
-        padding: 24px 24px;
+
+      .step {
+
+        min-height: 165px;
+
+        border-right: none;
+
       }
 
-      .column {
-        max-width: 92px;
-      }
-
-      .mini-caption {
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        font-size: 14px;
-      }
     }
 
-    @media (max-width: 560px) {
-      .header-link {
-        font-size: 13px;
-      }
 
-      .hero-video {
-        object-position: 62% 18%;
-      }
 
-      .eyebrow {
-        font-size: 11px;
-      }
-
-      .hero-actions,
-      .section-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn-primary,
-      .btn-ghost,
-      .btn-light,
-      .btn-outline-light {
-        width: 100%;
-      }
-
-      .section-pill {
-        font-size: 11px;
-        letter-spacing: 0.06em;
-      }
-
-      .ambient-visual {
-        min-height: 360px;
-      }
-
-      .column::after,
-      .path-line,
-      .path-glow {
-        opacity: 0.9;
-      }
-    }
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================== */
 
     @media (prefers-reduced-motion: reduce) {
+
+
       html {
         scroll-behavior: auto;
       }
 
-      * {
-        transition: none !important;
-        animation: none !important;
+
+      .hero-content,
+      .nav {
+        animation: none;
       }
+
+
+      .statement .section-label,
+      .audience-pill,
+      .dark-line,
+      .blue-line,
+      .statement-description,
+      .ambient-visual {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        transition: none !important;
+
+      }
+
+
+      .light-route {
+
+        scale: 1 1;
+
+        transition: none;
+
+      }
+
+
+      .route-light {
+        opacity: 1;
+      }
+
+
+      .ambient-glow {
+        animation: none;
+      }
+
+
+      .hero-button,
+      .step {
+        transition: none;
+      }
+
     }
+
   </style>
+
 </head>
+
+
 
 <body>
 
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="../gateway-preview.html" class="logo">LROX</a>
-      <a href="../gateway-preview.html" class="header-link">← Zur Auswahl</a>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto">
-        <source src="../assets/guide/hero.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-overlay"></div>
-    </div>
+  <!-- =====================================================
+       HERO / SLIDE 01
+  ====================================================== -->
 
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <div class="eyebrow">Intelligente Mobilitätsassistenz</div>
+  <section class="hero">
 
-        <h1 class="hero-title">
-          Erkennen, was
-          <br />
-          vor Ihnen liegt.
-          <br />
-          <span class="accent">Verstehen, wo es weitergeht.</span>
-        </h1>
 
-        <p class="hero-text">
-          LROX Guide unterstützt blinde und sehbehinderte Menschen dabei,
-          Hindernisse frühzeitig zu erkennen, anzuhalten, freie Richtungen
-          zu prüfen und sicher weiterzugehen.
-        </p>
+    <video
+      class="hero-video-bg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
 
-        <div class="hero-actions">
-          <a href="#slide2" class="btn-primary">Mehr erfahren</a>
-          <a href="#slide2" class="btn-ghost">So funktioniert es</a>
-        </div>
+      <source
+        src="../assets/guide/hero.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+
+
+    <video
+      class="hero-video-main"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+
+      <source
+        src="../assets/guide/hero.mp4"
+        type="video/mp4"
+      >
+
+    </video>
+
+
+
+    <div class="hero-overlay"></div>
+
+
+
+    <nav
+      class="nav"
+      aria-label="Hauptnavigation"
+    >
+
+
+      <a
+        class="logo"
+        href="../gateway-preview.html"
+        aria-label="Zur LROX Auswahl"
+      >
+        LROX
+      </a>
+
+
+
+      <div class="mode">
+        Guide
       </div>
+
+
+
+      <a
+        class="back"
+        href="../gateway-preview.html"
+      >
+        ← Zur Auswahl
+      </a>
+
+
+    </nav>
+
+
+
+    <div class="hero-content">
+
+
+      <div class="eyebrow">
+        Intelligente Mobilitätsassistenz
+      </div>
+
+
+
+      <h1>
+
+        Hindernisse erkennen.<br>
+
+        Freie Wege finden.
+
+      </h1>
+
+
+
+      <div class="hero-text">
+
+        LROX Guide erkennt Hindernisse,
+        prüft freie Richtungen und hilft dabei,
+        einen klareren Weg nach vorn zu finden.
+
+      </div>
+
+
+
+      <a
+        class="hero-button"
+        href="#funktion"
+      >
+        So funktioniert es ↓
+      </a>
+
+
     </div>
 
-    <div class="hero-bottom-bar">
-      <div class="container hero-bottom-inner">
-        <div>Assistive Orientierung in Echtzeit</div>
-        <a href="#slide2" class="scroll-link">Nach unten scrollen ↓</a>
-      </div>
-    </div>
+
+
+    <div class="hero-fade"></div>
+
+
   </section>
 
-  <!-- SLIDE 2 -->
-  <section class="section-2" id="slide2">
-    <div class="container section-2-inner">
 
-      <div class="section-2-copy">
-        <div class="section-label">02 / Mobilitätsassistenz</div>
 
-        <div class="section-pill">
-          Für blinde und sehbehinderte Menschen
+  <!-- =====================================================
+       HERO → SLIDE 02 BRIDGE
+  ====================================================== -->
+
+  <div
+    class="transition-bridge"
+    aria-hidden="true"
+  ></div>
+
+
+
+  <!-- =====================================================
+       SLIDE 02
+  ====================================================== -->
+
+  <section
+    class="statement"
+    id="funktion"
+  >
+
+
+    <div class="statement-inner">
+
+
+      <div class="statement-layout">
+
+
+        <!-- LEFT TEXT -->
+
+        <div class="statement-copy">
+
+
+          <div class="section-label">
+
+            02 / Mobilitätsassistenz
+
+          </div>
+
+
+
+          <div class="audience-pill">
+
+            <span class="audience-dot"></span>
+
+            Für blinde und sehbehinderte Menschen
+
+          </div>
+
+
+
+          <h2 class="statement-title">
+
+
+            <span class="dark-line">
+
+              Mehr Sicherheit beginnt<br>
+
+              mit besserer Orientierung.
+
+            </span>
+
+
+
+            <span class="blue-line">
+
+              Nicht nur Hindernisse erkennen.<br>
+
+              Sondern freie Wege verstehen.
+
+            </span>
+
+
+          </h2>
+
+
+
+          <p class="statement-description">
+
+            LROX Guide unterstützt blinde
+            und sehbehinderte Menschen
+            bei der Orientierung.
+
+            <br><br>
+
+            Das System erkennt Hindernisse,
+            signalisiert den Stopp
+            und hilft dabei,
+            eine freie Richtung zu identifizieren.
+
+          </p>
+
+
         </div>
 
-        <h2 class="section-title">
-          Mehr Sicherheit beginnt
-          <br />
-          mit besserer Orientierung.
-          <span class="blue">
-            Nicht nur Hindernisse erkennen.
-            Sondern freie Wege verstehen.
-          </span>
-        </h2>
 
-        <div class="section-copy">
-          <strong>LROX Guide</strong> wurde entwickelt, um blinde und
-          sehbehinderte Menschen im Alltag gezielt zu unterstützen.
-          Das System erkennt, was sich direkt vor dem Nutzer befindet,
-          signalisiert den richtigen Moment zum Stoppen und hilft dabei,
-          offene Richtungen besser einzuschätzen.
+
+        <!-- RIGHT ABSTRACT VISUAL -->
+
+        <div
+          class="ambient-visual"
+          aria-hidden="true"
+        >
+
+
+          <div class="ambient-glow"></div>
+
+
+          <div
+            class="light-column column-left"
+          ></div>
+
+
+          <div
+            class="light-column column-center"
+          ></div>
+
+
+          <div
+            class="light-column column-right"
+          ></div>
+
+
+          <div
+            class="floor-line floor-line-1"
+          ></div>
+
+
+          <div
+            class="floor-line floor-line-2"
+          ></div>
+
+
+          <div
+            class="floor-line floor-line-3"
+          ></div>
+
+
+          <div class="route-light"></div>
+
+
+          <div class="light-route"></div>
+
+
         </div>
 
-        <div class="section-note">
-          Statt nur vor einer Kollision zu warnen, unterstützt LROX Guide
-          bei der eigentlichen Orientierung:
-          <strong>Was ist blockiert? Welche Seite ist frei? In welche Richtung kann ich sicher weitergehen?</strong>
-          Genau darin liegt der Unterschied.
-        </div>
 
-        <div class="section-actions">
-          <a href="#hero" class="btn-light">Zum Hero zurück</a>
-          <a href="#slide2" class="btn-outline-light">Funktionsprinzip ansehen</a>
-        </div>
       </div>
 
-      <div class="ambient-visual" aria-hidden="true">
-        <div class="light-columns">
-          <div class="column left"></div>
-          <div class="column center"></div>
-          <div class="column right"></div>
-        </div>
-
-        <div class="path-line"></div>
-        <div class="path-glow"></div>
-
-        <div class="mini-caption">
-          <strong>LROX Guide</strong> verbindet Hinderniserkennung
-          mit Richtungsverständnis – für klarere Orientierung und
-          mehr Sicherheit in Bewegung.
-        </div>
-      </div>
 
     </div>
+
+
+    <div class="statement-end"></div>
+
+
   </section>
+
+
+
+  <!-- =====================================================
+       SLIDE 03
+       CURRENT NAVIGATION LOGIC
+  ====================================================== -->
+
+  <section class="logic">
+
+
+    <div class="logic-inner">
+
+
+      <div class="logic-header">
+
+
+        <div>
+
+
+          <div class="section-label">
+
+            03 / Navigationslogik
+
+          </div>
+
+
+
+          <h3>
+
+            Vier Schritte.<br>
+
+            Eine klare Entscheidung.
+
+          </h3>
+
+
+        </div>
+
+
+
+        <div class="logic-intro">
+
+          Die Sensordaten werden in eine einfache
+          und unmittelbar verständliche Abfolge
+          für die Navigation übersetzt.
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="steps">
+
+
+        <div class="step">
+
+
+          <div class="step-number">
+            01
+          </div>
+
+
+          <div class="step-dot"></div>
+
+
+          <div class="step-name">
+            Erkennen
+          </div>
+
+
+        </div>
+
+
+
+        <div class="step">
+
+
+          <div class="step-number">
+            02
+          </div>
+
+
+          <div class="step-dot"></div>
+
+
+          <div class="step-name">
+            Stoppen
+          </div>
+
+
+        </div>
+
+
+
+        <div class="step">
+
+
+          <div class="step-number">
+            03
+          </div>
+
+
+          <div class="step-dot"></div>
+
+
+          <div class="step-name">
+            Prüfen
+          </div>
+
+
+        </div>
+
+
+
+        <div class="step">
+
+
+          <div class="step-number">
+            04
+          </div>
+
+
+          <div class="step-dot"></div>
+
+
+          <div class="step-name">
+            Führen
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SCRIPTS
+  ====================================================== -->
 
   <script>
-    const header = document.getElementById("siteHeader");
 
-    function updateHeader() {
-      if (window.scrollY > 30) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
+
+    /* ---------------------------------------------------------
+       Keep hero videos synchronized
+    ---------------------------------------------------------- */
+
+    const mainVideo =
+      document.querySelector(
+        ".hero-video-main"
+      );
+
+
+    const backgroundVideo =
+      document.querySelector(
+        ".hero-video-bg"
+      );
+
+
+
+    function syncVideos() {
+
+
+      if (
+
+        mainVideo &&
+
+        backgroundVideo &&
+
+        Math.abs(
+
+          mainVideo.currentTime -
+
+          backgroundVideo.currentTime
+
+        ) > 0.15
+
+      ) {
+
+
+        backgroundVideo.currentTime =
+          mainVideo.currentTime;
+
+
       }
+
     }
 
-    updateHeader();
-    window.addEventListener("scroll", updateHeader);
+
+
+    if (
+      mainVideo &&
+      backgroundVideo
+    ) {
+
+
+      mainVideo.addEventListener(
+        "timeupdate",
+        syncVideos
+      );
+
+
+    }
+
+
+
+    /* ---------------------------------------------------------
+       Slide 02 reveal animation
+    ---------------------------------------------------------- */
+
+    const statement =
+      document.querySelector(
+        ".statement"
+      );
+
+
+
+    if (statement) {
+
+
+      const statementObserver =
+
+        new IntersectionObserver(
+
+
+          (entries) => {
+
+
+            entries.forEach(
+
+
+              (entry) => {
+
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+
+                  statement.classList.add(
+                    "is-visible"
+                  );
+
+
+                  statementObserver.unobserve(
+                    statement
+                  );
+
+
+                }
+
+
+              }
+
+
+            );
+
+
+          },
+
+
+          {
+            threshold: 0.20
+          }
+
+
+        );
+
+
+      statementObserver.observe(
+        statement
+      );
+
+
+    }
+
+
   </script>
+
+
 </body>
+
 </html>
