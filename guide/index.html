@@ -1,211 +1,417 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LROX Guide</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="LROX Guide erkennt Hindernisse, prüft freie Richtungen und unterstützt bei der Orientierung im Alltag."
+  >
+
+  <title>LROX Guide — Intelligente Mobilitätsassistenz</title>
 
   <style>
+
+    :root {
+      --bg: #f5f2ec;
+      --white: #ffffff;
+      --text: #111318;
+      --muted: #70747c;
+      --blue: #6caeff;
+      --line: rgba(17, 19, 24, 0.12);
+    }
+
+
     * {
       box-sizing: border-box;
     }
+
 
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f2ec;
-      color: #111;
+
+      font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+
+      overflow-x: hidden;
     }
+
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    /* HERO */
+
+    /* =========================================================
+       HERO
+    ========================================================== */
 
     .hero {
       position: relative;
+
       width: 100%;
-      height: 100vh;
+      height: 100svh;
       min-height: 700px;
+
       overflow: hidden;
+
       background: #111;
       color: white;
+
+      isolation: isolate;
     }
+
 
     .hero video {
       position: absolute;
+
       inset: 0;
 
       width: 100%;
       height: 100%;
 
       object-fit: cover;
-      object-position: center;
+
+      /*
+        مهم:
+        این باعث می‌شود قسمت بالای ویدیو بیشتر دیده شود
+        و سر خانم از تصویر خارج نشود.
+      */
+      object-position: center 20%;
+
+      z-index: -3;
     }
+
 
     .hero-overlay {
       position: absolute;
+
       inset: 0;
 
+      z-index: -2;
+
+      pointer-events: none;
+
       background:
+
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.46) 0%,
+          rgba(0,0,0,0.23) 30%,
+          rgba(0,0,0,0.04) 62%,
+          rgba(0,0,0,0.02) 100%
+        ),
+
         linear-gradient(
           180deg,
           rgba(0,0,0,0.18) 0%,
-          rgba(0,0,0,0.03) 45%,
-          rgba(0,0,0,0.68) 100%
+          rgba(0,0,0,0.02) 40%,
+          rgba(0,0,0,0.64) 100%
         );
     }
 
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================== */
+
     .nav {
       position: absolute;
+
       top: 0;
       left: 50%;
 
       transform: translateX(-50%);
 
-      width: min(calc(100% - 64px), 1500px);
+      width: min(
+        calc(100% - 64px),
+        1500px
+      );
+
       height: 82px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      z-index: 10;
+      z-index: 20;
 
       border-bottom:
-        1px solid rgba(255,255,255,0.25);
+        1px solid rgba(255,255,255,0.24);
     }
+
 
     .logo {
       font-size: 18px;
       font-weight: 800;
+
       letter-spacing: 0.30em;
+
+      text-shadow:
+        0 2px 18px rgba(0,0,0,0.45);
     }
 
+
     .mode {
-      font-size: 12px;
+      position: absolute;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 11px;
+      font-weight: 600;
+
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.72);
+
+      color:
+        rgba(255,255,255,0.72);
     }
+
 
     .back {
       font-size: 13px;
-      color: rgba(255,255,255,0.80);
+
+      color:
+        rgba(255,255,255,0.82);
+
+      transition:
+        opacity 0.25s ease;
     }
+
+
+    .back:hover {
+      opacity: 0.65;
+    }
+
+
+    /* =========================================================
+       HERO CONTENT
+    ========================================================== */
 
     .hero-content {
       position: absolute;
 
-      left: max(32px, calc((100vw - 1500px) / 2));
-      bottom: 70px;
+      left:
+        max(
+          32px,
+          calc((100vw - 1500px) / 2)
+        );
 
-      max-width: 850px;
+      bottom: 68px;
+
+      width:
+        min(
+          690px,
+          calc(100% - 64px)
+        );
 
       z-index: 5;
     }
+
 
     .eyebrow {
       margin-bottom: 18px;
 
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
 
       letter-spacing: 0.20em;
       text-transform: uppercase;
 
-      color: rgba(255,255,255,0.75);
+      color:
+        rgba(255,255,255,0.76);
     }
 
-    h1 {
+
+    .hero h1 {
       margin: 0;
 
-      font-size: clamp(52px, 7vw, 108px);
-      line-height: 0.92;
+      max-width: 760px;
+
+      font-size:
+        clamp(
+          50px,
+          6.4vw,
+          104px
+        );
+
+      line-height: 0.93;
 
       letter-spacing: -0.055em;
+
+      font-weight: 700;
+
+      text-shadow:
+        0 4px 28px rgba(0,0,0,0.32);
     }
+
 
     .hero-text {
-      margin-top: 24px;
-      max-width: 550px;
+      max-width: 575px;
 
-      font-size: 18px;
+      margin-top: 24px;
+
+      font-size:
+        clamp(
+          16px,
+          1.2vw,
+          19px
+        );
+
       line-height: 1.55;
 
-      color: rgba(255,255,255,0.84);
+      color:
+        rgba(255,255,255,0.85);
+
+      text-shadow:
+        0 2px 15px rgba(0,0,0,0.32);
     }
+
 
     .hero-button {
       display: inline-flex;
+
       align-items: center;
+      justify-content: center;
 
       margin-top: 26px;
 
-      padding: 13px 18px;
+      min-height: 46px;
+
+      padding:
+        0
+        19px;
 
       border:
-        1px solid rgba(255,255,255,0.45);
+        1px solid rgba(255,255,255,0.44);
 
       border-radius: 999px;
 
       background:
-        rgba(0,0,0,0.18);
+        rgba(0,0,0,0.15);
 
-      backdrop-filter: blur(12px);
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
 
       font-size: 12px;
+      font-weight: 600;
+
       letter-spacing: 0.08em;
       text-transform: uppercase;
+
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
     }
 
-    /* SECTION 2 */
+
+    .hero-button:hover {
+      background: white;
+      color: #111;
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================================================
+       SECTION 01
+    ========================================================== */
 
     .statement {
-      min-height: 100vh;
+      position: relative;
+
+      min-height: 100svh;
 
       display: flex;
       align-items: center;
 
-      padding: 110px 32px;
+      padding:
+        110px
+        32px;
+
+      overflow: hidden;
 
       background:
+
         radial-gradient(
-          circle at 72% 34%,
-          rgba(110,175,255,0.15),
-          transparent 30%
+          circle at 75% 35%,
+          rgba(108,174,255,0.17),
+          transparent 29%
         ),
+
+        radial-gradient(
+          circle at 84% 65%,
+          rgba(165,205,255,0.10),
+          transparent 25%
+        ),
+
         #f5f2ec;
     }
 
+
     .statement-inner {
-      width: min(1180px, 100%);
-      margin: 0 auto;
+      width:
+        min(
+          1180px,
+          100%
+        );
+
+      margin:
+        0
+        auto;
     }
+
 
     .section-label {
       margin-bottom: 42px;
 
       font-size: 12px;
+      font-weight: 600;
+
       letter-spacing: 0.18em;
       text-transform: uppercase;
 
-      color: #777;
+      color: #777b82;
     }
+
 
     .statement h2 {
       margin: 0;
 
-      max-width: 1100px;
+      max-width: 1120px;
 
-      font-size: clamp(46px, 6.5vw, 96px);
+      font-size:
+        clamp(
+          46px,
+          6.3vw,
+          96px
+        );
+
       line-height: 0.98;
 
       letter-spacing: -0.055em;
@@ -213,124 +419,402 @@
       font-weight: 600;
     }
 
+
     .statement h2 span {
-      color: #5aa7ff;
+      color: var(--blue);
     }
+
 
     .statement p {
-      max-width: 630px;
+      max-width: 650px;
 
-      margin: 44px 0 0 auto;
+      margin:
+        44px
+        0
+        0
+        auto;
 
-      font-size: 20px;
-      line-height: 1.6;
+      font-size:
+        clamp(
+          17px,
+          1.5vw,
+          21px
+        );
 
-      color: #70747c;
+      line-height: 1.65;
+
+      color: var(--muted);
     }
 
-    /* SECTION 3 */
+
+    /* =========================================================
+       SECTION 02
+    ========================================================== */
 
     .logic {
-      min-height: 100vh;
+      position: relative;
 
-      padding: 110px 32px;
+      min-height: 100svh;
+
+      padding:
+        110px
+        32px
+        130px;
 
       background: white;
     }
 
+
     .logic-inner {
-      width: min(1320px, 100%);
-      margin: 0 auto;
+      width:
+        min(
+          1320px,
+          100%
+        );
+
+      margin:
+        0
+        auto;
     }
+
+
+    .logic-header {
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 60px;
+    }
+
 
     .logic h3 {
       margin: 0;
 
-      max-width: 850px;
+      max-width: 760px;
 
-      font-size: clamp(44px, 5.5vw, 82px);
+      font-size:
+        clamp(
+          44px,
+          5.4vw,
+          82px
+        );
+
       line-height: 0.98;
 
       letter-spacing: -0.05em;
+
+      font-weight: 600;
     }
+
+
+    .logic-intro {
+      max-width: 430px;
+
+      padding-bottom: 5px;
+
+      font-size: 17px;
+      line-height: 1.6;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       STEPS
+    ========================================================== */
 
     .steps {
-      margin-top: 90px;
+      margin-top: 88px;
 
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
 
-      border-top: 1px solid rgba(0,0,0,0.12);
+      grid-template-columns:
+        repeat(
+          4,
+          1fr
+        );
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
+
     .step {
-      min-height: 280px;
+      position: relative;
+
+      min-height: 295px;
 
       padding: 30px;
 
-      border-right: 1px solid rgba(0,0,0,0.12);
-
       display: flex;
+
       flex-direction: column;
       justify-content: space-between;
+
+      border-right:
+        1px solid var(--line);
+
+      transition:
+        background 0.35s ease;
     }
+
 
     .step:last-child {
       border-right: none;
     }
 
+
+    .step:hover {
+      background:
+        rgba(108,174,255,0.055);
+    }
+
+
     .step-number {
       font-size: 12px;
-      color: #777;
+      font-weight: 600;
+
       letter-spacing: 0.15em;
+
+      color: #8b8e94;
     }
+
 
     .step-name {
-      font-size: clamp(30px, 3vw, 50px);
+      font-size:
+        clamp(
+          30px,
+          3vw,
+          50px
+        );
+
       letter-spacing: -0.04em;
+
+      line-height: 1;
+
+      font-weight: 500;
     }
+
 
     .step:last-child .step-name {
-      color: #5aa7ff;
+      color: var(--blue);
     }
 
-    /* MOBILE */
 
-    @media (max-width: 800px) {
-      .nav {
-        width: calc(100% - 36px);
+    .step-dot {
+      position: absolute;
+
+      top: 30px;
+      right: 30px;
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+
+      opacity: 0;
+    }
+
+
+    .step:first-child .step-dot {
+      opacity: 1;
+
+      box-shadow:
+        0 0 0 8px rgba(108,174,255,0.10),
+        0 0 24px rgba(108,174,255,0.35);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+
+    @media (max-width: 900px) {
+
+      .logic-header {
+        display: block;
       }
+
+
+      .logic-intro {
+        margin-top: 30px;
+      }
+
+
+      .steps {
+        grid-template-columns:
+          1fr
+          1fr;
+      }
+
+
+      .step {
+        min-height: 220px;
+
+        border-bottom:
+          1px solid var(--line);
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .hero {
+        min-height: 680px;
+      }
+
+
+      .hero video {
+        /*
+          روی موبایل باز هم بالای کادر را نگه می‌داریم.
+        */
+        object-position: center 18%;
+      }
+
+
+      .nav {
+        width:
+          calc(
+            100% - 36px
+          );
+
+        height: 72px;
+      }
+
 
       .mode {
         display: none;
       }
 
+
+      .logo {
+        font-size: 16px;
+      }
+
+
+      .back {
+        font-size: 12px;
+      }
+
+
       .hero-content {
         left: 22px;
         right: 22px;
-        bottom: 38px;
+        bottom: 35px;
+
+        width: auto;
       }
 
-      h1 {
-        font-size: 54px;
+
+      .eyebrow {
+        font-size: 10px;
       }
+
+
+      .hero h1 {
+        font-size:
+          clamp(
+            46px,
+            13vw,
+            64px
+          );
+      }
+
+
+      .hero-text {
+        max-width: 460px;
+
+        font-size: 15px;
+      }
+
+
+      .statement,
+      .logic {
+        padding:
+          90px
+          22px;
+      }
+
+
+      .statement h2 {
+        font-size:
+          clamp(
+            42px,
+            12vw,
+            64px
+          );
+      }
+
+
+      .statement p {
+        margin-top: 35px;
+
+        font-size: 17px;
+      }
+
+
+      .logic h3 {
+        font-size:
+          clamp(
+            42px,
+            11vw,
+            62px
+          );
+      }
+
 
       .steps {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
 
+
       .step {
-        min-height: 210px;
-        border-bottom: 1px solid rgba(0,0,0,0.12);
+        min-height: 180px;
+
+        border-right: none;
       }
+
+    }
+
+
+    /* =========================================================
+       ACCESSIBILITY
+    ========================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+
+      .hero-button,
+      .step {
+        transition: none;
+      }
+
     }
 
   </style>
 </head>
 
+
 <body>
 
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
   <section class="hero">
+
 
     <video
       autoplay
@@ -338,135 +822,249 @@
       loop
       playsinline
       preload="auto"
+      aria-hidden="true"
     >
+
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
+
     </video>
+
 
     <div class="hero-overlay"></div>
 
-    <nav class="nav">
+
+
+    <nav
+      class="nav"
+      aria-label="Hauptnavigation"
+    >
 
       <a
         class="logo"
         href="../gateway-preview.html"
+        aria-label="Zur LROX Auswahl"
       >
         LROX
       </a>
+
 
       <div class="mode">
         Guide
       </div>
 
+
       <a
         class="back"
         href="../gateway-preview.html"
       >
-        ← Choose mode
+        ← Auswahl
       </a>
 
     </nav>
 
+
+
     <div class="hero-content">
 
+
       <div class="eyebrow">
-        Intelligent Mobility Assistance
+        Intelligente Mobilitätsassistenz
       </div>
+
 
       <h1>
-        Know what’s ahead.<br>
-        Know where to go.
+        Erkennen, was vor Ihnen liegt.<br>
+        Wissen, wo es weitergeht.
       </h1>
 
+
       <div class="hero-text">
-        Environmental awareness designed to help identify obstacles
-        and understand which direction remains open.
+        LROX Guide erkennt Hindernisse,
+        prüft freie Richtungen und unterstützt dabei,
+        einen klareren Weg nach vorn zu finden.
       </div>
+
 
       <a
         class="hero-button"
-        href="#why"
+        href="#funktion"
       >
-        See how it works ↓
+        So funktioniert es ↓
       </a>
+
 
     </div>
 
+
   </section>
 
+
+
+  <!-- =====================================================
+       SECTION 01
+  ====================================================== -->
 
   <section
     class="statement"
-    id="why"
+    id="funktion"
   >
+
 
     <div class="statement-inner">
 
+
       <div class="section-label">
-        01 / Beyond detection
+        01 / Mehr als Hinderniserkennung
       </div>
 
+
       <h2>
-        It doesn’t just detect
-        what’s ahead.
+
+        Es erkennt nicht nur,
+        was vor Ihnen liegt.
+
         <span>
-          It helps find what’s open.
+          Es hilft zu erkennen,
+          wo der Weg frei ist.
         </span>
+
       </h2>
 
+
       <p>
-        LROX Guide detects an obstacle,
-        pauses movement, checks the available directions
-        and helps identify a clearer route forward.
+        LROX Guide erkennt ein Hindernis,
+        signalisiert den Stopp,
+        prüft rechts und links
+        und unterstützt dabei,
+        die freiere Richtung zu identifizieren.
       </p>
+
 
     </div>
 
+
   </section>
 
+
+
+  <!-- =====================================================
+       SECTION 02
+  ====================================================== -->
 
   <section class="logic">
 
+
     <div class="logic-inner">
 
-      <div class="section-label">
-        02 / Navigation logic
+
+      <div class="logic-header">
+
+
+        <div>
+
+          <div class="section-label">
+            02 / Navigationslogik
+          </div>
+
+
+          <h3>
+            Vier Schritte.<br>
+            Eine klare Entscheidung.
+          </h3>
+
+        </div>
+
+
+
+        <div class="logic-intro">
+          Aus den Umgebungsdaten entsteht eine
+          einfache Abfolge, die unmittelbar verständlich
+          und im richtigen Moment nutzbar ist.
+        </div>
+
+
       </div>
 
-      <h3>
-        Four steps.
-        One clear decision.
-      </h3>
+
 
       <div class="steps">
 
-        <div class="step">
-          <div class="step-number">01</div>
-          <div class="step-name">Detect</div>
-        </div>
 
         <div class="step">
-          <div class="step-number">02</div>
-          <div class="step-name">Stop</div>
+
+          <div class="step-number">
+            01
+          </div>
+
+          <div class="step-dot"></div>
+
+          <div class="step-name">
+            Erkennen
+          </div>
+
         </div>
 
-        <div class="step">
-          <div class="step-number">03</div>
-          <div class="step-name">Scan</div>
-        </div>
+
 
         <div class="step">
-          <div class="step-number">04</div>
-          <div class="step-name">Guide</div>
+
+          <div class="step-number">
+            02
+          </div>
+
+          <div class="step-dot"></div>
+
+          <div class="step-name">
+            Stoppen
+          </div>
+
         </div>
+
+
+
+        <div class="step">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <div class="step-dot"></div>
+
+          <div class="step-name">
+            Prüfen
+          </div>
+
+        </div>
+
+
+
+        <div class="step">
+
+          <div class="step-number">
+            04
+          </div>
+
+          <div class="step-dot"></div>
+
+          <div class="step-name">
+            Führen
+          </div>
+
+        </div>
+
 
       </div>
 
+
     </div>
+
 
   </section>
 
+
 </body>
+
 </html>
