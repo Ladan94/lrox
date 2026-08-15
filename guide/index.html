@@ -1,3449 +1,830 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="LROX Guide ist eine intelligente Mobilitätsassistenz für blinde und sehbehinderte Menschen."
-  >
-
-  <title>
-    LROX Guide — Intelligente Mobilitätsassistenz
-  </title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LROX Guide — Intelligente Mobilitätsassistenz</title>
 
   <style>
-
-    /* =========================================================
-       GLOBAL
-    ========================================================== */
-
     :root {
+      --bg-dark: #0b0d10;
+      --bg-dark-2: #101419;
+      --text-light: #f7f7f5;
+      --text-soft: rgba(255,255,255,0.76);
+      --line-light: rgba(255,255,255,0.14);
 
-      --dark-0: #05090d;
-      --dark-1: #071019;
-      --dark-2: #0a1621;
-      --dark-3: #102131;
+      --section-light: #f5f2ec;
+      --section-light-2: #eef4fb;
+      --section-text: #111318;
+      --section-soft: #5d6672;
 
-      --cream: #f5f2ec;
-      --white: #ffffff;
+      --accent-orange: #ff6a1a;
+      --accent-blue: #6aa8ff;
+      --accent-blue-soft: rgba(106,168,255,0.18);
 
-      --text-light: #f5f8fb;
-      --text-dark: #111318;
-
-      --muted-light: #9ba8b4;
-      --muted-dark: #70747c;
-
-      --blue: #69adff;
-      --blue-bright: #86bdff;
-      --blue-soft: rgba(105,173,255,0.18);
-
-      --glass:
-        rgba(255,255,255,0.055);
-
-      --glass-border:
-        rgba(255,255,255,0.11);
-
-      --line-dark:
-        rgba(255,255,255,0.09);
-
-      --line-light:
-        rgba(17,19,24,0.12);
-
+      --container: 1240px;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --shadow-soft: 0 20px 60px rgba(18, 28, 45, 0.08);
     }
-
 
     * {
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
 
-
     body {
-
       margin: 0;
-
-      font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background:
-        var(--dark-1);
-
-      color:
-        var(--text-light);
-
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--section-light);
+      color: var(--section-text);
       overflow-x: hidden;
-
     }
-
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-
-
-    /* =========================================================
-       HERO
-    ========================================================== */
-
-    .hero {
-
-      position: relative;
-
-      width: 100%;
-
-      height: 100svh;
-
-      min-height: 700px;
-
-      overflow: hidden;
-
-      background:
-        var(--dark-0);
-
-      color: white;
-
-      isolation: isolate;
-
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin: 0 auto;
     }
 
-
-
-    /* =========================================================
-       HERO BACKGROUND VIDEO
-    ========================================================== */
-
-    .hero-video-bg {
-
-      position: absolute;
-
-      inset: -40px;
-
-      width:
-        calc(100% + 80px);
-
-      height:
-        calc(100% + 80px);
-
-      object-fit: cover;
-
-      object-position:
-        center top;
-
-      z-index: -7;
-
-      filter:
-        blur(26px)
-        brightness(0.61)
-        saturate(0.92);
-
-      transform:
-        scale(1.06);
-
-    }
-
-
-
-    /* =========================================================
-       HERO MAIN VIDEO
-    ========================================================== */
-
-    .hero-video-main {
-
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: contain;
-
-      object-position:
-        58% top;
-
-      z-index: -6;
-
-    }
-
-
-
-    /* =========================================================
-       HERO OVERLAY
-    ========================================================== */
-
-    .hero-overlay {
-
-      position: absolute;
-
-      inset: 0;
-
-      z-index: -4;
-
-      pointer-events: none;
-
-      background:
-
-        radial-gradient(
-          circle at 73% 38%,
-          rgba(87,160,255,0.10),
-          transparent 36%
-        ),
-
-        linear-gradient(
-          90deg,
-
-          rgba(4,9,14,0.67) 0%,
-
-          rgba(5,11,17,0.48) 22%,
-
-          rgba(5,12,18,0.20) 44%,
-
-          rgba(5,12,18,0.04) 70%,
-
-          rgba(5,11,17,0.12) 100%
-        ),
-
-        linear-gradient(
-          180deg,
-
-          rgba(0,0,0,0.16) 0%,
-
-          rgba(0,0,0,0.01) 39%,
-
-          rgba(4,10,15,0.12) 65%,
-
-          rgba(7,16,25,0.72) 100%
-        );
-
-    }
-
-
-
-    /* =========================================================
-       HERO → SLIDE 2 FADE
-    ========================================================== */
-
-    .hero-to-dark {
-
-      position: absolute;
-
-      left: 0;
-
-      right: 0;
-
-      bottom: 0;
-
-      height: 210px;
-
-      z-index: 2;
-
-      pointer-events: none;
-
-      background:
-
-        linear-gradient(
-          180deg,
-
-          rgba(7,16,25,0) 0%,
-
-          rgba(7,16,25,0.15) 28%,
-
-          rgba(7,16,25,0.52) 61%,
-
-          rgba(7,16,25,0.89) 84%,
-
-          #071019 100%
-        );
-
-    }
-
-
-
-    /* =========================================================
-       NAVIGATION
-    ========================================================== */
-
-    .nav {
-
-      position: absolute;
-
+    /* =========================
+       HEADER
+    ========================= */
+    .site-header {
+      position: fixed;
       top: 0;
-
-      left: 50%;
-
-      transform:
-        translateX(-50%);
-
-      width:
-
-        min(
-          calc(100% - 64px),
-          1500px
-        );
-
-      height: 82px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      z-index: 20;
-
-      border-bottom:
-
-        1px solid
-        rgba(255,255,255,0.20);
-
+      left: 0;
+      width: 100%;
+      z-index: 30;
+      padding: 20px 0;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
     }
 
+    .site-header.scrolled {
+      background: rgba(14, 17, 22, 0.55);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
     .logo {
-
       font-size: 18px;
-
       font-weight: 800;
-
-      letter-spacing: 0.30em;
-
+      letter-spacing: 0.32em;
+      color: #fff;
     }
 
+    .header-link {
+      color: rgba(255,255,255,0.82);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
+    .header-link:hover {
+      color: #fff;
+    }
 
-    .mode {
+    /* =========================
+       HERO
+    ========================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: #000;
+      color: var(--text-light);
+      overflow: hidden;
+    }
 
+    .hero-media {
       position: absolute;
-
-      left: 50%;
-
-      transform:
-        translateX(-50%);
-
-      font-size: 11px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color:
-        rgba(255,255,255,0.70);
-
+      inset: 0;
+      overflow: hidden;
     }
 
-
-
-    .back {
-
-      font-size: 13px;
-
-      color:
-        rgba(255,255,255,0.80);
-
-      transition:
-        opacity 0.25s ease;
-
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+      filter: saturate(0.95) contrast(1.02);
     }
 
-
-    .back:hover {
-      opacity: 0.58;
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,10,14,0.82) 0%, rgba(7,10,14,0.52) 38%, rgba(7,10,14,0.20) 70%, rgba(7,10,14,0.10) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.42) 100%);
     }
 
+    /* پل نرم بین Hero و Slide 2 */
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 180px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(245,242,236,0) 0%,
+          rgba(245,242,236,0.35) 35%,
+          rgba(245,242,236,0.78) 70%,
+          rgba(245,242,236,1) 100%
+        );
+      pointer-events: none;
+      z-index: 2;
+    }
 
-
-    /* =========================================================
-       HERO CONTENT
-    ========================================================== */
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 140px;
+    }
 
     .hero-content {
-
-      position: absolute;
-
-      left:
-
-        max(
-          32px,
-          calc((100vw - 1500px) / 2)
-        );
-
-      bottom: 125px;
-
-      width:
-
-        min(
-          550px,
-          calc(100% - 64px)
-        );
-
-      z-index: 5;
-
-      animation:
-        heroContentIn
-        1.1s
-        cubic-bezier(.22,.61,.36,1)
-        0.12s
-        both;
-
+      max-width: 670px;
     }
-
-
-
-    @keyframes heroContentIn {
-
-      from {
-
-        opacity: 0;
-
-        transform:
-          translateY(30px);
-
-      }
-
-      to {
-
-        opacity: 1;
-
-        transform:
-          translateY(0);
-
-      }
-
-    }
-
-
 
     .eyebrow {
-
-      margin-bottom: 16px;
-
-      font-size: 11px;
-
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,0.88);
+      font-size: 13px;
       font-weight: 700;
-
-      letter-spacing: 0.19em;
-
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-
-      color:
-        rgba(255,255,255,0.72);
-
     }
 
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent-orange);
+      box-shadow: 0 0 0 6px rgba(255,106,26,0.16);
+      flex: 0 0 auto;
+    }
 
-
-    .hero h1 {
-
+    .hero-title {
       margin: 0;
-
-      max-width: 560px;
-
-      font-size:
-
-        clamp(
-          40px,
-          4.2vw,
-          68px
-        );
-
-      line-height: 0.99;
-
-      letter-spacing: -0.045em;
-
-      font-weight: 700;
-
-      text-shadow:
-
-        0
-        4px
-        28px
-        rgba(0,0,0,0.34);
-
+      font-size: clamp(54px, 8.2vw, 102px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      font-weight: 800;
     }
 
-
+    .hero-title .accent {
+      color: var(--accent-orange);
+    }
 
     .hero-text {
-
-      max-width: 500px;
-
-      margin-top: 20px;
-
-      font-size:
-
-        clamp(
-          15px,
-          1.05vw,
-          17px
-        );
-
-      line-height: 1.58;
-
-      color:
-        rgba(255,255,255,0.82);
-
-    }
-
-
-
-    .hero-button {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      margin-top: 23px;
-
-      min-height: 44px;
-
-      padding:
-        0 18px;
-
-      border:
-
-        1px solid
-        rgba(255,255,255,0.40);
-
-      border-radius: 999px;
-
-      background:
-        rgba(0,0,0,0.18);
-
-      backdrop-filter:
-        blur(12px);
-
-      -webkit-backdrop-filter:
-        blur(12px);
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.07em;
-
-      text-transform: uppercase;
-
-      transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease;
-
-    }
-
-
-
-    .hero-button:hover {
-
-      background: white;
-
-      color: #111;
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 02
-    ========================================================== */
-
-    .assist {
-
-      position: relative;
-
-      min-height: 100svh;
-
-      display: flex;
-
-      align-items: center;
-
-      overflow: hidden;
-
-      padding:
-        115px
-        32px
-        120px;
-
-      background:
-
-        radial-gradient(
-          circle at 78% 43%,
-          rgba(60,137,225,0.17),
-          transparent 29%
-        ),
-
-        radial-gradient(
-          circle at 91% 70%,
-          rgba(44,100,170,0.09),
-          transparent 26%
-        ),
-
-        linear-gradient(
-          135deg,
-          #071019 0%,
-          #091521 46%,
-          #0c1925 100%
-        );
-
-      isolation: isolate;
-
-    }
-
-
-
-    /* =========================================================
-       BACKGROUND GRID
-    ========================================================== */
-
-    .assist-grid {
-
-      position: absolute;
-
-      inset: 0;
-
-      z-index: -3;
-
-      opacity: 0.22;
-
-      background-image:
-
-        linear-gradient(
-          rgba(255,255,255,0.032)
-          1px,
-          transparent 1px
-        ),
-
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.032)
-          1px,
-          transparent 1px
-        );
-
-      background-size:
-        72px
-        72px;
-
-      mask-image:
-
-        linear-gradient(
-          90deg,
-          transparent,
-          black 34%,
-          black 100%
-        );
-
-    }
-
-
-
-    .assist-glow {
-
-      position: absolute;
-
-      width: 650px;
-
-      height: 650px;
-
-      right: -120px;
-
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      border-radius: 50%;
-
-      z-index: -2;
-
-      background:
-
-        radial-gradient(
-          circle,
-          rgba(105,173,255,0.17),
-          rgba(105,173,255,0.055) 40%,
-          transparent 70%
-        );
-
-      filter:
-        blur(12px);
-
-      animation:
-        glowPulse
-        6s
-        ease-in-out
-        infinite;
-
-    }
-
-
-
-    @keyframes glowPulse {
-
-      0%,
-      100% {
-
-        transform:
-          translateY(-50%)
-          scale(0.94);
-
-        opacity: 0.64;
-
-      }
-
-      50% {
-
-        transform:
-          translateY(-50%)
-          scale(1.06);
-
-        opacity: 1;
-
-      }
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 02 WRAPPER
-    ========================================================== */
-
-    .assist-inner {
-
-      width:
-
-        min(
-          1320px,
-          100%
-        );
-
-      margin:
-        0 auto;
-
-      position: relative;
-
-      z-index: 4;
-
-    }
-
-
-
-    .assist-layout {
-
-      display: grid;
-
-      grid-template-columns:
-
-        minmax(0, 1.05fr)
-        minmax(430px, 0.95fr);
-
-      gap: 80px;
-
-      align-items: center;
-
-    }
-
-
-
-    /* =========================================================
-       LEFT CONTENT
-    ========================================================== */
-
-    .assist-copy {
-
-      max-width: 700px;
-
-    }
-
-
-
-    .assist-label {
-
-      margin-bottom: 22px;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color:
-        rgba(255,255,255,0.46);
-
-      opacity: 0;
-
-      transform:
-        translateY(18px);
-
-      transition:
-
-        opacity
-        0.8s
-        ease,
-
-        transform
-        0.8s
-        ease;
-
-    }
-
-
-
-    .audience {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      margin-bottom: 34px;
-
-      padding:
-
-        9px
-        13px;
-
-      border:
-
-        1px solid
-        rgba(105,173,255,0.25);
-
-      border-radius: 999px;
-
-      background:
-
-        rgba(105,173,255,0.07);
-
-      backdrop-filter:
-        blur(10px);
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.12em;
-
-      text-transform: uppercase;
-
-      color:
-        var(--blue-bright);
-
-      opacity: 0;
-
-      transform:
-        translateY(18px);
-
-      transition:
-
-        opacity
-        0.8s
-        ease
-        0.10s,
-
-        transform
-        0.8s
-        ease
-        0.10s;
-
-    }
-
-
-
-    .audience-dot {
-
-      width: 6px;
-
-      height: 6px;
-
-      border-radius: 50%;
-
-      background:
-        var(--blue);
-
-      box-shadow:
-
-        0
-        0
-        12px
-        rgba(105,173,255,0.7);
-
-    }
-
-
-
-    .assist-title {
-
-      margin: 0;
-
-      max-width: 720px;
-
-      font-size:
-
-        clamp(
-          42px,
-          4.6vw,
-          70px
-        );
-
-      line-height: 1.01;
-
-      letter-spacing: -0.052em;
-
-      font-weight: 600;
-
-    }
-
-
-
-    .assist-title .title-one {
-
-      display: block;
-
-      color:
-        #f5f8fb;
-
-      opacity: 0;
-
-      transform:
-        translateY(34px);
-
-      transition:
-
-        opacity
-        0.9s
-        ease
-        0.16s,
-
-        transform
-        0.9s
-        cubic-bezier(.22,.61,.36,1)
-        0.16s;
-
-    }
-
-
-
-    .assist-title .title-two {
-
-      display: block;
-
-      margin-top: 18px;
-
-      color:
-        var(--blue);
-
-      opacity: 0;
-
-      transform:
-        translateY(34px);
-
-      transition:
-
-        opacity
-        0.95s
-        ease
-        0.34s,
-
-        transform
-        0.95s
-        cubic-bezier(.22,.61,.36,1)
-        0.34s;
-
-    }
-
-
-
-    .assist-description {
-
-      max-width: 600px;
-
-      margin:
-        40px
-        0
-        0;
-
-      font-size:
-
-        clamp(
-          16px,
-          1.25vw,
-          19px
-        );
-
-      line-height: 1.68;
-
-      color:
-        var(--muted-light);
-
-      opacity: 0;
-
-      transform:
-        translateY(24px);
-
-      transition:
-
-        opacity
-        0.85s
-        ease
-        0.52s,
-
-        transform
-        0.85s
-        ease
-        0.52s;
-
-    }
-
-
-
-    /* =========================================================
-       SCAN VISUAL
-    ========================================================== */
-
-    .scan-wrap {
-
-      position: relative;
-
-      min-height: 520px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      opacity: 0;
-
-      transform:
-        translateY(30px)
-        scale(0.96);
-
-      transition:
-
-        opacity
-        1s
-        ease
-        0.32s,
-
-        transform
-        1.1s
-        cubic-bezier(.22,.61,.36,1)
-        0.32s;
-
-    }
-
-
-
-    .scan-stage {
-
-      position: relative;
-
-      width: 470px;
-
-      height: 470px;
-
-      border:
-
-        1px solid
-        rgba(255,255,255,0.07);
-
-      border-radius: 50%;
-
-      background:
-
-        radial-gradient(
-          circle,
-          rgba(105,173,255,0.075),
-          rgba(105,173,255,0.018) 42%,
-          transparent 70%
-        );
-
-      box-shadow:
-
-        inset
-        0
-        0
-        80px
-        rgba(105,173,255,0.025),
-
-        0
-        30px
-        100px
-        rgba(0,0,0,0.18);
-
-    }
-
-
-
-    .ring {
-
-      position: absolute;
-
-      left: 50%;
-
-      top: 50%;
-
-      transform:
-        translate(-50%,-50%);
-
-      border:
-
-        1px solid
-        rgba(105,173,255,0.10);
-
-      border-radius: 50%;
-
-    }
-
-
-
-    .ring-1 {
-
-      width: 78%;
-
-      height: 78%;
-
-    }
-
-
-
-    .ring-2 {
-
-      width: 56%;
-
-      height: 56%;
-
-    }
-
-
-
-    .ring-3 {
-
-      width: 34%;
-
-      height: 34%;
-
-    }
-
-
-
-    .scan-cross-x {
-
-      position: absolute;
-
-      left: 8%;
-
-      right: 8%;
-
-      top: 50%;
-
-      height: 1px;
-
-      background:
-
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(105,173,255,0.12),
-          transparent
-        );
-
-    }
-
-
-
-    .scan-cross-y {
-
-      position: absolute;
-
-      top: 8%;
-
-      bottom: 8%;
-
-      left: 50%;
-
-      width: 1px;
-
-      background:
-
-        linear-gradient(
-          180deg,
-          transparent,
-          rgba(105,173,255,0.12),
-          transparent
-        );
-
-    }
-
-
-
-    /* scanning beam */
-
-    .scanner {
-
-      position: absolute;
-
-      width: 46%;
-
-      height: 46%;
-
-      left: 50%;
-
-      top: 50%;
-
-      transform-origin:
-        left top;
-
-      background:
-
-        conic-gradient(
-          from -20deg,
-          rgba(105,173,255,0.22),
-          rgba(105,173,255,0.03) 22deg,
-          transparent 52deg
-        );
-
-      opacity: 0;
-
-      border-radius:
-        100% 0 0 0;
-
-    }
-
-
-
-    .assist.is-visible .scanner {
-
-      opacity: 1;
-
-      animation:
-
-        scanRotate
-        4.8s
-        linear
-        0.5s
-        infinite;
-
-    }
-
-
-
-    @keyframes scanRotate {
-
-      from {
-
-        transform:
-          rotate(0deg);
-
-      }
-
-      to {
-
-        transform:
-          rotate(360deg);
-
-      }
-
-    }
-
-
-
-    /* =========================================================
-       CENTER DEVICE POSITION
-    ========================================================== */
-
-    .device-point {
-
-      position: absolute;
-
-      left: 50%;
-
-      top: 73%;
-
-      transform:
-        translate(-50%,-50%);
-
-      width: 15px;
-
-      height: 15px;
-
-      border-radius: 50%;
-
-      background:
-        #dcecff;
-
-      box-shadow:
-
-        0
-        0
-        0
-        8px
-        rgba(105,173,255,0.08),
-
-        0
-        0
-        30px
-        rgba(105,173,255,0.55);
-
-      z-index: 5;
-
-    }
-
-
-
-    .device-label {
-
-      position: absolute;
-
-      left: 50%;
-
-      top: calc(73% + 27px);
-
-      transform:
-        translateX(-50%);
-
-      font-size: 9px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.15em;
-
-      color:
-        rgba(255,255,255,0.45);
-
-      text-transform: uppercase;
-
-    }
-
-
-
-    /* =========================================================
-       OBSTACLES
-    ========================================================== */
-
-    .obstacle {
-
-      position: absolute;
-
-      width: 13px;
-
-      height: 13px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,0.38);
-
-      box-shadow:
-
-        0
-        0
-        18px
-        rgba(255,255,255,0.10);
-
-    }
-
-
-
-    .obstacle::after {
-
-      content: "";
-
-      position: absolute;
-
-      inset: -7px;
-
-      border:
-
-        1px solid
-        rgba(255,255,255,0.09);
-
-      border-radius: 50%;
-
-    }
-
-
-
-    .obstacle-main {
-
-      left: 49%;
-
-      top: 29%;
-
-    }
-
-
-
-    .obstacle-right {
-
-      right: 18%;
-
-      top: 48%;
-
-    }
-
-
-
-    .obstacle-left {
-
-      left: 18%;
-
-      top: 45%;
-
-      opacity: 0.42;
-
-    }
-
-
-
-    /* =========================================================
-       PATH SVG
-    ========================================================== */
-
-    .path-map {
-
-      position: absolute;
-
-      inset: 0;
-
-      width: 100%;
-
-      height: 100%;
-
-      overflow: visible;
-
-    }
-
-
-
-    .blocked-path {
-
-      fill: none;
-
-      stroke:
-        rgba(255,255,255,0.13);
-
-      stroke-width: 2;
-
-      stroke-dasharray:
-        4 8;
-
-    }
-
-
-
-    .free-path-base {
-
-      fill: none;
-
-      stroke:
-        rgba(105,173,255,0.13);
-
-      stroke-width: 5;
-
-      stroke-linecap: round;
-
-    }
-
-
-
-    .free-path {
-
-      fill: none;
-
-      stroke:
-        var(--blue);
-
-      stroke-width: 4;
-
-      stroke-linecap: round;
-
-      stroke-dasharray: 650;
-
-      stroke-dashoffset: 650;
-
-      filter:
-
-        drop-shadow(
-          0
-          0
-          8px
-          rgba(105,173,255,0.48)
-        );
-
-      transition:
-
-        stroke-dashoffset
-        2.3s
-        cubic-bezier(.22,.61,.36,1)
-        0.9s;
-
-    }
-
-
-
-    .assist.is-visible .free-path {
-
-      stroke-dashoffset: 0;
-
-    }
-
-
-
-    /* =========================================================
-       SCAN LABELS
-    ========================================================== */
-
-    .scan-label {
-
-      position: absolute;
-
-      padding:
-
-        7px
-        10px;
-
-      border:
-
-        1px solid
-        rgba(255,255,255,0.08);
-
-      border-radius: 999px;
-
-      background:
-        rgba(7,16,25,0.55);
-
-      backdrop-filter:
-        blur(10px);
-
-      font-size: 9px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.10em;
-
-      text-transform: uppercase;
-
-      color:
-        rgba(255,255,255,0.48);
-
-    }
-
-
-
-    .label-obstacle {
-
-      top: 20%;
-
-      left: 54%;
-
-    }
-
-
-
-    .label-clear {
-
-      top: 30%;
-
-      left: 15%;
-
-      color:
-        var(--blue);
-
-      border-color:
-        rgba(105,173,255,0.22);
-
-    }
-
-
-
-    /* =========================================================
-       SIGNAL PULSE
-    ========================================================== */
-
-    .signal-pulse {
-
-      position: absolute;
-
-      left: 49%;
-
-      top: 29%;
-
-      width: 13px;
-
-      height: 13px;
-
-      border:
-
-        1px solid
-        rgba(105,173,255,0.45);
-
-      border-radius: 50%;
-
-      transform:
-        translate(-1px,-1px);
-
-      opacity: 0;
-
-    }
-
-
-
-    .assist.is-visible .signal-pulse {
-
-      animation:
-
-        signalPulse
-        2.4s
-        ease-out
-        0.6s
-        infinite;
-
-    }
-
-
-
-    @keyframes signalPulse {
-
-      0% {
-
-        opacity: 0.75;
-
-        transform:
-          scale(1);
-
-      }
-
-      100% {
-
-        opacity: 0;
-
-        transform:
-          scale(6);
-
-      }
-
-    }
-
-
-
-    /* =========================================================
-       FOUR GLASS STEPS
-    ========================================================== */
-
-    .assist-steps {
-
-      margin-top: 85px;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 12px;
-
-    }
-
-
-
-    .assist-step {
-
-      position: relative;
-
-      min-height: 150px;
-
-      padding: 21px;
-
-      overflow: hidden;
-
-      border:
-
-        1px solid
-        var(--glass-border);
-
-      border-radius: 16px;
-
-      background:
-
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.07),
-          rgba(255,255,255,0.025)
-        );
-
-      backdrop-filter:
-        blur(14px);
-
-      -webkit-backdrop-filter:
-        blur(14px);
-
-      opacity: 0;
-
-      transform:
-        translateY(30px);
-
-      transition:
-
-        opacity
-        0.75s
-        ease,
-
-        transform
-        0.75s
-        cubic-bezier(.22,.61,.36,1),
-
-        border-color
-        0.3s
-        ease,
-
-        background
-        0.3s
-        ease;
-
-    }
-
-
-
-    .assist-step::before {
-
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-
-      right: 0;
-
-      top: 0;
-
-      height: 1px;
-
-      background:
-
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(105,173,255,0.36),
-          transparent
-        );
-
-      opacity: 0;
-
-      transition:
-        opacity 0.3s ease;
-
-    }
-
-
-
-    .assist-step:hover {
-
-      border-color:
-        rgba(105,173,255,0.26);
-
-      background:
-
-        linear-gradient(
-          145deg,
-          rgba(105,173,255,0.095),
-          rgba(255,255,255,0.025)
-        );
-
-    }
-
-
-
-    .assist-step:hover::before {
-      opacity: 1;
-    }
-
-
-
-    .step-index {
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.14em;
-
-      color:
-        var(--blue);
-
-    }
-
-
-
-    .step-title {
-
-      margin-top: 48px;
-
-      font-size:
-
-        clamp(
-          18px,
-          1.5vw,
-          24px
-        );
-
-      line-height: 1.05;
-
-      letter-spacing: -0.025em;
-
-      font-weight: 500;
-
-    }
-
-
-
-    .step-meta {
-
-      margin-top: 8px;
-
-      font-size: 10px;
-
-      line-height: 1.45;
-
-      letter-spacing: 0.09em;
-
-      text-transform: uppercase;
-
-      color:
-        rgba(255,255,255,0.38);
-
-    }
-
-
-
-    .assist.is-visible .assist-step:nth-child(1) {
-
-      opacity: 1;
-
-      transform:
-        translateY(0);
-
-      transition-delay:
-        0.78s;
-
-    }
-
-
-
-    .assist.is-visible .assist-step:nth-child(2) {
-
-      opacity: 1;
-
-      transform:
-        translateY(0);
-
-      transition-delay:
-        0.92s;
-
-    }
-
-
-
-    .assist.is-visible .assist-step:nth-child(3) {
-
-      opacity: 1;
-
-      transform:
-        translateY(0);
-
-      transition-delay:
-        1.06s;
-
-    }
-
-
-
-    .assist.is-visible .assist-step:nth-child(4) {
-
-      opacity: 1;
-
-      transform:
-        translateY(0);
-
-      transition-delay:
-        1.20s;
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 02 ACTIVE STATES
-    ========================================================== */
-
-    .assist.is-visible
-    .assist-label,
-
-    .assist.is-visible
-    .audience,
-
-    .assist.is-visible
-    .title-one,
-
-    .assist.is-visible
-    .title-two,
-
-    .assist.is-visible
-    .assist-description,
-
-    .assist.is-visible
-    .scan-wrap {
-
-      opacity: 1;
-
-      transform:
-        translateY(0)
-        scale(1);
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 02 → SLIDE 03 TRANSITION
-    ========================================================== */
-
-    .dark-to-light {
-
-      height: 180px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      background:
-
-        linear-gradient(
-          180deg,
-
-          #0c1925 0%,
-
-          #142431 16%,
-
-          #35434b 32%,
-
-          #717b7d 47%,
-
-          #adb1ac 61%,
-
-          #deddd5 78%,
-
-          #f5f2ec 100%
-        );
-
-    }
-
-
-
-    .dark-to-light::after {
-
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-
-        radial-gradient(
-          circle at 70% 20%,
-          rgba(105,173,255,0.13),
-          transparent 34%
-        );
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 03
-    ========================================================== */
-
-    .logic {
-
-      position: relative;
-
-      min-height: 100svh;
-
-      padding:
-
-        95px
-        32px
-        135px;
-
-      color:
-        var(--text-dark);
-
-      background:
-
-        radial-gradient(
-          circle at 83% 24%,
-          rgba(105,173,255,0.10),
-          transparent 26%
-        ),
-
-        #f5f2ec;
-
-    }
-
-
-
-    .logic-inner {
-
-      width:
-
-        min(
-          1320px,
-          100%
-        );
-
-      margin:
-        0 auto;
-
-    }
-
-
-
-    .section-label-light {
-
-      margin-bottom: 38px;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color:
-        #85898f;
-
-    }
-
-
-
-    .logic-header {
-
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: space-between;
-
-      gap: 60px;
-
-    }
-
-
-
-    .logic h3 {
-
-      margin: 0;
-
-      max-width: 700px;
-
-      font-size:
-
-        clamp(
-          38px,
-          4.4vw,
-          65px
-        );
-
-      line-height: 1;
-
-      letter-spacing: -0.045em;
-
-      font-weight: 600;
-
-    }
-
-
-
-    .logic-intro {
-
-      max-width: 420px;
-
-      padding-bottom: 4px;
-
-      font-size: 16px;
-
+      max-width: 590px;
+      margin: 26px 0 36px;
+      font-size: clamp(18px, 2vw, 24px);
       line-height: 1.6;
-
-      color:
-        var(--muted-dark);
-
+      color: var(--text-soft);
     }
 
-
-
-    .logic-steps {
-
-      margin-top: 80px;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      border-top:
-        1px solid
-        var(--line-light);
-
-      border-bottom:
-        1px solid
-        var(--line-light);
-
-    }
-
-
-
-    .logic-step {
-
-      position: relative;
-
-      min-height: 270px;
-
-      padding: 28px;
-
+    .hero-actions {
       display: flex;
-
-      flex-direction: column;
-
-      justify-content:
-        space-between;
-
-      border-right:
-        1px solid
-        var(--line-light);
-
-      transition:
-        background 0.3s ease;
-
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
     }
 
-
-
-    .logic-step:last-child {
-      border-right: none;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 999px;
+      background: var(--accent-orange);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 16px 40px rgba(255,106,26,0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 44px rgba(255,106,26,0.30);
+    }
 
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      font-size: 15px;
+      font-weight: 700;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
 
-    .logic-step:hover {
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
 
+    .hero-bottom-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 28px;
+      z-index: 3;
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-bottom-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .scroll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.86);
+      transition: opacity 0.25s ease;
+    }
+
+    .scroll-link:hover {
+      opacity: 0.75;
+    }
+
+    /* =========================
+       SLIDE 2
+    ========================= */
+    .section-2 {
+      position: relative;
       background:
-        rgba(105,173,255,0.055);
-
+        radial-gradient(circle at 78% 28%, rgba(147, 191, 255, 0.22) 0%, rgba(147, 191, 255, 0.08) 22%, rgba(147, 191, 255, 0) 52%),
+        linear-gradient(180deg, #f5f2ec 0%, #f4f4f0 32%, #eef4fb 100%);
+      padding: 110px 0 120px;
+      overflow: hidden;
     }
 
-
-
-    .logic-number {
-
-      font-size: 11px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.15em;
-
-      color: #8b8e94;
-
+    .section-2::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0) 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0) 26%);
+      pointer-events: none;
     }
 
-
-
-    .logic-name {
-
-      font-size:
-
-        clamp(
-          27px,
-          2.7vw,
-          44px
-        );
-
-      letter-spacing:
-        -0.04em;
-
-      line-height: 1;
-
-      font-weight: 500;
-
+    .section-2-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 56px;
+      align-items: center;
     }
 
-
-
-    .logic-step:last-child
-    .logic-name {
-
-      color:
-        var(--blue);
-
+    .section-label {
+      margin-bottom: 18px;
+      color: #7c8590;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
-
-
-    /* =========================================================
-       TABLET
-    ========================================================== */
-
-    @media (max-width: 1050px) {
-
-      .assist-layout {
-
-        grid-template-columns:
-          1fr
-          430px;
-
-        gap: 45px;
-
-      }
-
-
-      .scan-stage {
-
-        width: 410px;
-
-        height: 410px;
-
-      }
-
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(106,168,255,0.10);
+      border: 1px solid rgba(106,168,255,0.20);
+      color: #3679e3;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 24px rgba(80,125,210,0.08);
     }
 
-
-
-    @media (max-width: 900px) {
-
-      .assist-layout {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .assist-copy {
-
-        max-width: 700px;
-
-      }
-
-
-      .scan-wrap {
-
-        min-height: 470px;
-
-      }
-
-
-      .assist-steps {
-
-        grid-template-columns:
-          1fr 1fr;
-
-      }
-
-
-      .logic-header {
-
-        display: block;
-
-      }
-
-
-      .logic-intro {
-
-        margin-top: 30px;
-
-      }
-
-
-      .logic-steps {
-
-        grid-template-columns:
-          1fr 1fr;
-
-      }
-
+    .section-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-blue);
+      box-shadow: 0 0 0 6px rgba(106,168,255,0.14);
+      flex: 0 0 auto;
     }
 
+    .section-title {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(42px, 5.3vw, 76px);
+      line-height: 1.03;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      color: #111318;
+    }
 
+    .section-title .blue {
+      display: block;
+      margin-top: 14px;
+      color: #69a3f4;
+    }
 
-    /* =========================================================
-       MOBILE
-    ========================================================== */
+    .section-copy {
+      max-width: 620px;
+      margin-top: 28px;
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.85;
+      color: #5e6673;
+    }
 
-    @media (max-width: 700px) {
+    .section-copy strong {
+      color: #232831;
+    }
 
-      .hero {
+    .section-note {
+      max-width: 620px;
+      margin-top: 22px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #6f7782;
+    }
 
-        min-height: 680px;
+    .section-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
 
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: #111318;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 14px 34px rgba(17,19,24,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(17,19,24,0.16);
+    }
+
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(22,28,37,0.10);
+      background: rgba(255,255,255,0.56);
+      color: #1b2330;
+      font-size: 15px;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-outline-light:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.82);
+    }
+
+    /* بخش بصری سمت راست */
+    .ambient-visual {
+      position: relative;
+      min-height: 640px;
+      border-radius: 36px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.66) 0%, rgba(255,255,255,0.42) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        0 28px 80px rgba(44, 77, 128, 0.10);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .ambient-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 22%, rgba(119,173,255,0.22) 0%, rgba(119,173,255,0.10) 18%, rgba(119,173,255,0) 48%),
+        radial-gradient(circle at 56% 80%, rgba(119,173,255,0.12) 0%, rgba(119,173,255,0) 34%);
+      pointer-events: none;
+    }
+
+    .light-columns {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 44px;
+      padding: 36px 46px;
+    }
+
+    .column {
+      position: relative;
+      flex: 1 1 0;
+      max-width: 132px;
+      border-radius: 40px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(246,249,255,0.98) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        inset 0 0 32px rgba(122,177,255,0.08),
+        0 18px 50px rgba(45, 82, 135, 0.06);
+      opacity: 0.92;
+    }
+
+    .column::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 86px;
+      width: 2px;
+      height: 210px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(106,168,255,0) 0%, rgba(106,168,255,0.95) 100%);
+      box-shadow: 0 0 14px rgba(106,168,255,0.30);
+    }
+
+    .column.left::after {
+      height: 190px;
+      bottom: 98px;
+    }
+
+    .column.right::after {
+      height: 225px;
+      bottom: 78px;
+    }
+
+    .path-line {
+      position: absolute;
+      left: 50%;
+      bottom: 68px;
+      width: 2px;
+      height: 280px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(106,168,255,0) 0%, rgba(106,168,255,0.95) 100%);
+      box-shadow: 0 0 22px rgba(106,168,255,0.22);
+      opacity: 0.72;
+    }
+
+    .path-glow {
+      position: absolute;
+      left: 50%;
+      bottom: 44px;
+      width: 220px;
+      height: 220px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(106,168,255,0.22) 0%, rgba(106,168,255,0.05) 36%, rgba(106,168,255,0) 72%);
+      pointer-events: none;
+    }
+
+    .mini-caption {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 28px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.64);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.68);
+      box-shadow: 0 14px 32px rgba(24,42,73,0.06);
+      color: #55606d;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .mini-caption strong {
+      color: #1c2430;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media (max-width: 1120px) {
+      .section-2-inner {
+        grid-template-columns: 1fr;
       }
 
-
-      .hero-video-main {
-
-        object-fit: cover;
-
-        object-position:
-          center top;
-
+      .ambient-visual {
+        min-height: 520px;
       }
 
-
-      .hero-video-bg {
-        display: none;
+      .section-title {
+        max-width: none;
       }
 
+      .section-copy,
+      .section-note {
+        max-width: none;
+      }
+    }
 
-      .hero-to-dark {
-        height: 160px;
+    @media (max-width: 820px) {
+      .container {
+        width: min(var(--container), calc(100% - 32px));
       }
 
-
-      .nav {
-
-        width:
-          calc(100% - 36px);
-
-        height: 72px;
-
+      .site-header {
+        padding: 16px 0;
       }
 
-
-      .mode {
-        display: none;
+      .hero-inner {
+        padding: 104px 0 120px;
       }
 
-
-      .logo {
-        font-size: 16px;
+      .hero-title {
+        font-size: clamp(42px, 12vw, 72px);
       }
 
+      .hero-text {
+        font-size: 17px;
+        line-height: 1.75;
+      }
 
-      .back {
+      .hero-bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-2 {
+        padding: 84px 0 92px;
+      }
+
+      .section-title {
+        font-size: clamp(34px, 9.4vw, 52px);
+      }
+
+      .section-copy {
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .section-note {
+        font-size: 15px;
+      }
+
+      .ambient-visual {
+        min-height: 420px;
+        border-radius: 28px;
+      }
+
+      .light-columns {
+        gap: 22px;
+        padding: 24px 24px;
+      }
+
+      .column {
+        max-width: 92px;
+      }
+
+      .mini-caption {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-link {
+        font-size: 13px;
+      }
+
+      .hero-video {
+        object-position: 62% 18%;
+      }
+
+      .eyebrow {
         font-size: 11px;
       }
 
-
-      .hero-content {
-
-        left: 22px;
-
-        right: 22px;
-
-        bottom: 105px;
-
-        width: auto;
-
+      .hero-actions,
+      .section-actions {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-
-      .eyebrow {
-
-        margin-bottom: 13px;
-
-        font-size: 9px;
-
+      .btn-primary,
+      .btn-ghost,
+      .btn-light,
+      .btn-outline-light {
+        width: 100%;
       }
 
-
-      .hero h1 {
-
-        max-width: 460px;
-
-        font-size:
-
-          clamp(
-            37px,
-            10vw,
-            54px
-          );
-
+      .section-pill {
+        font-size: 11px;
+        letter-spacing: 0.06em;
       }
 
-
-      .hero-text {
-
-        margin-top: 16px;
-
-        font-size: 14px;
-
+      .ambient-visual {
+        min-height: 360px;
       }
 
-
-      .hero-button {
-
-        margin-top: 18px;
-
-        min-height: 40px;
-
-        font-size: 10px;
-
+      .column::after,
+      .path-line,
+      .path-glow {
+        opacity: 0.9;
       }
-
-
-      .assist {
-
-        padding:
-
-          85px
-          22px
-          90px;
-
-      }
-
-
-      .assist-label {
-
-        font-size: 9px;
-
-      }
-
-
-      .audience {
-
-        margin-bottom: 28px;
-
-        font-size: 8px;
-
-      }
-
-
-      .assist-title {
-
-        font-size:
-
-          clamp(
-            36px,
-            9.5vw,
-            52px
-          );
-
-      }
-
-
-      .assist-title .title-two {
-
-        margin-top: 14px;
-
-      }
-
-
-      .assist-description {
-
-        margin-top: 30px;
-
-        font-size: 15px;
-
-      }
-
-
-      .scan-wrap {
-
-        min-height: 350px;
-
-        margin-top: 30px;
-
-      }
-
-
-      .scan-stage {
-
-        width: 320px;
-
-        height: 320px;
-
-      }
-
-
-      .scan-label {
-
-        font-size: 7px;
-
-      }
-
-
-      .assist-steps {
-
-        margin-top: 55px;
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .assist-step {
-
-        min-height: 130px;
-
-      }
-
-
-      .step-title {
-
-        margin-top: 32px;
-
-      }
-
-
-      .dark-to-light {
-
-        height: 120px;
-
-      }
-
-
-      .logic {
-
-        padding:
-
-          80px
-          22px
-          90px;
-
-      }
-
-
-      .logic h3 {
-
-        font-size:
-
-          clamp(
-            36px,
-            10vw,
-            54px
-          );
-
-      }
-
-
-      .logic-intro {
-
-        font-size: 15px;
-
-      }
-
-
-      .logic-steps {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .logic-step {
-
-        min-height: 165px;
-
-        border-right: none;
-
-      }
-
     }
 
-
-
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================== */
-
-    @media
-    (prefers-reduced-motion: reduce) {
-
+    @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
       }
 
-
-      .hero-content {
-
-        animation: none;
-
-      }
-
-
-      .assist-label,
-      .audience,
-      .title-one,
-      .title-two,
-      .assist-description,
-      .scan-wrap,
-      .assist-step {
-
-        opacity: 1 !important;
-
-        transform: none !important;
-
+      * {
         transition: none !important;
-
-      }
-
-
-      .free-path {
-
-        stroke-dashoffset: 0;
-
-        transition: none;
-
-      }
-
-
-      .scanner,
-      .signal-pulse,
-      .assist-glow {
-
         animation: none !important;
-
       }
-
     }
-
   </style>
-
 </head>
-
-
 
 <body>
 
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="../gateway-preview.html" class="logo">LROX</a>
+      <a href="../gateway-preview.html" class="header-link">← Zur Auswahl</a>
+    </div>
+  </header>
 
-  <!-- =====================================================
-       HERO / SLIDE 01
-  ====================================================== -->
-
-  <section class="hero">
-
-
-    <video
-
-      class="hero-video-bg"
-
-      autoplay
-
-      muted
-
-      loop
-
-      playsinline
-
-      preload="auto"
-
-      aria-hidden="true"
-
-    >
-
-      <source
-        src="../assets/guide/hero.mp4"
-        type="video/mp4"
-      >
-
-    </video>
-
-
-
-    <video
-
-      class="hero-video-main"
-
-      autoplay
-
-      muted
-
-      loop
-
-      playsinline
-
-      preload="auto"
-
-      aria-hidden="true"
-
-    >
-
-      <source
-        src="../assets/guide/hero.mp4"
-        type="video/mp4"
-      >
-
-    </video>
-
-
-
-    <div class="hero-overlay"></div>
-
-
-
-    <nav
-      class="nav"
-      aria-label="Hauptnavigation"
-    >
-
-
-      <a
-        class="logo"
-        href="../gateway-preview.html"
-      >
-        LROX
-      </a>
-
-
-      <div class="mode">
-        Guide
-      </div>
-
-
-      <a
-        class="back"
-        href="../gateway-preview.html"
-      >
-        ← Zur Auswahl
-      </a>
-
-
-    </nav>
-
-
-
-    <div class="hero-content">
-
-
-      <div class="eyebrow">
-        Intelligente Mobilitätsassistenz
-      </div>
-
-
-      <h1>
-
-        Hindernisse erkennen.<br>
-
-        Freie Wege finden.
-
-      </h1>
-
-
-      <div class="hero-text">
-
-        LROX Guide erkennt Hindernisse,
-        prüft freie Richtungen und hilft dabei,
-        einen klareren Weg nach vorn zu finden.
-
-      </div>
-
-
-      <a
-        class="hero-button"
-        href="#assistenz"
-      >
-
-        So funktioniert es ↓
-
-      </a>
-
-
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="../assets/guide/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
     </div>
 
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="eyebrow">Intelligente Mobilitätsassistenz</div>
 
-    <div class="hero-to-dark"></div>
+        <h1 class="hero-title">
+          Erkennen, was
+          <br />
+          vor Ihnen liegt.
+          <br />
+          <span class="accent">Verstehen, wo es weitergeht.</span>
+        </h1>
 
+        <p class="hero-text">
+          LROX Guide unterstützt blinde und sehbehinderte Menschen dabei,
+          Hindernisse frühzeitig zu erkennen, anzuhalten, freie Richtungen
+          zu prüfen und sicher weiterzugehen.
+        </p>
 
-  </section>
-
-
-
-  <!-- =====================================================
-       SLIDE 02
-  ====================================================== -->
-
-  <section
-    class="assist"
-    id="assistenz"
-  >
-
-
-    <div class="assist-grid"></div>
-
-    <div class="assist-glow"></div>
-
-
-
-    <div class="assist-inner">
-
-
-      <div class="assist-layout">
-
-
-        <!-- LEFT -->
-
-        <div class="assist-copy">
-
-
-          <div class="assist-label">
-
-            02 / Mobilitätsassistenz
-
-          </div>
-
-
-
-          <div class="audience">
-
-            <span class="audience-dot"></span>
-
-            Für blinde und sehbehinderte Menschen
-
-          </div>
-
-
-
-          <h2 class="assist-title">
-
-
-            <span class="title-one">
-
-              Hindernisse sind nur<br>
-
-              die halbe Information.
-
-            </span>
-
-
-
-            <span class="title-two">
-
-              Entscheidend ist,<br>
-
-              wo der Weg frei bleibt.
-
-            </span>
-
-
-          </h2>
-
-
-
-          <p class="assist-description">
-
-            LROX Guide wurde entwickelt,
-            um blinde und sehbehinderte Menschen
-            bei der Orientierung zu unterstützen.
-
-            <br><br>
-
-            Das System erkennt Hindernisse,
-            signalisiert den Stopp,
-            prüft die Umgebung
-            und hilft dabei,
-            eine freie Richtung zu identifizieren.
-
-          </p>
-
-
+        <div class="hero-actions">
+          <a href="#slide2" class="btn-primary">Mehr erfahren</a>
+          <a href="#slide2" class="btn-ghost">So funktioniert es</a>
         </div>
-
-
-
-        <!-- RIGHT VISUALIZATION -->
-
-        <div class="scan-wrap">
-
-
-          <div class="scan-stage">
-
-
-            <div class="ring ring-1"></div>
-
-            <div class="ring ring-2"></div>
-
-            <div class="ring ring-3"></div>
-
-
-            <div class="scan-cross-x"></div>
-
-            <div class="scan-cross-y"></div>
-
-
-            <div class="scanner"></div>
-
-
-
-            <div
-              class="obstacle obstacle-main"
-            ></div>
-
-
-            <div
-              class="signal-pulse"
-            ></div>
-
-
-            <div
-              class="obstacle obstacle-right"
-            ></div>
-
-
-            <div
-              class="obstacle obstacle-left"
-            ></div>
-
-
-
-            <svg
-              class="path-map"
-              viewBox="0 0 470 470"
-              aria-hidden="true"
-            >
-
-
-              <!-- blocked straight route -->
-
-              <path
-
-                class="blocked-path"
-
-                d="
-                  M235 350
-                  C235 310
-                  235 270
-                  235 220
-                  C235 185
-                  235 160
-                  235 138
-                "
-
-              ></path>
-
-
-
-              <!-- open path underlay -->
-
-              <path
-
-                class="free-path-base"
-
-                d="
-                  M235 350
-                  C235 305
-                  220 278
-                  188 260
-                  C150 238
-                  125 202
-                  132 165
-                  C139 126
-                  169 103
-                  205 83
-                "
-
-              ></path>
-
-
-
-              <!-- animated open route -->
-
-              <path
-
-                class="free-path"
-
-                d="
-                  M235 350
-                  C235 305
-                  220 278
-                  188 260
-                  C150 238
-                  125 202
-                  132 165
-                  C139 126
-                  169 103
-                  205 83
-                "
-
-              ></path>
-
-
-            </svg>
-
-
-
-            <div class="device-point"></div>
-
-
-            <div class="device-label">
-              LROX
-            </div>
-
-
-
-            <div
-              class="scan-label label-obstacle"
-            >
-              Hindernis
-            </div>
-
-
-            <div
-              class="scan-label label-clear"
-            >
-              Freie Richtung
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
       </div>
-
-
-
-      <!-- FOUR STEPS -->
-
-      <div class="assist-steps">
-
-
-        <div class="assist-step">
-
-
-          <div class="step-index">
-            01
-          </div>
-
-
-          <div class="step-title">
-
-            Hindernis<br>
-            erkennen
-
-          </div>
-
-
-          <div class="step-meta">
-
-            Umgebung erfassen
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="assist-step">
-
-
-          <div class="step-index">
-            02
-          </div>
-
-
-          <div class="step-title">
-
-            Stopp<br>
-            signalisieren
-
-          </div>
-
-
-          <div class="step-meta">
-
-            Bewegung unterbrechen
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="assist-step">
-
-
-          <div class="step-index">
-            03
-          </div>
-
-
-          <div class="step-title">
-
-            Umgebung<br>
-            prüfen
-
-          </div>
-
-
-          <div class="step-meta">
-
-            Rechts und links
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="assist-step">
-
-
-          <div class="step-index">
-            04
-          </div>
-
-
-          <div class="step-title">
-
-            Freie Richtung<br>
-            erkennen
-
-          </div>
-
-
-          <div class="step-meta">
-
-            Orientierung unterstützen
-
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
     </div>
 
-
+    <div class="hero-bottom-bar">
+      <div class="container hero-bottom-inner">
+        <div>Assistive Orientierung in Echtzeit</div>
+        <a href="#slide2" class="scroll-link">Nach unten scrollen ↓</a>
+      </div>
+    </div>
   </section>
 
+  <!-- SLIDE 2 -->
+  <section class="section-2" id="slide2">
+    <div class="container section-2-inner">
 
+      <div class="section-2-copy">
+        <div class="section-label">02 / Mobilitätsassistenz</div>
 
-  <!-- =====================================================
-       DARK → LIGHT TRANSITION
-  ====================================================== -->
-
-  <div
-    class="dark-to-light"
-    aria-hidden="true"
-  ></div>
-
-
-
-  <!-- =====================================================
-       SLIDE 03
-  ====================================================== -->
-
-  <section class="logic">
-
-
-    <div class="logic-inner">
-
-
-      <div class="logic-header">
-
-
-        <div>
-
-
-          <div class="section-label-light">
-
-            03 / Navigationslogik
-
-          </div>
-
-
-          <h3>
-
-            Vier Schritte.<br>
-
-            Eine klare Entscheidung.
-
-          </h3>
-
-
+        <div class="section-pill">
+          Für blinde und sehbehinderte Menschen
         </div>
 
+        <h2 class="section-title">
+          Mehr Sicherheit beginnt
+          <br />
+          mit besserer Orientierung.
+          <span class="blue">
+            Nicht nur Hindernisse erkennen.
+            Sondern freie Wege verstehen.
+          </span>
+        </h2>
 
-
-        <div class="logic-intro">
-
-          Die Sensordaten werden
-          in eine einfache und unmittelbar
-          verständliche Abfolge
-          für die Orientierung übersetzt.
-
+        <div class="section-copy">
+          <strong>LROX Guide</strong> wurde entwickelt, um blinde und
+          sehbehinderte Menschen im Alltag gezielt zu unterstützen.
+          Das System erkennt, was sich direkt vor dem Nutzer befindet,
+          signalisiert den richtigen Moment zum Stoppen und hilft dabei,
+          offene Richtungen besser einzuschätzen.
         </div>
 
+        <div class="section-note">
+          Statt nur vor einer Kollision zu warnen, unterstützt LROX Guide
+          bei der eigentlichen Orientierung:
+          <strong>Was ist blockiert? Welche Seite ist frei? In welche Richtung kann ich sicher weitergehen?</strong>
+          Genau darin liegt der Unterschied.
+        </div>
 
+        <div class="section-actions">
+          <a href="#hero" class="btn-light">Zum Hero zurück</a>
+          <a href="#slide2" class="btn-outline-light">Funktionsprinzip ansehen</a>
+        </div>
       </div>
 
-
-
-      <div class="logic-steps">
-
-
-        <div class="logic-step">
-
-
-          <div class="logic-number">
-            01
-          </div>
-
-
-          <div class="logic-name">
-            Erkennen
-          </div>
-
-
+      <div class="ambient-visual" aria-hidden="true">
+        <div class="light-columns">
+          <div class="column left"></div>
+          <div class="column center"></div>
+          <div class="column right"></div>
         </div>
 
+        <div class="path-line"></div>
+        <div class="path-glow"></div>
 
-
-        <div class="logic-step">
-
-
-          <div class="logic-number">
-            02
-          </div>
-
-
-          <div class="logic-name">
-            Stoppen
-          </div>
-
-
+        <div class="mini-caption">
+          <strong>LROX Guide</strong> verbindet Hinderniserkennung
+          mit Richtungsverständnis – für klarere Orientierung und
+          mehr Sicherheit in Bewegung.
         </div>
-
-
-
-        <div class="logic-step">
-
-
-          <div class="logic-number">
-            03
-          </div>
-
-
-          <div class="logic-name">
-            Prüfen
-          </div>
-
-
-        </div>
-
-
-
-        <div class="logic-step">
-
-
-          <div class="logic-number">
-            04
-          </div>
-
-
-          <div class="logic-name">
-            Führen
-          </div>
-
-
-        </div>
-
-
       </div>
-
 
     </div>
-
-
   </section>
-
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ====================================================== -->
 
   <script>
+    const header = document.getElementById("siteHeader");
 
-
-    /* =========================================================
-       HERO VIDEO SYNC
-    ========================================================== */
-
-    const mainVideo =
-      document.querySelector(
-        ".hero-video-main"
-      );
-
-
-    const backgroundVideo =
-      document.querySelector(
-        ".hero-video-bg"
-      );
-
-
-
-    function syncVideos() {
-
-
-      if (
-
-        mainVideo &&
-
-        backgroundVideo &&
-
-        Math.abs(
-
-          mainVideo.currentTime -
-
-          backgroundVideo.currentTime
-
-        ) > 0.15
-
-      ) {
-
-
-        backgroundVideo.currentTime =
-          mainVideo.currentTime;
-
-
+    function updateHeader() {
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
-
     }
 
-
-
-    if (
-      mainVideo &&
-      backgroundVideo
-    ) {
-
-
-      mainVideo.addEventListener(
-        "timeupdate",
-        syncVideos
-      );
-
-
-    }
-
-
-
-    /* =========================================================
-       SLIDE 02 REVEAL
-    ========================================================== */
-
-    const assistSection =
-      document.querySelector(
-        ".assist"
-      );
-
-
-
-    if (assistSection) {
-
-
-      const assistObserver =
-
-        new IntersectionObserver(
-
-
-          (entries) => {
-
-
-            entries.forEach(
-
-
-              (entry) => {
-
-
-                if (
-                  entry.isIntersecting
-                ) {
-
-
-                  assistSection.classList.add(
-                    "is-visible"
-                  );
-
-
-                  assistObserver.unobserve(
-                    assistSection
-                  );
-
-
-                }
-
-
-              }
-
-
-            );
-
-
-          },
-
-
-          {
-
-            threshold: 0.20
-
-          }
-
-
-        );
-
-
-      assistObserver.observe(
-        assistSection
-      );
-
-
-    }
-
-
+    updateHeader();
+    window.addEventListener("scroll", updateHeader);
   </script>
-
-
 </body>
-
 </html>
