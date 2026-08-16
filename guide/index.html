@@ -20,7 +20,6 @@
   <style>
 
     :root {
-      --cream: #f5f2ec;
       --white: #ffffff;
 
       --text: #111318;
@@ -1462,11 +1461,6 @@
     }
 
 
-
-    /* =========================================================
-       TRANSITION 03 → 04
-    ========================================================== */
-
     .ground-slide-transition {
       position: absolute;
 
@@ -1522,11 +1516,6 @@
     }
 
 
-
-    /* =========================================================
-       SLIDE 04 OVERLAY
-    ========================================================== */
-
     .ground-slide-overlay {
       position: absolute;
 
@@ -1557,11 +1546,6 @@
         );
     }
 
-
-
-    /* =========================================================
-       SLIDE 04 CONTENT
-    ========================================================== */
 
     .ground-slide-inner {
       position: relative;
@@ -1824,7 +1808,7 @@
 
 
     /* =========================================================
-       SLIDE 04 MINIMAL MARKERS
+       SLIDE 04 MARKERS
     ========================================================== */
 
     .ground-marker {
@@ -1889,7 +1873,6 @@
     }
 
 
-
     .ground-marker-line {
       width: 92px;
 
@@ -1910,7 +1893,6 @@
         8px
         rgba(92,158,247,0.28);
     }
-
 
 
     .ground-marker-card {
@@ -2005,17 +1987,8 @@
     }
 
 
-
-    /* =========================================================
-       MARKER POSITIONS
-    ========================================================== */
-
-
-    /* VERTIEFUNG — UNCHANGED */
-
     .ground-marker-recess {
       left: 64%;
-
       top: 20.5%;
 
       transition-delay:
@@ -2023,12 +1996,8 @@
     }
 
 
-
-    /* STUFE — MORE RIGHT */
-
     .ground-marker-step {
       left: 77%;
-
       top: 44%;
 
       transition-delay:
@@ -2036,18 +2005,13 @@
     }
 
 
-
-    /* KANTE — MORE RIGHT */
-
     .ground-marker-edge {
       left: 77%;
-
       bottom: 18.5%;
 
       transition-delay:
         1.04s;
     }
-
 
 
     .ground-slide.is-visible
@@ -2075,6 +2039,438 @@
       transform:
         translateY(0)
         translateX(0);
+    }
+
+
+
+    /* =========================================================
+       SLIDE 05 — WEARABLE
+    ========================================================== */
+
+    .wearable {
+      position: relative;
+
+      width: 100%;
+      height: 100svh;
+
+      min-height: 700px;
+
+      margin-top: -1px;
+
+      overflow: hidden;
+
+      isolation: isolate;
+
+      background: #edf2f7;
+
+      color: #172131;
+    }
+
+
+    .wearable-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      object-position: 62% center;
+
+      z-index: -7;
+
+      transform:
+        scale(1.035);
+
+      transition:
+        transform
+        1.9s
+        cubic-bezier(.22,.61,.36,1);
+    }
+
+
+    .wearable.is-visible
+    .wearable-image {
+      transform:
+        scale(1);
+    }
+
+
+
+    /* Slide 04 → Slide 05 transition */
+
+    .wearable-transition {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 260px;
+
+      z-index: 2;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(238,246,253,0.98) 0%,
+          rgba(241,247,252,0.88) 15%,
+          rgba(245,249,252,0.62) 33%,
+          rgba(248,250,252,0.30) 54%,
+          rgba(248,250,252,0.08) 75%,
+          rgba(248,250,252,0) 100%
+        );
+    }
+
+
+    .wearable-transition::after {
+      content: "";
+
+      position: absolute;
+
+      top: -120px;
+      left: 50%;
+
+      width: 950px;
+      height: 360px;
+
+      transform:
+        translateX(-50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(105,169,255,0.11),
+          rgba(105,169,255,0.03) 45%,
+          transparent 72%
+        );
+
+      filter:
+        blur(32px);
+    }
+
+
+
+    /* readable left side */
+
+    .wearable-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -4;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          rgba(249,251,253,0.99) 0%,
+          rgba(249,251,253,0.97) 18%,
+          rgba(249,251,253,0.88) 31%,
+          rgba(249,251,253,0.68) 42%,
+          rgba(249,251,253,0.32) 53%,
+          rgba(249,251,253,0.06) 65%,
+          rgba(249,251,253,0) 78%
+        ),
+
+        linear-gradient(
+          180deg,
+          rgba(235,243,250,0.08),
+          rgba(255,255,255,0.01) 50%,
+          rgba(235,243,250,0.12)
+        );
+    }
+
+
+    .wearable-inner {
+      position: relative;
+
+      z-index: 5;
+
+      width:
+        min(
+          1320px,
+          calc(100% - 64px)
+        );
+
+      height: 100%;
+
+      margin:
+        0 auto;
+
+      display: flex;
+
+      align-items: center;
+    }
+
+
+    .wearable-content {
+      width:
+        min(
+          560px,
+          44vw
+        );
+
+      margin-top: 55px;
+    }
+
+
+    .wearable-label {
+      margin-bottom: 20px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #667588;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+
+    .wearable-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      min-height: 39px;
+
+      padding:
+        0
+        15px;
+
+      margin-bottom: 32px;
+
+      border:
+        1px solid
+        rgba(68,136,228,0.24);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.68);
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
+
+      box-shadow:
+        0
+        12px
+        34px
+        rgba(50,90,145,0.06);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.10em;
+
+      text-transform: uppercase;
+
+      color: #3475c8;
+
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        opacity 0.8s ease 0.08s,
+        transform 0.8s ease 0.08s;
+    }
+
+
+    .wearable-badge-dot {
+      width: 7px;
+      height: 7px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+
+      box-shadow:
+        0
+        0
+        0
+        6px
+        rgba(105,169,255,0.11);
+    }
+
+
+    .wearable-title {
+      margin: 0;
+
+      max-width: 580px;
+
+      font-size:
+        clamp(
+          44px,
+          4.8vw,
+          74px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.054em;
+
+      font-weight: 650;
+    }
+
+
+    .wearable-title-dark {
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform:
+        translateY(32px);
+
+      transition:
+        opacity 0.9s ease 0.14s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.14s;
+    }
+
+
+    .wearable-title-blue {
+      display: block;
+
+      margin-top: 11px;
+
+      color:
+        var(--blue-deep);
+
+      opacity: 0;
+
+      transform:
+        translateY(32px);
+
+      transition:
+        opacity 0.9s ease 0.28s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.28s;
+    }
+
+
+    .wearable-description {
+      max-width: 510px;
+
+      margin:
+        31px
+        0
+        0;
+
+      font-size:
+        clamp(
+          14px,
+          1.03vw,
+          16px
+        );
+
+      line-height: 1.72;
+
+      color: #617084;
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+        opacity 0.85s ease 0.46s,
+        transform 0.85s ease 0.46s;
+    }
+
+
+    .wearable-meta {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      margin-top: 30px;
+
+      color: #718094;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+
+      opacity: 0;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity 0.8s ease 0.60s,
+        transform 0.8s ease 0.60s;
+    }
+
+
+    .wearable-meta span {
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+    }
+
+
+    .wearable.is-visible
+    .wearable-label,
+
+    .wearable.is-visible
+    .wearable-badge,
+
+    .wearable.is-visible
+    .wearable-title-dark,
+
+    .wearable.is-visible
+    .wearable-title-blue,
+
+    .wearable.is-visible
+    .wearable-description,
+
+    .wearable.is-visible
+    .wearable-meta {
+      opacity: 1;
+
+      transform:
+        translateY(0);
     }
 
 
@@ -2120,7 +2516,6 @@
       }
 
 
-
       .technology-content {
         width:
           min(
@@ -2130,38 +2525,11 @@
       }
 
 
-      .technology-overlay {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(250,252,255,0.98) 0%,
-            rgba(250,252,255,0.92) 28%,
-            rgba(250,252,255,0.70) 48%,
-            rgba(250,252,255,0.20) 70%,
-            transparent 90%
-          );
-      }
-
-
-
       .ground-slide-content {
         width:
           min(
             530px,
             61vw
-          );
-      }
-
-
-      .ground-slide-overlay {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(250,252,255,0.99) 0%,
-            rgba(250,252,255,0.94) 28%,
-            rgba(250,252,255,0.72) 48%,
-            rgba(250,252,255,0.24) 70%,
-            transparent 90%
           );
       }
 
@@ -2183,6 +2551,21 @@
 
       .ground-marker-edge {
         left: 75%;
+      }
+
+
+      .wearable-content {
+        width:
+          min(
+            510px,
+            58vw
+          );
+      }
+
+
+      .wearable-image {
+        object-position:
+          66% center;
       }
 
     }
@@ -2253,16 +2636,7 @@
       }
 
 
-      .eyebrow {
-        font-size: 9px;
-
-        margin-bottom: 13px;
-      }
-
-
       .hero h1 {
-        max-width: 460px;
-
         font-size:
           clamp(
             37px,
@@ -2272,30 +2646,10 @@
       }
 
 
-      .hero-text {
-        max-width: 430px;
 
-        margin-top: 16px;
-
-        font-size: 14px;
-      }
-
-
-      .hero-button {
-        margin-top: 18px;
-
-        min-height: 40px;
-
-        font-size: 10px;
-      }
-
-
-
-      /* SLIDE 02 */
+      /* Slide 02 */
 
       .statement {
-        margin-top: -1px;
-
         padding:
           72px
           0
@@ -2318,24 +2672,6 @@
       }
 
 
-      .section-label {
-        margin-bottom: 16px;
-
-        font-size: 9px;
-      }
-
-
-      .audience-pill {
-        min-height: 34px;
-
-        padding:
-          0
-          11px;
-
-        font-size: 8px;
-      }
-
-
       .statement-title {
         font-size:
           clamp(
@@ -2346,11 +2682,6 @@
       }
 
 
-      .title-blue {
-        margin-top: 12px;
-      }
-
-
       .statement-lower {
         margin-top: 38px;
 
@@ -2358,53 +2689,11 @@
       }
 
 
-      .statement-keyline {
-        font-size: 18px;
-      }
 
-
-      .statement-description {
-        font-size: 14px;
-      }
-
-
-
-      /* SLIDE 03 */
+      /* Slide 03 */
 
       .technology {
         min-height: 760px;
-      }
-
-
-      .technology-video {
-        object-position:
-          55% center;
-      }
-
-
-      .technology-transition {
-        height: 170px;
-      }
-
-
-      .technology-overlay {
-        background:
-
-          linear-gradient(
-            180deg,
-            rgba(250,252,255,0.90) 0%,
-            rgba(250,252,255,0.73) 32%,
-            rgba(250,252,255,0.42) 58%,
-            rgba(250,252,255,0.12) 78%,
-            rgba(250,252,255,0.05) 100%
-          ),
-
-          linear-gradient(
-            90deg,
-            rgba(250,252,255,0.90) 0%,
-            rgba(250,252,255,0.45) 70%,
-            transparent 100%
-          );
       }
 
 
@@ -2429,29 +2718,7 @@
       }
 
 
-      .technology-label {
-        font-size: 9px;
-
-        margin-bottom: 14px;
-      }
-
-
-      .technology-badge {
-        min-height: 34px;
-
-        padding:
-          0
-          11px;
-
-        margin-bottom: 25px;
-
-        font-size: 7px;
-      }
-
-
       .technology-title {
-        max-width: 430px;
-
         font-size:
           clamp(
             36px,
@@ -2461,42 +2728,8 @@
       }
 
 
-      .technology-highlight {
-        max-width: 430px;
 
-        margin-top: 27px;
-
-        font-size: 17px;
-      }
-
-
-      .technology-description {
-        max-width: 430px;
-
-        margin-top: 17px;
-
-        font-size: 14px;
-      }
-
-
-      .technology-meta {
-        margin-top: 23px;
-
-        font-size: 8px;
-      }
-
-
-      .technology-video-label {
-        right: 18px;
-
-        bottom: 18px;
-
-        font-size: 7px;
-      }
-
-
-
-      /* SLIDE 04 */
+      /* Slide 04 */
 
       .ground-slide {
         min-height: 820px;
@@ -2506,32 +2739,6 @@
       .ground-slide-image {
         object-position:
           60% center;
-      }
-
-
-      .ground-slide-transition {
-        height: 165px;
-      }
-
-
-      .ground-slide-overlay {
-        background:
-
-          linear-gradient(
-            180deg,
-            rgba(250,252,255,0.94) 0%,
-            rgba(250,252,255,0.82) 34%,
-            rgba(250,252,255,0.52) 58%,
-            rgba(250,252,255,0.16) 78%,
-            rgba(250,252,255,0.06) 100%
-          ),
-
-          linear-gradient(
-            90deg,
-            rgba(250,252,255,0.92) 0%,
-            rgba(250,252,255,0.48) 72%,
-            transparent 100%
-          );
       }
 
 
@@ -2556,53 +2763,13 @@
       }
 
 
-      .ground-slide-label {
-        margin-bottom: 14px;
-
-        font-size: 9px;
-      }
-
-
-      .ground-slide-badge {
-        min-height: 34px;
-
-        padding:
-          0
-          11px;
-
-        margin-bottom: 24px;
-
-        font-size: 7px;
-      }
-
-
       .ground-slide-title {
-        max-width: 430px;
-
         font-size:
           clamp(
             36px,
             10vw,
             52px
           );
-      }
-
-
-      .ground-slide-highlight {
-        max-width: 430px;
-
-        margin-top: 27px;
-
-        font-size: 17px;
-      }
-
-
-      .ground-slide-description {
-        max-width: 430px;
-
-        margin-top: 17px;
-
-        font-size: 14px;
       }
 
 
@@ -2658,6 +2825,113 @@
         bottom: 6%;
       }
 
+
+
+      /* Slide 05 */
+
+      .wearable {
+        min-height: 800px;
+      }
+
+
+      .wearable-image {
+        object-position:
+          60% center;
+      }
+
+
+      .wearable-overlay {
+        background:
+
+          linear-gradient(
+            180deg,
+            rgba(249,251,253,0.93) 0%,
+            rgba(249,251,253,0.82) 36%,
+            rgba(249,251,253,0.42) 60%,
+            rgba(249,251,253,0.10) 80%,
+            rgba(249,251,253,0.03) 100%
+          ),
+
+          linear-gradient(
+            90deg,
+            rgba(249,251,253,0.88) 0%,
+            rgba(249,251,253,0.38) 80%,
+            transparent 100%
+          );
+      }
+
+
+      .wearable-transition {
+        height: 170px;
+      }
+
+
+      .wearable-inner {
+        width:
+          calc(
+            100% - 40px
+          );
+
+        align-items: flex-start;
+
+        padding-top: 145px;
+      }
+
+
+      .wearable-content {
+        width: 100%;
+
+        max-width: 480px;
+
+        margin-top: 0;
+      }
+
+
+      .wearable-label {
+        font-size: 9px;
+
+        margin-bottom: 14px;
+      }
+
+
+      .wearable-badge {
+        min-height: 34px;
+
+        padding:
+          0
+          11px;
+
+        margin-bottom: 24px;
+
+        font-size: 7px;
+      }
+
+
+      .wearable-title {
+        font-size:
+          clamp(
+            36px,
+            10vw,
+            52px
+          );
+      }
+
+
+      .wearable-description {
+        max-width: 420px;
+
+        margin-top: 24px;
+
+        font-size: 14px;
+      }
+
+
+      .wearable-meta {
+        font-size: 8px;
+
+        margin-top: 22px;
+      }
+
     }
 
 
@@ -2680,12 +2954,13 @@
       }
 
 
-      .statement .section-label,
+      .section-label,
       .audience-pill,
       .title-dark,
       .title-blue,
       .statement-keyline,
       .statement-description,
+
       .technology-label,
       .technology-badge,
       .technology-title-dark,
@@ -2694,13 +2969,22 @@
       .technology-description,
       .technology-meta,
       .technology-video-label,
+
       .ground-slide-label,
       .ground-slide-badge,
       .ground-slide-title-dark,
       .ground-slide-title-blue,
       .ground-slide-highlight,
       .ground-slide-description,
-      .ground-marker {
+      .ground-marker,
+
+      .wearable-label,
+      .wearable-badge,
+      .wearable-title-dark,
+      .wearable-title-blue,
+      .wearable-description,
+      .wearable-meta {
+
         opacity: 1 !important;
 
         transform: none !important;
@@ -2710,7 +2994,9 @@
 
 
       .technology-video,
-      .ground-slide-image {
+      .ground-slide-image,
+      .wearable-image {
+
         transform: none !important;
 
         transition: none !important;
@@ -2721,11 +3007,6 @@
         animation: none;
       }
 
-
-      .hero-button {
-        transition: none;
-      }
-
     }
 
   </style>
@@ -2734,6 +3015,7 @@
 
 
 <body>
+
 
 
   <!-- =====================================================
@@ -2751,12 +3033,10 @@
       preload="auto"
       aria-hidden="true"
     >
-
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
-
     </video>
 
 
@@ -2769,12 +3049,10 @@
       preload="auto"
       aria-hidden="true"
     >
-
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
-
     </video>
 
 
@@ -2824,9 +3102,11 @@
 
 
       <div class="hero-text">
+
         LROX Guide erkennt Hindernisse,
         prüft freie Richtungen und hilft dabei,
         einen klareren Weg nach vorn zu finden.
+
       </div>
 
 
@@ -3228,10 +3508,101 @@
 
 
   <!-- =====================================================
+       SLIDE 05 — WEARABLE
+  ====================================================== -->
+
+  <section
+    class="wearable"
+    id="tragbar"
+  >
+
+    <img
+      class="wearable-image"
+      src="../assets/guide/wearable.png"
+      alt="LROX Guide als tragbares Assistenzsystem"
+    >
+
+
+    <div
+      class="wearable-overlay"
+      aria-hidden="true"
+    ></div>
+
+
+    <div
+      class="wearable-transition"
+      aria-hidden="true"
+    ></div>
+
+
+    <div class="wearable-inner">
+
+      <div class="wearable-content">
+
+        <div class="wearable-label">
+          05 / Tragbares System
+        </div>
+
+
+        <div class="wearable-badge">
+
+          <span class="wearable-badge-dot"></span>
+
+          Körpernah • Hände frei • Für den Alltag
+
+        </div>
+
+
+        <h2 class="wearable-title">
+
+          <span class="wearable-title-dark">
+            Technologie,<br>
+            die mitgeht.
+          </span>
+
+
+          <span class="wearable-title-blue">
+            Zentral getragen.<br>
+            Hände frei.
+          </span>
+
+        </h2>
+
+
+        <p class="wearable-description">
+
+          LROX Guide wird zentral am Oberkörper getragen.
+          Die Halterung positioniert das System körpernah
+          und lässt beide Hände frei.
+
+        </p>
+
+
+        <div class="wearable-meta">
+
+          Stabile Position
+
+          <span></span>
+
+          Einstellbare Passform
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
        JAVASCRIPT
   ====================================================== -->
 
   <script>
+
+    /* HERO VIDEO SYNC */
 
     const mainVideo =
       document.querySelector(
@@ -3468,6 +3839,61 @@
 
       groundSlideObserver.observe(
         groundSlide
+      );
+
+    }
+
+
+
+    /* SLIDE 05 */
+
+    const wearable =
+      document.querySelector(
+        ".wearable"
+      );
+
+
+    if (wearable) {
+
+      const wearableObserver =
+        new IntersectionObserver(
+
+          (entries) => {
+
+            entries.forEach(
+
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  wearable.classList.add(
+                    "is-visible"
+                  );
+
+
+                  wearableObserver.unobserve(
+                    wearable
+                  );
+
+                }
+
+              }
+
+            );
+
+          },
+
+          {
+            threshold: 0.24
+          }
+
+        );
+
+
+      wearableObserver.observe(
+        wearable
       );
 
     }
