@@ -2045,6 +2045,7 @@
 
     /* =========================================================
        SLIDE 05 — WEARABLE
+       NEW VERSION — NO IMAGE CROPPING
     ========================================================== */
 
     .wearable {
@@ -2061,13 +2062,53 @@
 
       isolation: isolate;
 
-      background: #edf2f7;
+      background: #eef3f7;
 
       color: #172131;
     }
 
 
-    .wearable-image {
+
+    /*
+       BLURRED FULL-SCREEN BACKGROUND
+       fills the entire monitor without ugly empty areas
+    */
+
+    .wearable-image-bg {
+      position: absolute;
+
+      inset: -45px;
+
+      width: calc(100% + 90px);
+      height: calc(100% + 90px);
+
+      object-fit: cover;
+      object-position: center center;
+
+      z-index: -8;
+
+      filter:
+        blur(34px)
+        saturate(0.82)
+        brightness(1.10);
+
+      opacity: 0.55;
+
+      transform:
+        scale(1.06);
+    }
+
+
+
+    /*
+       MAIN IMAGE
+       IMPORTANT:
+       contain = COMPLETE IMAGE
+       no head cropping
+       no bottom cropping
+    */
+
+    .wearable-image-main {
       position: absolute;
 
       inset: 0;
@@ -2075,14 +2116,14 @@
       width: 100%;
       height: 100%;
 
-      object-fit: cover;
+      object-fit: contain;
 
-      object-position: 62% center;
+      object-position: right center;
 
-      z-index: -7;
+      z-index: -6;
 
       transform:
-        scale(1.035);
+        scale(1.018);
 
       transition:
         transform
@@ -2092,14 +2133,43 @@
 
 
     .wearable.is-visible
-    .wearable-image {
+    .wearable-image-main {
       transform:
         scale(1);
     }
 
 
 
-    /* Slide 04 → Slide 05 transition */
+    /*
+       soft ambient layer so the main image
+       blends naturally with the blurred background
+    */
+
+    .wearable-ambient {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -5;
+
+      pointer-events: none;
+
+      background:
+
+        radial-gradient(
+          circle at 73% 46%,
+          rgba(255,255,255,0.02),
+          rgba(235,244,252,0.08) 42%,
+          rgba(232,241,249,0.18) 76%,
+          rgba(232,241,249,0.30) 100%
+        );
+    }
+
+
+
+    /* =========================================================
+       SLIDE 04 → 05 TRANSITION
+    ========================================================== */
 
     .wearable-transition {
       position: absolute;
@@ -2108,21 +2178,22 @@
       left: 0;
       right: 0;
 
-      height: 260px;
+      height: 245px;
 
-      z-index: 2;
+      z-index: 3;
 
       pointer-events: none;
 
       background:
         linear-gradient(
           180deg,
+
           rgba(238,246,253,0.98) 0%,
-          rgba(241,247,252,0.88) 15%,
-          rgba(245,249,252,0.62) 33%,
-          rgba(248,250,252,0.30) 54%,
-          rgba(248,250,252,0.08) 75%,
-          rgba(248,250,252,0) 100%
+          rgba(240,247,253,0.86) 16%,
+          rgba(244,249,253,0.58) 36%,
+          rgba(248,251,253,0.29) 56%,
+          rgba(248,251,253,0.08) 77%,
+          rgba(248,251,253,0) 100%
         );
     }
 
@@ -2132,11 +2203,11 @@
 
       position: absolute;
 
-      top: -120px;
+      top: -125px;
       left: 50%;
 
-      width: 950px;
-      height: 360px;
+      width: 1000px;
+      height: 370px;
 
       transform:
         translateX(-50%);
@@ -2147,7 +2218,7 @@
         radial-gradient(
           ellipse,
           rgba(105,169,255,0.11),
-          rgba(105,169,255,0.03) 45%,
+          rgba(105,169,255,0.028) 47%,
           transparent 72%
         );
 
@@ -2157,14 +2228,16 @@
 
 
 
-    /* readable left side */
+    /* =========================================================
+       SLIDE 05 LEFT READABILITY
+    ========================================================== */
 
     .wearable-overlay {
       position: absolute;
 
       inset: 0;
 
-      z-index: -4;
+      z-index: -3;
 
       pointer-events: none;
 
@@ -2172,23 +2245,30 @@
 
         linear-gradient(
           90deg,
-          rgba(249,251,253,0.99) 0%,
-          rgba(249,251,253,0.97) 18%,
-          rgba(249,251,253,0.88) 31%,
-          rgba(249,251,253,0.68) 42%,
-          rgba(249,251,253,0.32) 53%,
-          rgba(249,251,253,0.06) 65%,
-          rgba(249,251,253,0) 78%
+
+          rgba(249,252,255,0.995) 0%,
+          rgba(249,252,255,0.985) 15%,
+          rgba(249,252,255,0.94) 25%,
+          rgba(249,252,255,0.82) 34%,
+          rgba(249,252,255,0.56) 43%,
+          rgba(249,252,255,0.27) 51%,
+          rgba(249,252,255,0.08) 59%,
+          rgba(249,252,255,0) 69%
         ),
 
         linear-gradient(
           180deg,
-          rgba(235,243,250,0.08),
-          rgba(255,255,255,0.01) 50%,
-          rgba(235,243,250,0.12)
+          rgba(238,246,252,0.06) 0%,
+          rgba(255,255,255,0) 48%,
+          rgba(235,243,250,0.08) 100%
         );
     }
 
+
+
+    /* =========================================================
+       SLIDE 05 CONTENT
+    ========================================================== */
 
     .wearable-inner {
       position: relative;
@@ -2215,11 +2295,11 @@
     .wearable-content {
       width:
         min(
-          560px,
-          44vw
+          555px,
+          43vw
         );
 
-      margin-top: 55px;
+      margin-top: 40px;
     }
 
 
@@ -2331,9 +2411,9 @@
 
       font-size:
         clamp(
-          44px,
-          4.8vw,
-          74px
+          43px,
+          4.55vw,
+          70px
         );
 
       line-height: 0.98;
@@ -2380,17 +2460,17 @@
 
 
     .wearable-description {
-      max-width: 510px;
+      max-width: 495px;
 
       margin:
-        31px
+        30px
         0
         0;
 
       font-size:
         clamp(
           14px,
-          1.03vw,
+          1.02vw,
           16px
         );
 
@@ -2416,7 +2496,7 @@
 
       gap: 11px;
 
-      margin-top: 30px;
+      margin-top: 29px;
 
       color: #718094;
 
@@ -2554,18 +2634,39 @@
       }
 
 
+
+      /* wearable tablet */
+
       .wearable-content {
         width:
           min(
-            510px,
-            58vw
+            500px,
+            56vw
           );
       }
 
 
-      .wearable-image {
+      .wearable-image-main {
+        object-fit: contain;
+
         object-position:
-          66% center;
+          right center;
+      }
+
+
+      .wearable-overlay {
+        background:
+
+          linear-gradient(
+            90deg,
+
+            rgba(249,252,255,0.995) 0%,
+            rgba(249,252,255,0.97) 23%,
+            rgba(249,252,255,0.83) 39%,
+            rgba(249,252,255,0.45) 52%,
+            rgba(249,252,255,0.11) 66%,
+            transparent 78%
+          );
       }
 
     }
@@ -2827,16 +2928,32 @@
 
 
 
-      /* Slide 05 */
+      /* =====================================================
+         SLIDE 05 MOBILE
+      ====================================================== */
 
       .wearable {
-        min-height: 800px;
+        min-height: 820px;
       }
 
 
-      .wearable-image {
+      .wearable-image-bg {
+        display: block;
+
+        opacity: 0.44;
+      }
+
+
+      .wearable-image-main {
+        object-fit: contain;
+
         object-position:
-          60% center;
+          center center;
+      }
+
+
+      .wearable-transition {
+        height: 170px;
       }
 
 
@@ -2845,24 +2962,14 @@
 
           linear-gradient(
             180deg,
-            rgba(249,251,253,0.93) 0%,
-            rgba(249,251,253,0.82) 36%,
-            rgba(249,251,253,0.42) 60%,
-            rgba(249,251,253,0.10) 80%,
-            rgba(249,251,253,0.03) 100%
-          ),
 
-          linear-gradient(
-            90deg,
-            rgba(249,251,253,0.88) 0%,
-            rgba(249,251,253,0.38) 80%,
-            transparent 100%
+            rgba(249,252,255,0.97) 0%,
+            rgba(249,252,255,0.90) 27%,
+            rgba(249,252,255,0.66) 45%,
+            rgba(249,252,255,0.32) 62%,
+            rgba(249,252,255,0.07) 80%,
+            rgba(249,252,255,0.01) 100%
           );
-      }
-
-
-      .wearable-transition {
-        height: 170px;
       }
 
 
@@ -2874,7 +2981,7 @@
 
         align-items: flex-start;
 
-        padding-top: 145px;
+        padding-top: 135px;
       }
 
 
@@ -2888,9 +2995,9 @@
 
 
       .wearable-label {
-        font-size: 9px;
-
         margin-bottom: 14px;
+
+        font-size: 9px;
       }
 
 
@@ -2901,35 +3008,37 @@
           0
           11px;
 
-        margin-bottom: 24px;
+        margin-bottom: 23px;
 
         font-size: 7px;
       }
 
 
       .wearable-title {
+        max-width: 420px;
+
         font-size:
           clamp(
             36px,
             10vw,
-            52px
+            50px
           );
       }
 
 
       .wearable-description {
-        max-width: 420px;
+        max-width: 400px;
 
-        margin-top: 24px;
+        margin-top: 22px;
 
         font-size: 14px;
       }
 
 
       .wearable-meta {
-        font-size: 8px;
+        margin-top: 21px;
 
-        margin-top: 22px;
+        font-size: 8px;
       }
 
     }
@@ -2995,7 +3104,7 @@
 
       .technology-video,
       .ground-slide-image,
-      .wearable-image {
+      .wearable-image-main {
 
         transform: none !important;
 
@@ -3033,10 +3142,12 @@
       preload="auto"
       aria-hidden="true"
     >
+
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
+
     </video>
 
 
@@ -3049,10 +3160,12 @@
       preload="auto"
       aria-hidden="true"
     >
+
       <source
         src="../assets/guide/hero.mp4"
         type="video/mp4"
       >
+
     </video>
 
 
@@ -3516,11 +3629,30 @@
     id="tragbar"
   >
 
+
+    <!-- blurred background -->
+
     <img
-      class="wearable-image"
+      class="wearable-image-bg"
+      src="../assets/guide/wearable.png"
+      alt=""
+      aria-hidden="true"
+    >
+
+
+    <!-- complete main image -->
+
+    <img
+      class="wearable-image-main"
       src="../assets/guide/wearable.png"
       alt="LROX Guide als tragbares Assistenzsystem"
     >
+
+
+    <div
+      class="wearable-ambient"
+      aria-hidden="true"
+    ></div>
 
 
     <div
@@ -3602,7 +3734,7 @@
 
   <script>
 
-    /* HERO VIDEO SYNC */
+    /* HERO */
 
     const mainVideo =
       document.querySelector(
