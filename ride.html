@@ -1739,7 +1739,8 @@
       padding: 0;
     }
 
-    .lrox-development__road-card img {
+    .lrox-development__road-card img,
+    .lrox-development__road-card video {
       display: block;
       width: auto;
       height: min(76vh, 780px);
@@ -1923,7 +1924,8 @@
         padding: 16px;
       }
 
-      .lrox-development__road-card img {
+      .lrox-development__road-card img,
+      .lrox-development__road-card video {
         border-radius: 20px;
       }
 
@@ -3664,10 +3666,19 @@
             class="lrox-development__card
                    lrox-development__road-card"
           >
-            <img
-              src="assets/IMG_3768.gif"
-              alt="LROX Straßentest mit Gefahrenerkennung"
-            />
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="LROX Straßentest mit Gefahrenerkennung"
+            >
+              <source
+                src="assets/bikever1.MOV"
+                type="video/quicktime"
+              />
+            </video>
 
             <span class="lrox-development__road-badge">
               Live road research
