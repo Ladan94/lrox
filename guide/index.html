@@ -3727,6 +3727,709 @@
 
     }
 
+
+
+    /* =========================================================
+       SLIDE 07 — FAQ
+       ADDED WITHOUT CHANGING SLIDES 01–06
+    ========================================================== */
+
+    .faq-section {
+      position: relative;
+
+      width: 100%;
+      min-height: 100svh;
+
+      margin-top: -1px;
+
+      background:
+        radial-gradient(
+          circle at 16% 20%,
+          rgba(105,169,255,0.11),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 88% 82%,
+          rgba(123,183,255,0.08),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #f6f9fd 0%,
+          #fbfdff 32%,
+          #ffffff 67%,
+          #f3f8ff 100%
+        );
+
+      color: #172131;
+
+      isolation: isolate;
+    }
+
+
+    /*
+       Slide 06 → FAQ transition.
+       This layer reaches slightly upward into the previous slide,
+       creating a soft ice-white dissolve instead of a hard cut.
+    */
+
+    .faq-transition {
+      position: absolute;
+
+      top: -170px;
+      left: 0;
+      right: 0;
+
+      height: 430px;
+
+      z-index: 6;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(232,238,244,0) 0%,
+          rgba(232,238,244,0.18) 18%,
+          rgba(235,242,248,0.48) 37%,
+          rgba(241,247,252,0.82) 54%,
+          rgba(246,249,253,0.98) 68%,
+          rgba(246,249,253,0.70) 82%,
+          rgba(246,249,253,0) 100%
+        );
+    }
+
+
+    .faq-transition::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: 70px;
+
+      width: 1050px;
+      height: 310px;
+
+      transform: translateX(-50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(105,169,255,0.10),
+          rgba(105,169,255,0.025) 48%,
+          transparent 74%
+        );
+
+      filter: blur(34px);
+    }
+
+
+    .faq-inner {
+      position: relative;
+
+      z-index: 3;
+
+      width:
+        min(
+          1320px,
+          calc(100% - 64px)
+        );
+
+      min-height: 100svh;
+
+      margin: 0 auto;
+
+      padding:
+        150px
+        0
+        105px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(330px, 0.82fr)
+        minmax(520px, 1.18fr);
+
+      gap: 92px;
+
+      align-items: start;
+    }
+
+
+    .faq-intro {
+      padding-top: 9px;
+    }
+
+
+    .faq-label {
+      margin-bottom: 22px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: #667588;
+
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    }
+
+
+    .faq-title {
+      margin: 0;
+
+      max-width: 500px;
+
+      font-size:
+        clamp(
+          48px,
+          5vw,
+          76px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 650;
+    }
+
+
+    .faq-title-dark {
+      display: block;
+
+      color: #172131;
+
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.9s ease 0.10s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.10s;
+    }
+
+
+    .faq-title-blue {
+      display: block;
+
+      margin-top: 10px;
+
+      color: var(--blue-deep);
+
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.9s ease 0.24s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.24s;
+    }
+
+
+    .faq-lead {
+      max-width: 430px;
+
+      margin:
+        30px
+        0
+        0;
+
+      font-size:
+        clamp(
+          14px,
+          1.05vw,
+          16px
+        );
+
+      line-height: 1.72;
+
+      color: #68778a;
+
+      opacity: 0;
+
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.8s ease 0.38s,
+        transform 0.8s ease 0.38s;
+    }
+
+
+    .faq-status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 28px;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+
+      color: #6d7d91;
+
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity 0.8s ease 0.48s,
+        transform 0.8s ease 0.48s;
+    }
+
+
+    .faq-status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--blue);
+
+      box-shadow:
+        0
+        0
+        0
+        6px
+        rgba(105,169,255,0.10);
+    }
+
+
+    .faq-list {
+      margin-top: 2px;
+
+      border-top:
+        1px solid
+        rgba(35,52,73,0.13);
+
+      opacity: 0;
+
+      transform: translateY(28px);
+
+      transition:
+        opacity 0.9s ease 0.26s,
+        transform 0.9s cubic-bezier(.22,.61,.36,1) 0.26s;
+    }
+
+
+    .faq-item {
+      border-bottom:
+        1px solid
+        rgba(35,52,73,0.13);
+    }
+
+
+    .faq-question {
+      width: 100%;
+
+      min-height: 86px;
+
+      padding:
+        0
+        4px;
+
+      display: grid;
+
+      grid-template-columns:
+        44px
+        1fr
+        34px;
+
+      gap: 17px;
+
+      align-items: center;
+
+      border: 0;
+
+      background: transparent;
+
+      color: #172131;
+
+      text-align: left;
+
+      font: inherit;
+
+      cursor: pointer;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease;
+    }
+
+
+    .faq-question:hover {
+      color: var(--blue-deep);
+    }
+
+
+    .faq-number {
+      font-size: 10px;
+
+      font-weight: 750;
+
+      letter-spacing: 0.13em;
+
+      color: #7b899a;
+    }
+
+
+    .faq-question-text {
+      font-size:
+        clamp(
+          17px,
+          1.4vw,
+          21px
+        );
+
+      line-height: 1.35;
+
+      letter-spacing: -0.018em;
+
+      font-weight: 600;
+    }
+
+
+    .faq-icon {
+      position: relative;
+
+      width: 28px;
+      height: 28px;
+
+      justify-self: end;
+
+      border:
+        1px solid
+        rgba(78,145,236,0.23);
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.62);
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.35s ease;
+    }
+
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 10px;
+      height: 1px;
+
+      background: var(--blue-deep);
+
+      transform: translate(-50%, -50%);
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+
+    .faq-icon::after {
+      transform:
+        translate(-50%, -50%)
+        rotate(90deg);
+    }
+
+
+    .faq-item.is-open
+    .faq-icon {
+      background:
+        rgba(78,145,236,0.09);
+
+      border-color:
+        rgba(78,145,236,0.38);
+
+      transform: rotate(180deg);
+    }
+
+
+    .faq-item.is-open
+    .faq-icon::after {
+      opacity: 0;
+
+      transform:
+        translate(-50%, -50%)
+        rotate(0deg);
+    }
+
+
+    .faq-answer {
+      display: grid;
+
+      grid-template-rows: 0fr;
+
+      transition:
+        grid-template-rows 0.42s cubic-bezier(.22,.61,.36,1);
+    }
+
+
+    .faq-item.is-open
+    .faq-answer {
+      grid-template-rows: 1fr;
+    }
+
+
+    .faq-answer-inner {
+      min-height: 0;
+
+      overflow: hidden;
+    }
+
+
+    .faq-answer p {
+      max-width: 690px;
+
+      margin:
+        0
+        48px
+        25px
+        61px;
+
+      font-size:
+        clamp(
+          14px,
+          1vw,
+          16px
+        );
+
+      line-height: 1.7;
+
+      color: #667589;
+    }
+
+
+    .faq-section.is-visible
+    .faq-label,
+
+    .faq-section.is-visible
+    .faq-title-dark,
+
+    .faq-section.is-visible
+    .faq-title-blue,
+
+    .faq-section.is-visible
+    .faq-lead,
+
+    .faq-section.is-visible
+    .faq-status,
+
+    .faq-section.is-visible
+    .faq-list {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       SLIDE 07 — FAQ TABLET
+    ========================================================== */
+
+    @media (max-width: 1000px) {
+
+      .faq-inner {
+        grid-template-columns:
+          minmax(270px, 0.72fr)
+          minmax(430px, 1.28fr);
+
+        gap: 55px;
+      }
+
+
+      .faq-title {
+        font-size:
+          clamp(
+            44px,
+            6.2vw,
+            66px
+          );
+      }
+
+    }
+
+
+    /* =========================================================
+       SLIDE 07 — FAQ MOBILE
+    ========================================================== */
+
+    @media (max-width: 700px) {
+
+      .faq-section {
+        min-height: auto;
+      }
+
+
+      .faq-transition {
+        top: -115px;
+
+        height: 280px;
+      }
+
+
+      .faq-inner {
+        width:
+          calc(
+            100% - 40px
+          );
+
+        min-height: 100svh;
+
+        padding:
+          110px
+          0
+          75px;
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+
+      .faq-intro {
+        padding-top: 0;
+      }
+
+
+      .faq-label {
+        margin-bottom: 15px;
+
+        font-size: 9px;
+      }
+
+
+      .faq-title {
+        max-width: 390px;
+
+        font-size:
+          clamp(
+            39px,
+            11vw,
+            54px
+          );
+      }
+
+
+      .faq-lead {
+        max-width: 390px;
+
+        margin-top: 22px;
+
+        font-size: 14px;
+      }
+
+
+      .faq-status {
+        margin-top: 22px;
+
+        font-size: 8px;
+      }
+
+
+      .faq-question {
+        min-height: 80px;
+
+        grid-template-columns:
+          31px
+          1fr
+          30px;
+
+        gap: 10px;
+
+        padding:
+          0
+          1px;
+      }
+
+
+      .faq-number {
+        font-size: 8px;
+      }
+
+
+      .faq-question-text {
+        font-size: 16px;
+      }
+
+
+      .faq-icon {
+        width: 26px;
+        height: 26px;
+      }
+
+
+      .faq-answer p {
+        margin:
+          0
+          31px
+          23px
+          41px;
+
+        font-size: 14px;
+      }
+
+    }
+
+
+    /* =========================================================
+       SLIDE 07 — FAQ REDUCED MOTION
+    ========================================================== */
+
+    @media
+    (prefers-reduced-motion: reduce) {
+
+      .faq-label,
+      .faq-title-dark,
+      .faq-title-blue,
+      .faq-lead,
+      .faq-status,
+      .faq-list {
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        transition: none !important;
+      }
+
+
+      .faq-answer,
+      .faq-icon,
+      .faq-icon::before,
+      .faq-icon::after {
+        transition: none !important;
+      }
+
+    }
+
   </style>
 
 </head>
@@ -4441,6 +5144,331 @@
 
 
   <!-- =====================================================
+       SLIDE 07 — FAQ
+  ====================================================== -->
+
+  <section
+    class="faq-section"
+    id="faq"
+  >
+
+    <div
+      class="faq-transition"
+      aria-hidden="true"
+    ></div>
+
+
+    <div class="faq-inner">
+
+      <div class="faq-intro">
+
+        <div class="faq-label">
+          07 / FAQ
+        </div>
+
+
+        <h2 class="faq-title">
+
+          <span class="faq-title-dark">
+            Fragen,
+          </span>
+
+          <span class="faq-title-blue">
+            die wichtig sind.
+          </span>
+
+        </h2>
+
+
+        <p class="faq-lead">
+          Die wichtigsten Antworten zu Funktion,
+          Entwicklung und aktuellem Stand von LROX Guide.
+        </p>
+
+
+        <div class="faq-status">
+
+          <span class="faq-status-dot"></span>
+
+          Aktuell in der Prototypenphase
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="faq-list"
+        aria-label="Häufig gestellte Fragen"
+      >
+
+        <!-- FAQ 01 -->
+
+        <div class="faq-item is-open">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="true"
+          >
+
+            <span class="faq-number">01</span>
+
+            <span class="faq-question-text">
+              Wie genau funktioniert LROX Guide?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Nähert sich die Person einem Hindernis,
+                einer Kante oder einer Vertiefung, gibt
+                LROX Guide über verbundene Kopfhörer oder
+                einen Lautsprecher einen akustischen Hinweis.
+                Anschließend fordert das System dazu auf,
+                sich nach rechts und links zu orientieren.
+                Wird eine freie Richtung erkannt, weist
+                LROX Guide darauf hin, sich dorthin zu drehen
+                und den Weg fortzusetzen.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAQ 02 -->
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <span class="faq-number">02</span>
+
+            <span class="faq-question-text">
+              Kann man LROX Guide bereits kaufen?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Nein. LROX Guide befindet sich derzeit noch
+                in der Prototypen- und Entwicklungsphase und
+                ist aktuell nicht für den Verkauf verfügbar.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAQ 03 -->
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <span class="faq-number">03</span>
+
+            <span class="faq-question-text">
+              Wie viel wird LROX Guide kosten?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Ein endgültiger Preis steht derzeit noch nicht
+                fest. Durch den Verzicht auf teure Kamerasysteme
+                und den gezielten Einsatz kompakter Sensorik ist
+                das Ziel, die Kosten deutlich unter denen vieler
+                heutiger kamerabasierter Assistenzsysteme zu halten.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAQ 04 -->
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <span class="faq-number">04</span>
+
+            <span class="faq-question-text">
+              Braucht LROX Guide eine Kamera oder Internet?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Nein. LROX Guide arbeitet ohne Kamera und
+                verarbeitet die Sensordaten lokal. Für die
+                grundlegende Orientierung ist keine
+                Cloud-Verbindung erforderlich.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAQ 05 -->
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <span class="faq-number">05</span>
+
+            <span class="faq-question-text">
+              Ersetzt LROX Guide einen Blindenstock?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Nein. LROX Guide ist als zusätzliche
+                Mobilitätsassistenz gedacht. Das System soll
+                einen Blindenstock nicht ersetzen, sondern ihn
+                durch zusätzliche Hinweise zu Hindernissen und
+                möglichen freien Richtungen ergänzen.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAQ 06 -->
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <span class="faq-number">06</span>
+
+            <span class="faq-question-text">
+              Wie erhält die Person die Hinweise von LROX Guide?
+            </span>
+
+            <span
+              class="faq-icon"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <div class="faq-answer">
+
+            <div class="faq-answer-inner">
+
+              <p>
+                Die Hinweise werden akustisch über verbundene
+                Kopfhörer oder einen Lautsprecher ausgegeben.
+                So kann LROX Guide beispielsweise vor einem
+                Hindernis warnen und anschließend Hinweise zur
+                Prüfung einer freien Richtung geben.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
        JAVASCRIPT
   ====================================================== -->
 
@@ -4827,6 +5855,139 @@
 
     }
 
+
+
+
+    /* SLIDE 07 — FAQ */
+
+    const faqSection =
+      document.querySelector(
+        ".faq-section"
+      );
+
+
+    if (faqSection) {
+
+      const faqObserver =
+        new IntersectionObserver(
+
+          (entries) => {
+
+            entries.forEach(
+
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  faqSection.classList.add(
+                    "is-visible"
+                  );
+
+
+                  faqObserver.unobserve(
+                    faqSection
+                  );
+
+                }
+
+              }
+
+            );
+
+          },
+
+          {
+            threshold: 0.16
+          }
+
+        );
+
+
+      faqObserver.observe(
+        faqSection
+      );
+
+    }
+
+
+    const faqButtons =
+      document.querySelectorAll(
+        ".faq-question"
+      );
+
+
+    faqButtons.forEach(
+      (button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const currentItem =
+              button.closest(
+                ".faq-item"
+              );
+
+
+            const wasOpen =
+              currentItem.classList.contains(
+                "is-open"
+              );
+
+
+            document
+              .querySelectorAll(
+                ".faq-item"
+              )
+              .forEach(
+                (item) => {
+
+                  item.classList.remove(
+                    "is-open"
+                  );
+
+
+                  const itemButton =
+                    item.querySelector(
+                      ".faq-question"
+                    );
+
+
+                  if (itemButton) {
+
+                    itemButton.setAttribute(
+                      "aria-expanded",
+                      "false"
+                    );
+
+                  }
+
+                }
+              );
+
+
+            if (!wasOpen) {
+
+              currentItem.classList.add(
+                "is-open"
+              );
+
+
+              button.setAttribute(
+                "aria-expanded",
+                "true"
+              );
+
+            }
+
+          }
+
+        );
+
+      }
+    );
 
   </script>
 
